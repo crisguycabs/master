@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace RockStatic
 {
+    /// <summary>
+    /// Form que funciona como HOME para cada proyecto abierto
+    /// </summary>
     public partial class ProjectForm : Form
     {
         #region variables de clase
