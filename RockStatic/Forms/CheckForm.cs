@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace RockStatic
 {
+    /// <summary>
+    /// Forms para visualizar las imagenes seleccionadas en la creacion de un nuevo proyecto
+    /// </summary>
     public partial class CheckForm : Form
     {
         #region variables de clase

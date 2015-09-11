@@ -11,6 +11,9 @@ using System.IO;
 
 namespace RockStatic
 {
+    /// <summary>
+    /// Form principal. Contiene los tipos de datos globales y métodos estáticos
+    /// </summary>
     public partial class MainForm : Form
     {
         #region Variables de Diseñador
