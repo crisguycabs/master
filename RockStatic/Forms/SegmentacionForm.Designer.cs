@@ -53,8 +53,8 @@
             this.grpManual = new System.Windows.Forms.GroupBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.lblPunto2 = new System.Windows.Forms.Label();
-            this.lblPunto1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.lblPunto1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackElementos)).BeginInit();
@@ -70,9 +70,9 @@
             // 
             // trackElementos
             // 
-            this.trackElementos.Location = new System.Drawing.Point(2, 574);
+            this.trackElementos.Location = new System.Drawing.Point(2, 603);
             this.trackElementos.Name = "trackElementos";
-            this.trackElementos.Size = new System.Drawing.Size(495, 45);
+            this.trackElementos.Size = new System.Drawing.Size(550, 45);
             this.trackElementos.TabIndex = 1;
             this.trackElementos.ValueChanged += new System.EventHandler(this.trackElementos_ValueChanged);
             // 
@@ -84,10 +84,11 @@
             this.lblTitulo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(702, 30);
+            this.lblTitulo.Size = new System.Drawing.Size(760, 30);
             this.lblTitulo.TabIndex = 7;
             this.lblTitulo.Text = "BIENVENIDO!";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblTitulo.Click += new System.EventHandler(this.lblTitulo_Click);
             this.lblTitulo.DoubleClick += new System.EventHandler(this.lblTitulo_DoubleClick);
             this.lblTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblTitulo_MouseDown);
             this.lblTitulo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblTitulo_MouseMove);
@@ -96,10 +97,14 @@
             // 
             this.pictElemento.Location = new System.Drawing.Point(10, 42);
             this.pictElemento.Name = "pictElemento";
-            this.pictElemento.Size = new System.Drawing.Size(480, 536);
+            this.pictElemento.Size = new System.Drawing.Size(534, 555);
             this.pictElemento.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictElemento.TabIndex = 0;
             this.pictElemento.TabStop = false;
+            this.pictElemento.Paint += new System.Windows.Forms.PaintEventHandler(this.pictElemento_Paint);
+            this.pictElemento.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictElemento_MouseClick);
+            this.pictElemento.MouseEnter += new System.EventHandler(this.pictElemento_MouseEnter);
+            this.pictElemento.MouseLeave += new System.EventHandler(this.pictElemento_MouseLeave);
             // 
             // btnCancelar
             // 
@@ -125,7 +130,7 @@
             this.grpAuto.Controls.Add(this.track1);
             this.grpAuto.Controls.Add(this.txt1);
             this.grpAuto.Enabled = false;
-            this.grpAuto.Location = new System.Drawing.Point(496, 69);
+            this.grpAuto.Location = new System.Drawing.Point(553, 69);
             this.grpAuto.Name = "grpAuto";
             this.grpAuto.Size = new System.Drawing.Size(199, 93);
             this.grpAuto.TabIndex = 8;
@@ -178,7 +183,7 @@
             this.radAuto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radAuto.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radAuto.ForeColor = System.Drawing.Color.Green;
-            this.radAuto.Location = new System.Drawing.Point(496, 42);
+            this.radAuto.Location = new System.Drawing.Point(553, 42);
             this.radAuto.Name = "radAuto";
             this.radAuto.Size = new System.Drawing.Size(85, 26);
             this.radAuto.TabIndex = 13;
@@ -197,7 +202,7 @@
             this.radManual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radManual.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radManual.ForeColor = System.Drawing.Color.White;
-            this.radManual.Location = new System.Drawing.Point(496, 169);
+            this.radManual.Location = new System.Drawing.Point(553, 169);
             this.radManual.Name = "radManual";
             this.radManual.Size = new System.Drawing.Size(86, 26);
             this.radManual.TabIndex = 13;
@@ -218,7 +223,7 @@
             this.grpBox.Controls.Add(this.btnDown);
             this.grpBox.Controls.Add(this.btnUp);
             this.grpBox.Controls.Add(this.lstElementos);
-            this.grpBox.Location = new System.Drawing.Point(496, 288);
+            this.grpBox.Location = new System.Drawing.Point(553, 288);
             this.grpBox.Name = "grpBox";
             this.grpBox.Size = new System.Drawing.Size(199, 271);
             this.grpBox.TabIndex = 14;
@@ -245,6 +250,7 @@
             this.btnClean.TabIndex = 8;
             this.btnClean.Text = "Limpiar";
             this.btnClean.UseVisualStyleBackColor = true;
+            this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
             // 
             // btnDelete
             // 
@@ -258,15 +264,22 @@
             this.btnDelete.TabIndex = 8;
             this.btnDelete.Text = "Borrar";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // numRadio
             // 
             this.numRadio.Font = new System.Drawing.Font("Lucida Console", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numRadio.Location = new System.Drawing.Point(138, 184);
+            this.numRadio.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.numRadio.Name = "numRadio";
             this.numRadio.Size = new System.Drawing.Size(51, 18);
             this.numRadio.TabIndex = 7;
             this.numRadio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numRadio.ValueChanged += new System.EventHandler(this.numRadio_ValueChanged);
             // 
             // btnLeft
             // 
@@ -280,6 +293,7 @@
             this.btnLeft.Size = new System.Drawing.Size(20, 20);
             this.btnLeft.TabIndex = 6;
             this.btnLeft.UseVisualStyleBackColor = false;
+            this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
             // 
             // btnRight
             // 
@@ -293,6 +307,7 @@
             this.btnRight.Size = new System.Drawing.Size(20, 20);
             this.btnRight.TabIndex = 6;
             this.btnRight.UseVisualStyleBackColor = false;
+            this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
             // 
             // btnDown
             // 
@@ -306,6 +321,7 @@
             this.btnDown.Size = new System.Drawing.Size(20, 20);
             this.btnDown.TabIndex = 5;
             this.btnDown.UseVisualStyleBackColor = false;
+            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
             // 
             // btnUp
             // 
@@ -319,6 +335,7 @@
             this.btnUp.Size = new System.Drawing.Size(20, 20);
             this.btnUp.TabIndex = 4;
             this.btnUp.UseVisualStyleBackColor = false;
+            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
             // 
             // lstElementos
             // 
@@ -329,6 +346,7 @@
             this.lstElementos.Name = "lstElementos";
             this.lstElementos.Size = new System.Drawing.Size(180, 158);
             this.lstElementos.TabIndex = 3;
+            this.lstElementos.SelectedIndexChanged += new System.EventHandler(this.lstElementos_SelectedIndexChanged);
             // 
             // grpManual
             // 
@@ -336,7 +354,7 @@
             this.grpManual.Controls.Add(this.lblPunto2);
             this.grpManual.Controls.Add(this.label2);
             this.grpManual.Controls.Add(this.lblPunto1);
-            this.grpManual.Location = new System.Drawing.Point(496, 195);
+            this.grpManual.Location = new System.Drawing.Point(553, 195);
             this.grpManual.Name = "grpManual";
             this.grpManual.Size = new System.Drawing.Size(199, 95);
             this.grpManual.TabIndex = 15;
@@ -354,6 +372,7 @@
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Cancelar";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             this.btnCancel.MouseEnter += new System.EventHandler(this.btnSubir_MouseEnter);
             this.btnCancel.MouseLeave += new System.EventHandler(this.btnSubir_MouseLeave);
             // 
@@ -367,6 +386,15 @@
             this.lblPunto2.Text = "2...";
             this.lblPunto2.Visible = false;
             // 
+            // label2
+            // 
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label2.Location = new System.Drawing.Point(6, 14);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(188, 47);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Seleccione los phantom y core marcando tres puntos para cada elemento";
+            // 
             // lblPunto1
             // 
             this.lblPunto1.AutoSize = true;
@@ -377,20 +405,11 @@
             this.lblPunto1.Text = "Punto 1...";
             this.lblPunto1.Visible = false;
             // 
-            // label2
-            // 
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(6, 14);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(188, 47);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Seleccione los phantom y core marcando tres puntos para cada elemento";
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.btnCancelar);
-            this.groupBox1.Location = new System.Drawing.Point(496, 559);
+            this.groupBox1.Location = new System.Drawing.Point(553, 559);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(199, 48);
             this.groupBox1.TabIndex = 16;
@@ -409,6 +428,7 @@
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Guardar";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             this.btnSave.MouseEnter += new System.EventHandler(this.btnSubir_MouseEnter);
             this.btnSave.MouseLeave += new System.EventHandler(this.btnSubir_MouseLeave);
             // 
@@ -417,7 +437,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(702, 613);
+            this.ClientSize = new System.Drawing.Size(760, 650);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grpManual);

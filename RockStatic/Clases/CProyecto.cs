@@ -464,7 +464,7 @@ namespace RockStatic
         public void SetPhantom2High(CCuadrado elemento)
         {
             this.areaPhantom2High = new CCuadrado(elemento);
-            this.areaPhantom2High.nombre = "Phantom1";
+            this.areaPhantom2High.nombre = "Phantom2";
         }
 
         // <summary>
