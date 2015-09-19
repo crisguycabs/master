@@ -431,9 +431,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictSegHigh;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictSegLow;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnSegLow;
         private System.Windows.Forms.Button btnSegHigh;
@@ -441,9 +439,7 @@
         private System.Windows.Forms.Button btnAreasLow;
         private System.Windows.Forms.Button btnAreasHigh;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.PictureBox pictAreasLow;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.PictureBox pictAreasHigh;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnCerrar;
@@ -459,5 +455,9 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem cerrarProyectoToolStripMenuItem;
         private System.Windows.Forms.Label lblProyecto;
+        public System.Windows.Forms.PictureBox pictSegHigh;
+        public System.Windows.Forms.PictureBox pictSegLow;
+        public System.Windows.Forms.PictureBox pictAreasLow;
+        public System.Windows.Forms.PictureBox pictAreasHigh;
     }
 }

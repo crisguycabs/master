@@ -402,11 +402,13 @@ namespace RockStatic
         /// <summary>
         /// Establece las coordenadas para la segmentacion del Core con el tipo de dato CCuadrado
         /// </summary>
-        /// <param name="elemento"></param>
+        /// <param name="elemento">CCuadrado que contiene la informacion del cuadrado</param>
         public void SetCoreHigh(CCuadrado elemento)
         {
             this.areaCoreHigh = new CCuadrado(elemento);
             this.areaCoreHigh.nombre = "Core";
+            // se corrigen las coordenadas y ancho del cuadrado
+
         }
 
         /// <summary>
@@ -437,7 +439,7 @@ namespace RockStatic
             return areaCoreLow;
         }
 
-        // <summary>
+        /// <summary>
         /// Establece las coordenadas para la segmentacion del Phantom1 con el tipo de dato CCuadrado
         /// </summary>
         /// <param name="elemento"></param>
@@ -447,7 +449,7 @@ namespace RockStatic
             this.areaPhantom1High.nombre = "Phantom1";
         }
 
-        // <summary>
+        /// <summary>
         /// Establece las coordenadas para la segmentacion del Phantom1 con el tipo de dato CCuadrado
         /// </summary>
         /// <param name="elemento"></param>
@@ -457,7 +459,7 @@ namespace RockStatic
             this.areaPhantom1Low.nombre = "Phantom1";
         }
 
-        // <summary>
+        /// <summary>
         /// Establece las coordenadas para la segmentacion del Phantom2 con el tipo de dato CCuadrado
         /// </summary>
         /// <param name="elemento"></param>

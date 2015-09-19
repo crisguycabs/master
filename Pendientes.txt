@@ -1,6 +1,5 @@
 Pendientes
 
-* Cuadrar el cambio de relacion de tamaño de la imagen en memoria, como byte[], al tamaño de la imagen a mostrar en pantalla
-* Las imagenes que se estan utilizando son de 936x900 y el PictureBox es de 555x534
-* Las coordenadas de los cuadrados se deben corresponder entre lo que se guarda en memoria y lo que se presenta en pantalla
 * Agregar un preview de los cortes
+* Hacer la segmentacion para LOW
+* Guardar en disco la informacion de la segmentacion y cargarla al momento de abrir un proyecto

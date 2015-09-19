@@ -82,6 +82,46 @@ namespace RockStatic
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Toma un CCuadrado, con coordenadas segun el PictureBox, y las transforma segun la imagen original
+        /// </summary>
+        /// <param name="elemento">CCuadrado que contiene la informacion del cuadrado</param>
+        /// <param name="heighto">Alto de la imagen original</param>
+        /// <param name="heigths">Alto del PictureBox</param>
+        /// <returns></returns>
+        public static CCuadrado CorregirPictBox2Original(CCuadrado elemento, int heighto, int heigths)
+        {
+            // se pasa de un tamano de imagen pequeno a grande, por lo tanto la relacion es positiva
+            double relacion = (double)heighto / (double)heigths;
+
+            // nuevas coordenadas
+            elemento.x = (int)(Math.Ceiling(elemento.x * relacion));
+            elemento.y = (int)(Math.Ceiling(elemento.y * relacion));
+            elemento.width = (int)(elemento.width * relacion);
+
+            return elemento;
+        }
+
+        /// <summary>
+        /// Toma un CCuadrado, con coordenadas segun el original, y las transforma segun el PictureBox
+        /// </summary>
+        /// <param name="elemento"></param>
+        /// <param name="heighto"></param>
+        /// <param name="heigths"></param>
+        /// <returns></returns>
+        public static CCuadrado CorregirOriginal2PictBox(CCuadrado elemento, int heighto, int heigths)
+        {
+            // se pasa de un tamano de imagen grande a pequeno, por lo tanto la relacion es positiva
+            double relacion = (double)heigths / (double)heighto;
+
+            // nuevas coordenadas
+            elemento.x = (int)(Math.Ceiling(elemento.x * relacion));
+            elemento.y = (int)(Math.Ceiling(elemento.y * relacion));
+            elemento.width = (int)(elemento.width * relacion);
+
+            return elemento;
+        }
+
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
