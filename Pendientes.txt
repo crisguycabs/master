@@ -2,3 +2,6 @@ Pendientes
 
 * Agregar un preview de los cortes
 * Guardar en disco la informacion de la segmentacion y cargarla al momento de abrir un proyecto
+* Abra el nuevo Proyecto cuando se crea (no lo esta haciendo, envia al HomeForm)
+* Hacer el zoom en tiempo real alrededor del puntero
+* Hacer el preview de las areas seleccionadas en una nueva ventana
