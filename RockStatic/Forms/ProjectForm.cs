@@ -143,11 +143,34 @@ namespace RockStatic
             }
             else
             {
-                // si esta abierta la segmentacion HIGH y se marca el boton HIGH
-                if (this.padre.segmentacionForm.lblTitulo.Text == "SEGMENTACION HIGH") this.padre.segmentacionForm.Select();
+                if (this.padre.segmentacionForm.lblTitulo.Text == "SEGMENTACION HIGH")
+                {
+                    // si esta abierta la segmentacion HIGH y se marca el boton HIGH
+                    this.padre.segmentacionForm.Select();
+                }
                 else
                 {
-                    // esta abierta la segmentacion HIGH y se marca el boton LOW
+                    // si esta abierta la segmentacion LOW y se marca el boton HIGH
+                    if (MessageBox.Show("La solicitado realizar la segmentacion de los elementos HIGH, pero se estan segmentando los elementos LOW.\r\n\r\nDesea cancelar la segmentacion de los elementos LOW?", "Advertencia: Segmentacion en proceso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        // se ha solicitado cambiar de elementos a segmentar
+                        this.padre.segmentacionForm.Close();
+
+                        this.padre.segmentacionForm = new SegmentacionForm();
+                        this.padre.segmentacionForm.Text = "SEGMENTACION HIGH";
+                        this.padre.segmentacionForm.lblTitulo.Text = "SEGMENTACION HIGH";
+
+                        this.padre.segmentacionForm.MdiParent = this.MdiParent;
+                        this.padre.segmentacionForm.padre = this.padre;
+
+                        this.padre.abiertoSegmentacionForm = true;
+                        this.padre.segmentacionForm.Show();
+                    }
+                    else
+                    {
+                        // se ha solicitado continuar con la segmentacion de los elementos LOW
+                        this.padre.segmentacionForm.Select();
+                    }
                 }
             }
         }
@@ -168,12 +191,46 @@ namespace RockStatic
             if (!padre.abiertoSegmentacionForm)
             {
                 this.padre.segmentacionForm = new SegmentacionForm();
-                this.padre.abiertoSegmentacionForm = true;
+                this.padre.segmentacionForm.Text = "SEGMENTACION LOW";
+                this.padre.segmentacionForm.lblTitulo.Text = "SEGMENTACION LOW";
+
                 this.padre.segmentacionForm.MdiParent = this.MdiParent;
                 this.padre.segmentacionForm.padre = this.padre;
-                this.padre.segmentacionForm.lblTitulo.Text = "SEGMENTACION LOW";
-                
+
+                this.padre.abiertoSegmentacionForm = true;
                 this.padre.segmentacionForm.Show();
+            }
+            else
+            {
+                if (this.padre.segmentacionForm.lblTitulo.Text == "SEGMENTACION LOW")
+                {
+                    // si esta abierta la segmentacion LOW y se marca el boton LOW
+                    this.padre.segmentacionForm.Select();
+                }
+                else
+                {
+                    // si esta abierta la segmentacion LOW y se marca el boton HIGH
+                    if (MessageBox.Show("La solicitado realizar la segmentacion de los elementos LOW, pero se estan segmentando los elementos HIGH.\r\n\r\nDesea cancelar la segmentacion de los elementos HIGH?", "Advertencia: Segmentacion en proceso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        // se ha solicitado cambiar de elementos a segmentar
+                        this.padre.segmentacionForm.Close();
+
+                        this.padre.segmentacionForm = new SegmentacionForm();
+                        this.padre.segmentacionForm.Text = "SEGMENTACION LOW";
+                        this.padre.segmentacionForm.lblTitulo.Text = "SEGMENTACION LOW";
+
+                        this.padre.segmentacionForm.MdiParent = this.MdiParent;
+                        this.padre.segmentacionForm.padre = this.padre;
+
+                        this.padre.abiertoSegmentacionForm = true;
+                        this.padre.segmentacionForm.Show();
+                    }
+                    else
+                    {
+                        // se ha solicitado continuar con la segmentacion de los elementos HIGH
+                        this.padre.segmentacionForm.Select();
+                    }
+                }
             }
         }
 

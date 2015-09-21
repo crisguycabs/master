@@ -1,5 +1,4 @@
 Pendientes
 
 * Agregar un preview de los cortes
-* Hacer la segmentacion para LOW
 * Guardar en disco la informacion de la segmentacion y cargarla al momento de abrir un proyecto
