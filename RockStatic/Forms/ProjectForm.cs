@@ -36,7 +36,7 @@ namespace RockStatic
         private void ProjectForm_Load(object sender, EventArgs e)
         {
             // se carga la informacion del proyect
-            SetForm();           
+            SetForm();
         }
 
         /// <summary>
@@ -242,6 +242,11 @@ namespace RockStatic
         private void btnSegHigh_MouseLeave(object sender, EventArgs e)
         {
             ((System.Windows.Forms.Button)(sender)).ForeColor = Color.Black;
-        }        
+        }
+
+        private void ProjectForm_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, Color.Green, ButtonBorderStyle.Solid); 
+        }            
     }
 }

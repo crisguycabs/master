@@ -22,6 +22,11 @@ namespace RockStatic
         #region variables de clase
 
         /// <summary>
+        /// Area a hacer zoom de la imagen del dicom
+        /// </summary>
+        System.Drawing.Point mouseLoc;
+
+        /// <summary>
         /// Referencia al MainForm padre
         /// </summary>
         public MainForm padre;
@@ -52,6 +57,11 @@ namespace RockStatic
         Pen pen2;
 
         /// <summary>
+        /// Lapiz para dibujar el area del centro del zoom
+        /// </summary>
+        Pen pen3;
+
+        /// <summary>
         /// variable de control para evitar que se lance el evento Paint de pictCore
         /// </summary>
         bool controlPaint;
@@ -78,7 +88,6 @@ namespace RockStatic
         private void CheckForm_Load(object sender, EventArgs e)
         {
             SetForm();
-
             ResetCountClick();
 
             // instancia de la imagen
@@ -90,6 +99,7 @@ namespace RockStatic
             pen1.DashPattern = dashValues;
             pen2 = new System.Drawing.Pen(Color.LawnGreen, 2F);
             pen2.DashPattern = dashValues;
+            pen3 = new System.Drawing.Pen(Color.Red,1F);
 
             // se prepara la lista dinamica
             elementosScreen = new List<CCuadrado>();
@@ -129,6 +139,8 @@ namespace RockStatic
                     pictElemento.Invalidate();
                 }
             }
+
+            this.Invalidate();
         }
 
         public void btnCancelar_Click(object sender, EventArgs e)
@@ -292,7 +304,10 @@ namespace RockStatic
         private void pictElemento_MouseEnter(object sender, EventArgs e)
         {
             // se cambia el cursor si se ha definido el MODO MANUAL
-            if (radManual.Checked) this.Cursor = Cursors.Cross;
+            if (radManual.Checked)
+            {
+                this.Cursor = Cursors.Cross;                
+            }
         }
 
         private void pictElemento_MouseLeave(object sender, EventArgs e)
@@ -464,8 +479,8 @@ namespace RockStatic
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             for (int i = 0; i < elementosScreen.Count; i++)
             {
-                if (i == lstElementos.SelectedIndex) e.Graphics.DrawRectangle(pen2, elementosScreen[i].x - elementosScreen[i].width, elementosScreen[i].y - elementosScreen[i].width, 2 * elementosScreen[i].width, 2 * elementosScreen[i].width);
-                else e.Graphics.DrawRectangle(pen1, elementosScreen[i].x - elementosScreen[i].width, elementosScreen[i].y - elementosScreen[i].width, 2 * elementosScreen[i].width, 2 * elementosScreen[i].width);
+                if (i == lstElementos.SelectedIndex) e.Graphics.DrawEllipse(pen2, elementosScreen[i].x - elementosScreen[i].width, elementosScreen[i].y - elementosScreen[i].width, 2 * elementosScreen[i].width, 2 * elementosScreen[i].width);
+                else e.Graphics.DrawEllipse(pen1, elementosScreen[i].x - elementosScreen[i].width, elementosScreen[i].y - elementosScreen[i].width, 2 * elementosScreen[i].width, 2 * elementosScreen[i].width);
                 //if (i == lstElementos.SelectedIndex) e.Graphics.DrawEllipse(pen2, elementosScreen[i].x - elementosScreen[i].r, elementosScreen[i].y - elementosScreen[i].r, 2 * elementosScreen[i].r, 2 * elementosScreen[i].r);
                 //else e.Graphics.DrawEllipse(pen1, elementosScreen[i].x - elementosScreen[i].r, elementosScreen[i].y - elementosScreen[i].r, 2 * elementosScreen[i].r, 2 * elementosScreen[i].r);
             }
@@ -667,5 +682,60 @@ namespace RockStatic
                 MessageBox.Show("Se han marcado mas de 4 areas. Por favor, vuelva a la pantalla y elimine las areas sobrantes", "Error al guardar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void pictElemento_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (radManual.Checked == true)
+            {
+                // se prepara la imagen a mostrar en el zoom
+                mouseLoc = pictElemento.PointToClient(Cursor.Position);
+                
+                // se dibuja la imagen en zoom
+                // An empty bitmap which will hold the cropped image
+                Bitmap bmp = new Bitmap(pictSmall.Height, pictSmall.Height);
+
+                Graphics g = Graphics.FromImage(bmp);
+
+                // si el puntero.x es menor que pictSmall.width se empieza a dibujar en una coordenada x>0
+                // si el puntero.y es menor que pictSmall.width se empieza a dibujar en una coordenada y>0
+                // si el borde derecho o inferior del area seleccionada para zoom indica un punto fuera de la imagen original
+                // entonces se selecciona un area mas pequeña
+
+                Rectangle selectedArea = new Rectangle();
+                selectedArea.Width = selectedArea.Height = pictSmall.Height;
+                selectedArea.X = MainForm.CorregirPictBox2Original(mouseLoc.X, pictElemento.Image.Height, pictElemento.Height) - (pictSmall.Height/2);
+                selectedArea.Y = MainForm.CorregirPictBox2Original(mouseLoc.Y, pictElemento.Image.Height, pictElemento.Height) - (pictSmall.Height/2);
+
+                int iniX = 0;
+                int iniY = 0;
+
+                if (selectedArea.Left < 0)
+                {
+                    iniX = Math.Abs(selectedArea.Left);
+                    selectedArea.Width = pictSmall.Height - iniX;
+                    selectedArea.X = 0;
+                }
+                if (selectedArea.Top < 0)
+                {
+                    iniY = Math.Abs(selectedArea.Top);
+                    selectedArea.Height = pictSmall.Height - iniY;
+                    selectedArea.Y = 0;
+                }
+
+                g.DrawImage(pictElemento.Image, iniX, iniY, selectedArea, GraphicsUnit.Pixel);
+                g.DrawEllipse(pen3, 58, 58, 8, 8);
+                pictSmall.Image = bmp;
+            }
+        }
+
+        private void pictSmall_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, Color.Green, ButtonBorderStyle.Solid); 
+        }
+
+        private void SegmentacionForm_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, Color.Green, ButtonBorderStyle.Solid); 
+        }        
     }
 }

@@ -225,5 +225,10 @@ namespace RockStatic
         {
             ((System.Windows.Forms.Button)(sender)).ForeColor = Color.Black;
         }
+
+        private void CheckForm_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, Color.Green, ButtonBorderStyle.Solid); 
+        }
     }
 }

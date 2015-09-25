@@ -57,6 +57,8 @@
             this.lblPunto1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.pictSmall = new System.Windows.Forms.PictureBox();
+            this.btnPreview = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackElementos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictElemento)).BeginInit();
             this.grpAuto.SuspendLayout();
@@ -66,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numRadio)).BeginInit();
             this.grpManual.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictSmall)).BeginInit();
             this.SuspendLayout();
             // 
             // trackElementos
@@ -105,6 +108,7 @@
             this.pictElemento.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictElemento_MouseClick);
             this.pictElemento.MouseEnter += new System.EventHandler(this.pictElemento_MouseEnter);
             this.pictElemento.MouseLeave += new System.EventHandler(this.pictElemento_MouseLeave);
+            this.pictElemento.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictElemento_MouseMove);
             // 
             // btnCancelar
             // 
@@ -113,7 +117,7 @@
             this.btnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Location = new System.Drawing.Point(10, 14);
+            this.btnCancelar.Location = new System.Drawing.Point(10, 16);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 25);
             this.btnCancelar.TabIndex = 3;
@@ -130,7 +134,7 @@
             this.grpAuto.Controls.Add(this.track1);
             this.grpAuto.Controls.Add(this.txt1);
             this.grpAuto.Enabled = false;
-            this.grpAuto.Location = new System.Drawing.Point(553, 69);
+            this.grpAuto.Location = new System.Drawing.Point(553, 199);
             this.grpAuto.Name = "grpAuto";
             this.grpAuto.Size = new System.Drawing.Size(199, 93);
             this.grpAuto.TabIndex = 8;
@@ -183,7 +187,7 @@
             this.radAuto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radAuto.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radAuto.ForeColor = System.Drawing.Color.Green;
-            this.radAuto.Location = new System.Drawing.Point(553, 42);
+            this.radAuto.Location = new System.Drawing.Point(561, 173);
             this.radAuto.Name = "radAuto";
             this.radAuto.Size = new System.Drawing.Size(85, 26);
             this.radAuto.TabIndex = 13;
@@ -202,7 +206,7 @@
             this.radManual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radManual.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radManual.ForeColor = System.Drawing.Color.White;
-            this.radManual.Location = new System.Drawing.Point(553, 169);
+            this.radManual.Location = new System.Drawing.Point(658, 172);
             this.radManual.Name = "radManual";
             this.radManual.Size = new System.Drawing.Size(86, 26);
             this.radManual.TabIndex = 13;
@@ -215,6 +219,7 @@
             // grpBox
             // 
             this.grpBox.Controls.Add(this.label1);
+            this.grpBox.Controls.Add(this.btnPreview);
             this.grpBox.Controls.Add(this.btnClean);
             this.grpBox.Controls.Add(this.btnDelete);
             this.grpBox.Controls.Add(this.numRadio);
@@ -223,16 +228,16 @@
             this.grpBox.Controls.Add(this.btnDown);
             this.grpBox.Controls.Add(this.btnUp);
             this.grpBox.Controls.Add(this.lstElementos);
-            this.grpBox.Location = new System.Drawing.Point(553, 288);
+            this.grpBox.Location = new System.Drawing.Point(553, 389);
             this.grpBox.Name = "grpBox";
-            this.grpBox.Size = new System.Drawing.Size(199, 271);
+            this.grpBox.Size = new System.Drawing.Size(199, 194);
             this.grpBox.TabIndex = 14;
             this.grpBox.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(113, 186);
+            this.label1.Location = new System.Drawing.Point(113, 83);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(17, 14);
             this.label1.TabIndex = 6;
@@ -240,11 +245,12 @@
             // 
             // btnClean
             // 
+            this.btnClean.Enabled = false;
             this.btnClean.FlatAppearance.BorderColor = System.Drawing.Color.Green;
             this.btnClean.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnClean.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnClean.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClean.Location = new System.Drawing.Point(114, 238);
+            this.btnClean.Location = new System.Drawing.Point(114, 135);
             this.btnClean.Name = "btnClean";
             this.btnClean.Size = new System.Drawing.Size(75, 23);
             this.btnClean.TabIndex = 8;
@@ -254,11 +260,12 @@
             // 
             // btnDelete
             // 
+            this.btnDelete.Enabled = false;
             this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.Green;
             this.btnDelete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Location = new System.Drawing.Point(114, 209);
+            this.btnDelete.Location = new System.Drawing.Point(114, 106);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 8;
@@ -269,7 +276,7 @@
             // numRadio
             // 
             this.numRadio.Font = new System.Drawing.Font("Lucida Console", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numRadio.Location = new System.Drawing.Point(138, 184);
+            this.numRadio.Location = new System.Drawing.Point(138, 81);
             this.numRadio.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -288,7 +295,7 @@
             this.btnLeft.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnLeft.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLeft.Location = new System.Drawing.Point(29, 213);
+            this.btnLeft.Location = new System.Drawing.Point(29, 110);
             this.btnLeft.Name = "btnLeft";
             this.btnLeft.Size = new System.Drawing.Size(20, 20);
             this.btnLeft.TabIndex = 6;
@@ -302,7 +309,7 @@
             this.btnRight.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnRight.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRight.Location = new System.Drawing.Point(73, 213);
+            this.btnRight.Location = new System.Drawing.Point(73, 110);
             this.btnRight.Name = "btnRight";
             this.btnRight.Size = new System.Drawing.Size(20, 20);
             this.btnRight.TabIndex = 6;
@@ -316,7 +323,7 @@
             this.btnDown.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnDown.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDown.Location = new System.Drawing.Point(51, 235);
+            this.btnDown.Location = new System.Drawing.Point(51, 132);
             this.btnDown.Name = "btnDown";
             this.btnDown.Size = new System.Drawing.Size(20, 20);
             this.btnDown.TabIndex = 5;
@@ -330,7 +337,7 @@
             this.btnUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUp.Location = new System.Drawing.Point(51, 191);
+            this.btnUp.Location = new System.Drawing.Point(51, 88);
             this.btnUp.Name = "btnUp";
             this.btnUp.Size = new System.Drawing.Size(20, 20);
             this.btnUp.TabIndex = 4;
@@ -344,7 +351,7 @@
             this.lstElementos.ItemHeight = 11;
             this.lstElementos.Location = new System.Drawing.Point(9, 16);
             this.lstElementos.Name = "lstElementos";
-            this.lstElementos.Size = new System.Drawing.Size(180, 158);
+            this.lstElementos.Size = new System.Drawing.Size(180, 59);
             this.lstElementos.TabIndex = 3;
             this.lstElementos.SelectedIndexChanged += new System.EventHandler(this.lstElementos_SelectedIndexChanged);
             // 
@@ -354,7 +361,7 @@
             this.grpManual.Controls.Add(this.lblPunto2);
             this.grpManual.Controls.Add(this.label2);
             this.grpManual.Controls.Add(this.lblPunto1);
-            this.grpManual.Location = new System.Drawing.Point(553, 195);
+            this.grpManual.Location = new System.Drawing.Point(553, 293);
             this.grpManual.Name = "grpManual";
             this.grpManual.Size = new System.Drawing.Size(199, 95);
             this.grpManual.TabIndex = 15;
@@ -409,9 +416,9 @@
             // 
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.btnCancelar);
-            this.groupBox1.Location = new System.Drawing.Point(553, 559);
+            this.groupBox1.Location = new System.Drawing.Point(553, 584);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(199, 48);
+            this.groupBox1.Size = new System.Drawing.Size(199, 50);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             // 
@@ -422,7 +429,7 @@
             this.btnSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Location = new System.Drawing.Point(113, 14);
+            this.btnSave.Location = new System.Drawing.Point(114, 16);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 25);
             this.btnSave.TabIndex = 3;
@@ -432,6 +439,30 @@
             this.btnSave.MouseEnter += new System.EventHandler(this.btnSubir_MouseEnter);
             this.btnSave.MouseLeave += new System.EventHandler(this.btnSubir_MouseLeave);
             // 
+            // pictSmall
+            // 
+            this.pictSmall.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictSmall.Location = new System.Drawing.Point(590, 42);
+            this.pictSmall.Name = "pictSmall";
+            this.pictSmall.Size = new System.Drawing.Size(124, 124);
+            this.pictSmall.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictSmall.TabIndex = 17;
+            this.pictSmall.TabStop = false;
+            this.pictSmall.Paint += new System.Windows.Forms.PaintEventHandler(this.pictSmall_Paint);
+            // 
+            // btnPreview
+            // 
+            this.btnPreview.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnPreview.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnPreview.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.btnPreview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPreview.Location = new System.Drawing.Point(114, 164);
+            this.btnPreview.Name = "btnPreview";
+            this.btnPreview.Size = new System.Drawing.Size(75, 23);
+            this.btnPreview.TabIndex = 8;
+            this.btnPreview.Text = "Preliminar";
+            this.btnPreview.UseVisualStyleBackColor = true;
+            // 
             // SegmentacionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -439,6 +470,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(760, 650);
             this.ControlBox = false;
+            this.Controls.Add(this.pictSmall);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grpManual);
             this.Controls.Add(this.grpBox);
@@ -468,6 +500,7 @@
             this.grpManual.ResumeLayout(false);
             this.grpManual.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictSmall)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -503,5 +536,7 @@
         private System.Windows.Forms.Label lblPunto1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.PictureBox pictSmall;
+        private System.Windows.Forms.Button btnPreview;
     }
 }

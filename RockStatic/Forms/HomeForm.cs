@@ -106,6 +106,11 @@ namespace RockStatic
         private void label4_DoubleClick(object sender, EventArgs e)
         {
             CentrarForm();
+        }
+
+        private void HomeForm_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, Color.Green, ButtonBorderStyle.Solid); 
         }      
     }
 }

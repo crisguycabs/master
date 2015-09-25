@@ -63,7 +63,7 @@ namespace RockStatic
         {
             lblError.Visible = false;
             tempHigh = new List<string>();
-            tempLow = new List<string>();      
+            tempLow = new List<string>();
         }
 
         /// <summary>
@@ -258,7 +258,8 @@ namespace RockStatic
                 // se cierra la ventana NewProyectForm
                 this.Close();
 
-                padre.AbrirHome();
+                // se abre el nuevo proyecto
+                padre.AbrirProyecto(folderPath + "\\" + Path.GetFileName(saveFile.FileName));
             }
         }
 
@@ -295,6 +296,11 @@ namespace RockStatic
         private void btnSelHigh_MouseLeave(object sender, EventArgs e)
         {
             ((System.Windows.Forms.Button)(sender)).ForeColor = Color.Black;
+        }
+
+        private void NewProjectForm_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, Color.Green, ButtonBorderStyle.Solid); 
         }      
     }
 }

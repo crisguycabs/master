@@ -73,6 +73,16 @@ namespace RockStatic
         /// </summary>
         public bool abiertoSegmentacionForm;
 
+        /// <summary>
+        /// Variable que indica si la ventana PreviewSegForm esta abierta o no
+        /// </summary>
+        public bool abiertoPreviewSegForm;
+
+        /// <summary>
+        /// Instancia del form PreviewSegForm
+        /// </summary>
+        public PreviewSegForm previewSegForm;
+
         #endregion
 
         Point lastClick;
@@ -100,6 +110,24 @@ namespace RockStatic
             elemento.width = (int)(elemento.width * relacion);
 
             return elemento;
+        }
+
+        /// <summary>
+        /// Toma una coordenada, X o Y con coordenadas segun el PictureBox, y las transforma segun la imagen original
+        /// </summary>
+        /// <param name="coordenada">CCuadrado que contiene la informacion del cuadrado</param>
+        /// <param name="heighto">Alto de la imagen original</param>
+        /// <param name="heigths">Alto del PictureBox</param>
+        /// <returns></returns>
+        public static int CorregirPictBox2Original(int coordenada, int heighto, int heigths)
+        {
+            // se pasa de un tamano de imagen pequeno a grande, por lo tanto la relacion es positiva
+            double relacion = (double)heighto / (double)heigths;
+
+            // nueva coordenada
+            coordenada = (int)(coordenada * relacion);
+
+            return coordenada;
         }
 
         /// <summary>
@@ -215,7 +243,7 @@ namespace RockStatic
             this.tableLayoutPanel1.CellPaint += new TableLayoutCellPaintEventHandler(tableLayoutPanel1_CellPaint);
             menuMain.BackColor = Color.FromArgb(255, 255, 255);
             this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
-            this.Refresh();            
+            this.Refresh();
         }
 
         private void cargarProyectoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -339,6 +367,12 @@ namespace RockStatic
             return true;
         }
 
+        public void CerrarPreviewSegForm()
+        {
+            this.abiertoPreviewSegForm = false;
+            this.previewSegForm = null;
+        }
+
         public void CerrarCheckForm()
         {
             this.abiertoCheckForm = false;
@@ -380,7 +414,7 @@ namespace RockStatic
 
         private void MainForm_Paint(object sender, PaintEventArgs e)
         {
-            ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, Color.DarkGreen, 2, ButtonBorderStyle.Solid, Color.DarkGreen, 2, ButtonBorderStyle.Solid, Color.DarkGreen, 2, ButtonBorderStyle.Solid, Color.DarkGreen, 2, ButtonBorderStyle.Solid);
+            
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)

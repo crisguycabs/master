@@ -59,6 +59,12 @@
   <ItemGroup>
     <Compile Include="Clases\CCuadrado.cs" />
     <Compile Include="Clases\CCirculo.cs" />
+    <Compile Include="Forms\PreviewSegForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PreviewSegForm.Designer.cs">
+      <DependentUpon>PreviewSegForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SegmentacionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     <Compile Include="Forms\SplashScreenForm.Designer.cs">
       <DependentUpon>SplashScreenForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\PreviewSegForm.resx">
+      <DependentUpon>PreviewSegForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\SegmentacionForm.resx">
       <DependentUpon>SegmentacionForm.cs</DependentUpon>
     </EmbeddedResource>
