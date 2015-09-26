@@ -1,6 +1,4 @@
 Pendientes
 
 * Guardar en disco la informacion de la segmentacion y cargarla al momento de abrir un proyecto
-* Hacer el zoom en tiempo real alrededor del puntero
-* Hacer el preview de las areas seleccionadas en una nueva ventana
 * Montar la segmentacion automatica

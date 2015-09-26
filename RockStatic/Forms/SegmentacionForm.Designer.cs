@@ -42,6 +42,7 @@
             this.radManual = new System.Windows.Forms.RadioButton();
             this.grpBox = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnPreview = new System.Windows.Forms.Button();
             this.btnClean = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.numRadio = new System.Windows.Forms.NumericUpDown();
@@ -58,7 +59,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.pictSmall = new System.Windows.Forms.PictureBox();
-            this.btnPreview = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackElementos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictElemento)).BeginInit();
             this.grpAuto.SuspendLayout();
@@ -242,6 +242,20 @@
             this.label1.Size = new System.Drawing.Size(17, 14);
             this.label1.TabIndex = 6;
             this.label1.Text = "h:";
+            // 
+            // btnPreview
+            // 
+            this.btnPreview.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnPreview.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnPreview.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.btnPreview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPreview.Location = new System.Drawing.Point(114, 164);
+            this.btnPreview.Name = "btnPreview";
+            this.btnPreview.Size = new System.Drawing.Size(75, 23);
+            this.btnPreview.TabIndex = 8;
+            this.btnPreview.Text = "Preliminar";
+            this.btnPreview.UseVisualStyleBackColor = true;
+            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
             // 
             // btnClean
             // 
@@ -449,19 +463,6 @@
             this.pictSmall.TabIndex = 17;
             this.pictSmall.TabStop = false;
             this.pictSmall.Paint += new System.Windows.Forms.PaintEventHandler(this.pictSmall_Paint);
-            // 
-            // btnPreview
-            // 
-            this.btnPreview.FlatAppearance.BorderColor = System.Drawing.Color.Green;
-            this.btnPreview.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
-            this.btnPreview.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
-            this.btnPreview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPreview.Location = new System.Drawing.Point(114, 164);
-            this.btnPreview.Name = "btnPreview";
-            this.btnPreview.Size = new System.Drawing.Size(75, 23);
-            this.btnPreview.TabIndex = 8;
-            this.btnPreview.Text = "Preliminar";
-            this.btnPreview.UseVisualStyleBackColor = true;
             // 
             // SegmentacionForm
             // 

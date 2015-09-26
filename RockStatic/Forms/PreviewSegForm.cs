@@ -19,6 +19,26 @@ namespace RockStatic
         /// </summary>
         public MainForm padre;
 
+        /// <summary>
+        /// Corte del core a mostrar
+        /// </summary>
+        public Bitmap core;
+
+        /// <summary>
+        /// Corte del phantom p1
+        /// </summary>
+        public Bitmap p1;
+
+        /// <summary>
+        /// Corte del phantom p1
+        /// </summary>
+        public Bitmap p2;
+
+        /// <summary>
+        /// Corte del phantom p1
+        /// </summary>
+        public Bitmap p3;
+
         #endregion
 
         Point lastClick;
@@ -57,5 +77,29 @@ namespace RockStatic
         {
             CentrarForm();
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void PreviewSegForm_FormClosed_1(object sender, FormClosedEventArgs e)
+        {
+            this.padre.CerrarPreviewSegForm();
+        }
+
+        private void pictCore_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, Color.Green, ButtonBorderStyle.Solid); 
+        }
+
+        private void PreviewSegForm_Load(object sender, EventArgs e)
+        {
+            // se montan en los PictureBox las imagenes cortadas previamente desde SegmentacionForm
+            pictCore.Image = core;
+            pictP1.Image = p1;
+            pictP2.Image = p2;
+            pictP3.Image = p3;
+        }        
     }
 }

@@ -30,6 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PreviewSegForm));
             this.label4 = new System.Windows.Forms.Label();
+            this.pictCore = new System.Windows.Forms.PictureBox();
+            this.pictP1 = new System.Windows.Forms.PictureBox();
+            this.pictP3 = new System.Windows.Forms.PictureBox();
+            this.pictP2 = new System.Windows.Forms.PictureBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnClose = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pictCore)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictP1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictP3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictP2)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label4
@@ -40,7 +53,7 @@
             this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(604, 30);
+            this.label4.Size = new System.Drawing.Size(374, 30);
             this.label4.TabIndex = 7;
             this.label4.Text = "PREVISUALIZACION SEGMENTACION ";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -48,12 +61,93 @@
             this.label4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label4_MouseDown);
             this.label4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label4_MouseMove);
             // 
+            // pictCore
+            // 
+            this.pictCore.Location = new System.Drawing.Point(6, 16);
+            this.pictCore.Name = "pictCore";
+            this.pictCore.Size = new System.Drawing.Size(250, 250);
+            this.pictCore.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictCore.TabIndex = 8;
+            this.pictCore.TabStop = false;
+            this.pictCore.Paint += new System.Windows.Forms.PaintEventHandler(this.pictCore_Paint);
+            // 
+            // pictP1
+            // 
+            this.pictP1.Location = new System.Drawing.Point(6, 16);
+            this.pictP1.Name = "pictP1";
+            this.pictP1.Size = new System.Drawing.Size(80, 80);
+            this.pictP1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictP1.TabIndex = 8;
+            this.pictP1.TabStop = false;
+            this.pictP1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictCore_Paint);
+            // 
+            // pictP3
+            // 
+            this.pictP3.Location = new System.Drawing.Point(6, 187);
+            this.pictP3.Name = "pictP3";
+            this.pictP3.Size = new System.Drawing.Size(80, 80);
+            this.pictP3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictP3.TabIndex = 8;
+            this.pictP3.TabStop = false;
+            this.pictP3.Paint += new System.Windows.Forms.PaintEventHandler(this.pictCore_Paint);
+            // 
+            // pictP2
+            // 
+            this.pictP2.Location = new System.Drawing.Point(6, 102);
+            this.pictP2.Name = "pictP2";
+            this.pictP2.Size = new System.Drawing.Size(80, 80);
+            this.pictP2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictP2.TabIndex = 8;
+            this.pictP2.TabStop = false;
+            this.pictP2.Paint += new System.Windows.Forms.PaintEventHandler(this.pictCore_Paint);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.pictCore);
+            this.groupBox1.Location = new System.Drawing.Point(4, 34);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(262, 273);
+            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Core";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.pictP1);
+            this.groupBox2.Controls.Add(this.pictP2);
+            this.groupBox2.Controls.Add(this.pictP3);
+            this.groupBox2.Location = new System.Drawing.Point(273, 34);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(92, 273);
+            this.groupBox2.TabIndex = 10;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Phantoms";
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Location = new System.Drawing.Point(273, 313);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(92, 23);
+            this.btnClose.TabIndex = 11;
+            this.btnClose.Text = "Cerrar";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // PreviewSegForm
             // 
+            this.AcceptButton = this.btnClose;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(604, 281);
+            this.ClientSize = new System.Drawing.Size(374, 345);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label4);
             this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -61,7 +155,15 @@
             this.MinimizeBox = false;
             this.Name = "PreviewSegForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PreviewSegForm";
+            this.Text = "Previsualizacion Segmentacion";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PreviewSegForm_FormClosed_1);
+            this.Load += new System.EventHandler(this.PreviewSegForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictCore)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictP1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictP3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictP2)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -69,5 +171,12 @@
         #endregion
 
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox pictCore;
+        private System.Windows.Forms.PictureBox pictP1;
+        private System.Windows.Forms.PictureBox pictP3;
+        private System.Windows.Forms.PictureBox pictP2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnClose;
     }
 }

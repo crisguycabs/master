@@ -113,6 +113,40 @@ namespace RockStatic
         }
 
         /// <summary>
+        /// Toma una imagen (el slide completo) y recorta un area circular delimitada por el elemento CCuadrado
+        /// </summary>
+        /// <param name="source">Imagen original de la que se extraera el corte circular</param>
+        /// <param name="elemento">Area de corte</param>
+        /// <returns></returns>
+        public static Bitmap CropCirle(Bitmap srcImage, CCuadrado elemento)
+        {
+            // primero se extrae el area rectangular del slide que se pasa como argumento
+            Bitmap bmp = new Bitmap(elemento.width*2, elemento.width*2);
+            Graphics g = Graphics.FromImage(bmp);
+            Rectangle selectedArea = new Rectangle();
+            selectedArea.X = elemento.x - elemento.width;
+            selectedArea.Y = elemento.y - elemento.width;
+            selectedArea.Width = selectedArea.Height = elemento.width*2;
+            g.DrawImage(srcImage, 0, 0, selectedArea, GraphicsUnit.Pixel);
+            
+            // la imagen bmp contiene el recorte rectangular
+            // ahora se debe volver un circulo
+            
+            Bitmap dstImage = new Bitmap(bmp.Width, bmp.Height, bmp.PixelFormat);
+            g = Graphics.FromImage(dstImage);
+            using (Brush br = new SolidBrush(Color.Black))
+            {
+                g.FillRectangle(br, 0, 0, dstImage.Width, dstImage.Height);
+            }
+            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+            path.AddEllipse(0, 0, dstImage.Width, dstImage.Height);
+            g.SetClip(path);
+            g.DrawImage(bmp, 0, 0);
+
+            return dstImage;           
+        }
+
+        /// <summary>
         /// Toma una coordenada, X o Y con coordenadas segun el PictureBox, y las transforma segun la imagen original
         /// </summary>
         /// <param name="coordenada">CCuadrado que contiene la informacion del cuadrado</param>

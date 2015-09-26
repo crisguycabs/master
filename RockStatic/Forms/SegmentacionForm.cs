@@ -69,7 +69,7 @@ namespace RockStatic
         /// <summary>
         /// Lista dinamica de elementos a dibujar en pantalla
         /// </summary>
-        List<CCuadrado> elementosScreen;
+        public List<CCuadrado> elementosScreen;
 
         /// <summary>
         /// contador de areas creadas
@@ -736,6 +736,66 @@ namespace RockStatic
         private void SegmentacionForm_Paint(object sender, PaintEventArgs e)
         {
             ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, Color.Green, ButtonBorderStyle.Solid); 
+        }
+
+        private void btnPreview_Click(object sender, EventArgs e)
+        {
+            if (elementosScreen.Count < 4)
+            {
+                MessageBox.Show("No se han seleccionado todos los elementos del slide.\n\nNo se puede proceder a previsualizar.","Error al previsualizar!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
+            else if (elementosScreen.Count > 4)
+            {
+                MessageBox.Show("Se han seleccionado demasiados elementos en el slide.\n\nNo se puede proceder a previsualizar.", "Error al previsualizar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            this.padre.previewSegForm = new PreviewSegForm();
+            this.padre.abiertoPreviewSegForm = true;
+            this.padre.previewSegForm.padre = this.padre;
+
+            // se cortan las imagenes y se envian a PreviewSegForm
+
+            // se prepara un List de Bitmap
+            List<Bitmap> cortes = new List<Bitmap>();
+            
+            // primero se hace una copia del List elementosScreen con las coordenadas corregidas
+            List<CCuadrado> tempElementos = new List<CCuadrado>();
+            for (int i = 0; i < elementosScreen.Count; i++)
+            {
+                CCuadrado temp = new CCuadrado(elementosScreen[i]);
+                tempElementos.Add(MainForm.CorregirPictBox2Original(temp, pictElemento.Image.Height, pictElemento.Height));
+            }
+            
+            // se ordena el tempElementos de radio mas grande a mas pequeño para sacar el CORE
+            // se ordenan segun el tamano del lado de cuadrado, de mas grande a mas pequeno, y se toma el Core como el elemento mas grande
+            tempElementos.Sort(delegate(CCuadrado x, CCuadrado y)
+            {
+                return y.width.CompareTo(x.width);
+            });
+
+            Bitmap aEnviar = new Bitmap(pictElemento.Image);
+            cortes.Add(MainForm.CropCirle(aEnviar, tempElementos[0]));
+            padre.previewSegForm.core = cortes[0];
+            tempElementos.RemoveAt(0);
+            
+            // se ordenan de izquierda a derecha
+            // se ordenan segun la coordenada X, de izquierda a derecha. Los phantom P1 P2 y P3 se ordenan de izquierda a derecha
+            tempElementos.Sort(delegate(CCuadrado x, CCuadrado y)
+            {
+                return x.x.CompareTo(y.x);
+            });
+            for (int i = 0; i < tempElementos.Count;i++)
+            {
+                cortes.Add(MainForm.CropCirle(aEnviar, tempElementos[i]));
+            }
+            padre.previewSegForm.p1 = cortes[1];
+            padre.previewSegForm.p2 = cortes[2];
+            padre.previewSegForm.p3 = cortes[3];  
+            
+            // se invoca como un cuadro de dialogo modal, no MDIchild
+            this.padre.previewSegForm.ShowDialog();
         }        
     }
 }
