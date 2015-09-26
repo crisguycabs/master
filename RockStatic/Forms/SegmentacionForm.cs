@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -162,6 +163,14 @@ namespace RockStatic
             pictElemento.Image = MainForm.Byte2image(padre.actual.GetHigh()[0]);
 
             CentrarForm();
+        }
+
+        /// <summary>
+        /// Se resetea el PictureBox principal
+        /// </summary>
+        private void ResetPictBox()
+        {
+            this.trackElementos_ValueChanged(new object(),new EventArgs());
         }
 
         private void trackElementos_ValueChanged(object sender, EventArgs e)
@@ -796,6 +805,233 @@ namespace RockStatic
             
             // se invoca como un cuadro de dialogo modal, no MDIchild
             this.padre.previewSegForm.ShowDialog();
-        }        
+        }
+
+        /// <summary>
+        /// Este metodo toma la imagen en pantalla, realiza una copia, y detecta las areas circulares 
+        /// Las areas circulares se dibujan en la imagen en pantalla
+        /// </summary>
+        /// <returns>Vector Rectangle[] con las areas encontradas</returns>
+        public Rectangle[] DetectarBordes()
+        {
+            // se reestablece la imagen
+            ResetPictBox();
+
+            // se realiza una copia de la imagen
+            Bitmap slide = FormatToAForge(new Bitmap(pictElemento.Image));
+            slide.Save("slide.jpg");
+
+            // lock image
+            BitmapData bitmapData = slide.LockBits(
+                new Rectangle(0, 0, slide.Width, slide.Height),
+                ImageLockMode.ReadWrite, slide.PixelFormat);
+
+            // se realiza el primer barrido, dividiendo la imagen usando el primer treshold
+            ColorFiltering colorFilter = new ColorFiltering();
+
+            int valorThreshold = Convert.ToInt32(track1.Value);
+
+            colorFilter.Red = new IntRange(0, valorThreshold);
+            colorFilter.Green = new IntRange(0, valorThreshold);
+            colorFilter.Blue = new IntRange(0, valorThreshold);
+            colorFilter.FillOutsideRange = false;
+
+            colorFilter.ApplyInPlace(bitmapData);
+
+            // se localizan los elementos circulares
+            BlobCounter blobCounter = new BlobCounter();
+
+            blobCounter.FilterBlobs = true;
+            blobCounter.MinHeight = 5;
+            blobCounter.MinWidth = 5;
+
+            blobCounter.ProcessImage(bitmapData);
+            Blob[] blobsTemp = blobCounter.GetObjectsInformation();
+            slide.UnlockBits(bitmapData);
+
+            // se eliminan los blobs no cuadrados, aquellos cuya relacion Abs(1-width/heigh) es mayor a 0.2, ademas de reordenar los blobs de menor a mayor area
+            List<Blob> blobs = new List<Blob>();
+
+            // se hace una copia
+            for (int i = 0; i < blobsTemp.Length; i++) blobs.Add(blobsTemp[i]);
+
+            // se eliminan los rectangulares
+            for (int i = 0; i < blobs.Count; i++)
+            {
+                if (Math.Abs(1 - (blobs[i].Rectangle.Height / blobs[i].Rectangle.Width)) > 0.2) blobs.RemoveAt(i);
+            }
+
+            // se ordenan los blobs de mayor area a menor area
+            blobs.Sort(delegate(Blob x, Blob y)
+            {
+                return (y.Rectangle.Height * y.Rectangle.Width).CompareTo(x.Rectangle.Height * x.Rectangle.Width);
+            });
+            
+            // solo se toman los 4 blobs mas grandes
+            while (blobs.Count > 4) blobs.RemoveAt(blobs.Count - 1);
+
+            // se prepara el vector de salida
+            Rectangle[] areas = new Rectangle[blobs.Count];
+            for (int i = 0; i < 4; i++) areas[i] = blobs[i].Rectangle;
+
+            //return areas;
+
+            
+            ///
+            Bitmap imagen = new Bitmap(pictElemento.Image);
+            Graphics g = Graphics.FromImage(imagen);
+            for (int i = 0; i < blobs.Count; i++) g.DrawEllipse(pen1, blobs[i].Rectangle);
+            pictElemento.Image = imagen;
+
+            return null;
+            ///
+            
+
+            /*
+            // se extrae el elemento mas grande
+            try
+            {
+                Bitmap imagen = new Bitmap(pictElemento.Image);
+
+                Bitmap subslide = imagen.Clone(blobs[0].Rectangle, imagen.PixelFormat);
+                subslide = FormatToAForge(subslide);
+                subslide.Save("subslide.jpg");
+                
+                // sobre la seccion del elemento mas grade se realiza el mismo proceso
+                // pero usando el segundo valor de threshold
+
+                // primero se hace una copia
+                Bitmap subslide2 = FormatToAForge(subslide);
+
+                // lock image
+                BitmapData bitmapData2 = subslide2.LockBits(
+                    new Rectangle(0, 0, subslide2.Width, subslide2.Height),
+                    ImageLockMode.ReadWrite, subslide2.PixelFormat);
+
+                // se realiza el primer barrido, dividiendo la imagen usando el primer treshold
+                colorFilter = new ColorFiltering();
+
+                valorThreshold = Convert.ToInt32(track2.Value);
+
+                colorFilter.Red = new IntRange(0, valorThreshold);
+                colorFilter.Green = new IntRange(0, valorThreshold);
+                colorFilter.Blue = new IntRange(0, valorThreshold);
+                colorFilter.FillOutsideRange = false;
+
+                colorFilter.ApplyInPlace(bitmapData2);
+
+                // se localizan los elementos circulares
+                BlobCounter blobCounter2 = new BlobCounter();
+
+                blobCounter.FilterBlobs = true;
+                blobCounter.MinHeight = 5;
+                blobCounter.MinWidth = 5;
+
+                blobCounter.ProcessImage(bitmapData2);
+                Blob[] blobs2 = blobCounter.GetObjectsInformation();
+                subslide2.UnlockBits(bitmapData2);
+
+                // se enmarcan los elementos encontrados
+                try
+                {
+                    // ahora se dibuja en la imagen principal las zonas
+                    // primero se obtiene la posicion del ultimo recuadro pero en funcion de la imagen principal
+                    Rectangle[] areas = new Rectangle[4];
+                    areas[0] = new Rectangle(blobs[0].Rectangle.X + blobs2[1].Rectangle.X,
+                        blobs[0].Rectangle.Y + blobs2[1].Rectangle.Y,
+                        blobs2[1].Rectangle.Width,
+                        blobs2[1].Rectangle.Height);
+
+                    // se copian el resto de los elementos
+                    areas[1] = blobs[1].Rectangle;
+                    areas[2] = blobs[2].Rectangle;
+                    areas[3] = blobs[3].Rectangle;
+
+                    // se incrementa un poco el encuadre
+                    for (int i = 0; i < areas.Length; i++)
+                    {
+                        areas[i].X = areas[i].X - 2;
+                        areas[i].Y = areas[i].Y - 2;
+                        areas[i].Width = areas[i].Width + 4;
+                        areas[i].Height = areas[i].Height + 4;
+                    }
+
+                    ///
+                    Graphics g = Graphics.FromImage(imagen);
+                    for (int i = 0; i < areas.Length; i++) g.DrawRectangle(pen1, areas[i]);
+                    pictElemento.Image = imagen;
+                    ///
+
+                    return areas;
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+            catch { return null; }     
+             */
+        }
+
+        public void DeteccionAutomatica()
+        {
+            // se limpian todas las areas seleccionadas previamente
+            btnClean_Click(new object(),new EventArgs());
+            
+            // se ejecuta la deteccion de bordes
+            Rectangle[] areas=DetectarBordes();
+            /*
+            if (areas != null)
+            {
+                CCuadrado temp;
+                for (int i = 0; i < areas.Length; i++)
+                {
+                    countAreas++;
+                    temp = new CCuadrado();
+                    temp.x = areas[i].X;
+                    temp.y = areas[i].Y;
+                    temp.width = areas[i].Width;
+                    temp.nombre = "Area" + countAreas;
+                    
+                    elementosScreen.Add(temp);
+                    AddList(temp);
+
+                    // se obliga al PictureBox que se resetee y dibuje todos los elementos que hayan en memoria
+                    controlPaint = true;
+                    pictElemento.Invalidate();
+
+                    btnClean.Enabled = true;
+                    btnDelete.Enabled = true;
+                }
+            }
+            else
+            {
+                // no hacer nada, no se detectaron los bordes
+            }*/
+        }
+
+        private void num1_ValueChanged(object sender, EventArgs e)
+        {
+            track1.Value = (int)num1.Value;
+            DeteccionAutomatica();
+        }
+
+        private void num2_ValueChanged(object sender, EventArgs e)
+        {
+            track2.Value = (int)num2.Value;
+            DeteccionAutomatica();
+        }
+
+        private void track1_ValueChanged(object sender, EventArgs e)
+        {
+            num1.Value = track1.Value;
+            DeteccionAutomatica();
+        }
+
+        private void track2_ValueChanged(object sender, EventArgs e)
+        {
+            num2.Value = track2.Value;
+            DeteccionAutomatica();
+        }
     }
 }

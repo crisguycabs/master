@@ -34,10 +34,10 @@
             this.pictElemento = new System.Windows.Forms.PictureBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.grpAuto = new System.Windows.Forms.GroupBox();
+            this.num2 = new System.Windows.Forms.NumericUpDown();
+            this.num1 = new System.Windows.Forms.NumericUpDown();
             this.track2 = new System.Windows.Forms.TrackBar();
-            this.txt2 = new System.Windows.Forms.TextBox();
             this.track1 = new System.Windows.Forms.TrackBar();
-            this.txt1 = new System.Windows.Forms.TextBox();
             this.radAuto = new System.Windows.Forms.RadioButton();
             this.radManual = new System.Windows.Forms.RadioButton();
             this.grpBox = new System.Windows.Forms.GroupBox();
@@ -59,9 +59,12 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.pictSmall = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackElementos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictElemento)).BeginInit();
             this.grpAuto.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.num2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.track2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.track1)).BeginInit();
             this.grpBox.SuspendLayout();
@@ -129,16 +132,52 @@
             // 
             // grpAuto
             // 
+            this.grpAuto.Controls.Add(this.num2);
+            this.grpAuto.Controls.Add(this.num1);
             this.grpAuto.Controls.Add(this.track2);
-            this.grpAuto.Controls.Add(this.txt2);
             this.grpAuto.Controls.Add(this.track1);
-            this.grpAuto.Controls.Add(this.txt1);
             this.grpAuto.Enabled = false;
             this.grpAuto.Location = new System.Drawing.Point(553, 199);
             this.grpAuto.Name = "grpAuto";
             this.grpAuto.Size = new System.Drawing.Size(199, 93);
             this.grpAuto.TabIndex = 8;
             this.grpAuto.TabStop = false;
+            // 
+            // num2
+            // 
+            this.num2.Location = new System.Drawing.Point(147, 46);
+            this.num2.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.num2.Name = "num2";
+            this.num2.Size = new System.Drawing.Size(45, 22);
+            this.num2.TabIndex = 18;
+            this.num2.Value = new decimal(new int[] {
+            115,
+            0,
+            0,
+            0});
+            this.num2.ValueChanged += new System.EventHandler(this.num2_ValueChanged);
+            // 
+            // num1
+            // 
+            this.num1.Location = new System.Drawing.Point(147, 13);
+            this.num1.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.num1.Name = "num1";
+            this.num1.Size = new System.Drawing.Size(45, 22);
+            this.num1.TabIndex = 18;
+            this.num1.Value = new decimal(new int[] {
+            51,
+            0,
+            0,
+            0});
+            this.num1.ValueChanged += new System.EventHandler(this.num1_ValueChanged);
             // 
             // track2
             // 
@@ -149,15 +188,7 @@
             this.track2.TabIndex = 9;
             this.track2.TickFrequency = 32;
             this.track2.Value = 115;
-            // 
-            // txt2
-            // 
-            this.txt2.Enabled = false;
-            this.txt2.Location = new System.Drawing.Point(149, 46);
-            this.txt2.Name = "txt2";
-            this.txt2.Size = new System.Drawing.Size(45, 22);
-            this.txt2.TabIndex = 11;
-            this.txt2.Text = "115";
+            this.track2.ValueChanged += new System.EventHandler(this.track2_ValueChanged);
             // 
             // track1
             // 
@@ -167,16 +198,8 @@
             this.track1.Size = new System.Drawing.Size(141, 45);
             this.track1.TabIndex = 10;
             this.track1.TickFrequency = 32;
-            this.track1.Value = 38;
-            // 
-            // txt1
-            // 
-            this.txt1.Enabled = false;
-            this.txt1.Location = new System.Drawing.Point(149, 13);
-            this.txt1.Name = "txt1";
-            this.txt1.Size = new System.Drawing.Size(45, 22);
-            this.txt1.TabIndex = 12;
-            this.txt1.Text = "51";
+            this.track1.Value = 51;
+            this.track1.ValueChanged += new System.EventHandler(this.track1_ValueChanged);
             // 
             // radAuto
             // 
@@ -464,6 +487,15 @@
             this.pictSmall.TabStop = false;
             this.pictSmall.Paint += new System.Windows.Forms.PaintEventHandler(this.pictSmall_Paint);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(553, 42);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(42, 14);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "label3";
+            // 
             // SegmentacionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -471,6 +503,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(760, 650);
             this.ControlBox = false;
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.pictSmall);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grpManual);
@@ -493,6 +526,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictElemento)).EndInit();
             this.grpAuto.ResumeLayout(false);
             this.grpAuto.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.num2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.track2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.track1)).EndInit();
             this.grpBox.ResumeLayout(false);
@@ -516,9 +551,7 @@
         private System.Windows.Forms.GroupBox grpAuto;
         private System.Windows.Forms.TrackBar track2;
         private System.Windows.Forms.RadioButton radAuto;
-        private System.Windows.Forms.TextBox txt2;
         private System.Windows.Forms.TrackBar track1;
-        private System.Windows.Forms.TextBox txt1;
         private System.Windows.Forms.RadioButton radManual;
         private System.Windows.Forms.GroupBox grpBox;
         private System.Windows.Forms.Label label1;
@@ -539,5 +572,8 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.PictureBox pictSmall;
         private System.Windows.Forms.Button btnPreview;
+        private System.Windows.Forms.NumericUpDown num2;
+        private System.Windows.Forms.NumericUpDown num1;
+        private System.Windows.Forms.Label label3;
     }
 }
