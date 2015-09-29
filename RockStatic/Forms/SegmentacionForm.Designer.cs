@@ -59,7 +59,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.pictSmall = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackElementos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictElemento)).BeginInit();
             this.grpAuto.SuspendLayout();
@@ -487,15 +486,6 @@
             this.pictSmall.TabStop = false;
             this.pictSmall.Paint += new System.Windows.Forms.PaintEventHandler(this.pictSmall_Paint);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(553, 42);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 14);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "label3";
-            // 
             // SegmentacionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -503,7 +493,6 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(760, 650);
             this.ControlBox = false;
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.pictSmall);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grpManual);
@@ -574,6 +563,5 @@
         private System.Windows.Forms.Button btnPreview;
         private System.Windows.Forms.NumericUpDown num2;
         private System.Windows.Forms.NumericUpDown num1;
-        private System.Windows.Forms.Label label3;
     }
 }

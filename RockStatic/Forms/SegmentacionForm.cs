@@ -872,19 +872,16 @@ namespace RockStatic
 
             // se prepara el vector de salida
             Rectangle[] areas = new Rectangle[blobs.Count];
-            for (int i = 0; i < 4; i++) areas[i] = blobs[i].Rectangle;
+            for (int i = 0; i < blobs.Count; i++) areas[i] = blobs[i].Rectangle;
 
-            //return areas;
-
-            
-            ///
+            /*///
             Bitmap imagen = new Bitmap(pictElemento.Image);
             Graphics g = Graphics.FromImage(imagen);
             for (int i = 0; i < blobs.Count; i++) g.DrawEllipse(pen1, blobs[i].Rectangle);
             pictElemento.Image = imagen;
+            ///*/
 
-            return null;
-            ///
+            return areas;
             
 
             /*
@@ -980,7 +977,7 @@ namespace RockStatic
             
             // se ejecuta la deteccion de bordes
             Rectangle[] areas=DetectarBordes();
-            /*
+            
             if (areas != null)
             {
                 CCuadrado temp;
@@ -988,26 +985,27 @@ namespace RockStatic
                 {
                     countAreas++;
                     temp = new CCuadrado();
-                    temp.x = areas[i].X;
-                    temp.y = areas[i].Y;
-                    temp.width = areas[i].Width;
+                    temp.width = (int)(areas[i].Width / 2);
+                    temp.x = areas[i].X + temp.width;
+                    temp.y = areas[i].Y + temp.width;
                     temp.nombre = "Area" + countAreas;
                     
-                    elementosScreen.Add(temp);
-                    AddList(temp);
-
-                    // se obliga al PictureBox que se resetee y dibuje todos los elementos que hayan en memoria
-                    controlPaint = true;
-                    pictElemento.Invalidate();
-
-                    btnClean.Enabled = true;
-                    btnDelete.Enabled = true;
+                    elementosScreen.Add(MainForm.CorregirOriginal2PictBox(temp,pictElemento.Image.Height,pictElemento.Height));
+                    // el metodo de correccion de tamaño de coordenadas modifica el CCuadrado temp
+                    AddList(temp);                    
                 }
+
+                // se obliga al PictureBox que se resetee y dibuje todos los elementos que hayan en memoria
+                controlPaint = true;
+                pictElemento.Invalidate();
+
+                btnClean.Enabled = true;
+                btnDelete.Enabled = true;
             }
             else
             {
                 // no hacer nada, no se detectaron los bordes
-            }*/
+            }
         }
 
         private void num1_ValueChanged(object sender, EventArgs e)
