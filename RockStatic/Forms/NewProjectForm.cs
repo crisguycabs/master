@@ -251,10 +251,9 @@ namespace RockStatic
                 // se cargan al proyecto los byte[] de los elementos LOW
                 temp.SetLow(tempLow);
 
-                // se guarda el proyecto
-                temp.Salvar();
-                // se ha creado el proyecto
-
+                // se crea el proyecto
+                temp.Crear();
+                
                 // se cierra la ventana NewProyectForm
                 this.Close();
 

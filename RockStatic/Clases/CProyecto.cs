@@ -282,18 +282,26 @@ namespace RockStatic
             return folderLow;
         }
 
+        /// <summary>
+        /// Establece si ya se realizo o no la segmentacion de los elementos HIGH
+        /// </summary>
+        /// <param name="set"></param>
         public void SetSegmentacionHigh(bool set)
         {
             segmentacionHigh = set;
         }
 
+        /// <summary>
+        /// Establece si ya se realizo o no la segmentacion de los elementos LOW
+        /// </summary>
+        /// <param name="set"></param>
         public void SetSegmentacionLow(bool set)
         {
             segmentacionLow = set;
         }
 
         /// <summary>
-        /// Se establece si ya se ha realizado, o no, la segmentacion de areas HIGH
+        /// Se establece si ya se ha realizado, o no, la seleccion de areas HIGH
         /// </summary>
         /// <param name="set"></param>
         public void SetAreasHigh(bool set)
@@ -302,7 +310,7 @@ namespace RockStatic
         }
 
         /// <summary>
-        /// Se establece si ya se ha realizado, o no, la segmentacion de areas LOW
+        /// Se establece si ya se ha realizado, o no, la seleccion de areas LOW
         /// </summary>
         /// <param name="set"></param>
         public void SetAreasLow(bool set)
@@ -326,6 +334,21 @@ namespace RockStatic
         public bool GetAreasLow()
         {
             return areasLow;
+        }
+
+        /// <summary>
+        /// Crea el proyecto en disco en la ruta indicada en las propiedades del metodo
+        /// </summary>
+        public void Crear()
+        {
+            // se crean los archivos RSP RSPH y RSPL y se llenan con informacion
+            this.Salvar();
+
+            // se mueven las imagenes HIGH al nuevo folder como byte[] escritos en un archivo
+            for (int i = 0; i < filesHigh.Count; i++) File.WriteAllBytes(folderHigh + i, filesHigh[i]);
+
+            // se mueven las imagenes LOW al nuevo folder como byte[] escritos en un archivo
+            for (int i = 0; i < filesLow.Count; i++) File.WriteAllBytes(folderLow + i, filesLow[i]);
         }
 
         /// <summary>
@@ -373,6 +396,38 @@ namespace RockStatic
             sw.WriteLine("DIRECTOR DEL GRUPO HDSP");
             sw.WriteLine("---------------------------------------------------------------------");
             sw.WriteLine("");
+            // si existe informacion de segmentacion entonces se escibe en disco
+            if (this.segmentacionHigh)
+            {
+                sw.WriteLine("CORE");
+                sw.WriteLine("X");
+                sw.WriteLine(this.areaCoreHigh.x);
+                sw.WriteLine("Y");
+                sw.WriteLine(this.areaCoreHigh.y);
+                sw.WriteLine("WIDTH");
+                sw.WriteLine(this.areaCoreHigh.width);
+                sw.WriteLine("PHANTOM1");
+                sw.WriteLine("X");
+                sw.WriteLine(this.areaPhantom1High.x);
+                sw.WriteLine("Y");
+                sw.WriteLine(this.areaPhantom1High.y);
+                sw.WriteLine("WIDTH");
+                sw.WriteLine(this.areaPhantom1High.width);
+                sw.WriteLine("PHANTOM2");
+                sw.WriteLine("X");
+                sw.WriteLine(this.areaPhantom2High.x);
+                sw.WriteLine("Y");
+                sw.WriteLine(this.areaPhantom2High.y);
+                sw.WriteLine("WIDTH");
+                sw.WriteLine(this.areaPhantom2High.width);
+                sw.WriteLine("PHANTOM3");
+                sw.WriteLine("X");
+                sw.WriteLine(this.areaPhantom3High.x);
+                sw.WriteLine("Y");
+                sw.WriteLine(this.areaPhantom3High.y);
+                sw.WriteLine("WIDTH");
+                sw.WriteLine(this.areaPhantom3High.width);
+            }            
             
             // se cierra el streamwriter del archivo RSPH
             sw.Close();
@@ -388,13 +443,39 @@ namespace RockStatic
             sw.WriteLine("DIRECTOR DEL GRUPO HDSP");
             sw.WriteLine("---------------------------------------------------------------------");
             sw.WriteLine("");
+            // si existe informacion de segmentacion entonces se escibe en disco
+            if (this.segmentacionLow)
+            {
+                sw.WriteLine("CORE");
+                sw.WriteLine("X");
+                sw.WriteLine(this.areaCoreLow.x);
+                sw.WriteLine("Y");
+                sw.WriteLine(this.areaCoreLow.y);
+                sw.WriteLine("WIDTH");
+                sw.WriteLine(this.areaCoreLow.width);
+                sw.WriteLine("PHANTOM1");
+                sw.WriteLine("X");
+                sw.WriteLine(this.areaPhantom1Low.x);
+                sw.WriteLine("Y");
+                sw.WriteLine(this.areaPhantom1Low.y);
+                sw.WriteLine("WIDTH");
+                sw.WriteLine(this.areaPhantom1Low.width);
+                sw.WriteLine("PHANTOM2");
+                sw.WriteLine("X");
+                sw.WriteLine(this.areaPhantom2Low.x);
+                sw.WriteLine("Y");
+                sw.WriteLine(this.areaPhantom2Low.y);
+                sw.WriteLine("WIDTH");
+                sw.WriteLine(this.areaPhantom2Low.width);
+                sw.WriteLine("PHANTOM3");
+                sw.WriteLine("X");
+                sw.WriteLine(this.areaPhantom3Low.x);
+                sw.WriteLine("Y");
+                sw.WriteLine(this.areaPhantom3Low.y);
+                sw.WriteLine("WIDTH");
+                sw.WriteLine(this.areaPhantom3Low.width);
+            }   
 
-            // se mueven las imagenes HIGH al nuevo folder como byte[] escritos en un archivo
-            for (int i = 0; i < filesHigh.Count; i++) File.WriteAllBytes(folderHigh + i, filesHigh[i]);
-
-            // se mueven las imagenes LOW al nuevo folder como byte[] escritos en un archivo
-            for (int i = 0; i < filesLow.Count; i++) File.WriteAllBytes(folderLow + i, filesLow[i]);
-            
             // se cierra el streamwriter del archivo RSPL
             sw.Close();
         }

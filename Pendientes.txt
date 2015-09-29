@@ -1,4 +1,4 @@
 Pendientes
 
-* Guardar en disco la informacion de la segmentacion y cargarla al momento de abrir un proyecto
-* Montar la segmentacion automatica
+* LISTO Guardar en disco la informacion de la segmentacion 
+* FALTA cargar la info de segmentacion al momento de abrir un proyecto

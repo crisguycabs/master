@@ -669,14 +669,17 @@ namespace RockStatic
                 // se cambia la imagen de segmentacion HIGH o LOW
                 if (this.lblTitulo.Text.Contains("HIGH"))
                 {
-                    this.padre.actual.SetAreasHigh(true);
+                    this.padre.actual.SetSegmentacionHigh(true);
                     this.padre.proyectoForm.pictSegHigh.Image = Properties.Resources.greenTick;
                 }
                 else
                 {
-                    this.padre.actual.SetAreasLow(true);
+                    this.padre.actual.SetSegmentacionLow(true);
                     this.padre.proyectoForm.pictSegLow.Image = Properties.Resources.greenTick;
                 }                
+
+                // se guarda en disco
+                this.padre.actual.Salvar();
 
                 this.Close();
             }
@@ -881,8 +884,7 @@ namespace RockStatic
             pictElemento.Image = imagen;
             ///*/
 
-            return areas;
-            
+            return areas;            
 
             /*
             // se extrae el elemento mas grande
@@ -1031,5 +1033,15 @@ namespace RockStatic
             num2.Value = track2.Value;
             DeteccionAutomatica();
         }
+
+        private void segmentacionAutomaticaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.radAuto.Checked = true;
+        }
+
+        private void segmentacionManualToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.radManual.Checked = true;
+        }        
     }
 }
