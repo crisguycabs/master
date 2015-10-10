@@ -348,7 +348,7 @@ namespace RockStatic
                 }
             }
 
-            // se cierra el archivo SRP
+            // se cierra el archivo RSP
             sr.Close();
 
             
@@ -381,7 +381,73 @@ namespace RockStatic
             for (int i = 0; i < actual.count; i++) files.Add(File.ReadAllBytes(actual.GetFolderLow() + i));
             actual.SetHigh(files);
             
-            // se lee el archivo RSPH para 
+            // Si existe informacion de segmentacion se lee el archivo RSPC
+            if(actual.GetSegmentacionDone())
+            {
+                sr = new StreamReader(actual.GetFolderPath() + name + ".rspc");
+
+                CCuadrado temp = new CCuadrado();
+                
+                while ((linea = sr.ReadLine()) != null)
+                {
+                    switch (linea)
+                    {
+                        case "CORE":
+                            temp = new CCuadrado();
+                            
+                            sr.ReadLine();
+                            temp.x = Convert.ToInt32(sr.ReadLine());
+                            sr.ReadLine();
+                            temp.y = Convert.ToInt32(sr.ReadLine());
+                            sr.ReadLine();
+                            temp.width = Convert.ToInt32(sr.ReadLine());
+
+                            actual.SetCore(temp);
+                            break;
+                        case "PHANTOM1":
+                            temp = new CCuadrado();
+                            
+                            sr.ReadLine();
+                            temp.x = Convert.ToInt32(sr.ReadLine());
+                            sr.ReadLine();
+                            temp.y = Convert.ToInt32(sr.ReadLine());
+                            sr.ReadLine();
+                            temp.width = Convert.ToInt32(sr.ReadLine());
+
+                            actual.SetPhantom1(temp);
+                            break;
+                        case "PHANTOM2":
+                            temp = new CCuadrado();
+                            
+                            sr.ReadLine();
+                            temp.x = Convert.ToInt32(sr.ReadLine());
+                            sr.ReadLine();
+                            temp.y = Convert.ToInt32(sr.ReadLine());
+                            sr.ReadLine();
+                            temp.width = Convert.ToInt32(sr.ReadLine());
+
+                            actual.SetPhantom2(temp);
+                            break;
+                        case "PHANTOM3":
+                            temp = new CCuadrado();
+                            
+                            sr.ReadLine();
+                            temp.x = Convert.ToInt32(sr.ReadLine());
+                            sr.ReadLine();
+                            temp.y = Convert.ToInt32(sr.ReadLine());
+                            sr.ReadLine();
+                            temp.width = Convert.ToInt32(sr.ReadLine());
+
+                            actual.SetPhantom3(temp);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                // se cierra el archivo RSPC
+                sr.Close();
+            }
 
             this.proyectoForm = new ProjectForm();
             this.abiertoProyectoForm = true;

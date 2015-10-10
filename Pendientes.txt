@@ -1,4 +1,3 @@
 Pendientes
 
-* LISTO Guardar en disco la informacion de la segmentacion 
-* FALTA cargar la info de segmentacion al momento de abrir un proyecto
+* Empezar con la creacion de los planes de corte
