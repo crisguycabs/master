@@ -63,6 +63,7 @@ namespace RockStatic
 
         public CCuadrado(CCuadrado copia)
         {
+            nombre = copia.nombre;
             x = copia.x;
             y = copia.y;
             width = copia.width;

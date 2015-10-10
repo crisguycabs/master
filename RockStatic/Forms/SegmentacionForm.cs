@@ -109,36 +109,29 @@ namespace RockStatic
 
             countAreas = 0;
 
-            // se cargan los elementos de areas de Core y Phantom si existen
-            if (this.lblTitulo.Text.Contains("HIGH"))
+            // se cargan los elementos HIGH si existen
+            if (padre.actual.GetSegmentacionDone())
             {
-                // se cargan los elementos HIGH si existen
-                if (padre.actual.GetAreasHigh())
-                {
-                    elementosScreen.Add(MainForm.CorregirOriginal2PictBox(padre.actual.GetCoreHigh(), pictElemento.Image.Height, pictElemento.Height));
-                    elementosScreen.Add(MainForm.CorregirOriginal2PictBox(padre.actual.GetPhantom1High(), pictElemento.Image.Height, pictElemento.Height));
-                    elementosScreen.Add(MainForm.CorregirOriginal2PictBox(padre.actual.GetPhantom2High(), pictElemento.Image.Height, pictElemento.Height));
-                    elementosScreen.Add(MainForm.CorregirOriginal2PictBox(padre.actual.GetPhantom3High(), pictElemento.Image.Height, pictElemento.Height));
+                CCuadrado temp;
 
-                    LlenarList();
-                    controlPaint = true;
-                    pictElemento.Invalidate();
-                }
-            }
-            else
-            {
-                // se cargan los elementos LOW si existen
-                if (padre.actual.GetAreasLow())
-                {
-                    elementosScreen.Add(MainForm.CorregirOriginal2PictBox(padre.actual.GetCoreLow(), pictElemento.Image.Height, pictElemento.Height));
-                    elementosScreen.Add(MainForm.CorregirOriginal2PictBox(padre.actual.GetPhantom1Low(), pictElemento.Image.Height, pictElemento.Height));
-                    elementosScreen.Add(MainForm.CorregirOriginal2PictBox(padre.actual.GetPhantom2Low(), pictElemento.Image.Height, pictElemento.Height));
-                    elementosScreen.Add(MainForm.CorregirOriginal2PictBox(padre.actual.GetPhantom3Low(), pictElemento.Image.Height, pictElemento.Height));
+                temp = new CCuadrado(padre.actual.GetCore());
+                elementosScreen.Add(MainForm.CorregirOriginal2PictBox(temp, pictElemento.Image.Height, pictElemento.Height));
 
-                    LlenarList();
-                    controlPaint = true;
-                    pictElemento.Invalidate();
-                }
+                temp = new CCuadrado(padre.actual.GetPhantom1());
+                elementosScreen.Add(MainForm.CorregirOriginal2PictBox(temp, pictElemento.Image.Height, pictElemento.Height));
+
+                temp = new CCuadrado(padre.actual.GetPhantom2());
+                elementosScreen.Add(MainForm.CorregirOriginal2PictBox(temp, pictElemento.Image.Height, pictElemento.Height));
+
+                temp = new CCuadrado(padre.actual.GetPhantom3());
+                elementosScreen.Add(MainForm.CorregirOriginal2PictBox(temp, pictElemento.Image.Height, pictElemento.Height));
+
+                LlenarList();
+                controlPaint = true;
+                pictElemento.Invalidate();
+
+                btnDelete.Enabled = true;
+                btnClean.Enabled = true;
             }
 
             this.Invalidate();
@@ -322,6 +315,7 @@ namespace RockStatic
         private void pictElemento_MouseLeave(object sender, EventArgs e)
         {
             this.Cursor = Cursors.Default;
+            this.pictSmall.Image = null;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -642,9 +636,8 @@ namespace RockStatic
                     return y.width.CompareTo(x.width);
                 });
 
-                if (this.lblTitulo.Text.Contains("HIGH")) this.padre.actual.SetCoreHigh(MainForm.CorregirPictBox2Original(elementosScreen[0], pictElemento.Image.Height, pictElemento.Height));
-                else this.padre.actual.SetCoreLow(MainForm.CorregirPictBox2Original(elementosScreen[0], pictElemento.Image.Height, pictElemento.Height));
-
+                this.padre.actual.SetCore(MainForm.CorregirPictBox2Original(elementosScreen[0], pictElemento.Image.Height, pictElemento.Height));
+                
                 elementosScreen.RemoveAt(0);
 
                 // se ordenan segun la coordenada X, de izquierda a derecha. Los phantom P1 P2 y P3 se ordenan de izquierda a derecha
@@ -652,32 +645,15 @@ namespace RockStatic
                 {
                     return x.x.CompareTo(y.x);
                 });
-                if (this.lblTitulo.Text.Contains("HIGH"))
-                {
-                    this.padre.actual.SetPhantom1High(MainForm.CorregirPictBox2Original(elementosScreen[0], pictElemento.Image.Height, pictElemento.Height));
-                    this.padre.actual.SetPhantom2High(MainForm.CorregirPictBox2Original(elementosScreen[1], pictElemento.Image.Height, pictElemento.Height));
-                    this.padre.actual.SetPhantom3High(MainForm.CorregirPictBox2Original(elementosScreen[2], pictElemento.Image.Height, pictElemento.Height));
-                }
-                else
-                {
-                    this.padre.actual.SetPhantom1Low(MainForm.CorregirPictBox2Original(elementosScreen[0], pictElemento.Image.Height, pictElemento.Height));
-                    this.padre.actual.SetPhantom2Low(MainForm.CorregirPictBox2Original(elementosScreen[1], pictElemento.Image.Height, pictElemento.Height));
-                    this.padre.actual.SetPhantom3Low(MainForm.CorregirPictBox2Original(elementosScreen[2], pictElemento.Image.Height, pictElemento.Height));
-                }
-
-                // se modifica la variable de control de la segmentacion dependiendo si se han cargado los elementos HIGH o LOW
-                // se cambia la imagen de segmentacion HIGH o LOW
-                if (this.lblTitulo.Text.Contains("HIGH"))
-                {
-                    this.padre.actual.SetSegmentacionHigh(true);
-                    this.padre.proyectoForm.pictSegHigh.Image = Properties.Resources.greenTick;
-                }
-                else
-                {
-                    this.padre.actual.SetSegmentacionLow(true);
-                    this.padre.proyectoForm.pictSegLow.Image = Properties.Resources.greenTick;
-                }                
-
+                
+                this.padre.actual.SetPhantom1(MainForm.CorregirPictBox2Original(elementosScreen[0], pictElemento.Image.Height, pictElemento.Height));
+                this.padre.actual.SetPhantom2(MainForm.CorregirPictBox2Original(elementosScreen[1], pictElemento.Image.Height, pictElemento.Height));
+                this.padre.actual.SetPhantom3(MainForm.CorregirPictBox2Original(elementosScreen[2], pictElemento.Image.Height, pictElemento.Height));
+                
+                // se modifica la variable de control de la segmentacion 
+                this.padre.actual.SetSegmentacionDone(true);
+                this.padre.proyectoForm.pictSegHigh.Image = Properties.Resources.greenTick;
+                
                 // se guarda en disco
                 this.padre.actual.Salvar();
 

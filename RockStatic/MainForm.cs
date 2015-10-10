@@ -334,17 +334,11 @@ namespace RockStatic
             {
                 switch (linea)
                 {
-                    case "SEGMENTACION HIGH":
-                        actual.SetSegmentacionHigh(sr.ReadLine() == "True");
+                    case "SEGMENTACION":
+                        actual.SetSegmentacionDone(sr.ReadLine() == "True");
                         break;
-                    case "SEGMENTACION LOW":
-                        actual.SetSegmentacionLow(sr.ReadLine() == "True");
-                        break;
-                    case "AREAS HIGH":
-                        actual.SetAreasHigh(sr.ReadLine() == "True");
-                        break;
-                    case "AREAS LOW":
-                        actual.SetAreasLow(sr.ReadLine() == "True");
+                    case "AREAS":
+                        actual.SetAreasDone(sr.ReadLine() == "True");
                         break;
                     case "COUNT":
                         actual.count = Convert.ToInt32(sr.ReadLine());
@@ -354,14 +348,14 @@ namespace RockStatic
                 }
             }
 
-            // se cierra el archivo SRP
+            // se cierra el archivo RSP
             sr.Close();
 
             
-            // primero se verifica que exista el archivo RSPH
-            if (!File.Exists(actual.GetFolderPath() + name + ".rsph"))
+            // primero se verifica que exista el archivo RSPC
+            if (!File.Exists(actual.GetFolderPath() + name + ".rspc"))
             {
-                MessageBox.Show("No existe el archivo " + name + ".rsph asociado al proyecto.\nNo se puede continuar con el proceso de carga.","Error al abrir el proyecto "+name,MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("No existe el archivo " + name + ".rspc asociado al proyecto.\nNo se puede continuar con el proceso de carga.","Error al abrir el proyecto "+name,MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return false;
             }
             // se verifica que exista el folder HIGH
@@ -370,13 +364,7 @@ namespace RockStatic
                 MessageBox.Show("No existe la carpeta con las imagenes HIGH.\nVerifique la ruta indicada e intentelo de nuevo.\n\n" + actual.GetFolderHigh(), "Error al abrir el proyecto", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            // se verifica que exista el archivo RSPL
-            if (!File.Exists(actual.GetFolderPath() + name + ".rspl"))
-            {
-                MessageBox.Show("No existe el archivo " + name + ".rspl asociado al proyecto.\nNo se puede continuar con el proceso de carga.", "Error al abrir el proyecto " + name, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            // se verifica que exista el folder HIGH
+            // se verifica que exista el folder LOW
             if (!Directory.Exists(actual.GetFolderLow()))
             {
                 MessageBox.Show("No existe la carpeta con las imagenes LOW.\nVerifique la ruta indicada e intentelo de nuevo.\n\n" + actual.GetFolderLow(), "Error al abrir el proyecto", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -391,7 +379,75 @@ namespace RockStatic
             // se leen los elementos LOW que estan en la carpeta LOW, dentro de la ruta del proyect
             files = new List<byte[]>();
             for (int i = 0; i < actual.count; i++) files.Add(File.ReadAllBytes(actual.GetFolderLow() + i));
-            actual.SetHigh(files);            
+            actual.SetHigh(files);
+            
+            // Si existe informacion de segmentacion se lee el archivo RSPC
+            if(actual.GetSegmentacionDone())
+            {
+                sr = new StreamReader(actual.GetFolderPath() + name + ".rspc");
+
+                CCuadrado temp = new CCuadrado();
+                
+                while ((linea = sr.ReadLine()) != null)
+                {
+                    switch (linea)
+                    {
+                        case "CORE":
+                            temp = new CCuadrado();
+                            
+                            sr.ReadLine();
+                            temp.x = Convert.ToInt32(sr.ReadLine());
+                            sr.ReadLine();
+                            temp.y = Convert.ToInt32(sr.ReadLine());
+                            sr.ReadLine();
+                            temp.width = Convert.ToInt32(sr.ReadLine());
+
+                            actual.SetCore(temp);
+                            break;
+                        case "PHANTOM1":
+                            temp = new CCuadrado();
+                            
+                            sr.ReadLine();
+                            temp.x = Convert.ToInt32(sr.ReadLine());
+                            sr.ReadLine();
+                            temp.y = Convert.ToInt32(sr.ReadLine());
+                            sr.ReadLine();
+                            temp.width = Convert.ToInt32(sr.ReadLine());
+
+                            actual.SetPhantom1(temp);
+                            break;
+                        case "PHANTOM2":
+                            temp = new CCuadrado();
+                            
+                            sr.ReadLine();
+                            temp.x = Convert.ToInt32(sr.ReadLine());
+                            sr.ReadLine();
+                            temp.y = Convert.ToInt32(sr.ReadLine());
+                            sr.ReadLine();
+                            temp.width = Convert.ToInt32(sr.ReadLine());
+
+                            actual.SetPhantom2(temp);
+                            break;
+                        case "PHANTOM3":
+                            temp = new CCuadrado();
+                            
+                            sr.ReadLine();
+                            temp.x = Convert.ToInt32(sr.ReadLine());
+                            sr.ReadLine();
+                            temp.y = Convert.ToInt32(sr.ReadLine());
+                            sr.ReadLine();
+                            temp.width = Convert.ToInt32(sr.ReadLine());
+
+                            actual.SetPhantom3(temp);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                // se cierra el archivo RSPC
+                sr.Close();
+            }
 
             this.proyectoForm = new ProjectForm();
             this.abiertoProyectoForm = true;

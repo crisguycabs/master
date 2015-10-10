@@ -51,14 +51,9 @@ namespace RockStatic
         }
 
         /// <summary>
-        /// Indica si ya se ha realizado la segmentacion de los elementos HIGH
+        /// Indica si ya se ha realizado la segmentacion de los elementos HIGH y LOW (la misma informacion geometrica sirve para ambos)
         /// </summary>
-        private bool segmentacionHigh;
-
-        /// <summary>
-        /// Indica si ya se ha realizado la segmentacion de los elementos LOW
-        /// </summary>
-        private bool segmentacionLow;
+        private bool segmentacionDone;
 
         /// <summary>
         /// Guarda la ruta de la carpeta donde se encuentra el proyecto
@@ -76,54 +71,29 @@ namespace RockStatic
         private string folderLow;
 
         /// <summary>
-        /// Indica si ya se ha realizado la seleccion de areas de interes de los elementos HIGH
+        /// Indica si ya se ha realizado la seleccion de areas de interes de los elementos 
         /// </summary>
-        private bool areasHigh;
-
-        /// <summary>
-        /// Indica si ya se ha realizado la seleccion de areas de interes de los elementos LOW
-        /// </summary>
-        private bool areasLow;
+        private bool areasDone;
 
         /// <summary>
         /// Guarda las coordenadas del recuadro que enmarca el Core de los elementos HIGH
         /// </summary>
-        private CCuadrado areaCoreHigh;
+        private CCuadrado areaCore;
 
         /// <summary>
         /// Guarda las coordenadas del recuadro que enmarca el Phantom de la IZQUIERDA de los elementos HIGH
         /// </summary>
-        private CCuadrado areaPhantom1High;
+        private CCuadrado areaPhantom1;
 
         /// <summary>
         /// Guarda las coordenadas del recuadro que enmarca el Phantom del CENTRO de los elementos HIGH
         /// </summary>
-        private CCuadrado areaPhantom2High;
+        private CCuadrado areaPhantom2;
 
         /// <summary>
         /// Guarda las coordenadas del recuadro que enmarca el Phantom de la DERECHA de los elementos HIGH
         /// </summary>
-        private CCuadrado areaPhantom3High;
-
-        /// <summary>
-        /// Guarda las coordenadas del recuadro que enmarca el Core de los elementos HIGH
-        /// </summary>
-        private CCuadrado areaCoreLow;
-
-        /// <summary>
-        /// Guarda las coordenadas del recuadro que enmarca el Phantom de la IZQUIERDA de los elementos HIGH
-        /// </summary>
-        private CCuadrado areaPhantom1Low;
-
-        /// <summary>
-        /// Guarda las coordenadas del recuadro que enmarca el Phantom del CENTRO de los elementos HIGH
-        /// </summary>
-        private CCuadrado areaPhantom2Low;
-
-        /// <summary>
-        /// Guarda las coordenadas del recuadro que enmarca el Phantom de la DERECHA de los elementos HIGH
-        /// </summary>
-        private CCuadrado areaPhantom3Low;
+        private CCuadrado areaPhantom3;
 
         #endregion
 
@@ -147,11 +117,9 @@ namespace RockStatic
             folderHigh = project.GetFolderHigh();
             folderLow = project.GetFolderLow();
             folderPath = project.GetFolderPath();
-            segmentacionHigh = project.GetSegmentacionHigh();
-            segmentacionLow = project.GetSegmentacionLow();
-            areasHigh = project.GetAreasHigh();
-            areasLow = project.GetAreasLow();
-
+            segmentacionDone = project.GetSegmentacionDone();
+            areasDone = project.GetAreasDone();
+            
             for (int i = 0; i < filesHigh.Count; i++)
             {
                 SetHigh(project.GetHigh());
@@ -239,18 +207,9 @@ namespace RockStatic
         /// Devuelve el estado de la segmentacion de los elementos HIGH. True, todos los elementos segmentados; False, faltan elementos por segmentar
         /// </summary>
         /// <returns></returns>
-        public bool GetSegmentacionHigh()
+        public bool GetSegmentacionDone()
         {
-            return segmentacionHigh;
-        }
-
-        /// <summary>
-        /// Devuelve el estado de la segmentacion de los elementos LOW
-        /// </summary>
-        /// <returns></returns>
-        public bool GetSegmentacionLow()
-        {
-            return segmentacionLow;
+            return segmentacionDone;
         }
 
         /// <summary>
@@ -286,54 +245,27 @@ namespace RockStatic
         /// Establece si ya se realizo o no la segmentacion de los elementos HIGH
         /// </summary>
         /// <param name="set"></param>
-        public void SetSegmentacionHigh(bool set)
+        public void SetSegmentacionDone(bool set)
         {
-            segmentacionHigh = set;
-        }
-
-        /// <summary>
-        /// Establece si ya se realizo o no la segmentacion de los elementos LOW
-        /// </summary>
-        /// <param name="set"></param>
-        public void SetSegmentacionLow(bool set)
-        {
-            segmentacionLow = set;
+            segmentacionDone = set;
         }
 
         /// <summary>
         /// Se establece si ya se ha realizado, o no, la seleccion de areas HIGH
         /// </summary>
         /// <param name="set"></param>
-        public void SetAreasHigh(bool set)
+        public void SetAreasDone(bool set)
         {
-            areasHigh = set;
-        }
-
-        /// <summary>
-        /// Se establece si ya se ha realizado, o no, la seleccion de areas LOW
-        /// </summary>
-        /// <param name="set"></param>
-        public void SetAreasLow(bool set)
-        {
-            areasLow = set;
+            areasDone = set;
         }
 
         /// <summary>
         /// Obtiene si ya se ha realizado, o no, la segmentacion de areas HIGH
         /// </summary>
         /// <returns></returns>
-        public bool GetAreasHigh()
+        public bool GetAreasDone()
         {
-            return areasHigh;
-        }
-
-        /// <summary>
-        /// Obtiene si ya se ha realizado, o no, la segmentacion de areas LOW
-        /// </summary>
-        /// <returns></returns>
-        public bool GetAreasLow()
-        {
-            return areasLow;
+            return areasDone;
         }
 
         /// <summary>
@@ -371,22 +303,18 @@ namespace RockStatic
             sw.WriteLine("");
             sw.WriteLine("NAME");
             sw.WriteLine(name);
-            sw.WriteLine("SEGMENTACION HIGH");
-            sw.WriteLine(segmentacionHigh.ToString());
-            sw.WriteLine("SEGMENTACION LOW");
-            sw.WriteLine(segmentacionLow.ToString());
-            sw.WriteLine("AREAS HIGH");
-            sw.WriteLine(areasHigh.ToString());
-            sw.WriteLine("AREAS LOW");
-            sw.WriteLine(areasLow.ToString());
+            sw.WriteLine("SEGMENTACION");
+            sw.WriteLine(segmentacionDone.ToString());
+            sw.WriteLine("AREAS");
+            sw.WriteLine(areasDone.ToString());
             sw.WriteLine("COUNT");
             sw.WriteLine(this.filesHigh.Count.ToString());
             
             // se cierra el streamwriter del archivo RSP
             sw.Close();
 
-            // se empiezan a escribir los elementos HIGH tal y como se tienen ordenados en memoria
-            sw = new StreamWriter(folderPath + name + ".rsph");
+            // se empiezan a escribir los elementos de configuracion RSPC tal y como se tienen ordenados en memoria
+            sw = new StreamWriter(folderPath + name + ".rspc");
             sw.WriteLine("PROYECTO DE ROCKSTATIC: CARACTERIZACION ESTATICA DE ROCAS");
             sw.WriteLine("COPYRIGHT CRISOSTOMO ALBERTO BARAJAS SOLANO");
             sw.WriteLine("HDSP, UIS, 2015");
@@ -397,86 +325,39 @@ namespace RockStatic
             sw.WriteLine("---------------------------------------------------------------------");
             sw.WriteLine("");
             // si existe informacion de segmentacion entonces se escibe en disco
-            if (this.segmentacionHigh)
+            if (this.segmentacionDone)
             {
                 sw.WriteLine("CORE");
                 sw.WriteLine("X");
-                sw.WriteLine(this.areaCoreHigh.x);
+                sw.WriteLine(this.areaCore.x);
                 sw.WriteLine("Y");
-                sw.WriteLine(this.areaCoreHigh.y);
+                sw.WriteLine(this.areaCore.y);
                 sw.WriteLine("WIDTH");
-                sw.WriteLine(this.areaCoreHigh.width);
+                sw.WriteLine(this.areaCore.width);
                 sw.WriteLine("PHANTOM1");
                 sw.WriteLine("X");
-                sw.WriteLine(this.areaPhantom1High.x);
+                sw.WriteLine(this.areaPhantom1.x);
                 sw.WriteLine("Y");
-                sw.WriteLine(this.areaPhantom1High.y);
+                sw.WriteLine(this.areaPhantom1.y);
                 sw.WriteLine("WIDTH");
-                sw.WriteLine(this.areaPhantom1High.width);
+                sw.WriteLine(this.areaPhantom1.width);
                 sw.WriteLine("PHANTOM2");
                 sw.WriteLine("X");
-                sw.WriteLine(this.areaPhantom2High.x);
+                sw.WriteLine(this.areaPhantom2.x);
                 sw.WriteLine("Y");
-                sw.WriteLine(this.areaPhantom2High.y);
+                sw.WriteLine(this.areaPhantom2.y);
                 sw.WriteLine("WIDTH");
-                sw.WriteLine(this.areaPhantom2High.width);
+                sw.WriteLine(this.areaPhantom2.width);
                 sw.WriteLine("PHANTOM3");
                 sw.WriteLine("X");
-                sw.WriteLine(this.areaPhantom3High.x);
+                sw.WriteLine(this.areaPhantom3.x);
                 sw.WriteLine("Y");
-                sw.WriteLine(this.areaPhantom3High.y);
+                sw.WriteLine(this.areaPhantom3.y);
                 sw.WriteLine("WIDTH");
-                sw.WriteLine(this.areaPhantom3High.width);
+                sw.WriteLine(this.areaPhantom3.width);
             }            
             
-            // se cierra el streamwriter del archivo RSPH
-            sw.Close();
-
-            // se empiezan a escribir los elementos LOW tal y como se tienen ordenados en memoria
-            sw = new StreamWriter(folderPath + name + ".rspl");
-            sw.WriteLine("PROYECTO DE ROCKSTATIC: CARACTERIZACION ESTATICA DE ROCAS");
-            sw.WriteLine("COPYRIGHT CRISOSTOMO ALBERTO BARAJAS SOLANO");
-            sw.WriteLine("HDSP, UIS, 2015");
-            sw.WriteLine("");
-            sw.WriteLine("SE PROHIBE LA MODIFICACION DE CUALQUIERA DE LOS ARCHIVOS RELACIONADOS");
-            sw.WriteLine("CON EL SOFTWARE ROCKSTATIC SIN LA DEBIDA AUTORIZACION DEL AUTOR O DEL");
-            sw.WriteLine("DIRECTOR DEL GRUPO HDSP");
-            sw.WriteLine("---------------------------------------------------------------------");
-            sw.WriteLine("");
-            // si existe informacion de segmentacion entonces se escibe en disco
-            if (this.segmentacionLow)
-            {
-                sw.WriteLine("CORE");
-                sw.WriteLine("X");
-                sw.WriteLine(this.areaCoreLow.x);
-                sw.WriteLine("Y");
-                sw.WriteLine(this.areaCoreLow.y);
-                sw.WriteLine("WIDTH");
-                sw.WriteLine(this.areaCoreLow.width);
-                sw.WriteLine("PHANTOM1");
-                sw.WriteLine("X");
-                sw.WriteLine(this.areaPhantom1Low.x);
-                sw.WriteLine("Y");
-                sw.WriteLine(this.areaPhantom1Low.y);
-                sw.WriteLine("WIDTH");
-                sw.WriteLine(this.areaPhantom1Low.width);
-                sw.WriteLine("PHANTOM2");
-                sw.WriteLine("X");
-                sw.WriteLine(this.areaPhantom2Low.x);
-                sw.WriteLine("Y");
-                sw.WriteLine(this.areaPhantom2Low.y);
-                sw.WriteLine("WIDTH");
-                sw.WriteLine(this.areaPhantom2Low.width);
-                sw.WriteLine("PHANTOM3");
-                sw.WriteLine("X");
-                sw.WriteLine(this.areaPhantom3Low.x);
-                sw.WriteLine("Y");
-                sw.WriteLine(this.areaPhantom3Low.y);
-                sw.WriteLine("WIDTH");
-                sw.WriteLine(this.areaPhantom3Low.width);
-            }   
-
-            // se cierra el streamwriter del archivo RSPL
+            // se cierra el streamwriter del archivo RSPC
             sw.Close();
         }
 
@@ -484,154 +365,78 @@ namespace RockStatic
         /// Establece las coordenadas para la segmentacion del Core con el tipo de dato CCuadrado
         /// </summary>
         /// <param name="elemento">CCuadrado que contiene la informacion del cuadrado</param>
-        public void SetCoreHigh(CCuadrado elemento)
+        public void SetCore(CCuadrado elemento)
         {
-            this.areaCoreHigh = new CCuadrado(elemento);
-            this.areaCoreHigh.nombre = "Core";
+            this.areaCore = new CCuadrado(elemento);
+            this.areaCore.nombre = "Core";
             // se corrigen las coordenadas y ancho del cuadrado
 
         }
 
         /// <summary>
-        /// Establece las coordenadas para la segmentacion del Core con el tipo de dato CCuadrado
-        /// </summary>
-        /// <param name="elemento"></param>
-        public void SetCoreLow(CCuadrado elemento)
-        {
-            this.areaCoreLow = new CCuadrado(elemento);
-            this.areaCoreLow.nombre = "Core";
-        }
-
-        /// <summary>
         /// Devuelve el tipo de dato CCuadrado que contiene las coordenadas de la segmentacion del Core
         /// </summary>
         /// <returns></returns>
-        public CCuadrado GetCoreHigh()
+        public CCuadrado GetCore()
         {
-            return areaCoreHigh;
-        }
-
-        /// <summary>
-        /// Devuelve el tipo de dato CCuadrado que contiene las coordenadas de la segmentacion del Core
-        /// </summary>
-        /// <returns></returns>
-        public CCuadrado GetCoreLow()
-        {
-            return areaCoreLow;
+            return areaCore;
         }
 
         /// <summary>
         /// Establece las coordenadas para la segmentacion del Phantom1 con el tipo de dato CCuadrado
         /// </summary>
         /// <param name="elemento"></param>
-        public void SetPhantom1High(CCuadrado elemento)
+        public void SetPhantom1(CCuadrado elemento)
         {
-            this.areaPhantom1High = new CCuadrado(elemento);
-            this.areaPhantom1High.nombre = "Phantom1";
-        }
-
-        /// <summary>
-        /// Establece las coordenadas para la segmentacion del Phantom1 con el tipo de dato CCuadrado
-        /// </summary>
-        /// <param name="elemento"></param>
-        public void SetPhantom1Low(CCuadrado elemento)
-        {
-            this.areaPhantom1Low = new CCuadrado(elemento);
-            this.areaPhantom1Low.nombre = "Phantom1";
+            this.areaPhantom1 = new CCuadrado(elemento);
+            this.areaPhantom1.nombre = "Phantom1";
         }
 
         /// <summary>
         /// Establece las coordenadas para la segmentacion del Phantom2 con el tipo de dato CCuadrado
         /// </summary>
         /// <param name="elemento"></param>
-        public void SetPhantom2High(CCuadrado elemento)
+        public void SetPhantom2(CCuadrado elemento)
         {
-            this.areaPhantom2High = new CCuadrado(elemento);
-            this.areaPhantom2High.nombre = "Phantom2";
-        }
+            this.areaPhantom2 = new CCuadrado(elemento);
+            this.areaPhantom2.nombre = "Phantom2";
+        }        
 
-        // <summary>
-        /// Establece las coordenadas para la segmentacion del Phantom2 con el tipo de dato CCuadrado
-        /// </summary>
-        /// <param name="elemento"></param>
-        public void SetPhantom2Low(CCuadrado elemento)
-        {
-            this.areaPhantom2Low = new CCuadrado(elemento);
-            this.areaPhantom2Low.nombre = "Phantom2";
-        }
-
-        // <summary>
+        /// <summary>
         /// Establece las coordenadas para la segmentacion del Phantom3 con el tipo de dato CCuadrado
         /// </summary>
         /// <param name="elemento"></param>
-        public void SetPhantom3High(CCuadrado elemento)
+        public void SetPhantom3(CCuadrado elemento)
         {
-            this.areaPhantom3High = new CCuadrado(elemento);
-            this.areaPhantom3High.nombre = "Phantom3";
-        }
-
-        // <summary>
-        /// Establece las coordenadas para la segmentacion del Phantom3 con el tipo de dato CCuadrado
-        /// </summary>
-        /// <param name="elemento"></param>
-        public void SetPhantom3Low(CCuadrado elemento)
-        {
-            this.areaPhantom3Low = new CCuadrado(elemento);
-            this.areaPhantom3Low.nombre = "Phantom3";
+            this.areaPhantom3 = new CCuadrado(elemento);
+            this.areaPhantom3.nombre = "Phantom3";
         }
 
         /// <summary>
         /// Devuelve el tipo de dato CCuadrado que contiene las coordenadas de la segmentacion del Phantom1
         /// </summary>
         /// <returns></returns>
-        public CCuadrado GetPhantom1High()
+        public CCuadrado GetPhantom1()
         {
-            return areaPhantom1High;
+            return areaPhantom1;
         }
 
         /// <summary>
         /// Devuelve el tipo de dato CCuadrado que contiene las coordenadas de la segmentacion del Phantom2
         /// </summary>
         /// <returns></returns>
-        public CCuadrado GetPhantom2High()
+        public CCuadrado GetPhantom2()
         {
-            return areaPhantom2High;
+            return areaPhantom2;
         }
 
         /// <summary>
         /// Devuelve el tipo de dato CCuadrado que contiene las coordenadas de la segmentacion del Phantom3
         /// </summary>
         /// <returns></returns>
-        public CCuadrado GetPhantom3High()
+        public CCuadrado GetPhantom3()
         {
-            return areaPhantom3High;
-        }
-
-        /// <summary>
-        /// Devuelve el tipo de dato CCuadrado que contiene las coordenadas de la segmentacion del Phantom1
-        /// </summary>
-        /// <returns></returns>
-        public CCuadrado GetPhantom1Low()
-        {
-            return areaPhantom1Low;
-        }
-
-        /// <summary>
-        /// Devuelve el tipo de dato CCuadrado que contiene las coordenadas de la segmentacion del Phantom2
-        /// </summary>
-        /// <returns></returns>
-        public CCuadrado GetPhantom2Low()
-        {
-            return areaPhantom2Low;
-        }
-
-        /// <summary>
-        /// Devuelve el tipo de dato CCuadrado que contiene las coordenadas de la segmentacion del Phantom3
-        /// </summary>
-        /// <returns></returns>
-        public CCuadrado GetPhantom3Low()
-        {
-            return areaPhantom3Low;
-        }
+            return areaPhantom3;
+        }        
     }
 }

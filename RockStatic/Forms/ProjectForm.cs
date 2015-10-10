@@ -49,18 +49,12 @@ namespace RockStatic
             this.lblProyecto.Text = padre.actual.name.ToUpper();
             
             // segmentacion
-            if (padre.actual.GetSegmentacionHigh()) pictSegHigh.Image = RockStatic.Properties.Resources.greenTick;
+            if (padre.actual.GetSegmentacionDone()) pictSegHigh.Image = RockStatic.Properties.Resources.greenTick;
             else pictSegHigh.Image = RockStatic.Properties.Resources.redX;
 
-            if (padre.actual.GetSegmentacionLow()) pictSegLow.Image = RockStatic.Properties.Resources.greenTick;
-            pictSegLow.Image = RockStatic.Properties.Resources.redX;
-
             // areas
-            if (padre.actual.GetAreasHigh()) pictAreasHigh.Image = RockStatic.Properties.Resources.greenTick;
-            else pictAreasHigh.Image = RockStatic.Properties.Resources.redX;
-
-            if (padre.actual.GetAreasLow()) pictAreasLow.Image = RockStatic.Properties.Resources.greenTick;
-            else pictAreasLow.Image = RockStatic.Properties.Resources.redX;
+            if (padre.actual.GetAreasDone()) pictAreasHigh.Image = RockStatic.Properties.Resources.greenTick;
+            else pictAreasHigh.Image = RockStatic.Properties.Resources.redX;            
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -86,31 +80,11 @@ namespace RockStatic
         private void btnAreasHigh_Click(object sender, EventArgs e)
         {
             // se verifica primero que primero se hallan segmentado correctamente los elementos HIGH y LOW
-            if (!padre.actual.GetSegmentacionHigh())
+            if (!padre.actual.GetSegmentacionDone())
             {
-                MessageBox.Show("No es posible realizar la seleccion de areas de interes para los elementos HIGH.\n\nRealize primero la segmentacion de los elementos HIGH.", "Error al iniciar la seleccion de areas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No es posible realizar la seleccion de areas de interes para los elementos.\n\nRealize primero la segmentacion de los elementos HIGH.", "Error al iniciar la seleccion de areas", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            }
-            if (!padre.actual.GetSegmentacionLow())
-            {
-                MessageBox.Show("No es posible realizar la seleccion de areas de interes para los elementos HIGH.\n\nRealize primero la segmentacion de los elementos LOW.", "Error al iniciar la seleccion de areas", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }            
-        }
-
-        private void btnAreasLow_Click(object sender, EventArgs e)
-        {
-            // se verifica primero que primero se hallan segmentado correctamente los elementos HIGH y LOW
-            if (!padre.actual.GetSegmentacionHigh())
-            {
-                MessageBox.Show("No es posible realizar la seleccion de areas de interes para los elementos LOW.\n\nRealize primero la segmentacion de los elementos HIGH.", "Error al iniciar la seleccion de areas", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (!padre.actual.GetSegmentacionLow())
-            {
-                MessageBox.Show("No es posible realizar la seleccion de areas de interes para los elementos LOW.\n\nRealize primero la segmentacion de los elementos LOW.", "Error al iniciar la seleccion de areas", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            }                   
         }
 
         private void lblProyecto_MouseDown(object sender, MouseEventArgs e)
@@ -132,8 +106,8 @@ namespace RockStatic
             if (!padre.abiertoSegmentacionForm)
             {
                 this.padre.segmentacionForm = new SegmentacionForm();
-                this.padre.segmentacionForm.Text = "SEGMENTACION HIGH";
-                this.padre.segmentacionForm.lblTitulo.Text = "SEGMENTACION HIGH";
+                this.padre.segmentacionForm.Text = "SEGMENTACION";
+                this.padre.segmentacionForm.lblTitulo.Text = "SEGMENTACION";
 
                 this.padre.segmentacionForm.MdiParent = this.MdiParent;
                 this.padre.segmentacionForm.padre = this.padre;
@@ -143,35 +117,7 @@ namespace RockStatic
             }
             else
             {
-                if (this.padre.segmentacionForm.lblTitulo.Text == "SEGMENTACION HIGH")
-                {
-                    // si esta abierta la segmentacion HIGH y se marca el boton HIGH
-                    this.padre.segmentacionForm.Select();
-                }
-                else
-                {
-                    // si esta abierta la segmentacion LOW y se marca el boton HIGH
-                    if (MessageBox.Show("La solicitado realizar la segmentacion de los elementos HIGH, pero se estan segmentando los elementos LOW.\r\n\r\nDesea cancelar la segmentacion de los elementos LOW?", "Advertencia: Segmentacion en proceso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        // se ha solicitado cambiar de elementos a segmentar
-                        this.padre.segmentacionForm.Close();
-
-                        this.padre.segmentacionForm = new SegmentacionForm();
-                        this.padre.segmentacionForm.Text = "SEGMENTACION HIGH";
-                        this.padre.segmentacionForm.lblTitulo.Text = "SEGMENTACION HIGH";
-
-                        this.padre.segmentacionForm.MdiParent = this.MdiParent;
-                        this.padre.segmentacionForm.padre = this.padre;
-
-                        this.padre.abiertoSegmentacionForm = true;
-                        this.padre.segmentacionForm.Show();
-                    }
-                    else
-                    {
-                        // se ha solicitado continuar con la segmentacion de los elementos LOW
-                        this.padre.segmentacionForm.Select();
-                    }
-                }
+                this.padre.segmentacionForm.Select();                
             }
         }
 
@@ -184,54 +130,6 @@ namespace RockStatic
         private void lblProyecto_DoubleClick(object sender, EventArgs e)
         {
             CentrarForm();
-        }
-
-        private void btnSegLow_Click(object sender, EventArgs e)
-        {
-            if (!padre.abiertoSegmentacionForm)
-            {
-                this.padre.segmentacionForm = new SegmentacionForm();
-                this.padre.segmentacionForm.Text = "SEGMENTACION LOW";
-                this.padre.segmentacionForm.lblTitulo.Text = "SEGMENTACION LOW";
-
-                this.padre.segmentacionForm.MdiParent = this.MdiParent;
-                this.padre.segmentacionForm.padre = this.padre;
-
-                this.padre.abiertoSegmentacionForm = true;
-                this.padre.segmentacionForm.Show();
-            }
-            else
-            {
-                if (this.padre.segmentacionForm.lblTitulo.Text == "SEGMENTACION LOW")
-                {
-                    // si esta abierta la segmentacion LOW y se marca el boton LOW
-                    this.padre.segmentacionForm.Select();
-                }
-                else
-                {
-                    // si esta abierta la segmentacion LOW y se marca el boton HIGH
-                    if (MessageBox.Show("La solicitado realizar la segmentacion de los elementos LOW, pero se estan segmentando los elementos HIGH.\r\n\r\nDesea cancelar la segmentacion de los elementos HIGH?", "Advertencia: Segmentacion en proceso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        // se ha solicitado cambiar de elementos a segmentar
-                        this.padre.segmentacionForm.Close();
-
-                        this.padre.segmentacionForm = new SegmentacionForm();
-                        this.padre.segmentacionForm.Text = "SEGMENTACION LOW";
-                        this.padre.segmentacionForm.lblTitulo.Text = "SEGMENTACION LOW";
-
-                        this.padre.segmentacionForm.MdiParent = this.MdiParent;
-                        this.padre.segmentacionForm.padre = this.padre;
-
-                        this.padre.abiertoSegmentacionForm = true;
-                        this.padre.segmentacionForm.Show();
-                    }
-                    else
-                    {
-                        // se ha solicitado continuar con la segmentacion de los elementos HIGH
-                        this.padre.segmentacionForm.Select();
-                    }
-                }
-            }
         }
 
         private void btnSegHigh_MouseEnter(object sender, EventArgs e)
