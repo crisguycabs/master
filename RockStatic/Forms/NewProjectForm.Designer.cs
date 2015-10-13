@@ -61,7 +61,7 @@
             this.txtNewName.Location = new System.Drawing.Point(75, 38);
             this.txtNewName.Name = "txtNewName";
             this.txtNewName.Size = new System.Drawing.Size(100, 22);
-            this.txtNewName.TabIndex = 2;
+            this.txtNewName.TabIndex = 1;
             this.txtNewName.Text = "NewProject";
             this.txtNewName.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -85,7 +85,7 @@
             this.btnSelHigh.Location = new System.Drawing.Point(143, 70);
             this.btnSelHigh.Name = "btnSelHigh";
             this.btnSelHigh.Size = new System.Drawing.Size(80, 23);
-            this.btnSelHigh.TabIndex = 4;
+            this.btnSelHigh.TabIndex = 2;
             this.btnSelHigh.Text = "Seleccionar";
             this.btnSelHigh.UseVisualStyleBackColor = false;
             this.btnSelHigh.Click += new System.EventHandler(this.btnSelHigh_Click);
@@ -131,7 +131,7 @@
             this.btnSelLow.Location = new System.Drawing.Point(143, 102);
             this.btnSelLow.Name = "btnSelLow";
             this.btnSelLow.Size = new System.Drawing.Size(80, 23);
-            this.btnSelLow.TabIndex = 4;
+            this.btnSelLow.TabIndex = 3;
             this.btnSelLow.Text = "Seleccionar";
             this.btnSelLow.UseVisualStyleBackColor = false;
             this.btnSelLow.Click += new System.EventHandler(this.btnSelLow_Click);
@@ -187,7 +187,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(196, 178);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(68, 23);
-            this.btnCancelar.TabIndex = 4;
+            this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);

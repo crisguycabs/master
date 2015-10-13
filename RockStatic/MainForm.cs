@@ -83,6 +83,16 @@ namespace RockStatic
         /// </summary>
         public PreviewSegForm previewSegForm;
 
+        /// <summary>
+        /// Instancia del form WaitingForm
+        /// </summary>
+        public WaitingForm waitingForm;
+
+        /// <summary>
+        /// Variable que indica si la ventana WaitingForm esta abierta o no
+        /// </summary>
+        public bool abiertoWaitingForm;
+
         #endregion
 
         Point lastClick;
@@ -90,6 +100,33 @@ namespace RockStatic
         public MainForm()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Se muestra la ventana WaitingForm, con el mensaje que se muestra como argumento
+        /// </summary>
+        /// <param name="mensaje"></param>
+        public void ShowWaiting(string mensaje)
+        {
+            if(!this.abiertoWaitingForm)
+            {
+                waitingForm = new WaitingForm();
+                waitingForm.lblTexto.Text = mensaje;
+                abiertoWaitingForm = true;
+                waitingForm.Show();
+                Application.DoEvents();
+            }
+            else
+            {
+                waitingForm.Select();
+            }
+        }
+
+        public void CloseWaiting()
+        {
+            abiertoWaitingForm = false;
+            waitingForm.Close();
+            Application.DoEvents();
         }
 
         /// <summary>

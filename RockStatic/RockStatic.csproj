@@ -110,6 +110,12 @@
     <Compile Include="Forms\SplashScreenForm.Designer.cs">
       <DependentUpon>SplashScreenForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\WaitingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WaitingForm.Designer.cs">
+      <DependentUpon>WaitingForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\PreviewSegForm.resx">
       <DependentUpon>PreviewSegForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -121,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\WaitingForm.resx">
+      <DependentUpon>WaitingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -163,6 +172,7 @@
     <None Include="resources\demaximize.png" />
     <None Include="resources\maximize.png" />
     <None Include="resources\minimize.png" />
+    <None Include="resources\hour-glass-icon.png" />
     <Content Include="RockStaticGreen.ico" />
     <None Include="resources\UISLogo.png" />
     <None Include="resources\RockStaticGreen.png" />

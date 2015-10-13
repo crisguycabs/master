@@ -113,10 +113,16 @@ namespace RockStatic
 
             if (openHigh.ShowDialog() == DialogResult.OK)
             {
+                // se muestra la ventana de espera
+                padre.ShowWaiting("Espere mientras RockStatic carga los elementos seleccionados...");
+
                 for (int i = 0; i < openHigh.FileNames.Length; i++) tempHigh.Add(openHigh.FileNames[i]);
                 pictHigh.Image = Properties.Resources.greenTick;
                 btnCheckHigh.Enabled = true;
                 CheckLargos();
+
+                // se cierra la ventana NewProyectForm
+                padre.CloseWaiting();
             }
         }
 
@@ -134,10 +140,16 @@ namespace RockStatic
 
             if (openLow.ShowDialog() == DialogResult.OK)
             {
+                // se muestra la ventana de espera
+                padre.ShowWaiting("Espere mientras RockStatic carga los elementos seleccionados...");
+
                 for (int i = 0; i < openLow.FileNames.Length; i++) tempLow.Add(openLow.FileNames[i]);
                 pictLow.Image = Properties.Resources.greenTick;
                 btnCheckLow.Enabled = true;
                 CheckLargos();
+
+                // se cierra la ventana NewProyectForm
+                padre.CloseWaiting();
             }
         }
 
@@ -226,6 +238,9 @@ namespace RockStatic
 
             if (saveFile.ShowDialog() == DialogResult.OK)
             {
+                // se muestra la ventana de espera
+                padre.ShowWaiting("Espere mientras RockStatic crea el nuevo proyecto...");
+
                 // se crea la carpeta
                 DirectoryInfo di = new DirectoryInfo(Path.GetDirectoryName(saveFile.FileName));
                 
@@ -253,13 +268,16 @@ namespace RockStatic
 
                 // se crea el proyecto
                 temp.Crear();
-                
+
+                // se cierra el form de espera
+                padre.CloseWaiting();
+
                 // se cierra la ventana NewProyectForm
                 this.Close();
 
                 // se abre el nuevo proyecto
                 padre.AbrirProyecto(folderPath + "\\" + Path.GetFileName(saveFile.FileName));
-            }
+            }            
         }
 
         private void lblTitle_MouseDown(object sender, MouseEventArgs e)
