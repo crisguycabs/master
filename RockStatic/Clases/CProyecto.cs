@@ -20,15 +20,55 @@ namespace RockStatic
         #region variables de clase
 
         /// <summary>
-        /// Lista de byte para almacenar las imagenenesByte de las imagenes/dycom de HIGH energy
+        /// Lista de byte[] para almacenar las imagenenesByte de las imagenes/dycom de HIGH energy
         /// </summary>
         private List<byte[]> filesHigh;
 
         /// <summary>
-        /// Lista de string para almacenar las imagenenesByte de las imagenes/dycom de LOW energy
+        /// Lista de byte[] para almacenar las imagenenesByte de las imagenes/dycom de LOW energy
         /// </summary>
         private List<byte[]> filesLow;
-                
+
+        /// <summary>
+        /// Lista de byte[] para almacenar las imagenesByte de los segmentos Core de los elementos HIGH
+        /// </summary>
+        private List<byte[]> segCoreHigh;
+
+        /// <summary>
+        /// Lista de byte[] para almacenar las imagenesByte de los segmentos Core de los elementos LOW
+        /// </summary>
+        private List<byte[]> segCoreLow;
+
+        /// <summary>
+        /// Lista de byte[] para almacenar las imagenesByte de los segmentos Phantom1 de los elementos HIGH
+        /// </summary>
+        private List<byte[]> segPhantom1High;
+
+        /// <summary>
+        /// Lista de byte[] para almacenar las imagenesByte de los segmentos Phantom2 de los elementos HIGH
+        /// </summary>
+        private List<byte[]> segPhantom2High;
+
+        /// <summary>
+        /// Lista de byte[] para almacenar las imagenesByte de los segmentos Phantom3 de los elementos HIGH
+        /// </summary>
+        private List<byte[]> segPhantom3High;
+
+        /// <summary>
+        /// Lista de byte[] para almacenar las imagenesByte de los segmentos Phantom1 de los elementos LOW
+        /// </summary>
+        private List<byte[]> segPhantom1Low;
+
+        /// <summary>
+        /// Lista de byte[] para almacenar las imagenesByte de los segmentos Phantom2 de los elementos LOW
+        /// </summary>
+        private List<byte[]> segPhantom2Low;
+
+        /// <summary>
+        /// Lista de byte[] para almacenar las imagenesByte de los segmentos Phantom3 de los elementos LOW
+        /// </summary>
+        private List<byte[]> segPhantom3Low;
+
         private int _count;
         /// <summary>
         /// Guarda el número de elementos HIGH (o LOW) con los que se está trabajando, y que se
@@ -108,9 +148,9 @@ namespace RockStatic
         }
 
         /// <summary>
-        /// Constructor con asignacion. Para cuando se necesite hacer una copia del proyecto
+        /// Constructor con asignacion. Crea un CProyecto nuevo como copia del CProyecto que se pasa como argumento
         /// </summary>
-        /// <param name="project"></param>
+        /// <param name="project">CProyecto que se va a duplicar</param>
         public CProyecto(CProyecto project)
         {
             name = project.name;
@@ -128,9 +168,9 @@ namespace RockStatic
         }
 
         /// <summary>
-        /// Llena la lista de elementos HIGH
+        /// Establece la lista de elementos HIGH
         /// </summary>
-        /// <param name="lista"></param>
+        /// <param name="lista">Lista temporal de elementos que se se convertiran en los elementos HIGH</param>
         public void SetHigh(List<byte[]> lista)
         {
             filesHigh = new List<byte[]>();
@@ -138,9 +178,9 @@ namespace RockStatic
         }
 
         /// <summary>
-        /// Llena la lista de elementos HIGH
+        /// Establece la lista de elementos HIGH
         /// </summary>
-        /// <param name="lista"></param>
+        /// <param name="lista">Lista temporal de elementos que se se convertiran en los elementos HIGH</param>
         public void SetHigh(List<string> lista)
         {
             filesHigh=new List<byte[]>();
@@ -148,9 +188,9 @@ namespace RockStatic
         }
 
         /// <summary>
-        /// Llena la lista de elementos LOW
+        /// Establece la lista de elementos LOW
         /// </summary>
-        /// <param name="lista"></param>
+        /// <param name="lista">Lista temporal de elementos que se se convertiran en los elementos LOW</param>
         public void SetLow(List<byte[]> lista)
         {
             filesLow = new List<byte[]>();
@@ -158,9 +198,9 @@ namespace RockStatic
         }
 
         /// <summary>
-        /// Llena la lista de elementos LOW
+        /// Establece la lista de elementos LOW
         /// </summary>
-        /// <param name="lista"></param>
+        /// <param name="lista">Lista temporal de elementos que se se convertiran en los elementos LOW</param>
         public void SetLow(List<string> lista)
         {
             filesLow = new List<byte[]>();
@@ -215,6 +255,7 @@ namespace RockStatic
         /// <summary>
         /// Establece la ruta de la carpeta donde se guarda el proyecto, y las imagenes
         /// </summary>
+        /// <param name="path">Ruta de la carpeta donde se guarda el proyecto</param>
         public void SetFolderPath(string path)
         {
             this.folderPath = path + "\\";
@@ -226,16 +267,28 @@ namespace RockStatic
             this.folderLow = folderPath + "low\\";
         }
 
+        /// <summary>
+        /// Devuelve la ruta completa del folder que contiene el proyecto, el archivo RSP
+        /// </summary>
+        /// <returns></returns>
         public string GetFolderPath()
         {
             return folderPath;
         }
 
+        /// <summary>
+        /// Devuelve la ruta completa del folder que contiene los elementos HIGH
+        /// </summary>
+        /// <returns></returns>
         public string GetFolderHigh()
         {
             return folderHigh;
         }
 
+        /// <summary>
+        /// Devuelve la ruta completa del folder que contiene los elementos LOW
+        /// </summary>
+        /// <returns></returns>
         public string GetFolderLow()
         {
             return folderLow;
@@ -253,7 +306,7 @@ namespace RockStatic
         /// <summary>
         /// Se establece si ya se ha realizado, o no, la seleccion de areas HIGH
         /// </summary>
-        /// <param name="set"></param>
+        /// <param name="set">True, ya se realizo la segmentacion; False, no se ha realizado la segmentacion</param>
         public void SetAreasDone(bool set)
         {
             areasDone = set;
@@ -385,7 +438,7 @@ namespace RockStatic
         /// <summary>
         /// Establece las coordenadas para la segmentacion del Phantom1 con el tipo de dato CCuadrado
         /// </summary>
-        /// <param name="elemento"></param>
+        /// <param name="elemento">CCuadrado que contiene la informacion del cuadrado</param>
         public void SetPhantom1(CCuadrado elemento)
         {
             this.areaPhantom1 = new CCuadrado(elemento);
@@ -395,7 +448,7 @@ namespace RockStatic
         /// <summary>
         /// Establece las coordenadas para la segmentacion del Phantom2 con el tipo de dato CCuadrado
         /// </summary>
-        /// <param name="elemento"></param>
+        /// <param name="elemento">CCuadrado que contiene la informacion del cuadrado</param>
         public void SetPhantom2(CCuadrado elemento)
         {
             this.areaPhantom2 = new CCuadrado(elemento);
@@ -405,7 +458,7 @@ namespace RockStatic
         /// <summary>
         /// Establece las coordenadas para la segmentacion del Phantom3 con el tipo de dato CCuadrado
         /// </summary>
-        /// <param name="elemento"></param>
+        /// <param name="elemento">CCuadrado que contiene la informacion del cuadrado</param>
         public void SetPhantom3(CCuadrado elemento)
         {
             this.areaPhantom3 = new CCuadrado(elemento);

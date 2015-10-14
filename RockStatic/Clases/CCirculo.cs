@@ -60,6 +60,10 @@ namespace RockStatic
             r = inR;
         }
 
+        /// <summary>
+        /// Constructor con asignacion. Se crea un duplicado del elemento CCirculo que se pasa como argumento
+        /// </summary>
+        /// <param name="punto">elemento CCirculo que se va a duplicar</param>
         public CCirculo(CCirculo punto)
         {
             x = punto.x;

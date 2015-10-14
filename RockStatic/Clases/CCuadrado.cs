@@ -61,6 +61,10 @@ namespace RockStatic
             width = inW;
         }
 
+        /// <summary>
+        /// Constructor con asignacion. Se crea una copia del elemento CCuadrado que se pasa como argumento
+        /// </summary>
+        /// <param name="copia">Elemento CCuadrado que se va a duplicar</param>
         public CCuadrado(CCuadrado copia)
         {
             nombre = copia.nombre;
