@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Drawing;
 
 namespace RockStatic
 {
@@ -30,44 +31,141 @@ namespace RockStatic
         private List<byte[]> filesLow;
 
         /// <summary>
-        /// Lista de byte[] para almacenar las imagenesByte de los segmentos Core de los elementos HIGH
+        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion transversal de los segmentos Core de los elementos HIGH
         /// </summary>
-        private List<byte[]> segCoreHigh;
+        private List<byte[]> segCoreTransHigh;
 
         /// <summary>
-        /// Lista de byte[] para almacenar las imagenesByte de los segmentos Core de los elementos LOW
+        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion transversal de los segmentos Core de los elementos LOW
         /// </summary>
-        private List<byte[]> segCoreLow;
+        private List<byte[]> segCoreTransLow;
 
         /// <summary>
-        /// Lista de byte[] para almacenar las imagenesByte de los segmentos Phantom1 de los elementos HIGH
+        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion transversal de los segmentos Phantom1 de los elementos HIGH
         /// </summary>
-        private List<byte[]> segPhantom1High;
+        private List<byte[]> segPhantom1TransHigh;
 
         /// <summary>
-        /// Lista de byte[] para almacenar las imagenesByte de los segmentos Phantom2 de los elementos HIGH
+        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion transversal de los segmentos Phantom2 de los elementos HIGH
         /// </summary>
-        private List<byte[]> segPhantom2High;
+        private List<byte[]> segPhantom2TransHigh;
 
         /// <summary>
-        /// Lista de byte[] para almacenar las imagenesByte de los segmentos Phantom3 de los elementos HIGH
+        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion transversal de los segmentos Phantom3 de los elementos HIGH
         /// </summary>
-        private List<byte[]> segPhantom3High;
+        private List<byte[]> segPhantom3TransHigh;
 
         /// <summary>
-        /// Lista de byte[] para almacenar las imagenesByte de los segmentos Phantom1 de los elementos LOW
+        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion transversal de los segmentos Phantom1 de los elementos LOW
         /// </summary>
-        private List<byte[]> segPhantom1Low;
+        private List<byte[]> segPhantom1TransLow;
 
         /// <summary>
-        /// Lista de byte[] para almacenar las imagenesByte de los segmentos Phantom2 de los elementos LOW
+        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion transversal de los segmentos Phantom2 de los elementos LOW
         /// </summary>
-        private List<byte[]> segPhantom2Low;
+        private List<byte[]> segPhantom2TransLow;
 
         /// <summary>
-        /// Lista de byte[] para almacenar las imagenesByte de los segmentos Phantom3 de los elementos LOW
+        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion transversal de los segmentos Phantom3 de los elementos LOW
         /// </summary>
-        private List<byte[]> segPhantom3Low;
+        private List<byte[]> segPhantom3TransLow;
+
+        /// <summary>
+        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion vertical de los segmentos Core de los elementos HIGH
+        /// </summary>
+        private List<byte[]> segCoreVerHigh;
+
+        /// <summary>
+        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion vertical de los segmentos Core de los elementos LOW
+        /// </summary>
+        private List<byte[]> segCoreVerLow;
+
+        /// <summary>
+        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion vertical de los segmentos Phantom1 de los elementos HIGH
+        /// </summary>
+        private List<byte[]> segPhantom1VerHigh;
+
+        /// <summary>
+        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion vertical de los segmentos Phantom2 de los elementos HIGH
+        /// </summary>
+        private List<byte[]> segPhantom2VerHigh;
+
+        /// <summary>
+        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion vertical de los segmentos Phantom3 de los elementos HIGH
+        /// </summary>
+        private List<byte[]> segPhantom3VerHigh;
+
+        /// <summary>
+        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion vertical de los segmentos Phantom1 de los elementos LOW
+        /// </summary>
+        private List<byte[]> segPhantom1VerLow;
+
+        /// <summary>
+        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion vertical de los segmentos Phantom2 de los elementos LOW
+        /// </summary>
+        private List<byte[]> segPhantom2VerLow;
+
+        /// <summary>
+        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion vertical de los segmentos Phantom3 de los elementos LOW
+        /// </summary>
+        private List<byte[]> segPhantom3VerLow;
+
+        /// <summary>
+        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion horizontal de los segmentos Core de los elementos HIGH
+        /// </summary>
+        private List<byte[]> segCoreHorHigh;
+
+        /// <summary>
+        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion horizontal de los segmentos Core de los elementos LOW
+        /// </summary>
+        private List<byte[]> segCoreHorLow;
+
+        /// <summary>
+        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion horizontal de los segmentos Phantom1 de los elementos HIGH
+        /// </summary>
+        private List<byte[]> segPhantom1HorHigh;
+
+        /// <summary>
+        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion horizontal de los segmentos Phantom2 de los elementos HIGH
+        /// </summary>
+        private List<byte[]> segPhantom2HorHigh;
+
+        /// <summary>
+        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion horizontal de los segmentos Phantom3 de los elementos HIGH
+        /// </summary>
+        private List<byte[]> segPhantom3HorHigh;
+
+        /// <summary>
+        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion horizontal de los segmentos Phantom1 de los elementos LOW
+        /// </summary>
+        private List<byte[]> segPhantom1HorLow;
+
+        /// <summary>
+        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion horizontal de los segmentos Phantom2 de los elementos LOW
+        /// </summary>
+        private List<byte[]> segPhantom2HorLow;
+
+        /// <summary>
+        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion horizontal de los segmentos Phantom3 de los elementos LOW
+        /// </summary>
+        private List<byte[]> segPhantom3HorLow;
+
+
+
+        /// <summary>
+        /// Indica si ya se realizo o no el recorte transversal del core y phantoms
+        /// </summary>
+        private bool segTransDone;
+
+        /// <summary>
+        /// Indica si ya se realizo o no el recorte del plano horizontal XZ del core y phantoms
+        /// </summary>
+        private bool segHorDone;
+
+        /// <summary>
+        /// Indica si ya se realizo o no el recorte del plano horizontal YZ del core y phantoms
+        /// </summary>
+        private bool segVerDone;
 
         private int _count;
         /// <summary>
@@ -135,6 +233,21 @@ namespace RockStatic
         /// </summary>
         private CCuadrado areaPhantom3;
 
+        /// <summary>
+        /// Alto del voxel, en mm. Debe ser igual al ancho del voxel
+        /// </summary>
+        public double voxelHeight=0.175781;
+
+        /// <summary>
+        /// Ancho del voxel, en mm. Debe ser igual al alto del voxel
+        /// </summary>
+        public double voxelWidth=0.175781;
+
+        /// <summary>
+        /// Profundo del voxel, en mm
+        /// </summary>
+        public double voxelDepth=0.33;
+
         #endregion
 
         /// <summary>
@@ -145,6 +258,8 @@ namespace RockStatic
             this.name = "NuevoProyecto";
             filesHigh = new List<byte[]>();
             filesLow = new List<byte[]>();
+
+            
         }
 
         /// <summary>
@@ -165,6 +280,60 @@ namespace RockStatic
                 SetHigh(project.GetHigh());
                 SetLow(project.GetLow());
             }
+        }
+
+        /// <summary>
+        /// Se establece si ya se realizo, o no, el recorte horizontal de los core y phantom
+        /// </summary>
+        /// <param name="estado"></param>
+        public void SetSegHorDone(bool estado)
+        {
+            segHorDone = estado;
+        }
+
+        /// <summary>
+        /// Se establece si ya se realizo, o no, el recorte vertical de los core y phantom
+        /// </summary>
+        /// <param name="estado"></param>
+        public void SetSegVerDone(bool estado)
+        {
+            segVerDone = estado;
+        }
+
+        /// <summary>
+        /// Se establece si ya se realizo, o no, el recorte transversal de los core y phantom
+        /// </summary>
+        /// <param name="estado"></param>
+        public void SetSegTransDone(bool estado)
+        {
+            segTransDone = estado;
+        }
+        
+        /// <summary>
+        /// Devuelve si ya se realizo, o no, el recorte transversal de los core y phantom
+        /// </summary>
+        /// <returns></returns>
+        public bool GetSegTransDone()
+        {
+            return segTransDone;
+        }
+
+        /// <summary>
+        /// Devuelve si ya se realizo, o no, el recorte horizontal de los core y phantom
+        /// </summary>
+        /// <returns></returns>
+        public bool GetSegHorDone()
+        {
+            return segHorDone;
+        }
+
+        /// <summary>
+        /// Devuelve si ya se realizo, o no, el recorte vertical de los core y phantom
+        /// </summary>
+        /// <returns></returns>
+        public bool GetSegVerDone()
+        {
+            return segVerDone;
         }
 
         /// <summary>
@@ -490,6 +659,169 @@ namespace RockStatic
         public CCuadrado GetPhantom3()
         {
             return areaPhantom3;
-        }        
+        }
+
+        /// <summary>
+        /// Toma una imagenByte, la transforma a imagen, recorta el area señalada, la guarda en disco como imagenByte y devuelve una imagenByte
+        /// </summary>
+        /// <param name="srcByte">Byte[] con la imagen a recortar</param>
+        /// <param name="area">CCuadrado que contiene el area a recortar</param>
+        /// <param name="path">Folder donde se debe guardar la imagenByte recortada</param>
+        /// <param name="nombre">Nombre que se le debe dar a la imagenByte recortada</param>
+        /// <param name="indice">Indice necesario para nombrar la imagenByte en disco</param>
+        /// <returns></returns>
+        public static byte[] Cropper(byte[] srcByte,CCuadrado area,string path, string nombre, int indice)
+        {
+            // se transforma a imagen
+            Bitmap tempImage = (Bitmap)MainForm.Byte2image(srcByte);
+
+            // se crea un rectangulo para realizar el corte
+            Rectangle rectArea = new Rectangle(area.x - area.width, area.y - area.width, area.width * 2, area.width * 2);
+            
+            // se realiza el corte
+            tempImage = tempImage.Clone(rectArea, tempImage.PixelFormat);
+
+            // se convierte a byte
+            byte[] tempByte = MainForm.Img2byte(tempImage);
+            tempImage.Dispose();
+
+            // se guarda en disco
+            File.WriteAllBytes(path + nombre + indice, tempByte);
+
+            return tempByte;
+        }
+
+        /// <summary>
+        /// Se recortan los elementos HIGH según la informacion de segmentacion que hay guardaday se generan los cortes transversales
+        /// de los segmentos CORE y PHANTOM HIGH y LOW
+        /// </summary>
+        /// <returns>True, el corte se realizo de exitosamente; False, no se puede realizar el corte</returns>
+        public bool GenerarSegTransveral()
+        {
+            // primero se verifica que exista la informacion de segmentacion
+            if(!segmentacionDone) return false;
+            
+            // se toma cada elemento HIGH y LOW y se recorta el CORE, PHANTOM1, PHANTOM2 y PHANTOM3
+            segCoreTransHigh = new List<byte[]>();
+            segCoreTransLow = new List<byte[]>();
+            segPhantom1TransHigh = new List<byte[]>();
+            segPhantom1TransLow = new List<byte[]>();
+            segPhantom2TransHigh = new List<byte[]>();
+            segPhantom2TransLow = new List<byte[]>();
+            segPhantom3TransHigh = new List<byte[]>();
+            segPhantom3TransLow = new List<byte[]>();
+
+            for (int i = 0; i < _count; i++)
+            {
+                // se toma cada byte[] y se convierte en image, luego en bitmap
+                // esa imagen luego se recorta segun la informacion de segmentacion
+                // cada recorte se guarda en disco y en memoria
+
+                segCoreTransHigh.Add(Cropper(filesHigh[i], areaCore, GetFolderHigh(), "coreTrans-",i));
+                segCoreTransLow.Add(Cropper(filesLow[i], areaCore, GetFolderLow(), "coreTrans-", i));
+
+                segPhantom1TransHigh.Add(Cropper(filesHigh[i], areaPhantom1, GetFolderHigh(), "phantom1Trans-", i));
+                segPhantom1TransLow.Add(Cropper(filesLow[i], areaPhantom1, GetFolderLow(), "phantom1Trans-", i));
+
+                segPhantom2TransHigh.Add(Cropper(filesHigh[i], areaPhantom2, GetFolderHigh(), "phantom2Trans-", i));
+                segPhantom2TransLow.Add(Cropper(filesLow[i], areaPhantom2, GetFolderLow(), "phantom2Trans-", i));
+
+                segPhantom3TransHigh.Add(Cropper(filesHigh[i], areaPhantom3, GetFolderHigh(), "phantom3Trans-", i));
+                segPhantom3TransLow.Add(Cropper(filesLow[i], areaPhantom3, GetFolderLow(), "phantom3Trans-", i));
+            }
+
+            SetSegTransDone(true);
+
+            return true;
+        }
+
+        /// <summary>
+        /// Toma las segmentaciones transversales y genera los planes de corte verticales. Se varia la coordenada X de la segmentacion
+        /// transversal para formar cada plano
+        /// </summary>
+        /// <returns></returns>
+        public bool GenerarSegVertical()
+        {
+            // primero se verifica que se halla realizado la segmentacion transversal
+            if (!segTransDone) return false;
+
+            // se crea la imagen que contendra el plano de corte del core
+            // el largo del plano de corte es la cantidad de slides que existen
+            // el alto del plano es el alto de la segmentacion transversal del core
+            Bitmap referencia = (Bitmap)MainForm.Byte2image(segCoreTransHigh[0]);
+            int alto = referencia.Height;
+
+            // se tiene un factor de escalado por que cada pixel de profundidad no corresponde a la misma distancia de un pixel de
+            // los cortes transversales
+            int factorEscalado = (int)Math.Ceiling(voxelDepth / voxelHeight);
+            
+            referencia.Dispose(); // se libera memoria, no es necesario usar mas ese bitmap
+
+            segCoreVerHigh = new List<byte[]>();
+            segCoreVerLow = new List<byte[]>();
+            segPhantom1VerHigh = new List<byte[]>();
+            segPhantom2VerHigh = new List<byte[]>();
+            segPhantom3VerHigh = new List<byte[]>();
+            segPhantom1HorHigh = new List<byte[]>();
+            segPhantom2HorHigh = new List<byte[]>();
+            segPhantom3HorHigh = new List<byte[]>();
+
+            // el corte transversal es un circulo, el alto y el ancho es el mismo
+            // se recorre la misma coordenada X para todos los cortes transversales
+            for (int iplano = 0; iplano < alto; iplano++)
+            {
+                Bitmap plano = new Bitmap(_count*factorEscalado, alto);
+
+                // se hace lock sobre la imagen para empezar a pintar
+                using (CLockBitmap lockPlano = new CLockBitmap(plano))
+                {
+                    // se recorren todos los segmentos transversales del core
+                    int iSlide = 0;
+                    for (int i = 0; i < _count*factorEscalado; i=i+2)
+                    {
+                        Bitmap src = (Bitmap)MainForm.Byte2image(segCoreTransHigh[iSlide]);
+                        // se hace lock sobre cada imagen destino para obtener mas rapido los pizeles que se quieren
+                        using (CLockBitmap lockSrc = new CLockBitmap(src))
+                        {
+                            // se toma la coordenada X segun el indice iplano
+                            for (int j = 0; j < alto; j++)
+                            {
+                                lockPlano.SetPixel(i, j, lockSrc.GetPixel(iplano, j));
+                                lockPlano.SetPixel(i+1, j, lockSrc.GetPixel(iplano, j));
+                            }
+                        }
+                        src.Dispose();
+                        iSlide++;
+                    }
+                }
+
+                // con el plano creado se guarda como imagenByte en disco y en memoria
+                segCoreVerHigh.Add(MainForm.Img2byte(plano));
+                File.WriteAllBytes(folderHigh + "coreVer-" + iplano, segCoreVerHigh[iplano]);
+
+                // despues de haber creado y guardado el plano, se elimina
+                plano.Dispose();
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Devuelve los segmentos transversales del core de los elementos HIGH
+        /// </summary>
+        /// <returns></returns>
+        public List<byte[]> GetSegCoreTransHigh()
+        {
+            return segCoreTransHigh;
+        }
+
+        /// <summary>
+        /// Devuelve los segmentos transversales del core de los elementos LOW
+        /// </summary>
+        /// <returns></returns>
+        public List<byte[]> GetSegCoreTransLow()
+        {
+            return segCoreTransLow;
+        }
     }
 }

@@ -41,6 +41,7 @@
             this.radAuto = new System.Windows.Forms.RadioButton();
             this.radManual = new System.Windows.Forms.RadioButton();
             this.grpBox = new System.Windows.Forms.GroupBox();
+            this.btnTest = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnPreview = new System.Windows.Forms.Button();
             this.btnClean = new System.Windows.Forms.Button();
@@ -63,11 +64,12 @@
             this.segmentacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.segmentacionAutomaticaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.segmentacionManualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.previsualizarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cancelarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.previsualizarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnPlano = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackElementos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictElemento)).BeginInit();
             this.grpAuto.SuspendLayout();
@@ -252,6 +254,8 @@
             // 
             // grpBox
             // 
+            this.grpBox.Controls.Add(this.btnPlano);
+            this.grpBox.Controls.Add(this.btnTest);
             this.grpBox.Controls.Add(this.label1);
             this.grpBox.Controls.Add(this.btnPreview);
             this.grpBox.Controls.Add(this.btnClean);
@@ -267,6 +271,16 @@
             this.grpBox.Size = new System.Drawing.Size(199, 194);
             this.grpBox.TabIndex = 14;
             this.grpBox.TabStop = false;
+            // 
+            // btnTest
+            // 
+            this.btnTest.Location = new System.Drawing.Point(10, 164);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(39, 23);
+            this.btnTest.TabIndex = 9;
+            this.btnTest.Text = "Test";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
             // label1
             // 
@@ -541,6 +555,18 @@
             this.segmentacionManualToolStripMenuItem.Text = "Segmentacion &Manual";
             this.segmentacionManualToolStripMenuItem.Click += new System.EventHandler(this.segmentacionManualToolStripMenuItem_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(212, 6);
+            // 
+            // previsualizarToolStripMenuItem1
+            // 
+            this.previsualizarToolStripMenuItem1.Name = "previsualizarToolStripMenuItem1";
+            this.previsualizarToolStripMenuItem1.Size = new System.Drawing.Size(215, 22);
+            this.previsualizarToolStripMenuItem1.Text = "&Previsualizar";
+            this.previsualizarToolStripMenuItem1.Click += new System.EventHandler(this.btnPreview_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -560,17 +586,15 @@
             this.cancelarToolStripMenuItem.Text = "&Cancelar";
             this.cancelarToolStripMenuItem.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // previsualizarToolStripMenuItem1
+            // btnPlano
             // 
-            this.previsualizarToolStripMenuItem1.Name = "previsualizarToolStripMenuItem1";
-            this.previsualizarToolStripMenuItem1.Size = new System.Drawing.Size(215, 22);
-            this.previsualizarToolStripMenuItem1.Text = "&Previsualizar";
-            this.previsualizarToolStripMenuItem1.Click += new System.EventHandler(this.btnPreview_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(212, 6);
+            this.btnPlano.Location = new System.Drawing.Point(55, 164);
+            this.btnPlano.Name = "btnPlano";
+            this.btnPlano.Size = new System.Drawing.Size(39, 23);
+            this.btnPlano.TabIndex = 9;
+            this.btnPlano.Text = "Plan";
+            this.btnPlano.UseVisualStyleBackColor = true;
+            this.btnPlano.Click += new System.EventHandler(this.btnPlano_Click);
             // 
             // SegmentacionForm
             // 
@@ -662,5 +686,7 @@
         private System.Windows.Forms.ToolStripMenuItem cancelarToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem previsualizarToolStripMenuItem1;
+        private System.Windows.Forms.Button btnTest;
+        private System.Windows.Forms.Button btnPlano;
     }
 }

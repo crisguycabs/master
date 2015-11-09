@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Clases\CCuadrado.cs" />
     <Compile Include="Clases\CCirculo.cs" />
+    <Compile Include="Clases\CLockBitmap.cs" />
     <Compile Include="Forms\PreviewSegForm.cs">
       <SubType>Form</SubType>
     </Compile>

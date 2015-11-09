@@ -51,9 +51,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::RockStatic.Properties.Resources.hour_glass_icon;
-            this.pictureBox1.Location = new System.Drawing.Point(11, 40);
+            this.pictureBox1.Location = new System.Drawing.Point(22, 50);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(73, 85);
+            this.pictureBox1.Size = new System.Drawing.Size(53, 67);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;

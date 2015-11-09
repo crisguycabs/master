@@ -1,3 +1,17 @@
 Pendientes
 
-* Empezar con la creacion de los planes de corte
+* Volver la creacion de los cortes trans un metodo multi-thread
+* Generar los planos de corte horizontales
+* Generar los planos de corte verticales
+* Volver la generacion de planos horizontales un metodo multi-thread
+* Volver la generacion de planos verticales un metodo multi-thread
+* Crear interfaz visual para la presentacion de los cortes trans y hor/ver
+* Asegurar y completar la documentacion de CheckForm
+* Asegurar y completar la documentacion de HomeForm
+* Asegurar y completar la documentacion de MainForm
+* Asegurar y completar la documentacion de NewProyectForm
+* Asegurar y completar la documentacion de PreviewSegForm
+* Asegurar y completar la documentacion de ProjectForm
+* Asegurar y completar la documentacion de SegmentacionForm
+* Asegurar y completar la documentacion de SplashScreenForm
+* Asegurar y completar la documentacion de WaitingForm

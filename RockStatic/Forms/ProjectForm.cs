@@ -49,12 +49,28 @@ namespace RockStatic
             this.lblProyecto.Text = padre.actual.name.ToUpper();
             
             // segmentacion
-            if (padre.actual.GetSegmentacionDone()) pictSegHigh.Image = RockStatic.Properties.Resources.greenTick;
-            else pictSegHigh.Image = RockStatic.Properties.Resources.redX;
+            if (padre.actual.GetSegmentacionDone())
+            {
+                pictSegHigh.Image = RockStatic.Properties.Resources.greenTick;
+                lblSeg.Text = "La segmentacion de los slides se completo exitosamente";
+            }
+            else
+            {
+                pictSegHigh.Image = RockStatic.Properties.Resources.redX;
+                lblSeg.Text = "Aun no ha realizado la segmentacion de los slides";
+            }
 
             // areas
-            if (padre.actual.GetAreasDone()) pictAreasHigh.Image = RockStatic.Properties.Resources.greenTick;
-            else pictAreasHigh.Image = RockStatic.Properties.Resources.redX;            
+            if (padre.actual.GetAreasDone())
+            {
+                pictAreasHigh.Image = RockStatic.Properties.Resources.greenTick;
+                lblArea.Text = "Se seleccionaron las areas de interes exitosamente";
+            }
+            else
+            {
+                pictAreasHigh.Image = RockStatic.Properties.Resources.redX;
+                lblArea.Text = "Aun no ha seleccionado las areas de interes";
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)

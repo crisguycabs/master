@@ -118,7 +118,8 @@ namespace RockStatic
             }
             else
             {
-                waitingForm.Select();
+                waitingForm.lblTexto.Text = mensaje;
+                Application.DoEvents();
             }
         }
 
@@ -296,6 +297,30 @@ namespace RockStatic
             return imageData;
         }
 
+        /// <summary>
+        /// Convierte una imagen en byte[]
+        /// </summary>
+        /// <param name="imageLocation">Ruta de la imagen en disco</param>
+        /// <returns></returns>
+        public static byte[] Img2byte(Bitmap srcImg)
+        {
+            ImageConverter _imageConverter = new ImageConverter();
+            byte[] xByte = (byte[])_imageConverter.ConvertTo(srcImg, typeof(byte[]));
+            return xByte;
+        }
+
+        public static byte[] Img2byte(Image srcImg)
+        {
+            ImageConverter _imageConverter = new ImageConverter();
+            byte[] xByte = (byte[])_imageConverter.ConvertTo(srcImg, typeof(byte[]));
+            return xByte;
+        }
+
+        /// <summary>
+        /// Convierte un byte[] en imagen
+        /// </summary>
+        /// <param name="byteArrayIn">imagen en formato de byte[]</param>
+        /// <returns></returns>
         public static Image Byte2image(byte[] byteArrayIn)
         {
             try
@@ -342,7 +367,9 @@ namespace RockStatic
 
             if (openFile.ShowDialog() == DialogResult.OK)
             {
+                ShowWaiting("Por favor espere mientras RockStatic carga el proyecto " + openFile.SafeFileName);
                 AbrirProyecto(openFile.FileName);
+                CloseWaiting();
                 return true;
             }
             else return false;
@@ -416,7 +443,7 @@ namespace RockStatic
             // se leen los elementos LOW que estan en la carpeta LOW, dentro de la ruta del proyect
             files = new List<byte[]>();
             for (int i = 0; i < actual.count; i++) files.Add(File.ReadAllBytes(actual.GetFolderLow() + i));
-            actual.SetHigh(files);
+            actual.SetLow(files);
             
             // Si existe informacion de segmentacion se lee el archivo RSPC
             if(actual.GetSegmentacionDone())

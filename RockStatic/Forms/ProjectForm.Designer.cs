@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectForm));
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblSeg = new System.Windows.Forms.Label();
             this.pictSegHigh = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSegHigh = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnAreasHigh = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblArea = new System.Windows.Forms.Label();
             this.pictAreasHigh = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -59,19 +59,18 @@
             this.menuProject.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // lblSeg
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 14);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Elementos";
+            this.lblSeg.Location = new System.Drawing.Point(6, 20);
+            this.lblSeg.Name = "lblSeg";
+            this.lblSeg.Size = new System.Drawing.Size(223, 33);
+            this.lblSeg.TabIndex = 7;
+            this.lblSeg.Text = "Aun no ha realizado la segmentacion de los slides";
             // 
             // pictSegHigh
             // 
             this.pictSegHigh.Image = global::RockStatic.Properties.Resources.redX;
-            this.pictSegHigh.Location = new System.Drawing.Point(114, 20);
+            this.pictSegHigh.Location = new System.Drawing.Point(114, 47);
             this.pictSegHigh.Name = "pictSegHigh";
             this.pictSegHigh.Size = new System.Drawing.Size(23, 23);
             this.pictSegHigh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -80,9 +79,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnSegHigh);
-            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.pictSegHigh);
+            this.groupBox1.Controls.Add(this.btnSegHigh);
+            this.groupBox1.Controls.Add(this.lblSeg);
             this.groupBox1.Location = new System.Drawing.Point(10, 41);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(233, 79);
@@ -97,7 +96,7 @@
             this.btnSegHigh.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnSegHigh.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnSegHigh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSegHigh.Location = new System.Drawing.Point(145, 20);
+            this.btnSegHigh.Location = new System.Drawing.Point(145, 47);
             this.btnSegHigh.Name = "btnSegHigh";
             this.btnSegHigh.Size = new System.Drawing.Size(80, 23);
             this.btnSegHigh.TabIndex = 9;
@@ -109,9 +108,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btnAreasHigh);
-            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.pictAreasHigh);
+            this.groupBox2.Controls.Add(this.btnAreasHigh);
+            this.groupBox2.Controls.Add(this.lblArea);
             this.groupBox2.Location = new System.Drawing.Point(10, 129);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(233, 79);
@@ -126,7 +125,7 @@
             this.btnAreasHigh.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnAreasHigh.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnAreasHigh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAreasHigh.Location = new System.Drawing.Point(145, 20);
+            this.btnAreasHigh.Location = new System.Drawing.Point(145, 47);
             this.btnAreasHigh.Name = "btnAreasHigh";
             this.btnAreasHigh.Size = new System.Drawing.Size(80, 23);
             this.btnAreasHigh.TabIndex = 9;
@@ -136,19 +135,18 @@
             this.btnAreasHigh.MouseEnter += new System.EventHandler(this.btnSegHigh_MouseEnter);
             this.btnAreasHigh.MouseLeave += new System.EventHandler(this.btnSegHigh_MouseLeave);
             // 
-            // label3
+            // lblArea
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 24);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 14);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Elementos";
+            this.lblArea.Location = new System.Drawing.Point(6, 20);
+            this.lblArea.Name = "lblArea";
+            this.lblArea.Size = new System.Drawing.Size(219, 38);
+            this.lblArea.TabIndex = 7;
+            this.lblArea.Text = "Aun no ha seleccionado las areas de interes";
             // 
             // pictAreasHigh
             // 
             this.pictAreasHigh.Image = global::RockStatic.Properties.Resources.redX;
-            this.pictAreasHigh.Location = new System.Drawing.Point(114, 20);
+            this.pictAreasHigh.Location = new System.Drawing.Point(114, 47);
             this.pictAreasHigh.Name = "pictAreasHigh";
             this.pictAreasHigh.Size = new System.Drawing.Size(23, 23);
             this.pictAreasHigh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -329,9 +327,7 @@
             this.Load += new System.EventHandler(this.ProjectForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictSegHigh)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictAreasHigh)).EndInit();
             this.menuProject.ResumeLayout(false);
             this.menuProject.PerformLayout();
@@ -342,12 +338,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblSeg;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnSegHigh;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnAreasHigh;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblArea;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnCerrar;
