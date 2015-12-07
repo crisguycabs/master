@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2a66f36a21ad4a218eda1dbfe31bdb8c" Name="Diagram1" ZoomLevel="81" >
+        <EntityTypeShape EntityType="Model1.usuario" Width="1.5" PointX="1.5" PointY="0.5" />
+        <EntityTypeShape EntityType="Model1.proyecto" Width="1.5" PointX="4.25" PointY="1.25" />
+        <AssociationConnector Association="Model1.usuarioproyecto" />
+        <EntityTypeShape EntityType="Model1.Dycom" Width="1.5" PointX="6.875" PointY="0.5" />
+        <AssociationConnector Association="Model1.proyectoDycom" />
+        <EntityTypeShape EntityType="Model1.Segmentación" Width="1.5" PointX="1.5" PointY="2.875" />
+        <AssociationConnector Association="Model1.Segmentaciónproyecto" />
+        <EntityTypeShape EntityType="Model1.Areas" Width="1.5" PointX="6.875" PointY="4.375" />
+        <AssociationConnector Association="Model1.proyectoAreas" />
+        <EntityTypeShape EntityType="Model1.Core" Width="1.5" PointX="9.5" PointY="0.5" />
+        <AssociationConnector Association="Model1.CoreDycom" />
+        <EntityTypeShape EntityType="Model1.Resultado" Width="1.5" PointX="9.5" PointY="3.5" />
+        <AssociationConnector Association="Model1.ImagenAreas" />
+        <AssociationConnector Association="Model1.Resultadoproyecto" />
+        <AssociationConnector Association="Model1.ResultadoCore" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

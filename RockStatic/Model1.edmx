@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="Model1TargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="usuarioSet" EntityType="Model1.usuario" />
+          <EntitySet Name="proyectoSet" EntityType="Model1.proyecto" />
+          <AssociationSet Name="usuarioproyecto" Association="Model1.usuarioproyecto">
+            <End Role="usuario" EntitySet="usuarioSet" />
+            <End Role="proyecto" EntitySet="proyectoSet" />
+          </AssociationSet>
+          <EntitySet Name="DycomSet" EntityType="Model1.Dycom" />
+          <AssociationSet Name="proyectoDycom" Association="Model1.proyectoDycom">
+            <End Role="proyecto" EntitySet="proyectoSet" />
+            <End Role="Dycom" EntitySet="DycomSet" />
+          </AssociationSet>
+          <EntitySet Name="SegmentaciónSet" EntityType="Model1.Segmentación" />
+          <AssociationSet Name="Segmentaciónproyecto" Association="Model1.Segmentaciónproyecto">
+            <End Role="Segmentación" EntitySet="SegmentaciónSet" />
+            <End Role="proyecto" EntitySet="proyectoSet" />
+          </AssociationSet>
+          <EntitySet Name="AreasSet" EntityType="Model1.Areas" />
+          <AssociationSet Name="proyectoAreas" Association="Model1.proyectoAreas">
+            <End Role="proyecto" EntitySet="proyectoSet" />
+            <End Role="Areas" EntitySet="AreasSet" />
+          </AssociationSet>
+          <EntitySet Name="CoreSet" EntityType="Model1.Core" />
+          <AssociationSet Name="CoreDycom" Association="Model1.CoreDycom">
+            <End Role="Core" EntitySet="CoreSet" />
+            <End Role="Dycom" EntitySet="DycomSet" />
+          </AssociationSet>
+          <EntitySet Name="ResultadoSet" EntityType="Model1.Resultado" />
+          <AssociationSet Name="ImagenAreas" Association="Model1.ImagenAreas">
+            <End Role="Imagen" EntitySet="ResultadoSet" />
+            <End Role="Areas" EntitySet="AreasSet" />
+          </AssociationSet>
+          <AssociationSet Name="Resultadoproyecto" Association="Model1.Resultadoproyecto">
+            <End Role="Resultado" EntitySet="ResultadoSet" />
+            <End Role="proyecto" EntitySet="proyectoSet" />
+          </AssociationSet>
+          <AssociationSet Name="ResultadoCore" Association="Model1.ResultadoCore">
+            <End Role="Resultado" EntitySet="ResultadoSet" />
+            <End Role="Core" EntitySet="CoreSet" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="Id_User" />
+          </Key>
+          <Property Name="Id_User" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="passw" Type="String" Nullable="false" />
+          <NavigationProperty Name="proyecto" Relationship="Model1.usuarioproyecto" FromRole="usuario" ToRole="proyecto" />
+        </EntityType>
+        <EntityType Name="proyecto">
+          <Key>
+            <PropertyRef Name="Id_proye" />
+          </Key>
+          <Property Name="Id_proye" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripción" Type="String" Nullable="false" />
+          <Property Name="fecha_crea" Type="String" Nullable="false" />
+          <NavigationProperty Name="usuario" Relationship="Model1.usuarioproyecto" FromRole="proyecto" ToRole="usuario" />
+          <Property Name="check_d_low" Type="String" Nullable="false" />
+          <Property Name="check_d_high" Type="String" Nullable="false" />
+          <NavigationProperty Name="Dycom" Relationship="Model1.proyectoDycom" FromRole="proyecto" ToRole="Dycom" />
+          <Property Name="check_segmen" Type="String" Nullable="false" />
+          <Property Name="check_area" Type="String" Nullable="false" />
+          <NavigationProperty Name="Segmentación" Relationship="Model1.Segmentaciónproyecto" FromRole="proyecto" ToRole="Segmentación" />
+          <NavigationProperty Name="Areas" Relationship="Model1.proyectoAreas" FromRole="proyecto" ToRole="Areas" />
+          <NavigationProperty Name="Resultado" Relationship="Model1.Resultadoproyecto" FromRole="proyecto" ToRole="Resultado" />
+        </EntityType>
+        <Association Name="usuarioproyecto">
+          <End Type="Model1.usuario" Role="usuario" Multiplicity="1" />
+          <End Type="Model1.proyecto" Role="proyecto" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Dycom">
+          <Key>
+            <PropertyRef Name="Id_dyco" />
+          </Key>
+          <Property Name="Id_dyco" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="String" Nullable="false" />
+          <Property Name="nomb_core" Type="String" Nullable="false" />
+          <Property Name="Id_core" Type="String" Nullable="false" />
+          <Property Name="lugar" Type="String" Nullable="false" />
+          <Property Name="descripción" Type="String" Nullable="false" />
+          <Property Name="tipo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="proyecto" Relationship="Model1.proyectoDycom" FromRole="Dycom" ToRole="proyecto" />
+          <NavigationProperty Name="Core" Relationship="Model1.CoreDycom" FromRole="Dycom" ToRole="Core" />
+        </EntityType>
+        <Association Name="proyectoDycom">
+          <End Type="Model1.proyecto" Role="proyecto" Multiplicity="*" />
+          <End Type="Model1.Dycom" Role="Dycom" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Segmentación">
+          <Key>
+            <PropertyRef Name="Id_Segme" />
+            <PropertyRef Name="Id_proye" />
+          </Key>
+          <Property Name="Id_Segme" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_proye" Type="String" Nullable="false" />
+          <NavigationProperty Name="proyecto" Relationship="Model1.Segmentaciónproyecto" FromRole="Segmentación" ToRole="proyecto" />
+          <Property Name="Id_dyco" Type="String" Nullable="false" />
+          <Property Name="x_dyco" Type="String" Nullable="false" />
+          <Property Name="y_dyco" Type="String" Nullable="false" />
+          <Property Name="r_dyco" Type="String" Nullable="false" />
+          <Property Name="x_phan1" Type="String" Nullable="false" />
+          <Property Name="y_phan1" Type="String" Nullable="false" />
+          <Property Name="r_phan1" Type="String" Nullable="false" />
+          <Property Name="x_phan2" Type="String" Nullable="false" />
+          <Property Name="y_phan2" Type="String" Nullable="false" />
+          <Property Name="r_phan2" Type="String" Nullable="false" />
+          <Property Name="x_phan3" Type="String" Nullable="false" />
+          <Property Name="y_phan3" Type="String" Nullable="false" />
+          <Property Name="r_phan3" Type="String" Nullable="false" />
+          <Property Name="tipo_segme" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="Segmentaciónproyecto">
+          <End Type="Model1.Segmentación" Role="Segmentación" Multiplicity="1" />
+          <End Type="Model1.proyecto" Role="proyecto" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Areas">
+          <Key>
+            <PropertyRef Name="Id_area" />
+            <PropertyRef Name="Id_proye" />
+          </Key>
+          <Property Name="Id_area" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_proye" Type="String" Nullable="false" />
+          <NavigationProperty Name="proyecto" Relationship="Model1.proyectoAreas" FromRole="Areas" ToRole="proyecto" />
+          <Property Name="Id_dyco" Type="String" Nullable="false" />
+          <Property Name="x_core" Type="String" Nullable="false" />
+          <Property Name="y_core" Type="String" Nullable="false" />
+          <Property Name="r_core" Type="String" Nullable="false" />
+          <NavigationProperty Name="Imagen" Relationship="Model1.ImagenAreas" FromRole="Areas" ToRole="Imagen" />
+        </EntityType>
+        <Association Name="proyectoAreas">
+          <End Type="Model1.proyecto" Role="proyecto" Multiplicity="1" />
+          <End Type="Model1.Areas" Role="Areas" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Core">
+          <Key>
+            <PropertyRef Name="Id_core" />
+          </Key>
+          <Property Name="Id_core" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="r_core" Type="String" Nullable="false" />
+          <Property Name="l_core" Type="String" Nullable="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" />
+          <Property Name="pozo" Type="String" Nullable="false" />
+          <NavigationProperty Name="Dycom" Relationship="Model1.CoreDycom" FromRole="Core" ToRole="Dycom" />
+          <NavigationProperty Name="Resultado" Relationship="Model1.ResultadoCore" FromRole="Core" ToRole="Resultado" />
+        </EntityType>
+        <Association Name="CoreDycom">
+          <End Type="Model1.Core" Role="Core" Multiplicity="1" />
+          <End Type="Model1.Dycom" Role="Dycom" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Resultado">
+          <Key>
+            <PropertyRef Name="Id_result" />
+          </Key>
+          <Property Name="Id_result" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Zeff" Type="String" Nullable="false" />
+          <Property Name="Densi" Type="String" Nullable="false" />
+          <NavigationProperty Name="Areas" Relationship="Model1.ImagenAreas" FromRole="Imagen" ToRole="Areas" />
+          <NavigationProperty Name="proyecto" Relationship="Model1.Resultadoproyecto" FromRole="Resultado" ToRole="proyecto" />
+          <NavigationProperty Name="Core" Relationship="Model1.ResultadoCore" FromRole="Resultado" ToRole="Core" />
+        </EntityType>
+        <Association Name="ImagenAreas">
+          <End Type="Model1.Resultado" Role="Imagen" Multiplicity="1" />
+          <End Type="Model1.Areas" Role="Areas" Multiplicity="*" />
+        </Association>
+        <Association Name="Resultadoproyecto">
+          <End Type="Model1.Resultado" Role="Resultado" Multiplicity="1" />
+          <End Type="Model1.proyecto" Role="proyecto" Multiplicity="1" />
+        </Association>
+        <Association Name="ResultadoCore">
+          <End Type="Model1.Resultado" Role="Resultado" Multiplicity="1" />
+          <End Type="Model1.Core" Role="Core" Multiplicity="1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="Model1" />
+        <Alias Key="Target" Value="Model1.Store" />
+        <EntityContainerMapping CdmEntityContainer="Model1Container" StorageEntityContainer="Model1TargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

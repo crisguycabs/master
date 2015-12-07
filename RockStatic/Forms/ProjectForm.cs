@@ -100,7 +100,38 @@ namespace RockStatic
             {
                 MessageBox.Show("No es posible realizar la seleccion de areas de interes para los elementos.\n\nRealize primero la segmentacion de los elementos HIGH.", "Error al iniciar la seleccion de areas", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            }                   
+            }     
+            else
+            {
+                // se ha realizado la segmentacion de los slide, se puede proceder a realizar la seleccion de areas
+                if(!padre.abiertoSelectAreasForm)
+                {
+                    this.padre.selecAreasForm = new SelectAreasForm();
+                    this.padre.selecAreasForm.Text = "SELECCION DE AREAS";
+                    this.padre.selecAreasForm.label4.Text = "SELECCION DE AREAS";
+
+                    this.padre.selecAreasForm.MdiParent = this.MdiParent;
+                    this.padre.selecAreasForm.padre = this.padre;
+
+                    this.padre.abiertoSelectAreasForm = true;
+                    this.padre.selecAreasForm.Show();
+
+                    this.padre.selecAreas2Form = new SelectAreas2Form();
+                    this.padre.selecAreas2Form.Text = "SELECCION DE AREAS";
+                    this.padre.selecAreas2Form.label4.Text = "SELECCION DE AREAS";
+
+                    this.padre.selecAreas2Form.padre = this.padre;
+
+                    this.padre.abiertoSelectAreas2Form = true;
+                    this.padre.selecAreas2Form.Show();
+
+                    this.padre.selecAreasForm.Select();
+                }
+                else
+                {
+                    this.padre.selecAreasForm.Select();
+                }
+            }
         }
 
         private void lblProyecto_MouseDown(object sender, MouseEventArgs e)

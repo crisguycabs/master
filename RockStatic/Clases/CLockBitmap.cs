@@ -136,7 +136,8 @@ namespace RockStatic
             int cCount = Depth / 8;
 
             // Get start index of the specified pixel
-            int i = y * bitmapData.Stride + x * cCount;
+            // int i = y * bitmapData.Stride + x * cCount;
+            int i = y * Width + x * cCount;
 
             if (i > Pixels.Length - cCount)
                 throw new IndexOutOfRangeException();

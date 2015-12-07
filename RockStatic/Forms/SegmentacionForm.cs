@@ -660,10 +660,12 @@ namespace RockStatic
                 // se recortan los core y phantom para cada elemento HIGH y LOW
                 this.padre.ShowWaiting("Por favor espere mientras RockStatic realiza la segmentacion de los elementos");
                 this.padre.actual.GenerarSegTransveral();
+                this.padre.actual.GenerarSegHorizontal();
+                this.padre.actual.GenerarSegVertical();
                 this.padre.CloseWaiting();
-                
-                
-                
+
+                this.padre.proyectoForm.pictAreasHigh.Image = RockStatic.Properties.Resources.greenTick;
+
                 this.Close();
             }
             else if (lstElementos.Items.Count < 4)
@@ -1025,33 +1027,6 @@ namespace RockStatic
         private void segmentacionManualToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.radManual.Checked = true;
-        }
-
-        /// <summary>
-        /// Metodo de prueba, este metodo imprimira una linea roja en los slide
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnTest_Click(object sender, EventArgs e)
-        {
-            List<byte[]> temp = padre.actual.GetSegCoreTransHigh();
-
-            for(int i=0;i<temp.Count;i++)
-            {
-                // cada elemento se convierte en imagen y se imprime la linea roja
-                Bitmap imagen = (Bitmap)MainForm.Byte2image(temp[i]);
-                using(CLockBitmap lockBitmap = new CLockBitmap(imagen))
-                {
-                    for(int j=0;j<imagen.Height;j++)
-                    {
-                        lockBitmap.SetPixel(200, j, Color.Red);
-                    }
-                }
-                // la imagen se vuelve de nuevo byte[] y se devuelve al tipo de dato
-                temp[i] = MainForm.Img2byte(imagen);
-            }
-            padre.actual.SetHigh(temp);
-            MessageBox.Show("Test terminado");
         }
 
         private void btnPlano_Click(object sender, EventArgs e)

@@ -55,6 +55,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="ZzzzRangeBar">
+      <HintPath>..\..\ZzzzRangeBar\bin\Debug\ZzzzRangeBar.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\CCuadrado.cs" />
@@ -117,6 +120,18 @@
     <Compile Include="Forms\WaitingForm.Designer.cs">
       <DependentUpon>WaitingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SelectAreasForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectAreasForm.Designer.cs">
+      <DependentUpon>SelectAreasForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SelectAreas2Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectAreas2Form.Designer.cs">
+      <DependentUpon>SelectAreas2Form.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\PreviewSegForm.resx">
       <DependentUpon>PreviewSegForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -128,6 +143,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectAreas2Form.resx">
+      <DependentUpon>SelectAreas2Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectAreasForm.resx">
+      <DependentUpon>SelectAreasForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\WaitingForm.resx">
       <DependentUpon>WaitingForm.cs</DependentUpon>

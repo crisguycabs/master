@@ -93,6 +93,26 @@ namespace RockStatic
         /// </summary>
         public bool abiertoWaitingForm;
 
+        /// <summary>
+        /// Instancia del form SelectAreasForm
+        /// </summary>
+        public SelectAreasForm selecAreasForm;
+
+        /// <summary>
+        /// Variable que indica si la ventana SelectAreasForm esta abierta o no
+        /// </summary>
+        public bool abiertoSelectAreasForm;
+
+        /// <summary>
+        /// Instancia del form SelectAreasForm
+        /// </summary>
+        public SelectAreas2Form selecAreas2Form;
+
+        /// <summary>
+        /// Variable que indica si la ventana SelectAreasForm esta abierta o no
+        /// </summary>
+        public bool abiertoSelectAreas2Form;
+
         #endregion
 
         Point lastClick;
@@ -545,6 +565,15 @@ namespace RockStatic
         {
             this.abiertoProyectoForm = false;
             this.proyectoForm = null;
+        }
+
+        public void CerrarSelectAreasForm()
+        {
+            this.abiertoSelectAreasForm = false;
+            this.selecAreasForm = null;
+
+            this.abiertoSelectAreas2Form = false;
+            this.selecAreas2Form = null;
         }
 
         private void tableLayoutPanel1_CellPaint(object sender, TableLayoutCellPaintEventArgs e)

@@ -736,8 +736,57 @@ namespace RockStatic
         }
 
         /// <summary>
-        /// Toma las segmentaciones transversales y genera los planes de corte verticales. Se varia la coordenada X de la segmentacion
-        /// transversal para formar cada plano
+        /// Toma una lista de byte[], con un indice, y genera los planos horizontales/verticales
+        /// </summary>
+        /// <param name="elementos">List de byte[] de los elementos a extraer el plano</param>
+        /// <param name="indice">indice de la imagen de la cual extraer el plano de corte</param>
+        /// <param name="alto">alto del plano a generar</param>
+        /// <param name="factorEscalado">factor de escalado</param>
+        /// <param name="horizontal">True: planos horizontales; False: planos verticals</param>
+        /// <returns>plano generado</returns>
+        private byte[] GenerarPlano(List<byte[]> elementos, int indice, int alto, int factorEscalado, bool horizontal)
+        {
+            Bitmap plano = new Bitmap(elementos.Count * factorEscalado, alto);
+            
+            // se hace lock sobre la imagen para empezar a pintar
+            using (CLockBitmap lockPlano = new CLockBitmap(plano))
+            {
+                // se recorren todos los elementos a extraer el plano
+                int iSlide = 0;
+                for (int i = 0; i < elementos.Count * factorEscalado; i = i + factorEscalado)
+                {
+                    Bitmap src = (Bitmap)MainForm.Byte2image(elementos[iSlide]);
+                    // se hace lock sobre cada imagen origen para obtener mas rapido los pizeles que se quieren
+                    using (CLockBitmap lockSrc = new CLockBitmap(src))
+                    {
+                        for (int j = 0; j < alto; j++)
+                        {
+                            for (int k = 0; k < factorEscalado; k++)
+                            {
+                                // se escoge la fila (plano horizontal) o la columna(plano vertical) segun sea el caso
+                                if (horizontal)
+                                {
+                                    // plano horizontal
+                                    lockPlano.SetPixel(i+k, j, lockSrc.GetPixel(j, indice));
+                                }
+                                else
+                                {
+                                    // plano vertical
+                                    lockPlano.SetPixel(i + k, j, lockSrc.GetPixel(indice,j));
+                                }
+                            }
+                        }
+                    }
+                    src.Dispose();
+                    iSlide++;
+                }
+            }
+
+            return MainForm.Img2byte(plano);
+        }
+
+        /// <summary>
+        /// Toma las segmentaciones transversales y genera los planes de corte verticales
         /// </summary>
         /// <returns></returns>
         public bool GenerarSegVertical()
@@ -745,63 +794,149 @@ namespace RockStatic
             // primero se verifica que se halla realizado la segmentacion transversal
             if (!segTransDone) return false;
 
-            // se crea la imagen que contendra el plano de corte del core
-            // el largo del plano de corte es la cantidad de slides que existen
-            // el alto del plano es el alto de la segmentacion transversal del core
-            Bitmap referencia = (Bitmap)MainForm.Byte2image(segCoreTransHigh[0]);
-            int alto = referencia.Height;
-
-            // se tiene un factor de escalado por que cada pixel de profundidad no corresponde a la misma distancia de un pixel de
-            // los cortes transversales
-            int factorEscalado = (int)Math.Ceiling(voxelDepth / voxelHeight);
-            
-            referencia.Dispose(); // se libera memoria, no es necesario usar mas ese bitmap
-
+            // solo se creara un plano de corte vertical y horizontal, por ahora
+            // aun asi se preparan listas que solo tendran un unico elemento
             segCoreVerHigh = new List<byte[]>();
             segCoreVerLow = new List<byte[]>();
             segPhantom1VerHigh = new List<byte[]>();
             segPhantom2VerHigh = new List<byte[]>();
             segPhantom3VerHigh = new List<byte[]>();
+            segPhantom1VerLow = new List<byte[]>();
+            segPhantom2VerLow = new List<byte[]>();
+            segPhantom3VerLow = new List<byte[]>();
+
+            // el largo del plano de corte es la cantidad de slides que existen
+            // el alto del plano es el alto de la segmentacion transversal
+
+            // se tiene un factor de escalado por que cada pixel de profundidad no corresponde a la misma distancia de un 
+            // pixel de los cortes transversales
+            int factorEscalado = (int)Math.Ceiling(voxelDepth / voxelHeight);
+            
+            // para los CORE
+            Bitmap referencia = (Bitmap)MainForm.Byte2image(segCoreTransHigh[0]);
+            int alto = referencia.Height;
+            referencia.Dispose(); // se libera memoria, no es necesario usar mas ese bitmap
+            // se toma el plano de la mitad, unicamente, por ahora
+            double dindice=alto/2;
+            int indice = Convert.ToInt32(Math.Round(dindice)); // posicion de la que se extraen los planos horizontales y verticales
+            
+            // solo se genera un plano, por ahora
+            segCoreVerHigh.Add(GenerarPlano(segCoreTransHigh, indice, alto, factorEscalado, false));
+            segCoreVerLow.Add(GenerarPlano(segCoreTransLow, indice, alto, factorEscalado, false));
+
+            // para los PHANTOM1
+            referencia = (Bitmap)MainForm.Byte2image(segPhantom1TransHigh[0]);
+            alto = referencia.Height;
+            referencia.Dispose(); // se libera memoria, no es necesario usar mas ese bitmap
+            // se toma el plano de la mitad, unicamente, por ahora
+            dindice = alto / 2;
+            indice = Convert.ToInt32(Math.Round(dindice)); // posicion de la que se extraen los planos horizontales y verticales
+
+            // solo se genera un plano, por ahora
+            segPhantom1VerHigh.Add(GenerarPlano(segPhantom1TransHigh, indice, alto, factorEscalado, false));
+            segPhantom1VerLow.Add(GenerarPlano(segPhantom1TransLow, indice, alto, factorEscalado, false));
+
+            // para los PHANTOM2
+            referencia = (Bitmap)MainForm.Byte2image(segPhantom2TransHigh[0]);
+            alto = referencia.Height;
+            referencia.Dispose(); // se libera memoria, no es necesario usar mas ese bitmap
+            // se toma el plano de la mitad, unicamente, por ahora
+            dindice = alto / 2;
+            indice = Convert.ToInt32(Math.Round(dindice)); // posicion de la que se extraen los planos horizontales y verticales
+
+            // solo se genera un plano, por ahora
+            segPhantom2VerHigh.Add(GenerarPlano(segPhantom2TransHigh, indice, alto, factorEscalado, false));
+            segPhantom2VerLow.Add(GenerarPlano(segPhantom2TransLow, indice, alto, factorEscalado, false));
+
+            // para los PHANTOM3
+            referencia = (Bitmap)MainForm.Byte2image(segPhantom3TransHigh[0]);
+            alto = referencia.Height;
+            referencia.Dispose(); // se libera memoria, no es necesario usar mas ese bitmap
+            // se toma el plano de la mitad, unicamente, por ahora
+            dindice = alto / 2;
+            indice = Convert.ToInt32(Math.Round(dindice)); // posicion de la que se extraen los planos horizontales y verticales
+
+            // solo se genera un plano, por ahora
+            segPhantom3VerHigh.Add(GenerarPlano(segPhantom3TransHigh, indice, alto, factorEscalado, false));
+            segPhantom3VerLow.Add(GenerarPlano(segPhantom3TransLow, indice, alto, factorEscalado, false));
+
+            return true;
+        }
+
+        /// <summary>
+        /// Toma las segmentaciones transversales y genera los planes de corte verticales
+        /// </summary>
+        /// <returns></returns>
+        public bool GenerarSegHorizontal()
+        {
+            // primero se verifica que se halla realizado la segmentacion transversal
+            if (!segTransDone) return false;
+
+            // solo se creara un plano de corte vertical y horizontal, por ahora
+            // aun asi se preparan listas que solo tendran un unico elemento
+            segCoreHorHigh = new List<byte[]>();
+            segCoreHorLow = new List<byte[]>();
             segPhantom1HorHigh = new List<byte[]>();
             segPhantom2HorHigh = new List<byte[]>();
             segPhantom3HorHigh = new List<byte[]>();
+            segPhantom1HorLow = new List<byte[]>();
+            segPhantom2HorLow = new List<byte[]>();
+            segPhantom3HorLow = new List<byte[]>();
 
-            // el corte transversal es un circulo, el alto y el ancho es el mismo
-            // se recorre la misma coordenada X para todos los cortes transversales
-            for (int iplano = 0; iplano < alto; iplano++)
-            {
-                Bitmap plano = new Bitmap(_count*factorEscalado, alto);
+            // el largo del plano de corte es la cantidad de slides que existen
+            // el alto del plano es el alto de la segmentacion transversal
 
-                // se hace lock sobre la imagen para empezar a pintar
-                using (CLockBitmap lockPlano = new CLockBitmap(plano))
-                {
-                    // se recorren todos los segmentos transversales del core
-                    int iSlide = 0;
-                    for (int i = 0; i < _count*factorEscalado; i=i+2)
-                    {
-                        Bitmap src = (Bitmap)MainForm.Byte2image(segCoreTransHigh[iSlide]);
-                        // se hace lock sobre cada imagen destino para obtener mas rapido los pizeles que se quieren
-                        using (CLockBitmap lockSrc = new CLockBitmap(src))
-                        {
-                            // se toma la coordenada X segun el indice iplano
-                            for (int j = 0; j < alto; j++)
-                            {
-                                lockPlano.SetPixel(i, j, lockSrc.GetPixel(iplano, j));
-                                lockPlano.SetPixel(i+1, j, lockSrc.GetPixel(iplano, j));
-                            }
-                        }
-                        src.Dispose();
-                        iSlide++;
-                    }
-                }
+            // se tiene un factor de escalado por que cada pixel de profundidad no corresponde a la misma distancia de un 
+            // pixel de los cortes transversales
+            int factorEscalado = (int)Math.Ceiling(voxelDepth / voxelHeight);
 
-                // con el plano creado se guarda como imagenByte en disco y en memoria
-                segCoreVerHigh.Add(MainForm.Img2byte(plano));
-                File.WriteAllBytes(folderHigh + "coreVer-" + iplano, segCoreVerHigh[iplano]);
+            // para los CORE
+            Bitmap referencia = (Bitmap)MainForm.Byte2image(segCoreTransHigh[0]);
+            int alto = referencia.Height;
+            referencia.Dispose(); // se libera memoria, no es necesario usar mas ese bitmap
+            // se toma el plano de la mitad, unicamente, por ahora
+            double dindice = alto / 2;
+            int indice = Convert.ToInt32(Math.Round(dindice)); // posicion de la que se extraen los planos horizontales y verticales
 
-                // despues de haber creado y guardado el plano, se elimina
-                plano.Dispose();
-            }
+            // solo se genera un plano, por ahora
+            segCoreHorHigh.Add(GenerarPlano(segCoreTransHigh, indice, alto, factorEscalado, true));
+            segCoreHorLow.Add(GenerarPlano(segCoreTransLow, indice, alto, factorEscalado, true));
+
+            // para los PHANTOM1
+            referencia = (Bitmap)MainForm.Byte2image(segPhantom1TransHigh[0]);
+            alto = referencia.Height;
+            referencia.Dispose(); // se libera memoria, no es necesario usar mas ese bitmap
+            // se toma el plano de la mitad, unicamente, por ahora
+            dindice = alto / 2;
+            indice = Convert.ToInt32(Math.Round(dindice)); // posicion de la que se extraen los planos horizontales y verticales
+
+            // solo se genera un plano, por ahora
+            segPhantom1HorHigh.Add(GenerarPlano(segPhantom1TransHigh, indice, alto, factorEscalado, true));
+            segPhantom1HorLow.Add(GenerarPlano(segPhantom1TransLow, indice, alto, factorEscalado, true));
+
+            // para los PHANTOM2
+            referencia = (Bitmap)MainForm.Byte2image(segPhantom2TransHigh[0]);
+            alto = referencia.Height;
+            referencia.Dispose(); // se libera memoria, no es necesario usar mas ese bitmap
+            // se toma el plano de la mitad, unicamente, por ahora
+            dindice = alto / 2;
+            indice = Convert.ToInt32(Math.Round(dindice)); // posicion de la que se extraen los planos horizontales y verticales
+
+            // solo se genera un plano, por ahora
+            segPhantom2HorHigh.Add(GenerarPlano(segPhantom2TransHigh, indice, alto, factorEscalado, true));
+            segPhantom2HorLow.Add(GenerarPlano(segPhantom2TransLow, indice, alto, factorEscalado, true));
+
+            // para los PHANTOM3
+            referencia = (Bitmap)MainForm.Byte2image(segPhantom3TransHigh[0]);
+            alto = referencia.Height;
+            referencia.Dispose(); // se libera memoria, no es necesario usar mas ese bitmap
+            // se toma el plano de la mitad, unicamente, por ahora
+            dindice = alto / 2;
+            indice = Convert.ToInt32(Math.Round(dindice)); // posicion de la que se extraen los planos horizontales y verticales
+
+            // solo se genera un plano, por ahora
+            segPhantom3HorHigh.Add(GenerarPlano(segPhantom3TransHigh, indice, alto, factorEscalado, true));
+            segPhantom3HorLow.Add(GenerarPlano(segPhantom3TransLow, indice, alto, factorEscalado, true));
 
             return true;
         }
@@ -822,6 +957,41 @@ namespace RockStatic
         public List<byte[]> GetSegCoreTransLow()
         {
             return segCoreTransLow;
+        }
+
+        public List<byte[]> GetSegPhantom1TransHigh()
+        {
+            return segPhantom1TransHigh;
+        }
+
+        public List<byte[]> GetSegPhantom2TransHigh()
+        {
+            return segPhantom2TransHigh;
+        }
+
+        public List<byte[]> GetSegPhantom3TransHigh()
+        {
+            return segPhantom3TransHigh;
+        }
+
+        public List<byte[]> GetSegCoreHorHigh()
+        {
+            return segCoreHorHigh;
+        }
+
+        public List<byte[]> GetSegPhantom1HorHigh()
+        {
+            return segPhantom1HorHigh;
+        }
+
+        public List<byte[]> GetSegPhantom2HorHigh()
+        {
+            return segPhantom2HorHigh;
+        }
+
+        public List<byte[]> GetSegPhantom3HorHigh()
+        {
+            return segPhantom3HorHigh;
         }
     }
 }
