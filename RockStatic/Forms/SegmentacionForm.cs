@@ -664,8 +664,6 @@ namespace RockStatic
                 this.padre.actual.GenerarSegVertical();
                 this.padre.CloseWaiting();
 
-                this.padre.proyectoForm.pictAreasHigh.Image = RockStatic.Properties.Resources.greenTick;
-
                 this.Close();
             }
             else if (lstElementos.Items.Count < 4)
