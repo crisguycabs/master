@@ -32,12 +32,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.pictCore = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rangeBar = new Zzzz.ZzzzRangeBar();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pictPhantom3 = new System.Windows.Forms.PictureBox();
             this.pictPhantom2 = new System.Windows.Forms.PictureBox();
             this.pictPhantom1 = new System.Windows.Forms.PictureBox();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.rangeBar = new Zzzz.ZzzzRangeBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictCore)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -80,6 +80,24 @@
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Core";
+            // 
+            // rangeBar
+            // 
+            this.rangeBar.DivisionNum = 10;
+            this.rangeBar.HeightOfBar = 8;
+            this.rangeBar.HeightOfMark = 24;
+            this.rangeBar.HeightOfTick = 6;
+            this.rangeBar.InnerColor = System.Drawing.Color.LightGreen;
+            this.rangeBar.Location = new System.Drawing.Point(10, 178);
+            this.rangeBar.Name = "rangeBar";
+            this.rangeBar.Orientation = Zzzz.ZzzzRangeBar.RangeBarOrientation.horizontal;
+            this.rangeBar.RangeMaximum = 5;
+            this.rangeBar.RangeMinimum = 3;
+            this.rangeBar.ScaleOrientation = Zzzz.ZzzzRangeBar.TopBottomOrientation.bottom;
+            this.rangeBar.Size = new System.Drawing.Size(221, 20);
+            this.rangeBar.TabIndex = 10;
+            this.rangeBar.TotalMaximum = 100;
+            this.rangeBar.TotalMinimum = 0;
             // 
             // groupBox2
             // 
@@ -135,24 +153,6 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // rangeBar
-            // 
-            this.rangeBar.DivisionNum = 10;
-            this.rangeBar.HeightOfBar = 8;
-            this.rangeBar.HeightOfMark = 24;
-            this.rangeBar.HeightOfTick = 6;
-            this.rangeBar.InnerColor = System.Drawing.Color.LightGreen;
-            this.rangeBar.Location = new System.Drawing.Point(10, 178);
-            this.rangeBar.Name = "rangeBar";
-            this.rangeBar.Orientation = Zzzz.ZzzzRangeBar.RangeBarOrientation.horizontal;
-            this.rangeBar.RangeMaximum = 5;
-            this.rangeBar.RangeMinimum = 3;
-            this.rangeBar.ScaleOrientation = Zzzz.ZzzzRangeBar.TopBottomOrientation.bottom;
-            this.rangeBar.Size = new System.Drawing.Size(221, 20);
-            this.rangeBar.TabIndex = 10;
-            this.rangeBar.TotalMaximum = 100;
-            this.rangeBar.TotalMinimum = 0;
-            // 
             // SelectAreas2Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -166,7 +166,9 @@
             this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(565, 477);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(565, 477);
             this.Name = "SelectAreas2Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SelectAreas2Form";

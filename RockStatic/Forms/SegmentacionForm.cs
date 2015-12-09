@@ -1025,15 +1025,6 @@ namespace RockStatic
         private void segmentacionManualToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.radManual.Checked = true;
-        }
-
-        private void btnPlano_Click(object sender, EventArgs e)
-        {
-            DateTime ini = DateTime.Now;
-            this.padre.actual.GenerarSegVertical();
-            DateTime fin = DateTime.Now;
-            TimeSpan span = fin - ini;
-            MessageBox.Show("Segmentacion vertical terminada "+(span.Minutes*60)+span.Seconds);
-        }        
+        }     
     }
 }

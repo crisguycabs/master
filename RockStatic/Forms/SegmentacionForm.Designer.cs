@@ -41,7 +41,6 @@
             this.radAuto = new System.Windows.Forms.RadioButton();
             this.radManual = new System.Windows.Forms.RadioButton();
             this.grpBox = new System.Windows.Forms.GroupBox();
-            this.btnPlano = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnPreview = new System.Windows.Forms.Button();
             this.btnClean = new System.Windows.Forms.Button();
@@ -253,7 +252,6 @@
             // 
             // grpBox
             // 
-            this.grpBox.Controls.Add(this.btnPlano);
             this.grpBox.Controls.Add(this.label1);
             this.grpBox.Controls.Add(this.btnPreview);
             this.grpBox.Controls.Add(this.btnClean);
@@ -269,16 +267,6 @@
             this.grpBox.Size = new System.Drawing.Size(199, 194);
             this.grpBox.TabIndex = 14;
             this.grpBox.TabStop = false;
-            // 
-            // btnPlano
-            // 
-            this.btnPlano.Location = new System.Drawing.Point(55, 164);
-            this.btnPlano.Name = "btnPlano";
-            this.btnPlano.Size = new System.Drawing.Size(39, 23);
-            this.btnPlano.TabIndex = 9;
-            this.btnPlano.Text = "Plan";
-            this.btnPlano.UseVisualStyleBackColor = true;
-            this.btnPlano.Click += new System.EventHandler(this.btnPlano_Click);
             // 
             // label1
             // 
@@ -684,6 +672,5 @@
         private System.Windows.Forms.ToolStripMenuItem cancelarToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem previsualizarToolStripMenuItem1;
-        private System.Windows.Forms.Button btnPlano;
     }
 }

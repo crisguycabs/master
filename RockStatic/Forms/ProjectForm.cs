@@ -116,6 +116,8 @@ namespace RockStatic
                     this.padre.abiertoSelectAreasForm = true;
                     this.padre.selecAreasForm.Show();
 
+                    // segunda ventana
+
                     this.padre.selecAreas2Form = new SelectAreas2Form();
                     this.padre.selecAreas2Form.Text = "SELECCION DE AREAS";
                     this.padre.selecAreas2Form.label4.Text = "SELECCION DE AREAS";
@@ -125,7 +127,13 @@ namespace RockStatic
                     this.padre.abiertoSelectAreas2Form = true;
                     this.padre.selecAreas2Form.Show();
 
+                    if (Screen.AllScreens.Length > 1)
+                    {
+                        this.padre.selecAreas2Form.Location = new Point(Screen.AllScreens[1].WorkingArea.X + Screen.AllScreens[1].WorkingArea.Width / 2 - padre.selecAreas2Form.Width / 2, Screen.AllScreens[1].WorkingArea.Y + Screen.AllScreens[1].WorkingArea.Height / 2 - padre.selecAreas2Form.Height / 2);
+                    }
+                    
                     this.padre.selecAreasForm.Select();
+
                 }
                 else
                 {

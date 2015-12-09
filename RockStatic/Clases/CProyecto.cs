@@ -678,13 +678,13 @@ namespace RockStatic
             // se crea un rectangulo para realizar el corte
             Rectangle rectArea = new Rectangle(area.x - area.width, area.y - area.width, area.width * 2, area.width * 2);
             
-            // se realiza el corte
+            // se realiza el corte, a una imagen CUADRADA
             tempImage = tempImage.Clone(rectArea, tempImage.PixelFormat);
-
+                        
             // se convierte a byte
             byte[] tempByte = MainForm.Img2byte(tempImage);
             tempImage.Dispose();
-
+            
             // se guarda en disco
             File.WriteAllBytes(path + nombre + indice, tempByte);
 
