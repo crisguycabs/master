@@ -40,10 +40,10 @@ namespace RockStatic
 
         private void SelectAreas2Form_Load(object sender, EventArgs e)
         {
-            List<byte[]> core = padre.actual.GetSegCoreHorHigh();
-            List<byte[]> p1 = padre.actual.GetSegPhantom1HorHigh();
-            List<byte[]> p2 = padre.actual.GetSegPhantom2HorHigh();
-            List<byte[]> p3 = padre.actual.GetSegPhantom3HorHigh();
+            List<byte[]> core = padre.actual.GetSegCoreHor();
+            List<byte[]> p1 = padre.actual.GetSegPhantom1Hor();
+            List<byte[]> p2 = padre.actual.GetSegPhantom2Hor();
+            List<byte[]> p3 = padre.actual.GetSegPhantom3Hor();
 
             pictCore.Image = MainForm.Byte2image(core[0]);
             pictPhantom1.Image = MainForm.Byte2image(p1[0]);

@@ -73,84 +73,42 @@ namespace RockStatic
         /// <summary>
         /// Lista de byte[] para almacenar las imagenesByte de la segmentacion vertical de los segmentos Core de los elementos HIGH
         /// </summary>
-        private List<byte[]> segCoreVerHigh;
-
-        /// <summary>
-        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion vertical de los segmentos Core de los elementos LOW
-        /// </summary>
-        private List<byte[]> segCoreVerLow;
+        private List<byte[]> segCoreVer;
 
         /// <summary>
         /// Lista de byte[] para almacenar las imagenesByte de la segmentacion vertical de los segmentos Phantom1 de los elementos HIGH
         /// </summary>
-        private List<byte[]> segPhantom1VerHigh;
+        private List<byte[]> segPhantom1Ver;
 
         /// <summary>
         /// Lista de byte[] para almacenar las imagenesByte de la segmentacion vertical de los segmentos Phantom2 de los elementos HIGH
         /// </summary>
-        private List<byte[]> segPhantom2VerHigh;
+        private List<byte[]> segPhantom2Ver;
 
         /// <summary>
         /// Lista de byte[] para almacenar las imagenesByte de la segmentacion vertical de los segmentos Phantom3 de los elementos HIGH
         /// </summary>
-        private List<byte[]> segPhantom3VerHigh;
-
-        /// <summary>
-        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion vertical de los segmentos Phantom1 de los elementos LOW
-        /// </summary>
-        private List<byte[]> segPhantom1VerLow;
-
-        /// <summary>
-        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion vertical de los segmentos Phantom2 de los elementos LOW
-        /// </summary>
-        private List<byte[]> segPhantom2VerLow;
-
-        /// <summary>
-        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion vertical de los segmentos Phantom3 de los elementos LOW
-        /// </summary>
-        private List<byte[]> segPhantom3VerLow;
+        private List<byte[]> segPhantom3Ver;
 
         /// <summary>
         /// Lista de byte[] para almacenar las imagenesByte de la segmentacion horizontal de los segmentos Core de los elementos HIGH
         /// </summary>
-        private List<byte[]> segCoreHorHigh;
-
-        /// <summary>
-        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion horizontal de los segmentos Core de los elementos LOW
-        /// </summary>
-        private List<byte[]> segCoreHorLow;
+        private List<byte[]> segCoreHor;
 
         /// <summary>
         /// Lista de byte[] para almacenar las imagenesByte de la segmentacion horizontal de los segmentos Phantom1 de los elementos HIGH
         /// </summary>
-        private List<byte[]> segPhantom1HorHigh;
+        private List<byte[]> segPhantom1Hor;
 
         /// <summary>
         /// Lista de byte[] para almacenar las imagenesByte de la segmentacion horizontal de los segmentos Phantom2 de los elementos HIGH
         /// </summary>
-        private List<byte[]> segPhantom2HorHigh;
+        private List<byte[]> segPhantom2Hor;
 
         /// <summary>
         /// Lista de byte[] para almacenar las imagenesByte de la segmentacion horizontal de los segmentos Phantom3 de los elementos HIGH
         /// </summary>
-        private List<byte[]> segPhantom3HorHigh;
-
-        /// <summary>
-        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion horizontal de los segmentos Phantom1 de los elementos LOW
-        /// </summary>
-        private List<byte[]> segPhantom1HorLow;
-
-        /// <summary>
-        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion horizontal de los segmentos Phantom2 de los elementos LOW
-        /// </summary>
-        private List<byte[]> segPhantom2HorLow;
-
-        /// <summary>
-        /// Lista de byte[] para almacenar las imagenesByte de la segmentacion horizontal de los segmentos Phantom3 de los elementos LOW
-        /// </summary>
-        private List<byte[]> segPhantom3HorLow;
-
-
+        private List<byte[]> segPhantom3Hor;
 
         /// <summary>
         /// Indica si ya se realizo o no el recorte transversal del core y phantoms
@@ -347,6 +305,33 @@ namespace RockStatic
         }
 
         /// <summary>
+        /// Se inicializa la lista que contiene los elementos HIGH como una lista vacia
+        /// </summary>
+        public void SetHigh()
+        {
+            filesHigh = new List<byte[]>();
+        }
+
+        /// <summary>
+        /// Se agrega solo un elemento a la lista de elementos HIGH
+        /// </summary>
+        /// <param name="elemento">elemento byte[] a agregar</param>
+        public void SetHigh(byte[] elemento)
+        {
+            filesHigh.Add(elemento);
+        }
+
+        /// <summary>
+        /// Establece la lista de elementos core trans high
+        /// </summary>
+        /// <param name="lista"></param>
+        public void SetCoreTransHigh(List<byte[]> lista)
+        {
+            segCoreTransHigh = new List<byte[]>();
+            for (int i = 0; i < lista.Count; i++) segCoreTransHigh.Add(lista[i]);
+        }
+
+        /// <summary>
         /// Establece la lista de elementos HIGH
         /// </summary>
         /// <param name="lista">Lista temporal de elementos que se se convertiran en los elementos HIGH</param>
@@ -374,6 +359,23 @@ namespace RockStatic
         {
             filesLow = new List<byte[]>();
             for (int i = 0; i < lista.Count; i++) filesLow.Add(MainForm.Img2byte(lista[i]));
+        }
+
+        /// <summary>
+        /// Se inicializa la lista que contiene los elementos LOW como una lista vacia
+        /// </summary>
+        public void SetLow()
+        {
+            filesLow = new List<byte[]>();
+        }
+
+        /// <summary>
+        /// Se agrega solo un elemento a la lista de elementos LOW
+        /// </summary>
+        /// <param name="elemento">elemento byte[] a agregar</param>
+        public void SetLow(byte[] elemento)
+        {
+            filesLow.Add(elemento);
         }
 
         /// <summary>
@@ -411,6 +413,286 @@ namespace RockStatic
         {
             return this.filesLow;
         }
+
+        /// <summary>
+        /// Instancia como lista vacia la lista que contiene las segmentaciones core trans high
+        /// </summary>
+        public void SetSegCoreTransHigh()
+        {
+            this.segCoreTransHigh = new List<byte[]>();
+        }
+
+        /// <summary>
+        /// Agrega un elemento a la lista de segmentaciones core trans high
+        /// </summary>
+        /// <param name="elemento"></param>
+        public void SetSegCoreTransHigh(byte[] elemento)
+        {
+            this.segCoreTransHigh.Add(elemento);
+        }
+
+        /// <summary>
+        /// Instancia como lista vacia la lista que contiene las segmentaciones core hor
+        /// </summary>
+        public void SetSegCoreHor()
+        {
+            this.segCoreHor = new List<byte[]>();
+        }
+
+        /// <summary>
+        /// Agrega un elemento a la lista de segmentaciones core hor
+        /// </summary>
+        /// <param name="elemento"></param>
+        public void SetSegCoreHor(byte[] elemento)
+        {
+            this.segCoreHor.Add(elemento);
+        }
+
+        /// <summary>
+        /// Instancia como lista vacia la lista que contiene las segmentaciones phantom1 hor
+        /// </summary>
+        public void SetSegPhantom1Hor()
+        {
+            this.segPhantom1Hor = new List<byte[]>();
+        }
+
+        /// <summary>
+        /// Agrega un elemento a la lista de segmentaciones phantom1 hor
+        /// </summary>
+        /// <param name="elemento"></param>
+        public void SetSegPhantom1Hor(byte[] elemento)
+        {
+            this.segPhantom1Hor.Add(elemento);
+        }
+
+        /// <summary>
+        /// Instancia como lista vacia la lista que contiene las segmentaciones phantom2 hor
+        /// </summary>
+        public void SetSegPhantom2Hor()
+        {
+            this.segPhantom2Hor = new List<byte[]>();
+        }
+
+        /// <summary>
+        /// Agrega un elemento a la lista de segmentaciones phantom3 hor
+        /// </summary>
+        /// <param name="elemento"></param>
+        public void SetSegPhantom3Hor(byte[] elemento)
+        {
+            this.segPhantom3Hor.Add(elemento);
+        }
+
+        /// <summary>
+        /// Instancia como lista vacia la lista que contiene las segmentaciones phantom3 hor
+        /// </summary>
+        public void SetSegPhantom3Hor()
+        {
+            this.segPhantom3Hor = new List<byte[]>();
+        }
+
+        // ---
+
+        /// <summary>
+        /// Instancia como lista vacia la lista que contiene las segmentaciones core Ver
+        /// </summary>
+        public void SetSegCoreVer()
+        {
+            this.segCoreVer = new List<byte[]>();
+        }
+
+        /// <summary>
+        /// Agrega un elemento a la lista de segmentaciones core Ver
+        /// </summary>
+        /// <param name="elemento"></param>
+        public void SetSegCoreVer(byte[] elemento)
+        {
+            this.segCoreVer.Add(elemento);
+        }
+
+        /// <summary>
+        /// Instancia como lista vacia la lista que contiene las segmentaciones phantom1 Ver
+        /// </summary>
+        public void SetSegPhantom1Ver()
+        {
+            this.segPhantom1Ver = new List<byte[]>();
+        }
+
+        /// <summary>
+        /// Agrega un elemento a la lista de segmentaciones phantom1 Ver
+        /// </summary>
+        /// <param name="elemento"></param>
+        public void SetSegPhantom1Ver(byte[] elemento)
+        {
+            this.segPhantom1Ver.Add(elemento);
+        }      
+
+        /// <summary>
+        /// Instancia como lista vacia la lista que contiene las segmentaciones phantom2 Ver
+        /// </summary>
+        public void SetSegPhantom2Ver()
+        {
+            this.segPhantom2Ver = new List<byte[]>();
+        }
+
+        /// <summary>
+        /// Agrega un elemento a la lista de segmentaciones phantom2 Ver
+        /// </summary>
+        /// <param name="elemento"></param>
+        public void SetSegPhantom2Ver(byte[] elemento)
+        {
+            this.segPhantom2Ver.Add(elemento);
+        }        
+
+        /// <summary>
+        /// Instancia como lista vacia la lista que contiene las segmentaciones phantom3 Ver
+        /// </summary>
+        public void SetSegPhantom3Ver()
+        {
+            this.segPhantom3Ver = new List<byte[]>();
+        }
+
+        /// <summary>
+        /// Agrega un elemento a la lista de segmentaciones phantom3 Ver
+        /// </summary>
+        /// <param name="elemento"></param>
+        public void SetSegPhantom3Ver(byte[] elemento)
+        {
+            this.segPhantom3Ver.Add(elemento);
+        }
+
+        // ---
+
+        /// <summary>
+        /// Agrega un elemento a la lista de segmentaciones phantom2 hor
+        /// </summary>
+        /// <param name="elemento"></param>
+        public void SetSegPhantom2Hor(byte[] elemento)
+        {
+            this.segPhantom2Hor.Add(elemento);
+        }
+
+        /// <summary>
+        /// Instancia como lista vacia la lista que contiene las segmentaciones phantom1 trans high
+        /// </summary>
+        public void SetSegPhantom1TransHigh()
+        {
+            this.segPhantom1TransHigh = new List<byte[]>();
+        }
+
+        /// <summary>
+        /// Agrega un elemento a la lista de segmentaciones phantom1 trans high
+        /// </summary>
+        /// <param name="elemento"></param>
+        public void SetSegPhantom1TransHigh(byte[] elemento)
+        {
+            this.segPhantom1TransHigh.Add(elemento);
+        }
+
+        /// <summary>
+        /// Instancia como lista vacia la lista que contiene las segmentaciones phantom2 trans high
+        /// </summary>
+        public void SetSegPhantom2TransHigh()
+        {
+            this.segPhantom2TransHigh = new List<byte[]>();
+        }
+
+        /// <summary>
+        /// Agrega un elemento a la lista de segmentaciones phantom2 trans high
+        /// </summary>
+        /// <param name="elemento"></param>
+        public void SetSegPhantom2TransHigh(byte[] elemento)
+        {
+            this.segPhantom2TransHigh.Add(elemento);
+        }
+
+        /// <summary>
+        /// Instancia como lista vacia la lista que contiene las segmentaciones phantom3 trans high
+        /// </summary>
+        public void SetSegPhantom3TransHigh()
+        {
+            this.segPhantom3TransHigh = new List<byte[]>();
+        }
+
+        /// <summary>
+        /// Agrega un elemento a la lista de segmentaciones phantom3 trans high
+        /// </summary>
+        /// <param name="elemento"></param>
+        public void SetSegPhantom3TransHigh(byte[] elemento)
+        {
+            this.segPhantom3TransHigh.Add(elemento);
+        }
+
+        //--
+
+        /// <summary>
+        /// Instancia como lista vacia la lista que contiene las segmentaciones core trans low
+        /// </summary>
+        public void SetSegCoreTransLow()
+        {
+            this.segCoreTransLow = new List<byte[]>();
+        }
+
+        /// <summary>
+        /// Agrega un elemento a la lista de segmentaciones core trans Low
+        /// </summary>
+        /// <param name="elemento"></param>
+        public void SetSegCoreTransLow(byte[] elemento)
+        {
+            this.segCoreTransLow.Add(elemento);
+        }
+
+        /// <summary>
+        /// Instancia como lista vacia la lista que contiene las segmentaciones phantom1 trans Low
+        /// </summary>
+        public void SetSegPhantom1TransLow()
+        {
+            this.segPhantom1TransLow = new List<byte[]>();
+        }
+
+        /// <summary>
+        /// Agrega un elemento a la lista de segmentaciones phantom1 trans Low
+        /// </summary>
+        /// <param name="elemento"></param>
+        public void SetSegPhantom1TransLow(byte[] elemento)
+        {
+            this.segPhantom1TransLow.Add(elemento);
+        }
+
+        /// <summary>
+        /// Instancia como lista vacia la lista que contiene las segmentaciones phantom2 trans Low
+        /// </summary>
+        public void SetSegPhantom2TransLow()
+        {
+            this.segPhantom2TransLow = new List<byte[]>();
+        }
+
+        /// <summary>
+        /// Agrega un elemento a la lista de segmentaciones phantom2 trans Low
+        /// </summary>
+        /// <param name="elemento"></param>
+        public void SetSegPhantom2TransLow(byte[] elemento)
+        {
+            this.segPhantom2TransLow.Add(elemento);
+        }
+
+        /// <summary>
+        /// Instancia como lista vacia la lista que contiene las segmentaciones phantom3 trans Low
+        /// </summary>
+        public void SetSegPhantom3TransLow()
+        {
+            this.segPhantom3TransLow = new List<byte[]>();
+        }
+
+        /// <summary>
+        /// Agrega un elemento a la lista de segmentaciones phantom3 trans Low
+        /// </summary>
+        /// <param name="elemento"></param>
+        public void SetSegPhantom3TransLow(byte[] elemento)
+        {
+            this.segPhantom3TransLow.Add(elemento);
+        }
+
+        //--
 
         /// <summary>
         /// Devuelve el estado de la segmentacion de los elementos HIGH. True, todos los elementos segmentados; False, faltan elementos por segmentar
@@ -796,23 +1078,20 @@ namespace RockStatic
 
             // solo se creara un plano de corte vertical y horizontal, por ahora
             // aun asi se preparan listas que solo tendran un unico elemento
-            segCoreVerHigh = new List<byte[]>();
-            segCoreVerLow = new List<byte[]>();
-            segPhantom1VerHigh = new List<byte[]>();
-            segPhantom2VerHigh = new List<byte[]>();
-            segPhantom3VerHigh = new List<byte[]>();
-            segPhantom1VerLow = new List<byte[]>();
-            segPhantom2VerLow = new List<byte[]>();
-            segPhantom3VerLow = new List<byte[]>();
-
+            segCoreVer = new List<byte[]>();
+            segPhantom1Ver = new List<byte[]>();
+            segPhantom2Ver = new List<byte[]>();
+            segPhantom3Ver = new List<byte[]>();
+            
             // el largo del plano de corte es la cantidad de slides que existen
             // el alto del plano es el alto de la segmentacion transversal
 
             // se tiene un factor de escalado por que cada pixel de profundidad no corresponde a la misma distancia de un 
             // pixel de los cortes transversales
             int factorEscalado = (int)Math.Ceiling(voxelDepth / voxelHeight);
-            
-            // para los CORE
+
+            #region para los CORE
+
             Bitmap referencia = (Bitmap)MainForm.Byte2image(segCoreTransHigh[0]);
             int alto = referencia.Height;
             referencia.Dispose(); // se libera memoria, no es necesario usar mas ese bitmap
@@ -821,10 +1100,14 @@ namespace RockStatic
             int indice = Convert.ToInt32(Math.Round(dindice)); // posicion de la que se extraen los planos horizontales y verticales
             
             // solo se genera un plano, por ahora
-            segCoreVerHigh.Add(GenerarPlano(segCoreTransHigh, indice, alto, factorEscalado, false));
-            segCoreVerLow.Add(GenerarPlano(segCoreTransLow, indice, alto, factorEscalado, false));
+            segCoreVer.Add(GenerarPlano(segCoreTransHigh, indice, alto, factorEscalado, false));
 
-            // para los PHANTOM1
+            File.WriteAllBytes(this.folderHigh + "coreVer", segCoreVer[0]);
+            
+            #endregion
+
+            #region para los PHANTOM1
+
             referencia = (Bitmap)MainForm.Byte2image(segPhantom1TransHigh[0]);
             alto = referencia.Height;
             referencia.Dispose(); // se libera memoria, no es necesario usar mas ese bitmap
@@ -833,10 +1116,14 @@ namespace RockStatic
             indice = Convert.ToInt32(Math.Round(dindice)); // posicion de la que se extraen los planos horizontales y verticales
 
             // solo se genera un plano, por ahora
-            segPhantom1VerHigh.Add(GenerarPlano(segPhantom1TransHigh, indice, alto, factorEscalado, false));
-            segPhantom1VerLow.Add(GenerarPlano(segPhantom1TransLow, indice, alto, factorEscalado, false));
+            segPhantom1Ver.Add(GenerarPlano(segPhantom1TransHigh, indice, alto, factorEscalado, false));
 
-            // para los PHANTOM2
+            File.WriteAllBytes(this.folderHigh + "phantom1Ver", segPhantom1Ver[0]);
+            
+            #endregion
+
+            #region para los PHANTOM2
+
             referencia = (Bitmap)MainForm.Byte2image(segPhantom2TransHigh[0]);
             alto = referencia.Height;
             referencia.Dispose(); // se libera memoria, no es necesario usar mas ese bitmap
@@ -845,10 +1132,14 @@ namespace RockStatic
             indice = Convert.ToInt32(Math.Round(dindice)); // posicion de la que se extraen los planos horizontales y verticales
 
             // solo se genera un plano, por ahora
-            segPhantom2VerHigh.Add(GenerarPlano(segPhantom2TransHigh, indice, alto, factorEscalado, false));
-            segPhantom2VerLow.Add(GenerarPlano(segPhantom2TransLow, indice, alto, factorEscalado, false));
+            segPhantom2Ver.Add(GenerarPlano(segPhantom2TransHigh, indice, alto, factorEscalado, false));
 
-            // para los PHANTOM3
+            File.WriteAllBytes(this.folderHigh + "phantom2Ver", segPhantom2Ver[0]);
+            
+            #endregion
+
+            #region para los PHANTOM3
+            
             referencia = (Bitmap)MainForm.Byte2image(segPhantom3TransHigh[0]);
             alto = referencia.Height;
             referencia.Dispose(); // se libera memoria, no es necesario usar mas ese bitmap
@@ -857,8 +1148,11 @@ namespace RockStatic
             indice = Convert.ToInt32(Math.Round(dindice)); // posicion de la que se extraen los planos horizontales y verticales
 
             // solo se genera un plano, por ahora
-            segPhantom3VerHigh.Add(GenerarPlano(segPhantom3TransHigh, indice, alto, factorEscalado, false));
-            segPhantom3VerLow.Add(GenerarPlano(segPhantom3TransLow, indice, alto, factorEscalado, false));
+            segPhantom3Ver.Add(GenerarPlano(segPhantom3TransHigh, indice, alto, factorEscalado, false));
+
+            File.WriteAllBytes(this.folderHigh + "phantom3Ver", segPhantom3Ver[0]);
+            
+            #endregion
 
             return true;
         }
@@ -874,15 +1168,11 @@ namespace RockStatic
 
             // solo se creara un plano de corte vertical y horizontal, por ahora
             // aun asi se preparan listas que solo tendran un unico elemento
-            segCoreHorHigh = new List<byte[]>();
-            segCoreHorLow = new List<byte[]>();
-            segPhantom1HorHigh = new List<byte[]>();
-            segPhantom2HorHigh = new List<byte[]>();
-            segPhantom3HorHigh = new List<byte[]>();
-            segPhantom1HorLow = new List<byte[]>();
-            segPhantom2HorLow = new List<byte[]>();
-            segPhantom3HorLow = new List<byte[]>();
-
+            segCoreHor = new List<byte[]>();            
+            segPhantom1Hor = new List<byte[]>();
+            segPhantom2Hor = new List<byte[]>();
+            segPhantom3Hor = new List<byte[]>();
+            
             // el largo del plano de corte es la cantidad de slides que existen
             // el alto del plano es el alto de la segmentacion transversal
 
@@ -890,7 +1180,8 @@ namespace RockStatic
             // pixel de los cortes transversales
             int factorEscalado = (int)Math.Ceiling(voxelDepth / voxelHeight);
 
-            // para los CORE
+            #region para los CORE
+            
             Bitmap referencia = (Bitmap)MainForm.Byte2image(segCoreTransHigh[0]);
             int alto = referencia.Height;
             referencia.Dispose(); // se libera memoria, no es necesario usar mas ese bitmap
@@ -899,10 +1190,15 @@ namespace RockStatic
             int indice = Convert.ToInt32(Math.Round(dindice)); // posicion de la que se extraen los planos horizontales y verticales
 
             // solo se genera un plano, por ahora
-            segCoreHorHigh.Add(GenerarPlano(segCoreTransHigh, indice, alto, factorEscalado, true));
-            segCoreHorLow.Add(GenerarPlano(segCoreTransLow, indice, alto, factorEscalado, true));
+            segCoreHor.Add(GenerarPlano(segCoreTransHigh, indice, alto, factorEscalado, true));
 
-            // para los PHANTOM1
+            // se guarda el plano en disco para futuras referencias
+            File.WriteAllBytes(this.folderHigh + "coreHor", segCoreHor[0]);
+                        
+            #endregion
+
+            #region para los PHANTOM1
+
             referencia = (Bitmap)MainForm.Byte2image(segPhantom1TransHigh[0]);
             alto = referencia.Height;
             referencia.Dispose(); // se libera memoria, no es necesario usar mas ese bitmap
@@ -911,10 +1207,15 @@ namespace RockStatic
             indice = Convert.ToInt32(Math.Round(dindice)); // posicion de la que se extraen los planos horizontales y verticales
 
             // solo se genera un plano, por ahora
-            segPhantom1HorHigh.Add(GenerarPlano(segPhantom1TransHigh, indice, alto, factorEscalado, true));
-            segPhantom1HorLow.Add(GenerarPlano(segPhantom1TransLow, indice, alto, factorEscalado, true));
+            segPhantom1Hor.Add(GenerarPlano(segPhantom1TransHigh, indice, alto, factorEscalado, true));
 
-            // para los PHANTOM2
+            // se guarda el plano en disco para futuras referencias
+            File.WriteAllBytes(this.folderHigh + "phantom1Hor", segPhantom1Hor[0]);
+            
+            #endregion 
+
+            #region para los PHANTOM2
+
             referencia = (Bitmap)MainForm.Byte2image(segPhantom2TransHigh[0]);
             alto = referencia.Height;
             referencia.Dispose(); // se libera memoria, no es necesario usar mas ese bitmap
@@ -923,10 +1224,13 @@ namespace RockStatic
             indice = Convert.ToInt32(Math.Round(dindice)); // posicion de la que se extraen los planos horizontales y verticales
 
             // solo se genera un plano, por ahora
-            segPhantom2HorHigh.Add(GenerarPlano(segPhantom2TransHigh, indice, alto, factorEscalado, true));
-            segPhantom2HorLow.Add(GenerarPlano(segPhantom2TransLow, indice, alto, factorEscalado, true));
+            segPhantom2Hor.Add(GenerarPlano(segPhantom2TransHigh, indice, alto, factorEscalado, true));
 
-            // para los PHANTOM3
+            File.WriteAllBytes(this.folderHigh + "phantom2Hor", segPhantom2Hor[0]);
+            
+            #endregion
+
+            #region para los PHANTOM3
             referencia = (Bitmap)MainForm.Byte2image(segPhantom3TransHigh[0]);
             alto = referencia.Height;
             referencia.Dispose(); // se libera memoria, no es necesario usar mas ese bitmap
@@ -935,8 +1239,11 @@ namespace RockStatic
             indice = Convert.ToInt32(Math.Round(dindice)); // posicion de la que se extraen los planos horizontales y verticales
 
             // solo se genera un plano, por ahora
-            segPhantom3HorHigh.Add(GenerarPlano(segPhantom3TransHigh, indice, alto, factorEscalado, true));
-            segPhantom3HorLow.Add(GenerarPlano(segPhantom3TransLow, indice, alto, factorEscalado, true));
+            segPhantom3Hor.Add(GenerarPlano(segPhantom3TransHigh, indice, alto, factorEscalado, true));
+
+            File.WriteAllBytes(this.folderHigh + "phantom3Hor", segPhantom3Hor[0]);
+            
+            #endregion
 
             return true;
         }
@@ -974,24 +1281,44 @@ namespace RockStatic
             return segPhantom3TransHigh;
         }
 
-        public List<byte[]> GetSegCoreHorHigh()
+        public List<byte[]> GetSegCoreHor()
         {
-            return segCoreHorHigh;
+            return segCoreHor;
         }
 
-        public List<byte[]> GetSegPhantom1HorHigh()
+        public List<byte[]> GetSegPhantom1Hor()
         {
-            return segPhantom1HorHigh;
+            return segPhantom1Hor;
         }
 
-        public List<byte[]> GetSegPhantom2HorHigh()
+        public List<byte[]> GetSegPhantom2Hor()
         {
-            return segPhantom2HorHigh;
+            return segPhantom2Hor;
         }
 
-        public List<byte[]> GetSegPhantom3HorHigh()
+        public List<byte[]> GetSegPhantom3Hor()
         {
-            return segPhantom3HorHigh;
+            return segPhantom3Hor;
+        }
+
+        public List<byte[]> GetSegCoreVer()
+        {
+            return segCoreHor;
+        }
+
+        public List<byte[]> GetSegPhantom1Ver()
+        {
+            return segPhantom1Hor;
+        }
+
+        public List<byte[]> GetSegPhantom2Ver()
+        {
+            return segPhantom2Hor;
+        }
+
+        public List<byte[]> GetSegPhantom3Ver()
+        {
+            return segPhantom3Hor;
         }
     }
 }
