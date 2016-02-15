@@ -330,11 +330,6 @@
             0,
             0,
             0});
-            this.numRadio.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.numRadio.Name = "numRadio";
             this.numRadio.Size = new System.Drawing.Size(51, 18);
             this.numRadio.TabIndex = 7;

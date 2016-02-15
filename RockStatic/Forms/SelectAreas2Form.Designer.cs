@@ -54,7 +54,7 @@
             this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(565, 32);
+            this.label4.Size = new System.Drawing.Size(843, 32);
             this.label4.TabIndex = 8;
             this.label4.Text = "SELECCION DE AREAS";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -65,10 +65,11 @@
             // 
             this.pictCore.Location = new System.Drawing.Point(10, 19);
             this.pictCore.Name = "pictCore";
-            this.pictCore.Size = new System.Drawing.Size(221, 153);
+            this.pictCore.Size = new System.Drawing.Size(800, 350);
             this.pictCore.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictCore.TabIndex = 9;
             this.pictCore.TabStop = false;
+            this.pictCore.Paint += new System.Windows.Forms.PaintEventHandler(this.pictCore_Paint);
             // 
             // groupBox1
             // 
@@ -76,10 +77,10 @@
             this.groupBox1.Controls.Add(this.pictCore);
             this.groupBox1.Location = new System.Drawing.Point(12, 39);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(545, 211);
+            this.groupBox1.Size = new System.Drawing.Size(823, 407);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Core";
+            this.groupBox1.Text = "CORE";
             // 
             // rangeBar
             // 
@@ -87,35 +88,36 @@
             this.rangeBar.HeightOfBar = 8;
             this.rangeBar.HeightOfMark = 24;
             this.rangeBar.HeightOfTick = 6;
-            this.rangeBar.InnerColor = System.Drawing.Color.LightGreen;
-            this.rangeBar.Location = new System.Drawing.Point(10, 178);
+            this.rangeBar.InnerColor = System.Drawing.Color.Green;
+            this.rangeBar.Location = new System.Drawing.Point(10, 375);
             this.rangeBar.Name = "rangeBar";
             this.rangeBar.Orientation = Zzzz.ZzzzRangeBar.RangeBarOrientation.horizontal;
-            this.rangeBar.RangeMaximum = 5;
-            this.rangeBar.RangeMinimum = 3;
+            this.rangeBar.RangeMaximum = 100;
+            this.rangeBar.RangeMinimum = 1;
             this.rangeBar.ScaleOrientation = Zzzz.ZzzzRangeBar.TopBottomOrientation.bottom;
-            this.rangeBar.Size = new System.Drawing.Size(221, 20);
+            this.rangeBar.Size = new System.Drawing.Size(800, 20);
             this.rangeBar.TabIndex = 10;
             this.rangeBar.TotalMaximum = 100;
-            this.rangeBar.TotalMinimum = 0;
+            this.rangeBar.TotalMinimum = 1;
+            this.rangeBar.RangeChanging += new Zzzz.ZzzzRangeBar.RangeChangedEventHandler(this.rangeBar_RangeChanging);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.pictPhantom3);
             this.groupBox2.Controls.Add(this.pictPhantom2);
             this.groupBox2.Controls.Add(this.pictPhantom1);
-            this.groupBox2.Location = new System.Drawing.Point(12, 262);
+            this.groupBox2.Location = new System.Drawing.Point(12, 462);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(545, 176);
+            this.groupBox2.Size = new System.Drawing.Size(823, 176);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Phantoms";
+            this.groupBox2.Text = "PHANTOMS";
             // 
             // pictPhantom3
             // 
             this.pictPhantom3.Location = new System.Drawing.Point(10, 121);
             this.pictPhantom3.Name = "pictPhantom3";
-            this.pictPhantom3.Size = new System.Drawing.Size(221, 45);
+            this.pictPhantom3.Size = new System.Drawing.Size(800, 45);
             this.pictPhantom3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictPhantom3.TabIndex = 9;
             this.pictPhantom3.TabStop = false;
@@ -124,7 +126,7 @@
             // 
             this.pictPhantom2.Location = new System.Drawing.Point(10, 70);
             this.pictPhantom2.Name = "pictPhantom2";
-            this.pictPhantom2.Size = new System.Drawing.Size(221, 45);
+            this.pictPhantom2.Size = new System.Drawing.Size(800, 45);
             this.pictPhantom2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictPhantom2.TabIndex = 9;
             this.pictPhantom2.TabStop = false;
@@ -133,7 +135,7 @@
             // 
             this.pictPhantom1.Location = new System.Drawing.Point(10, 19);
             this.pictPhantom1.Name = "pictPhantom1";
-            this.pictPhantom1.Size = new System.Drawing.Size(221, 45);
+            this.pictPhantom1.Size = new System.Drawing.Size(800, 45);
             this.pictPhantom1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictPhantom1.TabIndex = 9;
             this.pictPhantom1.TabStop = false;
@@ -145,7 +147,7 @@
             this.btnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Location = new System.Drawing.Point(487, 446);
+            this.btnCancelar.Location = new System.Drawing.Point(765, 647);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(70, 23);
             this.btnCancelar.TabIndex = 12;
@@ -158,7 +160,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(565, 477);
+            this.ClientSize = new System.Drawing.Size(843, 679);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -166,9 +168,7 @@
             this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(565, 477);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(565, 477);
             this.Name = "SelectAreas2Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SelectAreas2Form";

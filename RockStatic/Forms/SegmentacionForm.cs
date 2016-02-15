@@ -638,6 +638,7 @@ namespace RockStatic
 
                 this.padre.actual.SetCore(MainForm.CorregirPictBox2Original(elementosScreen[0], pictElemento.Image.Height, pictElemento.Height));
                 
+                // se borra el core de los elementos en pantalla
                 elementosScreen.RemoveAt(0);
 
                 // se ordenan segun la coordenada X, de izquierda a derecha. Los phantom P1 P2 y P3 se ordenan de izquierda a derecha

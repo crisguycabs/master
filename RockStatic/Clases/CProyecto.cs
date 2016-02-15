@@ -962,6 +962,9 @@ namespace RockStatic
             
             // se realiza el corte, a una imagen CUADRADA
             tempImage = tempImage.Clone(rectArea, tempImage.PixelFormat);
+
+            // se convierte a una imagen REDONDA
+            // tempImage = CropCircle8bit(tempImage);
                         
             // se convierte a byte
             byte[] tempByte = MainForm.Img2byte(tempImage);
@@ -1018,6 +1021,36 @@ namespace RockStatic
         }
 
         /// <summary>
+        /// Toma una imagen de 8bpp (escala de grises) y la vuelve una imagen de borde circular
+        /// </summary>
+        /// <param name="source"></param>
+        public static Bitmap CropCircle8bit(Bitmap source)
+        {
+            // radio del circulo
+            int alto = source.Width;
+            double r = alto/2;
+
+            // el centro del circulo debe estar en las coordenandas (r,r)
+            // cualquier punto que se encuentre a una distancia mayor de r se vuelve cero
+
+            // se hace un lock sobre la imagen para poder tratarla
+            // se hace lock sobre la imagen para empezar a pintar
+            using (CLockBitmap lockSource = new CLockBitmap(source))
+            {
+                for(int i=0;i<alto;i++)
+                {
+                    for (int j = 0; j < alto; j++)
+                    {
+                        double distancia = Math.Sqrt(Math.Pow(i - r, 2) + Math.Pow(j - r, 2));
+                        if (distancia > r) lockSource.SetPixel(i, j, Color.White);
+                    }
+                }
+            }
+
+            return source;
+        }
+
+        /// <summary>
         /// Toma una lista de byte[], con un indice, y genera los planos horizontales/verticales
         /// </summary>
         /// <param name="elementos">List de byte[] de los elementos a extraer el plano</param>
@@ -1049,12 +1082,12 @@ namespace RockStatic
                                 if (horizontal)
                                 {
                                     // plano horizontal
-                                    lockPlano.SetPixel(i+k, j, lockSrc.GetPixel(j, indice));
+                                    lockPlano.SetPixel(i + k, j, lockSrc.GetPixel(j, indice));
                                 }
                                 else
                                 {
                                     // plano vertical
-                                    lockPlano.SetPixel(i + k, j, lockSrc.GetPixel(indice,j));
+                                    lockPlano.SetPixel(i + k, j, lockSrc.GetPixel(indice, j));
                                 }
                             }
                         }

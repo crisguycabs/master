@@ -769,11 +769,19 @@ namespace RockStatic
 
         public void CerrarSelectAreasForm()
         {
-            this.abiertoSelectAreasForm = false;
-            this.selecAreasForm = null;
+            if (this.selecAreasForm != null)
+            {
+                this.selecAreasForm.Close();
+                this.abiertoSelectAreasForm = false;
+                this.selecAreasForm = null;
+            }
 
-            this.abiertoSelectAreas2Form = false;
-            this.selecAreas2Form = null;
+            if (this.selecAreas2Form != null)
+            {
+                this.selecAreas2Form.Close();
+                this.abiertoSelectAreas2Form = false;
+                this.selecAreas2Form = null;
+            }
         }
 
         private void tableLayoutPanel1_CellPaint(object sender, TableLayoutCellPaintEventArgs e)

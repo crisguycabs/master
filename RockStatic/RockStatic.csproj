@@ -197,6 +197,9 @@
     <None Include="resources\maximize.png" />
     <None Include="resources\minimize.png" />
     <None Include="resources\hour-glass-icon.png" />
+    <None Include="resources\LogoHDSP.png" />
+    <None Include="resources\colciencias.jpg" />
+    <None Include="resources\ecopetrol.jpg" />
     <Content Include="RockStaticGreen.ico" />
     <None Include="resources\UISLogo.png" />
     <None Include="resources\RockStaticGreen.png" />
