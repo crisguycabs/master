@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace RockStatic
 {
@@ -954,6 +955,10 @@ namespace RockStatic
         /// <returns></returns>
         public static byte[] Cropper(byte[] srcByte,CCuadrado area,string path, string nombre, int indice)
         {
+            #region version antes de 24bpp
+
+            /*
+
             // se transforma a imagen
             Bitmap tempImage = (Bitmap)MainForm.Byte2image(srcByte);
 
@@ -970,6 +975,77 @@ namespace RockStatic
             byte[] tempByte = MainForm.Img2byte(tempImage);
             tempImage.Dispose();
             
+            // se guarda en disco
+            File.WriteAllBytes(path + nombre + indice, tempByte);
+
+            return tempByte;
+
+            */
+
+            #endregion
+
+            DateTime ini = DateTime.Now;
+
+            // se transforma a imagen el byteImage guardado
+            Bitmap srcImage = (Bitmap)MainForm.Byte2image(srcByte);
+
+            // se crea un rectangulo para realizar el corte
+            Rectangle rectArea = new Rectangle(area.x - area.width, area.y - area.width, area.width * 2, area.width * 2);
+
+            // se crea la imagen destino
+            Bitmap rectImage = new Bitmap(srcImage.Width, srcImage.Height, srcImage.PixelFormat);
+
+            // se realiza el corte, a una imagen CUADRADA
+            rectImage = srcImage.Clone(rectArea, srcImage.PixelFormat);
+
+            //System.Drawing.Imaging.BitmapData bmd = rectImage.LockBits(new Rectangle(0, 0, dd[indice].width, dd[indice].height), System.Drawing.Imaging.ImageLockMode.ReadOnly, dd[indice].bmp.PixelFormat);
+            BitmapData bmd = rectImage.LockBits(new Rectangle(0, 0, rectImage.Width, rectImage.Height), System.Drawing.Imaging.ImageLockMode.ReadOnly, rectImage.PixelFormat);
+
+            unsafe
+            {
+                int pixelSize = 3;
+                int i, j, j1, i1;
+                byte b = Convert.ToByte(Color.Black.R);
+
+                double centroX = Convert.ToDouble(rectImage.Width) / 2;
+                double centroY = centroX;
+                double distancia, dx, dy;
+
+                for (i = 0; i < bmd.Height; ++i)
+                {
+                    byte* row = (byte*)bmd.Scan0 + (i * bmd.Stride);
+                    i1 = i * bmd.Width;
+
+                    for (j = 0; j < bmd.Width; ++j)
+                    {
+                        j1 = j * pixelSize;
+
+                        dx = i - centroX;
+                        dy = j - centroY;
+                        distancia = Math.Sqrt((dx*dx)+(dy*dy));
+
+                        if (distancia > centroX)
+                        {
+                            row[j1] = b;            // Red
+                            row[j1 + 1] = b;        // Green
+                            row[j1 + 2] = b;        // Blue       
+                        }
+                    }
+                }
+
+            }
+
+            rectImage.UnlockBits(bmd);
+
+            DateTime fin = DateTime.Now;
+            TimeSpan span = fin - ini;
+
+            // se convierte a byte
+            byte[] tempByte = MainForm.Img2byte(rectImage);
+            
+            rectImage.Dispose();
+            srcImage.Dispose();
+
             // se guarda en disco
             File.WriteAllBytes(path + nombre + indice, tempByte);
 
@@ -996,12 +1072,15 @@ namespace RockStatic
             segPhantom3TransHigh = new List<byte[]>();
             segPhantom3TransLow = new List<byte[]>();
 
+            DateTime ini = DateTime.Now;
+
             for (int i = 0; i < _count; i++)
             {
                 // se toma cada byte[] y se convierte en image, luego en bitmap
                 // esa imagen luego se recorta segun la informacion de segmentacion
                 // cada recorte se guarda en disco y en memoria
 
+                
                 segCoreTransHigh.Add(Cropper(filesHigh[i], areaCore, GetFolderHigh(), "coreTrans-",i));
                 segCoreTransLow.Add(Cropper(filesLow[i], areaCore, GetFolderLow(), "coreTrans-", i));
 
@@ -1014,6 +1093,9 @@ namespace RockStatic
                 segPhantom3TransHigh.Add(Cropper(filesHigh[i], areaPhantom3, GetFolderHigh(), "phantom3Trans-", i));
                 segPhantom3TransLow.Add(Cropper(filesLow[i], areaPhantom3, GetFolderLow(), "phantom3Trans-", i));
             }
+
+            DateTime fin = DateTime.Now;
+            TimeSpan span = fin - ini;
 
             SetSegTransDone(true);
 
