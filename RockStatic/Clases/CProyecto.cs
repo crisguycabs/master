@@ -998,7 +998,6 @@ namespace RockStatic
             // se realiza el corte, a una imagen CUADRADA
             rectImage = srcImage.Clone(rectArea, srcImage.PixelFormat);
 
-            //System.Drawing.Imaging.BitmapData bmd = rectImage.LockBits(new Rectangle(0, 0, dd[indice].width, dd[indice].height), System.Drawing.Imaging.ImageLockMode.ReadOnly, dd[indice].bmp.PixelFormat);
             BitmapData bmd = rectImage.LockBits(new Rectangle(0, 0, rectImage.Width, rectImage.Height), System.Drawing.Imaging.ImageLockMode.ReadOnly, rectImage.PixelFormat);
 
             unsafe
@@ -1143,8 +1142,11 @@ namespace RockStatic
         /// <returns>plano generado</returns>
         private byte[] GenerarPlano(List<byte[]> elementos, int indice, int alto, int factorEscalado, bool horizontal)
         {
-            Bitmap plano = new Bitmap(elementos.Count * factorEscalado, alto);
-            
+            Bitmap plano = new Bitmap(elementos.Count * factorEscalado, alto,PixelFormat.Format24bppRgb);
+
+            #region antes de 24bpp
+
+            /*
             // se hace lock sobre la imagen para empezar a pintar
             using (CLockBitmap lockPlano = new CLockBitmap(plano))
             {
@@ -1178,6 +1180,79 @@ namespace RockStatic
                     iSlide++;
                 }
             }
+            
+            */
+            
+            #endregion
+
+            Bitmap srcImage;
+            BitmapData bmdSrc;
+
+            BitmapData bmdPlano = plano.LockBits(new Rectangle(0, 0, plano.Width, plano.Height), System.Drawing.Imaging.ImageLockMode.ReadOnly, plano.PixelFormat);
+
+            unsafe
+            {
+                int pixelSize = 3;
+                int i, j, j1, i1;
+
+                byte[][] b = new byte[plano.Height][];
+                for (i = 0; i < plano.Height;i++)
+                {
+                    b[i] = new byte[plano.Width];
+                }
+
+                // se recorre cada uno de los elementos y se extrae la fila o la columna segun sea el caso
+                for (int k = 0; k < elementos.Count; k++)
+                {
+                    // se convierte a imagen el elemento del que se van a extraer la fila o columna
+                    srcImage = (Bitmap)MainForm.Byte2image(elementos[k]);
+
+                    // lo primero es hacer lock sobre la imagen fuente
+                    bmdSrc = srcImage.LockBits(new Rectangle(0, 0, srcImage.Width, srcImage.Height), ImageLockMode.ReadOnly, srcImage.PixelFormat);
+
+                    if (horizontal)
+                    {
+                        // se genera el plano horizontal, el indice I es fijo
+                        i = indice;
+
+                        byte* row = (byte*)bmdSrc.Scan0 + (i * bmdSrc.Stride);
+                        i1 = i * bmdSrc.Width;
+
+                        for (j = 0; j < bmdSrc.Width; ++j)
+                        {
+                            j1 = j * pixelSize;
+
+                            // se guarda el color de ese pixel
+                            b[j][k * factorEscalado] = row[j1];                        
+                            //b.Add(row[j1]);
+                        }
+                    }
+                    else
+                    {
+                        // se genera el plano vertical, el indice J es fijo
+                        j = indice;
+                        for (i = 0; i < bmdSrc.Height; ++i)
+                        {
+                            byte* row = (byte*)bmdSrc.Scan0 + (i * bmdSrc.Stride);
+                            i1 = i * bmdSrc.Width;
+
+                            j1 = j * pixelSize;
+
+                            // se guarda el color de ese pixel
+                            b[i][k * factorEscalado] = row[j1];
+                            //b.Add(row[j1]);
+                        }
+                    }
+
+                    // se libera la imagen fuente y se dispone de ella
+                    srcImage.UnlockBits(bmdSrc);
+                    srcImage.Dispose();
+                }
+
+                
+            }
+
+            plano.UnlockBits(bmdPlano);
 
             return MainForm.Img2byte(plano);
         }
