@@ -1193,7 +1193,7 @@ namespace RockStatic
             unsafe
             {
                 int pixelSize = 3;
-                int i, j, j1, i1;
+                int i, j, j1, i1, kindice;
 
                 byte[][] b = new byte[plano.Height][];
                 for (i = 0; i < plano.Height;i++)
@@ -1223,7 +1223,9 @@ namespace RockStatic
                             j1 = j * pixelSize;
 
                             // se guarda el color de ese pixel
-                            b[j][k * factorEscalado] = row[j1];                        
+                            kindice = k * factorEscalado;
+                            b[j][kindice] = row[j1];
+                            b[j][kindice + 1] = row[j1]; 
                             //b.Add(row[j1]);
                         }
                     }
@@ -1239,7 +1241,9 @@ namespace RockStatic
                             j1 = j * pixelSize;
 
                             // se guarda el color de ese pixel
-                            b[i][k * factorEscalado] = row[j1];
+                            kindice = k * factorEscalado;
+                            b[i][kindice] = row[j1];
+                            b[i][kindice + 1] = row[j1];
                             //b.Add(row[j1]);
                         }
                     }
@@ -1249,7 +1253,21 @@ namespace RockStatic
                     srcImage.Dispose();
                 }
 
-                
+                // se llena el plano
+                for (i = 0; i < bmdPlano.Height; ++i)
+                {
+                    byte* row = (byte*)bmdPlano.Scan0 + (i * bmdPlano.Stride);
+                    i1 = i * bmdPlano.Width;
+
+                    for (j = 0; j < bmdPlano.Width; ++j)
+                    {
+                        j1 = j * pixelSize;
+
+                        row[j1] = b[i][j];            // Red
+                        row[j1 + 1] = b[i][j];        // Green
+                        row[j1 + 2] = b[i][j];        // Blue   
+                    }
+                }
             }
 
             plano.UnlockBits(bmdPlano);
