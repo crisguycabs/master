@@ -22,6 +22,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>bin\Debug\RockStatic.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -65,6 +66,8 @@
     <Compile Include="Clases\CCuadrado.cs" />
     <Compile Include="Clases\CCirculo.cs" />
     <Compile Include="Clases\CLockBitmap.cs" />
+    <Compile Include="CPermisos.cs" />
+    <Compile Include="CUsuario.cs" />
     <Compile Include="Forms\PreviewSegForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,7 +180,7 @@
     <EmbeddedResource Include="Forms\SplashScreenForm.resx">
       <DependentUpon>SplashScreenForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="ClassDiagram3.cd" />
+    <None Include="ClassDiagram8.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

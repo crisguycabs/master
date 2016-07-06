@@ -1,0 +1,575 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpKI>
+  <HelpKINode Title="abiertoCheckForm field" Url="html/c7151e99-64fb-0ddc-42a2-57cb2eb04bec.htm" />
+  <HelpKINode Title="abiertoHomeForm field" Url="html/f45396fc-a5e9-06d4-b2b4-2483f2fe9fae.htm" />
+  <HelpKINode Title="abiertoNuevoProyectoForm field" Url="html/9509de0e-50b2-0a25-1158-b51e8ea21b38.htm" />
+  <HelpKINode Title="abiertoPreviewSegForm field" Url="html/1838f6ff-35e6-010c-3717-95cacfe199aa.htm" />
+  <HelpKINode Title="abiertoProyectoForm field" Url="html/f45ba214-eec8-1223-2adb-50b3cfeb4c2f.htm" />
+  <HelpKINode Title="abiertoSegmentacionForm field" Url="html/c9473cc4-6aec-fbc3-83cc-532af78bc801.htm" />
+  <HelpKINode Title="abiertoSelectAreas2Form field" Url="html/7009e704-1f7b-248d-ab2a-1014235f14fe.htm" />
+  <HelpKINode Title="abiertoSelectAreasForm field" Url="html/7ef57e3f-8da7-5880-1ae6-ebf4aedcb976.htm" />
+  <HelpKINode Title="abiertoWaitingForm field" Url="html/c3219b3f-74fd-1053-8d04-ad71bd88d523.htm" />
+  <HelpKINode Title="AbrirHome method" Url="html/a8a875b8-ae91-ae70-ab1c-b85da07a1ec6.htm" />
+  <HelpKINode Title="AbrirProyecto method" Url="html/68b0851b-0751-9a0b-21af-9127c48ce63f.htm" />
+  <HelpKINode Title="actual field" Url="html/1ab16386-ca5d-d7ae-a129-936fe0164b18.htm" />
+  <HelpKINode Title="AddElemento method">
+    <HelpKINode Title="SegmentacionForm.AddElemento Method " Url="html/9f21e2aa-63a6-bde4-cdd1-e7cbb94aa947.htm" />
+    <HelpKINode Title="SelectAreasForm.AddElemento Method " Url="html/b27d98ca-4bbd-0209-450b-eb5ef5f54614.htm" />
+  </HelpKINode>
+  <HelpKINode Title="btnCancelar_Click method">
+    <HelpKINode Title="CheckForm.btnCancelar_Click Method " Url="html/3043864e-e2d9-4564-2e83-2ec89af6e923.htm" />
+    <HelpKINode Title="SegmentacionForm.btnCancelar_Click Method " Url="html/3dee506d-dca8-b45c-488a-1b7b11d98f63.htm" />
+  </HelpKINode>
+  <HelpKINode Title="btnGuardar_Click method" Url="html/dbffbf82-e340-c9fa-cb0a-30074b857be0.htm" />
+  <HelpKINode Title="Byte2image method" Url="html/91948fc3-79e9-0908-9f92-25c2231225aa.htm" />
+  <HelpKINode Title="CCirculo class">
+    <HelpKINode Title="CCirculo Class" Url="html/80120943-0cc4-03e8-b141-5da1d56520f4.htm" />
+    <HelpKINode Title="about CCirculo class" Url="html/80120943-0cc4-03e8-b141-5da1d56520f4.htm" />
+    <HelpKINode Title="constructor" Url="html/80f9578a-db1c-487a-9476-bdd4cb4e419f.htm" />
+    <HelpKINode Title="fields" Url="html/ba05630f-a8b0-2310-4ae1-65800227b0cc.htm" />
+    <HelpKINode Title="methods" Url="html/bea87690-b795-4ebd-af7c-ff0b3d6cf00d.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CCirculo.CCirculo constructor" Url="html/80f9578a-db1c-487a-9476-bdd4cb4e419f.htm" />
+  <HelpKINode Title="CCirculo.nombre field" Url="html/cde70329-b1ee-0815-567f-562f289d0ca1.htm" />
+  <HelpKINode Title="CCirculo.r field" Url="html/3d6bfcdb-80c0-a373-b1de-5b550d104658.htm" />
+  <HelpKINode Title="CCirculo.x field" Url="html/036c0526-5c9a-a65e-29aa-1ad4a2da0409.htm" />
+  <HelpKINode Title="CCirculo.y field" Url="html/368280d9-4475-7067-8b7f-5e3518b6800d.htm" />
+  <HelpKINode Title="CCuadrado class">
+    <HelpKINode Title="CCuadrado Class" Url="html/6486c008-bbf7-9340-3cdc-1c294be654a4.htm" />
+    <HelpKINode Title="about CCuadrado class" Url="html/6486c008-bbf7-9340-3cdc-1c294be654a4.htm" />
+    <HelpKINode Title="constructor" Url="html/5523fa50-e981-a196-0d3b-3c897314e4fd.htm" />
+    <HelpKINode Title="fields" Url="html/5301bbe7-d246-0fd6-68ba-dd202c729354.htm" />
+    <HelpKINode Title="methods" Url="html/1540258d-c6f4-57f8-55e7-d6f09751ba2b.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CCuadrado.CCuadrado constructor" Url="html/5523fa50-e981-a196-0d3b-3c897314e4fd.htm" />
+  <HelpKINode Title="CCuadrado.nombre field" Url="html/4a6b8b0a-76a0-0814-fbd2-4dc4d1dd6bf4.htm" />
+  <HelpKINode Title="CCuadrado.width field" Url="html/583bbfe0-2d02-7bc5-619e-57c263e07f2e.htm" />
+  <HelpKINode Title="CCuadrado.x field" Url="html/3191005b-de41-44de-df38-7cb17df9ae4e.htm" />
+  <HelpKINode Title="CCuadrado.y field" Url="html/4198f542-2225-b185-c707-d9bbc9ee93a0.htm" />
+  <HelpKINode Title="CentrarForm method">
+    <HelpKINode Title="CheckForm.CentrarForm Method " Url="html/f2d3f2dc-f513-1b50-2df7-7c84e4d9664f.htm" />
+    <HelpKINode Title="HomeForm.CentrarForm Method " Url="html/a09a10a9-dd86-3f74-01d9-0899efd6bdbc.htm" />
+    <HelpKINode Title="NewProjectForm.CentrarForm Method " Url="html/6c1984ed-1754-249c-f829-95c2bf2c6b77.htm" />
+    <HelpKINode Title="PreviewSegForm.CentrarForm Method " Url="html/939e8e4e-5145-e857-2bba-e6e1c65b1fa7.htm" />
+    <HelpKINode Title="ProjectForm.CentrarForm Method " Url="html/01358b06-ae8c-8dc2-e07e-8114a5873ce4.htm" />
+    <HelpKINode Title="SegmentacionForm.CentrarForm Method " Url="html/cdb2dec8-ac45-b1fa-543b-01cff3d4fd2f.htm" />
+    <HelpKINode Title="SelectAreasForm.CentrarForm Method " Url="html/f29bc295-f1f9-cb59-0f8f-f7fa55220b27.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CerrarCheckForm method" Url="html/d66cadac-674a-134e-8a2c-131ff0aa4f39.htm" />
+  <HelpKINode Title="CerrarHomeForm method" Url="html/45cb65a0-05e1-f83a-c0d1-23f603d2641a.htm" />
+  <HelpKINode Title="CerrarNuevoProyectoForm method" Url="html/c869b0f4-eff7-32c6-8f41-7377fa80c60a.htm" />
+  <HelpKINode Title="CerrarPreviewSegForm method" Url="html/ca3f5fbc-2fc3-310b-0b3c-6c8a33e8185c.htm" />
+  <HelpKINode Title="CerrarProjectForm method" Url="html/70bb99f6-ce47-e4e5-9cea-74b7635e838f.htm" />
+  <HelpKINode Title="CerrarSegmentacionForm method" Url="html/4204bf68-6483-d3ec-3702-a6989427d8ec.htm" />
+  <HelpKINode Title="CerrarSelectAreasForm method" Url="html/014074bb-ed2b-c2c0-c0a6-e24c5c638c15.htm" />
+  <HelpKINode Title="CheckForm class">
+    <HelpKINode Title="CheckForm Class" Url="html/538a09cf-f903-49ce-9543-c3f79a29596e.htm" />
+    <HelpKINode Title="about CheckForm class" Url="html/538a09cf-f903-49ce-9543-c3f79a29596e.htm" />
+    <HelpKINode Title="constructor" Url="html/664791c4-6de7-3280-c458-316baa0cbcba.htm" />
+    <HelpKINode Title="events" Url="html/42fd729d-3a3f-0c1d-ced2-877ca19e8c07.htm" />
+    <HelpKINode Title="fields" Url="html/07b6c607-ab45-b135-a33d-8efe4f2986de.htm" />
+    <HelpKINode Title="methods" Url="html/e103d86d-4975-4371-584e-d2a73135fc05.htm" />
+    <HelpKINode Title="properties" Url="html/92cc3688-627b-62b8-5672-24cbe927cfe2.htm" />
+  </HelpKINode>
+  <HelpKINode Title="checkForm field" Url="html/156d475b-0163-e972-bd36-aa95248e5cb4.htm" />
+  <HelpKINode Title="CheckForm.btnCancelar_Click method" Url="html/3043864e-e2d9-4564-2e83-2ec89af6e923.htm" />
+  <HelpKINode Title="CheckForm.btnGuardar_Click method" Url="html/dbffbf82-e340-c9fa-cb0a-30074b857be0.htm" />
+  <HelpKINode Title="CheckForm.CentrarForm method" Url="html/f2d3f2dc-f513-1b50-2df7-7c84e4d9664f.htm" />
+  <HelpKINode Title="CheckForm.CheckForm constructor" Url="html/664791c4-6de7-3280-c458-316baa0cbcba.htm" />
+  <HelpKINode Title="CheckForm.Dispose method" Url="html/de6e7818-13d8-d849-8830-b35dedb61922.htm" />
+  <HelpKINode Title="CheckForm.filesHigh field" Url="html/c0da54f3-5f55-2b7f-cc50-ef5f86f49ae5.htm" />
+  <HelpKINode Title="CheckForm.GetNameFile method" Url="html/adea25fb-95d3-87c8-35eb-bc5a3fac694d.htm" />
+  <HelpKINode Title="CheckForm.lblTitulo field" Url="html/abe17a0c-799d-f1ea-bb9c-9ff38a242d06.htm" />
+  <HelpKINode Title="CheckForm.newProjectForm field" Url="html/3eaa0bdf-44c8-ccf9-f779-0d548a559ed8.htm" />
+  <HelpKINode Title="CheckForm.padre field" Url="html/994dc363-f230-775b-8d76-09e7d8321ec9.htm" />
+  <HelpKINode Title="CheckForm.SetForm method" Url="html/f918d72c-bc3e-fd78-2c79-4d18b9feef1f.htm" />
+  <HelpKINode Title="CheckForm.SetList method" Url="html/fd2a68ae-48e8-bb61-c9ce-d32742fa429d.htm" />
+  <HelpKINode Title="CheckForm.temp field" Url="html/fc54cec5-ad2b-41dd-d4b5-9ecd6489c8d5.htm" />
+  <HelpKINode Title="CheckLargos method" Url="html/22e00346-2cec-f3fe-83af-02108194f73a.htm" />
+  <HelpKINode Title="CLockBitmap class">
+    <HelpKINode Title="CLockBitmap Class" Url="html/adfe5bcf-53f2-c2e2-6806-38f22a057a44.htm" />
+    <HelpKINode Title="about CLockBitmap class" Url="html/adfe5bcf-53f2-c2e2-6806-38f22a057a44.htm" />
+    <HelpKINode Title="constructor" Url="html/deafbf38-df02-9f65-983a-d01969fa0ad3.htm" />
+    <HelpKINode Title="methods" Url="html/a960f880-9562-3dd2-66e7-0050e451f409.htm" />
+    <HelpKINode Title="properties" Url="html/b3594bc2-9cd1-7192-94b1-bb5db753db77.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CLockBitmap.CLockBitmap constructor" Url="html/deafbf38-df02-9f65-983a-d01969fa0ad3.htm" />
+  <HelpKINode Title="CLockBitmap.Depth property" Url="html/77eb7205-982f-5a39-95ef-f923c662fded.htm" />
+  <HelpKINode Title="CLockBitmap.Dispose method" Url="html/a05dfa8f-f0a2-f054-8989-64aeedcfd678.htm" />
+  <HelpKINode Title="CLockBitmap.GetPixel method" Url="html/12f5f0d1-c5db-1c44-29e1-20a5449f64af.htm" />
+  <HelpKINode Title="CLockBitmap.Height property" Url="html/c93e97f6-7678-62e1-b956-6d0b730ef033.htm" />
+  <HelpKINode Title="CLockBitmap.LockBits method" Url="html/d9581a4d-d1d1-0836-87c6-368ab12a0e0a.htm" />
+  <HelpKINode Title="CLockBitmap.Pixels property" Url="html/076b4a05-6f7c-d1ad-bb47-8e05db0a1532.htm" />
+  <HelpKINode Title="CLockBitmap.SetPixel method" Url="html/6d4ee9cc-a614-25d6-311a-b4e9b18a529f.htm" />
+  <HelpKINode Title="CLockBitmap.UnlockBits method" Url="html/264db6b7-c813-b835-1b13-ba536f1e7cdc.htm" />
+  <HelpKINode Title="CLockBitmap.Width property" Url="html/6cb5cbf0-9a1a-80f6-8d2c-8c9dd5a4bfa6.htm" />
+  <HelpKINode Title="CloseWaiting method" Url="html/1def31fd-0f94-5556-8894-85466ce288b6.htm" />
+  <HelpKINode Title="ColorToGrayscale method" Url="html/3f7c5596-d199-0b73-57f9-54b399771cfe.htm" />
+  <HelpKINode Title="core field" Url="html/9bb22f77-7f6d-4953-61f0-5b7ed2a27f7e.htm" />
+  <HelpKINode Title="CorregirOriginal2PictBox method" Url="html/7a8505d6-1c9c-adaa-2e1e-e7517264c4bc.htm" />
+  <HelpKINode Title="CorregirPictBox2Original method" Url="html/483ea4b1-c09d-605b-8888-9c36eb718bcf.htm" />
+  <HelpKINode Title="count property" Url="html/4a2ca357-4fee-8ce9-5f45-9067a4c22de1.htm" />
+  <HelpKINode Title="CProyecto class">
+    <HelpKINode Title="CProyecto Class" Url="html/0887e6d8-274c-3b91-7086-1b35b84be494.htm" />
+    <HelpKINode Title="about CProyecto class" Url="html/0887e6d8-274c-3b91-7086-1b35b84be494.htm" />
+    <HelpKINode Title="constructor" Url="html/01907848-85e6-8bd1-961a-b34712515404.htm" />
+    <HelpKINode Title="fields" Url="html/be8ab893-fc0b-7b8c-c0cf-08ae60bf107d.htm" />
+    <HelpKINode Title="methods" Url="html/cce1c429-74f8-915f-d9f1-e5c61ebb2d26.htm" />
+    <HelpKINode Title="properties" Url="html/8d1b9f59-5ca8-5c88-f60a-095b885d14e7.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CProyecto.count property" Url="html/4a2ca357-4fee-8ce9-5f45-9067a4c22de1.htm" />
+  <HelpKINode Title="CProyecto.CProyecto constructor" Url="html/01907848-85e6-8bd1-961a-b34712515404.htm" />
+  <HelpKINode Title="CProyecto.Crear method" Url="html/f9ab95c8-8c89-9290-2d75-c4e1de21e52a.htm" />
+  <HelpKINode Title="CProyecto.CropCircle8bit method" Url="html/2100d2df-fd20-521e-5e11-a45ad56445ea.htm" />
+  <HelpKINode Title="CProyecto.Cropper method" Url="html/f6c34b7b-1b4a-fe1b-6a6b-d15217e9939e.htm" />
+  <HelpKINode Title="CProyecto.GenerarSegHorizontal method" Url="html/d0e38eaf-1ec9-99f8-9a15-fd486a963f44.htm" />
+  <HelpKINode Title="CProyecto.GenerarSegTransveral method" Url="html/a7868ca9-6866-9da5-66f9-1c365ddc3059.htm" />
+  <HelpKINode Title="CProyecto.GenerarSegVertical method" Url="html/da2660ae-4dbe-fbf9-9c9b-f99104ec979a.htm" />
+  <HelpKINode Title="CProyecto.GetAreasDone method" Url="html/f21fb682-0754-c63e-c747-7531b52a8ef8.htm" />
+  <HelpKINode Title="CProyecto.GetCore method" Url="html/8fd02648-c647-7ac3-83f5-1f57c6fd3af3.htm" />
+  <HelpKINode Title="CProyecto.GetFolderHigh method" Url="html/b86a42cc-e35b-03a2-38e9-4b27ae701994.htm" />
+  <HelpKINode Title="CProyecto.GetFolderLow method" Url="html/77cfc247-4c5c-3be3-3cf7-09a8ffd309a8.htm" />
+  <HelpKINode Title="CProyecto.GetFolderPath method" Url="html/08c39fa7-99eb-ece3-4418-1e360833453a.htm" />
+  <HelpKINode Title="CProyecto.GetHigh method" Url="html/27fcae26-7292-bcb5-c546-423835b9e47a.htm" />
+  <HelpKINode Title="CProyecto.GetLengthHigh method" Url="html/ba4c7b50-b373-59bf-df2d-40c94940439f.htm" />
+  <HelpKINode Title="CProyecto.GetLengthLow method" Url="html/ef1861e5-e1e0-04b2-459f-6d02ed9574a8.htm" />
+  <HelpKINode Title="CProyecto.GetLow method" Url="html/a67c7ba6-2b18-9a7a-69c8-96adc130f28e.htm" />
+  <HelpKINode Title="CProyecto.GetPhantom1 method" Url="html/3d233877-05b4-89ae-4752-e91f322ed86f.htm" />
+  <HelpKINode Title="CProyecto.GetPhantom2 method" Url="html/87bf1a4d-7c12-3b58-2aa9-9389fe2939b1.htm" />
+  <HelpKINode Title="CProyecto.GetPhantom3 method" Url="html/b1d390e3-c7ab-10b2-e6b5-067dd3ddfc22.htm" />
+  <HelpKINode Title="CProyecto.GetSegCoreHor method" Url="html/149068fd-c98b-b23e-73ff-6cfc5f0723e0.htm" />
+  <HelpKINode Title="CProyecto.GetSegCoreTransHigh method" Url="html/746affc8-beb6-7efa-5a43-0e8b3fba8745.htm" />
+  <HelpKINode Title="CProyecto.GetSegCoreTransLow method" Url="html/617a8e4a-2354-7168-d829-19c03759b90c.htm" />
+  <HelpKINode Title="CProyecto.GetSegCoreVer method" Url="html/c5434d0b-2929-7723-7b2b-64445d88cedc.htm" />
+  <HelpKINode Title="CProyecto.GetSegHorDone method" Url="html/e439cb0c-635a-9fb3-7f12-9d55975fa936.htm" />
+  <HelpKINode Title="CProyecto.GetSegmentacionDone method" Url="html/6b6bc111-641e-bf2c-e3dd-f39ca6e2a61c.htm" />
+  <HelpKINode Title="CProyecto.GetSegPhantom1Hor method" Url="html/6a1fffed-309e-7c47-000b-e3579bb5b486.htm" />
+  <HelpKINode Title="CProyecto.GetSegPhantom1TransHigh method" Url="html/20fb1df6-06cf-9dde-e51c-b223db95216b.htm" />
+  <HelpKINode Title="CProyecto.GetSegPhantom1Ver method" Url="html/069fae6d-89af-6ddf-59f7-665b4276f37f.htm" />
+  <HelpKINode Title="CProyecto.GetSegPhantom2Hor method" Url="html/df52f1a1-ff0b-af3b-2440-879e21ccc808.htm" />
+  <HelpKINode Title="CProyecto.GetSegPhantom2TransHigh method" Url="html/b6dab0ae-7ff1-b9bd-f732-a12c7f1449f7.htm" />
+  <HelpKINode Title="CProyecto.GetSegPhantom2Ver method" Url="html/ce5dc2eb-7cc6-9564-773d-7cd5ea825b6a.htm" />
+  <HelpKINode Title="CProyecto.GetSegPhantom3Hor method" Url="html/8c15685e-f0b9-926a-67f7-26be0eec35fd.htm" />
+  <HelpKINode Title="CProyecto.GetSegPhantom3TransHigh method" Url="html/cc17f83d-529f-67e2-5f50-9b7fcf40da79.htm" />
+  <HelpKINode Title="CProyecto.GetSegPhantom3Ver method" Url="html/f3a96b17-bc39-1a62-74e8-ff0c461df8e4.htm" />
+  <HelpKINode Title="CProyecto.GetSegTransDone method" Url="html/22a8cbee-f9b9-dbd3-ba0e-98943b225d6d.htm" />
+  <HelpKINode Title="CProyecto.GetSegVerDone method" Url="html/3aacf4ef-65a2-91d0-eb55-e56f6b7006e5.htm" />
+  <HelpKINode Title="CProyecto.name property" Url="html/e27b9eee-71c7-2c74-c770-39be26ea07dd.htm" />
+  <HelpKINode Title="CProyecto.Salvar method" Url="html/a30e359e-dd60-d7e6-093f-2af9b23d49be.htm" />
+  <HelpKINode Title="CProyecto.SetAreasDone method" Url="html/112a0584-2cd5-8665-9821-fc2ecc7b3b1d.htm" />
+  <HelpKINode Title="CProyecto.SetCore method" Url="html/302287dc-0694-e60e-74c9-6de67e865c9a.htm" />
+  <HelpKINode Title="CProyecto.SetCoreTransHigh method" Url="html/ea0cad6b-afb1-5b3f-8d83-104c3be7da4a.htm" />
+  <HelpKINode Title="CProyecto.SetFolderPath method" Url="html/dc2658bc-fdd1-6f11-0567-4c3055e12e6d.htm" />
+  <HelpKINode Title="CProyecto.SetHigh method" Url="html/242b705e-e140-77c4-5bd8-5ad5cd6027be.htm" />
+  <HelpKINode Title="CProyecto.SetLow method" Url="html/16d706d1-66fa-babe-461a-2076f641435c.htm" />
+  <HelpKINode Title="CProyecto.SetPhantom1 method" Url="html/d250d135-a1c7-9389-9cbd-3f775d8c9f13.htm" />
+  <HelpKINode Title="CProyecto.SetPhantom2 method" Url="html/d76a843c-5ba0-0c76-57ce-8bfd5b79d670.htm" />
+  <HelpKINode Title="CProyecto.SetPhantom3 method" Url="html/6af20a2f-0c53-3b28-94d1-d20bbf059736.htm" />
+  <HelpKINode Title="CProyecto.SetSegCoreHor method" Url="html/fb34010c-997a-0c8e-a0a6-20c0e0f9eb75.htm" />
+  <HelpKINode Title="CProyecto.SetSegCoreTransHigh method" Url="html/a1503885-7c27-10f2-408b-ce65443f990e.htm" />
+  <HelpKINode Title="CProyecto.SetSegCoreTransLow method" Url="html/fac3e3aa-dfbd-5c92-7ee0-afd49a69e3c2.htm" />
+  <HelpKINode Title="CProyecto.SetSegCoreVer method" Url="html/3cfb0490-8068-f4d4-c016-4b0b2d464348.htm" />
+  <HelpKINode Title="CProyecto.SetSegHorDone method" Url="html/639b7464-34f4-5b5c-1a73-80bc9dfd6180.htm" />
+  <HelpKINode Title="CProyecto.SetSegmentacionDone method" Url="html/572c9ff2-1929-def9-5c3a-eeb970e30b10.htm" />
+  <HelpKINode Title="CProyecto.SetSegPhantom1Hor method" Url="html/d7019ecf-f74e-2753-735b-98c7553210e6.htm" />
+  <HelpKINode Title="CProyecto.SetSegPhantom1TransHigh method" Url="html/292415f1-60bc-98e3-bf19-820b788b069a.htm" />
+  <HelpKINode Title="CProyecto.SetSegPhantom1TransLow method" Url="html/f8fd48f0-2476-42a7-486d-f5fadfd5d7c0.htm" />
+  <HelpKINode Title="CProyecto.SetSegPhantom1Ver method" Url="html/b8e0f423-695c-fcd4-c873-179bdc41fc06.htm" />
+  <HelpKINode Title="CProyecto.SetSegPhantom2Hor method" Url="html/0387d9fb-e5a7-a7f8-3223-82390510a0b0.htm" />
+  <HelpKINode Title="CProyecto.SetSegPhantom2TransHigh method" Url="html/dbfe3395-a050-57cc-04a6-1bf61a1a5410.htm" />
+  <HelpKINode Title="CProyecto.SetSegPhantom2TransLow method" Url="html/d2142d7f-f400-b335-13a7-60adc66d179a.htm" />
+  <HelpKINode Title="CProyecto.SetSegPhantom2Ver method" Url="html/07631fb8-e91c-b7d5-da89-4bf10a9e631b.htm" />
+  <HelpKINode Title="CProyecto.SetSegPhantom3Hor method" Url="html/6505044c-ddd4-e975-43ae-8edfad566c52.htm" />
+  <HelpKINode Title="CProyecto.SetSegPhantom3TransHigh method" Url="html/cbded060-4e69-b942-9ebc-294a90d8860b.htm" />
+  <HelpKINode Title="CProyecto.SetSegPhantom3TransLow method" Url="html/fed2ba9a-5304-0c3c-02c3-d4d712a7e739.htm" />
+  <HelpKINode Title="CProyecto.SetSegPhantom3Ver method" Url="html/ff0808dd-c5f2-e110-608e-10e0fa22d77b.htm" />
+  <HelpKINode Title="CProyecto.SetSegTransDone method" Url="html/08585dcd-3467-fd45-3691-072dbc194723.htm" />
+  <HelpKINode Title="CProyecto.SetSegVerDone method" Url="html/e5950e04-709c-0b7d-71e3-5364ae3cc87a.htm" />
+  <HelpKINode Title="CProyecto.voxelDepth field" Url="html/3a162bd7-7f9c-55bf-e00c-9610ea4d289d.htm" />
+  <HelpKINode Title="CProyecto.voxelHeight field" Url="html/73b2c112-7a03-f9a5-651d-ef5cd3328450.htm" />
+  <HelpKINode Title="CProyecto.voxelWidth field" Url="html/3be33b35-d6f4-c2af-18f0-f010fce02207.htm" />
+  <HelpKINode Title="Crear method" Url="html/f9ab95c8-8c89-9290-2d75-c4e1de21e52a.htm" />
+  <HelpKINode Title="CropCircle8bit method" Url="html/2100d2df-fd20-521e-5e11-a45ad56445ea.htm" />
+  <HelpKINode Title="CropCirle method" Url="html/e5d0b3ec-6adb-b5ca-3bdf-77dcf3ac6dca.htm" />
+  <HelpKINode Title="Cropper method" Url="html/f6c34b7b-1b4a-fe1b-6a6b-d15217e9939e.htm" />
+  <HelpKINode Title="Depth property" Url="html/77eb7205-982f-5a39-95ef-f923c662fded.htm" />
+  <HelpKINode Title="DeteccionAutomatica method" Url="html/44b9eb0d-5055-3dd1-7eb4-e516b0a28bc4.htm" />
+  <HelpKINode Title="DetectarBordes method" Url="html/66aa80f5-29de-74ff-62c4-e85d5fe24657.htm" />
+  <HelpKINode Title="Dispose method">
+    <HelpKINode Title="CheckForm.Dispose Method " Url="html/de6e7818-13d8-d849-8830-b35dedb61922.htm" />
+    <HelpKINode Title="CLockBitmap.Dispose Method " Url="html/a05dfa8f-f0a2-f054-8989-64aeedcfd678.htm" />
+    <HelpKINode Title="HomeForm.Dispose Method " Url="html/123f8b44-0cf6-bd11-6d3f-a3a6e83d3598.htm" />
+    <HelpKINode Title="MainForm.Dispose Method " Url="html/489dc874-cc84-6982-877e-107c0e9d41fb.htm" />
+    <HelpKINode Title="NewProjectForm.Dispose Method " Url="html/dbbde9e8-ea9d-306b-31aa-43382b1e1193.htm" />
+    <HelpKINode Title="PreviewSegForm.Dispose Method " Url="html/0de75512-319a-f994-b812-b3196d928cab.htm" />
+    <HelpKINode Title="ProjectForm.Dispose Method " Url="html/99a2263f-2b81-1ada-578a-5e84990cd021.htm" />
+    <HelpKINode Title="SegmentacionForm.Dispose Method " Url="html/8e1997d3-8c5c-3cf9-9b14-ea67ee0e513e.htm" />
+    <HelpKINode Title="SelectAreas2Form.Dispose Method " Url="html/ff797fd4-f7b7-bc57-c2d3-9e1f7bb583a5.htm" />
+    <HelpKINode Title="SelectAreasForm.Dispose Method " Url="html/e6e6026e-dc68-8d4d-1315-c6e8770c68bd.htm" />
+    <HelpKINode Title="SplashScreenForm.Dispose Method " Url="html/fdb1be61-0021-c7fb-8d2e-d0cca561f943.htm" />
+    <HelpKINode Title="WaitingForm.Dispose Method " Url="html/211fae5a-3d49-b375-1cdd-dc28486d193a.htm" />
+  </HelpKINode>
+  <HelpKINode Title="elementosScreen field" Url="html/5683808f-66b7-2c00-7540-4409faea2a25.htm" />
+  <HelpKINode Title="filesHigh field" Url="html/c0da54f3-5f55-2b7f-cc50-ef5f86f49ae5.htm" />
+  <HelpKINode Title="FormatToAForge method" Url="html/6a047f72-c27a-533d-1982-c0462eedd658.htm" />
+  <HelpKINode Title="GenerarSegHorizontal method" Url="html/d0e38eaf-1ec9-99f8-9a15-fd486a963f44.htm" />
+  <HelpKINode Title="GenerarSegTransveral method" Url="html/a7868ca9-6866-9da5-66f9-1c365ddc3059.htm" />
+  <HelpKINode Title="GenerarSegVertical method" Url="html/da2660ae-4dbe-fbf9-9c9b-f99104ec979a.htm" />
+  <HelpKINode Title="GetAreasCore method" Url="html/b9509d8d-8fc1-7847-3cdd-524f7b3d1707.htm" />
+  <HelpKINode Title="GetAreasDone method" Url="html/f21fb682-0754-c63e-c747-7531b52a8ef8.htm" />
+  <HelpKINode Title="GetCore method" Url="html/8fd02648-c647-7ac3-83f5-1f57c6fd3af3.htm" />
+  <HelpKINode Title="GetFolderHigh method" Url="html/b86a42cc-e35b-03a2-38e9-4b27ae701994.htm" />
+  <HelpKINode Title="GetFolderLow method" Url="html/77cfc247-4c5c-3be3-3cf7-09a8ffd309a8.htm" />
+  <HelpKINode Title="GetFolderPath method" Url="html/08c39fa7-99eb-ece3-4418-1e360833453a.htm" />
+  <HelpKINode Title="GetHigh method" Url="html/27fcae26-7292-bcb5-c546-423835b9e47a.htm" />
+  <HelpKINode Title="GetLengthHigh method" Url="html/ba4c7b50-b373-59bf-df2d-40c94940439f.htm" />
+  <HelpKINode Title="GetLengthLow method" Url="html/ef1861e5-e1e0-04b2-459f-6d02ed9574a8.htm" />
+  <HelpKINode Title="GetLow method" Url="html/a67c7ba6-2b18-9a7a-69c8-96adc130f28e.htm" />
+  <HelpKINode Title="GetNameFile method">
+    <HelpKINode Title="CheckForm.GetNameFile Method " Url="html/adea25fb-95d3-87c8-35eb-bc5a3fac694d.htm" />
+    <HelpKINode Title="SegmentacionForm.GetNameFile Method " Url="html/ada41c4d-dd7e-0b35-c4b4-6a73b1c930e2.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetPhantom1 method" Url="html/3d233877-05b4-89ae-4752-e91f322ed86f.htm" />
+  <HelpKINode Title="GetPhantom2 method" Url="html/87bf1a4d-7c12-3b58-2aa9-9389fe2939b1.htm" />
+  <HelpKINode Title="GetPhantom3 method" Url="html/b1d390e3-c7ab-10b2-e6b5-067dd3ddfc22.htm" />
+  <HelpKINode Title="GetPixel method" Url="html/12f5f0d1-c5db-1c44-29e1-20a5449f64af.htm" />
+  <HelpKINode Title="GetSegCoreHor method" Url="html/149068fd-c98b-b23e-73ff-6cfc5f0723e0.htm" />
+  <HelpKINode Title="GetSegCoreTransHigh method" Url="html/746affc8-beb6-7efa-5a43-0e8b3fba8745.htm" />
+  <HelpKINode Title="GetSegCoreTransLow method" Url="html/617a8e4a-2354-7168-d829-19c03759b90c.htm" />
+  <HelpKINode Title="GetSegCoreVer method" Url="html/c5434d0b-2929-7723-7b2b-64445d88cedc.htm" />
+  <HelpKINode Title="GetSegHorDone method" Url="html/e439cb0c-635a-9fb3-7f12-9d55975fa936.htm" />
+  <HelpKINode Title="GetSegmentacionDone method" Url="html/6b6bc111-641e-bf2c-e3dd-f39ca6e2a61c.htm" />
+  <HelpKINode Title="GetSegPhantom1Hor method" Url="html/6a1fffed-309e-7c47-000b-e3579bb5b486.htm" />
+  <HelpKINode Title="GetSegPhantom1TransHigh method" Url="html/20fb1df6-06cf-9dde-e51c-b223db95216b.htm" />
+  <HelpKINode Title="GetSegPhantom1Ver method" Url="html/069fae6d-89af-6ddf-59f7-665b4276f37f.htm" />
+  <HelpKINode Title="GetSegPhantom2Hor method" Url="html/df52f1a1-ff0b-af3b-2440-879e21ccc808.htm" />
+  <HelpKINode Title="GetSegPhantom2TransHigh method" Url="html/b6dab0ae-7ff1-b9bd-f732-a12c7f1449f7.htm" />
+  <HelpKINode Title="GetSegPhantom2Ver method" Url="html/ce5dc2eb-7cc6-9564-773d-7cd5ea825b6a.htm" />
+  <HelpKINode Title="GetSegPhantom3Hor method" Url="html/8c15685e-f0b9-926a-67f7-26be0eec35fd.htm" />
+  <HelpKINode Title="GetSegPhantom3TransHigh method" Url="html/cc17f83d-529f-67e2-5f50-9b7fcf40da79.htm" />
+  <HelpKINode Title="GetSegPhantom3Ver method" Url="html/f3a96b17-bc39-1a62-74e8-ff0c461df8e4.htm" />
+  <HelpKINode Title="GetSegTransDone method" Url="html/22a8cbee-f9b9-dbd3-ba0e-98943b225d6d.htm" />
+  <HelpKINode Title="GetSegVerDone method" Url="html/3aacf4ef-65a2-91d0-eb55-e56f6b7006e5.htm" />
+  <HelpKINode Title="Height property" Url="html/c93e97f6-7678-62e1-b956-6d0b730ef033.htm" />
+  <HelpKINode Title="HomeForm class">
+    <HelpKINode Title="HomeForm Class" Url="html/7d4d4d3b-84b1-dd33-17da-63b4fbe18a49.htm" />
+    <HelpKINode Title="about HomeForm class" Url="html/7d4d4d3b-84b1-dd33-17da-63b4fbe18a49.htm" />
+    <HelpKINode Title="constructor" Url="html/496a3ec8-6def-41ff-3269-b85ba8936db5.htm" />
+    <HelpKINode Title="events" Url="html/36e99bab-8da9-6f09-4b54-8f00a3cc8f1c.htm" />
+    <HelpKINode Title="fields" Url="html/5b1c1e9e-6c8c-8a2a-f4a9-67c69f8f8741.htm" />
+    <HelpKINode Title="methods" Url="html/658340e4-2eb2-9784-7466-791beeaf2bc6.htm" />
+    <HelpKINode Title="properties" Url="html/df9da159-4324-16cd-a723-45154912ebe7.htm" />
+  </HelpKINode>
+  <HelpKINode Title="homeForm field" Url="html/e90792d5-d89e-5605-a6ba-601f36308c82.htm" />
+  <HelpKINode Title="HomeForm.CentrarForm method" Url="html/a09a10a9-dd86-3f74-01d9-0899efd6bdbc.htm" />
+  <HelpKINode Title="HomeForm.Dispose method" Url="html/123f8b44-0cf6-bd11-6d3f-a3a6e83d3598.htm" />
+  <HelpKINode Title="HomeForm.HomeForm constructor" Url="html/496a3ec8-6def-41ff-3269-b85ba8936db5.htm" />
+  <HelpKINode Title="HomeForm.padre field" Url="html/4eba5255-820e-6153-eb08-cae6675d97b8.htm" />
+  <HelpKINode Title="Img2byte method" Url="html/6958805f-1984-1175-bb2b-3908f4a97588.htm" />
+  <HelpKINode Title="InvalidarPictCore method" Url="html/31354c6b-1505-9385-50eb-e57296973367.htm" />
+  <HelpKINode Title="label4 field">
+    <HelpKINode Title="SelectAreas2Form.label4 Field" Url="html/253e61de-9e57-2cff-55a4-6b7aef2b5e3a.htm" />
+    <HelpKINode Title="SelectAreasForm.label4 Field" Url="html/6ec09bee-1757-db9c-8277-1f58d9d35576.htm" />
+  </HelpKINode>
+  <HelpKINode Title="lblTexto field" Url="html/33b9c2ea-5584-bac2-233f-b5b5e912a58a.htm" />
+  <HelpKINode Title="lblTitulo field">
+    <HelpKINode Title="CheckForm.lblTitulo Field" Url="html/abe17a0c-799d-f1ea-bb9c-9ff38a242d06.htm" />
+    <HelpKINode Title="SegmentacionForm.lblTitulo Field" Url="html/e1a3e15d-5d38-3a0a-7866-95de59a65720.htm" />
+  </HelpKINode>
+  <HelpKINode Title="LlenarList method" Url="html/8a8474cd-470d-95e7-a8bd-1b291184be55.htm" />
+  <HelpKINode Title="LockBits method" Url="html/d9581a4d-d1d1-0836-87c6-368ab12a0e0a.htm" />
+  <HelpKINode Title="MainForm class">
+    <HelpKINode Title="MainForm Class" Url="html/3fd2e42e-c607-48c0-bd35-dae93f66fe88.htm" />
+    <HelpKINode Title="about MainForm class" Url="html/3fd2e42e-c607-48c0-bd35-dae93f66fe88.htm" />
+    <HelpKINode Title="constructor" Url="html/7d0f3cf4-a80e-7d4c-523c-eff772ed71e2.htm" />
+    <HelpKINode Title="events" Url="html/9a201c98-291b-87e7-40fc-d31a46ee3647.htm" />
+    <HelpKINode Title="fields" Url="html/84448e68-9eed-73fd-79f0-b02df2afe323.htm" />
+    <HelpKINode Title="methods" Url="html/af1eaa8c-f4a2-e5f4-ba55-91a4095e84f4.htm" />
+    <HelpKINode Title="properties" Url="html/cd187218-557d-5f38-b858-4cd098aacc8e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MainForm.abiertoCheckForm field" Url="html/c7151e99-64fb-0ddc-42a2-57cb2eb04bec.htm" />
+  <HelpKINode Title="MainForm.abiertoHomeForm field" Url="html/f45396fc-a5e9-06d4-b2b4-2483f2fe9fae.htm" />
+  <HelpKINode Title="MainForm.abiertoNuevoProyectoForm field" Url="html/9509de0e-50b2-0a25-1158-b51e8ea21b38.htm" />
+  <HelpKINode Title="MainForm.abiertoPreviewSegForm field" Url="html/1838f6ff-35e6-010c-3717-95cacfe199aa.htm" />
+  <HelpKINode Title="MainForm.abiertoProyectoForm field" Url="html/f45ba214-eec8-1223-2adb-50b3cfeb4c2f.htm" />
+  <HelpKINode Title="MainForm.abiertoSegmentacionForm field" Url="html/c9473cc4-6aec-fbc3-83cc-532af78bc801.htm" />
+  <HelpKINode Title="MainForm.abiertoSelectAreas2Form field" Url="html/7009e704-1f7b-248d-ab2a-1014235f14fe.htm" />
+  <HelpKINode Title="MainForm.abiertoSelectAreasForm field" Url="html/7ef57e3f-8da7-5880-1ae6-ebf4aedcb976.htm" />
+  <HelpKINode Title="MainForm.abiertoWaitingForm field" Url="html/c3219b3f-74fd-1053-8d04-ad71bd88d523.htm" />
+  <HelpKINode Title="MainForm.AbrirHome method" Url="html/a8a875b8-ae91-ae70-ab1c-b85da07a1ec6.htm" />
+  <HelpKINode Title="MainForm.AbrirProyecto method" Url="html/68b0851b-0751-9a0b-21af-9127c48ce63f.htm" />
+  <HelpKINode Title="MainForm.actual field" Url="html/1ab16386-ca5d-d7ae-a129-936fe0164b18.htm" />
+  <HelpKINode Title="MainForm.Byte2image method" Url="html/91948fc3-79e9-0908-9f92-25c2231225aa.htm" />
+  <HelpKINode Title="MainForm.CerrarCheckForm method" Url="html/d66cadac-674a-134e-8a2c-131ff0aa4f39.htm" />
+  <HelpKINode Title="MainForm.CerrarHomeForm method" Url="html/45cb65a0-05e1-f83a-c0d1-23f603d2641a.htm" />
+  <HelpKINode Title="MainForm.CerrarNuevoProyectoForm method" Url="html/c869b0f4-eff7-32c6-8f41-7377fa80c60a.htm" />
+  <HelpKINode Title="MainForm.CerrarPreviewSegForm method" Url="html/ca3f5fbc-2fc3-310b-0b3c-6c8a33e8185c.htm" />
+  <HelpKINode Title="MainForm.CerrarProjectForm method" Url="html/70bb99f6-ce47-e4e5-9cea-74b7635e838f.htm" />
+  <HelpKINode Title="MainForm.CerrarSegmentacionForm method" Url="html/4204bf68-6483-d3ec-3702-a6989427d8ec.htm" />
+  <HelpKINode Title="MainForm.CerrarSelectAreasForm method" Url="html/014074bb-ed2b-c2c0-c0a6-e24c5c638c15.htm" />
+  <HelpKINode Title="MainForm.checkForm field" Url="html/156d475b-0163-e972-bd36-aa95248e5cb4.htm" />
+  <HelpKINode Title="MainForm.CloseWaiting method" Url="html/1def31fd-0f94-5556-8894-85466ce288b6.htm" />
+  <HelpKINode Title="MainForm.ColorToGrayscale method" Url="html/3f7c5596-d199-0b73-57f9-54b399771cfe.htm" />
+  <HelpKINode Title="MainForm.CorregirOriginal2PictBox method" Url="html/7a8505d6-1c9c-adaa-2e1e-e7517264c4bc.htm" />
+  <HelpKINode Title="MainForm.CorregirPictBox2Original method" Url="html/483ea4b1-c09d-605b-8888-9c36eb718bcf.htm" />
+  <HelpKINode Title="MainForm.CropCirle method" Url="html/e5d0b3ec-6adb-b5ca-3bdf-77dcf3ac6dca.htm" />
+  <HelpKINode Title="MainForm.Dispose method" Url="html/489dc874-cc84-6982-877e-107c0e9d41fb.htm" />
+  <HelpKINode Title="MainForm.homeForm field" Url="html/e90792d5-d89e-5605-a6ba-601f36308c82.htm" />
+  <HelpKINode Title="MainForm.Img2byte method" Url="html/6958805f-1984-1175-bb2b-3908f4a97588.htm" />
+  <HelpKINode Title="MainForm.MainForm constructor" Url="html/7d0f3cf4-a80e-7d4c-523c-eff772ed71e2.htm" />
+  <HelpKINode Title="MainForm.NuevoProyecto method" Url="html/4c755c0e-d9a5-5a40-342a-f5b30d603a12.htm" />
+  <HelpKINode Title="MainForm.nuevoProyectoForm field" Url="html/b679b0d4-6430-5070-a694-6b059d0447e6.htm" />
+  <HelpKINode Title="MainForm.previewSegForm field" Url="html/7cd7ee0d-c764-6c83-c01c-d9b6ae1948f6.htm" />
+  <HelpKINode Title="MainForm.proyectoForm field" Url="html/26aab134-f20e-61df-7f80-4554bfa70e81.htm" />
+  <HelpKINode Title="MainForm.segmentacionForm field" Url="html/42e5e623-3fd3-259f-bbbc-aebf81b05dc9.htm" />
+  <HelpKINode Title="MainForm.selecAreas2Form field" Url="html/c2c2664a-b2ed-6620-9dad-b137c290eff9.htm" />
+  <HelpKINode Title="MainForm.selecAreasForm field" Url="html/da1cd9bf-6f0e-67e9-cb3e-d20fe0ecbe10.htm" />
+  <HelpKINode Title="MainForm.SeleccionarProyecto method" Url="html/10a5c519-cc49-ad20-11f5-79bdfdca0c72.htm" />
+  <HelpKINode Title="MainForm.ShowWaiting method" Url="html/7cc4855d-e3af-eb36-d18e-17dee44d6528.htm" />
+  <HelpKINode Title="MainForm.waitingForm field" Url="html/ec52b372-25ae-3cae-315a-4769e487b34c.htm" />
+  <HelpKINode Title="name property" Url="html/e27b9eee-71c7-2c74-c770-39be26ea07dd.htm" />
+  <HelpKINode Title="NewProjectForm class">
+    <HelpKINode Title="NewProjectForm Class" Url="html/8504c11f-004a-5543-2c1b-8ad8f6dfee5a.htm" />
+    <HelpKINode Title="about NewProjectForm class" Url="html/8504c11f-004a-5543-2c1b-8ad8f6dfee5a.htm" />
+    <HelpKINode Title="constructor" Url="html/da505091-6074-5727-1377-d4bfb032e529.htm" />
+    <HelpKINode Title="events" Url="html/6b3c76ec-38f3-735b-a39c-6cfb3b8be91e.htm" />
+    <HelpKINode Title="fields" Url="html/a935610a-09c1-623c-4f5b-93104e6e8d54.htm" />
+    <HelpKINode Title="methods" Url="html/253d55d1-52bc-d46f-7608-c94d8da91959.htm" />
+    <HelpKINode Title="properties" Url="html/16def6ec-a483-8cce-af49-6c7e9ceeb9c9.htm" />
+  </HelpKINode>
+  <HelpKINode Title="newProjectForm field" Url="html/3eaa0bdf-44c8-ccf9-f779-0d548a559ed8.htm" />
+  <HelpKINode Title="NewProjectForm.CentrarForm method" Url="html/6c1984ed-1754-249c-f829-95c2bf2c6b77.htm" />
+  <HelpKINode Title="NewProjectForm.CheckLargos method" Url="html/22e00346-2cec-f3fe-83af-02108194f73a.htm" />
+  <HelpKINode Title="NewProjectForm.Dispose method" Url="html/dbbde9e8-ea9d-306b-31aa-43382b1e1193.htm" />
+  <HelpKINode Title="NewProjectForm.NewProjectForm constructor" Url="html/da505091-6074-5727-1377-d4bfb032e529.htm" />
+  <HelpKINode Title="NewProjectForm.padre field" Url="html/5ffe53fa-2363-347d-8961-313503430853.htm" />
+  <HelpKINode Title="NewProjectForm.SetTemp method" Url="html/eb3fae2e-ac37-cc2f-dd6a-f038da1a265e.htm" />
+  <HelpKINode Title="NewProjectForm.tempHigh field" Url="html/682b18b8-3198-3742-a610-83ec7a3f1d8c.htm" />
+  <HelpKINode Title="NewProjectForm.tempLow field" Url="html/45bca008-a5b0-bb1b-0284-96f6549a8274.htm" />
+  <HelpKINode Title="nombre field">
+    <HelpKINode Title="CCirculo.nombre Field" Url="html/cde70329-b1ee-0815-567f-562f289d0ca1.htm" />
+    <HelpKINode Title="CCuadrado.nombre Field" Url="html/4a6b8b0a-76a0-0814-fbd2-4dc4d1dd6bf4.htm" />
+  </HelpKINode>
+  <HelpKINode Title="NuevoProyecto method" Url="html/4c755c0e-d9a5-5a40-342a-f5b30d603a12.htm" />
+  <HelpKINode Title="nuevoProyectoForm field" Url="html/b679b0d4-6430-5070-a694-6b059d0447e6.htm" />
+  <HelpKINode Title="p1 field" Url="html/9e9c596c-e98e-8f4a-4ae4-5c24512d94bb.htm" />
+  <HelpKINode Title="p2 field" Url="html/09d7a584-2161-4f02-7b45-22d2cd8b5226.htm" />
+  <HelpKINode Title="p3 field" Url="html/e37590b1-d8ce-8067-911f-2221246ac8ef.htm" />
+  <HelpKINode Title="padre field">
+    <HelpKINode Title="CheckForm.padre Field" Url="html/994dc363-f230-775b-8d76-09e7d8321ec9.htm" />
+    <HelpKINode Title="HomeForm.padre Field" Url="html/4eba5255-820e-6153-eb08-cae6675d97b8.htm" />
+    <HelpKINode Title="NewProjectForm.padre Field" Url="html/5ffe53fa-2363-347d-8961-313503430853.htm" />
+    <HelpKINode Title="PreviewSegForm.padre Field" Url="html/6b12b27d-2256-65c8-f4e9-413580da516b.htm" />
+    <HelpKINode Title="ProjectForm.padre Field" Url="html/c9e2a18f-eebf-2af3-2642-4e3b70f03c7c.htm" />
+    <HelpKINode Title="SegmentacionForm.padre Field" Url="html/93cded13-167b-5f34-ac65-485d17642d17.htm" />
+    <HelpKINode Title="SelectAreas2Form.padre Field" Url="html/85d8f4cf-7d66-de13-ac7d-55ed612f218e.htm" />
+    <HelpKINode Title="SelectAreasForm.padre Field" Url="html/b208df63-1cc8-831e-75d8-9dd6e4356b2e.htm" />
+    <HelpKINode Title="WaitingForm.padre Field" Url="html/717e1dc2-d1e2-8c95-723f-ac494d047381.htm" />
+  </HelpKINode>
+  <HelpKINode Title="pictAreasHigh field" Url="html/c8c6aa88-89f2-a8d0-2d74-4571963f86d5.htm" />
+  <HelpKINode Title="pictCore_Paint method" Url="html/fb057c59-b7ae-db66-8b45-89ed7838e6f7.htm" />
+  <HelpKINode Title="pictSegHigh field" Url="html/ac87b4f3-7400-5451-9a50-3503e50b3c1f.htm" />
+  <HelpKINode Title="Pixels property" Url="html/076b4a05-6f7c-d1ad-bb47-8e05db0a1532.htm" />
+  <HelpKINode Title="PreviewSegForm class">
+    <HelpKINode Title="PreviewSegForm Class" Url="html/7f7e3e0b-1fcd-bba8-e039-353a3d0f4ee6.htm" />
+    <HelpKINode Title="about PreviewSegForm class" Url="html/7f7e3e0b-1fcd-bba8-e039-353a3d0f4ee6.htm" />
+    <HelpKINode Title="constructor" Url="html/835b4a97-f07c-50db-2ef8-f42a5358f65e.htm" />
+    <HelpKINode Title="events" Url="html/08475e11-7ee7-1a56-e298-af78e8ff97ad.htm" />
+    <HelpKINode Title="fields" Url="html/0cbe4f46-3a21-940d-6967-07f9e619bdc6.htm" />
+    <HelpKINode Title="methods" Url="html/21585d86-a5aa-ad8d-8be4-32e4fbe164c4.htm" />
+    <HelpKINode Title="properties" Url="html/820c6a12-1e28-3100-25a6-9f766f8e878b.htm" />
+  </HelpKINode>
+  <HelpKINode Title="previewSegForm field" Url="html/7cd7ee0d-c764-6c83-c01c-d9b6ae1948f6.htm" />
+  <HelpKINode Title="PreviewSegForm.CentrarForm method" Url="html/939e8e4e-5145-e857-2bba-e6e1c65b1fa7.htm" />
+  <HelpKINode Title="PreviewSegForm.core field" Url="html/9bb22f77-7f6d-4953-61f0-5b7ed2a27f7e.htm" />
+  <HelpKINode Title="PreviewSegForm.Dispose method" Url="html/0de75512-319a-f994-b812-b3196d928cab.htm" />
+  <HelpKINode Title="PreviewSegForm.p1 field" Url="html/9e9c596c-e98e-8f4a-4ae4-5c24512d94bb.htm" />
+  <HelpKINode Title="PreviewSegForm.p2 field" Url="html/09d7a584-2161-4f02-7b45-22d2cd8b5226.htm" />
+  <HelpKINode Title="PreviewSegForm.p3 field" Url="html/e37590b1-d8ce-8067-911f-2221246ac8ef.htm" />
+  <HelpKINode Title="PreviewSegForm.padre field" Url="html/6b12b27d-2256-65c8-f4e9-413580da516b.htm" />
+  <HelpKINode Title="PreviewSegForm.PreviewSegForm constructor" Url="html/835b4a97-f07c-50db-2ef8-f42a5358f65e.htm" />
+  <HelpKINode Title="ProjectForm class">
+    <HelpKINode Title="ProjectForm Class" Url="html/4c7941b8-1d75-e401-3c6e-46cef6d500dc.htm" />
+    <HelpKINode Title="about ProjectForm class" Url="html/4c7941b8-1d75-e401-3c6e-46cef6d500dc.htm" />
+    <HelpKINode Title="constructor" Url="html/21cde3bc-b571-dcef-a3d6-7193af2cc577.htm" />
+    <HelpKINode Title="events" Url="html/8a7d19d0-2f16-f8de-a1dd-ff8671ef212c.htm" />
+    <HelpKINode Title="fields" Url="html/5d659438-5c2e-5c39-be70-8583c31db126.htm" />
+    <HelpKINode Title="methods" Url="html/1f3b022a-6d75-c817-3f78-bd60ff575777.htm" />
+    <HelpKINode Title="properties" Url="html/91f471b7-590b-d7b2-4b97-8ef1b567cc75.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ProjectForm.CentrarForm method" Url="html/01358b06-ae8c-8dc2-e07e-8114a5873ce4.htm" />
+  <HelpKINode Title="ProjectForm.Dispose method" Url="html/99a2263f-2b81-1ada-578a-5e84990cd021.htm" />
+  <HelpKINode Title="ProjectForm.padre field" Url="html/c9e2a18f-eebf-2af3-2642-4e3b70f03c7c.htm" />
+  <HelpKINode Title="ProjectForm.pictAreasHigh field" Url="html/c8c6aa88-89f2-a8d0-2d74-4571963f86d5.htm" />
+  <HelpKINode Title="ProjectForm.pictSegHigh field" Url="html/ac87b4f3-7400-5451-9a50-3503e50b3c1f.htm" />
+  <HelpKINode Title="ProjectForm.ProjectForm constructor" Url="html/21cde3bc-b571-dcef-a3d6-7193af2cc577.htm" />
+  <HelpKINode Title="ProjectForm.SetForm method" Url="html/ce3ffec5-e94d-a424-3df1-a0bb9b4d8241.htm" />
+  <HelpKINode Title="proyectoForm field" Url="html/26aab134-f20e-61df-7f80-4554bfa70e81.htm" />
+  <HelpKINode Title="r field" Url="html/3d6bfcdb-80c0-a373-b1de-5b550d104658.htm" />
+  <HelpKINode Title="ResetCountClick method" Url="html/41cadbac-40b6-12ba-a48d-b841d205ebeb.htm" />
+  <HelpKINode Title="ResetCountClickCore method" Url="html/42d1fa11-243d-92ef-5b16-38f046a7be2a.htm" />
+  <HelpKINode Title="ResetList method" Url="html/52b79e84-cc8f-98ae-db45-1bd16ef31417.htm" />
+  <HelpKINode Title="RockStatic namespace" Url="html/c2c63b1e-c5e4-28d5-55af-97a5e71fe681.htm" />
+  <HelpKINode Title="RockStatic.CCirculo class" Url="html/80120943-0cc4-03e8-b141-5da1d56520f4.htm" />
+  <HelpKINode Title="RockStatic.CCuadrado class" Url="html/6486c008-bbf7-9340-3cdc-1c294be654a4.htm" />
+  <HelpKINode Title="RockStatic.CheckForm class" Url="html/538a09cf-f903-49ce-9543-c3f79a29596e.htm" />
+  <HelpKINode Title="RockStatic.CLockBitmap class" Url="html/adfe5bcf-53f2-c2e2-6806-38f22a057a44.htm" />
+  <HelpKINode Title="RockStatic.CProyecto class" Url="html/0887e6d8-274c-3b91-7086-1b35b84be494.htm" />
+  <HelpKINode Title="RockStatic.HomeForm class" Url="html/7d4d4d3b-84b1-dd33-17da-63b4fbe18a49.htm" />
+  <HelpKINode Title="RockStatic.MainForm class" Url="html/3fd2e42e-c607-48c0-bd35-dae93f66fe88.htm" />
+  <HelpKINode Title="RockStatic.NewProjectForm class" Url="html/8504c11f-004a-5543-2c1b-8ad8f6dfee5a.htm" />
+  <HelpKINode Title="RockStatic.PreviewSegForm class" Url="html/7f7e3e0b-1fcd-bba8-e039-353a3d0f4ee6.htm" />
+  <HelpKINode Title="RockStatic.ProjectForm class" Url="html/4c7941b8-1d75-e401-3c6e-46cef6d500dc.htm" />
+  <HelpKINode Title="RockStatic.SegmentacionForm class" Url="html/75a4c432-7515-029a-b99e-c05828ca1deb.htm" />
+  <HelpKINode Title="RockStatic.SelectAreas2Form class" Url="html/f238c5b7-92df-c396-51b5-8f455c42ba12.htm" />
+  <HelpKINode Title="RockStatic.SelectAreasForm class" Url="html/69d6f508-63cc-2b90-7552-ff882a3f5eaa.htm" />
+  <HelpKINode Title="RockStatic.SplashScreenForm class" Url="html/7a2c5b81-0353-4986-4eee-7efdc8b6322e.htm" />
+  <HelpKINode Title="RockStatic.WaitingForm class" Url="html/9ffdc27e-deb0-93d5-e72e-fb06559c71f8.htm" />
+  <HelpKINode Title="Salvar method" Url="html/a30e359e-dd60-d7e6-093f-2af9b23d49be.htm" />
+  <HelpKINode Title="SegmentacionForm class">
+    <HelpKINode Title="SegmentacionForm Class" Url="html/75a4c432-7515-029a-b99e-c05828ca1deb.htm" />
+    <HelpKINode Title="about SegmentacionForm class" Url="html/75a4c432-7515-029a-b99e-c05828ca1deb.htm" />
+    <HelpKINode Title="constructor" Url="html/9b0ea6c4-5da4-7994-e1d0-b7440fa82a7a.htm" />
+    <HelpKINode Title="events" Url="html/87016ae0-16d6-cf9d-61a2-950de96391cf.htm" />
+    <HelpKINode Title="fields" Url="html/435166ec-2b20-139b-1401-53acbc83e309.htm" />
+    <HelpKINode Title="methods" Url="html/862d14f8-a8e4-c6d0-cc8f-03c7cd6ba4cf.htm" />
+    <HelpKINode Title="properties" Url="html/dba3f023-6b24-5175-fb14-f3d76e965cc1.htm" />
+  </HelpKINode>
+  <HelpKINode Title="segmentacionForm field" Url="html/42e5e623-3fd3-259f-bbbc-aebf81b05dc9.htm" />
+  <HelpKINode Title="SegmentacionForm.AddElemento method" Url="html/9f21e2aa-63a6-bde4-cdd1-e7cbb94aa947.htm" />
+  <HelpKINode Title="SegmentacionForm.btnCancelar_Click method" Url="html/3dee506d-dca8-b45c-488a-1b7b11d98f63.htm" />
+  <HelpKINode Title="SegmentacionForm.CentrarForm method" Url="html/cdb2dec8-ac45-b1fa-543b-01cff3d4fd2f.htm" />
+  <HelpKINode Title="SegmentacionForm.DeteccionAutomatica method" Url="html/44b9eb0d-5055-3dd1-7eb4-e516b0a28bc4.htm" />
+  <HelpKINode Title="SegmentacionForm.DetectarBordes method" Url="html/66aa80f5-29de-74ff-62c4-e85d5fe24657.htm" />
+  <HelpKINode Title="SegmentacionForm.Dispose method" Url="html/8e1997d3-8c5c-3cf9-9b14-ea67ee0e513e.htm" />
+  <HelpKINode Title="SegmentacionForm.elementosScreen field" Url="html/5683808f-66b7-2c00-7540-4409faea2a25.htm" />
+  <HelpKINode Title="SegmentacionForm.FormatToAForge method" Url="html/6a047f72-c27a-533d-1982-c0462eedd658.htm" />
+  <HelpKINode Title="SegmentacionForm.GetNameFile method" Url="html/ada41c4d-dd7e-0b35-c4b4-6a73b1c930e2.htm" />
+  <HelpKINode Title="SegmentacionForm.lblTitulo field" Url="html/e1a3e15d-5d38-3a0a-7866-95de59a65720.htm" />
+  <HelpKINode Title="SegmentacionForm.LlenarList method" Url="html/8a8474cd-470d-95e7-a8bd-1b291184be55.htm" />
+  <HelpKINode Title="SegmentacionForm.padre field" Url="html/93cded13-167b-5f34-ac65-485d17642d17.htm" />
+  <HelpKINode Title="SegmentacionForm.ResetCountClick method" Url="html/41cadbac-40b6-12ba-a48d-b841d205ebeb.htm" />
+  <HelpKINode Title="SegmentacionForm.ResetList method" Url="html/52b79e84-cc8f-98ae-db45-1bd16ef31417.htm" />
+  <HelpKINode Title="SegmentacionForm.SegmentacionForm constructor" Url="html/9b0ea6c4-5da4-7994-e1d0-b7440fa82a7a.htm" />
+  <HelpKINode Title="SegmentacionForm.SetForm method" Url="html/b538d690-ac46-2b88-9b26-a48bee958149.htm" />
+  <HelpKINode Title="selecAreas2Form field" Url="html/c2c2664a-b2ed-6620-9dad-b137c290eff9.htm" />
+  <HelpKINode Title="selecAreasForm field" Url="html/da1cd9bf-6f0e-67e9-cb3e-d20fe0ecbe10.htm" />
+  <HelpKINode Title="SeleccionarProyecto method" Url="html/10a5c519-cc49-ad20-11f5-79bdfdca0c72.htm" />
+  <HelpKINode Title="SelectAreas2Form class">
+    <HelpKINode Title="SelectAreas2Form Class" Url="html/f238c5b7-92df-c396-51b5-8f455c42ba12.htm" />
+    <HelpKINode Title="about SelectAreas2Form class" Url="html/f238c5b7-92df-c396-51b5-8f455c42ba12.htm" />
+    <HelpKINode Title="constructor" Url="html/be3e3f34-3197-73ca-3a17-e655bf2f63ca.htm" />
+    <HelpKINode Title="events" Url="html/7780f3a4-d1be-035d-937a-f399598c1a65.htm" />
+    <HelpKINode Title="fields" Url="html/9fe58c91-5ed4-9b5a-115b-6c885a3678c6.htm" />
+    <HelpKINode Title="methods" Url="html/1a9d66cd-b9f6-789c-80c9-2010bdaa8389.htm" />
+    <HelpKINode Title="properties" Url="html/75116b59-d8b3-e6bc-9500-f8b30c42280a.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SelectAreas2Form.Dispose method" Url="html/ff797fd4-f7b7-bc57-c2d3-9e1f7bb583a5.htm" />
+  <HelpKINode Title="SelectAreas2Form.GetAreasCore method" Url="html/b9509d8d-8fc1-7847-3cdd-524f7b3d1707.htm" />
+  <HelpKINode Title="SelectAreas2Form.InvalidarPictCore method" Url="html/31354c6b-1505-9385-50eb-e57296973367.htm" />
+  <HelpKINode Title="SelectAreas2Form.label4 field" Url="html/253e61de-9e57-2cff-55a4-6b7aef2b5e3a.htm" />
+  <HelpKINode Title="SelectAreas2Form.padre field" Url="html/85d8f4cf-7d66-de13-ac7d-55ed612f218e.htm" />
+  <HelpKINode Title="SelectAreas2Form.pictCore_Paint method" Url="html/fb057c59-b7ae-db66-8b45-89ed7838e6f7.htm" />
+  <HelpKINode Title="SelectAreas2Form.SelectAreas2Form constructor" Url="html/be3e3f34-3197-73ca-3a17-e655bf2f63ca.htm" />
+  <HelpKINode Title="SelectAreas2Form.SetRange method" Url="html/c1b93f84-2239-ce50-dd27-16fedc5a7004.htm" />
+  <HelpKINode Title="SelectAreasForm class">
+    <HelpKINode Title="SelectAreasForm Class" Url="html/69d6f508-63cc-2b90-7552-ff882a3f5eaa.htm" />
+    <HelpKINode Title="about SelectAreasForm class" Url="html/69d6f508-63cc-2b90-7552-ff882a3f5eaa.htm" />
+    <HelpKINode Title="constructor" Url="html/51ed5cce-6d20-ed6b-48c0-30031643270a.htm" />
+    <HelpKINode Title="events" Url="html/4e0c5dfa-1a0d-a854-16a1-e15491913e2c.htm" />
+    <HelpKINode Title="fields" Url="html/7f569206-e862-0be7-ee5b-018b340ba32b.htm" />
+    <HelpKINode Title="methods" Url="html/3ff34e5e-dac8-4928-1ee2-378d5ea945f1.htm" />
+    <HelpKINode Title="properties" Url="html/2b12e598-2332-9f9a-b4b4-d4c4d265dd79.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SelectAreasForm.AddElemento method" Url="html/b27d98ca-4bbd-0209-450b-eb5ef5f54614.htm" />
+  <HelpKINode Title="SelectAreasForm.CentrarForm method" Url="html/f29bc295-f1f9-cb59-0f8f-f7fa55220b27.htm" />
+  <HelpKINode Title="SelectAreasForm.Dispose method" Url="html/e6e6026e-dc68-8d4d-1315-c6e8770c68bd.htm" />
+  <HelpKINode Title="SelectAreasForm.label4 field" Url="html/6ec09bee-1757-db9c-8277-1f58d9d35576.htm" />
+  <HelpKINode Title="SelectAreasForm.padre field" Url="html/b208df63-1cc8-831e-75d8-9dd6e4356b2e.htm" />
+  <HelpKINode Title="SelectAreasForm.ResetCountClickCore method" Url="html/42d1fa11-243d-92ef-5b16-38f046a7be2a.htm" />
+  <HelpKINode Title="SelectAreasForm.SelectAreasForm constructor" Url="html/51ed5cce-6d20-ed6b-48c0-30031643270a.htm" />
+  <HelpKINode Title="SelectAreasForm.SetRange method" Url="html/19a31dd9-bf7e-e427-67ad-b234ba527470.htm" />
+  <HelpKINode Title="SetAreasDone method" Url="html/112a0584-2cd5-8665-9821-fc2ecc7b3b1d.htm" />
+  <HelpKINode Title="SetCore method" Url="html/302287dc-0694-e60e-74c9-6de67e865c9a.htm" />
+  <HelpKINode Title="SetCoreTransHigh method" Url="html/ea0cad6b-afb1-5b3f-8d83-104c3be7da4a.htm" />
+  <HelpKINode Title="SetFolderPath method" Url="html/dc2658bc-fdd1-6f11-0567-4c3055e12e6d.htm" />
+  <HelpKINode Title="SetForm method">
+    <HelpKINode Title="CheckForm.SetForm Method " Url="html/f918d72c-bc3e-fd78-2c79-4d18b9feef1f.htm" />
+    <HelpKINode Title="ProjectForm.SetForm Method " Url="html/ce3ffec5-e94d-a424-3df1-a0bb9b4d8241.htm" />
+    <HelpKINode Title="SegmentacionForm.SetForm Method " Url="html/b538d690-ac46-2b88-9b26-a48bee958149.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SetHigh method" Url="html/242b705e-e140-77c4-5bd8-5ad5cd6027be.htm" />
+  <HelpKINode Title="SetList method" Url="html/fd2a68ae-48e8-bb61-c9ce-d32742fa429d.htm" />
+  <HelpKINode Title="SetLow method" Url="html/16d706d1-66fa-babe-461a-2076f641435c.htm" />
+  <HelpKINode Title="SetPhantom1 method" Url="html/d250d135-a1c7-9389-9cbd-3f775d8c9f13.htm" />
+  <HelpKINode Title="SetPhantom2 method" Url="html/d76a843c-5ba0-0c76-57ce-8bfd5b79d670.htm" />
+  <HelpKINode Title="SetPhantom3 method" Url="html/6af20a2f-0c53-3b28-94d1-d20bbf059736.htm" />
+  <HelpKINode Title="SetPixel method" Url="html/6d4ee9cc-a614-25d6-311a-b4e9b18a529f.htm" />
+  <HelpKINode Title="SetRange method">
+    <HelpKINode Title="SelectAreas2Form.SetRange Method " Url="html/c1b93f84-2239-ce50-dd27-16fedc5a7004.htm" />
+    <HelpKINode Title="SelectAreasForm.SetRange Method " Url="html/19a31dd9-bf7e-e427-67ad-b234ba527470.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SetSegCoreHor method" Url="html/fb34010c-997a-0c8e-a0a6-20c0e0f9eb75.htm" />
+  <HelpKINode Title="SetSegCoreTransHigh method" Url="html/a1503885-7c27-10f2-408b-ce65443f990e.htm" />
+  <HelpKINode Title="SetSegCoreTransLow method" Url="html/fac3e3aa-dfbd-5c92-7ee0-afd49a69e3c2.htm" />
+  <HelpKINode Title="SetSegCoreVer method" Url="html/3cfb0490-8068-f4d4-c016-4b0b2d464348.htm" />
+  <HelpKINode Title="SetSegHorDone method" Url="html/639b7464-34f4-5b5c-1a73-80bc9dfd6180.htm" />
+  <HelpKINode Title="SetSegmentacionDone method" Url="html/572c9ff2-1929-def9-5c3a-eeb970e30b10.htm" />
+  <HelpKINode Title="SetSegPhantom1Hor method" Url="html/d7019ecf-f74e-2753-735b-98c7553210e6.htm" />
+  <HelpKINode Title="SetSegPhantom1TransHigh method" Url="html/292415f1-60bc-98e3-bf19-820b788b069a.htm" />
+  <HelpKINode Title="SetSegPhantom1TransLow method" Url="html/f8fd48f0-2476-42a7-486d-f5fadfd5d7c0.htm" />
+  <HelpKINode Title="SetSegPhantom1Ver method" Url="html/b8e0f423-695c-fcd4-c873-179bdc41fc06.htm" />
+  <HelpKINode Title="SetSegPhantom2Hor method" Url="html/0387d9fb-e5a7-a7f8-3223-82390510a0b0.htm" />
+  <HelpKINode Title="SetSegPhantom2TransHigh method" Url="html/dbfe3395-a050-57cc-04a6-1bf61a1a5410.htm" />
+  <HelpKINode Title="SetSegPhantom2TransLow method" Url="html/d2142d7f-f400-b335-13a7-60adc66d179a.htm" />
+  <HelpKINode Title="SetSegPhantom2Ver method" Url="html/07631fb8-e91c-b7d5-da89-4bf10a9e631b.htm" />
+  <HelpKINode Title="SetSegPhantom3Hor method" Url="html/6505044c-ddd4-e975-43ae-8edfad566c52.htm" />
+  <HelpKINode Title="SetSegPhantom3TransHigh method" Url="html/cbded060-4e69-b942-9ebc-294a90d8860b.htm" />
+  <HelpKINode Title="SetSegPhantom3TransLow method" Url="html/fed2ba9a-5304-0c3c-02c3-d4d712a7e739.htm" />
+  <HelpKINode Title="SetSegPhantom3Ver method" Url="html/ff0808dd-c5f2-e110-608e-10e0fa22d77b.htm" />
+  <HelpKINode Title="SetSegTransDone method" Url="html/08585dcd-3467-fd45-3691-072dbc194723.htm" />
+  <HelpKINode Title="SetSegVerDone method" Url="html/e5950e04-709c-0b7d-71e3-5364ae3cc87a.htm" />
+  <HelpKINode Title="SetTemp method" Url="html/eb3fae2e-ac37-cc2f-dd6a-f038da1a265e.htm" />
+  <HelpKINode Title="ShowWaiting method" Url="html/7cc4855d-e3af-eb36-d18e-17dee44d6528.htm" />
+  <HelpKINode Title="SplashScreenForm class">
+    <HelpKINode Title="SplashScreenForm Class" Url="html/7a2c5b81-0353-4986-4eee-7efdc8b6322e.htm" />
+    <HelpKINode Title="about SplashScreenForm class" Url="html/7a2c5b81-0353-4986-4eee-7efdc8b6322e.htm" />
+    <HelpKINode Title="constructor" Url="html/241f08ae-c78c-f1ed-d7cf-4af8d2f8b04a.htm" />
+    <HelpKINode Title="events" Url="html/3b370a01-a6c5-7c97-c056-fb70e4c18fa7.htm" />
+    <HelpKINode Title="methods" Url="html/81b617c7-3f4c-b215-8c1c-d002c091af7b.htm" />
+    <HelpKINode Title="properties" Url="html/a9244219-c86d-58c6-a4e7-b86952aaf838.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SplashScreenForm.Dispose method" Url="html/fdb1be61-0021-c7fb-8d2e-d0cca561f943.htm" />
+  <HelpKINode Title="SplashScreenForm.SplashScreenForm constructor" Url="html/241f08ae-c78c-f1ed-d7cf-4af8d2f8b04a.htm" />
+  <HelpKINode Title="temp field" Url="html/fc54cec5-ad2b-41dd-d4b5-9ecd6489c8d5.htm" />
+  <HelpKINode Title="tempHigh field" Url="html/682b18b8-3198-3742-a610-83ec7a3f1d8c.htm" />
+  <HelpKINode Title="tempLow field" Url="html/45bca008-a5b0-bb1b-0284-96f6549a8274.htm" />
+  <HelpKINode Title="UnlockBits method" Url="html/264db6b7-c813-b835-1b13-ba536f1e7cdc.htm" />
+  <HelpKINode Title="voxelDepth field" Url="html/3a162bd7-7f9c-55bf-e00c-9610ea4d289d.htm" />
+  <HelpKINode Title="voxelHeight field" Url="html/73b2c112-7a03-f9a5-651d-ef5cd3328450.htm" />
+  <HelpKINode Title="voxelWidth field" Url="html/3be33b35-d6f4-c2af-18f0-f010fce02207.htm" />
+  <HelpKINode Title="WaitingForm class">
+    <HelpKINode Title="WaitingForm Class" Url="html/9ffdc27e-deb0-93d5-e72e-fb06559c71f8.htm" />
+    <HelpKINode Title="about WaitingForm class" Url="html/9ffdc27e-deb0-93d5-e72e-fb06559c71f8.htm" />
+    <HelpKINode Title="constructor" Url="html/a15da49c-5363-b962-81a5-1733312bf803.htm" />
+    <HelpKINode Title="events" Url="html/7cc02beb-c500-aed3-8703-cb30c72b283c.htm" />
+    <HelpKINode Title="fields" Url="html/183d3663-9bf2-8c62-3281-fd1317669468.htm" />
+    <HelpKINode Title="methods" Url="html/f290fc5b-e9b9-ce58-5314-e14cd0af9ca3.htm" />
+    <HelpKINode Title="properties" Url="html/4121d16e-bfcd-930a-2c80-08108d8ccc88.htm" />
+  </HelpKINode>
+  <HelpKINode Title="waitingForm field" Url="html/ec52b372-25ae-3cae-315a-4769e487b34c.htm" />
+  <HelpKINode Title="WaitingForm.Dispose method" Url="html/211fae5a-3d49-b375-1cdd-dc28486d193a.htm" />
+  <HelpKINode Title="WaitingForm.lblTexto field" Url="html/33b9c2ea-5584-bac2-233f-b5b5e912a58a.htm" />
+  <HelpKINode Title="WaitingForm.padre field" Url="html/717e1dc2-d1e2-8c95-723f-ac494d047381.htm" />
+  <HelpKINode Title="WaitingForm.WaitingForm constructor" Url="html/a15da49c-5363-b962-81a5-1733312bf803.htm" />
+  <HelpKINode Title="width field" Url="html/583bbfe0-2d02-7bc5-619e-57c263e07f2e.htm" />
+  <HelpKINode Title="Width property" Url="html/6cb5cbf0-9a1a-80f6-8d2c-8c9dd5a4bfa6.htm" />
+  <HelpKINode Title="x field">
+    <HelpKINode Title="CCirculo.x Field" Url="html/036c0526-5c9a-a65e-29aa-1ad4a2da0409.htm" />
+    <HelpKINode Title="CCuadrado.x Field" Url="html/3191005b-de41-44de-df38-7cb17df9ae4e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="y field">
+    <HelpKINode Title="CCirculo.y Field" Url="html/368280d9-4475-7067-8b7f-5e3518b6800d.htm" />
+    <HelpKINode Title="CCuadrado.y Field" Url="html/4198f542-2225-b185-c707-d9bbc9ee93a0.htm" />
+  </HelpKINode>
+</HelpKI>

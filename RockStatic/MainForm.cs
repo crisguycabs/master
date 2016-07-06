@@ -19,6 +19,8 @@ namespace RockStatic
     {
         #region Variables de Diseñador
 
+        public List<CUsuario> usuarios;
+
         /// <summary>
         /// Instancia del Form NewProjectForm
         /// </summary>

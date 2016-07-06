@@ -418,9 +418,7 @@ namespace RockStatic
             {
                 e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
                 e.Graphics.DrawEllipse(pen2, areasCore[i].x - areasCore[i].width, areasCore[i].y - areasCore[i].width, 2 * areasCore[i].width, 2 * areasCore[i].width);
-            }
-            
-            
+            }      
         }
 
         private void label4_Click(object sender, EventArgs e)
