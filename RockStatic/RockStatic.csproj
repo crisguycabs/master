@@ -48,6 +48,9 @@
     <Reference Include="AForge.Math">
       <HintPath>resources\AForge.Math.dll</HintPath>
     </Reference>
+    <Reference Include="EvilDICOM">
+      <HintPath>..\packages\EvilDICOM.1.5.1.0\lib\net45\EvilDICOM.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -181,6 +184,7 @@
       <DependentUpon>SplashScreenForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram8.cd" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
