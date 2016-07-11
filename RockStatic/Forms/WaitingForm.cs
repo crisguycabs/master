@@ -10,14 +10,23 @@ using System.Windows.Forms;
 
 namespace RockStatic
 {
+    /// <summary>
+    /// Form para mostrar un mensaje de espera
+    /// </summary>
     public partial class WaitingForm : Form
     {
         #region variables de clase
 
+        /// <summary>
+        /// Referencia al MainForm de la aplicacion
+        /// </summary>
         public MainForm padre;
 
         #endregion
 
+        /// <summary>
+        /// 
+        /// </summary>
         public WaitingForm()
         {
             InitializeComponent();

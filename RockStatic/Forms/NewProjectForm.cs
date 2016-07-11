@@ -11,6 +11,9 @@ using System.IO;
 
 namespace RockStatic
 {
+    /// <summary>
+    /// Form para seleccionar los DICOMs High y Low que componen un proyecto
+    /// </summary>
     public partial class NewProjectForm : Form
     {
         /* Un nuevo proyecto requiere de seleccionar la ruta de las imagenes (o dycom) para HIGH energy y LOW energy
@@ -46,6 +49,11 @@ namespace RockStatic
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Evento capturado al cerrar el Form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NewProjectForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.padre.CerrarNuevoProyectoForm();
@@ -295,6 +303,9 @@ namespace RockStatic
             }
         }
 
+        /// <summary>
+        /// Se centra el Form con respecto al MDI parent
+        /// </summary>
         public void CentrarForm()
         {
             //this.Location = new System.Drawing.Point((Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2, (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2);

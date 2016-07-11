@@ -92,6 +92,10 @@
 
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox1;
+
+        /// <summary>
+        /// Mensaje de espera a mostrar en el Form
+        /// </summary>
         public System.Windows.Forms.Label lblTexto;
     }
 }
