@@ -66,9 +66,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\AuxThread.cs" />
     <Compile Include="Clases\CCuadrado.cs" />
     <Compile Include="Clases\CCirculo.cs" />
     <Compile Include="Clases\CLockBitmap.cs" />
+    <Compile Include="Clases\MyDataCube.cs" />
+    <Compile Include="Clases\MyDicom.cs" />
     <Compile Include="CPermisos.cs" />
     <Compile Include="CUsuario.cs" />
     <Compile Include="Forms\PreviewSegForm.cs">
