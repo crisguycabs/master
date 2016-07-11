@@ -4,6 +4,7 @@ using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using EvilDICOM.Core;
 using EvilDICOM.Core.Element;
 using EvilDICOM.Core.Selection;
@@ -11,7 +12,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 
 
-namespace RockStatic.Clases
+namespace RockStatic
 {
     /// <summary>
     /// Wrapper para la libreria EvilDICOM (Rex Cardan, http://www.rexcardan.com/evildicom/) con modificaciones propias para ser manejadas por la suite RockUIS.
@@ -71,6 +72,26 @@ namespace RockStatic.Clases
             histograma = new uint[100];
             bins = new ushort[100];
             cortesHorizontal = new List<ushort>[Convert.ToInt16(dataCube[0].selector.Rows.Data)];
+            cortesVertical = new List<ushort>[Convert.ToInt16(dataCube[0].selector.Columns.Data)];
+        }
+
+        /// <summary>
+        /// Constructor con asignación
+        /// </summary>
+        /// <param name="rutas">Array de rutas de los DICOM a cargar</param>
+        public MyDataCube(List<string> rutas)
+        {
+            dataCube = new List<MyDicom>();
+
+            for (int i = 0; i < rutas.Count; i++)
+            {
+                dataCube.Add(new MyDicom(rutas[i]));
+            }
+
+            histograma = new uint[100];
+            bins = new ushort[100];
+            cortesHorizontal = new List<ushort>[Convert.ToInt16(dataCube[0].selector.Rows.Data)];
+            cortesVertical = new List<ushort>[Convert.ToInt16(dataCube[0].selector.Columns.Data)];
         }
 
         /// <summary>
@@ -110,6 +131,35 @@ namespace RockStatic.Clases
             for (int i = 0; i < dataCube.Count; i++)
             {
                 dataCube[i].CreateBitmap(dataCube[i].pixelData, Convert.ToInt32(dataCube[i].selector.Columns.Data), Convert.ToInt32(dataCube[i].selector.Rows.Data));
+            }
+        }
+
+        /// <summary>
+        /// Genera la totalidad de los bitmap del datacubo usando threads
+        /// </summary>
+        public void CrearBitmapThread()
+        {
+            int nbmp = dataCube.Count;
+            ManualResetEvent[] doneEvents = new ManualResetEvent[nbmp];
+            AuxThread[] threads = new AuxThread[nbmp];
+
+            int width = Convert.ToInt32(dataCube[0].selector.Columns.Data);
+            int height = Convert.ToInt32(dataCube[0].selector.Rows.Data);
+
+            for (int i = 0; i < nbmp; i++)
+            {
+                doneEvents[i] = new ManualResetEvent(false);
+                AuxThread thread = new AuxThread(this.dataCube[i].pixelData, width, height, doneEvents[i]);
+                threads[i] = thread;
+                ThreadPool.QueueUserWorkItem(thread.ThreadCrearBitmap, i);
+            }
+
+            foreach (var e in doneEvents)
+                e.WaitOne();
+
+            for (int i = 0; i < nbmp; i++)
+            {
+                this.dataCube[i].bmp = threads[i].Corte;
             }
         }
 

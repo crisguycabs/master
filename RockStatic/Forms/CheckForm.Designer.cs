@@ -31,12 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CheckForm));
             this.trackElementos = new System.Windows.Forms.TrackBar();
             this.lstElementos = new System.Windows.Forms.ListBox();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnSubir = new System.Windows.Forms.Button();
-            this.btnBajar = new System.Windows.Forms.Button();
+            this.btnCerrar = new System.Windows.Forms.Button();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.pictElemento = new System.Windows.Forms.PictureBox();
+            this.txtCounter = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackElementos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictElemento)).BeginInit();
             this.SuspendLayout();
@@ -62,65 +60,20 @@
             this.lstElementos.TabIndex = 2;
             this.lstElementos.DoubleClick += new System.EventHandler(this.lstElementos_DoubleClick);
             // 
-            // btnCancelar
+            // btnCerrar
             // 
-            this.btnCancelar.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.Green;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Location = new System.Drawing.Point(664, 590);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 25);
-            this.btnCancelar.TabIndex = 3;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            this.btnCancelar.MouseEnter += new System.EventHandler(this.btnSubir_MouseEnter);
-            this.btnCancelar.MouseLeave += new System.EventHandler(this.btnSubir_MouseLeave);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnGuardar.FlatAppearance.BorderColor = System.Drawing.Color.Green;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Location = new System.Drawing.Point(746, 590);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(75, 25);
-            this.btnGuardar.TabIndex = 3;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            this.btnGuardar.MouseEnter += new System.EventHandler(this.btnSubir_MouseEnter);
-            this.btnGuardar.MouseLeave += new System.EventHandler(this.btnSubir_MouseLeave);
-            // 
-            // btnSubir
-            // 
-            this.btnSubir.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSubir.FlatAppearance.BorderColor = System.Drawing.Color.Green;
-            this.btnSubir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSubir.Location = new System.Drawing.Point(500, 590);
-            this.btnSubir.Name = "btnSubir";
-            this.btnSubir.Size = new System.Drawing.Size(75, 25);
-            this.btnSubir.TabIndex = 3;
-            this.btnSubir.Text = "Subir";
-            this.btnSubir.UseVisualStyleBackColor = false;
-            this.btnSubir.Click += new System.EventHandler(this.btnSubir_Click);
-            this.btnSubir.MouseEnter += new System.EventHandler(this.btnSubir_MouseEnter);
-            this.btnSubir.MouseLeave += new System.EventHandler(this.btnSubir_MouseLeave);
-            // 
-            // btnBajar
-            // 
-            this.btnBajar.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnBajar.FlatAppearance.BorderColor = System.Drawing.Color.Green;
-            this.btnBajar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBajar.Location = new System.Drawing.Point(582, 590);
-            this.btnBajar.Name = "btnBajar";
-            this.btnBajar.Size = new System.Drawing.Size(75, 25);
-            this.btnBajar.TabIndex = 3;
-            this.btnBajar.Text = "Bajar";
-            this.btnBajar.UseVisualStyleBackColor = false;
-            this.btnBajar.Click += new System.EventHandler(this.btnBajar_Click);
-            this.btnBajar.MouseEnter += new System.EventHandler(this.btnSubir_MouseEnter);
-            this.btnBajar.MouseLeave += new System.EventHandler(this.btnSubir_MouseLeave);
+            this.btnCerrar.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrar.Location = new System.Drawing.Point(746, 590);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(75, 25);
+            this.btnCerrar.TabIndex = 3;
+            this.btnCerrar.Text = "Cerrar";
+            this.btnCerrar.UseVisualStyleBackColor = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            this.btnCerrar.MouseEnter += new System.EventHandler(this.btnSubir_MouseEnter);
+            this.btnCerrar.MouseLeave += new System.EventHandler(this.btnSubir_MouseLeave);
             // 
             // lblTitulo
             // 
@@ -147,6 +100,15 @@
             this.pictElemento.TabIndex = 0;
             this.pictElemento.TabStop = false;
             // 
+            // txtCounter
+            // 
+            this.txtCounter.AutoSize = true;
+            this.txtCounter.Location = new System.Drawing.Point(500, 590);
+            this.txtCounter.Name = "txtCounter";
+            this.txtCounter.Size = new System.Drawing.Size(42, 14);
+            this.txtCounter.TabIndex = 8;
+            this.txtCounter.Text = "label1";
+            // 
             // CheckForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -154,13 +116,11 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(828, 623);
             this.ControlBox = false;
+            this.Controls.Add(this.txtCounter);
             this.Controls.Add(this.trackElementos);
             this.Controls.Add(this.pictElemento);
             this.Controls.Add(this.lblTitulo);
-            this.Controls.Add(this.btnBajar);
-            this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.btnSubir);
-            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.lstElementos);
             this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -182,10 +142,8 @@
         private System.Windows.Forms.PictureBox pictElemento;
         private System.Windows.Forms.TrackBar trackElementos;
         private System.Windows.Forms.ListBox lstElementos;
-        private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.Button btnSubir;
-        private System.Windows.Forms.Button btnBajar;
+        private System.Windows.Forms.Button btnCerrar;
         public System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.Label txtCounter;
     }
 }

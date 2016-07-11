@@ -7,7 +7,7 @@ using System.Threading;
 using System.Drawing;
 using System.Drawing.Imaging;
 
-namespace RockStatic.Clases
+namespace RockStatic
 {
     /// <summary>
     /// Clase auxiliar para poder generar todos los Bitmap de los cortes horizontales/verticales
@@ -62,6 +62,7 @@ namespace RockStatic.Clases
         /// <param name="_height">Alto deseado de la imagen resultante</param>
         /// <param name="_minNormalizacion">Valor minimo CT de la normalizacion</param>
         /// <param name="_maxNormalizacion">Valor maximo CT de la normalizacion</param>
+        /// <param name="_done">Parametro para el control del ThreadPool</param>
         public AuxThread(List<ushort> _pixels16, int _width, int _height, int _minNormalizacion, int _maxNormalizacion, ManualResetEvent _done)
         {
             pixels16 = new List<ushort>();
@@ -73,6 +74,72 @@ namespace RockStatic.Clases
             minNormalizacion = _minNormalizacion;
             maxNormalizacion = _maxNormalizacion;
             _doneEvent = _done;
+        }
+
+        /// <summary>
+        /// Constructor con asignación para crear la imagen de un DICOM
+        /// </summary>
+        /// <param name="_pixels16">copia de los pixeles que se van a procesar como imagen</param>
+        /// <param name="_width">Ancho deseado de la imagen resultante</param>
+        /// <param name="_height">Alto deseado de la imagen resultante</param>
+        /// <param name="_done">Parametro para el control del ThreadPool</param>
+        public AuxThread(List<ushort> _pixels16, int _width, int _height, ManualResetEvent _done)
+        {
+            pixels16 = new List<ushort>();
+            for (int i = 0; i < _pixels16.Count; i++)
+                pixels16.Add(_pixels16[i]);
+
+            width = _width;
+            height = _height;
+            _doneEvent = _done;
+        }
+
+        /// <summary>
+        /// Rutina para el Threadpool para crear una imagen del pixeldata cargado
+        /// </summary>
+        /// <returns></returns>
+        public Bitmap CreateBitmap()
+        {
+            Bitmap bmp = new Bitmap(width, height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+
+            BitmapData bmd = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), System.Drawing.Imaging.ImageLockMode.ReadOnly, bmp.PixelFormat);
+
+            double maximoValor = pixels16.Max();
+            double minimoValor = pixels16.Min();
+            double range = maximoValor - minimoValor;
+            double color;
+
+            unsafe
+            {
+                int pixelSize = 3;
+                int i, j, j1, i1;
+                byte b;
+
+                for (i = 0; i < bmd.Height; ++i)
+                {
+                    byte* row = (byte*)bmd.Scan0 + (i * bmd.Stride);
+                    i1 = i * bmd.Width;
+
+                    for (j = 0; j < bmd.Width; ++j)
+                    {
+                        // se normaliza de 0 a 255
+                        color = Convert.ToInt32(Convert.ToDouble(pixels16[i * bmd.Width + j] - minimoValor) * ((double)255) / range);
+                        if (color < 0) color = 0;
+                        if (color > 255) color = 255;
+
+                        // se convierte el color gris a byte
+                        b = Convert.ToByte(color);
+                        j1 = j * pixelSize;
+
+                        row[j1] = b;            // Red
+                        row[j1 + 1] = b;        // Green
+                        row[j1 + 2] = b;        // Blue
+                    }
+                }
+            }
+
+            bmp.UnlockBits(bmd);
+            return bmp;
         }
 
         /// <summary>
@@ -123,11 +190,25 @@ namespace RockStatic.Clases
             return bmp;
         }
 
-        // Wrapper method for use with thread pool.
-        public void ThreadPoolCallback(Object threadContext)
+        /// <summary>
+        /// Wrapper method for use with thread pool.
+        /// </summary>
+        /// <param name="threadContext"></param> 
+        public void ThreadCrearBitmapCorte(Object threadContext)
         {
             int threadIndex = (int)threadContext;
             corte = CreateBitmapCorte();
+            _doneEvent.Set();
+        }
+
+        /// <summary>
+        /// Wrapper method for use with thread pool.
+        /// </summary>
+        /// <param name="threadContext"></param> 
+        public void ThreadCrearBitmap(Object threadContext)
+        {
+            int threadIndex = (int)threadContext;
+            corte = CreateBitmap();
             _doneEvent.Set();
         }
     }

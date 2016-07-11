@@ -18,11 +18,6 @@ namespace RockStatic
         #region variables de clase
 
         /// <summary>
-        /// Copia local de los elementos a mostrar
-        /// </summary>
-        public List<string> temp;
-
-        /// <summary>
         /// Referencia al MainForm padre
         /// </summary>
         public MainForm padre;
@@ -37,22 +32,26 @@ namespace RockStatic
         /// </summary>
         public NewProjectForm newProjectForm;
 
+        /// <summary>
+        /// Lista de rutas de los DICOMs a cargar y revisar temporalmente
+        /// </summary>
+        public List<string> temp;
+
+        /// <summary>
+        /// Datacubo temporal para revisar los DICOMs cargados
+        /// </summary>
+        public MyDataCube tempDicom;
+
         #endregion
 
         Point lastClick;
 
+        /// <summary>
+        /// Form para revisar los DICOMs que se han seleccionado, de manera temporal, en NewProjectForm
+        /// </summary>
         public CheckForm()
         {
             InitializeComponent();
-        }
-
-        /// <summary>
-        /// Se crea una copia (local) de los elementos a mostrar
-        /// </summary>
-        public void SetList(List<string> lista)
-        {
-            temp = new List<string>();
-            for(int i=0;i<lista.Count;i++) temp.Add((string)lista[i]);            
         }
 
         private void CheckForm_Load(object sender, EventArgs e)
@@ -60,6 +59,11 @@ namespace RockStatic
             SetForm();
         }
 
+        /// <summary>
+        /// Se presiona el boton Cancelar y se cancelan todos los cambios realizados sobre la lista de dicoms
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -73,23 +77,34 @@ namespace RockStatic
             // se llena el listbox
             lstElementos.Items.Clear();
             for (int i = 0; i < temp.Count; i++) lstElementos.Items.Add(GetNameFile((string)temp[i]));
-            
+
+            // se crean las imagenes del datacubo
+            tempDicom = new MyDataCube(temp);
+            tempDicom.CrearBitmapThread();
+
             // se reestablece el TrackBar
             trackElementos.Minimum = 1;
-            trackElementos.Maximum = temp.Count;
+            trackElementos.Maximum = newProjectForm.tempHigh.Count;
             trackElementos.Value = 1;
             lstElementos.SelectedIndex = 0;
 
             // se pinta la primera imagen
-            pictElemento.Image=new Bitmap((string)temp[0]);
+            pictElemento.Image = tempDicom.dataCube[0].bmp;
+
+            // se genera el texto del counter
+            txtCounter.Text = "1 de " + temp.Count.ToString();
         }
 
         private void trackElementos_ValueChanged(object sender, EventArgs e)
         {
             pictElemento.Image = null;
-            pictElemento.Image = new Bitmap((string)temp[trackElementos.Value-1]);
-            lstElementos.ClearSelected();
-            lstElementos.SelectedIndex = trackElementos.Value - 1;
+            if (filesHigh)
+            {
+                pictElemento.Image = tempDicom.dataCube[trackElementos.Value - 1].bmp;
+                lstElementos.ClearSelected();
+                lstElementos.SelectedIndex = trackElementos.Value - 1;
+                txtCounter.Text = trackElementos.Value.ToString() + " de " + temp.Count.ToString();
+            }
         }
 
         /// <summary>
@@ -113,82 +128,23 @@ namespace RockStatic
             return name;
         }
 
-        private void lstElementos_DoubleClick(object sender, EventArgs e)
+        /// <summary>
+        /// Se crea una copia (local) de los elementos a mostrar
+        /// </summary>
+        public void SetList(List<string> lista)
         {
-            trackElementos.Value = lstElementos.SelectedIndex + 1;
+            temp = new List<string>();
+            for (int i = 0; i < lista.Count; i++) temp.Add((string)lista[i]);
         }
 
-        public void btnGuardar_Click(object sender, EventArgs e)
+        private void lstElementos_DoubleClick(object sender, EventArgs e)
         {
-            newProjectForm.SetTemp(temp, filesHigh);
-            this.Close();
+            trackElementos.Value = lstElementos.SelectedIndex + 1;            
         }
 
         private void CheckForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.padre.CerrarCheckForm();
-        }
-
-        private void btnSubir_Click(object sender, EventArgs e)
-        {
-            ListBox.SelectedIndexCollection indices = lstElementos.SelectedIndices;
-            
-            // se verifica que el primer, o unico elemento, seleccionado no sea el elemento 0
-            if (indices[0] != 0)
-            {
-                List<string> temp2 = new List<string>();
-                int primer = indices[0];
-
-                // se CORTAN los elementos del List temp y se pasan al List temp2
-                for (int i = 0; i < indices.Count; i++)
-                {
-                    temp2.Add((string)temp[primer]);
-                    temp.RemoveAt(primer);
-                }
-
-                // se insertan los elementos CORTADOS una posicion mas arriba
-                primer--;
-                for (int i = 0; i < temp2.Count; i++)
-                {
-                    temp.Insert(primer, temp2[i]);
-                    primer++;
-                }
-
-                primer = indices[0] - 1;
-                SetForm();
-                trackElementos.Value = primer+1;
-            }
-        }
-
-        private void btnBajar_Click(object sender, EventArgs e)
-        {
-            ListBox.SelectedIndexCollection indices = lstElementos.SelectedIndices;
-            
-            // se verifica que el ultimo, o unico elemento, seleccionado no sea el ultimo elemento del ListBox
-            if (indices[indices.Count-1] != lstElementos.Items.Count)
-            {
-                List<string> temp2 = new List<string>();
-                int primer = indices[0];
-
-                // se CORTAN los elementos del List temp y se pasan al List temp2
-                for (int i = 0; i < indices.Count; i++)
-                {
-                    temp2.Add((string)temp[primer]);
-                    temp.RemoveAt(primer);
-                }
-
-                // se insertan los elementos CORTADOS una posicion mas abajo
-                primer++;
-                for (int i = 0; i < temp2.Count; i++)
-                {
-                    temp.Insert(primer, temp2[i]);
-                    primer++;
-                }
-
-                primer = indices[0] + 1;
-                SetForm();
-                trackElementos.Value = primer+1;
-            }
         }
 
         private void lblTitulo_MouseDown(object sender, MouseEventArgs e)
@@ -205,6 +161,9 @@ namespace RockStatic
             }
         }
 
+        /// <summary>
+        /// Centra el Form en medio del MDI parent
+        /// </summary>
         public void CentrarForm()
         {
             //this.Location = new System.Drawing.Point((Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2, (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2);
@@ -229,6 +188,11 @@ namespace RockStatic
         private void CheckForm_Paint(object sender, PaintEventArgs e)
         {
             ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, Color.Green, ButtonBorderStyle.Solid); 
+        }
+
+        public void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

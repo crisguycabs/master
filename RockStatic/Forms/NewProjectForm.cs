@@ -37,7 +37,10 @@ namespace RockStatic
         #endregion
 
         Point lastClick;
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public NewProjectForm()
         {
             InitializeComponent();
@@ -63,7 +66,7 @@ namespace RockStatic
         {
             lblError.Visible = false;
             tempHigh = new List<string>();
-            tempLow = new List<string>();
+            tempLow = new List<string>();            
         }
 
         /// <summary>
@@ -116,7 +119,11 @@ namespace RockStatic
                 // se muestra la ventana de espera
                 padre.ShowWaiting("Espere mientras RockStatic carga los elementos seleccionados...");
 
-                for (int i = 0; i < openHigh.FileNames.Length; i++) tempHigh.Add(openHigh.FileNames[i]);
+                for (int i = 0; i < openHigh.FileNames.Length; i++)
+                    tempHigh.Add(openHigh.FileNames[i]);
+
+                // se cargan los DICOMS de manera temporal
+                
                 pictHigh.Image = Properties.Resources.greenTick;
                 btnCheckHigh.Enabled = true;
                 CheckLargos();
@@ -143,7 +150,9 @@ namespace RockStatic
                 // se muestra la ventana de espera
                 padre.ShowWaiting("Espere mientras RockStatic carga los elementos seleccionados...");
 
-                for (int i = 0; i < openLow.FileNames.Length; i++) tempLow.Add(openLow.FileNames[i]);
+                for (int i = 0; i < openLow.FileNames.Length; i++) 
+                    tempLow.Add(openLow.FileNames[i]);
+                                
                 pictLow.Image = Properties.Resources.greenTick;
                 btnCheckLow.Enabled = true;
                 CheckLargos();
@@ -157,14 +166,7 @@ namespace RockStatic
         {
             if (padre.abiertoCheckForm)
             {
-                // la ventana ya esta abierta, se debe preguntar que hacer con los cambios realizados en la instancia que se encuentra abierta
-                if (MessageBox.Show("Ya esta revisando un set de elementos.\nDesea guardar el set actual antes de continuar?", "Set en revision", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    padre.checkForm.btnGuardar_Click(sender, e);
-                }
-                else padre.checkForm.btnCancelar_Click(sender, e);
-
-                // los botones btnCancelar y btnGuardar envian a cerrar el CheckForm, por lo que de igual manera se debe volver a crear la instancia
+                padre.checkForm.btnCerrar_Click(sender, e);
             }
 
             // se abre la ventana CheckForm y se pasa el List de elementos HIGH para su revision
@@ -177,21 +179,17 @@ namespace RockStatic
             padre.checkForm.filesHigh = true;
             padre.checkForm.newProjectForm = this;
             padre.abiertoCheckForm = true;
+
+            padre.ShowWaiting("Espere mientras RockStatic genera las imagenes...");
             padre.checkForm.Show();
+            padre.CloseWaiting();
         }
 
         private void btnCheckLow_Click(object sender, EventArgs e)
         {
             if (padre.abiertoCheckForm)
             {
-                // la ventana ya esta abierta, se debe preguntar que hacer con los cambios realizados en la instancia que se encuentra abierta
-                if (MessageBox.Show("Ya esta revisando un set de elementos.\nDesea guardar el set actual antes de continuar?", "Set en revision", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    padre.checkForm.btnGuardar_Click(sender, e);
-                }
-                else padre.checkForm.btnCancelar_Click(sender, e);
-
-                // los botones btnCancelar y btnGuardar envian a cerrar el CheckForm, por lo que de igual manera se debe volver a crear la instancia
+                padre.checkForm.btnCerrar_Click(sender, e);
             }
 
             // se abre la ventana CheckForm y se pasa el List de elementos LOW para su revision
@@ -204,7 +202,10 @@ namespace RockStatic
             padre.checkForm.padre = this.padre;
             padre.checkForm.filesHigh = false;
             padre.checkForm.newProjectForm = this;
+
+            padre.ShowWaiting("Espere mientras RockStatic genera las imagenes...");
             padre.checkForm.Show();
+            padre.CloseWaiting();
         }
 
         /// <summary>

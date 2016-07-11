@@ -10,7 +10,7 @@ using EvilDICOM.Core.Selection;
 using System.Drawing;
 using System.Drawing.Imaging;
 
-namespace RockStatic.Clases
+namespace RockStatic
 {
     /// <summary>
     /// Wrapper para la libreria EvilDICOM (Rex Cardan, http://www.rexcardan.com/evildicom/) con modificaciones propias para ser manejadas por la suite RockUIS
@@ -31,7 +31,7 @@ namespace RockStatic.Clases
         /// <summary>
         /// Imagen normalizada asociadas al objeto DICOM
         /// </summary>
-        Bitmap bmp = null;
+        public Bitmap bmp = null;
 
         /// <summary>
         /// List que contiene la informacion de pixeles CT (ushort) para el DICOM cargado        
