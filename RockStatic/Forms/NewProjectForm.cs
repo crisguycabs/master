@@ -37,10 +37,40 @@ namespace RockStatic
         /// </summary>
         public List<string> tempLow;
 
+        Point lastClick;
+
+        /// <summary>
+        /// Instancia temporal del phantom1 en High
+        /// </summary>
+        public CPhantom tempPhantom1High;
+
+        /// <summary>
+        /// Instancia temporal del phantom2 en High
+        /// </summary>
+        public CPhantom tempPhantom2High;
+
+        /// <summary>
+        /// Instancia temporal del phantom3 en High
+        /// </summary>
+        public CPhantom tempPhantom3High;
+
+        /// <summary>
+        /// Instancia temporal del phantom1 en Low
+        /// </summary>
+        public CPhantom tempPhantom1Low;
+
+        /// <summary>
+        /// Instancia temporal del phantom2 en Low
+        /// </summary>
+        public CPhantom tempPhantom2Low;
+
+        /// <summary>
+        /// Instancia temporal del phantom3 en Low
+        /// </summary>
+        public CPhantom tempPhantom3Low;
+
         #endregion
 
-        Point lastClick;
-        
         /// <summary>
         /// 
         /// </summary>
@@ -74,7 +104,15 @@ namespace RockStatic
         {
             lblError.Visible = false;
             tempHigh = new List<string>();
-            tempLow = new List<string>();            
+            tempLow = new List<string>();
+            
+            // se crean los valores de los phantoms por defecto
+            tempPhantom1High = new CPhantom(1237.865,46.125,2.2, 11.8);
+            tempPhantom2High = new CPhantom(868.77,39,2.16, 8.7);
+            tempPhantom3High = new CPhantom(15.3275,36.7,1, 7.5);
+            tempPhantom1Low = new CPhantom(1434.195,50.985,2.2, 11.8);
+            tempPhantom2Low = new CPhantom(916.1,36.775,2.16, 8.7);
+            tempPhantom3Low = new CPhantom(23.8,35.9,1, 7.5);
         }
 
         /// <summary>
@@ -330,6 +368,31 @@ namespace RockStatic
         private void NewProjectForm_Paint(object sender, PaintEventArgs e)
         {
             ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, Color.Green, ButtonBorderStyle.Solid); 
+        }
+
+        private void radPhantoms_CheckedChanged(object sender, EventArgs e)
+        {
+            radNoPhantoms.Checked = !radPhantoms.Checked;
+            btnPhantoms.Enabled = radNoPhantoms.Checked;            
+        }
+
+        private void btnPhantoms_Click(object sender, EventArgs e)
+        {
+            if (padre.abiertoPhantomsForm)
+            {
+                padre.phantomForm.btnCerrar_Click(sender, e);
+            }
+
+            // se abre la ventana CheckForm y se pasa el List de elementos HIGH para su revision
+            padre.phantomForm = new PhantomsForm();
+            padre.phantomForm.Text = "MODELO DE PHANTOMS";
+            padre.phantomForm.lblTitulo.Text = "MODELO DE PHANTOMS";
+            padre.phantomForm.MdiParent = this.MdiParent;
+            padre.phantomForm.padre = this.padre;
+            padre.phantomForm.newProjectForm = this;
+            padre.abiertoPhantomsForm = true;
+
+            padre.phantomForm.Show();            
         }      
     }
 }

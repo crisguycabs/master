@@ -37,9 +37,19 @@ namespace RockStatic
         public CheckForm checkForm;
 
         /// <summary>
+        /// Instancia del Form PhantomForm
+        /// </summary>
+        public PhantomsForm phantomForm;
+
+        /// <summary>
         /// Variable que indica si la ventana CheckForm esta abierta o no
         /// </summary>
         public bool abiertoCheckForm;
+
+        /// <summary>
+        /// Variable que indica si la ventana PhantomsForm esta abierta o no
+        /// </summary>
+        public bool abiertoPhantomsForm;
 
         /// <summary>
         /// Instancia del Form HomeForm

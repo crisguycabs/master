@@ -53,6 +53,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -72,8 +73,9 @@
     <Compile Include="Clases\CLockBitmap.cs" />
     <Compile Include="Clases\MyDataCube.cs" />
     <Compile Include="Clases\MyDicom.cs" />
-    <Compile Include="CPermisos.cs" />
-    <Compile Include="CUsuario.cs" />
+    <Compile Include="Clases\CPermisos.cs" />
+    <Compile Include="Clases\CPhantom.cs" />
+    <Compile Include="Clases\CUsuario.cs" />
     <Compile Include="Forms\PreviewSegForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +112,12 @@
     </Compile>
     <Compile Include="Forms\NewProjectForm.Designer.cs">
       <DependentUpon>NewProjectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PhantomsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PhantomsForm.Designer.cs">
+      <DependentUpon>PhantomsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Forms\ProjectForm.cs">
@@ -172,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ProjectForm.resx">
       <DependentUpon>ProjectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PhantomsForm.resx">
+      <DependentUpon>PhantomsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

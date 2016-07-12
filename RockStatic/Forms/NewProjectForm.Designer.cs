@@ -40,9 +40,15 @@
             this.btnCrear = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.lblError = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.radPhantoms = new System.Windows.Forms.RadioButton();
+            this.radNoPhantoms = new System.Windows.Forms.RadioButton();
+            this.btnPhantoms = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.pictLow = new System.Windows.Forms.PictureBox();
             this.pictHigh = new System.Windows.Forms.PictureBox();
-            this.lblTitle = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictLow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictHigh)).BeginInit();
             this.SuspendLayout();
@@ -50,7 +56,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 41);
+            this.label1.Location = new System.Drawing.Point(10, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 14);
             this.label1.TabIndex = 0;
@@ -58,7 +64,7 @@
             // 
             // txtNewName
             // 
-            this.txtNewName.Location = new System.Drawing.Point(75, 38);
+            this.txtNewName.Location = new System.Drawing.Point(75, 40);
             this.txtNewName.Name = "txtNewName";
             this.txtNewName.Size = new System.Drawing.Size(100, 22);
             this.txtNewName.TabIndex = 1;
@@ -68,11 +74,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 73);
+            this.label2.Location = new System.Drawing.Point(10, 87);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 14);
+            this.label2.Size = new System.Drawing.Size(113, 14);
             this.label2.TabIndex = 3;
-            this.label2.Text = "HIGH Energy Dycom";
+            this.label2.Text = "HIGH Energy Dicom:";
             // 
             // btnSelHigh
             // 
@@ -82,7 +88,7 @@
             this.btnSelHigh.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnSelHigh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSelHigh.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelHigh.Location = new System.Drawing.Point(143, 70);
+            this.btnSelHigh.Location = new System.Drawing.Point(143, 83);
             this.btnSelHigh.Name = "btnSelHigh";
             this.btnSelHigh.Size = new System.Drawing.Size(80, 23);
             this.btnSelHigh.TabIndex = 2;
@@ -101,7 +107,7 @@
             this.btnCheckHigh.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnCheckHigh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCheckHigh.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckHigh.Location = new System.Drawing.Point(258, 70);
+            this.btnCheckHigh.Location = new System.Drawing.Point(229, 83);
             this.btnCheckHigh.Name = "btnCheckHigh";
             this.btnCheckHigh.Size = new System.Drawing.Size(80, 23);
             this.btnCheckHigh.TabIndex = 4;
@@ -114,11 +120,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 105);
+            this.label3.Location = new System.Drawing.Point(10, 119);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 14);
+            this.label3.Size = new System.Drawing.Size(109, 14);
             this.label3.TabIndex = 3;
-            this.label3.Text = "LOW Energy Dycom";
+            this.label3.Text = "LOW Energy Dicom:";
             // 
             // btnSelLow
             // 
@@ -128,7 +134,7 @@
             this.btnSelLow.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnSelLow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSelLow.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelLow.Location = new System.Drawing.Point(143, 102);
+            this.btnSelLow.Location = new System.Drawing.Point(143, 115);
             this.btnSelLow.Name = "btnSelLow";
             this.btnSelLow.Size = new System.Drawing.Size(80, 23);
             this.btnSelLow.TabIndex = 3;
@@ -147,7 +153,7 @@
             this.btnCheckLow.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnCheckLow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCheckLow.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckLow.Location = new System.Drawing.Point(258, 102);
+            this.btnCheckLow.Location = new System.Drawing.Point(229, 115);
             this.btnCheckLow.Name = "btnCheckLow";
             this.btnCheckLow.Size = new System.Drawing.Size(80, 23);
             this.btnCheckLow.TabIndex = 4;
@@ -166,7 +172,7 @@
             this.btnCrear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCrear.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCrear.Location = new System.Drawing.Point(270, 178);
+            this.btnCrear.Location = new System.Drawing.Point(272, 275);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(68, 23);
             this.btnCrear.TabIndex = 4;
@@ -184,7 +190,7 @@
             this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(196, 178);
+            this.btnCancelar.Location = new System.Drawing.Point(198, 275);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(68, 23);
             this.btnCancelar.TabIndex = 5;
@@ -197,32 +203,12 @@
             // lblError
             // 
             this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(10, 138);
+            this.lblError.Location = new System.Drawing.Point(10, 147);
             this.lblError.Name = "lblError";
             this.lblError.Size = new System.Drawing.Size(328, 32);
             this.lblError.TabIndex = 6;
-            this.lblError.Text = "El numero de elementos dycom HIGH no coincide con el numero de elementos dycom LO" +
+            this.lblError.Text = "El numero de elementos dicom HIGH no coincide con el numero de elementos dicom LO" +
     "W";
-            // 
-            // pictLow
-            // 
-            this.pictLow.Image = global::RockStatic.Properties.Resources.redX;
-            this.pictLow.Location = new System.Drawing.Point(229, 102);
-            this.pictLow.Name = "pictLow";
-            this.pictLow.Size = new System.Drawing.Size(23, 23);
-            this.pictLow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictLow.TabIndex = 5;
-            this.pictLow.TabStop = false;
-            // 
-            // pictHigh
-            // 
-            this.pictHigh.Image = global::RockStatic.Properties.Resources.redX;
-            this.pictHigh.Location = new System.Drawing.Point(229, 70);
-            this.pictHigh.Name = "pictHigh";
-            this.pictHigh.Size = new System.Drawing.Size(23, 23);
-            this.pictHigh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictHigh.TabIndex = 5;
-            this.pictHigh.TabStop = false;
             // 
             // lblTitle
             // 
@@ -232,7 +218,7 @@
             this.lblTitle.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblTitle.Location = new System.Drawing.Point(0, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(347, 30);
+            this.lblTitle.Size = new System.Drawing.Size(348, 30);
             this.lblTitle.TabIndex = 7;
             this.lblTitle.Text = "NUEVO PROYECTO";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -240,13 +226,101 @@
             this.lblTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblTitle_MouseDown);
             this.lblTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblTitle_MouseMove);
             // 
+            // label4
+            // 
+            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label4.Location = new System.Drawing.Point(12, 72);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(330, 2);
+            this.label4.TabIndex = 8;
+            // 
+            // label5
+            // 
+            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label5.Location = new System.Drawing.Point(12, 184);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(330, 2);
+            this.label5.TabIndex = 9;
+            // 
+            // radPhantoms
+            // 
+            this.radPhantoms.Checked = true;
+            this.radPhantoms.Location = new System.Drawing.Point(12, 189);
+            this.radPhantoms.Name = "radPhantoms";
+            this.radPhantoms.Size = new System.Drawing.Size(224, 36);
+            this.radPhantoms.TabIndex = 10;
+            this.radPhantoms.TabStop = true;
+            this.radPhantoms.Text = "Los Dicom contienen información de los Phantoms";
+            this.radPhantoms.UseVisualStyleBackColor = true;
+            this.radPhantoms.CheckedChanged += new System.EventHandler(this.radPhantoms_CheckedChanged);
+            // 
+            // radNoPhantoms
+            // 
+            this.radNoPhantoms.Location = new System.Drawing.Point(12, 223);
+            this.radNoPhantoms.Name = "radNoPhantoms";
+            this.radNoPhantoms.Size = new System.Drawing.Size(224, 36);
+            this.radNoPhantoms.TabIndex = 11;
+            this.radNoPhantoms.Text = "Los Dicom no contienen información de los Phantoms";
+            this.radNoPhantoms.UseVisualStyleBackColor = true;
+            // 
+            // btnPhantoms
+            // 
+            this.btnPhantoms.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnPhantoms.Enabled = false;
+            this.btnPhantoms.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnPhantoms.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnPhantoms.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.btnPhantoms.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPhantoms.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPhantoms.Location = new System.Drawing.Point(258, 230);
+            this.btnPhantoms.Name = "btnPhantoms";
+            this.btnPhantoms.Size = new System.Drawing.Size(80, 23);
+            this.btnPhantoms.TabIndex = 12;
+            this.btnPhantoms.Text = "Seleccionar";
+            this.btnPhantoms.UseVisualStyleBackColor = false;
+            this.btnPhantoms.Click += new System.EventHandler(this.btnPhantoms_Click);
+            // 
+            // label6
+            // 
+            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label6.Location = new System.Drawing.Point(10, 264);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(330, 2);
+            this.label6.TabIndex = 13;
+            // 
+            // pictLow
+            // 
+            this.pictLow.Image = global::RockStatic.Properties.Resources.redX;
+            this.pictLow.Location = new System.Drawing.Point(315, 115);
+            this.pictLow.Name = "pictLow";
+            this.pictLow.Size = new System.Drawing.Size(23, 23);
+            this.pictLow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictLow.TabIndex = 5;
+            this.pictLow.TabStop = false;
+            // 
+            // pictHigh
+            // 
+            this.pictHigh.Image = global::RockStatic.Properties.Resources.redX;
+            this.pictHigh.Location = new System.Drawing.Point(315, 83);
+            this.pictHigh.Name = "pictHigh";
+            this.pictHigh.Size = new System.Drawing.Size(23, 23);
+            this.pictHigh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictHigh.TabIndex = 5;
+            this.pictHigh.TabStop = false;
+            // 
             // NewProjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(347, 210);
+            this.ClientSize = new System.Drawing.Size(348, 308);
             this.ControlBox = false;
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.btnPhantoms);
+            this.Controls.Add(this.radNoPhantoms);
+            this.Controls.Add(this.radPhantoms);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblError);
             this.Controls.Add(this.pictLow);
@@ -292,5 +366,11 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label lblError;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.RadioButton radPhantoms;
+        private System.Windows.Forms.RadioButton radNoPhantoms;
+        private System.Windows.Forms.Button btnPhantoms;
+        private System.Windows.Forms.Label label6;
     }
 }

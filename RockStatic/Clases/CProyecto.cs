@@ -216,9 +216,7 @@ namespace RockStatic
         {
             this.name = "NuevoProyecto";
             filesHigh = new List<byte[]>();
-            filesLow = new List<byte[]>();
-
-            
+            filesLow = new List<byte[]>();            
         }
 
         /// <summary>
