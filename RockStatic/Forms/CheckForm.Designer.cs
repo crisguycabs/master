@@ -30,11 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CheckForm));
             this.trackElementos = new System.Windows.Forms.TrackBar();
-            this.lstElementos = new System.Windows.Forms.ListBox();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.pictElemento = new System.Windows.Forms.PictureBox();
             this.txtCounter = new System.Windows.Forms.Label();
+            this.lstElementos = new System.Windows.Forms.ListBox();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackElementos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictElemento)).BeginInit();
             this.SuspendLayout();
@@ -47,19 +49,6 @@
             this.trackElementos.TabIndex = 1;
             this.trackElementos.ValueChanged += new System.EventHandler(this.trackElementos_ValueChanged);
             // 
-            // lstElementos
-            // 
-            this.lstElementos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lstElementos.FormattingEnabled = true;
-            this.lstElementos.HorizontalScrollbar = true;
-            this.lstElementos.ItemHeight = 14;
-            this.lstElementos.Location = new System.Drawing.Point(500, 42);
-            this.lstElementos.Name = "lstElementos";
-            this.lstElementos.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lstElementos.Size = new System.Drawing.Size(321, 534);
-            this.lstElementos.TabIndex = 2;
-            this.lstElementos.DoubleClick += new System.EventHandler(this.lstElementos_DoubleClick);
-            // 
             // btnCerrar
             // 
             this.btnCerrar.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -69,7 +58,7 @@
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(75, 25);
             this.btnCerrar.TabIndex = 3;
-            this.btnCerrar.Text = "Cerrar";
+            this.btnCerrar.Text = "Guardar";
             this.btnCerrar.UseVisualStyleBackColor = false;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             this.btnCerrar.MouseEnter += new System.EventHandler(this.btnSubir_MouseEnter);
@@ -109,6 +98,49 @@
             this.txtCounter.TabIndex = 8;
             this.txtCounter.Text = "label1";
             // 
+            // lstElementos
+            // 
+            this.lstElementos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lstElementos.FormattingEnabled = true;
+            this.lstElementos.HorizontalScrollbar = true;
+            this.lstElementos.ItemHeight = 14;
+            this.lstElementos.Location = new System.Drawing.Point(500, 42);
+            this.lstElementos.Name = "lstElementos";
+            this.lstElementos.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.lstElementos.Size = new System.Drawing.Size(321, 534);
+            this.lstElementos.TabIndex = 2;
+            this.lstElementos.DoubleClick += new System.EventHandler(this.lstElementos_DoubleClick);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Location = new System.Drawing.Point(665, 590);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 25);
+            this.btnCancelar.TabIndex = 3;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click_1);
+            this.btnCancelar.MouseEnter += new System.EventHandler(this.btnSubir_MouseEnter);
+            this.btnCancelar.MouseLeave += new System.EventHandler(this.btnSubir_MouseLeave);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Location = new System.Drawing.Point(584, 590);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 25);
+            this.btnDelete.TabIndex = 3;
+            this.btnDelete.Text = "Eliminar";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.btnDelete.MouseEnter += new System.EventHandler(this.btnSubir_MouseEnter);
+            this.btnDelete.MouseLeave += new System.EventHandler(this.btnSubir_MouseLeave);
+            // 
             // CheckForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -120,6 +152,8 @@
             this.Controls.Add(this.trackElementos);
             this.Controls.Add(this.pictElemento);
             this.Controls.Add(this.lblTitulo);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.lstElementos);
             this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -142,9 +176,11 @@
 
         private System.Windows.Forms.PictureBox pictElemento;
         private System.Windows.Forms.TrackBar trackElementos;
-        private System.Windows.Forms.ListBox lstElementos;
         private System.Windows.Forms.Button btnCerrar;
         public System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Label txtCounter;
+        private System.Windows.Forms.ListBox lstElementos;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

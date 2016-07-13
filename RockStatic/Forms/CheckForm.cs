@@ -139,7 +139,8 @@ namespace RockStatic
 
         private void lstElementos_DoubleClick(object sender, EventArgs e)
         {
-            trackElementos.Value = lstElementos.SelectedIndex + 1;            
+            trackElementos.Value = lstElementos.SelectedIndex + 1;
+            lstElementos.SelectedIndex = trackElementos.Value - 1;
         }
 
         private void CheckForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -187,12 +188,56 @@ namespace RockStatic
 
         public void btnCerrar_Click(object sender, EventArgs e)
         {
+            // se guardan los cambios hechos a la lista de elementos
+
+            if (filesHigh)
+            {
+                newProjectForm.tempHigh.Clear();
+                for (int i = 0; i < temp.Count; i++)
+                    newProjectForm.tempHigh.Add(temp[i]);
+            }
+            else
+            {
+                newProjectForm.tempLow.Clear();
+                for (int i = 0; i < temp.Count; i++)
+                    newProjectForm.tempLow.Add(temp[i]);
+            }
+            
             this.Close();
         }
 
         private void CheckForm_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawRectangle(new Pen(Color.Green, 2), this.DisplayRectangle);       
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            // se toma el indice seleccionado y se borra de la lista temporal, asi como de los dicom
+            int indice = lstElementos.SelectedIndex;
+            temp.RemoveAt(indice);
+            tempDicom.dataCube.RemoveAt(indice);
+
+            // se vuelve a pintar el ListBox
+            lstElementos.Items.Clear();
+            for (int i = 0; i < temp.Count; i++) lstElementos.Items.Add(GetNameFile((string)temp[i]));
+
+            trackElementos.Maximum = temp.Count;
+
+            if (indice >= temp.Count)
+                indice--;
+
+            trackElementos.Value = indice+1;
+            lstElementos.SelectedIndex = indice;
+
+            txtCounter.Text = (indice + 1).ToString() + " de " + temp.Count.ToString();
+
+            this.trackElementos_ValueChanged(sender, e);
+        }
+
+        private void btnCancelar_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
