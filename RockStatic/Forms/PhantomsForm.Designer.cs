@@ -43,6 +43,7 @@
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.numDensP1 = new System.Windows.Forms.NumericUpDown();
             this.label22 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -93,6 +94,8 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.chartHigh = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDensP1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numZeffP1)).BeginInit();
@@ -142,7 +145,7 @@
             this.btnCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrar.Location = new System.Drawing.Point(661, 464);
+            this.btnCerrar.Location = new System.Drawing.Point(661, 493);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(68, 23);
             this.btnCerrar.TabIndex = 10;
@@ -154,6 +157,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.numDensP1);
             this.groupBox1.Controls.Add(this.label22);
             this.groupBox1.Controls.Add(this.label9);
@@ -171,20 +175,23 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(417, 42);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(312, 134);
+            this.groupBox1.Size = new System.Drawing.Size(312, 144);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "PHANTOM 1";
             // 
+            // label8
+            // 
+            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label8.Location = new System.Drawing.Point(10, 104);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(295, 2);
+            this.label8.TabIndex = 17;
+            // 
             // numDensP1
             // 
             this.numDensP1.DecimalPlaces = 2;
-            this.numDensP1.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.numDensP1.Location = new System.Drawing.Point(73, 102);
+            this.numDensP1.Location = new System.Drawing.Point(73, 113);
             this.numDensP1.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -203,7 +210,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(8, 106);
+            this.label22.Location = new System.Drawing.Point(8, 117);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(63, 14);
             this.label22.TabIndex = 15;
@@ -229,12 +236,7 @@
             // numZeffP1
             // 
             this.numZeffP1.DecimalPlaces = 2;
-            this.numZeffP1.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.numZeffP1.Location = new System.Drawing.Point(233, 102);
+            this.numZeffP1.Location = new System.Drawing.Point(233, 113);
             this.numZeffP1.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -254,7 +256,7 @@
             // 
             this.numDesvLowP1.DecimalPlaces = 2;
             this.numDesvLowP1.Increment = new decimal(new int[] {
-            100,
+            5,
             0,
             0,
             0});
@@ -279,7 +281,7 @@
             // 
             this.numMeanLowP1.DecimalPlaces = 2;
             this.numMeanLowP1.Increment = new decimal(new int[] {
-            100,
+            10,
             0,
             0,
             0});
@@ -303,7 +305,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(166, 106);
+            this.label23.Location = new System.Drawing.Point(166, 117);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(30, 14);
             this.label23.TabIndex = 4;
@@ -340,7 +342,7 @@
             // 
             this.numDesvHighP1.DecimalPlaces = 2;
             this.numDesvHighP1.Increment = new decimal(new int[] {
-            100,
+            5,
             0,
             0,
             0});
@@ -355,17 +357,17 @@
             this.numDesvHighP1.TabIndex = 2;
             this.numDesvHighP1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numDesvHighP1.Value = new decimal(new int[] {
-            46125,
+            1,
             0,
             0,
-            196608});
+            0});
             this.numDesvHighP1.ValueChanged += new System.EventHandler(this.numMeanHighP1_ValueChanged);
             // 
             // numMeanHighP1
             // 
             this.numMeanHighP1.DecimalPlaces = 2;
             this.numMeanHighP1.Increment = new decimal(new int[] {
-            100,
+            10,
             0,
             0,
             0});
@@ -379,11 +381,6 @@
             this.numMeanHighP1.Size = new System.Drawing.Size(71, 22);
             this.numMeanHighP1.TabIndex = 1;
             this.numMeanHighP1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numMeanHighP1.Value = new decimal(new int[] {
-            1237865,
-            0,
-            0,
-            196608});
             this.numMeanHighP1.ValueChanged += new System.EventHandler(this.numMeanHighP1_ValueChanged);
             // 
             // label2
@@ -412,13 +409,13 @@
             this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(586, 464);
+            this.btnCancelar.Location = new System.Drawing.Point(586, 493);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(68, 23);
             this.btnCancelar.TabIndex = 10;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCerrar_Click);
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             this.btnCancelar.MouseEnter += new System.EventHandler(this.btnSubir_MouseEnter);
             this.btnCancelar.MouseLeave += new System.EventHandler(this.btnSubir_MouseLeave);
             // 
@@ -434,7 +431,7 @@
             legend1.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Row;
             legend1.Name = "Legend1";
             this.chartLow.Legends.Add(legend1);
-            this.chartLow.Location = new System.Drawing.Point(14, 259);
+            this.chartLow.Location = new System.Drawing.Point(14, 270);
             this.chartLow.Name = "chartLow";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.SplineArea;
@@ -454,7 +451,7 @@
             this.chartLow.Series.Add(series1);
             this.chartLow.Series.Add(series2);
             this.chartLow.Series.Add(series3);
-            this.chartLow.Size = new System.Drawing.Size(400, 226);
+            this.chartLow.Size = new System.Drawing.Size(400, 248);
             this.chartLow.TabIndex = 13;
             this.chartLow.Text = "chart1";
             title1.Font = new System.Drawing.Font("Eras Bold ITC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -465,6 +462,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label28);
             this.groupBox2.Controls.Add(this.numDensP2);
             this.groupBox2.Controls.Add(this.label24);
             this.groupBox2.Controls.Add(this.numZeffP2);
@@ -480,9 +478,9 @@
             this.groupBox2.Controls.Add(this.numMeanHighP2);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Location = new System.Drawing.Point(417, 182);
+            this.groupBox2.Location = new System.Drawing.Point(417, 192);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(312, 134);
+            this.groupBox2.Size = new System.Drawing.Size(312, 144);
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "PHANTOM 2";
@@ -490,12 +488,7 @@
             // numDensP2
             // 
             this.numDensP2.DecimalPlaces = 2;
-            this.numDensP2.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.numDensP2.Location = new System.Drawing.Point(73, 102);
+            this.numDensP2.Location = new System.Drawing.Point(73, 113);
             this.numDensP2.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -514,7 +507,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(8, 106);
+            this.label24.Location = new System.Drawing.Point(8, 117);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(63, 14);
             this.label24.TabIndex = 19;
@@ -523,12 +516,7 @@
             // numZeffP2
             // 
             this.numZeffP2.DecimalPlaces = 2;
-            this.numZeffP2.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.numZeffP2.Location = new System.Drawing.Point(233, 102);
+            this.numZeffP2.Location = new System.Drawing.Point(233, 113);
             this.numZeffP2.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -547,7 +535,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(166, 106);
+            this.label25.Location = new System.Drawing.Point(166, 117);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(30, 14);
             this.label25.TabIndex = 17;
@@ -574,7 +562,7 @@
             // 
             this.numDesvLowP2.DecimalPlaces = 2;
             this.numDesvLowP2.Increment = new decimal(new int[] {
-            100,
+            5,
             0,
             0,
             0});
@@ -599,7 +587,7 @@
             // 
             this.numMeanLowP2.DecimalPlaces = 2;
             this.numMeanLowP2.Increment = new decimal(new int[] {
-            100,
+            10,
             0,
             0,
             0});
@@ -651,7 +639,7 @@
             // 
             this.numDesvHighP2.DecimalPlaces = 2;
             this.numDesvHighP2.Increment = new decimal(new int[] {
-            100,
+            5,
             0,
             0,
             0});
@@ -676,7 +664,7 @@
             // 
             this.numMeanHighP2.DecimalPlaces = 2;
             this.numMeanHighP2.Increment = new decimal(new int[] {
-            100,
+            10,
             0,
             0,
             0});
@@ -717,6 +705,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label29);
             this.groupBox3.Controls.Add(this.numDensP3);
             this.groupBox3.Controls.Add(this.label26);
             this.groupBox3.Controls.Add(this.numZeffP3);
@@ -732,9 +721,9 @@
             this.groupBox3.Controls.Add(this.numMeanHighP3);
             this.groupBox3.Controls.Add(this.label20);
             this.groupBox3.Controls.Add(this.label21);
-            this.groupBox3.Location = new System.Drawing.Point(417, 322);
+            this.groupBox3.Location = new System.Drawing.Point(417, 343);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(312, 134);
+            this.groupBox3.Size = new System.Drawing.Size(312, 144);
             this.groupBox3.TabIndex = 16;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "PHANTOM 3";
@@ -742,12 +731,7 @@
             // numDensP3
             // 
             this.numDensP3.DecimalPlaces = 2;
-            this.numDensP3.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.numDensP3.Location = new System.Drawing.Point(73, 102);
+            this.numDensP3.Location = new System.Drawing.Point(73, 113);
             this.numDensP3.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -766,7 +750,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(8, 106);
+            this.label26.Location = new System.Drawing.Point(8, 117);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(63, 14);
             this.label26.TabIndex = 19;
@@ -775,12 +759,7 @@
             // numZeffP3
             // 
             this.numZeffP3.DecimalPlaces = 2;
-            this.numZeffP3.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.numZeffP3.Location = new System.Drawing.Point(233, 102);
+            this.numZeffP3.Location = new System.Drawing.Point(233, 113);
             this.numZeffP3.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -799,7 +778,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(166, 106);
+            this.label27.Location = new System.Drawing.Point(166, 117);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(30, 14);
             this.label27.TabIndex = 17;
@@ -826,7 +805,7 @@
             // 
             this.numDesvLowP3.DecimalPlaces = 2;
             this.numDesvLowP3.Increment = new decimal(new int[] {
-            100,
+            5,
             0,
             0,
             0});
@@ -851,7 +830,7 @@
             // 
             this.numMeanLowP3.DecimalPlaces = 2;
             this.numMeanLowP3.Increment = new decimal(new int[] {
-            100,
+            10,
             0,
             0,
             0});
@@ -903,7 +882,7 @@
             // 
             this.numDesvHighP3.DecimalPlaces = 2;
             this.numDesvHighP3.Increment = new decimal(new int[] {
-            100,
+            5,
             0,
             0,
             0});
@@ -928,7 +907,7 @@
             // 
             this.numMeanHighP3.DecimalPlaces = 2;
             this.numMeanHighP3.Increment = new decimal(new int[] {
-            100,
+            10,
             0,
             0,
             0});
@@ -993,7 +972,7 @@
             this.chartHigh.Series.Add(series4);
             this.chartHigh.Series.Add(series5);
             this.chartHigh.Series.Add(series6);
-            this.chartHigh.Size = new System.Drawing.Size(400, 215);
+            this.chartHigh.Size = new System.Drawing.Size(400, 237);
             this.chartHigh.TabIndex = 17;
             this.chartHigh.Text = "chart1";
             title2.Font = new System.Drawing.Font("Eras Bold ITC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1002,12 +981,28 @@
             title2.Text = "PHANTOMS HIGH";
             this.chartHigh.Titles.Add(title2);
             // 
+            // label28
+            // 
+            this.label28.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label28.Location = new System.Drawing.Point(10, 104);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(295, 2);
+            this.label28.TabIndex = 21;
+            // 
+            // label29
+            // 
+            this.label29.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label29.Location = new System.Drawing.Point(10, 104);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(295, 2);
+            this.label29.TabIndex = 21;
+            // 
             // PhantomsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(739, 498);
+            this.ClientSize = new System.Drawing.Size(739, 527);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -1110,5 +1105,8 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.NumericUpDown numZeffP3;
         private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
     }
 }

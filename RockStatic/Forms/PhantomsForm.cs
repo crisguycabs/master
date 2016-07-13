@@ -45,6 +45,28 @@ namespace RockStatic
 
             // se toman los valores de los phantoms desde el NewProjectForm
             numMeanHighP1.Value = (decimal)newProjectForm.tempPhantom1High.media;
+            numMeanHighP2.Value = (decimal)newProjectForm.tempPhantom2High.media;
+            numMeanHighP3.Value = (decimal)newProjectForm.tempPhantom3High.media;
+
+            numMeanLowP1.Value = (decimal)newProjectForm.tempPhantom1Low.media;
+            numMeanLowP2.Value = (decimal)newProjectForm.tempPhantom2Low.media;
+            numMeanLowP3.Value = (decimal)newProjectForm.tempPhantom3Low.media;
+
+            numDesvHighP1.Value = (decimal)newProjectForm.tempPhantom1High.desv;
+            numDesvHighP2.Value = (decimal)newProjectForm.tempPhantom2High.desv;
+            numDesvHighP3.Value = (decimal)newProjectForm.tempPhantom3High.desv;
+
+            numDesvLowP1.Value = (decimal)newProjectForm.tempPhantom1Low.desv;
+            numDesvLowP2.Value = (decimal)newProjectForm.tempPhantom2Low.desv;
+            numDesvLowP3.Value = (decimal)newProjectForm.tempPhantom3Low.desv;
+
+            numDensP1.Value = (decimal)newProjectForm.tempPhantom1High.densidad;
+            numDensP2.Value = (decimal)newProjectForm.tempPhantom2High.densidad;
+            numDensP3.Value = (decimal)newProjectForm.tempPhantom3High.densidad;
+
+            numZeffP1.Value = (decimal)newProjectForm.tempPhantom1High.zeff;
+            numZeffP2.Value = (decimal)newProjectForm.tempPhantom2High.zeff;
+            numZeffP3.Value = (decimal)newProjectForm.tempPhantom3High.zeff;
 
             GenerarCurvas();
         }
@@ -79,12 +101,36 @@ namespace RockStatic
         }
 
         /// <summary>
-        /// Se cierra el Form
+        /// Se guardan los cambios y se cierra el Form
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         public void btnCerrar_Click(object sender, EventArgs e)
         {
+            newProjectForm.tempPhantom1High.media = (double)numMeanHighP1.Value;
+            newProjectForm.tempPhantom2High.media = (double)numMeanHighP2.Value;
+            newProjectForm.tempPhantom3High.media = (double)numMeanHighP3.Value;
+
+            newProjectForm.tempPhantom1Low.media = (double)numMeanLowP1.Value;
+            newProjectForm.tempPhantom2Low.media = (double)numMeanLowP2.Value;
+            newProjectForm.tempPhantom3Low.media = (double)numMeanLowP3.Value;
+
+            newProjectForm.tempPhantom1High.desv = (double)numDesvHighP1.Value;
+            newProjectForm.tempPhantom2High.desv = (double)numDesvHighP2.Value;
+            newProjectForm.tempPhantom3High.desv = (double)numDesvHighP3.Value;
+
+            newProjectForm.tempPhantom1Low.desv = (double)numDesvLowP1.Value;
+            newProjectForm.tempPhantom2Low.desv = (double)numDesvLowP2.Value;
+            newProjectForm.tempPhantom3Low.desv = (double)numDesvLowP3.Value;
+
+            newProjectForm.tempPhantom1High.densidad = (double)numDensP1.Value;
+            newProjectForm.tempPhantom2High.densidad = (double)numDensP2.Value;
+            newProjectForm.tempPhantom3High.densidad = (double)numDensP3.Value;
+
+            newProjectForm.tempPhantom1High.zeff = (double)numZeffP1.Value;
+            newProjectForm.tempPhantom2High.zeff = (double)numZeffP2.Value;
+            newProjectForm.tempPhantom3High.zeff = (double)numZeffP3.Value;
+
             this.Close();
         }
 
@@ -235,5 +281,10 @@ namespace RockStatic
         {
             CentrarForm();
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }        
     }
 }
