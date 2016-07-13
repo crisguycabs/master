@@ -75,13 +75,13 @@ namespace RockStatic
         public void SetForm()
         {
             // se llena el listbox
-            lstElementos.Items.Clear();
+            lstElementos.Items.Clear();            
             for (int i = 0; i < temp.Count; i++) lstElementos.Items.Add(GetNameFile((string)temp[i]));
-
+            
             // se crean las imagenes del datacubo
-            tempDicom = new MyDataCube(temp);
+            tempDicom = new MyDataCube(temp);            
             tempDicom.CrearBitmapThread();
-
+            
             // se reestablece el TrackBar
             trackElementos.Minimum = 1;
             trackElementos.Maximum = newProjectForm.tempHigh.Count;
@@ -92,7 +92,7 @@ namespace RockStatic
             pictElemento.Image = tempDicom.dataCube[0].bmp;
 
             // se genera el texto del counter
-            txtCounter.Text = "1 de " + temp.Count.ToString();
+            txtCounter.Text = "1 de " + temp.Count.ToString();           
         }
 
         private void trackElementos_ValueChanged(object sender, EventArgs e)
