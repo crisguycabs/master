@@ -604,6 +604,7 @@
             this.Text = "REVISAR ELEMENTOS";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SegmentacionForm_FormClosed);
             this.Load += new System.EventHandler(this.CheckForm_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.SegmentacionForm_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.trackElementos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictElemento)).EndInit();
             this.grpAuto.ResumeLayout(false);

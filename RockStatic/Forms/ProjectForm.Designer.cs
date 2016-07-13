@@ -34,9 +34,9 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSegHigh = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.pictAreasHigh = new System.Windows.Forms.PictureBox();
             this.btnAreasHigh = new System.Windows.Forms.Button();
             this.lblArea = new System.Windows.Forms.Label();
-            this.pictAreasHigh = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnCerrar = new System.Windows.Forms.Button();
@@ -118,6 +118,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "AREAS DE INTERES";
             // 
+            // pictAreasHigh
+            // 
+            this.pictAreasHigh.Image = global::RockStatic.Properties.Resources.redX;
+            this.pictAreasHigh.Location = new System.Drawing.Point(114, 47);
+            this.pictAreasHigh.Name = "pictAreasHigh";
+            this.pictAreasHigh.Size = new System.Drawing.Size(23, 23);
+            this.pictAreasHigh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictAreasHigh.TabIndex = 8;
+            this.pictAreasHigh.TabStop = false;
+            // 
             // btnAreasHigh
             // 
             this.btnAreasHigh.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -142,16 +152,6 @@
             this.lblArea.Size = new System.Drawing.Size(219, 38);
             this.lblArea.TabIndex = 7;
             this.lblArea.Text = "Aun no ha seleccionado las areas de interes";
-            // 
-            // pictAreasHigh
-            // 
-            this.pictAreasHigh.Image = global::RockStatic.Properties.Resources.redX;
-            this.pictAreasHigh.Location = new System.Drawing.Point(114, 47);
-            this.pictAreasHigh.Name = "pictAreasHigh";
-            this.pictAreasHigh.Size = new System.Drawing.Size(23, 23);
-            this.pictAreasHigh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictAreasHigh.TabIndex = 8;
-            this.pictAreasHigh.TabStop = false;
             // 
             // groupBox3
             // 
@@ -325,6 +325,7 @@
             this.Text = "NOMBRE DE PROYECTO";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ProjectForm_FormClosed);
             this.Load += new System.EventHandler(this.ProjectForm_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.ProjectForm_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.pictSegHigh)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

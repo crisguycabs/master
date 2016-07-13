@@ -731,7 +731,7 @@ namespace RockStatic
 
         private void SegmentacionForm_Paint(object sender, PaintEventArgs e)
         {
-            ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, Color.Green, ButtonBorderStyle.Solid); 
+            e.Graphics.DrawRectangle(new Pen(Color.Green, 2), this.DisplayRectangle);       
         }
 
         private void btnPreview_Click(object sender, EventArgs e)

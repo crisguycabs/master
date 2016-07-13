@@ -158,6 +158,7 @@
             this.Text = "Previsualizacion Segmentacion";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PreviewSegForm_FormClosed_1);
             this.Load += new System.EventHandler(this.PreviewSegForm_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.pictCore_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.pictCore)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictP1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictP3)).EndInit();

@@ -92,7 +92,7 @@
             this.rangeBar.Location = new System.Drawing.Point(10, 375);
             this.rangeBar.Name = "rangeBar";
             this.rangeBar.Orientation = Zzzz.ZzzzRangeBar.RangeBarOrientation.horizontal;
-            this.rangeBar.RangeMaximum = 100;
+            this.rangeBar.RangeMaximum = 10;
             this.rangeBar.RangeMinimum = 1;
             this.rangeBar.ScaleOrientation = Zzzz.ZzzzRangeBar.TopBottomOrientation.bottom;
             this.rangeBar.Size = new System.Drawing.Size(800, 20);
@@ -174,6 +174,7 @@
             this.Text = "SelectAreas2Form";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SelectAreas2Form_FormClosed);
             this.Load += new System.EventHandler(this.SelectAreas2Form_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.SelectAreas2Form_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.pictCore)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

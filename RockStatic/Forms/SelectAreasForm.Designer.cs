@@ -689,6 +689,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SELECCIONAR AREAS";
             this.Load += new System.EventHandler(this.SelectAreasForm_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.SelectAreasForm_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.pictCore)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

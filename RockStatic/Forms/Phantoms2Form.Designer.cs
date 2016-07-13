@@ -337,6 +337,7 @@
             this.Text = "Phantoms2Form";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Phantoms2Form_FormClosed);
             this.Load += new System.EventHandler(this.Phantoms2Form_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Phantoms2Form_Paint);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDensP1)).EndInit();

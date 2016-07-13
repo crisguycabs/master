@@ -62,6 +62,7 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.chartLow = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label28 = new System.Windows.Forms.Label();
             this.numDensP2 = new System.Windows.Forms.NumericUpDown();
             this.label24 = new System.Windows.Forms.Label();
             this.numZeffP2 = new System.Windows.Forms.NumericUpDown();
@@ -78,6 +79,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label29 = new System.Windows.Forms.Label();
             this.numDensP3 = new System.Windows.Forms.NumericUpDown();
             this.label26 = new System.Windows.Forms.Label();
             this.numZeffP3 = new System.Windows.Forms.NumericUpDown();
@@ -94,8 +96,6 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.chartHigh = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDensP1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numZeffP1)).BeginInit();
@@ -485,6 +485,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "PHANTOM 2";
             // 
+            // label28
+            // 
+            this.label28.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label28.Location = new System.Drawing.Point(10, 104);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(295, 2);
+            this.label28.TabIndex = 21;
+            // 
             // numDensP2
             // 
             this.numDensP2.DecimalPlaces = 2;
@@ -727,6 +735,14 @@
             this.groupBox3.TabIndex = 16;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "PHANTOM 3";
+            // 
+            // label29
+            // 
+            this.label29.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label29.Location = new System.Drawing.Point(10, 104);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(295, 2);
+            this.label29.TabIndex = 21;
             // 
             // numDensP3
             // 
@@ -981,22 +997,6 @@
             title2.Text = "PHANTOMS HIGH";
             this.chartHigh.Titles.Add(title2);
             // 
-            // label28
-            // 
-            this.label28.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label28.Location = new System.Drawing.Point(10, 104);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(295, 2);
-            this.label28.TabIndex = 21;
-            // 
-            // label29
-            // 
-            this.label29.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label29.Location = new System.Drawing.Point(10, 104);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(295, 2);
-            this.label29.TabIndex = 21;
-            // 
             // PhantomsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -1020,6 +1020,7 @@
             this.Text = "MODELO DE PHANTOMS";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PhantomsForm_FormClosed);
             this.Load += new System.EventHandler(this.PhantomsForm_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.PhantomsForm_Paint);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDensP1)).EndInit();

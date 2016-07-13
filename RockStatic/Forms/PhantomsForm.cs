@@ -285,6 +285,11 @@ namespace RockStatic
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void PhantomsForm_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawRectangle(new Pen(Color.Green, 2), this.DisplayRectangle);       
         }     
     }
 }

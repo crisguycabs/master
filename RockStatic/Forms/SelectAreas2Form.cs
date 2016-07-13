@@ -195,5 +195,10 @@ namespace RockStatic
             anchoOriginal = ancho;
             pictCore.Invalidate();
         }
+
+        private void SelectAreas2Form_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawRectangle(new Pen(Color.Green, 2), this.DisplayRectangle);       
+        }
     }
 }

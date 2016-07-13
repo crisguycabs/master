@@ -425,5 +425,10 @@ namespace RockStatic
         {
 
         }
+
+        private void SelectAreasForm_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawRectangle(new Pen(Color.Green, 2), this.DisplayRectangle);       
+        }
     }
 }

@@ -185,14 +185,14 @@ namespace RockStatic
             ((System.Windows.Forms.Button)(sender)).ForeColor = Color.Black;
         }
 
-        private void CheckForm_Paint(object sender, PaintEventArgs e)
-        {
-            ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, Color.Green, ButtonBorderStyle.Solid); 
-        }
-
         public void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void CheckForm_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawRectangle(new Pen(Color.Green, 2), this.DisplayRectangle);       
         }
     }
 }

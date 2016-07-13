@@ -90,7 +90,7 @@ namespace RockStatic
 
         private void pictCore_Paint(object sender, PaintEventArgs e)
         {
-            ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, Color.Green, ButtonBorderStyle.Solid); 
+            e.Graphics.DrawRectangle(new Pen(Color.Green, 2), this.DisplayRectangle);       
         }
 
         private void PreviewSegForm_Load(object sender, EventArgs e)

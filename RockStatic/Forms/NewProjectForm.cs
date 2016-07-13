@@ -365,11 +365,6 @@ namespace RockStatic
             ((System.Windows.Forms.Button)(sender)).ForeColor = Color.Black;
         }
 
-        private void NewProjectForm_Paint(object sender, PaintEventArgs e)
-        {
-            ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, Color.Green, ButtonBorderStyle.Solid); 
-        }
-
         private void radPhantoms_CheckedChanged(object sender, EventArgs e)
         {
             radNoPhantoms.Checked = !radPhantoms.Checked;
@@ -413,6 +408,11 @@ namespace RockStatic
             padre.abiertoPhantoms2Form = true;
 
             padre.phantoms2Form.Show();          
+        }
+
+        private void NewProjectForm_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawRectangle(new Pen(Color.Green, 2),this.DisplayRectangle);                           
         }      
     }
 }

@@ -365,6 +365,7 @@
             this.Text = "NUEVO PROYECTO";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NewProjectForm_FormClosed);
             this.Load += new System.EventHandler(this.NewProjectForm_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.NewProjectForm_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.pictLow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictHigh)).EndInit();
             this.ResumeLayout(false);
