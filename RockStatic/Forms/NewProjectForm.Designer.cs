@@ -49,6 +49,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.pictLow = new System.Windows.Forms.PictureBox();
             this.pictHigh = new System.Windows.Forms.PictureBox();
+            this.btnPhantoms2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictLow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictHigh)).BeginInit();
             this.SuspendLayout();
@@ -279,6 +280,8 @@
             this.btnPhantoms.Text = "Seleccionar";
             this.btnPhantoms.UseVisualStyleBackColor = false;
             this.btnPhantoms.Click += new System.EventHandler(this.btnPhantoms_Click);
+            this.btnPhantoms.MouseEnter += new System.EventHandler(this.btnSelHigh_MouseEnter);
+            this.btnPhantoms.MouseLeave += new System.EventHandler(this.btnSelHigh_MouseLeave);
             // 
             // label6
             // 
@@ -308,6 +311,24 @@
             this.pictHigh.TabIndex = 5;
             this.pictHigh.TabStop = false;
             // 
+            // btnPhantoms2
+            // 
+            this.btnPhantoms2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnPhantoms2.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnPhantoms2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnPhantoms2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.btnPhantoms2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPhantoms2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPhantoms2.Location = new System.Drawing.Point(258, 196);
+            this.btnPhantoms2.Name = "btnPhantoms2";
+            this.btnPhantoms2.Size = new System.Drawing.Size(80, 23);
+            this.btnPhantoms2.TabIndex = 14;
+            this.btnPhantoms2.Text = "Seleccionar";
+            this.btnPhantoms2.UseVisualStyleBackColor = false;
+            this.btnPhantoms2.Click += new System.EventHandler(this.btnPhantoms2_Click);
+            this.btnPhantoms2.MouseEnter += new System.EventHandler(this.btnSelHigh_MouseEnter);
+            this.btnPhantoms2.MouseLeave += new System.EventHandler(this.btnSelHigh_MouseLeave);
+            // 
             // NewProjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -315,6 +336,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(348, 308);
             this.ControlBox = false;
+            this.Controls.Add(this.btnPhantoms2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnPhantoms);
             this.Controls.Add(this.radNoPhantoms);
@@ -372,5 +394,6 @@
         private System.Windows.Forms.RadioButton radNoPhantoms;
         private System.Windows.Forms.Button btnPhantoms;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnPhantoms2;
     }
 }

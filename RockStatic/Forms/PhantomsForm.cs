@@ -83,7 +83,7 @@ namespace RockStatic
 
         private void PhantomsForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.padre.CerrarCheckForm();
+            this.padre.CerrarPhantomForm();
         }
 
         private void lblTitulo_MouseDown(object sender, MouseEventArgs e)
@@ -285,6 +285,6 @@ namespace RockStatic
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
-        }        
+        }     
     }
 }

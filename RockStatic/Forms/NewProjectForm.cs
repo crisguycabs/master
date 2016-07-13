@@ -373,7 +373,8 @@ namespace RockStatic
         private void radPhantoms_CheckedChanged(object sender, EventArgs e)
         {
             radNoPhantoms.Checked = !radPhantoms.Checked;
-            btnPhantoms.Enabled = radNoPhantoms.Checked;            
+            btnPhantoms.Enabled = radNoPhantoms.Checked;
+            btnPhantoms2.Enabled = radPhantoms.Checked;
         }
 
         private void btnPhantoms_Click(object sender, EventArgs e)
@@ -393,6 +394,25 @@ namespace RockStatic
             padre.abiertoPhantomsForm = true;
 
             padre.phantomForm.Show();            
+        }
+
+        private void btnPhantoms2_Click(object sender, EventArgs e)
+        {
+            if (padre.abiertoPhantoms2Form)
+            {
+                padre.phantoms2Form.btnCerrar_Click(sender, e);
+            }
+
+            // se abre la ventana CheckForm y se pasa el List de elementos HIGH para su revision
+            padre.phantoms2Form = new Phantoms2Form();
+            padre.phantoms2Form.Text = "MODELO DE PHANTOMS";
+            padre.phantoms2Form.lblTitulo.Text = "MODELO DE PHANTOMS";
+            padre.phantoms2Form.MdiParent = this.MdiParent;
+            padre.phantoms2Form.padre = this.padre;
+            padre.phantoms2Form.newProjectForm = this;
+            padre.abiertoPhantoms2Form = true;
+
+            padre.phantoms2Form.Show();          
         }      
     }
 }

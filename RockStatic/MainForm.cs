@@ -51,6 +51,10 @@ namespace RockStatic
         /// </summary>
         public bool abiertoPhantomsForm;
 
+        public Phantoms2Form phantoms2Form;
+
+        public bool abiertoPhantoms2Form;
+
         /// <summary>
         /// Instancia del Form HomeForm
         /// </summary>
@@ -765,6 +769,18 @@ namespace RockStatic
         {
             this.abiertoCheckForm = false;
             this.checkForm = null;
+        }
+
+        public void CerrarPhantomForm()
+        {
+            this.abiertoPhantomsForm = false;
+            this.phantomForm = null;
+        }
+
+        public void CerrarPhantom2Form()
+        {
+            this.abiertoPhantoms2Form = false;
+            this.phantoms2Form = null;
         }
 
         public void CerrarSegmentacionForm()

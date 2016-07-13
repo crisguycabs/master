@@ -119,6 +119,12 @@
     <Compile Include="Forms\PhantomsForm.Designer.cs">
       <DependentUpon>PhantomsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Phantoms2Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Phantoms2Form.Designer.cs">
+      <DependentUpon>Phantoms2Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Forms\ProjectForm.cs">
       <SubType>Form</SubType>
@@ -151,6 +157,9 @@
     <Compile Include="Forms\SelectAreas2Form.Designer.cs">
       <DependentUpon>SelectAreas2Form.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Phantoms2Form.resx">
+      <DependentUpon>Phantoms2Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\PreviewSegForm.resx">
       <DependentUpon>PreviewSegForm.cs</DependentUpon>
     </EmbeddedResource>
