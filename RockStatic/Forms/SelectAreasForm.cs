@@ -138,10 +138,7 @@ namespace RockStatic
             pictP3.Region = rg;
             
             // se preparan la listas que almacenaran los elementos a mostrar
-            elementosCore=padre.actual.GetSegCoreTransHigh();
-            elementosP1 = padre.actual.GetSegPhantom1TransHigh();
-            elementosP2 = padre.actual.GetSegPhantom2TransHigh();
-            elementosP3 = padre.actual.GetSegPhantom3TransHigh();
+            
 
             // se preparan los NumericUpDown
             numActual.Minimum = numHead.Minimum = numTail.Minimum = 1;

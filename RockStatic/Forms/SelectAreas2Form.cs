@@ -86,30 +86,20 @@ namespace RockStatic
 
         private void SelectAreas2Form_Load(object sender, EventArgs e)
         {
-            List<byte[]> core = padre.actual.GetSegCoreHor();
-            List<byte[]> p1 = padre.actual.GetSegPhantom1Hor();
-            List<byte[]> p2 = padre.actual.GetSegPhantom2Hor();
-            List<byte[]> p3 = padre.actual.GetSegPhantom3Hor();
-
-            pictCore.Image = MainForm.Byte2image(core[0]);
-            pictPhantom1.Image = MainForm.Byte2image(p1[0]);
-            pictPhantom2.Image = MainForm.Byte2image(p2[0]);
-            pictPhantom3.Image = MainForm.Byte2image(p3[0]);
-
             //slideActual = 0;
 
             // se cambia el tamano de los PictureBox y del RangeBar
-            Bitmap corte = (Bitmap)MainForm.Byte2image(core[0]);
+            Bitmap corte = padre.actual.datacuboHigh.dataCube[0].bmp;
             int width = corte.Width;
             int height = corte.Height;
 
             pictCore.Width = pictPhantom1.Width = pictPhantom2.Width = pictPhantom3.Width = rangeBar.Width = width;
             if(height<pictCore.Height) pictCore.Height = height;
 
-            rangeBar.TotalMaximum = padre.actual.count;
+            rangeBar.TotalMaximum = padre.actual.datacuboHigh.dataCube.Count;
             rangeBar.TotalMinimum = 1;
             rangeBar.RangeMinimum = 1;
-            rangeBar.RangeMaximum = padre.actual.count;
+            rangeBar.RangeMaximum = padre.actual.datacuboHigh.dataCube.Count;
 
             // se prepara el color de la brocha y lapiz
             brocha = new SolidBrush(Color.Red);

@@ -149,11 +149,11 @@ namespace RockStatic
         {
             // se reestablece el TrackBar
             trackElementos.Minimum = 1;
-            trackElementos.Maximum = padre.actual.GetHigh().Count;
+            trackElementos.Maximum = padre.actual.datacuboHigh.dataCube.Count;
             trackElementos.Value = 1;
             
             // se pinta la primera imagen
-            pictElemento.Image = MainForm.Byte2image(padre.actual.GetHigh()[0]);
+            pictElemento.Image = padre.actual.datacuboHigh.dataCube[0].bmp;
 
             CentrarForm();
         }
@@ -169,7 +169,7 @@ namespace RockStatic
         private void trackElementos_ValueChanged(object sender, EventArgs e)
         {
             pictElemento.Image = null;
-            pictElemento.Image = MainForm.Byte2image(padre.actual.GetHigh()[trackElementos.Value - 1]);
+            pictElemento.Image = padre.actual.datacuboHigh.dataCube[trackElementos.Value - 1].bmp;
             controlPaint = true;
             pictElemento.Invalidate();     
         }
@@ -660,9 +660,10 @@ namespace RockStatic
 
                 // se recortan los core y phantom para cada elemento HIGH y LOW
                 this.padre.ShowWaiting("Por favor espere mientras RockStatic realiza la segmentacion de los elementos");
-                this.padre.actual.GenerarSegTransveral();
-                this.padre.actual.GenerarSegHorizontal();
-                this.padre.actual.GenerarSegVertical();
+                this.padre.actual.datacuboHigh.GenerarCortesHorizontales();
+                this.padre.actual.datacuboHigh.GenerarCortesVerticales();
+                this.padre.actual.datacuboLow.GenerarCortesHorizontales();
+                this.padre.actual.datacuboLow.GenerarCortesVerticales();
                 this.padre.CloseWaiting();
 
                 this.Close();

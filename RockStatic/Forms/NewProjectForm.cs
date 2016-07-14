@@ -272,10 +272,6 @@ namespace RockStatic
         /// <param name="e"></param>
         private void btnCrear_Click(object sender, EventArgs e)
         {
-            // se crea un nuevo proyecto que contiene toda la informacion recogida en esta ventana
-            // y se prepara para guardar en disco
-            CProyecto temp = new CProyecto();
-
             // se escoge el lugar donde se va a guardar el proyecto
             SaveFileDialog saveFile = new SaveFileDialog();
             saveFile.FileName = txtNewName.Text + ".rsp";
@@ -288,15 +284,16 @@ namespace RockStatic
                 // se muestra la ventana de espera
                 padre.ShowWaiting("Espere mientras RockStatic crea el nuevo proyecto...");
 
+                // se crea un nuevo proyecto que contiene toda la informacion recogida en esta ventana
+                // y se prepara para guardar en disco
+                padre.actual= new CProyecto((Path.GetFileNameWithoutExtension(saveFile.FileName)),tempHigh,tempLow,radPhantoms.Checked);
+
                 // se crea la carpeta
                 DirectoryInfo di = new DirectoryInfo(Path.GetDirectoryName(saveFile.FileName));
                 
-                // se nombra el proyecto
-                temp.name = (Path.GetFileNameWithoutExtension(saveFile.FileName));
-
                 // nombre y ruta de la carpeta del proyecto
-                string folderPath = di.ToString() + "\\" + temp.name;
-                temp.SetFolderPath(folderPath);
+                string folderPath = di.ToString() + "\\" + padre.actual.name;
+                padre.actual.SetFolderPath(folderPath);
                 Directory.CreateDirectory(folderPath);
 
                 // se crea la carpeta de imagenes HIGH
@@ -307,15 +304,6 @@ namespace RockStatic
                 string folderLow = folderPath + "\\low";
                 Directory.CreateDirectory(folderLow);
 
-                // se cargan al proyecto los byte[] de los elementos HIGH
-                temp.SetHigh(tempHigh);
-
-                // se cargan al proyecto los byte[] de los elementos LOW
-                temp.SetLow(tempLow);
-
-                // se crea el proyecto
-                temp.Crear();
-
                 // se cierra el form de espera
                 padre.CloseWaiting();
 
@@ -323,7 +311,7 @@ namespace RockStatic
                 this.Close();
 
                 // se abre el nuevo proyecto
-                padre.AbrirProyecto(folderPath + "\\" + Path.GetFileName(saveFile.FileName));
+                padre.AbrirProjectForm();
             }            
         }
 

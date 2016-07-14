@@ -51,8 +51,14 @@ namespace RockStatic
         /// </summary>
         public bool abiertoPhantomsForm;
 
+        /// <summary>
+        /// Form para ingresar las densidades y Zeff de los phantoms, cuando estos se encuentran en los DICOM
+        /// </summary>
         public Phantoms2Form phantoms2Form;
 
+        /// <summary>
+        /// Indica si el form Phantoms2Form esta abierto o no
+        /// </summary>
         public bool abiertoPhantoms2Form;
 
         /// <summary>
@@ -137,6 +143,16 @@ namespace RockStatic
         public MainForm()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void AbrirProjectForm()
+        {
+            this.proyectoForm = new ProjectForm();
+            this.abiertoProyectoForm = true;
+            this.proyectoForm.Show();
         }
 
         /// <summary>
@@ -510,252 +526,6 @@ namespace RockStatic
         /// <param name="ruta"></param>
         public bool AbrirProyecto(string ruta)
         {
-            string name = Path.GetFileNameWithoutExtension(ruta);
-
-            actual = new CProyecto();
-            actual.name = name;
-            
-            string folder = Path.GetDirectoryName(ruta);
-            actual.SetFolderPath(folder);
-
-            string linea;
-
-            // se lee el archivo RSP
-            StreamReader sr = new StreamReader(ruta);
-            
-            while ((linea = sr.ReadLine()) != null)
-            {
-                switch (linea)
-                {
-                    case "SEGMENTACION":
-                        actual.SetSegmentacionDone(sr.ReadLine() == "True");
-                        break;
-                    case "AREAS":
-                        actual.SetAreasDone(sr.ReadLine() == "True");
-                        break;
-                    case "COUNT":
-                        actual.count = Convert.ToInt32(sr.ReadLine());
-                        break;
-                    default:
-                        break;                        
-                }
-            }
-
-            // se cierra el archivo RSP
-            sr.Close();
-
-            
-            // primero se verifica que exista el archivo RSPC
-            if (!File.Exists(actual.GetFolderPath() + name + ".rspc"))
-            {
-                MessageBox.Show("No existe el archivo " + name + ".rspc asociado al proyecto.\nNo se puede continuar con el proceso de carga.","Error al abrir el proyecto "+name,MessageBoxButtons.OK,MessageBoxIcon.Error);
-                return false;
-            }
-            // se verifica que exista el folder HIGH
-            if(!Directory.Exists(actual.GetFolderHigh()))
-            {
-                MessageBox.Show("No existe la carpeta con las imagenes HIGH.\nVerifique la ruta indicada e intentelo de nuevo.\n\n" + actual.GetFolderHigh(), "Error al abrir el proyecto", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            // se verifica que exista el folder LOW
-            if (!Directory.Exists(actual.GetFolderLow()))
-            {
-                MessageBox.Show("No existe la carpeta con las imagenes LOW.\nVerifique la ruta indicada e intentelo de nuevo.\n\n" + actual.GetFolderLow(), "Error al abrir el proyecto", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
-            // se leen los elementos HIGH que estan en la carpeta HIGH, dentro de la ruta del proyecto
-            // primero se busca que esten todos los archivos esperados
-            for(int i=0;i<actual.count;i++)
-            {
-                if(!File.Exists(actual.GetFolderHigh() + i))
-                {
-                    MessageBox.Show("El elemento esperado" + i + " HIGH no fue encontrado.\n\nSe cancela la carga del proyecto", "Error al cargar el proyecto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-            }
-            // todos los elementos se encontraron, se procede a cargar todos los elementos HIGH
-            actual.SetHigh();
-            for (int i = 0; i < actual.count; i++) actual.SetHigh(File.ReadAllBytes(actual.GetFolderHigh() + i));
-                       
-            // se leen los elementos LOW que estan en la carpeta LOW, dentro de la ruta del proyecto
-            // primero se busca que esten todos los archivos esperados
-            for (int i = 0; i < actual.count; i++)
-            {
-                if (!File.Exists(actual.GetFolderLow() + i))
-                {
-                    MessageBox.Show("El elemento esperado" + i + " LOW no fue encontrado.\n\nSe cancela la carga del proyecto", "Error al cargar el proyecto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-            }
-            // todos los elementos se encontraron, se procede a cargar todos los elementos LOW
-            actual.SetLow();
-            for (int i = 0; i < actual.count; i++) actual.SetLow(File.ReadAllBytes(actual.GetFolderLow() + i));
-            
-            // Si existe informacion de segmentacion se lee el archivo RSPC
-            if(actual.GetSegmentacionDone())
-            {
-                sr = new StreamReader(actual.GetFolderPath() + name + ".rspc");
-
-                CCuadrado temp = new CCuadrado();
-                
-                while ((linea = sr.ReadLine()) != null)
-                {
-                    switch (linea)
-                    {
-                        case "CORE":
-                            temp = new CCuadrado();
-                            
-                            sr.ReadLine();
-                            temp.x = Convert.ToInt32(sr.ReadLine());
-                            sr.ReadLine();
-                            temp.y = Convert.ToInt32(sr.ReadLine());
-                            sr.ReadLine();
-                            temp.width = Convert.ToInt32(sr.ReadLine());
-
-                            actual.SetCore(temp);
-                            break;
-                        case "PHANTOM1":
-                            temp = new CCuadrado();
-                            
-                            sr.ReadLine();
-                            temp.x = Convert.ToInt32(sr.ReadLine());
-                            sr.ReadLine();
-                            temp.y = Convert.ToInt32(sr.ReadLine());
-                            sr.ReadLine();
-                            temp.width = Convert.ToInt32(sr.ReadLine());
-
-                            actual.SetPhantom1(temp);
-                            break;
-                        case "PHANTOM2":
-                            temp = new CCuadrado();
-                            
-                            sr.ReadLine();
-                            temp.x = Convert.ToInt32(sr.ReadLine());
-                            sr.ReadLine();
-                            temp.y = Convert.ToInt32(sr.ReadLine());
-                            sr.ReadLine();
-                            temp.width = Convert.ToInt32(sr.ReadLine());
-
-                            actual.SetPhantom2(temp);
-                            break;
-                        case "PHANTOM3":
-                            temp = new CCuadrado();
-                            
-                            sr.ReadLine();
-                            temp.x = Convert.ToInt32(sr.ReadLine());
-                            sr.ReadLine();
-                            temp.y = Convert.ToInt32(sr.ReadLine());
-                            sr.ReadLine();
-                            temp.width = Convert.ToInt32(sr.ReadLine());
-
-                            actual.SetPhantom3(temp);
-                            break;
-                        default:
-                            break;
-                    }
-                }
-
-                // se cierra el archivo RSPC
-                sr.Close();
-            }
-
-            // si ya se realizo la segmentacion entonces se cargan las segmentaciones transversales y los planos longitudinales
-            // horizontales y verticales
-            // si algun elemento fatla entonces se avisa al usuario para que vuelva a correr la segmentacion y no se carga nada
-            // en memoria
-            if (actual.GetSegmentacionDone())
-            {
-                // se supone que existen todos los elementos segmentados
-                bool control = true;
-
-                for (int i = 0; i < this.actual.count; i++)
-                {
-                    // se buscan los elementos de segmentacion transversal high
-                    if (!File.Exists(actual.GetFolderHigh() + "coreTrans-" + i)) control = false;
-                    if (!File.Exists(actual.GetFolderHigh() + "phantom1Trans-" + i)) control = false;
-                    if (!File.Exists(actual.GetFolderHigh() + "phantom2Trans-" + i)) control = false;
-                    if (!File.Exists(actual.GetFolderHigh() + "phantom3Trans-" + i)) control = false;
-
-                    // se buscan los elementos de segmentacion transversal low
-                    if (!File.Exists(actual.GetFolderLow() + "coreTrans-" + i)) control = false;
-                    if (!File.Exists(actual.GetFolderLow() + "phantom1Trans-" + i)) control = false;
-                    if (!File.Exists(actual.GetFolderLow() + "phantom2Trans-" + i)) control = false;
-                    if (!File.Exists(actual.GetFolderLow() + "phantom3Trans-" + i)) control = false;
-                }
-                
-                // se buscan los planos longitudinales horizontal y vertica
-                if (!File.Exists(actual.GetFolderHigh() + "coreHor")) control = false;
-                if (!File.Exists(actual.GetFolderHigh() + "phantom1Hor")) control = false;
-                if (!File.Exists(actual.GetFolderHigh() + "phantom2Hor")) control = false;
-                if (!File.Exists(actual.GetFolderHigh() + "phantom3Hor")) control = false;
-                if (!File.Exists(actual.GetFolderHigh() + "coreVer")) control = false;
-                if (!File.Exists(actual.GetFolderHigh() + "phantom1Ver")) control = false;
-                if (!File.Exists(actual.GetFolderHigh() + "phantom2Ver")) control = false;
-                if (!File.Exists(actual.GetFolderHigh() + "phantom3Ver")) control = false;
-
-                if(control)
-                {
-                    // se encontraron todos los elementos esperados, asi que se procede a cargarlos en memoria
-
-                    // se preparan los lists
-                    actual.SetSegCoreTransHigh();
-                    actual.SetSegPhantom1TransHigh();
-                    actual.SetSegPhantom2TransHigh();
-                    actual.SetSegPhantom3TransHigh();
-                    actual.SetSegCoreTransLow();
-                    actual.SetSegPhantom1TransLow();
-                    actual.SetSegPhantom2TransLow();
-                    actual.SetSegPhantom3TransLow();
-
-                    // se cargan las segmentaciones transversales
-                    for (int i = 0; i < this.actual.count; i++)
-                    {
-                        actual.SetSegCoreTransHigh(File.ReadAllBytes(actual.GetFolderHigh() + "coreTrans-" + i));
-                        actual.SetSegPhantom1TransHigh(File.ReadAllBytes(actual.GetFolderHigh() + "phantom1Trans-" + i));
-                        actual.SetSegPhantom2TransHigh(File.ReadAllBytes(actual.GetFolderHigh() + "phantom2Trans-" + i));
-                        actual.SetSegPhantom3TransHigh(File.ReadAllBytes(actual.GetFolderHigh() + "phantom3Trans-" + i));
-
-                        actual.SetSegCoreTransLow(File.ReadAllBytes(actual.GetFolderLow() + "coreTrans-" + i));
-                        actual.SetSegPhantom1TransLow(File.ReadAllBytes(actual.GetFolderLow() + "phantom1Trans-" + i));
-                        actual.SetSegPhantom2TransLow(File.ReadAllBytes(actual.GetFolderLow() + "phantom2Trans-" + i));
-                        actual.SetSegPhantom3TransLow(File.ReadAllBytes(actual.GetFolderLow() + "phantom3Trans-" + i));
-                    }
-                    
-                    // se cargan la segmentaciones longitudinales
-                    actual.SetSegCoreHor();
-                    actual.SetSegCoreHor(File.ReadAllBytes(actual.GetFolderHigh() + "coreHor"));
-                    actual.SetSegPhantom1Hor();
-                    actual.SetSegPhantom1Hor(File.ReadAllBytes(actual.GetFolderHigh() + "phantom1Hor"));
-                    actual.SetSegPhantom2Hor();
-                    actual.SetSegPhantom2Hor(File.ReadAllBytes(actual.GetFolderHigh() + "phantom2Hor"));
-                    actual.SetSegPhantom3Hor();
-                    actual.SetSegPhantom3Hor(File.ReadAllBytes(actual.GetFolderHigh() + "phantom3Hor"));
-
-                    actual.SetSegCoreVer();
-                    actual.SetSegCoreVer(File.ReadAllBytes(actual.GetFolderHigh() + "coreVer"));
-                    actual.SetSegPhantom1Ver();
-                    actual.SetSegPhantom1Ver(File.ReadAllBytes(actual.GetFolderHigh() + "phantom1Ver"));
-                    actual.SetSegPhantom2Ver();
-                    actual.SetSegPhantom2Ver(File.ReadAllBytes(actual.GetFolderHigh() + "phantom2Ver"));
-                    actual.SetSegPhantom3Ver();
-                    actual.SetSegPhantom3Ver(File.ReadAllBytes(actual.GetFolderHigh() + "phantom3Ver"));
-                }
-                else
-                {
-                    // un elemento NO se encontro, asi que se le informa al usuario que es necesario realizar de nuevo la segmentacion
-                    MessageBox.Show("No se encontraron todos los elementos segmentados esperados.\n\nEs necesario volver a realizar la segmentacion.", "Error al cargar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    actual.SetSegmentacionDone(false);
-                }
-            }
-
-            this.proyectoForm = new ProjectForm();
-            this.abiertoProyectoForm = true;
-            this.proyectoForm.padre = this;
-            this.proyectoForm.MdiParent = this;
-            this.proyectoForm.Show();
-
-            // se cargo satisfactoriamente el proyecto
             return true;
         }
 
