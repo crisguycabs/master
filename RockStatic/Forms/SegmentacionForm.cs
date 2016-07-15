@@ -43,11 +43,6 @@ namespace RockStatic
         CCirculo[] tempClicks;
 
         /// <summary>
-        /// Instancia que hace referencia a la imagen cargada en pantalla para modificarla
-        /// </summary>
-        Graphics g;
-
-        /// <summary>
         /// Lapiz con el que se dibujan los circulos
         /// </summary>
         Pen pen1;
@@ -90,9 +85,6 @@ namespace RockStatic
         {
             SetForm();
             ResetCountClick();
-
-            // instancia de la imagen
-            g = pictElemento.CreateGraphics();
 
             // se prepara el lapiz con el que se va a pintar
             pen1 = new System.Drawing.Pen(Color.Red, 2F);

@@ -724,6 +724,8 @@ namespace RockStatic
             {
                 actual.areaCore = new CCuadrado(areaCore);
                 actual.areaPhantom1 = new CCuadrado(areaP1);
+                actual.areaPhantom2 = new CCuadrado(areaP2);
+                actual.areaPhantom2 = new CCuadrado(areaP2);
             }
 
             return true;
