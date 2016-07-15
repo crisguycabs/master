@@ -209,43 +209,6 @@ namespace RockStatic
             sw.WriteLine("COUNT");
             sw.WriteLine(datacuboHigh.dataCube.Count);
             sw.WriteLine("---------------------------------------------------------------------");
-            sw.WriteLine("SEGMENTACION");
-            sw.WriteLine(segmentacionDone.ToString());
-            sw.WriteLine("---------------------------------------------------------------------");
-            if (this.segmentacionDone)
-            {
-                sw.WriteLine("CORE");
-                sw.WriteLine("X");
-                sw.WriteLine(this.areaCore.x);
-                sw.WriteLine("Y");
-                sw.WriteLine(this.areaCore.y);
-                sw.WriteLine("WIDTH");
-                sw.WriteLine(this.areaCore.width);
-                sw.WriteLine("---------------------------------------------------------------------");
-                sw.WriteLine("PHANTOM1");
-                sw.WriteLine("X");
-                sw.WriteLine(this.areaPhantom1.x);
-                sw.WriteLine("Y");
-                sw.WriteLine(this.areaPhantom1.y);
-                sw.WriteLine("WIDTH");
-                sw.WriteLine(this.areaPhantom1.width);
-                sw.WriteLine("---------------------------------------------------------------------");
-                sw.WriteLine("PHANTOM2");
-                sw.WriteLine("X");
-                sw.WriteLine(this.areaPhantom2.x);
-                sw.WriteLine("Y");
-                sw.WriteLine(this.areaPhantom2.y);
-                sw.WriteLine("WIDTH");
-                sw.WriteLine(this.areaPhantom2.width);
-                sw.WriteLine("---------------------------------------------------------------------");
-                sw.WriteLine("PHANTOM3");
-                sw.WriteLine("X");
-                sw.WriteLine(this.areaPhantom3.x);
-                sw.WriteLine("Y");
-                sw.WriteLine(this.areaPhantom3.y);
-                sw.WriteLine("WIDTH");
-                sw.WriteLine(this.areaPhantom3.width);
-            }
             sw.WriteLine("PHANTOMS");
             sw.WriteLine(phantomEnDicom.ToString());
             sw.WriteLine("---------------------------------------------------------------------");
@@ -299,7 +262,48 @@ namespace RockStatic
                 sw.WriteLine("DESVLOW");
                 sw.WriteLine(phantom3.desvLow.ToString());
             }
-            
+            sw.WriteLine("---------------------------------------------------------------------");
+            sw.WriteLine("SEGMENTACION");
+            sw.WriteLine(segmentacionDone.ToString());
+            sw.WriteLine("---------------------------------------------------------------------");
+            if (this.segmentacionDone)
+            {
+                sw.WriteLine("CORE");
+                sw.WriteLine("X");
+                sw.WriteLine(this.areaCore.x);
+                sw.WriteLine("Y");
+                sw.WriteLine(this.areaCore.y);
+                sw.WriteLine("WIDTH");
+                sw.WriteLine(this.areaCore.width);
+                sw.WriteLine("---------------------------------------------------------------------");
+                // si hay informacion de segmentacon Y los DICOM incluyen los phantom
+                if (phantomEnDicom)
+                {
+                    sw.WriteLine("PHANTOM1");
+                    sw.WriteLine("X");
+                    sw.WriteLine(this.areaPhantom1.x);
+                    sw.WriteLine("Y");
+                    sw.WriteLine(this.areaPhantom1.y);
+                    sw.WriteLine("WIDTH");
+                    sw.WriteLine(this.areaPhantom1.width);
+                    sw.WriteLine("---------------------------------------------------------------------");
+                    sw.WriteLine("PHANTOM2");
+                    sw.WriteLine("X");
+                    sw.WriteLine(this.areaPhantom2.x);
+                    sw.WriteLine("Y");
+                    sw.WriteLine(this.areaPhantom2.y);
+                    sw.WriteLine("WIDTH");
+                    sw.WriteLine(this.areaPhantom2.width);
+                    sw.WriteLine("---------------------------------------------------------------------");
+                    sw.WriteLine("PHANTOM3");
+                    sw.WriteLine("X");
+                    sw.WriteLine(this.areaPhantom3.x);
+                    sw.WriteLine("Y");
+                    sw.WriteLine(this.areaPhantom3.y);
+                    sw.WriteLine("WIDTH");
+                    sw.WriteLine(this.areaPhantom3.width);
+                }
+            }
             // se cierra el streamwriter del archivo RSP
             sw.Close();
         }

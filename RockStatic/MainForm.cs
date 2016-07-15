@@ -163,7 +163,7 @@ namespace RockStatic
         /// <param name="mensaje"></param>
         public void ShowWaiting(string mensaje)
         {
-            if(!this.abiertoWaitingForm)
+            if (!this.abiertoWaitingForm)
             {
                 waitingForm = new WaitingForm();
                 waitingForm.lblTexto.Text = mensaje;
@@ -234,17 +234,17 @@ namespace RockStatic
         public static Bitmap CropCirle(Bitmap srcImage, CCuadrado elemento)
         {
             // primero se extrae el area rectangular del slide que se pasa como argumento
-            Bitmap bmp = new Bitmap(elemento.width*2, elemento.width*2);
+            Bitmap bmp = new Bitmap(elemento.width * 2, elemento.width * 2);
             Graphics g = Graphics.FromImage(bmp);
             Rectangle selectedArea = new Rectangle();
             selectedArea.X = elemento.x - elemento.width;
             selectedArea.Y = elemento.y - elemento.width;
-            selectedArea.Width = selectedArea.Height = elemento.width*2;
+            selectedArea.Width = selectedArea.Height = elemento.width * 2;
             g.DrawImage(srcImage, 0, 0, selectedArea, GraphicsUnit.Pixel);
-            
+
             // la imagen bmp contiene el recorte rectangular
             // ahora se debe volver un circulo
-            
+
             Bitmap dstImage = new Bitmap(bmp.Width, bmp.Height, bmp.PixelFormat);
             g = Graphics.FromImage(dstImage);
             using (Brush br = new SolidBrush(Color.Black))
@@ -256,7 +256,7 @@ namespace RockStatic
             g.SetClip(path);
             g.DrawImage(bmp, 0, 0);
 
-            return dstImage;    
+            return dstImage;
         }
 
 
@@ -369,7 +369,7 @@ namespace RockStatic
             return coordenada;
         }
 
-        
+
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -389,7 +389,7 @@ namespace RockStatic
             // si existe alguna ventana abierta, se cierra
             if (abiertoCheckForm) checkForm.Close();
             if (abiertoHomeForm) homeForm.Close();
-            
+
             // Se abre el Form para seleccionar los archivos de imagenes/dycom
             if (!abiertoNuevoProyectoForm)
             {
@@ -477,7 +477,7 @@ namespace RockStatic
                 Image returnImage = Image.FromStream(ms, true);
                 return returnImage;
             }
-            catch { return null; }            
+            catch { return null; }
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -528,6 +528,204 @@ namespace RockStatic
         /// <param name="ruta"></param>
         public bool AbrirProyecto(string ruta)
         {
+            StreamReader sr = new StreamReader(ruta);
+            string line;
+            string name = "";
+            string path = "";
+            int count = 0;
+            bool phantoms = false;
+            CCuadrado areaCore = new CCuadrado();
+            CCuadrado areaP1 = new CCuadrado();
+            CCuadrado areaP2 = new CCuadrado();
+            CCuadrado areaP3 = new CCuadrado();
+            bool segmentacionDone = false;
+            int toRead = 0;
+            int read = 0;
+            double meanHigh = 0;
+            double meanLow = 0;
+            double desvHigh = 0;
+            double desvLow = 0;
+            double densidad = 0;
+            double zeff = 0;
+            CPhantom tempP1 = null;
+            CPhantom tempP2 = null;
+            CPhantom tempP3 = null;
+            int x = 0;
+            int y = 0;
+            int width = 0;
+
+            while ((line = sr.ReadLine()) != null)
+            {
+                switch (line)
+                {
+                    case "NAME":
+                        name = sr.ReadLine();
+                        break;
+                    case "PATH":
+                        path = sr.ReadLine();
+                        break;
+                    case "COUNT":
+                        count = Convert.ToInt16(sr.ReadLine());
+                        break;
+                    case "PHANTOMS":
+                        phantoms = Convert.ToBoolean(sr.ReadLine());
+
+                        toRead = 3; // se deben leer 3 phantoms
+                        read = 0;
+
+                        while (read < toRead)
+                        {
+                            line = sr.ReadLine();
+                            switch (line)
+                            {
+                                case "PHANTOM1":
+                                    line = sr.ReadLine(); // densidad
+                                    densidad = Convert.ToDouble(sr.ReadLine());
+                                    line = sr.ReadLine(); // zeff
+                                    zeff = Convert.ToDouble(sr.ReadLine());
+                                    if (!phantoms)
+                                    {
+                                        line = sr.ReadLine(); // media high
+                                        meanHigh = Convert.ToDouble(sr.ReadLine());
+                                        line = sr.ReadLine(); // desv high
+                                        desvHigh = Convert.ToDouble(sr.ReadLine());
+                                        line = sr.ReadLine(); // media low
+                                        meanLow = Convert.ToDouble(sr.ReadLine());
+                                        line = sr.ReadLine(); // desv low
+                                        desvLow = Convert.ToDouble(sr.ReadLine());
+                                    }
+                                    tempP1 = new CPhantom(meanHigh, desvHigh, meanLow, desvLow, densidad, zeff);
+                                    read++;
+                                    break;
+                                case "PHANTOM2":
+                                    line = sr.ReadLine(); // densidad
+                                    densidad = Convert.ToDouble(sr.ReadLine());
+                                    line = sr.ReadLine(); // zeff
+                                    zeff = Convert.ToDouble(sr.ReadLine());
+                                    if (!phantoms)
+                                    {
+                                        line = sr.ReadLine(); // media high
+                                        meanHigh = Convert.ToDouble(sr.ReadLine());
+                                        line = sr.ReadLine(); // desv high
+                                        desvHigh = Convert.ToDouble(sr.ReadLine());
+                                        line = sr.ReadLine(); // media low
+                                        meanLow = Convert.ToDouble(sr.ReadLine());
+                                        line = sr.ReadLine(); // desv low
+                                        desvLow = Convert.ToDouble(sr.ReadLine());
+                                    }
+                                    tempP2 = new CPhantom(meanHigh, desvHigh, meanLow, desvLow, densidad, zeff);
+                                    read++;
+                                    break;
+                                case "PHANTOM3":
+                                    line = sr.ReadLine(); // densidad
+                                    densidad = Convert.ToDouble(sr.ReadLine());
+                                    line = sr.ReadLine(); // zeff
+                                    zeff = Convert.ToDouble(sr.ReadLine());
+                                    if (!phantoms)
+                                    {
+                                        line = sr.ReadLine(); // media high
+                                        meanHigh = Convert.ToDouble(sr.ReadLine());
+                                        line = sr.ReadLine(); // desv high
+                                        desvHigh = Convert.ToDouble(sr.ReadLine());
+                                        line = sr.ReadLine(); // media low
+                                        meanLow = Convert.ToDouble(sr.ReadLine());
+                                        line = sr.ReadLine(); // desv low
+                                        desvLow = Convert.ToDouble(sr.ReadLine());
+                                    }
+                                    tempP3 = new CPhantom(meanHigh, desvHigh, meanLow, desvLow, densidad, zeff);
+                                    read++;
+                                    break;
+                            }
+                        }
+                        break;
+                    case "SEGMENTACION":
+                        segmentacionDone = Convert.ToBoolean(sr.ReadLine());
+                        if (segmentacionDone)
+                        {
+                            read = 0;
+                            
+                            if (phantoms) toRead = 4; // si hay phantoms en los DICOM entonces se deben leer 4 segmentaciones
+                            else toRead = 1; // sino, solo se lee la segmentacion del CORE
+                            
+                            while (read < toRead)
+                            {
+                                line = sr.ReadLine();
+                                switch (line)
+                                {
+                                    case "CORE":
+                                        line = sr.ReadLine(); // X
+                                        x = Convert.ToInt16(sr.ReadLine());
+                                        line = sr.ReadLine(); // Y
+                                        y = Convert.ToInt16(sr.ReadLine());
+                                        line = sr.ReadLine(); // width
+                                        width = Convert.ToInt16(sr.ReadLine());
+                                        areaCore = new CCuadrado(x, y, width);
+                                        read++;
+                                        break;
+                                    case "PHANTOM1":
+                                        line = sr.ReadLine(); // X
+                                        x = Convert.ToInt16(sr.ReadLine());
+                                        line = sr.ReadLine(); // Y
+                                        y = Convert.ToInt16(sr.ReadLine());
+                                        line = sr.ReadLine(); // width
+                                        width = Convert.ToInt16(sr.ReadLine());
+                                        areaP1 = new CCuadrado(x, y, width);
+                                        read++;
+                                        break;
+                                    case "PHANTOM2":
+                                        line = sr.ReadLine(); // X
+                                        x = Convert.ToInt16(sr.ReadLine());
+                                        line = sr.ReadLine(); // Y
+                                        y = Convert.ToInt16(sr.ReadLine());
+                                        line = sr.ReadLine(); // width
+                                        width = Convert.ToInt16(sr.ReadLine());
+                                        areaP2 = new CCuadrado(x, y, width);
+                                        read++;
+                                        break;
+                                    case "PHANTOM3":
+                                        line = sr.ReadLine(); // X
+                                        x = Convert.ToInt16(sr.ReadLine());
+                                        line = sr.ReadLine(); // Y
+                                        y = Convert.ToInt16(sr.ReadLine());
+                                        line = sr.ReadLine(); // width
+                                        width = Convert.ToInt16(sr.ReadLine());
+                                        areaP3 = new CCuadrado(x, y, width);
+                                        read++;
+                                        break;
+                                }
+                            }
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            // se prepara la lista de dicoms a cargar
+            List<string> high = new List<string>();
+            List<string> low = new List<string>();
+            for (int i = 0; i < count; i++)
+            {
+                high.Add(path + "\\high\\" + i);
+                low.Add(path + "\\high\\" + i);
+            }
+
+            // se crea el proyecto actual
+            actual = new CProyecto(name, high, low, phantoms);
+            actual.folderPath = path;
+            actual.folderHigh = path + "\\high";
+            actual.folderLow = path + "\\low";
+            actual.phantomEnDicom = phantoms;
+            actual.phantom1 = new CPhantom(tempP1);
+            actual.phantom2 = new CPhantom(tempP2);
+            actual.phantom3 = new CPhantom(tempP3);
+            actual.segmentacionDone = segmentacionDone;
+            if (segmentacionDone)
+            {
+                actual.areaCore = new CCuadrado(areaCore);
+                actual.areaPhantom1 = new CCuadrado(areaP1);
+            }
+
             return true;
         }
 
@@ -558,7 +756,7 @@ namespace RockStatic
         public void CerrarSegmentacionForm()
         {
             this.abiertoSegmentacionForm = false;
-            this.segmentacionForm = null;            
+            this.segmentacionForm = null;
         }
 
         public void CerrarProjectForm()
@@ -597,7 +795,7 @@ namespace RockStatic
                 Graphics g = e.Graphics;
                 Rectangle r = e.CellBounds;
                 g.FillRectangle(Brushes.White, r);
-            }           
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -607,7 +805,7 @@ namespace RockStatic
 
         private void MainForm_Paint(object sender, PaintEventArgs e)
         {
-            
+
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
@@ -654,6 +852,6 @@ namespace RockStatic
         private void panel2_DoubleClick(object sender, EventArgs e)
         {
             btnMaximize_Click(sender, e);
-        }        
+        }
     }
 }
