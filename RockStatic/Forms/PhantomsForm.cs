@@ -44,29 +44,29 @@ namespace RockStatic
             chartLow.Series[2].Color = Color.FromArgb(126, Color.Red);
 
             // se toman los valores de los phantoms desde el NewProjectForm
-            numMeanHighP1.Value = (decimal)newProjectForm.tempPhantom1High.media;
-            numMeanHighP2.Value = (decimal)newProjectForm.tempPhantom2High.media;
-            numMeanHighP3.Value = (decimal)newProjectForm.tempPhantom3High.media;
+            numMeanHighP1.Value = (decimal)newProjectForm.tempPhantom1.mediaHigh;
+            numMeanHighP2.Value = (decimal)newProjectForm.tempPhantom2.mediaHigh;
+            numMeanHighP3.Value = (decimal)newProjectForm.tempPhantom3.mediaHigh;
 
-            numMeanLowP1.Value = (decimal)newProjectForm.tempPhantom1Low.media;
-            numMeanLowP2.Value = (decimal)newProjectForm.tempPhantom2Low.media;
-            numMeanLowP3.Value = (decimal)newProjectForm.tempPhantom3Low.media;
+            numMeanLowP1.Value = (decimal)newProjectForm.tempPhantom1.mediaLow;
+            numMeanLowP2.Value = (decimal)newProjectForm.tempPhantom2.mediaLow;
+            numMeanLowP3.Value = (decimal)newProjectForm.tempPhantom3.mediaLow;
 
-            numDesvHighP1.Value = (decimal)newProjectForm.tempPhantom1High.desv;
-            numDesvHighP2.Value = (decimal)newProjectForm.tempPhantom2High.desv;
-            numDesvHighP3.Value = (decimal)newProjectForm.tempPhantom3High.desv;
+            numDesvHighP1.Value = (decimal)newProjectForm.tempPhantom1.desvHigh;
+            numDesvHighP2.Value = (decimal)newProjectForm.tempPhantom2.desvHigh;
+            numDesvHighP3.Value = (decimal)newProjectForm.tempPhantom3.desvHigh;
 
-            numDesvLowP1.Value = (decimal)newProjectForm.tempPhantom1Low.desv;
-            numDesvLowP2.Value = (decimal)newProjectForm.tempPhantom2Low.desv;
-            numDesvLowP3.Value = (decimal)newProjectForm.tempPhantom3Low.desv;
+            numDesvLowP1.Value = (decimal)newProjectForm.tempPhantom1.desvLow;
+            numDesvLowP2.Value = (decimal)newProjectForm.tempPhantom2.desvLow;
+            numDesvLowP3.Value = (decimal)newProjectForm.tempPhantom3.desvLow;
 
-            numDensP1.Value = (decimal)newProjectForm.tempPhantom1High.densidad;
-            numDensP2.Value = (decimal)newProjectForm.tempPhantom2High.densidad;
-            numDensP3.Value = (decimal)newProjectForm.tempPhantom3High.densidad;
+            numDensP1.Value = (decimal)newProjectForm.tempPhantom1.densidad;
+            numDensP2.Value = (decimal)newProjectForm.tempPhantom2.densidad;
+            numDensP3.Value = (decimal)newProjectForm.tempPhantom3.densidad;
 
-            numZeffP1.Value = (decimal)newProjectForm.tempPhantom1High.zeff;
-            numZeffP2.Value = (decimal)newProjectForm.tempPhantom2High.zeff;
-            numZeffP3.Value = (decimal)newProjectForm.tempPhantom3High.zeff;
+            numZeffP1.Value = (decimal)newProjectForm.tempPhantom1.zeff;
+            numZeffP2.Value = (decimal)newProjectForm.tempPhantom2.zeff;
+            numZeffP3.Value = (decimal)newProjectForm.tempPhantom3.zeff;
 
             GenerarCurvas();
         }
@@ -107,29 +107,29 @@ namespace RockStatic
         /// <param name="e"></param>
         public void btnCerrar_Click(object sender, EventArgs e)
         {
-            newProjectForm.tempPhantom1High.media = (double)numMeanHighP1.Value;
-            newProjectForm.tempPhantom2High.media = (double)numMeanHighP2.Value;
-            newProjectForm.tempPhantom3High.media = (double)numMeanHighP3.Value;
+            newProjectForm.tempPhantom1.mediaHigh = (double)numMeanHighP1.Value;
+            newProjectForm.tempPhantom2.mediaHigh = (double)numMeanHighP2.Value;
+            newProjectForm.tempPhantom3.mediaHigh = (double)numMeanHighP3.Value;
 
-            newProjectForm.tempPhantom1Low.media = (double)numMeanLowP1.Value;
-            newProjectForm.tempPhantom2Low.media = (double)numMeanLowP2.Value;
-            newProjectForm.tempPhantom3Low.media = (double)numMeanLowP3.Value;
+            newProjectForm.tempPhantom1.mediaLow = (double)numMeanLowP1.Value;
+            newProjectForm.tempPhantom2.mediaLow = (double)numMeanLowP2.Value;
+            newProjectForm.tempPhantom3.mediaLow = (double)numMeanLowP3.Value;
 
-            newProjectForm.tempPhantom1High.desv = (double)numDesvHighP1.Value;
-            newProjectForm.tempPhantom2High.desv = (double)numDesvHighP2.Value;
-            newProjectForm.tempPhantom3High.desv = (double)numDesvHighP3.Value;
+            newProjectForm.tempPhantom1.desvHigh = (double)numDesvHighP1.Value;
+            newProjectForm.tempPhantom2.desvHigh = (double)numDesvHighP2.Value;
+            newProjectForm.tempPhantom3.desvHigh = (double)numDesvHighP3.Value;
 
-            newProjectForm.tempPhantom1Low.desv = (double)numDesvLowP1.Value;
-            newProjectForm.tempPhantom2Low.desv = (double)numDesvLowP2.Value;
-            newProjectForm.tempPhantom3Low.desv = (double)numDesvLowP3.Value;
+            newProjectForm.tempPhantom1.desvLow = (double)numDesvLowP1.Value;
+            newProjectForm.tempPhantom2.desvLow = (double)numDesvLowP2.Value;
+            newProjectForm.tempPhantom3.desvLow = (double)numDesvLowP3.Value;
 
-            newProjectForm.tempPhantom1High.densidad = (double)numDensP1.Value;
-            newProjectForm.tempPhantom2High.densidad = (double)numDensP2.Value;
-            newProjectForm.tempPhantom3High.densidad = (double)numDensP3.Value;
+            newProjectForm.tempPhantom1.densidad = (double)numDensP1.Value;
+            newProjectForm.tempPhantom2.densidad = (double)numDensP2.Value;
+            newProjectForm.tempPhantom3.densidad = (double)numDensP3.Value;
 
-            newProjectForm.tempPhantom1High.zeff = (double)numZeffP1.Value;
-            newProjectForm.tempPhantom2High.zeff = (double)numZeffP2.Value;
-            newProjectForm.tempPhantom3High.zeff = (double)numZeffP3.Value;
+            newProjectForm.tempPhantom1.zeff = (double)numZeffP1.Value;
+            newProjectForm.tempPhantom2.zeff = (double)numZeffP2.Value;
+            newProjectForm.tempPhantom3.zeff = (double)numZeffP3.Value;
 
             this.Close();
         }

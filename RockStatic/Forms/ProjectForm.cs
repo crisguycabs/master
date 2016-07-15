@@ -49,7 +49,7 @@ namespace RockStatic
             this.lblProyecto.Text = padre.actual.name.ToUpper();
             
             // segmentacion
-            if (padre.actual.GetSegmentacionDone())
+            if (padre.actual.segmentacionDone)
             {
                 pictSegHigh.Image = RockStatic.Properties.Resources.greenTick;
                 lblSeg.Text = "La segmentacion de los slides se completo exitosamente";
@@ -61,7 +61,7 @@ namespace RockStatic
             }
 
             // areas
-            if (padre.actual.GetAreasDone())
+            if (padre.actual.areasDone)
             {
                 pictAreasHigh.Image = RockStatic.Properties.Resources.greenTick;
                 lblArea.Text = "Se seleccionaron las areas de interes exitosamente";
@@ -96,7 +96,7 @@ namespace RockStatic
         private void btnAreasHigh_Click(object sender, EventArgs e)
         {
             // se verifica primero que primero se hallan segmentado correctamente los elementos HIGH y LOW
-            if (!padre.actual.GetSegmentacionDone())
+            if (!padre.actual.segmentacionDone)
             {
                 MessageBox.Show("No es posible realizar la seleccion de areas de interes para los elementos.\n\nRealize primero la segmentacion de los elementos HIGH.", "Error al iniciar la seleccion de areas", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

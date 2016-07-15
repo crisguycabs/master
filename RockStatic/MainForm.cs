@@ -151,6 +151,8 @@ namespace RockStatic
         public void AbrirProjectForm()
         {
             this.proyectoForm = new ProjectForm();
+            this.proyectoForm.padre = this;
+            this.proyectoForm.MdiParent = this;
             this.abiertoProyectoForm = true;
             this.proyectoForm.Show();
         }

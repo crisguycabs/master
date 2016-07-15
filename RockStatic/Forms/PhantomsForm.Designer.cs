@@ -229,9 +229,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(167, 27);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(31, 14);
+            this.label6.Size = new System.Drawing.Size(46, 14);
             this.label6.TabIndex = 8;
-            this.label6.Text = "LOW";
+            this.label6.Text = "CT LOW";
             // 
             // numZeffP1
             // 
@@ -334,9 +334,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(7, 27);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 14);
+            this.label5.Size = new System.Drawing.Size(50, 14);
             this.label5.TabIndex = 3;
-            this.label5.Text = "HIGH";
+            this.label5.Text = "CT HIGH";
             // 
             // numDesvHighP1
             // 
@@ -562,9 +562,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(167, 27);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(31, 14);
+            this.label4.Size = new System.Drawing.Size(46, 14);
             this.label4.TabIndex = 8;
-            this.label4.Text = "LOW";
+            this.label4.Text = "CT LOW";
             // 
             // numDesvLowP2
             // 
@@ -639,9 +639,9 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(7, 27);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(35, 14);
+            this.label12.Size = new System.Drawing.Size(50, 14);
             this.label12.TabIndex = 3;
-            this.label12.Text = "HIGH";
+            this.label12.Text = "CT HIGH";
             // 
             // numDesvHighP2
             // 
@@ -813,9 +813,9 @@
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(167, 27);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(31, 14);
+            this.label16.Size = new System.Drawing.Size(46, 14);
             this.label16.TabIndex = 8;
-            this.label16.Text = "LOW";
+            this.label16.Text = "CT LOW";
             // 
             // numDesvLowP3
             // 
@@ -890,9 +890,9 @@
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(7, 27);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(35, 14);
+            this.label19.Size = new System.Drawing.Size(50, 14);
             this.label19.TabIndex = 3;
-            this.label19.Text = "HIGH";
+            this.label19.Text = "CT HIGH";
             // 
             // numDesvHighP3
             // 

@@ -84,7 +84,7 @@ namespace RockStatic
             
             // se reestablece el TrackBar
             trackElementos.Minimum = 1;
-            trackElementos.Maximum = newProjectForm.tempHigh.Count;
+            trackElementos.Maximum = tempDicom.dataCube.Count;
             trackElementos.Value = 1;
             lstElementos.SelectedIndex = 0;
 
@@ -98,13 +98,10 @@ namespace RockStatic
         private void trackElementos_ValueChanged(object sender, EventArgs e)
         {
             pictElemento.Image = null;
-            if (filesHigh)
-            {
-                pictElemento.Image = tempDicom.dataCube[trackElementos.Value - 1].bmp;
-                lstElementos.ClearSelected();
-                lstElementos.SelectedIndex = trackElementos.Value - 1;
-                txtCounter.Text = trackElementos.Value.ToString() + " de " + temp.Count.ToString();
-            }
+            pictElemento.Image = tempDicom.dataCube[trackElementos.Value - 1].bmp;
+            lstElementos.ClearSelected();
+            lstElementos.SelectedIndex = trackElementos.Value - 1;
+            txtCounter.Text = trackElementos.Value.ToString() + " de " + temp.Count.ToString();
         }
 
         /// <summary>

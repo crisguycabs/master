@@ -97,6 +97,21 @@ namespace RockStatic
         /// </summary>
         public bool phantomEnDicom=false;
 
+        /// <summary>
+        /// Instancia del phantom 1
+        /// </summary>
+        public CPhantom phantom1 = null;
+
+        /// <summary>
+        /// Instancia del phantom 2
+        /// </summary>
+        public CPhantom phantom2 = null;
+
+        /// <summary>
+        /// Instancia del phantom 3
+        /// </summary>
+        public CPhantom phantom3 = null;
+
         #endregion
 
         /// <summary>
@@ -112,61 +127,8 @@ namespace RockStatic
             datacuboHigh = new MyDataCube(rutasHigh);
             datacuboLow = new MyDataCube(rutasLow);
             phantomEnDicom = phantom;
-        }
-
-        /// <summary>
-        /// Se establece si ya se realizo, o no, el recorte horizontal de los core y phantom
-        /// </summary>
-        /// <param name="estado"></param>
-        public void SetSegHorDone(bool estado)
-        {
-            segHorDone = estado;
-        }
-
-        /// <summary>
-        /// Se establece si ya se realizo, o no, el recorte vertical de los core y phantom
-        /// </summary>
-        /// <param name="estado"></param>
-        public void SetSegVerDone(bool estado)
-        {
-            segVerDone = estado;
-        }
-
-        /// <summary>
-        /// Se establece si ya se realizo, o no, el recorte transversal de los core y phantom
-        /// </summary>
-        /// <param name="estado"></param>
-        public void SetSegTransDone(bool estado)
-        {
-            segTransDone = estado;
-        }
+        }      
         
-        /// <summary>
-        /// Devuelve si ya se realizo, o no, el recorte transversal de los core y phantom
-        /// </summary>
-        /// <returns></returns>
-        public bool GetSegTransDone()
-        {
-            return segTransDone;
-        }
-
-        /// <summary>
-        /// Devuelve si ya se realizo, o no, el recorte horizontal de los core y phantom
-        /// </summary>
-        /// <returns></returns>
-        public bool GetSegHorDone()
-        {
-            return segHorDone;
-        }
-
-        /// <summary>
-        /// Devuelve si ya se realizo, o no, el recorte vertical de los core y phantom
-        /// </summary>
-        /// <returns></returns>
-        public bool GetSegVerDone()
-        {
-            return segVerDone;
-        }
 
         //--
 
@@ -222,50 +184,6 @@ namespace RockStatic
         }
 
         /// <summary>
-        /// Establece si ya se realizo o no la segmentacion de los elementos HIGH
-        /// </summary>
-        /// <param name="set"></param>
-        public void SetSegmentacionDone(bool set)
-        {
-            segmentacionDone = set;
-        }
-
-        /// <summary>
-        /// Se establece si ya se ha realizado, o no, la seleccion de areas HIGH
-        /// </summary>
-        /// <param name="set">True, ya se realizo la segmentacion; False, no se ha realizado la segmentacion</param>
-        public void SetAreasDone(bool set)
-        {
-            areasDone = set;
-        }
-
-        /// <summary>
-        /// Obtiene si ya se ha realizado, o no, la segmentacion de areas HIGH
-        /// </summary>
-        /// <returns></returns>
-        public bool GetAreasDone()
-        {
-            return areasDone;
-        }
-
-        /// <summary>
-        /// Crea el proyecto en disco en la ruta indicada en las propiedades del metodo
-        /// </summary>
-        public void Crear()
-        {
-            // se crean los archivos RSP RSPH y RSPL y se llenan con informacion
-            this.Salvar();
-
-            // se mueven las imagenes HIGH al nuevo folder
-            for (int i = 0; i < datacuboHigh.dataCube.Count; i++)
-                datacuboHigh.dataCube[i].dcm.Write(folderHigh + i);
-
-            // se mueven las imagenes LOW al nuevo folder
-            for (int i = 0; i < datacuboLow.dataCube.Count; i++)
-                datacuboLow.dataCube[i].dcm.Write(folderLow + i); 
-        }
-
-        /// <summary>
         /// Guarda el proyecto en disco en la ruta indicada en las propiedades del metodo
         /// </summary>
         public void Salvar()
@@ -281,32 +199,19 @@ namespace RockStatic
             sw.WriteLine("SE PROHIBE LA MODIFICACION DE CUALQUIERA DE LOS ARCHIVOS RELACIONADOS");
             sw.WriteLine("CON EL SOFTWARE ROCKSTATIC SIN LA DEBIDA AUTORIZACION DEL AUTOR O DEL");
             sw.WriteLine("DIRECTOR DEL GRUPO HDSP");
-            sw.WriteLine("---------------------------------------------------------------------");
-            sw.WriteLine("");
+            sw.WriteLine("=====================================================================");
             sw.WriteLine("NAME");
             sw.WriteLine(name);
+            sw.WriteLine("---------------------------------------------------------------------");
+            sw.WriteLine("PATH");
+            sw.WriteLine(folderPath);
+            sw.WriteLine("---------------------------------------------------------------------");
+            sw.WriteLine("COUNT");
+            sw.WriteLine(datacuboHigh.dataCube.Count);
+            sw.WriteLine("---------------------------------------------------------------------");
             sw.WriteLine("SEGMENTACION");
             sw.WriteLine(segmentacionDone.ToString());
-            sw.WriteLine("AREAS");
-            sw.WriteLine(areasDone.ToString());
-            sw.WriteLine("COUNT");
-            sw.WriteLine(datacuboHigh.dataCube.Count.ToString());
-            
-            // se cierra el streamwriter del archivo RSP
-            sw.Close();
-
-            // se empiezan a escribir los elementos de configuracion RSPC tal y como se tienen ordenados en memoria
-            sw = new StreamWriter(folderPath + name + ".rspc");
-            sw.WriteLine("PROYECTO DE ROCKSTATIC: CARACTERIZACION ESTATICA DE ROCAS");
-            sw.WriteLine("COPYRIGHT CRISOSTOMO ALBERTO BARAJAS SOLANO");
-            sw.WriteLine("HDSP, UIS, 2015");
-            sw.WriteLine("");
-            sw.WriteLine("SE PROHIBE LA MODIFICACION DE CUALQUIERA DE LOS ARCHIVOS RELACIONADOS");
-            sw.WriteLine("CON EL SOFTWARE ROCKSTATIC SIN LA DEBIDA AUTORIZACION DEL AUTOR O DEL");
-            sw.WriteLine("DIRECTOR DEL GRUPO HDSP");
             sw.WriteLine("---------------------------------------------------------------------");
-            sw.WriteLine("");
-            // si existe informacion de segmentacion entonces se escibe en disco
             if (this.segmentacionDone)
             {
                 sw.WriteLine("CORE");
@@ -316,6 +221,7 @@ namespace RockStatic
                 sw.WriteLine(this.areaCore.y);
                 sw.WriteLine("WIDTH");
                 sw.WriteLine(this.areaCore.width);
+                sw.WriteLine("---------------------------------------------------------------------");
                 sw.WriteLine("PHANTOM1");
                 sw.WriteLine("X");
                 sw.WriteLine(this.areaPhantom1.x);
@@ -323,6 +229,7 @@ namespace RockStatic
                 sw.WriteLine(this.areaPhantom1.y);
                 sw.WriteLine("WIDTH");
                 sw.WriteLine(this.areaPhantom1.width);
+                sw.WriteLine("---------------------------------------------------------------------");
                 sw.WriteLine("PHANTOM2");
                 sw.WriteLine("X");
                 sw.WriteLine(this.areaPhantom2.x);
@@ -330,6 +237,7 @@ namespace RockStatic
                 sw.WriteLine(this.areaPhantom2.y);
                 sw.WriteLine("WIDTH");
                 sw.WriteLine(this.areaPhantom2.width);
+                sw.WriteLine("---------------------------------------------------------------------");
                 sw.WriteLine("PHANTOM3");
                 sw.WriteLine("X");
                 sw.WriteLine(this.areaPhantom3.x);
@@ -337,9 +245,62 @@ namespace RockStatic
                 sw.WriteLine(this.areaPhantom3.y);
                 sw.WriteLine("WIDTH");
                 sw.WriteLine(this.areaPhantom3.width);
-            }            
+            }
+            sw.WriteLine("PHANTOMS");
+            sw.WriteLine(phantomEnDicom.ToString());
+            sw.WriteLine("---------------------------------------------------------------------");
+            sw.WriteLine("PHANTOM1");
+            sw.WriteLine("DENSIDAD");
+            sw.WriteLine(phantom1.densidad.ToString());
+            sw.WriteLine("ZEFF");
+            sw.WriteLine(phantom1.zeff.ToString());
+            if (!this.phantomEnDicom)
+            {
+                sw.WriteLine("MEDIAHIGH");
+                sw.WriteLine(phantom1.mediaHigh.ToString());
+                sw.WriteLine("DESVHIGH");
+                sw.WriteLine(phantom1.desvHigh.ToString());
+                sw.WriteLine("MEDIALOW");
+                sw.WriteLine(phantom1.mediaLow.ToString());
+                sw.WriteLine("DESVLOW");
+                sw.WriteLine(phantom1.desvLow.ToString());
+            }
+            sw.WriteLine("---------------------------------------------------------------------");
+            sw.WriteLine("PHANTOM2");
+            sw.WriteLine("DENSIDAD");
+            sw.WriteLine(phantom2.densidad.ToString());
+            sw.WriteLine("ZEFF");
+            sw.WriteLine(phantom2.zeff.ToString());
+            if (!this.phantomEnDicom)
+            {
+                sw.WriteLine("MEDIAHIGH");
+                sw.WriteLine(phantom2.mediaHigh.ToString());
+                sw.WriteLine("DESVHIGH");
+                sw.WriteLine(phantom2.desvHigh.ToString());
+                sw.WriteLine("MEDIALOW");
+                sw.WriteLine(phantom2.mediaLow.ToString());
+                sw.WriteLine("DESVLOW");
+                sw.WriteLine(phantom2.desvLow.ToString());
+            }
+            sw.WriteLine("---------------------------------------------------------------------");
+            sw.WriteLine("PHANTOM3");
+            sw.WriteLine("DENSIDAD");
+            sw.WriteLine(phantom3.densidad.ToString());
+            sw.WriteLine("ZEFF");
+            sw.WriteLine(phantom3.zeff.ToString());
+            if (!this.phantomEnDicom)
+            {
+                sw.WriteLine("MEDIAHIGH");
+                sw.WriteLine(phantom3.mediaHigh.ToString());
+                sw.WriteLine("DESVHIGH");
+                sw.WriteLine(phantom3.desvHigh.ToString());
+                sw.WriteLine("MEDIALOW");
+                sw.WriteLine(phantom3.mediaLow.ToString());
+                sw.WriteLine("DESVLOW");
+                sw.WriteLine(phantom3.desvLow.ToString());
+            }
             
-            // se cierra el streamwriter del archivo RSPC
+            // se cierra el streamwriter del archivo RSP
             sw.Close();
         }
 
@@ -497,36 +458,6 @@ namespace RockStatic
             File.WriteAllBytes(path + nombre + indice, tempByte);
 
             return tempByte;
-        }
-
-        /// <summary>
-        /// Toma una imagen de 8bpp (escala de grises) y la vuelve una imagen de borde circular
-        /// </summary>
-        /// <param name="source"></param>
-        public static Bitmap CropCircle8bit(Bitmap source)
-        {
-            // radio del circulo
-            int alto = source.Width;
-            double r = alto/2;
-
-            // el centro del circulo debe estar en las coordenandas (r,r)
-            // cualquier punto que se encuentre a una distancia mayor de r se vuelve cero
-
-            // se hace un lock sobre la imagen para poder tratarla
-            // se hace lock sobre la imagen para empezar a pintar
-            using (CLockBitmap lockSource = new CLockBitmap(source))
-            {
-                for(int i=0;i<alto;i++)
-                {
-                    for (int j = 0; j < alto; j++)
-                    {
-                        double distancia = Math.Sqrt(Math.Pow(i - r, 2) + Math.Pow(j - r, 2));
-                        if (distancia > r) lockSource.SetPixel(i, j, Color.White);
-                    }
-                }
-            }
-
-            return source;
-        }        
+        }             
     }
 }

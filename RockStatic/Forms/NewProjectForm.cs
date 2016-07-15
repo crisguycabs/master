@@ -40,34 +40,19 @@ namespace RockStatic
         Point lastClick;
 
         /// <summary>
-        /// Instancia temporal del phantom1 en High
+        /// Instancia temporal del phantom1
         /// </summary>
-        public CPhantom tempPhantom1High;
+        public CPhantom tempPhantom1;
 
         /// <summary>
-        /// Instancia temporal del phantom2 en High
+        /// Instancia temporal del phantom2
         /// </summary>
-        public CPhantom tempPhantom2High;
+        public CPhantom tempPhantom2;
 
         /// <summary>
-        /// Instancia temporal del phantom3 en High
+        /// Instancia temporal del phantom3
         /// </summary>
-        public CPhantom tempPhantom3High;
-
-        /// <summary>
-        /// Instancia temporal del phantom1 en Low
-        /// </summary>
-        public CPhantom tempPhantom1Low;
-
-        /// <summary>
-        /// Instancia temporal del phantom2 en Low
-        /// </summary>
-        public CPhantom tempPhantom2Low;
-
-        /// <summary>
-        /// Instancia temporal del phantom3 en Low
-        /// </summary>
-        public CPhantom tempPhantom3Low;
+        public CPhantom tempPhantom3;        
 
         #endregion
 
@@ -107,12 +92,9 @@ namespace RockStatic
             tempLow = new List<string>();
             
             // se crean los valores de los phantoms por defecto
-            tempPhantom1High = new CPhantom(1237.865,46.125,2.2, 11.8);
-            tempPhantom2High = new CPhantom(868.77,39,2.16, 8.7);
-            tempPhantom3High = new CPhantom(15.3275,36.7,1, 7.5);
-            tempPhantom1Low = new CPhantom(1434.195,50.985,2.2, 11.8);
-            tempPhantom2Low = new CPhantom(916.1,36.775,2.16, 8.7);
-            tempPhantom3Low = new CPhantom(23.8,35.9,1, 7.5);
+            tempPhantom1 = new CPhantom(1237.865, 46.125, 1434.195, 50.985, 2.2, 11.8);
+            tempPhantom2 = new CPhantom(868.77, 39, 916.1, 36.775, 2.16, 8.7);
+            tempPhantom3 = new CPhantom(15.3275, 36.7, 23.8, 35.9, 1, 7.5);          
         }
 
         /// <summary>
@@ -203,7 +185,7 @@ namespace RockStatic
                 btnCheckLow.Enabled = true;
                 CheckLargos();
 
-                // se cierra la ventana NewProyectForm
+                // se cierra la ventana de espera
                 padre.CloseWaiting();
             }
         }
@@ -281,12 +263,18 @@ namespace RockStatic
 
             if (saveFile.ShowDialog() == DialogResult.OK)
             {
+                DateTime ini = DateTime.Now;
                 // se muestra la ventana de espera
                 padre.ShowWaiting("Espere mientras RockStatic crea el nuevo proyecto...");
 
                 // se crea un nuevo proyecto que contiene toda la informacion recogida en esta ventana
                 // y se prepara para guardar en disco
                 padre.actual= new CProyecto((Path.GetFileNameWithoutExtension(saveFile.FileName)),tempHigh,tempLow,radPhantoms.Checked);
+                padre.actual.phantom1 = new CPhantom(tempPhantom1);
+                padre.actual.phantom2 = new CPhantom(tempPhantom2);
+                padre.actual.phantom3 = new CPhantom(tempPhantom3);
+                padre.actual.datacuboHigh.CrearBitmapThread();
+                padre.actual.datacuboLow.CrearBitmapThread();
 
                 // se crea la carpeta
                 DirectoryInfo di = new DirectoryInfo(Path.GetDirectoryName(saveFile.FileName));
@@ -304,8 +292,20 @@ namespace RockStatic
                 string folderLow = folderPath + "\\low";
                 Directory.CreateDirectory(folderLow);
 
+                // se hace una copia de los DICOM al folder del proyecto
+                for (int i = 0; i<tempHigh.Count;i++)
+                {
+                    File.Copy(tempHigh[i], folderHigh + "\\" + i.ToString());
+                    File.Copy(tempLow[i], folderLow + "\\" + i.ToString());
+                }
+
+                // se escribe el proyecto en disco
+                padre.actual.Salvar();
+
                 // se cierra el form de espera
                 padre.CloseWaiting();
+
+                DateTime fin = DateTime.Now;
 
                 // se cierra la ventana NewProyectForm
                 this.Close();

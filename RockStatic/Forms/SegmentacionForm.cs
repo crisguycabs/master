@@ -652,7 +652,7 @@ namespace RockStatic
                 this.padre.actual.SetPhantom3(MainForm.CorregirPictBox2Original(elementosScreen[2], pictElemento.Image.Height, pictElemento.Height));
                 
                 // se modifica la variable de control de la segmentacion 
-                this.padre.actual.SetSegmentacionDone(true);
+                this.padre.actual.segmentacionDone = true;
                 this.padre.proyectoForm.SetForm();
                 
                 // se guarda en disco

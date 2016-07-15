@@ -80,26 +80,26 @@ namespace RockStatic
         {
             // se carga la información a mostrar en pantalla desde NewProjectForm
 
-            numDensP1.Value = (decimal)newProjectForm.tempPhantom1High.densidad;
-            numDensP2.Value = (decimal)newProjectForm.tempPhantom2High.densidad;
-            numDensP3.Value = (decimal)newProjectForm.tempPhantom3High.densidad;
+            numDensP1.Value = (decimal)newProjectForm.tempPhantom1.densidad;
+            numDensP2.Value = (decimal)newProjectForm.tempPhantom2.densidad;
+            numDensP3.Value = (decimal)newProjectForm.tempPhantom3.densidad;
 
-            numZeffP1.Value = (decimal)newProjectForm.tempPhantom1High.zeff;
-            numZeffP2.Value = (decimal)newProjectForm.tempPhantom2High.zeff;
-            numZeffP3.Value = (decimal)newProjectForm.tempPhantom3High.zeff;
+            numZeffP1.Value = (decimal)newProjectForm.tempPhantom1.zeff;
+            numZeffP2.Value = (decimal)newProjectForm.tempPhantom2.zeff;
+            numZeffP3.Value = (decimal)newProjectForm.tempPhantom3.zeff;
         }
 
         public void btnCerrar_Click(object sender, EventArgs e)
         {
             // se guarda la informacion modificada y se cierra el form
 
-            newProjectForm.tempPhantom1High.densidad = (double)numDensP1.Value;
-            newProjectForm.tempPhantom2High.densidad = (double)numDensP2.Value;
-            newProjectForm.tempPhantom3High.densidad = (double)numDensP3.Value;
+            newProjectForm.tempPhantom1.densidad = (double)numDensP1.Value;
+            newProjectForm.tempPhantom2.densidad = (double)numDensP2.Value;
+            newProjectForm.tempPhantom3.densidad = (double)numDensP3.Value;
 
-            newProjectForm.tempPhantom1High.zeff = (double)numZeffP1.Value;
-            newProjectForm.tempPhantom2High.zeff = (double)numZeffP2.Value;
-            newProjectForm.tempPhantom3High.zeff = (double)numZeffP3.Value;
+            newProjectForm.tempPhantom1.zeff = (double)numZeffP1.Value;
+            newProjectForm.tempPhantom2.zeff = (double)numZeffP2.Value;
+            newProjectForm.tempPhantom3.zeff = (double)numZeffP3.Value;
 
             this.Close();
         }
