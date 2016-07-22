@@ -517,6 +517,7 @@ namespace RockStatic
                 ShowWaiting("Por favor espere mientras RockStatic carga el proyecto " + openFile.SafeFileName);
                 AbrirProyecto(openFile.FileName);
                 CloseWaiting();
+                
                 return true;
             }
             else return false;
@@ -727,6 +728,12 @@ namespace RockStatic
                 actual.areaPhantom2 = new CCuadrado(areaP2);
                 actual.areaPhantom2 = new CCuadrado(areaP2);
             }
+
+            this.proyectoForm = new ProjectForm();
+            this.abiertoProyectoForm = true;
+            this.proyectoForm.padre = this;
+            this.proyectoForm.MdiParent = this;
+            this.proyectoForm.Show();
 
             return true;
         }

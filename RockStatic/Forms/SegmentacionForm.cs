@@ -102,7 +102,7 @@ namespace RockStatic
             countAreas = 0;
 
             // se cargan los elementos HIGH si existen
-            if (padre.actual.GetSegmentacionDone())
+            if (padre.actual.segmentacionDone)
             {
                 CCuadrado temp;
 

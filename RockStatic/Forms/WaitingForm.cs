@@ -35,7 +35,7 @@ namespace RockStatic
         private void WaitingForm_Paint(object sender, PaintEventArgs e)
         {
             //ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, Color.DarkGreen, 2, ButtonBorderStyle.Solid, Color.DarkGreen, 2, ButtonBorderStyle.Solid, Color.DarkGreen, 2, ButtonBorderStyle.Solid, Color.DarkGreen, 2, ButtonBorderStyle.Solid);
-            e.Graphics.DrawRectangle(new Pen(Color.Green, 2), this.DisplayRectangle);       
+            e.Graphics.DrawRectangle(new Pen(Color.Green, 4), this.DisplayRectangle);       
         }
     }
 }
