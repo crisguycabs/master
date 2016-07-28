@@ -35,14 +35,14 @@
             this.pictP3 = new System.Windows.Forms.PictureBox();
             this.pictP2 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.grpPhantoms = new System.Windows.Forms.GroupBox();
             this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictCore)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictP1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictP3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictP2)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.grpPhantoms.SuspendLayout();
             this.SuspendLayout();
             // 
             // label4
@@ -111,17 +111,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Core";
             // 
-            // groupBox2
+            // grpPhantoms
             // 
-            this.groupBox2.Controls.Add(this.pictP1);
-            this.groupBox2.Controls.Add(this.pictP2);
-            this.groupBox2.Controls.Add(this.pictP3);
-            this.groupBox2.Location = new System.Drawing.Point(273, 34);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(92, 273);
-            this.groupBox2.TabIndex = 10;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Phantoms";
+            this.grpPhantoms.Controls.Add(this.pictP1);
+            this.grpPhantoms.Controls.Add(this.pictP2);
+            this.grpPhantoms.Controls.Add(this.pictP3);
+            this.grpPhantoms.Location = new System.Drawing.Point(273, 34);
+            this.grpPhantoms.Name = "grpPhantoms";
+            this.grpPhantoms.Size = new System.Drawing.Size(92, 273);
+            this.grpPhantoms.TabIndex = 10;
+            this.grpPhantoms.TabStop = false;
+            this.grpPhantoms.Text = "Phantoms";
             // 
             // btnClose
             // 
@@ -146,7 +146,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(374, 345);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.grpPhantoms);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label4);
             this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -164,7 +164,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictP3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictP2)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
+            this.grpPhantoms.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -177,7 +177,7 @@
         private System.Windows.Forms.PictureBox pictP3;
         private System.Windows.Forms.PictureBox pictP2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnClose;
+        public System.Windows.Forms.GroupBox grpPhantoms;
     }
 }

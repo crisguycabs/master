@@ -735,6 +735,10 @@ namespace RockStatic
             this.proyectoForm.MdiParent = this;
             this.proyectoForm.Show();
 
+            // se crean las imagenes de los cortes transversales
+            actual.datacuboHigh.CrearBitmapThread();
+            actual.datacuboLow.CrearBitmapThread();
+
             return true;
         }
 

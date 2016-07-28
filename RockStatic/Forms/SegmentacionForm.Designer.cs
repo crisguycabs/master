@@ -68,6 +68,12 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cancelarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.trackContraste = new System.Windows.Forms.TrackBar();
+            this.trackBrillo = new System.Windows.Forms.TrackBar();
+            this.btnReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackElementos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictElemento)).BeginInit();
             this.grpAuto.SuspendLayout();
@@ -81,14 +87,18 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictSmall)).BeginInit();
             this.menuSegmentacion.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackContraste)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBrillo)).BeginInit();
             this.SuspendLayout();
             // 
             // trackElementos
             // 
-            this.trackElementos.Location = new System.Drawing.Point(2, 603);
+            this.trackElementos.Location = new System.Drawing.Point(4, 617);
             this.trackElementos.Name = "trackElementos";
-            this.trackElementos.Size = new System.Drawing.Size(550, 45);
+            this.trackElementos.Size = new System.Drawing.Size(526, 45);
             this.trackElementos.TabIndex = 1;
+            this.trackElementos.Scroll += new System.EventHandler(this.trackElementos_Scroll);
             this.trackElementos.ValueChanged += new System.EventHandler(this.trackElementos_ValueChanged);
             // 
             // lblTitulo
@@ -99,7 +109,7 @@
             this.lblTitulo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(760, 30);
+            this.lblTitulo.Size = new System.Drawing.Size(741, 30);
             this.lblTitulo.TabIndex = 7;
             this.lblTitulo.Text = "BIENVENIDO!";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -112,7 +122,7 @@
             // 
             this.pictElemento.Location = new System.Drawing.Point(10, 42);
             this.pictElemento.Name = "pictElemento";
-            this.pictElemento.Size = new System.Drawing.Size(534, 555);
+            this.pictElemento.Size = new System.Drawing.Size(512, 512);
             this.pictElemento.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictElemento.TabIndex = 0;
             this.pictElemento.TabStop = false;
@@ -146,7 +156,7 @@
             this.grpAuto.Controls.Add(this.track2);
             this.grpAuto.Controls.Add(this.track1);
             this.grpAuto.Enabled = false;
-            this.grpAuto.Location = new System.Drawing.Point(553, 199);
+            this.grpAuto.Location = new System.Drawing.Point(533, 224);
             this.grpAuto.Name = "grpAuto";
             this.grpAuto.Size = new System.Drawing.Size(199, 93);
             this.grpAuto.TabIndex = 8;
@@ -221,7 +231,7 @@
             this.radAuto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radAuto.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radAuto.ForeColor = System.Drawing.Color.Green;
-            this.radAuto.Location = new System.Drawing.Point(561, 173);
+            this.radAuto.Location = new System.Drawing.Point(541, 198);
             this.radAuto.Name = "radAuto";
             this.radAuto.Size = new System.Drawing.Size(85, 26);
             this.radAuto.TabIndex = 13;
@@ -240,7 +250,7 @@
             this.radManual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radManual.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radManual.ForeColor = System.Drawing.Color.White;
-            this.radManual.Location = new System.Drawing.Point(658, 172);
+            this.radManual.Location = new System.Drawing.Point(638, 197);
             this.radManual.Name = "radManual";
             this.radManual.Size = new System.Drawing.Size(86, 26);
             this.radManual.TabIndex = 13;
@@ -262,7 +272,7 @@
             this.grpBox.Controls.Add(this.btnDown);
             this.grpBox.Controls.Add(this.btnUp);
             this.grpBox.Controls.Add(this.lstElementos);
-            this.grpBox.Location = new System.Drawing.Point(553, 389);
+            this.grpBox.Location = new System.Drawing.Point(533, 414);
             this.grpBox.Name = "grpBox";
             this.grpBox.Size = new System.Drawing.Size(199, 194);
             this.grpBox.TabIndex = 14;
@@ -414,7 +424,7 @@
             this.grpManual.Controls.Add(this.lblPunto2);
             this.grpManual.Controls.Add(this.label2);
             this.grpManual.Controls.Add(this.lblPunto1);
-            this.grpManual.Location = new System.Drawing.Point(553, 293);
+            this.grpManual.Location = new System.Drawing.Point(533, 318);
             this.grpManual.Name = "grpManual";
             this.grpManual.Size = new System.Drawing.Size(199, 95);
             this.grpManual.TabIndex = 15;
@@ -469,7 +479,7 @@
             // 
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.btnCancelar);
-            this.groupBox1.Location = new System.Drawing.Point(553, 584);
+            this.groupBox1.Location = new System.Drawing.Point(533, 609);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(199, 50);
             this.groupBox1.TabIndex = 16;
@@ -482,7 +492,7 @@
             this.btnSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Location = new System.Drawing.Point(114, 16);
+            this.btnSave.Location = new System.Drawing.Point(115, 16);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 25);
             this.btnSave.TabIndex = 3;
@@ -495,9 +505,9 @@
             // pictSmall
             // 
             this.pictSmall.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictSmall.Location = new System.Drawing.Point(590, 42);
+            this.pictSmall.Location = new System.Drawing.Point(556, 42);
             this.pictSmall.Name = "pictSmall";
-            this.pictSmall.Size = new System.Drawing.Size(124, 124);
+            this.pictSmall.Size = new System.Drawing.Size(129, 129);
             this.pictSmall.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictSmall.TabIndex = 17;
             this.pictSmall.TabStop = false;
@@ -511,7 +521,7 @@
             this.menuSegmentacion.Location = new System.Drawing.Point(0, 0);
             this.menuSegmentacion.MdiWindowListItem = this.segmentacionToolStripMenuItem;
             this.menuSegmentacion.Name = "menuSegmentacion";
-            this.menuSegmentacion.Size = new System.Drawing.Size(760, 24);
+            this.menuSegmentacion.Size = new System.Drawing.Size(1024, 24);
             this.menuSegmentacion.TabIndex = 18;
             this.menuSegmentacion.Text = "menuStrip1";
             this.menuSegmentacion.Visible = false;
@@ -577,13 +587,82 @@
             this.cancelarToolStripMenuItem.Text = "&Cancelar";
             this.cancelarToolStripMenuItem.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnReset);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.trackContraste);
+            this.groupBox2.Controls.Add(this.trackBrillo);
+            this.groupBox2.Location = new System.Drawing.Point(10, 552);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(512, 63);
+            this.groupBox2.TabIndex = 19;
+            this.groupBox2.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(277, 44);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 14);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Contraste";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(86, 43);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(37, 14);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Brillo";
+            // 
+            // trackContraste
+            // 
+            this.trackContraste.LargeChange = 50;
+            this.trackContraste.Location = new System.Drawing.Point(218, 12);
+            this.trackContraste.Maximum = 100;
+            this.trackContraste.Minimum = -100;
+            this.trackContraste.Name = "trackContraste";
+            this.trackContraste.Size = new System.Drawing.Size(176, 45);
+            this.trackContraste.SmallChange = 10;
+            this.trackContraste.TabIndex = 8;
+            this.trackContraste.TickFrequency = 20;
+            this.trackContraste.Scroll += new System.EventHandler(this.trackContraste_Scroll);
+            // 
+            // trackBrillo
+            // 
+            this.trackBrillo.LargeChange = 50;
+            this.trackBrillo.Location = new System.Drawing.Point(16, 12);
+            this.trackBrillo.Maximum = 255;
+            this.trackBrillo.Minimum = -255;
+            this.trackBrillo.Name = "trackBrillo";
+            this.trackBrillo.Size = new System.Drawing.Size(176, 45);
+            this.trackBrillo.SmallChange = 10;
+            this.trackBrillo.TabIndex = 7;
+            this.trackBrillo.TickFrequency = 32;
+            this.trackBrillo.Scroll += new System.EventHandler(this.trackBrillo_Scroll);
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(420, 23);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.TabIndex = 11;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // SegmentacionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(760, 650);
+            this.ClientSize = new System.Drawing.Size(741, 666);
             this.ControlBox = false;
+            this.Controls.Add(this.pictElemento);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.pictSmall);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grpManual);
@@ -592,7 +671,6 @@
             this.Controls.Add(this.radAuto);
             this.Controls.Add(this.grpAuto);
             this.Controls.Add(this.trackElementos);
-            this.Controls.Add(this.pictElemento);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.menuSegmentacion);
             this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -622,6 +700,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictSmall)).EndInit();
             this.menuSegmentacion.ResumeLayout(false);
             this.menuSegmentacion.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackContraste)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBrillo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -668,5 +750,11 @@
         private System.Windows.Forms.ToolStripMenuItem cancelarToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem previsualizarToolStripMenuItem1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TrackBar trackContraste;
+        private System.Windows.Forms.TrackBar trackBrillo;
+        private System.Windows.Forms.Button btnReset;
     }
 }

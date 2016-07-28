@@ -162,8 +162,9 @@ namespace RockStatic
         {
             pictElemento.Image = null;
             pictElemento.Image = padre.actual.datacuboHigh.dataCube[trackElementos.Value - 1].bmp;
-            controlPaint = true;
-            pictElemento.Invalidate();     
+            Filtrar();
+            controlPaint = true;            
+            pictElemento.Invalidate();      
         }
 
         /// <summary>
@@ -617,59 +618,105 @@ namespace RockStatic
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // se verifica que existan los 4 elementos en el listBox lstElementos
-            if (lstElementos.Items.Count == 4)
+            // si los dicom contienen informacion de los phantom entonces se deben buscar 4 elementos en la segmentacion: 1 core + 3 phantoms
+            // si los dicom no contienen información de los phantom entonces se debe buscar 1 elemento en la segmentacion: 1 core
+            
+            if(padre.actual.phantomEnDicom)
             {
-                // existen 4 elementos, se puede proceder a guardarlos, segun se hayan cargado los elementos HIGH o LOW
+                // los dicom contienen información de los phantom
 
-                // se ordenan segun el tamano del lado de cuadrado, de mas grande a mas pequeno, y se toma el Core como el elemento mas grande
-                elementosScreen.Sort(delegate(CCuadrado x, CCuadrado y)
+                // se verifica que existan los 4 elementos en el listBox lstElementos
+                if (lstElementos.Items.Count == 4)
                 {
-                    return y.width.CompareTo(x.width);
-                });
+                    // existen 4 elementos, se puede proceder a guardarlos, segun se hayan cargado los elementos HIGH o LOW
 
-                this.padre.actual.SetCore(MainForm.CorregirPictBox2Original(elementosScreen[0], pictElemento.Image.Height, pictElemento.Height));
-                
-                // se borra el core de los elementos en pantalla
-                elementosScreen.RemoveAt(0);
+                    // se ordenan segun el tamano del lado de cuadrado, de mas grande a mas pequeno, y se toma el Core como el elemento mas grande
+                    elementosScreen.Sort(delegate(CCuadrado x, CCuadrado y)
+                    {
+                        return y.width.CompareTo(x.width);
+                    });
 
-                // se ordenan segun la coordenada X, de izquierda a derecha. Los phantom P1 P2 y P3 se ordenan de izquierda a derecha
-                elementosScreen.Sort(delegate(CCuadrado x, CCuadrado y)
+                    this.padre.actual.SetCore(MainForm.CorregirPictBox2Original(elementosScreen[0], pictElemento.Image.Height, pictElemento.Height));
+
+                    // se borra el core de los elementos en pantalla
+                    elementosScreen.RemoveAt(0);
+
+                    // se ordenan segun la coordenada X, de izquierda a derecha. Los phantom P1 P2 y P3 se ordenan de izquierda a derecha
+                    elementosScreen.Sort(delegate(CCuadrado x, CCuadrado y)
+                    {
+                        return x.x.CompareTo(y.x);
+                    });
+
+                    this.padre.actual.SetPhantom1(MainForm.CorregirPictBox2Original(elementosScreen[0], pictElemento.Image.Height, pictElemento.Height));
+                    this.padre.actual.SetPhantom2(MainForm.CorregirPictBox2Original(elementosScreen[1], pictElemento.Image.Height, pictElemento.Height));
+                    this.padre.actual.SetPhantom3(MainForm.CorregirPictBox2Original(elementosScreen[2], pictElemento.Image.Height, pictElemento.Height));
+
+                    // se modifica la variable de control de la segmentacion 
+                    this.padre.actual.segmentacionDone = true;
+                    this.padre.proyectoForm.SetForm();
+
+                    // se guarda en disco
+                    this.padre.actual.Salvar();
+
+                    // se recortan los core y phantom para cada elemento HIGH y LOW
+                    this.padre.ShowWaiting("Por favor espere mientras RockStatic realiza la segmentacion de los elementos");
+                    this.padre.actual.datacuboHigh.GenerarCortesHorizontales();
+                    this.padre.actual.datacuboHigh.GenerarCortesVerticales();
+                    this.padre.actual.datacuboLow.GenerarCortesHorizontales();
+                    this.padre.actual.datacuboLow.GenerarCortesVerticales();
+                    this.padre.CloseWaiting();
+
+                    this.Close();
+                }
+                else if (lstElementos.Items.Count < 4)
                 {
-                    return x.x.CompareTo(y.x);
-                });
-                
-                this.padre.actual.SetPhantom1(MainForm.CorregirPictBox2Original(elementosScreen[0], pictElemento.Image.Height, pictElemento.Height));
-                this.padre.actual.SetPhantom2(MainForm.CorregirPictBox2Original(elementosScreen[1], pictElemento.Image.Height, pictElemento.Height));
-                this.padre.actual.SetPhantom3(MainForm.CorregirPictBox2Original(elementosScreen[2], pictElemento.Image.Height, pictElemento.Height));
-                
-                // se modifica la variable de control de la segmentacion 
-                this.padre.actual.segmentacionDone = true;
-                this.padre.proyectoForm.SetForm();
-                
-                // se guarda en disco
-                this.padre.actual.Salvar();
+                    // existen menos de 4 elementos, no se pueden guardar y se le avisa al usuario
+                    MessageBox.Show("No se han marcado todas las areas necesarias.\n\nNo se puede proceder a guardar.", "Error al guardar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (lstElementos.Items.Count > 4)
+                {
+                    // existen mas de 4 elementos, no se pueden guardar y se le avisa al usuario
+                    MessageBox.Show("Se han marcado mas de 4 areas. Por favor, vuelva a la pantalla y elimine las areas sobrantes", "Error al guardar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            { 
+                // los dicom no contienen información de los phantom
 
-                // se recortan los core y phantom para cada elemento HIGH y LOW
-                this.padre.ShowWaiting("Por favor espere mientras RockStatic realiza la segmentacion de los elementos");
-                this.padre.actual.datacuboHigh.GenerarCortesHorizontales();
-                this.padre.actual.datacuboHigh.GenerarCortesVerticales();
-                this.padre.actual.datacuboLow.GenerarCortesHorizontales();
-                this.padre.actual.datacuboLow.GenerarCortesVerticales();
-                this.padre.CloseWaiting();
+                // se verifica que exista un único elemento en el listBox lstElementos
+                if (lstElementos.Items.Count == 1)
+                {
+                    // existe 1 elemento, se puede proceder a guardarlo, segun se hayan cargado los elementos HIGH o LOW
 
-                this.Close();
-            }
-            else if (lstElementos.Items.Count < 4)
-            {
-                // existen menos de 4 elementos, no se pueden guardar y se le avisa al usuario
-                MessageBox.Show("No se han marcado todas las areas necesarias.\n\nNo se puede proceder a guardar.", "Error al guardar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if (lstElementos.Items.Count > 4)
-            {
-                // existen mas de 4 elementos, no se pueden guardar y se le avisa al usuario
-                MessageBox.Show("Se han marcado mas de 4 areas. Por favor, vuelva a la pantalla y elimine las areas sobrantes", "Error al guardar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                    this.padre.actual.SetCore(MainForm.CorregirPictBox2Original(elementosScreen[0], pictElemento.Image.Height, pictElemento.Height));
+
+                    // se borra el core de los elementos en pantalla
+                    elementosScreen.RemoveAt(0);
+
+                    // se modifica la variable de control de la segmentacion 
+                    this.padre.actual.segmentacionDone = true;
+                    this.padre.proyectoForm.SetForm();
+
+                    // se guarda en disco
+                    this.padre.actual.Salvar();
+
+                    // se recortan los core y phantom para cada elemento HIGH y LOW
+                    this.padre.ShowWaiting("Por favor espere mientras RockStatic realiza la segmentacion de los elementos");
+                    this.padre.actual.datacuboHigh.GenerarCortesHorizontales();
+                    this.padre.actual.datacuboHigh.GenerarCortesVerticales();
+                    this.padre.actual.datacuboLow.GenerarCortesHorizontales();
+                    this.padre.actual.datacuboLow.GenerarCortesVerticales();
+                    this.padre.CloseWaiting();
+
+                    this.Close();
+                }
+                else
+                {
+                    // existe mas de 1 elemento, no se puede guardar y se le avisa al usuario
+                    MessageBox.Show("Se ha marcado mas de 1 area. Por favor, vuelva a la pantalla y elimine las areas sobrantes", "Error al guardar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }            
         }
 
         private void pictElemento_MouseMove(object sender, MouseEventArgs e)
@@ -729,62 +776,115 @@ namespace RockStatic
 
         private void btnPreview_Click(object sender, EventArgs e)
         {
-            if (elementosScreen.Count < 4)
-            {
-                MessageBox.Show("No se han seleccionado todos los elementos del slide.\n\nNo se puede proceder a previsualizar.","Error al previsualizar!",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                return;
-            }
-            else if (elementosScreen.Count > 4)
-            {
-                MessageBox.Show("Se han seleccionado demasiados elementos en el slide.\n\nNo se puede proceder a previsualizar.", "Error al previsualizar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            // si los dicom contienen informacion de phantoms entonces se busca que hallan 4 elementos
+            // si los dicom no contienen informacion de phantoms entonces se busca solo 1 elemento
 
-            this.padre.previewSegForm = new PreviewSegForm();
-            this.padre.abiertoPreviewSegForm = true;
-            this.padre.previewSegForm.padre = this.padre;
-
-            // se cortan las imagenes y se envian a PreviewSegForm
-
-            // se prepara un List de Bitmap
-            List<Bitmap> cortes = new List<Bitmap>();
-            
-            // primero se hace una copia del List elementosScreen con las coordenadas corregidas
-            List<CCuadrado> tempElementos = new List<CCuadrado>();
-            for (int i = 0; i < elementosScreen.Count; i++)
+            if (padre.actual.phantomEnDicom)
             {
-                CCuadrado temp = new CCuadrado(elementosScreen[i]);
-                tempElementos.Add(MainForm.CorregirPictBox2Original(temp, pictElemento.Image.Height, pictElemento.Height));
+                // los dicom contienen informacion de phantom
+
+                if (elementosScreen.Count < 4)
+                {
+                    MessageBox.Show("No se han seleccionado todos los elementos del slide.\n\nNo se puede proceder a previsualizar.", "Error al previsualizar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else if (elementosScreen.Count > 4)
+                {
+                    MessageBox.Show("Se han seleccionado demasiados elementos en el slide.\n\nNo se puede proceder a previsualizar.", "Error al previsualizar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                this.padre.previewSegForm = new PreviewSegForm();
+                this.padre.abiertoPreviewSegForm = true;
+                this.padre.previewSegForm.padre = this.padre;
+
+                // se cortan las imagenes y se envian a PreviewSegForm
+
+                // se prepara un List de Bitmap
+                List<Bitmap> cortes = new List<Bitmap>();
+
+                // primero se hace una copia del List elementosScreen con las coordenadas corregidas
+                List<CCuadrado> tempElementos = new List<CCuadrado>();
+                for (int i = 0; i < elementosScreen.Count; i++)
+                {
+                    CCuadrado temp = new CCuadrado(elementosScreen[i]);
+                    tempElementos.Add(MainForm.CorregirPictBox2Original(temp, pictElemento.Image.Height, pictElemento.Height));
+                }
+
+                // se ordena el tempElementos de radio mas grande a mas pequeño para sacar el CORE
+                // se ordenan segun el tamano del lado de cuadrado, de mas grande a mas pequeno, y se toma el Core como el elemento mas grande
+                tempElementos.Sort(delegate(CCuadrado x, CCuadrado y)
+                {
+                    return y.width.CompareTo(x.width);
+                });
+
+                Bitmap aEnviar = new Bitmap(pictElemento.Image);
+                cortes.Add(MainForm.CropCirle(aEnviar, tempElementos[0]));
+                padre.previewSegForm.core = cortes[0];
+                tempElementos.RemoveAt(0);
+
+                // se ordenan de izquierda a derecha
+                // se ordenan segun la coordenada X, de izquierda a derecha. Los phantom P1 P2 y P3 se ordenan de izquierda a derecha
+                tempElementos.Sort(delegate(CCuadrado x, CCuadrado y)
+                {
+                    return x.x.CompareTo(y.x);
+                });
+                for (int i = 0; i < tempElementos.Count; i++)
+                {
+                    cortes.Add(MainForm.CropCirle(aEnviar, tempElementos[i]));
+                }
+                padre.previewSegForm.p1 = cortes[1];
+                padre.previewSegForm.p2 = cortes[2];
+                padre.previewSegForm.p3 = cortes[3];
+
+                // se invoca como un cuadro de dialogo modal, no MDIchild
+                this.padre.previewSegForm.ShowDialog();
             }
-            
-            // se ordena el tempElementos de radio mas grande a mas pequeño para sacar el CORE
-            // se ordenan segun el tamano del lado de cuadrado, de mas grande a mas pequeno, y se toma el Core como el elemento mas grande
-            tempElementos.Sort(delegate(CCuadrado x, CCuadrado y)
+            else
             {
-                return y.width.CompareTo(x.width);
-            });
+                // los dicom no contienen informacion de dicom
 
-            Bitmap aEnviar = new Bitmap(pictElemento.Image);
-            cortes.Add(MainForm.CropCirle(aEnviar, tempElementos[0]));
-            padre.previewSegForm.core = cortes[0];
-            tempElementos.RemoveAt(0);
-            
-            // se ordenan de izquierda a derecha
-            // se ordenan segun la coordenada X, de izquierda a derecha. Los phantom P1 P2 y P3 se ordenan de izquierda a derecha
-            tempElementos.Sort(delegate(CCuadrado x, CCuadrado y)
-            {
-                return x.x.CompareTo(y.x);
-            });
-            for (int i = 0; i < tempElementos.Count;i++)
-            {
-                cortes.Add(MainForm.CropCirle(aEnviar, tempElementos[i]));
-            }
-            padre.previewSegForm.p1 = cortes[1];
-            padre.previewSegForm.p2 = cortes[2];
-            padre.previewSegForm.p3 = cortes[3];  
-            
-            // se invoca como un cuadro de dialogo modal, no MDIchild
-            this.padre.previewSegForm.ShowDialog();
+                if (elementosScreen.Count < 1)
+                {
+                    MessageBox.Show("No se han seleccionado un elemento core.\n\nNo se puede proceder a previsualizar.", "Error al previsualizar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else if (elementosScreen.Count > 1)
+                {
+                    MessageBox.Show("Se han seleccionado demasiados elementos en el slide.\n\nNo se puede proceder a previsualizar.", "Error al previsualizar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                this.padre.previewSegForm = new PreviewSegForm();
+                this.padre.abiertoPreviewSegForm = true;
+                this.padre.previewSegForm.padre = this.padre;
+
+                // se cortan las imagenes y se envian a PreviewSegForm
+
+                // se prepara un List de Bitmap
+                List<Bitmap> cortes = new List<Bitmap>();
+
+                // primero se hace una copia del List elementosScreen con las coordenadas corregidas
+                List<CCuadrado> tempElementos = new List<CCuadrado>();
+                for (int i = 0; i < elementosScreen.Count; i++)
+                {
+                    CCuadrado temp = new CCuadrado(elementosScreen[i]);
+                    tempElementos.Add(MainForm.CorregirPictBox2Original(temp, pictElemento.Image.Height, pictElemento.Height));
+                }
+
+                Bitmap aEnviar = new Bitmap(pictElemento.Image);
+                cortes.Add(MainForm.CropCirle(aEnviar, tempElementos[0]));
+                padre.previewSegForm.core = cortes[0];
+                tempElementos.RemoveAt(0);
+
+                padre.previewSegForm.p1 = null;
+                padre.previewSegForm.p2 = null;
+                padre.previewSegForm.p3 = null;
+
+                // se invoca como un cuadro de dialogo modal, no MDIchild
+                this.padre.previewSegForm.grpPhantoms.Visible = false;
+                this.padre.previewSegForm.ShowDialog();
+            }            
         }
 
         /// <summary>
@@ -1019,6 +1119,53 @@ namespace RockStatic
         private void segmentacionManualToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.radManual.Checked = true;
-        }     
+        }
+
+        private void trackElementos_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBrillo_Scroll(object sender, EventArgs e)
+        {
+            Filtrar();
+            controlPaint = true;
+            pictElemento.Invalidate();     
+        }
+
+        private void trackContraste_Scroll(object sender, EventArgs e)
+        {
+            Filtrar();
+            controlPaint = true;
+            pictElemento.Invalidate();     
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            trackBrillo.Value = 0;
+            trackContraste.Value = 0;
+
+            Filtrar();
+            controlPaint = true;
+            pictElemento.Invalidate();     
+        }
+
+        /// <summary>
+        /// Modifica el brillo y contraste de la imagen que aparece en pantalla
+        /// </summary>
+        private void Filtrar()
+        {
+            Bitmap temp = new Bitmap(padre.actual.datacuboHigh.dataCube[trackElementos.Value - 1].bmp);
+
+            AForge.Imaging.Filters.BrightnessCorrection brillo = new AForge.Imaging.Filters.BrightnessCorrection(Convert.ToInt32(trackBrillo.Value));
+            AForge.Imaging.Filters.ContrastCorrection contraste = new AForge.Imaging.Filters.ContrastCorrection(Convert.ToInt32(trackContraste.Value));
+
+            contraste.ApplyInPlace(temp);
+            brillo.ApplyInPlace(temp);
+
+            pictElemento.Image = temp;
+
+            //pictElemento.Invalidate();
+        }
     }
 }

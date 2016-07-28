@@ -273,6 +273,8 @@ namespace RockStatic
                 padre.actual.phantom1 = new CPhantom(tempPhantom1);
                 padre.actual.phantom2 = new CPhantom(tempPhantom2);
                 padre.actual.phantom3 = new CPhantom(tempPhantom3);
+
+                // se crean las imagenes de los cortes transversales
                 padre.actual.datacuboHigh.CrearBitmapThread();
                 padre.actual.datacuboLow.CrearBitmapThread();
 
