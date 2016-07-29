@@ -109,14 +109,17 @@ namespace RockStatic
                 temp = new CCuadrado(padre.actual.GetCore());
                 elementosScreen.Add(MainForm.CorregirOriginal2PictBox(temp, pictElemento.Image.Height, pictElemento.Height));
 
-                temp = new CCuadrado(padre.actual.GetPhantom1());
-                elementosScreen.Add(MainForm.CorregirOriginal2PictBox(temp, pictElemento.Image.Height, pictElemento.Height));
+                if (padre.actual.phantomEnDicom)
+                {
+                    temp = new CCuadrado(padre.actual.GetPhantom1());
+                    elementosScreen.Add(MainForm.CorregirOriginal2PictBox(temp, pictElemento.Image.Height, pictElemento.Height));
 
-                temp = new CCuadrado(padre.actual.GetPhantom2());
-                elementosScreen.Add(MainForm.CorregirOriginal2PictBox(temp, pictElemento.Image.Height, pictElemento.Height));
+                    temp = new CCuadrado(padre.actual.GetPhantom2());
+                    elementosScreen.Add(MainForm.CorregirOriginal2PictBox(temp, pictElemento.Image.Height, pictElemento.Height));
 
-                temp = new CCuadrado(padre.actual.GetPhantom3());
-                elementosScreen.Add(MainForm.CorregirOriginal2PictBox(temp, pictElemento.Image.Height, pictElemento.Height));
+                    temp = new CCuadrado(padre.actual.GetPhantom3());
+                    elementosScreen.Add(MainForm.CorregirOriginal2PictBox(temp, pictElemento.Image.Height, pictElemento.Height));
+                }
 
                 LlenarList();
                 controlPaint = true;
@@ -702,11 +705,15 @@ namespace RockStatic
 
                     // se recortan los core y phantom para cada elemento HIGH y LOW
                     this.padre.ShowWaiting("Por favor espere mientras RockStatic realiza la segmentacion de los elementos");
+                    DateTime ini = DateTime.Now;
                     this.padre.actual.datacuboHigh.GenerarCortesHorizontales();
                     this.padre.actual.datacuboHigh.GenerarCortesVerticales();
                     this.padre.actual.datacuboLow.GenerarCortesHorizontales();
                     this.padre.actual.datacuboLow.GenerarCortesVerticales();
+                    DateTime fin = DateTime.Now;
                     this.padre.CloseWaiting();
+
+                    MessageBox.Show((fin - ini).Seconds + "s:" + (fin - ini).Milliseconds + "ms");
 
                     this.Close();
                 }

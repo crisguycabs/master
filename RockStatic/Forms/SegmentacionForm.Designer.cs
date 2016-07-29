@@ -505,9 +505,9 @@
             // pictSmall
             // 
             this.pictSmall.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictSmall.Location = new System.Drawing.Point(556, 42);
+            this.pictSmall.Location = new System.Drawing.Point(568, 42);
             this.pictSmall.Name = "pictSmall";
-            this.pictSmall.Size = new System.Drawing.Size(129, 129);
+            this.pictSmall.Size = new System.Drawing.Size(128, 128);
             this.pictSmall.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictSmall.TabIndex = 17;
             this.pictSmall.TabStop = false;

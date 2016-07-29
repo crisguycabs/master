@@ -218,9 +218,9 @@ namespace RockStatic
             double relacion = (double)heigths / (double)heighto;
 
             // nuevas coordenadas
-            elemento.x = (int)(Math.Ceiling(elemento.x * relacion)) - 1;
-            elemento.y = (int)(Math.Ceiling(elemento.y * relacion)) - 1;
-            elemento.width = (int)(elemento.width * relacion) + 1;
+            elemento.x = (int)(Math.Ceiling(elemento.x * relacion));
+            elemento.y = (int)(Math.Ceiling(elemento.y * relacion));                          
+            elemento.width = (int)(elemento.width * relacion);
 
             return elemento;
         }
@@ -661,6 +661,7 @@ namespace RockStatic
                                         line = sr.ReadLine(); // width
                                         width = Convert.ToInt16(sr.ReadLine());
                                         areaCore = new CCuadrado(x, y, width);
+                                        areaCore.nombre = "Core";
                                         read++;
                                         break;
                                     case "PHANTOM1":
@@ -671,6 +672,7 @@ namespace RockStatic
                                         line = sr.ReadLine(); // width
                                         width = Convert.ToInt16(sr.ReadLine());
                                         areaP1 = new CCuadrado(x, y, width);
+                                        areaP1.nombre = "Phantom1";
                                         read++;
                                         break;
                                     case "PHANTOM2":
@@ -681,6 +683,7 @@ namespace RockStatic
                                         line = sr.ReadLine(); // width
                                         width = Convert.ToInt16(sr.ReadLine());
                                         areaP2 = new CCuadrado(x, y, width);
+                                        areaP2.nombre = "Phantom2";
                                         read++;
                                         break;
                                     case "PHANTOM3":
@@ -691,6 +694,7 @@ namespace RockStatic
                                         line = sr.ReadLine(); // width
                                         width = Convert.ToInt16(sr.ReadLine());
                                         areaP3 = new CCuadrado(x, y, width);
+                                        areaP3.nombre = "Phantom3";
                                         read++;
                                         break;
                                 }
@@ -739,6 +743,7 @@ namespace RockStatic
             actual.datacuboHigh.CrearBitmapThread();
             actual.datacuboLow.CrearBitmapThread();
 
+            sr.Close();
             return true;
         }
 

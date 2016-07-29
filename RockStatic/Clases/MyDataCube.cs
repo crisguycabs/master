@@ -282,7 +282,7 @@ namespace RockStatic
             // se calcula el factor de escalado debido al espaciado entre Slides
             double resZ = Convert.ToDouble(dataCube[0].selector.SliceThickness.Data);
             double resXY = Convert.ToDouble(dataCube[0].selector.PixelSpacing.Data_[0]);
-            int factor = Convert.ToInt32(resZ / resXY);
+            int factor = Convert.ToInt32(resZ / resXY); { }
 
             // se convierte a un List<ushort> para poder usarlo en el mapeo a Bitmap
             List<ushort> pixels16 = new List<ushort>();
