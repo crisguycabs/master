@@ -34,11 +34,6 @@ namespace RockStatic
         /// </summary>
         bool controlPaint;
 
-        List<byte[]> elementosCore;
-        List<byte[]> elementosP1;
-        List<byte[]> elementosP2;
-        List<byte[]> elementosP3;
-
         /// <summary>
         /// Array que guarda las coordenadas de los clicks necesarios para dibujar un circulo
         /// </summary>
@@ -117,54 +112,58 @@ namespace RockStatic
             changes = true;
 
             // se asegura que hayan bordes redondos
-            System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath();
-            gp.AddEllipse(0, 0, pictCore.Width, pictCore.Height);
-            Region rg = new Region(gp);
-            pictCore.Region = rg;
+            //System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath();
+            //gp.AddEllipse(0, 0, pictCore.Width, pictCore.Height);
+            //Region rg = new Region(gp);
+            //pictCore.Region = rg;
 
-            gp = new System.Drawing.Drawing2D.GraphicsPath();
-            gp.AddEllipse(0, 0, pictP1.Width, pictP1.Height);
-            rg = new Region(gp);
-            pictP1.Region = rg;
+            //gp = new System.Drawing.Drawing2D.GraphicsPath();
+            //gp.AddEllipse(0, 0, pictP1.Width, pictP1.Height);
+            //rg = new Region(gp);
+            //pictP1.Region = rg;
 
-            gp = new System.Drawing.Drawing2D.GraphicsPath();
-            gp.AddEllipse(0, 0, pictP2.Width, pictP2.Height);
-            rg = new Region(gp);
-            pictP2.Region = rg;
+            //gp = new System.Drawing.Drawing2D.GraphicsPath();
+            //gp.AddEllipse(0, 0, pictP2.Width, pictP2.Height);
+            //rg = new Region(gp);
+            //pictP2.Region = rg;
 
-            gp = new System.Drawing.Drawing2D.GraphicsPath();
-            gp.AddEllipse(0, 0, pictP3.Width, pictP3.Height);
-            rg = new Region(gp);
-            pictP3.Region = rg;
+            //gp = new System.Drawing.Drawing2D.GraphicsPath();
+            //gp.AddEllipse(0, 0, pictP3.Width, pictP3.Height);
+            //rg = new Region(gp);
+            //pictP3.Region = rg;
             
-            // se preparan la listas que almacenaran los elementos a mostrar
-            
+            // se preparan la listas que almacenaran los elementos a mostrar            
 
             // se preparan los NumericUpDown
             numActual.Minimum = numHead.Minimum = numTail.Minimum = 1;
-            numActual.Maximum = numHead.Maximum = numTail.Maximum = elementosCore.Count;
+            numActual.Maximum = numHead.Maximum = numTail.Maximum = padre.actual.datacuboHigh.dataCube.Count;
 
             // se prepara la barra
             this.trackElementos.Minimum = 1;
-            this.trackElementos.Maximum = elementosCore.Count;
-            this.trackElementos.TickFrequency = (int)(elementosCore.Count / 10);
+            this.trackElementos.Maximum = padre.actual.datacuboHigh.dataCube.Count;
+            this.trackElementos.TickFrequency = (int)(padre.actual.datacuboHigh.dataCube.Count / 10);
             this.trackElementos.Value = 1;
 
             // se prepara el RangeBar
             this.rangeBar.TotalMinimum = 1;
-            this.rangeBar.TotalMaximum = elementosCore.Count;
+            this.rangeBar.TotalMaximum = padre.actual.datacuboHigh.dataCube.Count;
             this.rangeBar.RangeMinimum = 1;
-            this.rangeBar.RangeMaximum = elementosCore.Count;
-            this.rangeBar.DivisionNum = (int)(elementosCore.Count/10);
+            this.rangeBar.RangeMaximum = padre.actual.datacuboHigh.dataCube.Count;;
+            this.rangeBar.DivisionNum = (int)(padre.actual.datacuboHigh.dataCube.Count/10);
             
-            this.pictCore.Image = MainForm.Byte2image(elementosCore[0]);
-            this.pictP1.Image = MainForm.Byte2image(elementosP1[0]);
-            this.pictP2.Image = MainForm.Byte2image(elementosP2[0]);
-            this.pictP3.Image = MainForm.Byte2image(elementosP3[0]);
+            this.pictCore.Image = padre.actual.datacuboHigh.dataCube[0].bmp;
+
+            // si existe informacion de phantoms en los DICOM
+            if (padre.actual.phantomEnDicom)
+            {
+                //this.pictP1.Image = MainForm.Byte2image(elementosP1[0]);
+                //this.pictP2.Image = MainForm.Byte2image(elementosP2[0]);
+                //this.pictP3.Image = MainForm.Byte2image(elementosP3[0]);
+            }
 
             // se prepara una lista vacia de areas para los core, cada una con elementos null
             areasCore=new List<CCuadrado>();
-            for (int i = 0; i < elementosCore.Count; i++) areasCore.Add(null);
+            for (int i = 0; i < padre.actual.datacuboHigh.dataCube.Count; i++) areasCore.Add(null);
         }
 
         private void trackElementos_ValueChanged(object sender, EventArgs e)
@@ -180,10 +179,14 @@ namespace RockStatic
                 changes = true;
             }
 
-            this.pictCore.Image = MainForm.Byte2image(elementosCore[n-1]);
-            this.pictP1.Image = MainForm.Byte2image(elementosP1[n-1]);
-            this.pictP2.Image = MainForm.Byte2image(elementosP2[n-1]);
-            this.pictP3.Image = MainForm.Byte2image(elementosP3[n-1]);
+            this.pictCore.Image = padre.actual.datacuboHigh.dataCube[n-1].bmp;
+            // si existe informacion de phantoms en los DICOM
+            if (padre.actual.phantomEnDicom)
+            {
+                //this.pictP1.Image = MainForm.Byte2image(elementosP1[n - 1]);
+                //this.pictP2.Image = MainForm.Byte2image(elementosP2[n - 1]);
+                //this.pictP3.Image = MainForm.Byte2image(elementosP3[n - 1]);
+            }
 
             pictCore.Invalidate();
         }
@@ -320,7 +323,7 @@ namespace RockStatic
             {
                 case "core":
                     // se agrega ese elemento area TODOS los elementos de ahi en adelante
-                    for (int i = trackElementos.Value - 1; i < elementosCore.Count;i++) this.areasCore[i] = punto;
+                    for (int i = trackElementos.Value - 1; i < padre.actual.datacuboHigh.dataCube.Count;i++) this.areasCore[i] = punto;
                     controlPaint = true;
                     pictCore.Invalidate();
                     padre.selecAreas2Form.GetAreasCore(areasCore, pictCore.Image.Width);
