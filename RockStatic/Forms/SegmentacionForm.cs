@@ -708,10 +708,15 @@ namespace RockStatic
                     DateTime ini = DateTime.Now;
 
                     // se generan los cortes longitudinales
+                    /*
                     this.padre.actual.datacuboHigh.GenerarCortesHorizontales();
                     this.padre.actual.datacuboHigh.GenerarCortesVerticales();
                     this.padre.actual.datacuboLow.GenerarCortesHorizontales();
                     this.padre.actual.datacuboLow.GenerarCortesVerticales();
+                     */
+
+                    this.padre.actual.datacuboHigh.SegCircThread(padre.actual.areaCore);
+                    
                     DateTime fin = DateTime.Now;
                     this.padre.CloseWaiting();
 

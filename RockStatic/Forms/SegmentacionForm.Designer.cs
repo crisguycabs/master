@@ -69,11 +69,11 @@
             this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cancelarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnReset = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.trackContraste = new System.Windows.Forms.TrackBar();
             this.trackBrillo = new System.Windows.Forms.TrackBar();
-            this.btnReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackElementos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictElemento)).BeginInit();
             this.grpAuto.SuspendLayout();
@@ -285,7 +285,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(17, 14);
             this.label1.TabIndex = 6;
-            this.label1.Text = "h:";
+            this.label1.Text = "R:";
             // 
             // btnPreview
             // 
@@ -600,6 +600,16 @@
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(420, 23);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.TabIndex = 11;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -643,16 +653,6 @@
             this.trackBrillo.TabIndex = 7;
             this.trackBrillo.TickFrequency = 32;
             this.trackBrillo.Scroll += new System.EventHandler(this.trackBrillo_Scroll);
-            // 
-            // btnReset
-            // 
-            this.btnReset.Location = new System.Drawing.Point(420, 23);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(75, 23);
-            this.btnReset.TabIndex = 11;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // SegmentacionForm
             // 

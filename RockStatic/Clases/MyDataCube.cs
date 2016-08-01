@@ -168,6 +168,36 @@ namespace RockStatic
         }
 
         /// <summary>
+        /// Genera la totalidad de las segmentaciones circulares de cores usando threads
+        /// </summary>
+        /// <param name="area"></param>
+        public void SegCircThread(CCuadrado area)
+        {
+            int nseg = dataCube.Count;
+            ManualResetEvent[] doneEvents = new ManualResetEvent[nseg];
+            AuxThread[] threads = new AuxThread[nseg];
+
+            int width = Convert.ToInt32(dataCube[0].selector.Columns.Data);
+            int height = Convert.ToInt32(dataCube[0].selector.Rows.Data);
+
+            for (int i = 0; i < nseg; i++)
+            {
+                doneEvents[i] = new ManualResetEvent(false);
+                AuxThread thread = new AuxThread(this.dataCube[i].pixelData, area.x, area.y, area.width, width, height, doneEvents[i]);
+                threads[i] = thread;
+                ThreadPool.QueueUserWorkItem(thread.ThreadSegmentar, i);
+            }
+
+            foreach (var e in doneEvents)
+                e.WaitOne();
+
+            for (int i = 0; i < nseg; i++)
+            {
+                this.dataCube[i].segCore = threads[i].Segmentacion;
+            }
+        }
+
+        /// <summary>
         /// Genera la totalidad de los bitmap del datacubo normalizando segun los límites que se le pasan
         /// </summary>
         /// <param name="minNormalizacion">Valor minimo CT de la normalizacion</param>
