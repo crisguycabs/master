@@ -743,6 +743,12 @@ namespace RockStatic
             actual.datacuboHigh.CrearBitmapThread();
             actual.datacuboLow.CrearBitmapThread();
 
+            // se crean los cortes longitudinales
+            actual.datacuboHigh.GenerarCortesHorizontales();
+            actual.datacuboHigh.GenerarCortesVerticales();
+            actual.datacuboLow.GenerarCortesHorizontales();
+            actual.datacuboLow.GenerarCortesVerticales();
+
             sr.Close();
             return true;
         }

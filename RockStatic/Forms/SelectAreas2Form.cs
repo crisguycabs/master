@@ -88,13 +88,22 @@ namespace RockStatic
         {
             //slideActual = 0;
 
-            // se cambia el tamano de los PictureBox y del RangeBar
-            Bitmap corte = padre.actual.datacuboHigh.dataCube[0].bmp;
+            int nelemento=Convert.ToInt32(padre.actual.datacuboHigh.dataCube.Count/2);
+            ushort minimo = padre.actual.datacuboHigh.GetMinimo();
+            ushort maximo = padre.actual.datacuboHigh.GetMaximo();
+            double resZ = Convert.ToDouble(padre.actual.datacuboHigh.dataCube[0].selector.SliceThickness.Data);
+            double resXY = Convert.ToDouble(padre.actual.datacuboHigh.dataCube[0].selector.PixelSpacing.Data_[0]);
+            int factor = Convert.ToInt32(resZ / resXY);
+
+            Bitmap corte = padre.actual.datacuboHigh.CreateBitmapCorte(padre.actual.datacuboHigh.cortesHorizontal[nelemento], padre.actual.datacuboHigh.dataCube.Count * factor, Convert.ToInt16(padre.actual.datacuboHigh.dataCube[0].selector.Columns.Data), minimo, maximo); ;
             int width = corte.Width;
             int height = corte.Height;
 
+            // se cambia el tamano de los PictureBox y del RangeBar
             pictCore.Width = pictPhantom1.Width = pictPhantom2.Width = pictPhantom3.Width = rangeBar.Width = width;
             if(height<pictCore.Height) pictCore.Height = height;
+
+            pictCore.Image = corte;
 
             rangeBar.TotalMaximum = padre.actual.datacuboHigh.dataCube.Count;
             rangeBar.TotalMinimum = 1;
