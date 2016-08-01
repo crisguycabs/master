@@ -95,7 +95,7 @@ namespace RockStatic
             double resXY = Convert.ToDouble(padre.actual.datacuboHigh.dataCube[0].selector.PixelSpacing.Data_[0]);
             int factor = Convert.ToInt32(resZ / resXY);
 
-            Bitmap corte = padre.actual.datacuboHigh.CreateBitmapCorte(padre.actual.datacuboHigh.cortesHorizontal[nelemento], padre.actual.datacuboHigh.dataCube.Count * factor, Convert.ToInt16(padre.actual.datacuboHigh.dataCube[0].selector.Columns.Data), minimo, maximo); ;
+            Bitmap corte = padre.actual.datacuboHigh.CreateBitmapCorte(padre.actual.datacuboHigh.coresHorizontal[nelemento], padre.actual.datacuboHigh.dataCube.Count * factor, Convert.ToInt16(padre.actual.datacuboHigh.dataCube[0].selector.Columns.Data), minimo, maximo); ;
             int width = corte.Width;
             int height = corte.Height;
 

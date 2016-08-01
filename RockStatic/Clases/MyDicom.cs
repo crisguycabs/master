@@ -39,6 +39,11 @@ namespace RockStatic
         public List<ushort> pixelData = null;
 
         /// <summary>
+        /// List que contiene los pixeles CT de la segmentacion transversal del core del DICOM
+        /// </summary>
+        public List<ushort> segCore = null;
+
+        /// <summary>
         /// Objeto DICOM cargado
         /// </summary>
         public DICOMObject dcm = null;
@@ -203,10 +208,11 @@ namespace RockStatic
                 }
             }
 
-            pixelData.Clear();
+            this.segCore = new List<ushort>();
+            segCore.Clear();
             for (int i = 0; i < pixelsCrop.Count; i++)
             {
-                pixelData.Add(pixelsCrop[i]);
+                segCore.Add(pixelsCrop[i]);
             }
 
         }
@@ -253,10 +259,11 @@ namespace RockStatic
                 }
             }
 
-            pixelData.Clear();
+            this.segCore = new List<ushort>();
+            segCore.Clear();
             for (int i = 0; i < pixelsCrop.Count; i++)
             {
-                pixelData.Add(pixelsCrop[i]);
+                segCore.Add(pixelsCrop[i]);
             }
         }
 

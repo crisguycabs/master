@@ -706,6 +706,8 @@ namespace RockStatic
                     // se recortan los core y phantom para cada elemento HIGH y LOW
                     this.padre.ShowWaiting("Por favor espere mientras RockStatic realiza la segmentacion de los elementos");
                     DateTime ini = DateTime.Now;
+
+                    // se generan los cortes longitudinales
                     this.padre.actual.datacuboHigh.GenerarCortesHorizontales();
                     this.padre.actual.datacuboHigh.GenerarCortesVerticales();
                     this.padre.actual.datacuboLow.GenerarCortesHorizontales();

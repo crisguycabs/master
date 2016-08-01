@@ -25,6 +25,16 @@ namespace RockStatic
         private Bitmap corte;
 
         /// <summary>
+        /// Segmentacion resultante
+        /// </summary>
+        private List<ushort> segmentacion;
+
+        /// <summary>
+        /// Devuelve la segmentacion resultante
+        /// </summary>
+        public List<ushort> Segmentacion { get { return segmentacion; } }
+
+        /// <summary>
         /// Ancho deseado de la imagen resultante
         /// </summary>
         int width;
@@ -43,6 +53,21 @@ namespace RockStatic
         /// Valor maximo CT de la normalizacion
         /// </summary>
         int maxNormalizacion;
+
+        /// <summary>
+        /// Centro del circulo de la segmentacion circular
+        /// </summary>
+        int xcenter;
+
+        /// <summary>
+        /// Centro del circulo de la segmentacion circular
+        /// </summary>
+        int ycenter;
+
+        /// <summary>
+        /// Radio del circulo de la segmentacion circular
+        /// </summary>
+        int rad;
 
         /// <summary>
         /// Manejador de finalizacion del thread
@@ -91,6 +116,32 @@ namespace RockStatic
 
             width = _width;
             height = _height;
+            _doneEvent = _done;
+        }
+
+        /// <summary>
+        /// Constructor con asignación para realizar la segmentacion circular, con threads, del core de un datacubo
+        /// </summary>
+        /// <param name="_pixels16">copia de los pixeles que se van a procesar</param>
+        /// <param name="_xcenter">Coordenadas cartesianas del centro X, con cero en la esquina superior izquierda</param>
+        /// <param name="_ycenter">Coordenadas cartesianas del centro Y, con cero en la esquina superior izquierda</param>
+        /// <param name="_rad">Radio del circulo a extraer</param>
+        /// <param name="_width">Ancho de la imagen original</param>
+        /// <param name="_height">Alto de la imagen original</param>
+        /// <param name="_done">Parametro para el control del ThreadPool</param>
+        public AuxThread(List<ushort> _pixels16, int _xcenter, int _ycenter, int _rad, int _width, int _height, ManualResetEvent _done)
+        {
+            pixels16 = new List<ushort>();
+            for (int i = 0; i < _pixels16.Count; i++)
+                pixels16.Add(_pixels16[i]);
+
+            width = _width;
+            height = _height;
+
+            xcenter = _xcenter;
+            ycenter = _ycenter;
+            rad = _rad;
+
             _doneEvent = _done;
         }
 
@@ -209,6 +260,57 @@ namespace RockStatic
         {
             int threadIndex = (int)threadContext;
             corte = CreateBitmap();
+            _doneEvent.Set();
+        }
+
+        /// <summary>
+        /// Se segmenta la imagen (pixelDatata) que se pasa en el constructor de acuerdo con la informacion de centro y radio que se pasa en el constructor
+        /// </summary>
+        /// <returns></returns>
+        public List<ushort> SegmentarCircular()
+        {
+            List<ushort> pixelsCrop = new List<ushort>();
+            int k = 0;
+            double dist;
+
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    if ((i >= (xcenter - rad)) && (i < (xcenter + rad)) && (j >= (ycenter - rad)) && (j < (ycenter + rad)))
+                    {
+                        // si esta dentro del area cuadrada
+                        int dx = i - xcenter;
+                        int dy = j - ycenter;
+                        dist = Math.Sqrt(dx * dx + dy * dy);
+
+                        if (dist <= rad)
+                        {
+                            // si esta dentro del circulo
+                            pixelsCrop.Add(pixels16[k]);
+                        }
+                        else
+                        {
+                            // si esta dentro del area cuadrado pero fuera del circulo
+                            pixelsCrop.Add(0);
+                        }
+
+                    }
+                    k++;
+                }
+            }
+
+            return pixelsCrop;
+        }
+
+        /// <summary>
+        /// Wrapper method for use with thread pool.
+        /// </summary>
+        /// <param name="threadContext"></param> 
+        public void ThreadSegmentar(Object threadContext)
+        {
+            int threadIndex = (int)threadContext;
+            segmentacion = SegmentarCircular();
             _doneEvent.Set();
         }
     }

@@ -36,14 +36,14 @@ namespace RockStatic
         public ushort[] bins = null;
 
         /// <summary>
-        /// List que contiene los List de ushort que contienen los pixeles CT para cada corte horizontal
+        /// List que contiene los List de ushort que contienen los pixeles CT para cada corte horizontal del core
         /// </summary>
-        public List<ushort>[] cortesHorizontal = null;
+        public List<ushort>[] coresHorizontal = null;
 
         /// <summary>
-        /// List que contiene los List de ushort que contienen los pixeles CT para cada corte vertical
+        /// List que contiene los List de ushort que contienen los pixeles CT para cada corte vertical del core
         /// </summary>
-        public List<ushort>[] cortesVertical = null;
+        public List<ushort>[] coresVertical = null;
 
         /// <summary>
         /// Constructor por defecto
@@ -53,7 +53,9 @@ namespace RockStatic
             dataCube = null;
             histograma = null;
             bins = null;
-            cortesHorizontal = null;
+            coresHorizontal = null;
+            coresVertical = null;
+            
         }
 
         /// <summary>
@@ -71,8 +73,9 @@ namespace RockStatic
 
             histograma = new uint[100];
             bins = new ushort[100];
-            cortesHorizontal = new List<ushort>[Convert.ToInt16(dataCube[0].selector.Rows.Data)];
-            cortesVertical = new List<ushort>[Convert.ToInt16(dataCube[0].selector.Columns.Data)];
+            coresHorizontal = new List<ushort>[Convert.ToInt16(dataCube[0].selector.Rows.Data)];
+            coresVertical = new List<ushort>[Convert.ToInt16(dataCube[0].selector.Columns.Data)];
+            
         }
 
         /// <summary>
@@ -90,8 +93,9 @@ namespace RockStatic
 
             histograma = new uint[100];
             bins = new ushort[100];
-            cortesHorizontal = new List<ushort>[Convert.ToInt16(dataCube[0].selector.Rows.Data)];
-            cortesVertical = new List<ushort>[Convert.ToInt16(dataCube[0].selector.Columns.Data)];
+            coresHorizontal = new List<ushort>[Convert.ToInt16(dataCube[0].selector.Rows.Data)];
+            coresVertical = new List<ushort>[Convert.ToInt16(dataCube[0].selector.Columns.Data)];
+            
         }
 
         /// <summary>
@@ -344,17 +348,17 @@ namespace RockStatic
         public void GenerarCortesHorizontales()
         {
             // se genera un List<ushort> por cada pixel de altura de un DICOM
-            cortesHorizontal = new List<ushort>[Convert.ToInt16(dataCube[0].selector.Rows.Data)];
+            coresHorizontal = new List<ushort>[Convert.ToInt16(dataCube[0].selector.Rows.Data)];
 
             // se calcula el factor de escalado debido al espaciado entre Slides
             double resZ = Convert.ToDouble(dataCube[0].selector.SliceThickness.Data);
             double resXY = Convert.ToDouble(dataCube[0].selector.PixelSpacing.Data_[0]);
             int factor = Convert.ToInt32(resZ / resXY);
 
-            for (int i = 0; i < cortesHorizontal.Length; i++)
+            for (int i = 0; i < coresHorizontal.Length; i++)
             {
-                cortesHorizontal[i] = new List<ushort>();
-                cortesHorizontal[i] = GenerarCorteHorizontal(i);
+                coresHorizontal[i] = new List<ushort>();
+                coresHorizontal[i] = GenerarCorteHorizontal(i);
             }
         }
 
@@ -364,17 +368,17 @@ namespace RockStatic
         public void GenerarCortesVerticales()
         {
             // se genera un List<ushort> por cada pixel de ancho de un DICOM
-            cortesVertical = new List<ushort>[Convert.ToInt16(dataCube[0].selector.Columns.Data)];
+            coresVertical = new List<ushort>[Convert.ToInt16(dataCube[0].selector.Columns.Data)];
 
             // se calcula el factor de escalado debido al espaciado entre Slides
             double resZ = Convert.ToDouble(dataCube[0].selector.SliceThickness.Data);
             double resXY = Convert.ToDouble(dataCube[0].selector.PixelSpacing.Data_[0]);
             int factor = Convert.ToInt32(resZ / resXY);
 
-            for (int i = 0; i < cortesVertical.Length; i++)
+            for (int i = 0; i < coresVertical.Length; i++)
             {
-                cortesVertical[i] = new List<ushort>();
-                cortesVertical[i] = GenerarCorteVertical(i);
+                coresVertical[i] = new List<ushort>();
+                coresVertical[i] = GenerarCorteVertical(i);
             }
         }
 
