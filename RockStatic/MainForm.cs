@@ -731,6 +731,19 @@ namespace RockStatic
                 actual.areaPhantom1 = new CCuadrado(areaP1);
                 actual.areaPhantom2 = new CCuadrado(areaP2);
                 actual.areaPhantom2 = new CCuadrado(areaP2);
+
+                actual.datacuboHigh.widthSeg = actual.areaCore.width * 2;
+                actual.datacuboLow.widthSeg = actual.areaCore.width * 2;
+
+                // se genera la segmentacion
+                actual.datacuboHigh.SegCircThread(actual.areaCore);
+                actual.datacuboLow.SegCircThread(actual.areaCore);
+
+                // se crean los cortes longitudinales
+                actual.datacuboHigh.GenerarCoresHorizontales();
+                actual.datacuboHigh.GenerarCoresVerticales();
+                actual.datacuboLow.GenerarCoresHorizontales();
+                actual.datacuboLow.GenerarCoresVerticales();
             }
 
             this.proyectoForm = new ProjectForm();
@@ -742,12 +755,6 @@ namespace RockStatic
             // se crean las imagenes de los cortes transversales
             actual.datacuboHigh.CrearBitmapThread();
             actual.datacuboLow.CrearBitmapThread();
-
-            // se crean los cortes longitudinales
-            actual.datacuboHigh.GenerarCortesHorizontales();
-            actual.datacuboHigh.GenerarCortesVerticales();
-            actual.datacuboLow.GenerarCortesHorizontales();
-            actual.datacuboLow.GenerarCortesVerticales();
 
             sr.Close();
             return true;

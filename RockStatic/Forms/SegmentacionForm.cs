@@ -663,10 +663,10 @@ namespace RockStatic
 
                     // se recortan los core y phantom para cada elemento HIGH y LOW
                     this.padre.ShowWaiting("Por favor espere mientras RockStatic realiza la segmentacion de los elementos");
-                    this.padre.actual.datacuboHigh.GenerarCortesHorizontales();
-                    this.padre.actual.datacuboHigh.GenerarCortesVerticales();
-                    this.padre.actual.datacuboLow.GenerarCortesHorizontales();
-                    this.padre.actual.datacuboLow.GenerarCortesVerticales();
+                    this.padre.actual.datacuboHigh.GenerarCoresHorizontales();
+                    this.padre.actual.datacuboHigh.GenerarCoresVerticales();
+                    this.padre.actual.datacuboLow.GenerarCoresHorizontales();
+                    this.padre.actual.datacuboLow.GenerarCoresVerticales();
                     this.padre.CloseWaiting();
 
                     this.Close();
@@ -692,6 +692,8 @@ namespace RockStatic
                     // existe 1 elemento, se puede proceder a guardarlo, segun se hayan cargado los elementos HIGH o LOW
 
                     this.padre.actual.SetCore(MainForm.CorregirPictBox2Original(elementosScreen[0], pictElemento.Image.Height, pictElemento.Height));
+                    this.padre.actual.datacuboHigh.widthSeg = this.padre.actual.areaCore.width * 2;
+                    this.padre.actual.datacuboLow.widthSeg = this.padre.actual.areaCore.width * 2;
 
                     // se borra el core de los elementos en pantalla
                     elementosScreen.RemoveAt(0);
@@ -707,15 +709,14 @@ namespace RockStatic
                     this.padre.ShowWaiting("Por favor espere mientras RockStatic realiza la segmentacion de los elementos");
                     DateTime ini = DateTime.Now;
 
-                    // se generan los cortes longitudinales
-                    /*
-                    this.padre.actual.datacuboHigh.GenerarCortesHorizontales();
-                    this.padre.actual.datacuboHigh.GenerarCortesVerticales();
-                    this.padre.actual.datacuboLow.GenerarCortesHorizontales();
-                    this.padre.actual.datacuboLow.GenerarCortesVerticales();
-                     */
-
+                    // se genera la segmentacion transversal
                     this.padre.actual.datacuboHigh.SegCircThread(padre.actual.areaCore);
+
+                    // se generan los cortes longitudinales
+                    this.padre.actual.datacuboHigh.GenerarCoresHorizontales();
+                    this.padre.actual.datacuboHigh.GenerarCoresVerticales();
+                    this.padre.actual.datacuboLow.GenerarCoresHorizontales();
+                    this.padre.actual.datacuboLow.GenerarCoresVerticales();
                     
                     DateTime fin = DateTime.Now;
                     this.padre.CloseWaiting();
