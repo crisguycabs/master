@@ -58,9 +58,19 @@ namespace RockStatic
         Pen lapiz3;
 
         /// <summary>
-        /// Guarda el slide actual en SelectAreasForm
+        /// Guarda el menor valor CT de todo el datacubo
         /// </summary>
-        //float slideActual;
+        int minimo;
+
+        /// <summary>
+        /// Guarda el mayor valor CT de todo el datacuto
+        /// </summary>
+        int maximo;
+
+        /// <summary>
+        /// Establece el factor de escalado de ancho de las imagenes de corte generadas
+        /// </summary>
+        int factor;
 
         public SelectAreas2Form()
         {
@@ -88,31 +98,33 @@ namespace RockStatic
         {
             //slideActual = 0;
 
-            int nelemento=Convert.ToInt32(padre.actual.datacuboHigh.dataCube.Count/2);
-            ushort minimo = padre.actual.datacuboHigh.GetMinimo();
-            ushort maximo = padre.actual.datacuboHigh.GetMaximo();
+            int nelemento=Convert.ToInt32(padre.actual.datacuboHigh.widthSeg/2);
+            minimo = padre.actual.datacuboHigh.GetMinimo();
+            maximo = padre.actual.datacuboHigh.GetMaximo();
             double resZ = Convert.ToDouble(padre.actual.datacuboHigh.dataCube[0].selector.SliceThickness.Data);
             double resXY = Convert.ToDouble(padre.actual.datacuboHigh.dataCube[0].selector.PixelSpacing.Data_[0]);
-            int factor = Convert.ToInt32(resZ / resXY);
+            factor = Convert.ToInt32(resZ / resXY);
 
-            Bitmap corte = padre.actual.datacuboHigh.CreateBitmapCorte(padre.actual.datacuboHigh.coresHorizontal[nelemento], padre.actual.datacuboHigh.dataCube.Count * factor, Convert.ToInt16(padre.actual.datacuboHigh.dataCube[0].selector.Columns.Data), minimo, maximo); ;
+            Bitmap corte = padre.actual.datacuboHigh.CreateBitmapCorte(padre.actual.datacuboHigh.coresHorizontal[nelemento], padre.actual.datacuboHigh.dataCube.Count * factor, padre.actual.datacuboHigh.widthSeg, minimo, maximo);
             int width = corte.Width;
             int height = corte.Height;
 
             // se cambia el tamano de los PictureBox y del RangeBar
-            pictCore.Width = pictPhantom1.Width = pictPhantom2.Width = pictPhantom3.Width = rangeBar.Width = width;
-            if(height<pictCore.Height) pictCore.Height = height;
+            // pictCore.Width = pictPhantom1.Width = pictPhantom2.Width = pictPhantom3.Width = rangeBar.Width = width;
+            // if(height<pictCore.Height) pictCore.Height = height;
 
             pictCore.Image = corte;
 
-            rangeBar.TotalMaximum = padre.actual.datacuboHigh.dataCube.Count;
-            rangeBar.TotalMinimum = 1;
-            rangeBar.RangeMinimum = 1;
-            rangeBar.RangeMaximum = padre.actual.datacuboHigh.dataCube.Count;
+            // se prepara el RangeBar
+            this.rangeBar.TotalMinimum = 1;
+            this.rangeBar.TotalMaximum = padre.actual.datacuboHigh.dataCube.Count;
+            this.rangeBar.RangeMinimum = 1;
+            this.rangeBar.RangeMaximum = padre.actual.datacuboHigh.dataCube.Count;;
+            this.rangeBar.DivisionNum = (int)(padre.actual.datacuboHigh.dataCube.Count/10);
 
             // se prepara el color de la brocha y lapiz
             brocha = new SolidBrush(Color.Red);
-            lapiz = new Pen(brocha, 2F);
+            lapiz = new Pen(brocha, 3F);
 
             brocha2 = new SolidBrush(Color.FromArgb(128,0,255,0));
             lapiz2 = new Pen(brocha2);
@@ -120,6 +132,13 @@ namespace RockStatic
             brocha3 = new SolidBrush(Color.Green);
             lapiz3 = new Pen(brocha3);
             lapiz3.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+
+            if (!padre.actual.phantomEnDicom)
+                grpPhantoms.Enabled = false;
+
+            trackCortes.Minimum = 1;
+            trackCortes.Maximum = corte.Height;
+            trackCortes.Value = nelemento;
             
             pictCore.Invalidate();
         }
@@ -149,8 +168,9 @@ namespace RockStatic
             // se pintan las lineas de Cabeza y Cola
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
-            int head = pictCore.Width * rangeBar.RangeMinimum / rangeBar.TotalMaximum;
-            int tail = (pictCore.Width * rangeBar.RangeMaximum / rangeBar.TotalMaximum)-2;
+            int head = (pictCore.Width * (rangeBar.RangeMinimum - 1) / rangeBar.TotalMaximum)+1;
+            // int tail = (pictCore.Width * rangeBar.RangeMaximum / rangeBar.TotalMaximum)-2;
+            int tail = (pictCore.Width * (rangeBar.RangeMaximum - 1) / rangeBar.TotalMaximum)+1;
 
             e.Graphics.DrawLine(lapiz, head, 0, head, pictCore.Height);
             e.Graphics.DrawLine(lapiz, tail, 0, tail, pictCore.Height);
@@ -198,6 +218,16 @@ namespace RockStatic
         private void SelectAreas2Form_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawRectangle(new Pen(Color.Green, 2), this.DisplayRectangle);       
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackCortes_Scroll(object sender, EventArgs e)
+        {
+            pictCore.Image = padre.actual.datacuboHigh.CreateBitmapCorte(padre.actual.datacuboHigh.coresHorizontal[trackCortes.Value - 1], padre.actual.datacuboHigh.dataCube.Count * factor, padre.actual.datacuboHigh.widthSeg, minimo, maximo);
         }
     }
 }

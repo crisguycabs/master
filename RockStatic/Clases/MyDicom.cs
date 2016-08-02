@@ -268,7 +268,7 @@ namespace RockStatic
         }
 
         /// <summary>
-        /// Crea un Bitmap a partir de la informacion de pixeles, en CT, y guarda la imagen en la instancia bmp de la clase
+        /// Crea un Bitmap a partir de la informacion de pixeles, en CT
         /// </summary>
         /// <param name="pixels16">List de shorts con la informacion CT de cada pixel</param>
         /// <param name="width">Ancho deseado de la imagen</param>

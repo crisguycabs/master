@@ -35,7 +35,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rangeBar = new Zzzz.ZzzzRangeBar();
             this.trackElementos = new System.Windows.Forms.TrackBar();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.grpPhantoms = new System.Windows.Forms.GroupBox();
             this.lstElementos = new System.Windows.Forms.ListBox();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.pictP3 = new System.Windows.Forms.PictureBox();
@@ -73,10 +73,17 @@
             this.numRadio = new System.Windows.Forms.NumericUpDown();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.trackContraste = new System.Windows.Forms.TrackBar();
+            this.trackBrillo = new System.Windows.Forms.TrackBar();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictCore)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackElementos)).BeginInit();
-            this.groupBox2.SuspendLayout();
+            this.grpPhantoms.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictP3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictP2)).BeginInit();
@@ -88,6 +95,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numRadio)).BeginInit();
             this.groupBox4.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackContraste)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBrillo)).BeginInit();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // label4
@@ -98,7 +109,7 @@
             this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(900, 30);
+            this.label4.Size = new System.Drawing.Size(841, 30);
             this.label4.TabIndex = 7;
             this.label4.Text = "SELECCION DE AREAS";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -129,7 +140,7 @@
             this.pictCore.BackColor = System.Drawing.Color.Black;
             this.pictCore.Location = new System.Drawing.Point(12, 20);
             this.pictCore.Name = "pictCore";
-            this.pictCore.Size = new System.Drawing.Size(350, 350);
+            this.pictCore.Size = new System.Drawing.Size(300, 300);
             this.pictCore.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictCore.TabIndex = 12;
             this.pictCore.TabStop = false;
@@ -140,12 +151,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.rangeBar);
             this.groupBox1.Controls.Add(this.trackElementos);
             this.groupBox1.Controls.Add(this.pictCore);
             this.groupBox1.Location = new System.Drawing.Point(10, 42);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(372, 446);
+            this.groupBox1.Size = new System.Drawing.Size(323, 462);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "CORE";
@@ -157,13 +169,13 @@
             this.rangeBar.HeightOfMark = 24;
             this.rangeBar.HeightOfTick = 6;
             this.rangeBar.InnerColor = System.Drawing.Color.Green;
-            this.rangeBar.Location = new System.Drawing.Point(12, 415);
+            this.rangeBar.Location = new System.Drawing.Point(12, 426);
             this.rangeBar.Name = "rangeBar";
             this.rangeBar.Orientation = Zzzz.ZzzzRangeBar.RangeBarOrientation.horizontal;
             this.rangeBar.RangeMaximum = 10;
             this.rangeBar.RangeMinimum = 1;
             this.rangeBar.ScaleOrientation = Zzzz.ZzzzRangeBar.TopBottomOrientation.bottom;
-            this.rangeBar.Size = new System.Drawing.Size(350, 20);
+            this.rangeBar.Size = new System.Drawing.Size(300, 22);
             this.rangeBar.TabIndex = 14;
             this.rangeBar.TotalMaximum = 100;
             this.rangeBar.TotalMinimum = 1;
@@ -171,32 +183,32 @@
             // 
             // trackElementos
             // 
-            this.trackElementos.Location = new System.Drawing.Point(2, 376);
+            this.trackElementos.Location = new System.Drawing.Point(1, 390);
             this.trackElementos.Name = "trackElementos";
-            this.trackElementos.Size = new System.Drawing.Size(367, 45);
+            this.trackElementos.Size = new System.Drawing.Size(320, 45);
             this.trackElementos.TabIndex = 13;
             this.trackElementos.ValueChanged += new System.EventHandler(this.trackElementos_ValueChanged);
             // 
-            // groupBox2
+            // grpPhantoms
             // 
-            this.groupBox2.Controls.Add(this.lstElementos);
-            this.groupBox2.Controls.Add(this.numericUpDown2);
-            this.groupBox2.Controls.Add(this.pictP3);
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.pictP2);
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.pictP1);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.button6);
-            this.groupBox2.Controls.Add(this.button3);
-            this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Location = new System.Drawing.Point(584, 42);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(305, 383);
-            this.groupBox2.TabIndex = 16;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "PHANTOMS";
+            this.grpPhantoms.Controls.Add(this.lstElementos);
+            this.grpPhantoms.Controls.Add(this.numericUpDown2);
+            this.grpPhantoms.Controls.Add(this.pictP3);
+            this.grpPhantoms.Controls.Add(this.button1);
+            this.grpPhantoms.Controls.Add(this.pictP2);
+            this.grpPhantoms.Controls.Add(this.button2);
+            this.grpPhantoms.Controls.Add(this.pictP1);
+            this.grpPhantoms.Controls.Add(this.label2);
+            this.grpPhantoms.Controls.Add(this.button6);
+            this.grpPhantoms.Controls.Add(this.button3);
+            this.grpPhantoms.Controls.Add(this.button5);
+            this.grpPhantoms.Controls.Add(this.button4);
+            this.grpPhantoms.Location = new System.Drawing.Point(528, 42);
+            this.grpPhantoms.Name = "grpPhantoms";
+            this.grpPhantoms.Size = new System.Drawing.Size(305, 404);
+            this.grpPhantoms.TabIndex = 16;
+            this.grpPhantoms.TabStop = false;
+            this.grpPhantoms.Text = "PHANTOMS";
             // 
             // lstElementos
             // 
@@ -397,14 +409,8 @@
             // 
             this.groupBox3.Controls.Add(this.btnCancel);
             this.groupBox3.Controls.Add(this.lblPunto2);
-            this.groupBox3.Controls.Add(this.numTail);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.lblPunto1);
-            this.groupBox3.Controls.Add(this.numHead);
-            this.groupBox3.Controls.Add(this.numActual);
-            this.groupBox3.Controls.Add(this.lblTail);
-            this.groupBox3.Controls.Add(this.lblHead);
-            this.groupBox3.Controls.Add(this.lblActual);
             this.groupBox3.Controls.Add(this.numericUpDown1);
             this.groupBox3.Controls.Add(this.radioButton2);
             this.groupBox3.Controls.Add(this.radioButton1);
@@ -417,9 +423,9 @@
             this.groupBox3.Controls.Add(this.btnLeft);
             this.groupBox3.Controls.Add(this.btnDown);
             this.groupBox3.Controls.Add(this.btnRight);
-            this.groupBox3.Location = new System.Drawing.Point(393, 42);
+            this.groupBox3.Location = new System.Drawing.Point(339, 42);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(180, 446);
+            this.groupBox3.Size = new System.Drawing.Size(180, 386);
             this.groupBox3.TabIndex = 21;
             this.groupBox3.TabStop = false;
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
@@ -449,7 +455,7 @@
             // 
             // numTail
             // 
-            this.numTail.Location = new System.Drawing.Point(133, 415);
+            this.numTail.Location = new System.Drawing.Point(135, 44);
             this.numTail.Maximum = new decimal(new int[] {
             999,
             0,
@@ -487,7 +493,7 @@
             // 
             // numHead
             // 
-            this.numHead.Location = new System.Drawing.Point(52, 415);
+            this.numHead.Location = new System.Drawing.Point(54, 44);
             this.numHead.Name = "numHead";
             this.numHead.Size = new System.Drawing.Size(41, 22);
             this.numHead.TabIndex = 28;
@@ -496,7 +502,7 @@
             // 
             // numActual
             // 
-            this.numActual.Location = new System.Drawing.Point(95, 375);
+            this.numActual.Location = new System.Drawing.Point(135, 15);
             this.numActual.Maximum = new decimal(new int[] {
             999,
             0,
@@ -511,7 +517,7 @@
             // lblTail
             // 
             this.lblTail.AutoSize = true;
-            this.lblTail.Location = new System.Drawing.Point(101, 419);
+            this.lblTail.Location = new System.Drawing.Point(103, 48);
             this.lblTail.Name = "lblTail";
             this.lblTail.Size = new System.Drawing.Size(37, 14);
             this.lblTail.TabIndex = 27;
@@ -520,7 +526,7 @@
             // lblHead
             // 
             this.lblHead.AutoSize = true;
-            this.lblHead.Location = new System.Drawing.Point(3, 419);
+            this.lblHead.Location = new System.Drawing.Point(5, 48);
             this.lblHead.Name = "lblHead";
             this.lblHead.Size = new System.Drawing.Size(52, 14);
             this.lblHead.TabIndex = 26;
@@ -529,7 +535,7 @@
             // lblActual
             // 
             this.lblActual.AutoSize = true;
-            this.lblActual.Location = new System.Drawing.Point(9, 378);
+            this.lblActual.Location = new System.Drawing.Point(5, 17);
             this.lblActual.Name = "lblActual";
             this.lblActual.Size = new System.Drawing.Size(78, 14);
             this.lblActual.TabIndex = 26;
@@ -664,21 +670,103 @@
             // 
             this.groupBox4.Controls.Add(this.btnCancelar);
             this.groupBox4.Controls.Add(this.btnGuardar);
-            this.groupBox4.Location = new System.Drawing.Point(584, 432);
+            this.groupBox4.Location = new System.Drawing.Point(529, 448);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(305, 56);
             this.groupBox4.TabIndex = 22;
             this.groupBox4.TabStop = false;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnReset);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.trackContraste);
+            this.groupBox2.Controls.Add(this.trackBrillo);
+            this.groupBox2.Location = new System.Drawing.Point(12, 323);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(300, 63);
+            this.groupBox2.TabIndex = 23;
+            this.groupBox2.TabStop = false;
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(216, 18);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.TabIndex = 11;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(131, 44);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(59, 14);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Contraste";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(36, 43);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(37, 14);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Brillo";
+            // 
+            // trackContraste
+            // 
+            this.trackContraste.LargeChange = 50;
+            this.trackContraste.Location = new System.Drawing.Point(110, 12);
+            this.trackContraste.Maximum = 100;
+            this.trackContraste.Minimum = -100;
+            this.trackContraste.Name = "trackContraste";
+            this.trackContraste.Size = new System.Drawing.Size(100, 45);
+            this.trackContraste.SmallChange = 10;
+            this.trackContraste.TabIndex = 8;
+            this.trackContraste.TickFrequency = 20;
+            this.trackContraste.Scroll += new System.EventHandler(this.trackBrillo_Scroll);
+            // 
+            // trackBrillo
+            // 
+            this.trackBrillo.LargeChange = 50;
+            this.trackBrillo.Location = new System.Drawing.Point(4, 12);
+            this.trackBrillo.Maximum = 255;
+            this.trackBrillo.Minimum = -255;
+            this.trackBrillo.Name = "trackBrillo";
+            this.trackBrillo.Size = new System.Drawing.Size(100, 45);
+            this.trackBrillo.SmallChange = 10;
+            this.trackBrillo.TabIndex = 7;
+            this.trackBrillo.TickFrequency = 32;
+            this.trackBrillo.Scroll += new System.EventHandler(this.trackBrillo_Scroll);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.numTail);
+            this.groupBox5.Controls.Add(this.numActual);
+            this.groupBox5.Controls.Add(this.numHead);
+            this.groupBox5.Controls.Add(this.lblActual);
+            this.groupBox5.Controls.Add(this.lblHead);
+            this.groupBox5.Controls.Add(this.lblTail);
+            this.groupBox5.Location = new System.Drawing.Point(339, 430);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(180, 74);
+            this.groupBox5.TabIndex = 23;
+            this.groupBox5.TabStop = false;
             // 
             // SelectAreasForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(900, 498);
+            this.ClientSize = new System.Drawing.Size(841, 512);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.grpPhantoms);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label4);
             this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -695,8 +783,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackElementos)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.grpPhantoms.ResumeLayout(false);
+            this.grpPhantoms.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictP3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictP2)).EndInit();
@@ -709,6 +797,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numRadio)).EndInit();
             this.groupBox4.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackContraste)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBrillo)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -719,7 +813,7 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.PictureBox pictCore;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox grpPhantoms;
         private System.Windows.Forms.PictureBox pictP3;
         private System.Windows.Forms.PictureBox pictP2;
         private System.Windows.Forms.PictureBox pictP1;
@@ -759,6 +853,13 @@
         private System.Windows.Forms.Label lblPunto2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblPunto1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TrackBar trackContraste;
+        private System.Windows.Forms.TrackBar trackBrillo;
+        private System.Windows.Forms.GroupBox groupBox5;
 
     }
 }

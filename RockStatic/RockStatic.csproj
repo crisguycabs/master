@@ -158,6 +158,9 @@
     <Compile Include="Forms\SelectAreas2Form.Designer.cs">
       <DependentUpon>SelectAreas2Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="RangeBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <EmbeddedResource Include="Forms\Phantoms2Form.resx">
       <DependentUpon>Phantoms2Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -206,6 +209,9 @@
     </Compile>
     <EmbeddedResource Include="Forms\SplashScreenForm.resx">
       <DependentUpon>SplashScreenForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RangeBar.resx">
+      <DependentUpon>RangeBar.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram8.cd" />
     <None Include="packages.config" />

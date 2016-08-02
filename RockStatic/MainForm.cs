@@ -757,6 +757,22 @@ namespace RockStatic
             actual.datacuboLow.CrearBitmapThread();
 
             sr.Close();
+
+            // tests ---------------------------
+            Bitmap test = null;
+
+            DateTime ini = DateTime.Now;
+
+            //test = MyDicom.CrearBitmap(actual.datacuboHigh.dataCube[80].segCore, 120, 120);
+            test = actual.datacuboHigh.CreateBitmapCorte(actual.datacuboHigh.coresHorizontal[80], 160, 120);
+
+            DateTime fin = DateTime.Now;
+            TimeSpan span = fin - ini;
+           
+
+            // ---------------------------------
+
+
             return true;
         }
 

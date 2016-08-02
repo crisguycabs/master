@@ -151,7 +151,7 @@ namespace RockStatic
             this.rangeBar.RangeMaximum = padre.actual.datacuboHigh.dataCube.Count;;
             this.rangeBar.DivisionNum = (int)(padre.actual.datacuboHigh.dataCube.Count/10);
             
-            this.pictCore.Image = padre.actual.datacuboHigh.dataCube[0].bmp;
+            this.pictCore.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segCore, padre.actual.areaCore.width * 2, padre.actual.areaCore.width * 2);
 
             // si existe informacion de phantoms en los DICOM
             if (padre.actual.phantomEnDicom)
@@ -159,6 +159,11 @@ namespace RockStatic
                 //this.pictP1.Image = MainForm.Byte2image(elementosP1[0]);
                 //this.pictP2.Image = MainForm.Byte2image(elementosP2[0]);
                 //this.pictP3.Image = MainForm.Byte2image(elementosP3[0]);
+            }
+            else
+            {
+                // no hay informacion de phantoms en dicom
+                grpPhantoms.Enabled = false;
             }
 
             // se prepara una lista vacia de areas para los core, cada una con elementos null
@@ -179,7 +184,8 @@ namespace RockStatic
                 changes = true;
             }
 
-            this.pictCore.Image = padre.actual.datacuboHigh.dataCube[n-1].bmp;
+            Filtrar(n);
+
             // si existe informacion de phantoms en los DICOM
             if (padre.actual.phantomEnDicom)
             {
@@ -434,6 +440,39 @@ namespace RockStatic
         private void groupBox3_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        /// <summary>
+        /// Modifica el brillo y contraste de la imagen que aparece en pantalla
+        /// </summary>
+        private void Filtrar(int n)
+        {
+            Bitmap temp = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[n - 1].segCore, padre.actual.areaCore.width * 2, padre.actual.areaCore.width * 2);
+            
+            AForge.Imaging.Filters.BrightnessCorrection brillo = new AForge.Imaging.Filters.BrightnessCorrection(Convert.ToInt32(trackBrillo.Value));
+            AForge.Imaging.Filters.ContrastCorrection contraste = new AForge.Imaging.Filters.ContrastCorrection(Convert.ToInt32(trackContraste.Value));
+
+            contraste.ApplyInPlace(temp);
+            brillo.ApplyInPlace(temp);
+
+            pictCore.Image = temp;
+
+            //pictElemento.Invalidate();
+        }
+
+        private void trackBrillo_Scroll(object sender, EventArgs e)
+        {
+            int n = trackElementos.Value;
+            Filtrar(n);
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            int n = trackElementos.Value;
+            trackBrillo.Value = 0;
+            trackContraste.Value = 0;
+
+            Filtrar(n);
         }
     }
 }
