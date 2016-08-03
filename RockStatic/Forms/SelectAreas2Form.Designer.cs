@@ -33,19 +33,19 @@
             this.pictCore = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rangeBar = new Zzzz.ZzzzRangeBar();
+            this.trackCortes = new System.Windows.Forms.TrackBar();
             this.grpPhantoms = new System.Windows.Forms.GroupBox();
             this.pictPhantom3 = new System.Windows.Forms.PictureBox();
             this.pictPhantom2 = new System.Windows.Forms.PictureBox();
             this.pictPhantom1 = new System.Windows.Forms.PictureBox();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.trackCortes = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictCore)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackCortes)).BeginInit();
             this.grpPhantoms.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictPhantom3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictPhantom2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictPhantom1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackCortes)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -65,7 +65,7 @@
             // 
             // pictCore
             // 
-            this.pictCore.Location = new System.Drawing.Point(10, 19);
+            this.pictCore.Location = new System.Drawing.Point(10, 22);
             this.pictCore.Name = "pictCore";
             this.pictCore.Size = new System.Drawing.Size(800, 350);
             this.pictCore.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -80,7 +80,7 @@
             this.groupBox1.Controls.Add(this.pictCore);
             this.groupBox1.Location = new System.Drawing.Point(12, 39);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(823, 446);
+            this.groupBox1.Size = new System.Drawing.Size(823, 442);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "CORE";
@@ -93,7 +93,7 @@
             this.rangeBar.HeightOfMark = 24;
             this.rangeBar.HeightOfTick = 6;
             this.rangeBar.InnerColor = System.Drawing.Color.Green;
-            this.rangeBar.Location = new System.Drawing.Point(10, 415);
+            this.rangeBar.Location = new System.Drawing.Point(10, 410);
             this.rangeBar.Name = "rangeBar";
             this.rangeBar.Orientation = Zzzz.ZzzzRangeBar.RangeBarOrientation.horizontal;
             this.rangeBar.RangeMaximum = 10;
@@ -105,12 +105,20 @@
             this.rangeBar.TotalMinimum = 1;
             this.rangeBar.RangeChanging += new Zzzz.ZzzzRangeBar.RangeChangedEventHandler(this.rangeBar_RangeChanging);
             // 
+            // trackCortes
+            // 
+            this.trackCortes.Location = new System.Drawing.Point(1, 377);
+            this.trackCortes.Name = "trackCortes";
+            this.trackCortes.Size = new System.Drawing.Size(818, 45);
+            this.trackCortes.TabIndex = 11;
+            this.trackCortes.Scroll += new System.EventHandler(this.trackCortes_Scroll);
+            // 
             // grpPhantoms
             // 
             this.grpPhantoms.Controls.Add(this.pictPhantom3);
             this.grpPhantoms.Controls.Add(this.pictPhantom2);
             this.grpPhantoms.Controls.Add(this.pictPhantom1);
-            this.grpPhantoms.Location = new System.Drawing.Point(12, 492);
+            this.grpPhantoms.Location = new System.Drawing.Point(12, 487);
             this.grpPhantoms.Name = "grpPhantoms";
             this.grpPhantoms.Size = new System.Drawing.Size(823, 176);
             this.grpPhantoms.TabIndex = 11;
@@ -151,7 +159,7 @@
             this.btnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Location = new System.Drawing.Point(765, 677);
+            this.btnCancelar.Location = new System.Drawing.Point(765, 669);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(70, 23);
             this.btnCancelar.TabIndex = 12;
@@ -159,20 +167,12 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // trackCortes
-            // 
-            this.trackCortes.Location = new System.Drawing.Point(1, 376);
-            this.trackCortes.Name = "trackCortes";
-            this.trackCortes.Size = new System.Drawing.Size(818, 45);
-            this.trackCortes.TabIndex = 11;
-            this.trackCortes.Scroll += new System.EventHandler(this.trackCortes_Scroll);
-            // 
             // SelectAreas2Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(843, 708);
+            this.ClientSize = new System.Drawing.Size(843, 701);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.grpPhantoms);
             this.Controls.Add(this.groupBox1);
@@ -190,11 +190,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictCore)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackCortes)).EndInit();
             this.grpPhantoms.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictPhantom3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictPhantom2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictPhantom1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackCortes)).EndInit();
             this.ResumeLayout(false);
 
         }

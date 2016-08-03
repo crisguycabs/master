@@ -169,6 +169,8 @@ namespace RockStatic
             // se prepara una lista vacia de areas para los core, cada una con elementos null
             areasCore=new List<CCuadrado>();
             for (int i = 0; i < padre.actual.datacuboHigh.dataCube.Count; i++) areasCore.Add(null);
+
+            numUntil.Value = padre.actual.datacuboHigh.dataCube.Count;
         }
 
         private void trackElementos_ValueChanged(object sender, EventArgs e)
@@ -418,7 +420,6 @@ namespace RockStatic
 
         private void pictCore_Paint(object sender, PaintEventArgs e)
         {
-            
             int i = trackElementos.Value-1;
             if (areasCore[i] != null)
             {

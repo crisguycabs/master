@@ -105,7 +105,9 @@ namespace RockStatic
             double resXY = Convert.ToDouble(padre.actual.datacuboHigh.dataCube[0].selector.PixelSpacing.Data_[0]);
             factor = Convert.ToInt32(resZ / resXY);
 
-            Bitmap corte = padre.actual.datacuboHigh.CreateBitmapCorte(padre.actual.datacuboHigh.coresHorizontal[nelemento], padre.actual.datacuboHigh.dataCube.Count * factor, padre.actual.datacuboHigh.widthSeg, minimo, maximo);
+            Bitmap corte;
+            corte = padre.actual.datacuboHigh.CreateBitmapCorte(padre.actual.datacuboHigh.coresHorizontal[nelemento], padre.actual.datacuboHigh.dataCube.Count * factor, padre.actual.datacuboHigh.widthSeg, minimo, maximo);
+            
             int width = corte.Width;
             int height = corte.Height;
 
@@ -228,6 +230,11 @@ namespace RockStatic
         private void trackCortes_Scroll(object sender, EventArgs e)
         {
             pictCore.Image = padre.actual.datacuboHigh.CreateBitmapCorte(padre.actual.datacuboHigh.coresHorizontal[trackCortes.Value - 1], padre.actual.datacuboHigh.dataCube.Count * factor, padre.actual.datacuboHigh.widthSeg, minimo, maximo);
+        }
+
+        private void radHorizontal_CheckedChanged(object sender, EventArgs e)
+        {
+            trackCortes_Scroll(sender, e);
         }
     }
 }

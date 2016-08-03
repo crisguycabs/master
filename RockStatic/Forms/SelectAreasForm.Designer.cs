@@ -33,6 +33,12 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.pictCore = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.trackContraste = new System.Windows.Forms.TrackBar();
+            this.trackBrillo = new System.Windows.Forms.TrackBar();
             this.rangeBar = new Zzzz.ZzzzRangeBar();
             this.trackElementos = new System.Windows.Forms.TrackBar();
             this.grpPhantoms = new System.Windows.Forms.GroupBox();
@@ -55,33 +61,30 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.lblPunto2 = new System.Windows.Forms.Label();
-            this.numTail = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.lblPunto1 = new System.Windows.Forms.Label();
-            this.numHead = new System.Windows.Forms.NumericUpDown();
-            this.numActual = new System.Windows.Forms.NumericUpDown();
-            this.lblTail = new System.Windows.Forms.Label();
-            this.lblHead = new System.Windows.Forms.Label();
-            this.lblActual = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numRad = new System.Windows.Forms.NumericUpDown();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radThis = new System.Windows.Forms.RadioButton();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.numRadio = new System.Windows.Forms.NumericUpDown();
+            this.numUntil = new System.Windows.Forms.NumericUpDown();
+            this.numTail = new System.Windows.Forms.NumericUpDown();
+            this.numHead = new System.Windows.Forms.NumericUpDown();
+            this.numActual = new System.Windows.Forms.NumericUpDown();
+            this.lblTail = new System.Windows.Forms.Label();
+            this.lblHead = new System.Windows.Forms.Label();
+            this.lblActual = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.trackContraste = new System.Windows.Forms.TrackBar();
-            this.trackBrillo = new System.Windows.Forms.TrackBar();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictCore)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackContraste)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBrillo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackElementos)).BeginInit();
             this.grpPhantoms.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -89,15 +92,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictP2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictP1)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numRad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUntil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numTail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHead)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numActual)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numRadio)).BeginInit();
             this.groupBox4.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackContraste)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBrillo)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -161,6 +161,73 @@
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "CORE";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnReset);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.trackContraste);
+            this.groupBox2.Controls.Add(this.trackBrillo);
+            this.groupBox2.Location = new System.Drawing.Point(12, 323);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(300, 63);
+            this.groupBox2.TabIndex = 23;
+            this.groupBox2.TabStop = false;
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(216, 18);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.TabIndex = 11;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(131, 44);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(59, 14);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Contraste";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(36, 43);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(37, 14);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Brillo";
+            // 
+            // trackContraste
+            // 
+            this.trackContraste.LargeChange = 50;
+            this.trackContraste.Location = new System.Drawing.Point(110, 12);
+            this.trackContraste.Maximum = 100;
+            this.trackContraste.Minimum = -100;
+            this.trackContraste.Name = "trackContraste";
+            this.trackContraste.Size = new System.Drawing.Size(100, 45);
+            this.trackContraste.SmallChange = 10;
+            this.trackContraste.TabIndex = 8;
+            this.trackContraste.TickFrequency = 20;
+            this.trackContraste.Scroll += new System.EventHandler(this.trackBrillo_Scroll);
+            // 
+            // trackBrillo
+            // 
+            this.trackBrillo.LargeChange = 50;
+            this.trackBrillo.Location = new System.Drawing.Point(4, 12);
+            this.trackBrillo.Maximum = 255;
+            this.trackBrillo.Minimum = -255;
+            this.trackBrillo.Name = "trackBrillo";
+            this.trackBrillo.Size = new System.Drawing.Size(100, 45);
+            this.trackBrillo.SmallChange = 10;
+            this.trackBrillo.TabIndex = 7;
+            this.trackBrillo.TickFrequency = 32;
+            this.trackBrillo.Scroll += new System.EventHandler(this.trackBrillo_Scroll);
             // 
             // rangeBar
             // 
@@ -411,14 +478,14 @@
             this.groupBox3.Controls.Add(this.lblPunto2);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.lblPunto1);
-            this.groupBox3.Controls.Add(this.numericUpDown1);
+            this.groupBox3.Controls.Add(this.numRad);
             this.groupBox3.Controls.Add(this.radioButton2);
             this.groupBox3.Controls.Add(this.radioButton1);
             this.groupBox3.Controls.Add(this.radThis);
             this.groupBox3.Controls.Add(this.btnClear);
             this.groupBox3.Controls.Add(this.btnDelete);
             this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.numRadio);
+            this.groupBox3.Controls.Add(this.numUntil);
             this.groupBox3.Controls.Add(this.btnUp);
             this.groupBox3.Controls.Add(this.btnLeft);
             this.groupBox3.Controls.Add(this.btnDown);
@@ -453,25 +520,6 @@
             this.lblPunto2.Text = "2...";
             this.lblPunto2.Visible = false;
             // 
-            // numTail
-            // 
-            this.numTail.Location = new System.Drawing.Point(135, 44);
-            this.numTail.Maximum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.numTail.Name = "numTail";
-            this.numTail.Size = new System.Drawing.Size(41, 22);
-            this.numTail.TabIndex = 28;
-            this.numTail.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numTail.Value = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.numTail.ValueChanged += new System.EventHandler(this.numTail_ValueChanged);
-            // 
             // label3
             // 
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -490,6 +538,133 @@
             this.lblPunto1.TabIndex = 0;
             this.lblPunto1.Text = "Punto 1...";
             this.lblPunto1.Visible = false;
+            // 
+            // numRad
+            // 
+            this.numRad.Location = new System.Drawing.Point(112, 118);
+            this.numRad.Name = "numRad";
+            this.numRad.Size = new System.Drawing.Size(56, 22);
+            this.numRad.TabIndex = 25;
+            this.numRad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numRad.Value = new decimal(new int[] {
+            37,
+            0,
+            0,
+            0});
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(89, 231);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(59, 18);
+            this.radioButton2.TabIndex = 24;
+            this.radioButton2.Text = "hasta:";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(89, 212);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(83, 18);
+            this.radioButton1.TabIndex = 24;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "hasta final";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radThis
+            // 
+            this.radThis.AutoSize = true;
+            this.radThis.Location = new System.Drawing.Point(89, 193);
+            this.radThis.Name = "radThis";
+            this.radThis.Size = new System.Drawing.Size(80, 18);
+            this.radThis.TabIndex = 24;
+            this.radThis.Text = "este slide";
+            this.radThis.UseVisualStyleBackColor = true;
+            // 
+            // btnClear
+            // 
+            this.btnClear.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnClear.Enabled = false;
+            this.btnClear.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnClear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClear.Location = new System.Drawing.Point(12, 281);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(70, 23);
+            this.btnClear.TabIndex = 23;
+            this.btnClear.Text = "Limpiar";
+            this.btnClear.UseVisualStyleBackColor = false;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDelete.Enabled = false;
+            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnDelete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Location = new System.Drawing.Point(12, 193);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(70, 23);
+            this.btnDelete.TabIndex = 23;
+            this.btnDelete.Text = "Borar";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(92, 120);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(17, 14);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "h:";
+            // 
+            // numUntil
+            // 
+            this.numUntil.Font = new System.Drawing.Font("Lucida Console", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numUntil.Location = new System.Drawing.Point(117, 253);
+            this.numUntil.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numUntil.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numUntil.Name = "numUntil";
+            this.numUntil.Size = new System.Drawing.Size(51, 18);
+            this.numUntil.TabIndex = 22;
+            this.numUntil.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numUntil.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numTail
+            // 
+            this.numTail.Location = new System.Drawing.Point(135, 44);
+            this.numTail.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.numTail.Name = "numTail";
+            this.numTail.Size = new System.Drawing.Size(41, 22);
+            this.numTail.TabIndex = 28;
+            this.numTail.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numTail.Value = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.numTail.ValueChanged += new System.EventHandler(this.numTail_ValueChanged);
             // 
             // numHead
             // 
@@ -541,115 +716,6 @@
             this.lblActual.TabIndex = 26;
             this.lblActual.Text = "Slide actual: ";
             // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(112, 118);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(56, 22);
-            this.numericUpDown1.TabIndex = 25;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            37,
-            0,
-            0,
-            0});
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(89, 231);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(59, 18);
-            this.radioButton2.TabIndex = 24;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "hasta:";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(89, 212);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(83, 18);
-            this.radioButton1.TabIndex = 24;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "hasta final";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radThis
-            // 
-            this.radThis.AutoSize = true;
-            this.radThis.Location = new System.Drawing.Point(89, 193);
-            this.radThis.Name = "radThis";
-            this.radThis.Size = new System.Drawing.Size(80, 18);
-            this.radThis.TabIndex = 24;
-            this.radThis.TabStop = true;
-            this.radThis.Text = "este slide";
-            this.radThis.UseVisualStyleBackColor = true;
-            // 
-            // btnClear
-            // 
-            this.btnClear.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnClear.Enabled = false;
-            this.btnClear.FlatAppearance.BorderColor = System.Drawing.Color.Green;
-            this.btnClear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
-            this.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
-            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Location = new System.Drawing.Point(12, 281);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(70, 23);
-            this.btnClear.TabIndex = 23;
-            this.btnClear.Text = "Limpiar";
-            this.btnClear.UseVisualStyleBackColor = false;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnDelete.Enabled = false;
-            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.Green;
-            this.btnDelete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
-            this.btnDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Location = new System.Drawing.Point(12, 193);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(70, 23);
-            this.btnDelete.TabIndex = 23;
-            this.btnDelete.Text = "Borar";
-            this.btnDelete.UseVisualStyleBackColor = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(92, 120);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(17, 14);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "h:";
-            // 
-            // numRadio
-            // 
-            this.numRadio.Font = new System.Drawing.Font("Lucida Console", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numRadio.Location = new System.Drawing.Point(117, 253);
-            this.numRadio.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numRadio.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numRadio.Name = "numRadio";
-            this.numRadio.Size = new System.Drawing.Size(51, 18);
-            this.numRadio.TabIndex = 22;
-            this.numRadio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numRadio.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -675,73 +741,6 @@
             this.groupBox4.Size = new System.Drawing.Size(305, 56);
             this.groupBox4.TabIndex = 22;
             this.groupBox4.TabStop = false;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.btnReset);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.trackContraste);
-            this.groupBox2.Controls.Add(this.trackBrillo);
-            this.groupBox2.Location = new System.Drawing.Point(12, 323);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(300, 63);
-            this.groupBox2.TabIndex = 23;
-            this.groupBox2.TabStop = false;
-            // 
-            // btnReset
-            // 
-            this.btnReset.Location = new System.Drawing.Point(216, 18);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(75, 23);
-            this.btnReset.TabIndex = 11;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(131, 44);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(59, 14);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Contraste";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(36, 43);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(37, 14);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Brillo";
-            // 
-            // trackContraste
-            // 
-            this.trackContraste.LargeChange = 50;
-            this.trackContraste.Location = new System.Drawing.Point(110, 12);
-            this.trackContraste.Maximum = 100;
-            this.trackContraste.Minimum = -100;
-            this.trackContraste.Name = "trackContraste";
-            this.trackContraste.Size = new System.Drawing.Size(100, 45);
-            this.trackContraste.SmallChange = 10;
-            this.trackContraste.TabIndex = 8;
-            this.trackContraste.TickFrequency = 20;
-            this.trackContraste.Scroll += new System.EventHandler(this.trackBrillo_Scroll);
-            // 
-            // trackBrillo
-            // 
-            this.trackBrillo.LargeChange = 50;
-            this.trackBrillo.Location = new System.Drawing.Point(4, 12);
-            this.trackBrillo.Maximum = 255;
-            this.trackBrillo.Minimum = -255;
-            this.trackBrillo.Name = "trackBrillo";
-            this.trackBrillo.Size = new System.Drawing.Size(100, 45);
-            this.trackBrillo.SmallChange = 10;
-            this.trackBrillo.TabIndex = 7;
-            this.trackBrillo.TickFrequency = 32;
-            this.trackBrillo.Scroll += new System.EventHandler(this.trackBrillo_Scroll);
             // 
             // groupBox5
             // 
@@ -782,6 +781,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictCore)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackContraste)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBrillo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackElementos)).EndInit();
             this.grpPhantoms.ResumeLayout(false);
             this.grpPhantoms.PerformLayout();
@@ -791,16 +794,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictP1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numRad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUntil)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numTail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHead)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numActual)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numRadio)).EndInit();
             this.groupBox4.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackContraste)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBrillo)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
@@ -823,14 +822,14 @@
         private System.Windows.Forms.Button btnUp;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numRadio;
+        private System.Windows.Forms.NumericUpDown numUntil;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radThis;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numRad;
         private System.Windows.Forms.TrackBar trackElementos;
         private Zzzz.ZzzzRangeBar rangeBar;
         private System.Windows.Forms.GroupBox groupBox4;
