@@ -68,6 +68,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\CAreaInteres.cs" />
     <Compile Include="Clases\AuxThread.cs" />
     <Compile Include="Clases\CCuadrado.cs" />
     <Compile Include="Clases\CCirculo.cs" />
