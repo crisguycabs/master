@@ -20,11 +20,6 @@ namespace RockStatic
         Pen pen2;
 
         /// <summary>
-        /// Lista para guardar las areas seleccionadas
-        /// </summary>
-        List<CCuadrado> areasCore;
-
-        /// <summary>
         /// Referencia al MainForm padre
         /// </summary>
         public MainForm padre;
@@ -48,6 +43,11 @@ namespace RockStatic
         /// Contador para clicks
         /// </summary>
         int countClickCore;
+
+        /// <summary>
+        /// Contador de areas de interes creadas para agregar al nombre
+        /// </summary>
+        int countAreas;
 
         #endregion
 
@@ -95,6 +95,7 @@ namespace RockStatic
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
+            padre.actual.areasCore = new List<CAreaInteres>();
             this.padre.CerrarSelectAreasForm();
         }
 
@@ -132,11 +133,22 @@ namespace RockStatic
                 grpPhantoms.Enabled = false;
             }
 
-            // se prepara una lista vacia de areas para los core, cada una con elementos null
-            areasCore=new List<CCuadrado>();
-            for (int i = 0; i < padre.actual.datacuboHigh.dataCube.Count; i++) areasCore.Add(null);
+            // se preparan los numericUpDown
+            numActual.Minimum = 1;
+            numActual.Maximum = padre.actual.datacuboHigh.dataCube.Count;
+            numActual.Value = 1;
 
+            numFrom.Minimum = 1;
+            numFrom.Maximum = padre.actual.datacuboHigh.dataCube.Count;
+            numFrom.Value = 1;
+
+            numUntil.Minimum = 1;
+            numUntil.Maximum = padre.actual.datacuboHigh.dataCube.Count;
             numUntil.Value = padre.actual.datacuboHigh.dataCube.Count;
+            
+            countAreas = 0;
+
+            LlenarListAreas();
         }
 
         private void trackElementos_ValueChanged(object sender, EventArgs e)
@@ -161,6 +173,17 @@ namespace RockStatic
                 //this.pictP2.Image = MainForm.Byte2image(elementosP2[n - 1]);
                 //this.pictP3.Image = MainForm.Byte2image(elementosP3[n - 1]);
             }
+
+            // se cambia el area seleccionada en el listbox. Se busca el area que corresponde con el slide actual
+            for (int i = 0; i < padre.actual.areasCore.Count; i++)
+            {
+                if ((trackElementos.Value >= padre.actual.areasCore[i].ini) & (trackElementos.Value <= padre.actual.areasCore[i].fin))
+                {
+                    lstAreas.SelectedIndex = i;
+                    break;
+                }
+            }
+
 
             pictCore.Invalidate();
         }
@@ -266,20 +289,74 @@ namespace RockStatic
             punto.x = Convert.ToInt32((grad_a * grad_b * (tempClicks[0].y - tempClicks[2].y) + grad_b * (tempClicks[0].x + tempClicks[1].x) - grad_a * (tempClicks[1].x + tempClicks[2].x)) / (2 * (grad_b - grad_a)));
             punto.y = Convert.ToInt32(((tempClicks[0].x + tempClicks[1].x) / 2 - punto.x) / grad_a + (tempClicks[0].y + tempClicks[1].y) / 2);
             punto.width = Convert.ToInt32(Math.Sqrt(Math.Pow(punto.x - tempClicks[0].x, 2) + Math.Pow(punto.y - tempClicks[0].y, 2)));
-            
+
+            // se incrementa el contador de areas
+            countAreas++;
+
+            // se cambia el punto obtenido a las coordenadas originales, considerando que el tamaño del pictCore y de la imagen son diferentes
+            CCuadrado corregido = new CCuadrado(punto);
+            corregido = MainForm.CorregirPictBox2Original(corregido, padre.actual.datacuboHigh.widthSeg, pictCore.Height);
+            CAreaInteres area = new CAreaInteres(corregido.x, corregido.y, corregido.width, "Area" + countAreas.ToString(), Convert.ToInt32(numActual.Value), padre.actual.datacuboHigh.dataCube.Count);
+
             switch(elemento)
             {
                 case "core":
-                    // se agrega ese elemento area TODOS los elementos de ahi en adelante
-                    for (int i = trackElementos.Value - 1; i < padre.actual.datacuboHigh.dataCube.Count;i++) this.areasCore[i] = punto;
+                    
+                    padre.actual.areasCore.Add(area);
+                    
+                    // se ordenan los elementos de principio a fin
+                    this.padre.actual.areasCore.Sort(delegate(CAreaInteres a, CAreaInteres b)
+                    {
+                        return a.ini.CompareTo(b.ini);
+                    });
+
+                    // se verifica que no se crucen las areas entre si
+                    if (this.padre.actual.areasCore.Count > 1)
+                    {
+                        // solo se verifica que no hayan cruces si y solo si hay mas de una area agregada a la lista
+                        for (int i = 1; i < this.padre.actual.areasCore.Count; i++)
+                        {
+                            if (this.padre.actual.areasCore[i - 1].fin > this.padre.actual.areasCore[i].ini)
+                                this.padre.actual.areasCore[i - 1].fin = this.padre.actual.areasCore[i].ini - 1;
+                        }
+                    }
+
+                    // se llena el ListBox
+                    LlenarListAreas();
+
+                    // se busca que indice del listbox se debe seleccionar, en funcion del slide en el que se encuentra
+                    for (int i = 0; i < this.padre.actual.areasCore.Count; i++)
+                    {
+                        if ((trackElementos.Value >= this.padre.actual.areasCore[i].ini) & (trackElementos.Value <= this.padre.actual.areasCore[i].fin))
+                            lstAreas.SelectedIndex = i;
+                    }
+
+                    // se pintan las areas el pictCore
                     controlPaint = true;
                     pictCore.Invalidate();
-                    padre.selecAreas2Form.GetAreasCore(areasCore, pictCore.Image.Width);
+                    
+                    // se envia el list de areas de interes a la SelectAreas2Form
+                    //padre.selecAreas2Form.GetAreasCore(areasCore, pictCore.Image.Width);
                     break;
             }
 
             btnClear.Enabled = true;
             btnDelete.Enabled = true;
+        }
+
+        /// <summary>
+        /// Se llena el listbox de las areas de interes
+        /// </summary>
+        private void LlenarListAreas()
+        {
+            lstAreas.Items.Clear();
+
+            // se debe verificar que hayan areas de interes en memoria
+            if (padre.actual.areasCore.Count > 0)
+            {
+                for (int i = 0; i < padre.actual.areasCore.Count; i++)
+                    lstAreas.Items.Add(padre.actual.areasCore[i].nombre);
+            }
         }
 
         private void pictCore_MouseClick(object sender, MouseEventArgs e)
@@ -336,12 +413,22 @@ namespace RockStatic
 
         private void pictCore_Paint(object sender, PaintEventArgs e)
         {
-            int i = trackElementos.Value-1;
-            if (areasCore[i] != null)
+            // se busca si existe un elemento en la lista areasCore que se corresponda con el slide actual, y se pinta el area
+            for (int i = 0; i < this.padre.actual.areasCore.Count; i++)
             {
-                e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                e.Graphics.DrawEllipse(pen2, areasCore[i].x - areasCore[i].width, areasCore[i].y - areasCore[i].width, 2 * areasCore[i].width, 2 * areasCore[i].width);
-            }      
+                if ((trackElementos.Value >= this.padre.actual.areasCore[i].ini) & (trackElementos.Value <= this.padre.actual.areasCore[i].fin))
+                {
+                    e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+                    CCuadrado corregido = new CCuadrado(padre.actual.areasCore[i].x, padre.actual.areasCore[i].y, padre.actual.areasCore[i].width);
+                    corregido = MainForm.CorregirOriginal2PictBox(corregido, padre.actual.datacuboHigh.widthSeg, pictCore.Height);
+
+                    e.Graphics.DrawEllipse(pen2, corregido.x - corregido.width, corregido.y - corregido.width, 2 * corregido.width, 2 * corregido.width);
+                    //e.Graphics.DrawEllipse(pen2, this.padre.actual.areasCore[i].x - this.padre.actual.areasCore[i].width, this.padre.actual.areasCore[i].y - this.padre.actual.areasCore[i].width, 2 * this.padre.actual.areasCore[i].width, 2 * this.padre.actual.areasCore[i].width);
+                    
+                    return; // se encontro el elemento areaInteres buscado, no es necesario buscar los otros elementos en la lista
+                }
+            }
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -390,6 +477,14 @@ namespace RockStatic
             trackContraste.Value = 0;
 
             Filtrar(n);
+        }
+
+        private void lstAreas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int nactual = lstAreas.SelectedIndex;
+
+            // se busca el INI del area de interes seleccionada y se mueve el trackbar a esa posicion
+            trackElementos.Value = padre.actual.areasCore[nactual].ini;
         }
     }
 }

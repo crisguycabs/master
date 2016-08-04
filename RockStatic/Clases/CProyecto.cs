@@ -112,6 +112,11 @@ namespace RockStatic
         /// </summary>
         public CPhantom phantom3 = null;
 
+        /// <summary>
+        /// Lista para guardar las areas seleccionadas del core
+        /// </summary>
+        public List<CAreaInteres> areasCore;
+
         #endregion
 
         /// <summary>
@@ -127,6 +132,9 @@ namespace RockStatic
             datacuboHigh = new MyDataCube(rutasHigh);
             datacuboLow = new MyDataCube(rutasLow);
             phantomEnDicom = phantom;
+
+            // se prepara una lista vacia de areas para los core, cada una con elementos null
+            areasCore = new List<CAreaInteres>();
         }      
         
 

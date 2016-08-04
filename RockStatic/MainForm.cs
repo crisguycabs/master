@@ -488,7 +488,7 @@ namespace RockStatic
             this.tableLayoutPanel1.CellPaint += new TableLayoutCellPaintEventHandler(tableLayoutPanel1_CellPaint);
             menuMain.BackColor = Color.FromArgb(255, 255, 255);
             this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
-            this.Refresh();
+            this.Refresh();            
         }
 
         private void cargarProyectoToolStripMenuItem_Click(object sender, EventArgs e)

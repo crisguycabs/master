@@ -9,7 +9,7 @@ namespace RockStatic
     /// <summary>
     /// Esta tipo de dato maneja la informacion de las areas de interes seleccionadas
     /// </summary>
-    class CAreaInteres
+    public class CAreaInteres
     {
         #region variables de clase
 

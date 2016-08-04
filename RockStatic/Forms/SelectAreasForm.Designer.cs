@@ -33,12 +33,14 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.pictCore = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.numActual = new System.Windows.Forms.NumericUpDown();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnReset = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.trackContraste = new System.Windows.Forms.TrackBar();
             this.trackBrillo = new System.Windows.Forms.TrackBar();
+            this.lblActual = new System.Windows.Forms.Label();
             this.trackElementos = new System.Windows.Forms.TrackBar();
             this.grpPhantoms = new System.Windows.Forms.GroupBox();
             this.lstElementos = new System.Windows.Forms.ListBox();
@@ -67,18 +69,17 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.numUntil = new System.Windows.Forms.NumericUpDown();
-            this.numActual = new System.Windows.Forms.NumericUpDown();
-            this.lblActual = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.numFrom = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
             this.lstAreas = new System.Windows.Forms.ListBox();
+            this.button7 = new System.Windows.Forms.Button();
+            this.numFrom = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictCore)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numActual)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackContraste)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBrillo)).BeginInit();
@@ -91,7 +92,6 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numRad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUntil)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numActual)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numFrom)).BeginInit();
@@ -159,6 +159,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "CORE";
             // 
+            // numActual
+            // 
+            this.numActual.Location = new System.Drawing.Point(273, 428);
+            this.numActual.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.numActual.Name = "numActual";
+            this.numActual.Size = new System.Drawing.Size(41, 22);
+            this.numActual.TabIndex = 28;
+            this.numActual.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numActual.Value = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.numActual.ValueChanged += new System.EventHandler(this.numActual_ValueChanged);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnReset);
@@ -225,6 +244,15 @@
             this.trackBrillo.TabIndex = 7;
             this.trackBrillo.TickFrequency = 32;
             this.trackBrillo.Scroll += new System.EventHandler(this.trackBrillo_Scroll);
+            // 
+            // lblActual
+            // 
+            this.lblActual.AutoSize = true;
+            this.lblActual.Location = new System.Drawing.Point(193, 432);
+            this.lblActual.Name = "lblActual";
+            this.lblActual.Size = new System.Drawing.Size(78, 14);
+            this.lblActual.TabIndex = 26;
+            this.lblActual.Text = "Slide actual: ";
             // 
             // trackElementos
             // 
@@ -584,34 +612,6 @@
             0,
             0});
             // 
-            // numActual
-            // 
-            this.numActual.Location = new System.Drawing.Point(273, 428);
-            this.numActual.Maximum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.numActual.Name = "numActual";
-            this.numActual.Size = new System.Drawing.Size(41, 22);
-            this.numActual.TabIndex = 28;
-            this.numActual.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numActual.Value = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.numActual.ValueChanged += new System.EventHandler(this.numActual_ValueChanged);
-            // 
-            // lblActual
-            // 
-            this.lblActual.AutoSize = true;
-            this.lblActual.Location = new System.Drawing.Point(193, 432);
-            this.lblActual.Name = "lblActual";
-            this.lblActual.Size = new System.Drawing.Size(78, 14);
-            this.lblActual.TabIndex = 26;
-            this.lblActual.Text = "Slide actual: ";
-            // 
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -660,6 +660,30 @@
             this.groupBox5.TabIndex = 23;
             this.groupBox5.TabStop = false;
             // 
+            // lstAreas
+            // 
+            this.lstAreas.FormattingEnabled = true;
+            this.lstAreas.ItemHeight = 14;
+            this.lstAreas.Location = new System.Drawing.Point(8, 129);
+            this.lstAreas.Name = "lstAreas";
+            this.lstAreas.Size = new System.Drawing.Size(163, 186);
+            this.lstAreas.TabIndex = 26;
+            this.lstAreas.SelectedIndexChanged += new System.EventHandler(this.lstAreas_SelectedIndexChanged);
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.Location = new System.Drawing.Point(34, 95);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(112, 23);
+            this.button7.TabIndex = 23;
+            this.button7.Text = "Seleccionar Todo";
+            this.button7.UseVisualStyleBackColor = false;
+            // 
             // numFrom
             // 
             this.numFrom.Font = new System.Drawing.Font("Lucida Console", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -684,15 +708,6 @@
             0,
             0});
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(86, 43);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(45, 14);
-            this.label7.TabIndex = 21;
-            this.label7.Text = "Desde:";
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -702,28 +717,14 @@
             this.label8.TabIndex = 21;
             this.label8.Text = "Hasta:";
             // 
-            // button7
+            // label7
             // 
-            this.button7.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.Green;
-            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Location = new System.Drawing.Point(34, 95);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(112, 23);
-            this.button7.TabIndex = 23;
-            this.button7.Text = "Seleccionar Todo";
-            this.button7.UseVisualStyleBackColor = false;
-            // 
-            // lstAreas
-            // 
-            this.lstAreas.FormattingEnabled = true;
-            this.lstAreas.ItemHeight = 14;
-            this.lstAreas.Location = new System.Drawing.Point(8, 129);
-            this.lstAreas.Name = "lstAreas";
-            this.lstAreas.Size = new System.Drawing.Size(163, 186);
-            this.lstAreas.TabIndex = 26;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(86, 43);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(45, 14);
+            this.label7.TabIndex = 21;
+            this.label7.Text = "Desde:";
             // 
             // SelectAreasForm
             // 
@@ -750,6 +751,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictCore)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numActual)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackContraste)).EndInit();
@@ -765,7 +767,6 @@
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numRad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUntil)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numActual)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
