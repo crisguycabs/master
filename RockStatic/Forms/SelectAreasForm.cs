@@ -486,5 +486,89 @@ namespace RockStatic
             // se busca el INI del area de interes seleccionada y se mueve el trackbar a esa posicion
             trackElementos.Value = padre.actual.areasCore[nactual].ini;
         }
+
+        private void btnUp_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int ielemento = lstElementos.SelectedIndex;
+                padre.actual.areasCore[this.lstAreas.SelectedIndex].y--;
+                controlPaint = true;
+                pictCore.Invalidate();
+            }
+            catch
+            {
+            }
+        }
+
+        private void btnRight_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int ielemento = lstElementos.SelectedIndex;
+                padre.actual.areasCore[this.lstAreas.SelectedIndex].x++;
+                controlPaint = true;
+                pictCore.Invalidate();
+            }
+            catch
+            {
+            }
+        }
+
+        private void btnLeft_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int ielemento = lstElementos.SelectedIndex;
+                padre.actual.areasCore[this.lstAreas.SelectedIndex].x--;
+                controlPaint = true;
+                pictCore.Invalidate();
+            }
+            catch
+            {
+            }
+        }
+
+        private void btnDown_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int ielemento = lstElementos.SelectedIndex;
+                padre.actual.areasCore[this.lstAreas.SelectedIndex].y++;
+                controlPaint = true;
+                pictCore.Invalidate();
+            }
+            catch
+            {
+            }
+        }
+
+        private void numFrom_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int ielemento = lstElementos.SelectedIndex;
+                padre.actual.areasCore[this.lstAreas.SelectedIndex].ini=Convert.ToInt32(numFrom.Value);
+                controlPaint = true;
+                pictCore.Invalidate();
+            }
+            catch
+            {
+            }
+        }
+
+        private void numUntil_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int ielemento = lstElementos.SelectedIndex;
+                padre.actual.areasCore[this.lstAreas.SelectedIndex].fin = Convert.ToInt32(numUntil.Value);
+                controlPaint = true;
+                pictCore.Invalidate();
+            }
+            catch
+            {
+            }
+        }
     }
 }

@@ -441,6 +441,7 @@
             this.btnLeft.Size = new System.Drawing.Size(20, 20);
             this.btnLeft.TabIndex = 19;
             this.btnLeft.UseVisualStyleBackColor = false;
+            this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
             // 
             // btnRight
             // 
@@ -454,6 +455,7 @@
             this.btnRight.Size = new System.Drawing.Size(20, 20);
             this.btnRight.TabIndex = 20;
             this.btnRight.UseVisualStyleBackColor = false;
+            this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
             // 
             // btnDown
             // 
@@ -467,6 +469,7 @@
             this.btnDown.Size = new System.Drawing.Size(20, 20);
             this.btnDown.TabIndex = 18;
             this.btnDown.UseVisualStyleBackColor = false;
+            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
             // 
             // btnUp
             // 
@@ -480,6 +483,7 @@
             this.btnUp.Size = new System.Drawing.Size(20, 20);
             this.btnUp.TabIndex = 17;
             this.btnUp.UseVisualStyleBackColor = false;
+            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
             // 
             // groupBox3
             // 
@@ -611,6 +615,7 @@
             0,
             0,
             0});
+            this.numUntil.ValueChanged += new System.EventHandler(this.numUntil_ValueChanged);
             // 
             // btnGuardar
             // 
@@ -707,6 +712,7 @@
             0,
             0,
             0});
+            this.numFrom.ValueChanged += new System.EventHandler(this.numFrom_ValueChanged);
             // 
             // label8
             // 
