@@ -39,7 +39,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.trackContraste = new System.Windows.Forms.TrackBar();
             this.trackBrillo = new System.Windows.Forms.TrackBar();
-            this.rangeBar = new Zzzz.ZzzzRangeBar();
             this.trackElementos = new System.Windows.Forms.TrackBar();
             this.grpPhantoms = new System.Windows.Forms.GroupBox();
             this.lstElementos = new System.Windows.Forms.ListBox();
@@ -64,22 +63,20 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblPunto1 = new System.Windows.Forms.Label();
             this.numRad = new System.Windows.Forms.NumericUpDown();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radThis = new System.Windows.Forms.RadioButton();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.numUntil = new System.Windows.Forms.NumericUpDown();
-            this.numTail = new System.Windows.Forms.NumericUpDown();
-            this.numHead = new System.Windows.Forms.NumericUpDown();
             this.numActual = new System.Windows.Forms.NumericUpDown();
-            this.lblTail = new System.Windows.Forms.Label();
-            this.lblHead = new System.Windows.Forms.Label();
             this.lblActual = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.numFrom = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
+            this.lstAreas = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictCore)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -94,11 +91,10 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numRad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUntil)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numTail)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numHead)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numActual)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numFrom)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -151,8 +147,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.numActual);
             this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.rangeBar);
+            this.groupBox1.Controls.Add(this.lblActual);
             this.groupBox1.Controls.Add(this.trackElementos);
             this.groupBox1.Controls.Add(this.pictCore);
             this.groupBox1.Location = new System.Drawing.Point(10, 42);
@@ -228,25 +225,6 @@
             this.trackBrillo.TabIndex = 7;
             this.trackBrillo.TickFrequency = 32;
             this.trackBrillo.Scroll += new System.EventHandler(this.trackBrillo_Scroll);
-            // 
-            // rangeBar
-            // 
-            this.rangeBar.DivisionNum = 1;
-            this.rangeBar.HeightOfBar = 8;
-            this.rangeBar.HeightOfMark = 24;
-            this.rangeBar.HeightOfTick = 6;
-            this.rangeBar.InnerColor = System.Drawing.Color.Green;
-            this.rangeBar.Location = new System.Drawing.Point(12, 426);
-            this.rangeBar.Name = "rangeBar";
-            this.rangeBar.Orientation = Zzzz.ZzzzRangeBar.RangeBarOrientation.horizontal;
-            this.rangeBar.RangeMaximum = 10;
-            this.rangeBar.RangeMinimum = 1;
-            this.rangeBar.ScaleOrientation = Zzzz.ZzzzRangeBar.TopBottomOrientation.bottom;
-            this.rangeBar.Size = new System.Drawing.Size(300, 22);
-            this.rangeBar.TabIndex = 14;
-            this.rangeBar.TotalMaximum = 100;
-            this.rangeBar.TotalMinimum = 1;
-            this.rangeBar.RangeChanging += new Zzzz.ZzzzRangeBar.RangeChangedEventHandler(this.rangeBar_RangeChanging);
             // 
             // trackElementos
             // 
@@ -430,7 +408,7 @@
             this.btnLeft.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnLeft.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLeft.Location = new System.Drawing.Point(12, 140);
+            this.btnLeft.Location = new System.Drawing.Point(7, 39);
             this.btnLeft.Name = "btnLeft";
             this.btnLeft.Size = new System.Drawing.Size(20, 20);
             this.btnLeft.TabIndex = 19;
@@ -443,7 +421,7 @@
             this.btnRight.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnRight.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRight.Location = new System.Drawing.Point(56, 140);
+            this.btnRight.Location = new System.Drawing.Point(51, 39);
             this.btnRight.Name = "btnRight";
             this.btnRight.Size = new System.Drawing.Size(20, 20);
             this.btnRight.TabIndex = 20;
@@ -456,7 +434,7 @@
             this.btnDown.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnDown.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDown.Location = new System.Drawing.Point(34, 162);
+            this.btnDown.Location = new System.Drawing.Point(29, 61);
             this.btnDown.Name = "btnDown";
             this.btnDown.Size = new System.Drawing.Size(20, 20);
             this.btnDown.TabIndex = 18;
@@ -469,7 +447,7 @@
             this.btnUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUp.Location = new System.Drawing.Point(34, 118);
+            this.btnUp.Location = new System.Drawing.Point(29, 17);
             this.btnUp.Name = "btnUp";
             this.btnUp.Size = new System.Drawing.Size(20, 20);
             this.btnUp.TabIndex = 17;
@@ -481,21 +459,9 @@
             this.groupBox3.Controls.Add(this.lblPunto2);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.lblPunto1);
-            this.groupBox3.Controls.Add(this.numRad);
-            this.groupBox3.Controls.Add(this.radioButton2);
-            this.groupBox3.Controls.Add(this.radioButton1);
-            this.groupBox3.Controls.Add(this.radThis);
-            this.groupBox3.Controls.Add(this.btnClear);
-            this.groupBox3.Controls.Add(this.btnDelete);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.numUntil);
-            this.groupBox3.Controls.Add(this.btnUp);
-            this.groupBox3.Controls.Add(this.btnLeft);
-            this.groupBox3.Controls.Add(this.btnDown);
-            this.groupBox3.Controls.Add(this.btnRight);
             this.groupBox3.Location = new System.Drawing.Point(339, 42);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(180, 386);
+            this.groupBox3.Size = new System.Drawing.Size(180, 102);
             this.groupBox3.TabIndex = 21;
             this.groupBox3.TabStop = false;
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
@@ -544,9 +510,9 @@
             // 
             // numRad
             // 
-            this.numRad.Location = new System.Drawing.Point(112, 118);
+            this.numRad.Location = new System.Drawing.Point(133, 14);
             this.numRad.Name = "numRad";
-            this.numRad.Size = new System.Drawing.Size(56, 22);
+            this.numRad.Size = new System.Drawing.Size(41, 22);
             this.numRad.TabIndex = 25;
             this.numRad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numRad.Value = new decimal(new int[] {
@@ -554,38 +520,6 @@
             0,
             0,
             0});
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(89, 231);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(59, 18);
-            this.radioButton2.TabIndex = 24;
-            this.radioButton2.Text = "hasta:";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(89, 212);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(83, 18);
-            this.radioButton1.TabIndex = 24;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "hasta final";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radThis
-            // 
-            this.radThis.AutoSize = true;
-            this.radThis.Location = new System.Drawing.Point(89, 193);
-            this.radThis.Name = "radThis";
-            this.radThis.Size = new System.Drawing.Size(80, 18);
-            this.radThis.TabIndex = 24;
-            this.radThis.Text = "este slide";
-            this.radThis.UseVisualStyleBackColor = true;
             // 
             // btnClear
             // 
@@ -595,7 +529,7 @@
             this.btnClear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Location = new System.Drawing.Point(12, 281);
+            this.btnClear.Location = new System.Drawing.Point(95, 326);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(70, 23);
             this.btnClear.TabIndex = 23;
@@ -610,7 +544,7 @@
             this.btnDelete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Location = new System.Drawing.Point(12, 193);
+            this.btnDelete.Location = new System.Drawing.Point(10, 326);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(70, 23);
             this.btnDelete.TabIndex = 23;
@@ -620,16 +554,16 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(92, 120);
+            this.label1.Location = new System.Drawing.Point(86, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(17, 14);
             this.label1.TabIndex = 21;
-            this.label1.Text = "h:";
+            this.label1.Text = "R:";
             // 
             // numUntil
             // 
             this.numUntil.Font = new System.Drawing.Font("Lucida Console", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numUntil.Location = new System.Drawing.Point(117, 253);
+            this.numUntil.Location = new System.Drawing.Point(133, 64);
             this.numUntil.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -641,7 +575,7 @@
             0,
             0});
             this.numUntil.Name = "numUntil";
-            this.numUntil.Size = new System.Drawing.Size(51, 18);
+            this.numUntil.Size = new System.Drawing.Size(41, 18);
             this.numUntil.TabIndex = 22;
             this.numUntil.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numUntil.Value = new decimal(new int[] {
@@ -650,37 +584,9 @@
             0,
             0});
             // 
-            // numTail
-            // 
-            this.numTail.Location = new System.Drawing.Point(135, 44);
-            this.numTail.Maximum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.numTail.Name = "numTail";
-            this.numTail.Size = new System.Drawing.Size(41, 22);
-            this.numTail.TabIndex = 28;
-            this.numTail.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numTail.Value = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.numTail.ValueChanged += new System.EventHandler(this.numTail_ValueChanged);
-            // 
-            // numHead
-            // 
-            this.numHead.Location = new System.Drawing.Point(54, 44);
-            this.numHead.Name = "numHead";
-            this.numHead.Size = new System.Drawing.Size(41, 22);
-            this.numHead.TabIndex = 28;
-            this.numHead.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numHead.ValueChanged += new System.EventHandler(this.numHead_ValueChanged);
-            // 
             // numActual
             // 
-            this.numActual.Location = new System.Drawing.Point(135, 15);
+            this.numActual.Location = new System.Drawing.Point(273, 428);
             this.numActual.Maximum = new decimal(new int[] {
             999,
             0,
@@ -690,30 +596,17 @@
             this.numActual.Size = new System.Drawing.Size(41, 22);
             this.numActual.TabIndex = 28;
             this.numActual.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numActual.Value = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
             this.numActual.ValueChanged += new System.EventHandler(this.numActual_ValueChanged);
-            // 
-            // lblTail
-            // 
-            this.lblTail.AutoSize = true;
-            this.lblTail.Location = new System.Drawing.Point(103, 48);
-            this.lblTail.Name = "lblTail";
-            this.lblTail.Size = new System.Drawing.Size(37, 14);
-            this.lblTail.TabIndex = 27;
-            this.lblTail.Text = "Cola: ";
-            // 
-            // lblHead
-            // 
-            this.lblHead.AutoSize = true;
-            this.lblHead.Location = new System.Drawing.Point(5, 48);
-            this.lblHead.Name = "lblHead";
-            this.lblHead.Size = new System.Drawing.Size(52, 14);
-            this.lblHead.TabIndex = 26;
-            this.lblHead.Text = "Cabeza: ";
             // 
             // lblActual
             // 
             this.lblActual.AutoSize = true;
-            this.lblActual.Location = new System.Drawing.Point(5, 17);
+            this.lblActual.Location = new System.Drawing.Point(193, 432);
             this.lblActual.Name = "lblActual";
             this.lblActual.Size = new System.Drawing.Size(78, 14);
             this.lblActual.TabIndex = 26;
@@ -747,17 +640,90 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.numTail);
-            this.groupBox5.Controls.Add(this.numActual);
-            this.groupBox5.Controls.Add(this.numHead);
-            this.groupBox5.Controls.Add(this.lblActual);
-            this.groupBox5.Controls.Add(this.lblHead);
-            this.groupBox5.Controls.Add(this.lblTail);
-            this.groupBox5.Location = new System.Drawing.Point(339, 430);
+            this.groupBox5.Controls.Add(this.lstAreas);
+            this.groupBox5.Controls.Add(this.button7);
+            this.groupBox5.Controls.Add(this.btnDelete);
+            this.groupBox5.Controls.Add(this.btnClear);
+            this.groupBox5.Controls.Add(this.numFrom);
+            this.groupBox5.Controls.Add(this.numUntil);
+            this.groupBox5.Controls.Add(this.numRad);
+            this.groupBox5.Controls.Add(this.btnUp);
+            this.groupBox5.Controls.Add(this.btnLeft);
+            this.groupBox5.Controls.Add(this.label8);
+            this.groupBox5.Controls.Add(this.label7);
+            this.groupBox5.Controls.Add(this.label1);
+            this.groupBox5.Controls.Add(this.btnDown);
+            this.groupBox5.Controls.Add(this.btnRight);
+            this.groupBox5.Location = new System.Drawing.Point(339, 144);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(180, 74);
+            this.groupBox5.Size = new System.Drawing.Size(180, 360);
             this.groupBox5.TabIndex = 23;
             this.groupBox5.TabStop = false;
+            // 
+            // numFrom
+            // 
+            this.numFrom.Font = new System.Drawing.Font("Lucida Console", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numFrom.Location = new System.Drawing.Point(133, 41);
+            this.numFrom.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numFrom.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numFrom.Name = "numFrom";
+            this.numFrom.Size = new System.Drawing.Size(41, 18);
+            this.numFrom.TabIndex = 22;
+            this.numFrom.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numFrom.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(86, 43);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(45, 14);
+            this.label7.TabIndex = 21;
+            this.label7.Text = "Desde:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(86, 66);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(42, 14);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "Hasta:";
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.Location = new System.Drawing.Point(34, 95);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(112, 23);
+            this.button7.TabIndex = 23;
+            this.button7.Text = "Seleccionar Todo";
+            this.button7.UseVisualStyleBackColor = false;
+            // 
+            // lstAreas
+            // 
+            this.lstAreas.FormattingEnabled = true;
+            this.lstAreas.ItemHeight = 14;
+            this.lstAreas.Location = new System.Drawing.Point(8, 129);
+            this.lstAreas.Name = "lstAreas";
+            this.lstAreas.Size = new System.Drawing.Size(163, 186);
+            this.lstAreas.TabIndex = 26;
             // 
             // SelectAreasForm
             // 
@@ -799,12 +765,11 @@
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numRad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUntil)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numTail)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numHead)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numActual)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numFrom)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -827,20 +792,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown numUntil;
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radThis;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.NumericUpDown numRad;
         private System.Windows.Forms.TrackBar trackElementos;
-        private Zzzz.ZzzzRangeBar rangeBar;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label lblHead;
         private System.Windows.Forms.Label lblActual;
-        private System.Windows.Forms.Label lblTail;
-        private System.Windows.Forms.NumericUpDown numTail;
-        private System.Windows.Forms.NumericUpDown numHead;
         private System.Windows.Forms.NumericUpDown numActual;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Button button1;
@@ -862,6 +819,11 @@
         private System.Windows.Forms.TrackBar trackContraste;
         private System.Windows.Forms.TrackBar trackBrillo;
         private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.NumericUpDown numFrom;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.ListBox lstAreas;
 
     }
 }

@@ -32,7 +32,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.pictCore = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rangeBar = new Zzzz.ZzzzRangeBar();
             this.trackCortes = new System.Windows.Forms.TrackBar();
             this.grpPhantoms = new System.Windows.Forms.GroupBox();
             this.pictPhantom3 = new System.Windows.Forms.PictureBox();
@@ -75,7 +74,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.rangeBar);
             this.groupBox1.Controls.Add(this.trackCortes);
             this.groupBox1.Controls.Add(this.pictCore);
             this.groupBox1.Location = new System.Drawing.Point(12, 39);
@@ -85,25 +83,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "CORE";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
-            // rangeBar
-            // 
-            this.rangeBar.DivisionNum = 10;
-            this.rangeBar.HeightOfBar = 8;
-            this.rangeBar.HeightOfMark = 24;
-            this.rangeBar.HeightOfTick = 6;
-            this.rangeBar.InnerColor = System.Drawing.Color.Green;
-            this.rangeBar.Location = new System.Drawing.Point(10, 410);
-            this.rangeBar.Name = "rangeBar";
-            this.rangeBar.Orientation = Zzzz.ZzzzRangeBar.RangeBarOrientation.horizontal;
-            this.rangeBar.RangeMaximum = 10;
-            this.rangeBar.RangeMinimum = 1;
-            this.rangeBar.ScaleOrientation = Zzzz.ZzzzRangeBar.TopBottomOrientation.bottom;
-            this.rangeBar.Size = new System.Drawing.Size(800, 20);
-            this.rangeBar.TabIndex = 10;
-            this.rangeBar.TotalMaximum = 100;
-            this.rangeBar.TotalMinimum = 1;
-            this.rangeBar.RangeChanging += new Zzzz.ZzzzRangeBar.RangeChangedEventHandler(this.rangeBar_RangeChanging);
             // 
             // trackCortes
             // 
@@ -209,7 +188,6 @@
         private System.Windows.Forms.PictureBox pictPhantom2;
         private System.Windows.Forms.PictureBox pictPhantom1;
         private System.Windows.Forms.Button btnCancelar;
-        private Zzzz.ZzzzRangeBar rangeBar;
         private System.Windows.Forms.TrackBar trackCortes;
     }
 }

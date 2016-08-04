@@ -82,13 +82,6 @@ namespace RockStatic
             this.padre.CerrarSelectAreasForm();
         }
 
-        public void SetRange(int head, int tail)
-        {
-            rangeBar.RangeMinimum = head;
-            rangeBar.RangeMaximum = tail;
-            pictCore.Invalidate();
-        }
-
         private void SelectAreas2Form_FormClosed(object sender, FormClosedEventArgs e)
         {
             
@@ -116,13 +109,6 @@ namespace RockStatic
             // if(height<pictCore.Height) pictCore.Height = height;
 
             pictCore.Image = corte;
-
-            // se prepara el RangeBar
-            this.rangeBar.TotalMinimum = 1;
-            this.rangeBar.TotalMaximum = padre.actual.datacuboHigh.dataCube.Count;
-            this.rangeBar.RangeMinimum = 1;
-            this.rangeBar.RangeMaximum = padre.actual.datacuboHigh.dataCube.Count;;
-            this.rangeBar.DivisionNum = (int)(padre.actual.datacuboHigh.dataCube.Count/10);
 
             // se prepara el color de la brocha y lapiz
             brocha = new SolidBrush(Color.Red);
@@ -170,16 +156,6 @@ namespace RockStatic
             // se pintan las lineas de Cabeza y Cola
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
-            int head = (pictCore.Width * (rangeBar.RangeMinimum - 1) / rangeBar.TotalMaximum)+1;
-            // int tail = (pictCore.Width * rangeBar.RangeMaximum / rangeBar.TotalMaximum)-2;
-            int tail = (pictCore.Width * (rangeBar.RangeMaximum - 1) / rangeBar.TotalMaximum)+1;
-
-            e.Graphics.DrawLine(lapiz, head, 0, head, pictCore.Height);
-            e.Graphics.DrawLine(lapiz, tail, 0, tail, pictCore.Height);
-            
-            //float xSlide=slideActual* pictCore.Image.Width / areasCore.Count;
-            //e.Graphics.DrawLine(lapiz3, xSlide, 0, xSlide, pictCore.Height);
-            
             // se pintan los cuadrados que se hallan seleccionado en la ventana SelectAreasForm
             // se recorren las areas, y si existe una !=null se escala el ancho del area al tamaño del plano
             if (areasCore == null) return;
@@ -202,12 +178,6 @@ namespace RockStatic
                     */
                 }
             }
-        }
-
-        private void rangeBar_RangeChanging(object sender, EventArgs e)
-        {
-            pictCore.Invalidate();
-            padre.selecAreasForm.SetRange(rangeBar.RangeMinimum, rangeBar.RangeMaximum);
         }
 
         public void GetAreasCore(List<CCuadrado> areas,int ancho)

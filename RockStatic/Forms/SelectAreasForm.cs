@@ -111,46 +111,12 @@ namespace RockStatic
             // control de cambios
             changes = true;
 
-            // se asegura que hayan bordes redondos
-            //System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath();
-            //gp.AddEllipse(0, 0, pictCore.Width, pictCore.Height);
-            //Region rg = new Region(gp);
-            //pictCore.Region = rg;
-
-            //gp = new System.Drawing.Drawing2D.GraphicsPath();
-            //gp.AddEllipse(0, 0, pictP1.Width, pictP1.Height);
-            //rg = new Region(gp);
-            //pictP1.Region = rg;
-
-            //gp = new System.Drawing.Drawing2D.GraphicsPath();
-            //gp.AddEllipse(0, 0, pictP2.Width, pictP2.Height);
-            //rg = new Region(gp);
-            //pictP2.Region = rg;
-
-            //gp = new System.Drawing.Drawing2D.GraphicsPath();
-            //gp.AddEllipse(0, 0, pictP3.Width, pictP3.Height);
-            //rg = new Region(gp);
-            //pictP3.Region = rg;
-            
-            // se preparan la listas que almacenaran los elementos a mostrar            
-
-            // se preparan los NumericUpDown
-            numActual.Minimum = numHead.Minimum = numTail.Minimum = 1;
-            numActual.Maximum = numHead.Maximum = numTail.Maximum = padre.actual.datacuboHigh.dataCube.Count;
-
             // se prepara la barra
             this.trackElementos.Minimum = 1;
             this.trackElementos.Maximum = padre.actual.datacuboHigh.dataCube.Count;
             this.trackElementos.TickFrequency = (int)(padre.actual.datacuboHigh.dataCube.Count / 10);
             this.trackElementos.Value = 1;
 
-            // se prepara el RangeBar
-            this.rangeBar.TotalMinimum = 1;
-            this.rangeBar.TotalMaximum = padre.actual.datacuboHigh.dataCube.Count;
-            this.rangeBar.RangeMinimum = 1;
-            this.rangeBar.RangeMaximum = padre.actual.datacuboHigh.dataCube.Count;;
-            this.rangeBar.DivisionNum = (int)(padre.actual.datacuboHigh.dataCube.Count/10);
-            
             this.pictCore.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segCore, padre.actual.areaCore.width * 2, padre.actual.areaCore.width * 2);
 
             // si existe informacion de phantoms en los DICOM
@@ -209,32 +175,6 @@ namespace RockStatic
 
                 changes = true;
             }
-        }
-
-        private void numHead_ValueChanged(object sender, EventArgs e)
-        {
-            if (changes)
-            {
-                changes = false;
-
-                rangeBar.RangeMinimum = Convert.ToInt32(numHead.Value);
-
-                changes = true;
-            }
-            if(this.padre.selecAreas2Form!=null) this.padre.selecAreas2Form.SetRange(rangeBar.RangeMinimum, rangeBar.RangeMaximum);
-        }
-
-        private void numTail_ValueChanged(object sender, EventArgs e)
-        {
-            if (changes)
-            {
-                changes = false;
-
-                rangeBar.RangeMaximum = Convert.ToInt32(numTail.Value);
-
-                changes = true;
-            }
-            if (this.padre.selecAreas2Form != null) this.padre.selecAreas2Form.SetRange(rangeBar.RangeMinimum, rangeBar.RangeMaximum);
         }
 
         private void rangeBar_RangeChanged(object sender, EventArgs e)
@@ -340,30 +280,6 @@ namespace RockStatic
 
             btnClear.Enabled = true;
             btnDelete.Enabled = true;
-        }
-
-        private void rangeBar_RangeChanging(object sender, EventArgs e)
-        {
-            if (changes)
-            {
-                changes = false;
-
-                numHead.Value = Convert.ToDecimal(rangeBar.RangeMinimum);
-                numTail.Value = Convert.ToDecimal(rangeBar.RangeMaximum);
-
-                changes = true;
-            }
-            this.padre.selecAreas2Form.SetRange(rangeBar.RangeMinimum, rangeBar.RangeMaximum);
-        }
- 
-        public void SetRange(int head, int tail)
-        {
-            changes = false;
-            numHead.Value = Convert.ToDecimal(head);
-            numTail.Value = Convert.ToDecimal(tail);
-            rangeBar.RangeMinimum = head;
-            rangeBar.RangeMaximum = tail;
-            changes = true;
         }
 
         private void pictCore_MouseClick(object sender, MouseEventArgs e)
