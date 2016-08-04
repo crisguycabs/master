@@ -306,6 +306,7 @@
             // 
             // pictP3
             // 
+            this.pictP3.BackColor = System.Drawing.Color.Black;
             this.pictP3.Location = new System.Drawing.Point(12, 259);
             this.pictP3.Name = "pictP3";
             this.pictP3.Size = new System.Drawing.Size(110, 110);
@@ -329,6 +330,7 @@
             // 
             // pictP2
             // 
+            this.pictP2.BackColor = System.Drawing.Color.Black;
             this.pictP2.Location = new System.Drawing.Point(12, 140);
             this.pictP2.Name = "pictP2";
             this.pictP2.Size = new System.Drawing.Size(110, 110);
@@ -352,6 +354,7 @@
             // 
             // pictP1
             // 
+            this.pictP1.BackColor = System.Drawing.Color.Black;
             this.pictP1.Location = new System.Drawing.Point(12, 21);
             this.pictP1.Name = "pictP1";
             this.pictP1.Size = new System.Drawing.Size(110, 110);
