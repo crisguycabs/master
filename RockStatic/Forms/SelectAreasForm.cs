@@ -106,7 +106,7 @@ namespace RockStatic
             
             // lapiz
             float[] dashValues = { 10, 3, 5, 3 };
-            pen2 = new System.Drawing.Pen(Color.LawnGreen, 2F);
+            pen2 = new System.Drawing.Pen(Color.Red, 2F);
             pen2.DashPattern = dashValues;
             
             // control de cambios
@@ -290,6 +290,44 @@ namespace RockStatic
             punto.y = Convert.ToInt32(((tempClicks[0].x + tempClicks[1].x) / 2 - punto.x) / grad_a + (tempClicks[0].y + tempClicks[1].y) / 2);
             punto.width = Convert.ToInt32(Math.Sqrt(Math.Pow(punto.x - tempClicks[0].x, 2) + Math.Pow(punto.y - tempClicks[0].y, 2)));
 
+            // si no existen areas dibujadas entonces se agrega la primera a la lista
+            // si la nueva area dibujada está al inicio de un area previamente creada entonces la nueva area modifica el area creada
+
+            if (padre.actual.areasCore.Count < 1)
+            {
+                // se crea la primera area
+                AddArea(punto, elemento);
+            }
+            else
+            {
+                // hay areas creadas, se verifica si se debe sobre escribir o se crea una segunda area
+                if (trackElementos.Value == padre.actual.areasCore[lstAreas.SelectedIndex].ini)
+                {
+                    // se cambia el punto obtenido a las coordenadas originales, considerando que el tamaño del pictCore y de la imagen son diferentes
+                    CCuadrado corregido = new CCuadrado(punto);
+                    corregido = MainForm.CorregirPictBox2Original(corregido, padre.actual.datacuboHigh.widthSeg, pictCore.Height);
+
+                    padre.actual.areasCore[lstAreas.SelectedIndex].x = corregido.x;
+                    padre.actual.areasCore[lstAreas.SelectedIndex].y = corregido.y;
+                    padre.actual.areasCore[lstAreas.SelectedIndex].width = corregido.width;
+
+                    // se pintan las areas el pictCore
+                    controlPaint = true;
+                    pictCore.Invalidate();
+                }
+                else
+                {
+                    // se crea una nueva area
+                    AddArea(punto, elemento);
+                }
+            }
+
+            btnClear.Enabled = true;
+            btnDelete.Enabled = true;
+        }
+
+        private void AddArea(CCuadrado punto, string elemento)
+        {
             // se incrementa el contador de areas
             countAreas++;
 
@@ -298,12 +336,12 @@ namespace RockStatic
             corregido = MainForm.CorregirPictBox2Original(corregido, padre.actual.datacuboHigh.widthSeg, pictCore.Height);
             CAreaInteres area = new CAreaInteres(corregido.x, corregido.y, corregido.width, "Area" + countAreas.ToString(), Convert.ToInt32(numActual.Value), padre.actual.datacuboHigh.dataCube.Count);
 
-            switch(elemento)
+            switch (elemento)
             {
                 case "core":
-                    
+
                     padre.actual.areasCore.Add(area);
-                    
+
                     // se ordenan los elementos de principio a fin
                     this.padre.actual.areasCore.Sort(delegate(CAreaInteres a, CAreaInteres b)
                     {
@@ -334,14 +372,11 @@ namespace RockStatic
                     // se pintan las areas el pictCore
                     controlPaint = true;
                     pictCore.Invalidate();
-                    
+
                     // se envia el list de areas de interes a la SelectAreas2Form
                     //padre.selecAreas2Form.GetAreasCore(areasCore, pictCore.Image.Width);
                     break;
             }
-
-            btnClear.Enabled = true;
-            btnDelete.Enabled = true;
         }
 
         /// <summary>
@@ -569,6 +604,65 @@ namespace RockStatic
             catch
             {
             }
+        }
+
+        private void numRad_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int ielemento = lstElementos.SelectedIndex;
+                padre.actual.areasCore[this.lstAreas.SelectedIndex].width = Convert.ToInt32(numRad.Value);
+                controlPaint = true;
+                pictCore.Invalidate();
+            }
+            catch
+            {
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            ResetCountClick();
+        }
+
+        /// <summary>
+        /// Se resetea el conteo de clicks
+        /// </summary>
+        public void ResetCountClick()
+        {
+            countClickCore = 0;
+            tempClicksCore = new CCirculo[3];
+
+            lblPunto1.Visible = false;
+            lblPunto2.Visible = false;
+            btnCancel.Enabled = false;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            padre.actual.areasCore.RemoveAt(lstAreas.SelectedIndex);
+            LlenarListAreas();
+
+            controlPaint = true;
+            pictCore.Invalidate();
+
+            if (padre.actual.areasCore.Count < 1)
+            {
+                btnClear.Enabled = false;
+                btnDelete.Enabled = false;
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            padre.actual.areasCore.Clear();
+            LlenarListAreas();
+
+            controlPaint = true;
+            pictCore.Invalidate();
+
+            btnClear.Enabled = false;
+            btnDelete.Enabled = false;
         }
     }
 }

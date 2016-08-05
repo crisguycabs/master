@@ -35,7 +35,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.numActual = new System.Windows.Forms.NumericUpDown();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnReset = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.trackContraste = new System.Windows.Forms.TrackBar();
@@ -77,6 +76,7 @@
             this.numFrom = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictCore)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numActual)).BeginInit();
@@ -180,9 +180,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btnReset);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.btnReset);
             this.groupBox2.Controls.Add(this.trackContraste);
             this.groupBox2.Controls.Add(this.trackBrillo);
             this.groupBox2.Location = new System.Drawing.Point(12, 323);
@@ -190,16 +190,6 @@
             this.groupBox2.Size = new System.Drawing.Size(300, 63);
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
-            // 
-            // btnReset
-            // 
-            this.btnReset.Location = new System.Drawing.Point(216, 18);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(75, 23);
-            this.btnReset.TabIndex = 11;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // label5
             // 
@@ -510,6 +500,7 @@
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Cancelar";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // lblPunto2
             // 
@@ -552,6 +543,7 @@
             0,
             0,
             0});
+            this.numRad.ValueChanged += new System.EventHandler(this.numRad_ValueChanged);
             // 
             // btnClear
             // 
@@ -567,6 +559,7 @@
             this.btnClear.TabIndex = 23;
             this.btnClear.Text = "Limpiar";
             this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnDelete
             // 
@@ -582,6 +575,7 @@
             this.btnDelete.TabIndex = 23;
             this.btnDelete.Text = "Borar";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // label1
             // 
@@ -732,6 +726,21 @@
             this.label7.TabIndex = 21;
             this.label7.Text = "Desde:";
             // 
+            // btnReset
+            // 
+            this.btnReset.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnReset.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnReset.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnReset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReset.Location = new System.Drawing.Point(218, 23);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(70, 23);
+            this.btnReset.TabIndex = 23;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // SelectAreasForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -820,7 +829,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblPunto1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TrackBar trackContraste;
@@ -831,6 +839,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.ListBox lstAreas;
+        private System.Windows.Forms.Button btnReset;
 
     }
 }
