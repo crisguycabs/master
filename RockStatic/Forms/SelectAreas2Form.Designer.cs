@@ -32,6 +32,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.pictCore = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.numActual = new System.Windows.Forms.NumericUpDown();
+            this.lblActual = new System.Windows.Forms.Label();
             this.trackCortes = new System.Windows.Forms.TrackBar();
             this.grpPhantoms = new System.Windows.Forms.GroupBox();
             this.pictPhantom3 = new System.Windows.Forms.PictureBox();
@@ -40,6 +42,7 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictCore)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numActual)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackCortes)).BeginInit();
             this.grpPhantoms.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictPhantom3)).BeginInit();
@@ -64,6 +67,7 @@
             // 
             // pictCore
             // 
+            this.pictCore.BackColor = System.Drawing.Color.Black;
             this.pictCore.Location = new System.Drawing.Point(10, 22);
             this.pictCore.Name = "pictCore";
             this.pictCore.Size = new System.Drawing.Size(800, 350);
@@ -74,15 +78,45 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.numActual);
+            this.groupBox1.Controls.Add(this.lblActual);
             this.groupBox1.Controls.Add(this.trackCortes);
             this.groupBox1.Controls.Add(this.pictCore);
             this.groupBox1.Location = new System.Drawing.Point(12, 39);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(823, 442);
+            this.groupBox1.Size = new System.Drawing.Size(822, 445);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "CORE";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // numActual
+            // 
+            this.numActual.Location = new System.Drawing.Point(769, 411);
+            this.numActual.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.numActual.Name = "numActual";
+            this.numActual.Size = new System.Drawing.Size(41, 22);
+            this.numActual.TabIndex = 30;
+            this.numActual.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numActual.Value = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.numActual.ValueChanged += new System.EventHandler(this.numActual_ValueChanged);
+            // 
+            // lblActual
+            // 
+            this.lblActual.AutoSize = true;
+            this.lblActual.Location = new System.Drawing.Point(689, 415);
+            this.lblActual.Name = "lblActual";
+            this.lblActual.Size = new System.Drawing.Size(78, 14);
+            this.lblActual.TabIndex = 29;
+            this.lblActual.Text = "Slide actual: ";
             // 
             // trackCortes
             // 
@@ -99,13 +133,14 @@
             this.grpPhantoms.Controls.Add(this.pictPhantom1);
             this.grpPhantoms.Location = new System.Drawing.Point(12, 487);
             this.grpPhantoms.Name = "grpPhantoms";
-            this.grpPhantoms.Size = new System.Drawing.Size(823, 176);
+            this.grpPhantoms.Size = new System.Drawing.Size(822, 176);
             this.grpPhantoms.TabIndex = 11;
             this.grpPhantoms.TabStop = false;
             this.grpPhantoms.Text = "PHANTOMS";
             // 
             // pictPhantom3
             // 
+            this.pictPhantom3.BackColor = System.Drawing.Color.Black;
             this.pictPhantom3.Location = new System.Drawing.Point(10, 121);
             this.pictPhantom3.Name = "pictPhantom3";
             this.pictPhantom3.Size = new System.Drawing.Size(800, 45);
@@ -115,6 +150,7 @@
             // 
             // pictPhantom2
             // 
+            this.pictPhantom2.BackColor = System.Drawing.Color.Black;
             this.pictPhantom2.Location = new System.Drawing.Point(10, 70);
             this.pictPhantom2.Name = "pictPhantom2";
             this.pictPhantom2.Size = new System.Drawing.Size(800, 45);
@@ -124,6 +160,7 @@
             // 
             // pictPhantom1
             // 
+            this.pictPhantom1.BackColor = System.Drawing.Color.Black;
             this.pictPhantom1.Location = new System.Drawing.Point(10, 19);
             this.pictPhantom1.Name = "pictPhantom1";
             this.pictPhantom1.Size = new System.Drawing.Size(800, 45);
@@ -166,9 +203,11 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SelectAreas2Form_FormClosed);
             this.Load += new System.EventHandler(this.SelectAreas2Form_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.SelectAreas2Form_Paint);
+            this.Enter += new System.EventHandler(this.SelectAreas2Form_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.pictCore)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numActual)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackCortes)).EndInit();
             this.grpPhantoms.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictPhantom3)).EndInit();
@@ -189,5 +228,7 @@
         private System.Windows.Forms.PictureBox pictPhantom1;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.TrackBar trackCortes;
+        private System.Windows.Forms.NumericUpDown numActual;
+        private System.Windows.Forms.Label lblActual;
     }
 }

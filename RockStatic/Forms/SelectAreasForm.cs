@@ -520,6 +520,10 @@ namespace RockStatic
 
             // se busca el INI del area de interes seleccionada y se mueve el trackbar a esa posicion
             trackElementos.Value = padre.actual.areasCore[nactual].ini;
+
+            numFrom.Value = padre.actual.areasCore[nactual].ini;
+            numUntil.Value = padre.actual.areasCore[nactual].fin;
+            numRad.Value = padre.actual.areasCore[nactual].width;
         }
 
         private void btnUp_Click(object sender, EventArgs e)
@@ -530,6 +534,8 @@ namespace RockStatic
                 padre.actual.areasCore[this.lstAreas.SelectedIndex].y--;
                 controlPaint = true;
                 pictCore.Invalidate();
+
+                padre.selecAreas2Form.Pintar();
             }
             catch
             {
@@ -544,6 +550,8 @@ namespace RockStatic
                 padre.actual.areasCore[this.lstAreas.SelectedIndex].x++;
                 controlPaint = true;
                 pictCore.Invalidate();
+
+                padre.selecAreas2Form.Pintar();
             }
             catch
             {
@@ -558,6 +566,8 @@ namespace RockStatic
                 padre.actual.areasCore[this.lstAreas.SelectedIndex].x--;
                 controlPaint = true;
                 pictCore.Invalidate();
+
+                padre.selecAreas2Form.Pintar();
             }
             catch
             {
@@ -572,6 +582,8 @@ namespace RockStatic
                 padre.actual.areasCore[this.lstAreas.SelectedIndex].y++;
                 controlPaint = true;
                 pictCore.Invalidate();
+
+                padre.selecAreas2Form.Pintar();
             }
             catch
             {
@@ -586,6 +598,8 @@ namespace RockStatic
                 padre.actual.areasCore[this.lstAreas.SelectedIndex].ini=Convert.ToInt32(numFrom.Value);
                 controlPaint = true;
                 pictCore.Invalidate();
+
+                padre.selecAreas2Form.Pintar();
             }
             catch
             {
@@ -600,6 +614,8 @@ namespace RockStatic
                 padre.actual.areasCore[this.lstAreas.SelectedIndex].fin = Convert.ToInt32(numUntil.Value);
                 controlPaint = true;
                 pictCore.Invalidate();
+
+                padre.selecAreas2Form.Pintar();
             }
             catch
             {
@@ -614,6 +630,8 @@ namespace RockStatic
                 padre.actual.areasCore[this.lstAreas.SelectedIndex].width = Convert.ToInt32(numRad.Value);
                 controlPaint = true;
                 pictCore.Invalidate();
+
+                padre.selecAreas2Form.Pintar();
             }
             catch
             {
@@ -646,6 +664,8 @@ namespace RockStatic
             controlPaint = true;
             pictCore.Invalidate();
 
+            padre.selecAreas2Form.Pintar();
+
             if (padre.actual.areasCore.Count < 1)
             {
                 btnClear.Enabled = false;
@@ -661,8 +681,42 @@ namespace RockStatic
             controlPaint = true;
             pictCore.Invalidate();
 
+            padre.selecAreas2Form.Pintar();
+
             btnClear.Enabled = false;
             btnDelete.Enabled = false;
         }
+
+        /// <summary>
+        /// se crea un area que englobe todo la segmentacion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSelall_Click(object sender, EventArgs e)
+        {
+            // si existen areas previamente seleccionadas se borran
+            if (padre.actual.areasCore.Count > 0)
+            {
+                padre.actual.areasCore.Clear();
+                lstAreas.Items.Clear();
+            }
+
+            // se crea una area que englobe todo
+            padre.actual.areasCore.Add(new CAreaInteres(Convert.ToInt32(padre.actual.datacuboHigh.widthSeg/2),Convert.ToInt32(padre.actual.datacuboHigh.widthSeg/2),Convert.ToInt32(padre.actual.datacuboHigh.widthSeg/2),"area"+(countAreas++).ToString(),1,padre.actual.datacuboHigh.dataCube.Count));
+
+            // se ajusta el radio a el ancho menos 1
+            padre.actual.areasCore[0].width--;
+
+            LlenarListAreas();
+            lstAreas.SelectedIndex = 0;
+
+            controlPaint = true;
+            pictCore.Invalidate();
+
+            btnClear.Enabled = true;
+            btnDelete.Enabled = true;
+
+            padre.selecAreas2Form.Pintar();
+        }        
     }
 }

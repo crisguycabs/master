@@ -14,10 +14,6 @@ namespace RockStatic
     {
         #region variables de disenador
 
-        int anchoOriginal;
-
-        List<CCuadrado> areasCore;
-
         /// <summary>
         /// Referencia al MainForm padre
         /// </summary>
@@ -127,6 +123,12 @@ namespace RockStatic
             trackCortes.Minimum = 1;
             trackCortes.Maximum = corte.Height;
             trackCortes.Value = nelemento;
+
+            trackCortes.TickFrequency = (int)(corte.Height / 10);
+
+            numActual.Minimum = 1;
+            numActual.Maximum = corte.Height;
+            numActual.Value = nelemento;
             
             pictCore.Invalidate();
         }
@@ -145,23 +147,72 @@ namespace RockStatic
             }
         }
 
-        public void InvalidarPictCore(float slide)
+        /// <summary>
+        /// Se invalidan los pictBox para repintar las areas seleccionadas
+        /// </summary>
+        public void Pintar()
         {
-            //slideActual = slide-1;
-            //pictCore.Invalidate();
+            pictCore.Invalidate();
         }
 
         public void pictCore_Paint(object sender, PaintEventArgs e)
         {
+            double ancho;
+            double dif;
+            
             // se pintan las lineas de Cabeza y Cola
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
             // se pintan los cuadrados que se hallan seleccionado en la ventana SelectAreasForm
             // se recorren las areas, y si existe una !=null se escala el ancho del area al tamaño del plano
-            if (areasCore == null) return;
-            for (int i = 0; i < areasCore.Count; i++)
+            if (padre.actual.areasCore.Count < 1) return;
+
+            for (int i = 0; i < padre.actual.areasCore.Count; i++)
             {
-                if (areasCore[i] != null)
+                dif = Math.Abs(padre.actual.areasCore[i].y - Convert.ToDouble(numActual.Value));
+                ancho = Math.Sqrt(padre.actual.areasCore[i].width * padre.actual.areasCore[i].width - dif * dif);
+
+                double imgWidth = pictCore.Image.Width;
+                double imgHeight = pictCore.Image.Height;
+                double boxWidth = pictCore.Size.Width;
+                double boxHeight = pictCore.Size.Height;
+
+                double scale;
+                double ycero = 0;
+                double xcero = 0;
+
+                if (imgWidth / imgHeight > boxWidth / boxHeight)
+                {
+                    //If true, that means that the image is stretched through the width of the control.
+                    //'In other words: the image is limited by the width.
+
+                    //The scale of the image in the Picture Box.
+                    scale = boxWidth / imgWidth;
+
+                    //Since the image is in the middle, this code is used to determinate the empty space in the height
+                    //'by getting the difference between the box height and the image actual displayed height and dividing it by 2.
+                    ycero = (boxHeight - scale * imgHeight) / 2;
+                }
+                else
+                {
+                    //If false, that means that the image is stretched through the height of the control.
+                    //'In other words: the image is limited by the height.
+
+                    //The scale of the image in the Picture Box.
+                    scale = boxHeight / imgHeight;
+
+                    //Since the image is in the middle, this code is used to determinate the empty space in the width
+                    //'by getting the difference between the box width and the image actual displayed width and dividing it by 2.
+                    xcero = (boxWidth - scale * imgWidth) / 2;
+                }
+
+                float height = (float)(ancho * scale * 2);
+                float width = (float)((padre.actual.areasCore[i].fin - padre.actual.areasCore[i].ini + 1) * factor * scale);
+                float x = (float)(((padre.actual.areasCore[i].ini - 1) * scale * factor) + xcero);
+                float y = (float)(((padre.actual.areasCore[i].y - ancho) * scale) + ycero);
+                e.Graphics.FillRectangle(brocha2, x, y, width, height);
+
+                /*if (areasCore[i] != null)
                 {
                     // float x = (areasCore[i].x - areasCore[i].width) * pictCore.Image.Height / anchoOriginal;
                     float x = ((float)i * pictCore.Image.Width / areasCore.Count);
@@ -176,15 +227,8 @@ namespace RockStatic
                         g.FillRectangle(brocha2, (areasCore[i].x - areasCore[i].width) * pictCore.Image.Height / anchoOriginal, (areasCore[i].y - areasCore[i].width) * pictCore.Image.Height / anchoOriginal, Convert.ToInt32(pictCore.Image.Width/areasCore.Count), 2*areasCore[i].width*pictCore.Image.Height/anchoOriginal);                        
                     }
                     */
-                }
+                //}
             }
-        }
-
-        public void GetAreasCore(List<CCuadrado> areas,int ancho)
-        {
-            this.areasCore = areas;
-            anchoOriginal = ancho;
-            pictCore.Invalidate();
         }
 
         private void SelectAreas2Form_Paint(object sender, PaintEventArgs e)
@@ -200,11 +244,23 @@ namespace RockStatic
         private void trackCortes_Scroll(object sender, EventArgs e)
         {
             pictCore.Image = padre.actual.datacuboHigh.CreateBitmapCorte(padre.actual.datacuboHigh.coresHorizontal[trackCortes.Value - 1], padre.actual.datacuboHigh.dataCube.Count * factor, padre.actual.datacuboHigh.widthSeg, minimo, maximo);
+            numActual.Value = trackCortes.Value;
         }
 
         private void radHorizontal_CheckedChanged(object sender, EventArgs e)
         {
             trackCortes_Scroll(sender, e);
         }
+
+        private void numActual_ValueChanged(object sender, EventArgs e)
+        {
+            trackCortes.Value = Convert.ToInt32(numActual.Value);
+            trackCortes_Scroll(sender, e);
+        }
+
+        private void SelectAreas2Form_Enter(object sender, EventArgs e)
+        {
+            
+        }        
     }
 }

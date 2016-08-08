@@ -37,6 +37,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnReset = new System.Windows.Forms.Button();
             this.trackContraste = new System.Windows.Forms.TrackBar();
             this.trackBrillo = new System.Windows.Forms.TrackBar();
             this.lblActual = new System.Windows.Forms.Label();
@@ -72,11 +73,10 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.lstAreas = new System.Windows.Forms.ListBox();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnSelall = new System.Windows.Forms.Button();
             this.numFrom = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.btnReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictCore)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numActual)).BeginInit();
@@ -208,6 +208,21 @@
             this.label6.Size = new System.Drawing.Size(37, 14);
             this.label6.TabIndex = 9;
             this.label6.Text = "Brillo";
+            // 
+            // btnReset
+            // 
+            this.btnReset.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnReset.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnReset.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnReset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReset.Location = new System.Drawing.Point(218, 23);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(70, 23);
+            this.btnReset.TabIndex = 23;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // trackContraste
             // 
@@ -534,6 +549,11 @@
             // numRad
             // 
             this.numRad.Location = new System.Drawing.Point(133, 14);
+            this.numRad.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.numRad.Name = "numRad";
             this.numRad.Size = new System.Drawing.Size(41, 22);
             this.numRad.TabIndex = 25;
@@ -640,7 +660,7 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.lstAreas);
-            this.groupBox5.Controls.Add(this.button7);
+            this.groupBox5.Controls.Add(this.btnSelall);
             this.groupBox5.Controls.Add(this.btnDelete);
             this.groupBox5.Controls.Add(this.btnClear);
             this.groupBox5.Controls.Add(this.numFrom);
@@ -669,19 +689,20 @@
             this.lstAreas.TabIndex = 26;
             this.lstAreas.SelectedIndexChanged += new System.EventHandler(this.lstAreas_SelectedIndexChanged);
             // 
-            // button7
+            // btnSelall
             // 
-            this.button7.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.Green;
-            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Location = new System.Drawing.Point(34, 95);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(112, 23);
-            this.button7.TabIndex = 23;
-            this.button7.Text = "Seleccionar Todo";
-            this.button7.UseVisualStyleBackColor = false;
+            this.btnSelall.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSelall.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnSelall.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnSelall.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.btnSelall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelall.Location = new System.Drawing.Point(34, 95);
+            this.btnSelall.Name = "btnSelall";
+            this.btnSelall.Size = new System.Drawing.Size(112, 23);
+            this.btnSelall.TabIndex = 23;
+            this.btnSelall.Text = "Seleccionar Todo";
+            this.btnSelall.UseVisualStyleBackColor = false;
+            this.btnSelall.Click += new System.EventHandler(this.btnSelall_Click);
             // 
             // numFrom
             // 
@@ -725,21 +746,6 @@
             this.label7.Size = new System.Drawing.Size(45, 14);
             this.label7.TabIndex = 21;
             this.label7.Text = "Desde:";
-            // 
-            // btnReset
-            // 
-            this.btnReset.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnReset.FlatAppearance.BorderColor = System.Drawing.Color.Green;
-            this.btnReset.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
-            this.btnReset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
-            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReset.Location = new System.Drawing.Point(218, 23);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(70, 23);
-            this.btnReset.TabIndex = 23;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = false;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // SelectAreasForm
             // 
@@ -837,7 +843,7 @@
         private System.Windows.Forms.NumericUpDown numFrom;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnSelall;
         private System.Windows.Forms.ListBox lstAreas;
         private System.Windows.Forms.Button btnReset;
 

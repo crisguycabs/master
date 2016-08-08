@@ -740,10 +740,8 @@ namespace RockStatic
                 actual.datacuboLow.SegCircThread(actual.areaCore);
 
                 // se crean los cortes longitudinales
-                actual.datacuboHigh.GenerarCoresHorizontales();
-                actual.datacuboHigh.GenerarCoresVerticales();
-                actual.datacuboLow.GenerarCoresHorizontales();
-                actual.datacuboLow.GenerarCoresVerticales();
+                actual.datacuboHigh.GenerarCoresHorizontales();                
+                actual.datacuboLow.GenerarCoresHorizontales();                
             }
 
             this.proyectoForm = new ProjectForm();
