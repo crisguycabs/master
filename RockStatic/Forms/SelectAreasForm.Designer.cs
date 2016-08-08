@@ -125,7 +125,7 @@
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(70, 23);
             this.btnCancelar.TabIndex = 10;
-            this.btnCancelar.Text = "Cerrar";
+            this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCerrar_Click);
             this.btnCancelar.MouseEnter += new System.EventHandler(this.btnCerrar_MouseEnter);
@@ -644,6 +644,7 @@
             this.btnGuardar.TabIndex = 10;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             this.btnGuardar.MouseEnter += new System.EventHandler(this.btnCerrar_MouseEnter);
             this.btnGuardar.MouseLeave += new System.EventHandler(this.btnCerrar_MouseLeave);
             // 

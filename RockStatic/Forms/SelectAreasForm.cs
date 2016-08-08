@@ -147,8 +147,10 @@ namespace RockStatic
             numUntil.Value = padre.actual.datacuboHigh.dataCube.Count;
             
             countAreas = 0;
+            if (padre.actual.areasDone) countAreas = padre.actual.areasCore.Count;
 
             LlenarListAreas();
+            pictCore.Invalidate();
         }
 
         private void trackElementos_ValueChanged(object sender, EventArgs e)
@@ -717,6 +719,19 @@ namespace RockStatic
             btnDelete.Enabled = true;
 
             padre.selecAreas2Form.Pintar();
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            this.padre.actual.areasDone = true;
+
+            // se guarda en disco
+            this.padre.actual.Salvar();
+
+            // se marca la segmentacion como completa
+            this.padre.proyectoForm.SetForm();
+
+            this.padre.CerrarSelectAreasForm();            
         }        
     }
 }

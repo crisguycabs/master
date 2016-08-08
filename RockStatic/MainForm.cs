@@ -534,12 +534,14 @@ namespace RockStatic
             string name = "";
             string path = "";
             int count = 0;
+            int countAreas = 0;
             bool phantoms = false;
             CCuadrado areaCore = new CCuadrado();
             CCuadrado areaP1 = new CCuadrado();
             CCuadrado areaP2 = new CCuadrado();
             CCuadrado areaP3 = new CCuadrado();
             bool segmentacionDone = false;
+            bool areasDone = false;
             int toRead = 0;
             int read = 0;
             double meanHigh = 0;
@@ -554,6 +556,9 @@ namespace RockStatic
             int x = 0;
             int y = 0;
             int width = 0;
+            int ini = 0;
+            int fin = 0;
+            List<CAreaInteres> areasCore = new List<CAreaInteres>();
 
             while ((line = sr.ReadLine()) != null)
             {
@@ -701,6 +706,42 @@ namespace RockStatic
                             }
                         }
                         break;
+
+                    case "AREAS DE INTERES":
+                        areasDone = Convert.ToBoolean(sr.ReadLine());
+                        if (areasDone)
+                        {
+                            // se leen un par de lineas muertas
+                            sr.ReadLine();
+                            sr.ReadLine();
+
+                            // total de areas a leer
+                            read = Convert.ToInt32(sr.ReadLine());
+                            countAreas = 0;
+
+                            for (int i = 0; i < read; i++)
+                            {
+                                // X
+                                sr.ReadLine();
+                                x = Convert.ToInt32(sr.ReadLine());
+                                // Y
+                                sr.ReadLine();
+                                y = Convert.ToInt32(sr.ReadLine());
+                                // WIDTH
+                                sr.ReadLine();
+                                width = Convert.ToInt32(sr.ReadLine());
+                                // INI
+                                sr.ReadLine();
+                                ini = Convert.ToInt32(sr.ReadLine());
+                                // FIN
+                                sr.ReadLine();
+                                fin = Convert.ToInt32(sr.ReadLine());
+
+                                countAreas++;
+                                areasCore.Add(new CAreaInteres(x,y,width,"area"+countAreas.ToString(),ini,fin));
+                            }
+                        }
+                        break;
                     default:
                         break;
                 }
@@ -743,6 +784,15 @@ namespace RockStatic
                 actual.datacuboHigh.GenerarCoresHorizontales();                
                 actual.datacuboLow.GenerarCoresHorizontales();                
             }
+            actual.areasDone = areasDone;
+            if (areasDone)
+            {
+                actual.areasCore = new List<CAreaInteres>();
+                for (int i = 0; i < areasCore.Count; i++)
+                {
+                    actual.areasCore.Add(new CAreaInteres(areasCore[i]));
+                }
+            }
 
             this.proyectoForm = new ProjectForm();
             this.abiertoProyectoForm = true;
@@ -755,21 +805,6 @@ namespace RockStatic
             actual.datacuboLow.CrearBitmapThread();
 
             sr.Close();
-
-            // tests ---------------------------
-            Bitmap test = null;
-
-            DateTime ini = DateTime.Now;
-
-            //test = MyDicom.CrearBitmap(actual.datacuboHigh.dataCube[80].segCore, 120, 120);
-            test = actual.datacuboHigh.CreateBitmapCorte(actual.datacuboHigh.coresHorizontal[80], 160, 120);
-
-            DateTime fin = DateTime.Now;
-            TimeSpan span = fin - ini;
-           
-
-            // ---------------------------------
-
 
             return true;
         }

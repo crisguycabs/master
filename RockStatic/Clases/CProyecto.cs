@@ -310,8 +310,31 @@ namespace RockStatic
                     sw.WriteLine(this.areaPhantom3.y);
                     sw.WriteLine("WIDTH");
                     sw.WriteLine(this.areaPhantom3.width);
+                    sw.WriteLine("---------------------------------------------------------------------");
                 }
             }
+            sw.WriteLine("AREAS DE INTERES");
+            sw.WriteLine(areasDone.ToString());
+            sw.WriteLine("---------------------------------------------------------------------");
+            if (this.areasDone)
+            {
+                sw.WriteLine("TOTAL AREAS");
+                sw.WriteLine(this.areasCore.Count.ToString());
+                for (int i = 0; i < areasCore.Count; i++)
+                {
+                    sw.WriteLine("X");
+                    sw.WriteLine(areasCore[i].x.ToString());
+                    sw.WriteLine("Y");
+                    sw.WriteLine(areasCore[i].y.ToString());
+                    sw.WriteLine("WIDTH");
+                    sw.WriteLine(areasCore[i].width.ToString());
+                    sw.WriteLine("INI");
+                    sw.WriteLine(areasCore[i].ini.ToString());
+                    sw.WriteLine("FIN");
+                    sw.WriteLine(areasCore[i].fin.ToString());
+                }
+            }
+
             // se cierra el streamwriter del archivo RSP
             sw.Close();
         }
