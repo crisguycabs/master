@@ -38,7 +38,6 @@
             this.btnAreasHigh = new System.Windows.Forms.Button();
             this.lblArea = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.menuProject = new System.Windows.Forms.MenuStrip();
@@ -52,11 +51,15 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.cerrarProyectoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblProyecto = new System.Windows.Forms.Label();
+            this.grpCurvas = new System.Windows.Forms.GroupBox();
+            this.btnCurvas = new System.Windows.Forms.Button();
+            this.lblCurvas = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictSegHigh)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictAreasHigh)).BeginInit();
             this.menuProject.SuspendLayout();
+            this.grpCurvas.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblSeg
@@ -161,14 +164,6 @@
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Location = new System.Drawing.Point(261, 41);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(200, 136);
-            this.groupBox4.TabIndex = 11;
-            this.groupBox4.TabStop = false;
-            // 
             // btnCerrar
             // 
             this.btnCerrar.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -176,7 +171,7 @@
             this.btnCerrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerrar.Location = new System.Drawing.Point(391, 185);
+            this.btnCerrar.Location = new System.Drawing.Point(424, 185);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(70, 23);
             this.btnCerrar.TabIndex = 9;
@@ -194,7 +189,7 @@
             this.btnSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Location = new System.Drawing.Point(315, 185);
+            this.btnSave.Location = new System.Drawing.Point(348, 185);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(70, 23);
             this.btnSave.TabIndex = 9;
@@ -290,7 +285,7 @@
             this.lblProyecto.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblProyecto.Location = new System.Drawing.Point(0, 0);
             this.lblProyecto.Name = "lblProyecto";
-            this.lblProyecto.Size = new System.Drawing.Size(470, 30);
+            this.lblProyecto.Size = new System.Drawing.Size(505, 30);
             this.lblProyecto.TabIndex = 13;
             this.lblProyecto.Text = "NOMBRE DE PROYECTO";
             this.lblProyecto.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -298,15 +293,49 @@
             this.lblProyecto.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblProyecto_MouseDown);
             this.lblProyecto.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblProyecto_MouseMove);
             // 
+            // grpCurvas
+            // 
+            this.grpCurvas.Controls.Add(this.btnCurvas);
+            this.grpCurvas.Controls.Add(this.lblCurvas);
+            this.grpCurvas.Location = new System.Drawing.Point(261, 41);
+            this.grpCurvas.Name = "grpCurvas";
+            this.grpCurvas.Size = new System.Drawing.Size(233, 79);
+            this.grpCurvas.TabIndex = 10;
+            this.grpCurvas.TabStop = false;
+            this.grpCurvas.Text = "PROPIEDADES PETROFISICAS";
+            // 
+            // btnCurvas
+            // 
+            this.btnCurvas.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnCurvas.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnCurvas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnCurvas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.btnCurvas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCurvas.Location = new System.Drawing.Point(145, 47);
+            this.btnCurvas.Name = "btnCurvas";
+            this.btnCurvas.Size = new System.Drawing.Size(80, 23);
+            this.btnCurvas.TabIndex = 9;
+            this.btnCurvas.Text = "Estimar";
+            this.btnCurvas.UseVisualStyleBackColor = false;
+            this.btnCurvas.Click += new System.EventHandler(this.btnCurvas_Click);
+            // 
+            // lblCurvas
+            // 
+            this.lblCurvas.Location = new System.Drawing.Point(6, 20);
+            this.lblCurvas.Name = "lblCurvas";
+            this.lblCurvas.Size = new System.Drawing.Size(223, 33);
+            this.lblCurvas.TabIndex = 7;
+            this.lblCurvas.Text = "Aun no ha realizado la segmentacion de los slides";
+            // 
             // ProjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(470, 217);
+            this.ClientSize = new System.Drawing.Size(505, 217);
             this.ControlBox = false;
+            this.Controls.Add(this.grpCurvas);
             this.Controls.Add(this.lblProyecto);
-            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.groupBox3);
@@ -332,6 +361,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictAreasHigh)).EndInit();
             this.menuProject.ResumeLayout(false);
             this.menuProject.PerformLayout();
+            this.grpCurvas.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -346,7 +376,6 @@
         private System.Windows.Forms.Button btnAreasHigh;
         private System.Windows.Forms.Label lblArea;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.MenuStrip menuProject;
@@ -362,5 +391,8 @@
         private System.Windows.Forms.Label lblProyecto;
         public System.Windows.Forms.PictureBox pictSegHigh;
         public System.Windows.Forms.PictureBox pictAreasHigh;
+        private System.Windows.Forms.GroupBox grpCurvas;
+        private System.Windows.Forms.Button btnCurvas;
+        private System.Windows.Forms.Label lblCurvas;
     }
 }

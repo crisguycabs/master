@@ -117,6 +117,21 @@ namespace RockStatic
         /// </summary>
         public List<CAreaInteres> areasCore;
 
+        /// <summary>
+        /// Profundidad de la cabeza de la muestra
+        /// </summary>
+        public long head=0;
+
+        /// <summary>
+        /// Profundida de la cola de la muestra
+        /// </summary>
+        public long tail=0;
+
+        /// <summary>
+        /// Unidades de profundidad
+        /// </summary>
+        public string unidadProfundidad="km";
+
         #endregion
 
         /// <summary>

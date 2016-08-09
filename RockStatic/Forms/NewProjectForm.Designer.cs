@@ -50,8 +50,17 @@
             this.pictLow = new System.Windows.Forms.PictureBox();
             this.pictHigh = new System.Windows.Forms.PictureBox();
             this.btnPhantoms2 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.numHead = new System.Windows.Forms.NumericUpDown();
+            this.numTail = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lstUnidades = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictLow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictHigh)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numHead)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numTail)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -173,7 +182,7 @@
             this.btnCrear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCrear.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCrear.Location = new System.Drawing.Point(272, 275);
+            this.btnCrear.Location = new System.Drawing.Point(274, 343);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(68, 23);
             this.btnCrear.TabIndex = 4;
@@ -191,7 +200,7 @@
             this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(198, 275);
+            this.btnCancelar.Location = new System.Drawing.Point(200, 343);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(68, 23);
             this.btnCancelar.TabIndex = 5;
@@ -329,13 +338,96 @@
             this.btnPhantoms2.MouseEnter += new System.EventHandler(this.btnSelHigh_MouseEnter);
             this.btnPhantoms2.MouseLeave += new System.EventHandler(this.btnSelHigh_MouseLeave);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(10, 277);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(156, 14);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Profundidad de la muestra:";
+            // 
+            // numHead
+            // 
+            this.numHead.Location = new System.Drawing.Point(69, 303);
+            this.numHead.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            0});
+            this.numHead.Name = "numHead";
+            this.numHead.Size = new System.Drawing.Size(84, 22);
+            this.numHead.TabIndex = 15;
+            this.numHead.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // numTail
+            // 
+            this.numTail.Location = new System.Drawing.Point(254, 303);
+            this.numTail.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            0});
+            this.numTail.Name = "numTail";
+            this.numTail.Size = new System.Drawing.Size(84, 22);
+            this.numTail.TabIndex = 16;
+            this.numTail.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numTail.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(14, 307);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(49, 14);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "Cabeza:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(214, 307);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(34, 14);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Cola:";
+            // 
+            // label10
+            // 
+            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label10.Location = new System.Drawing.Point(10, 333);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(330, 2);
+            this.label10.TabIndex = 19;
+            // 
+            // lstUnidades
+            // 
+            this.lstUnidades.FormattingEnabled = true;
+            this.lstUnidades.Items.AddRange(new object[] {
+            "km",
+            "ft"});
+            this.lstUnidades.Location = new System.Drawing.Point(169, 273);
+            this.lstUnidades.Name = "lstUnidades";
+            this.lstUnidades.Size = new System.Drawing.Size(43, 22);
+            this.lstUnidades.TabIndex = 20;
+            // 
             // NewProjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(348, 308);
+            this.ClientSize = new System.Drawing.Size(348, 373);
             this.ControlBox = false;
+            this.Controls.Add(this.lstUnidades);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.numTail);
+            this.Controls.Add(this.numHead);
             this.Controls.Add(this.btnPhantoms2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnPhantoms);
@@ -356,6 +448,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNewName);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -368,6 +461,8 @@
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.NewProjectForm_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.pictLow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictHigh)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numHead)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numTail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -396,5 +491,12 @@
         private System.Windows.Forms.Button btnPhantoms;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnPhantoms2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown numHead;
+        private System.Windows.Forms.NumericUpDown numTail;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox lstUnidades;
     }
 }

@@ -94,7 +94,9 @@ namespace RockStatic
             // se crean los valores de los phantoms por defecto
             tempPhantom1 = new CPhantom(1237.865, 46.125, 1434.195, 50.985, 2.2, 11.8);
             tempPhantom2 = new CPhantom(868.77, 39, 916.1, 36.775, 2.16, 8.7);
-            tempPhantom3 = new CPhantom(15.3275, 36.7, 23.8, 35.9, 1, 7.5);          
+            tempPhantom3 = new CPhantom(15.3275, 36.7, 23.8, 35.9, 1, 7.5);
+
+            lstUnidades.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -277,6 +279,13 @@ namespace RockStatic
                 // se crean las imagenes de los cortes transversales
                 padre.actual.datacuboHigh.CrearBitmapThread();
                 padre.actual.datacuboLow.CrearBitmapThread();
+
+                // se guardan la profundidad de cabeza y cola
+                padre.actual.head = Convert.ToInt64(numHead.Value);
+                padre.actual.tail = Convert.ToInt64(numTail.Value);
+
+                // se guardan las unidades de la profundidad
+                padre.actual.unidadProfundidad = lstUnidades.Items[lstUnidades.SelectedIndex].ToString();
 
                 // se crea la carpeta
                 DirectoryInfo di = new DirectoryInfo(Path.GetDirectoryName(saveFile.FileName));

@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing.Imaging;
+using MathNet.Numerics.Distributions;
+using MathNet.Numerics.Random;
 
 namespace RockStatic
 {
@@ -35,6 +37,16 @@ namespace RockStatic
         /// Instancia del Form CheckForm
         /// </summary>
         public CheckForm checkForm;
+
+        /// <summary>
+        /// Variable que indica si la ventana CurvasForm esta abiera o no
+        /// </summary>
+        public bool abiertoCurvasForm;
+
+        /// <summary>
+        /// Instancia del Form CheckForm
+        /// </summary>
+        public CurvasForm curvasForm;
 
         /// <summary>
         /// Instancia del Form PhantomForm
@@ -417,6 +429,12 @@ namespace RockStatic
         {
             this.abiertoHomeForm = false;
             this.homeForm = null;
+        }
+
+        public void CerrarCurvasForm()
+        {
+            this.abiertoCurvasForm = false;
+            this.curvasForm = null;
         }
 
         public void AbrirHome()

@@ -65,11 +65,17 @@ namespace RockStatic
             {
                 pictAreasHigh.Image = RockStatic.Properties.Resources.greenTick;
                 lblArea.Text = "Se seleccionaron las areas de interes exitosamente";
+
+                lblCurvas.Text = "Es posible estimar las propiedades petrofisicas";
+                grpCurvas.Enabled = true;
             }
             else
             {
                 pictAreasHigh.Image = RockStatic.Properties.Resources.redX;
                 lblArea.Text = "Aun no ha seleccionado las areas de interes";
+
+                lblCurvas.Text = "Aun no se puede estimar aun las propiedades petrofisicas";
+                grpCurvas.Enabled = false;                
             }
         }
 
@@ -200,6 +206,26 @@ namespace RockStatic
         private void ProjectForm_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawRectangle(new Pen(Color.Green, 2), this.DisplayRectangle);       
+        }
+
+        private void btnCurvas_Click(object sender, EventArgs e)
+        {
+            if (!padre.abiertoCurvasForm)
+            {
+                this.padre.curvasForm = new CurvasForm();
+                this.padre.curvasForm.Text = "ESTIMACION PROPIEDADES PETROFISICAS";
+                this.padre.curvasForm.lblTitulo.Text = "ESTIMACION PROPIEDADES PETROFISICAS";
+
+                this.padre.curvasForm.MdiParent = this.MdiParent;
+                this.padre.curvasForm.padre = this.padre;
+
+                this.padre.abiertoCurvasForm = true;
+                this.padre.curvasForm.Show();
+            }
+            else
+            {
+                this.padre.curvasForm.Select();
+            }
         }            
     }
 }
