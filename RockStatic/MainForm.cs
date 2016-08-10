@@ -577,6 +577,9 @@ namespace RockStatic
             int ini = 0;
             int fin = 0;
             List<CAreaInteres> areasCore = new List<CAreaInteres>();
+            long head=0;
+            long tail=0;
+            string unidades="";
 
             while ((line = sr.ReadLine()) != null)
             {
@@ -590,6 +593,15 @@ namespace RockStatic
                         break;
                     case "COUNT":
                         count = Convert.ToInt16(sr.ReadLine());
+                        break;
+                    case "HEAD":
+                        head = Convert.ToInt16(sr.ReadLine());
+                        break;
+                    case "TAIL":
+                        tail = Convert.ToInt16(sr.ReadLine());
+                        break;
+                    case "UNIDADES":
+                        unidades = sr.ReadLine();
                         break;
                     case "PHANTOMS":
                         phantoms = Convert.ToBoolean(sr.ReadLine());
@@ -811,6 +823,9 @@ namespace RockStatic
                     actual.areasCore.Add(new CAreaInteres(areasCore[i]));
                 }
             }
+            this.actual.head = head;
+            this.actual.tail = tail;
+            this.actual.unidadProfundidad = unidades;
 
             this.proyectoForm = new ProjectForm();
             this.abiertoProyectoForm = true;

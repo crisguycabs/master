@@ -393,6 +393,9 @@ namespace RockStatic
             {
                 for (int i = 0; i < padre.actual.areasCore.Count; i++)
                     lstAreas.Items.Add(padre.actual.areasCore[i].nombre);
+
+                btnClear.Enabled = true;
+                btnDelete.Enabled = true;
             }
         }
 

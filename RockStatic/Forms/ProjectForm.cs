@@ -219,6 +219,10 @@ namespace RockStatic
                 this.padre.curvasForm.MdiParent = this.MdiParent;
                 this.padre.curvasForm.padre = this.padre;
 
+                this.padre.ShowWaiting("Espere mientras se estiman las curvas de propiedades");
+                this.padre.curvasForm.Estimar();
+                this.padre.CloseWaiting();
+
                 this.padre.abiertoCurvasForm = true;
                 this.padre.curvasForm.Show();
             }

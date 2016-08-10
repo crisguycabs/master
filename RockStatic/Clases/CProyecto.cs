@@ -232,6 +232,15 @@ namespace RockStatic
             sw.WriteLine("COUNT");
             sw.WriteLine(datacuboHigh.dataCube.Count);
             sw.WriteLine("---------------------------------------------------------------------");
+            sw.WriteLine("HEAD");
+            sw.WriteLine(head.ToString());
+            sw.WriteLine("---------------------------------------------------------------------");
+            sw.WriteLine("TAIL");
+            sw.WriteLine(tail.ToString());
+            sw.WriteLine("---------------------------------------------------------------------");
+            sw.WriteLine("UNIDADES");
+            sw.WriteLine(this.unidadProfundidad.ToString());
+            sw.WriteLine("---------------------------------------------------------------------");
             sw.WriteLine("PHANTOMS");
             sw.WriteLine(phantomEnDicom.ToString());
             sw.WriteLine("---------------------------------------------------------------------");
