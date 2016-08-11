@@ -111,6 +111,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutBox1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutBox1.Designer.cs">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clases\CAreaInteres.cs" />
     <Compile Include="Clases\AuxThread.cs" />
     <Compile Include="Clases\CCuadrado.cs" />
@@ -211,6 +217,9 @@
     <Compile Include="RangeBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <EmbeddedResource Include="AboutBox1.resx">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CurvasForm.resx">
       <DependentUpon>CurvasForm.cs</DependentUpon>
     </EmbeddedResource>
