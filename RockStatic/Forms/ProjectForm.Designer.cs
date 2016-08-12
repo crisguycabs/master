@@ -318,6 +318,8 @@
             this.btnCurvas.Text = "Estimar";
             this.btnCurvas.UseVisualStyleBackColor = false;
             this.btnCurvas.Click += new System.EventHandler(this.btnCurvas_Click);
+            this.btnCurvas.MouseEnter += new System.EventHandler(this.btnSegHigh_MouseEnter);
+            this.btnCurvas.MouseLeave += new System.EventHandler(this.btnSegHigh_MouseLeave);
             // 
             // lblCurvas
             // 

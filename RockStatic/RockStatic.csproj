@@ -111,11 +111,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutBox1.cs">
+    <Compile Include="Forms\AboutForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AboutBox1.Designer.cs">
-      <DependentUpon>AboutBox1.cs</DependentUpon>
+    <Compile Include="Forms\AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Clases\CAreaInteres.cs" />
     <Compile Include="Clases\AuxThread.cs" />
@@ -217,8 +217,8 @@
     <Compile Include="RangeBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <EmbeddedResource Include="AboutBox1.resx">
-      <DependentUpon>AboutBox1.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CurvasForm.resx">
       <DependentUpon>CurvasForm.cs</DependentUpon>
@@ -301,6 +301,7 @@
     <None Include="resources\LogoHDSP.png" />
     <None Include="resources\colciencias.jpg" />
     <None Include="resources\ecopetrol.jpg" />
+    <None Include="resources\Logo-Big.png" />
     <Content Include="RockStaticGreen.ico" />
     <None Include="resources\UISLogo.png" />
     <None Include="resources\RockStaticGreen.png" />

@@ -72,7 +72,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(83, 37);
             this.label7.TabIndex = 2;
-            this.label7.Text = "HDSP - UIS 2015";
+            this.label7.Text = "HDSP - UIS 2016";
             // 
             // label2
             // 

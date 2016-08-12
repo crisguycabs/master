@@ -21,8 +21,21 @@
             <ComponentRef Id="resources_hdsp.ico" />
             <ComponentRef Id="resources_Logo.png" />
         </Feature>
-        <UI />
-        <UIRef Id="WixUI_Minimal" />
+      <UI>
+        <UIRef Id="WixUI_InstallDir" />
+
+        <!-- Skip license dialog -->
+        <Publish Dialog="WelcomeDlg"
+                 Control="Next"
+                 Event="NewDialog"
+                 Value="InstallDirDlg"
+                 Order="2">1</Publish>
+        <Publish Dialog="InstallDirDlg"
+                 Control="Back"
+                 Event="NewDialog"
+                 Value="WelcomeDlg"
+                 Order="2">1</Publish>
+      </UI>
         <PropertyRef Id="NETFRAMEWORK45" />
         <Condition Message="This application requires .NET Framework 4.5">Installed OR NETFRAMEWORK45</Condition>
         <Icon Id="DesktopIcon.exe" SourceFile="$(var.RockStatic_TargetDir)RockStatic.exe" />
@@ -47,7 +60,7 @@
                 </Directory>
             </Directory>
         </Directory>
-      
+      <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
       <Icon Id="icon.ico" SourceFile="$(var.RockStatic_TargetDir)RockStaticGreen.ico"/>
       <Property Id="ARPPRODUCTICON" Value="icon.ico" />
     </Fragment>

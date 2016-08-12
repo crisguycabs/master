@@ -58,6 +58,10 @@ namespace RockStatic
         /// </summary>
         public bool abiertoCheckForm;
 
+        public bool abiertoAboutForm;
+
+        public AboutForm aboutForm;
+
         /// <summary>
         /// Variable que indica si la ventana PhantomsForm esta abierta o no
         /// </summary>
@@ -506,7 +510,9 @@ namespace RockStatic
             this.tableLayoutPanel1.CellPaint += new TableLayoutCellPaintEventHandler(tableLayoutPanel1_CellPaint);
             menuMain.BackColor = Color.FromArgb(255, 255, 255);
             this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
-            this.Refresh();            
+            this.Refresh();
+
+            abiertoAboutForm = false;
         }
 
         private void cargarProyectoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -965,6 +971,19 @@ namespace RockStatic
         private void panel2_DoubleClick(object sender, EventArgs e)
         {
             btnMaximize_Click(sender, e);
+        }
+
+        private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!abiertoAboutForm)
+            {
+                aboutForm = new AboutForm();
+                aboutForm.MdiParent = this;
+                aboutForm.padre = this;
+
+                aboutForm.Show();
+            }
+            else aboutForm.Select();
         }
     }
 }
