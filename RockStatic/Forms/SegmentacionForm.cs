@@ -711,6 +711,7 @@ namespace RockStatic
 
                     // se genera la segmentacion transversal
                     this.padre.actual.datacuboHigh.SegCircThread(padre.actual.areaCore);
+                    this.padre.actual.datacuboLow.SegCircThread(padre.actual.areaCore);
 
                     // se generan los cortes longitudinales
                     this.padre.actual.datacuboHigh.GenerarCoresHorizontales();

@@ -229,6 +229,8 @@ namespace RockStatic
                     this.Pefm[i] = -1;
                 }
             }
+
+            DateTime fin = DateTime.Now;
         }
 
         private void CurvasForm_Load(object sender, EventArgs e)
@@ -264,10 +266,10 @@ namespace RockStatic
             }
 
             // se modifican los intervalos del eje
-            chart1.ChartAreas[0].AxisX.Minimum = chart1.ChartAreas[0].AxisX2.Minimum=D.Min()*0.9;
-            chart1.ChartAreas[0].AxisX.Maximum = chart1.ChartAreas[0].AxisX2.Maximum=D.Max()*1.1;
-            chart2.ChartAreas[0].AxisX.Minimum = chart2.ChartAreas[0].AxisX2.Minimum = Z.Min() * 0.9;
-            chart2.ChartAreas[0].AxisX.Maximum = chart2.ChartAreas[0].AxisX2.Maximum=Z.Max()*1.1;
+            chart1.ChartAreas[0].AxisX.Minimum = chart1.ChartAreas[0].AxisX2.Minimum=D.Min()*0.99;
+            chart1.ChartAreas[0].AxisX.Maximum = chart1.ChartAreas[0].AxisX2.Maximum=D.Max()*1.01;
+            chart2.ChartAreas[0].AxisX.Minimum = chart2.ChartAreas[0].AxisX2.Minimum = Z.Min() * 0.99;
+            chart2.ChartAreas[0].AxisX.Maximum = chart2.ChartAreas[0].AxisX2.Maximum=Z.Max()*1.01;
 
             chart1.ChartAreas[0].AxisX.Interval = chart1.ChartAreas[0].AxisX2.Interval = (chart1.ChartAreas[0].AxisX.Maximum - chart1.ChartAreas[0].AxisX.Minimum) / 4;
             chart2.ChartAreas[0].AxisX.Interval = chart2.ChartAreas[0].AxisX2.Interval = (chart2.ChartAreas[0].AxisX.Maximum - chart2.ChartAreas[0].AxisX.Minimum) / 4;
@@ -275,7 +277,7 @@ namespace RockStatic
 
         private void chart1_MouseEnter(object sender, EventArgs e)
         {
-            this.chart1.Focus();
+            
         }
 
         private void chart1_MouseWheel(object sender, MouseEventArgs e)
@@ -310,7 +312,7 @@ namespace RockStatic
 
         private void chart1_MouseLeave(object sender, EventArgs e)
         {
-            this.Focus();
+            
         }
 
         private void btnExportar_Click(object sender, EventArgs e)

@@ -74,7 +74,7 @@ namespace RockStatic
                 pictAreasHigh.Image = RockStatic.Properties.Resources.redX;
                 lblArea.Text = "Aun no ha seleccionado las areas de interes";
 
-                lblCurvas.Text = "Aun no se puede estimar aun las propiedades petrofisicas";
+                lblCurvas.Text = "No es posible las propiedades petrofisicas";
                 grpCurvas.Enabled = false;                
             }
         }

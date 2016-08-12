@@ -47,8 +47,6 @@
             this.radNoPhantoms = new System.Windows.Forms.RadioButton();
             this.btnPhantoms = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.pictLow = new System.Windows.Forms.PictureBox();
-            this.pictHigh = new System.Windows.Forms.PictureBox();
             this.btnPhantoms2 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.numHead = new System.Windows.Forms.NumericUpDown();
@@ -57,10 +55,12 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.lstUnidades = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictLow)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictHigh)).BeginInit();
+            this.pictLow = new System.Windows.Forms.PictureBox();
+            this.pictHigh = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.numHead)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numTail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictLow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictHigh)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -300,26 +300,6 @@
             this.label6.Size = new System.Drawing.Size(330, 2);
             this.label6.TabIndex = 13;
             // 
-            // pictLow
-            // 
-            this.pictLow.Image = global::RockStatic.Properties.Resources.redX;
-            this.pictLow.Location = new System.Drawing.Point(315, 115);
-            this.pictLow.Name = "pictLow";
-            this.pictLow.Size = new System.Drawing.Size(23, 23);
-            this.pictLow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictLow.TabIndex = 5;
-            this.pictLow.TabStop = false;
-            // 
-            // pictHigh
-            // 
-            this.pictHigh.Image = global::RockStatic.Properties.Resources.redX;
-            this.pictHigh.Location = new System.Drawing.Point(315, 83);
-            this.pictHigh.Name = "pictHigh";
-            this.pictHigh.Size = new System.Drawing.Size(23, 23);
-            this.pictHigh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictHigh.TabIndex = 5;
-            this.pictHigh.TabStop = false;
-            // 
             // btnPhantoms2
             // 
             this.btnPhantoms2.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -349,27 +329,29 @@
             // 
             // numHead
             // 
-            this.numHead.Location = new System.Drawing.Point(69, 303);
+            this.numHead.DecimalPlaces = 2;
+            this.numHead.Location = new System.Drawing.Point(65, 303);
             this.numHead.Maximum = new decimal(new int[] {
             1410065407,
             2,
             0,
             0});
             this.numHead.Name = "numHead";
-            this.numHead.Size = new System.Drawing.Size(84, 22);
+            this.numHead.Size = new System.Drawing.Size(99, 22);
             this.numHead.TabIndex = 15;
             this.numHead.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // numTail
             // 
-            this.numTail.Location = new System.Drawing.Point(254, 303);
+            this.numTail.DecimalPlaces = 2;
+            this.numTail.Location = new System.Drawing.Point(239, 303);
             this.numTail.Maximum = new decimal(new int[] {
             1410065407,
             2,
             0,
             0});
             this.numTail.Name = "numTail";
-            this.numTail.Size = new System.Drawing.Size(84, 22);
+            this.numTail.Size = new System.Drawing.Size(99, 22);
             this.numTail.TabIndex = 16;
             this.numTail.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numTail.Value = new decimal(new int[] {
@@ -390,7 +372,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(214, 307);
+            this.label9.Location = new System.Drawing.Point(203, 307);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(34, 14);
             this.label9.TabIndex = 18;
@@ -408,12 +390,32 @@
             // 
             this.lstUnidades.FormattingEnabled = true;
             this.lstUnidades.Items.AddRange(new object[] {
-            "km",
+            "m",
             "ft"});
             this.lstUnidades.Location = new System.Drawing.Point(169, 273);
             this.lstUnidades.Name = "lstUnidades";
             this.lstUnidades.Size = new System.Drawing.Size(43, 22);
             this.lstUnidades.TabIndex = 20;
+            // 
+            // pictLow
+            // 
+            this.pictLow.Image = global::RockStatic.Properties.Resources.redX;
+            this.pictLow.Location = new System.Drawing.Point(315, 115);
+            this.pictLow.Name = "pictLow";
+            this.pictLow.Size = new System.Drawing.Size(23, 23);
+            this.pictLow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictLow.TabIndex = 5;
+            this.pictLow.TabStop = false;
+            // 
+            // pictHigh
+            // 
+            this.pictHigh.Image = global::RockStatic.Properties.Resources.redX;
+            this.pictHigh.Location = new System.Drawing.Point(315, 83);
+            this.pictHigh.Name = "pictHigh";
+            this.pictHigh.Size = new System.Drawing.Size(23, 23);
+            this.pictHigh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictHigh.TabIndex = 5;
+            this.pictHigh.TabStop = false;
             // 
             // NewProjectForm
             // 
@@ -459,10 +461,10 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NewProjectForm_FormClosed);
             this.Load += new System.EventHandler(this.NewProjectForm_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.NewProjectForm_Paint);
-            ((System.ComponentModel.ISupportInitialize)(this.pictLow)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictHigh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHead)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numTail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictLow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictHigh)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -981,6 +981,7 @@ namespace RockStatic
                 aboutForm.MdiParent = this;
                 aboutForm.padre = this;
 
+                abiertoAboutForm = true;
                 aboutForm.Show();
             }
             else aboutForm.Select();
