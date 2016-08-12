@@ -127,9 +127,9 @@
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(215, 134);
             this.richTextBox1.TabIndex = 21;
-            this.richTextBox1.Text = "Desarrollado por:\nMSc(c) Crisostomo A. Barajas S.\ncrisguycabs@gmail.com\n\nDirigido" +
-    " por:\nPhD Henry Arguello Fuentes\nhenarfu@uis.edu.co\n\nTodos los derechos reservad" +
-    "os";
+            this.richTextBox1.Text = "Desarrollado por:\nMSc(c) Crisostomo A. Barajas S.\ncrisostomo.barajas@correo.uis.e" +
+    "du.co\n\nDirigido por:\nPhD Henry Arguello Fuentes\nhenarfu@uis.edu.co\n\nTodos los de" +
+    "rechos reservados";
             // 
             // AboutForm
             // 

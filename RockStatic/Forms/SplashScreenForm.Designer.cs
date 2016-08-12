@@ -84,7 +84,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::RockStatic.Properties.Resources.LogoHDSP;
+            this.pictureBox3.Image = global::RockStatic.Properties.Resources.Logo_Big;
             this.pictureBox3.Location = new System.Drawing.Point(187, 141);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(90, 90);

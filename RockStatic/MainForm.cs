@@ -975,6 +975,11 @@ namespace RockStatic
 
         private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void acercaDeToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
             if (!abiertoAboutForm)
             {
                 aboutForm = new AboutForm();
@@ -985,6 +990,11 @@ namespace RockStatic
                 aboutForm.Show();
             }
             else aboutForm.Select();
+        }
+
+        private void guiaDeUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(@"help.pdf");
         }
     }
 }
