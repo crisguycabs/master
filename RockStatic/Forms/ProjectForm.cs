@@ -19,9 +19,9 @@ namespace RockStatic
 
         public MainForm padre;
 
-        #endregion
-
         Point lastClick;
+
+        #endregion
 
         public ProjectForm()
         {

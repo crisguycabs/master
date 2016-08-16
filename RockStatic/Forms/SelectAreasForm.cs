@@ -14,6 +14,8 @@ namespace RockStatic
     {
         #region variables de disenador
 
+        Point lastClick;    
+
         /// <summary>
         /// Lapiz para dibujar el circulo seleccionado
         /// </summary>
@@ -50,8 +52,6 @@ namespace RockStatic
         int countAreas;
 
         #endregion
-
-        Point lastClick;        
 
         public SelectAreasForm()
         {
@@ -200,11 +200,6 @@ namespace RockStatic
 
                 changes = true;
             }
-        }
-
-        private void rangeBar_RangeChanged(object sender, EventArgs e)
-        {
-            
         }
 
         /// <summary>
@@ -429,8 +424,7 @@ namespace RockStatic
         private void pictCore_MouseEnter(object sender, EventArgs e)
         {
             // se cambia el cursor si se ha definido el MODO MANUAL
-            this.Cursor = Cursors.Cross;
-            
+            this.Cursor = Cursors.Cross;            
         }
 
         private void pictCore_MouseLeave(object sender, EventArgs e)
@@ -469,21 +463,11 @@ namespace RockStatic
                     return; // se encontro el elemento areaInteres buscado, no es necesario buscar los otros elementos en la lista
                 }
             }
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
+        }        
 
         private void SelectAreasForm_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawRectangle(new Pen(Color.Green, 2), this.DisplayRectangle);       
-        }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
         }
 
         /// <summary>

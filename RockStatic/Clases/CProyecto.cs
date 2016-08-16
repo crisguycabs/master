@@ -18,21 +18,6 @@ namespace RockStatic
         #region variables de clase
 
         /// <summary>
-        /// Indica si ya se realizo o no el recorte transversal del core y phantoms
-        /// </summary>
-        public bool segTransDone=false;
-
-        /// <summary>
-        /// Indica si ya se realizo o no el recorte del plano horizontal XZ del core y phantoms
-        /// </summary>
-        public bool segHorDone=false;
-
-        /// <summary>
-        /// Indica si ya se realizo o no el recorte del plano horizontal YZ del core y phantoms
-        /// </summary>
-        public bool segVerDone=false;
-
-        /// <summary>
         /// Nombre del proyecto
         /// </summary>
         public string name = null;
@@ -130,7 +115,7 @@ namespace RockStatic
         /// <summary>
         /// Unidades de profundidad
         /// </summary>
-        public string unidadProfundidad="km";
+        public string unidadProfundidad="m";
 
         #endregion
 

@@ -19,18 +19,13 @@ namespace RockStatic
         /// </summary>
         public MainForm padre;
 
-        #endregion
-
         Point lastClick;
+
+        #endregion
 
         public HomeForm()
         {
             InitializeComponent();
-        }
-
-        private void HomeForm_Load(object sender, EventArgs e)
-        {
-            
         }
 
         private void btnNew_MouseEnter(object sender, EventArgs e)

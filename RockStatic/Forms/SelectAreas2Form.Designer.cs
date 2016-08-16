@@ -88,7 +88,6 @@
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "CORE";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // numActual
             // 
@@ -199,11 +198,9 @@
             this.MinimizeBox = false;
             this.Name = "SelectAreas2Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SelectAreas2Form";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SelectAreas2Form_FormClosed);
+            this.Text = "SelectAreas2Form";            
             this.Load += new System.EventHandler(this.SelectAreas2Form_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.SelectAreas2Form_Paint);
-            this.Enter += new System.EventHandler(this.SelectAreas2Form_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.pictCore)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

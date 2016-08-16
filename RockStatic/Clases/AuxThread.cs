@@ -14,6 +14,8 @@ namespace RockStatic
     /// </summary>
     public class AuxThread
     {
+        #region variables de clase
+
         /// <summary>
         /// Guarda la copia de los pixeles que se van a procesar como imagen 
         /// </summary>
@@ -78,6 +80,8 @@ namespace RockStatic
         /// Devuelve la imagen generada
         /// </summary>
         public Bitmap Corte { get { return corte; } }
+
+        #endregion
 
         /// <summary>
         /// Constructor con asignación para crear una imagen de un corte longitudinal

@@ -19,8 +19,6 @@ namespace RockStatic
         /// </summary>
         public MainForm padre;
 
-        #endregion
-
         Point lastClick;
 
         /// <summary>
@@ -68,6 +66,8 @@ namespace RockStatic
         /// </summary>
         int factor;
 
+        #endregion
+        
         public SelectAreas2Form()
         {
             InitializeComponent();
@@ -76,11 +76,6 @@ namespace RockStatic
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.padre.CerrarSelectAreasForm();
-        }
-
-        private void SelectAreas2Form_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            
         }
 
         private void SelectAreas2Form_Load(object sender, EventArgs e)
@@ -236,11 +231,6 @@ namespace RockStatic
             e.Graphics.DrawRectangle(new Pen(Color.Green, 2), this.DisplayRectangle);       
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void trackCortes_Scroll(object sender, EventArgs e)
         {
             pictCore.Image = padre.actual.datacuboHigh.CreateBitmapCorte(padre.actual.datacuboHigh.coresHorizontal[trackCortes.Value - 1], padre.actual.datacuboHigh.dataCube.Count * factor, padre.actual.datacuboHigh.widthSeg, minimo, maximo);
@@ -256,11 +246,6 @@ namespace RockStatic
         {
             trackCortes.Value = Convert.ToInt32(numActual.Value);
             trackCortes_Scroll(sender, e);
-        }
-
-        private void SelectAreas2Form_Enter(object sender, EventArgs e)
-        {
-            
-        }        
+        }              
     }
 }

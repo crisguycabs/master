@@ -109,7 +109,6 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "SELECCION DE AREAS";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             this.label4.DoubleClick += new System.EventHandler(this.label4_DoubleClick);
             this.label4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label4_MouseDown);
             this.label4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label4_MouseMove);
@@ -501,7 +500,6 @@
             this.groupBox3.Size = new System.Drawing.Size(180, 102);
             this.groupBox3.TabIndex = 21;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // btnCancel
             // 

@@ -124,10 +124,7 @@
             title1.ForeColor = System.Drawing.Color.Green;
             title1.Name = "Deff";
             title1.Text = "Deff";
-            this.chart1.Titles.Add(title1);
-            this.chart1.MouseEnter += new System.EventHandler(this.chart1_MouseEnter);
-            this.chart1.MouseLeave += new System.EventHandler(this.chart1_MouseLeave);
-            this.chart1.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseWheel);
+            this.chart1.Titles.Add(title1);            
             // 
             // chart2
             // 

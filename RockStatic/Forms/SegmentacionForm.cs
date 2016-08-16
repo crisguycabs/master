@@ -170,27 +170,6 @@ namespace RockStatic
             pictElemento.Invalidate();      
         }
 
-        /// <summary>
-        /// Se pasa una ruta completa y se extrae el nombre del archivo
-        /// </summary>
-        /// <param name="file"></param>
-        /// <returns></returns>
-        public static string GetNameFile(string file)
-        {
-            string name = "";
-            bool sw = true;
-            int i = file.Length;
-
-            while (sw)
-            {
-                i--;
-                if (file[i] == '\\') sw = false;
-                else name = file[i] + name;
-            }
-            
-            return name;
-        }        
-
         private void SegmentacionForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.padre.CerrarSegmentacionForm();
@@ -1135,11 +1114,6 @@ namespace RockStatic
         private void segmentacionManualToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.radManual.Checked = true;
-        }
-
-        private void trackElementos_Scroll(object sender, EventArgs e)
-        {
-
         }
 
         private void trackBrillo_Scroll(object sender, EventArgs e)
