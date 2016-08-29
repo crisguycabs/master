@@ -1,14 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <HelpTOC>
 
-  <HelpTOCNode Id="2f746dd6-b31e-4070-aeeb-dd7b7c5a089c" Title="RockStatic" Url="html/c2c63b1e-c5e4-28d5-55af-97a5e71fe681.htm">
-    <HelpTOCNode Id="08f3462b-1369-4112-a942-0921e8f9611e" Title="CCirculo Class" Url="html/80120943-0cc4-03e8-b141-5da1d56520f4.htm">
-      <HelpTOCNode Id="3f7642c2-9d62-417b-839d-3e1731103714" Title="CCirculo Constructor " Url="html/80f9578a-db1c-487a-9476-bdd4cb4e419f.htm">
+  <HelpTOCNode Id="62c1568f-6f4c-432b-8bf1-be71c279ce96" Title="RockStatic" Url="html/c2c63b1e-c5e4-28d5-55af-97a5e71fe681.htm">
+    <HelpTOCNode Id="014033f9-a625-4d13-8257-e2ed19ff0bfe" Title="AboutForm Class" Url="html/2841fc77-acb5-8374-4534-e800a9654a86.htm">
+      <HelpTOCNode Title="AboutForm Constructor " Url="html/17b83b52-4c95-aa5a-8661-df002505bb6b.htm" />
+      <HelpTOCNode Id="acf8b3e0-3de8-4638-8b38-b76d6ab71d36" Title="AboutForm Fields" Url="html/e3859081-9dbe-cea2-801b-7f92136bbd75.htm">
+        <HelpTOCNode Title="padre Field" Url="html/7d72a54b-4a18-dc1c-0b2a-ac4e0abd5137.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="0c4b3fd5-e795-4c8a-8f30-c45bd2ef66d8" Title="AboutForm Methods" Url="html/a2bf4080-5825-d818-3b75-e23e97426ee2.htm">
+        <HelpTOCNode Id="68058dff-b62c-4600-808a-a315576ee8b4" Title="Dispose Method " Url="html/c9f4211c-09b7-3f09-a6a4-02fc135004f0.htm">
+          <HelpTOCNode Title="Dispose Method (Boolean)" Url="html/75b19c94-009e-736d-26a7-b0315f5f88a6.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Title="AboutForm Properties" Url="html/b149da3c-c47b-3ce2-3389-a07b73076f3d.htm" />
+      <HelpTOCNode Title="AboutForm Events" Url="html/315464d8-fd68-50a7-be17-fa8c5a10e9f5.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="b8103eea-6089-4796-8124-1307f3121b12" Title="AuxThread Class" Url="html/8c18e01b-e160-8368-21ae-f824b420e8b2.htm">
+      <HelpTOCNode Id="84f2b8bb-6f68-4b76-b334-cac0189c2905" Title="AuxThread Constructor " Url="html/484ece8e-c57a-3dbe-fae9-f2a418b67535.htm">
+        <HelpTOCNode Title="AuxThread Constructor (List(UInt16), Int32, Int32, ManualResetEvent)" Url="html/39ec2b3d-6be2-d6a5-8e62-fbc8f06b27d5.htm" />
+        <HelpTOCNode Title="AuxThread Constructor (List(UInt16), Int32, Int32, Int32, Int32, ManualResetEvent)" Url="html/968e4628-37f0-a5f1-5a1c-8be118c51db7.htm" />
+        <HelpTOCNode Title="AuxThread Constructor (List(UInt16), Int32, Int32, Int32, Int32, Int32, ManualResetEvent)" Url="html/7ffcefab-956f-a426-874f-e94324ca885d.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="605fa925-3662-4e07-8711-ed69b8819e03" Title="AuxThread Methods" Url="html/3dda09ad-da7a-e70d-4aea-e724e8218269.htm">
+        <HelpTOCNode Title="CreateBitmap Method " Url="html/0a7451f0-e62f-a9b1-6e5f-63ec56bbe5ab.htm" />
+        <HelpTOCNode Title="CreateBitmapCorte Method " Url="html/7a3f5654-5e4e-ed53-e7de-5232736e229a.htm" />
+        <HelpTOCNode Title="SegmentarCircular Method " Url="html/a8e22486-defc-29e7-c6f9-ce040278ec53.htm" />
+        <HelpTOCNode Title="ThreadCrearBitmap Method " Url="html/57ddf2d5-854b-1f07-8731-390ece3233c3.htm" />
+        <HelpTOCNode Title="ThreadCrearBitmapCorte Method " Url="html/7c735865-1a3c-70ab-e1e5-664207650000.htm" />
+        <HelpTOCNode Title="ThreadSegmentar Method " Url="html/989ec2b1-c4bb-26fd-6c2b-c6f13b424b19.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="18d5ae48-db7f-4fe8-8e8d-70bfd1e11d00" Title="AuxThread Properties" Url="html/c75d4f98-1798-8adc-4423-075437980d8b.htm">
+        <HelpTOCNode Title="Corte Property " Url="html/b6786464-ee9d-b39e-1393-8fddd439f840.htm" />
+        <HelpTOCNode Title="Segmentacion Property " Url="html/8b668709-1c20-40ed-41eb-c54d7c958707.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="b00320cd-8999-4eae-aef2-438a37dcfffe" Title="CAreaInteres Class" Url="html/a4a112b8-16fa-e0c7-6a93-5a5eaddf25ba.htm">
+      <HelpTOCNode Id="0c9db501-3c32-4304-8fc0-ce52c1127aa1" Title="CAreaInteres Constructor " Url="html/71a93d6a-6f5e-d54e-a079-f663f473ccf8.htm">
+        <HelpTOCNode Title="CAreaInteres Constructor " Url="html/db7c8605-f14e-9e26-905b-14f9b0b9b57d.htm" />
+        <HelpTOCNode Title="CAreaInteres Constructor (CAreaInteres)" Url="html/b437ad99-a2b9-891c-ad5d-fe0b7d24f98a.htm" />
+        <HelpTOCNode Title="CAreaInteres Constructor (Int32, Int32, Int32, String, Int32, Int32)" Url="html/b112f123-1ed8-aea7-f650-125148870313.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="63bfaec8-8647-489a-bac7-650eea2dc00f" Title="CAreaInteres Fields" Url="html/8a4f0a96-ca77-06a9-3fab-706298989293.htm">
+        <HelpTOCNode Title="fin Field" Url="html/90cda557-0431-b205-87bb-ab069b47122b.htm" />
+        <HelpTOCNode Title="ini Field" Url="html/1295d38d-3a93-804a-1547-716c9ab76e67.htm" />
+        <HelpTOCNode Title="nombre Field" Url="html/b94dee93-da3e-c26e-5dd8-a72ed3cba99e.htm" />
+        <HelpTOCNode Title="width Field" Url="html/d93260de-ea13-6a1b-0a03-938cd1a06b75.htm" />
+        <HelpTOCNode Title="x Field" Url="html/b5f530ac-edaf-daaf-cc39-0c6a619d4f48.htm" />
+        <HelpTOCNode Title="y Field" Url="html/41179a37-e993-c628-9ca7-40aaefb9c331.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="CAreaInteres Methods" Url="html/ae09d7f3-be1f-74ae-a4fd-9d1835242ffb.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="e046e2d3-f7ff-415b-899d-1ff4ef59a6d2" Title="CCirculo Class" Url="html/80120943-0cc4-03e8-b141-5da1d56520f4.htm">
+      <HelpTOCNode Id="45dfaaf5-1a83-4ec5-b97d-1dfec4692490" Title="CCirculo Constructor " Url="html/80f9578a-db1c-487a-9476-bdd4cb4e419f.htm">
         <HelpTOCNode Title="CCirculo Constructor " Url="html/e7b9fffb-1b21-c1c6-7753-6419880e8616.htm" />
         <HelpTOCNode Title="CCirculo Constructor (CCirculo)" Url="html/78dcdf07-2785-5183-f028-bd8cbd5fe7f3.htm" />
         <HelpTOCNode Title="CCirculo Constructor (Int32, Int32, Int32)" Url="html/b7a76fad-8743-6aa1-7b6e-6a80c921f715.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="e0c71c2b-8be8-4076-8999-551a5323f151" Title="CCirculo Fields" Url="html/ba05630f-a8b0-2310-4ae1-65800227b0cc.htm">
+      <HelpTOCNode Id="4f67ac56-b321-4073-b6e6-39e32db9306c" Title="CCirculo Fields" Url="html/ba05630f-a8b0-2310-4ae1-65800227b0cc.htm">
         <HelpTOCNode Title="nombre Field" Url="html/cde70329-b1ee-0815-567f-562f289d0ca1.htm" />
         <HelpTOCNode Title="r Field" Url="html/3d6bfcdb-80c0-a373-b1de-5b550d104658.htm" />
         <HelpTOCNode Title="x Field" Url="html/036c0526-5c9a-a65e-29aa-1ad4a2da0409.htm" />
@@ -16,13 +64,13 @@
       </HelpTOCNode>
       <HelpTOCNode Title="CCirculo Methods" Url="html/bea87690-b795-4ebd-af7c-ff0b3d6cf00d.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="9b04c615-760b-4ab8-996c-467cc17dd420" Title="CCuadrado Class" Url="html/6486c008-bbf7-9340-3cdc-1c294be654a4.htm">
-      <HelpTOCNode Id="4d5f5fb1-965e-40ee-9874-b1321c06a7db" Title="CCuadrado Constructor " Url="html/5523fa50-e981-a196-0d3b-3c897314e4fd.htm">
+    <HelpTOCNode Id="a435c8ce-1fca-4fe5-836a-ee0071b641bd" Title="CCuadrado Class" Url="html/6486c008-bbf7-9340-3cdc-1c294be654a4.htm">
+      <HelpTOCNode Id="98a7c812-3487-48c4-9c04-e49967937a11" Title="CCuadrado Constructor " Url="html/5523fa50-e981-a196-0d3b-3c897314e4fd.htm">
         <HelpTOCNode Title="CCuadrado Constructor " Url="html/64856eec-27c5-bb40-94c9-00d6a55d7f7e.htm" />
         <HelpTOCNode Title="CCuadrado Constructor (CCuadrado)" Url="html/6700b5b9-bd81-f50e-9e20-2fc3b7515d0f.htm" />
         <HelpTOCNode Title="CCuadrado Constructor (Int32, Int32, Int32)" Url="html/86adb854-17f9-900f-a64c-e97e238c0b81.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="155ced98-5fcb-484a-8801-4bf1ccfdd95e" Title="CCuadrado Fields" Url="html/5301bbe7-d246-0fd6-68ba-dd202c729354.htm">
+      <HelpTOCNode Id="e5ab9876-c451-4a07-9a14-926b48391c9a" Title="CCuadrado Fields" Url="html/5301bbe7-d246-0fd6-68ba-dd202c729354.htm">
         <HelpTOCNode Title="nombre Field" Url="html/4a6b8b0a-76a0-0814-fbd2-4dc4d1dd6bf4.htm" />
         <HelpTOCNode Title="width Field" Url="html/583bbfe0-2d02-7bc5-619e-57c263e07f2e.htm" />
         <HelpTOCNode Title="x Field" Url="html/3191005b-de41-44de-df38-7cb17df9ae4e.htm" />
@@ -30,20 +78,21 @@
       </HelpTOCNode>
       <HelpTOCNode Title="CCuadrado Methods" Url="html/1540258d-c6f4-57f8-55e7-d6f09751ba2b.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="9b0268f2-a636-450e-b047-a9373de862ea" Title="CheckForm Class" Url="html/538a09cf-f903-49ce-9543-c3f79a29596e.htm">
+    <HelpTOCNode Id="abdc1d10-4080-4eaa-a65c-ea9a565f5e71" Title="CheckForm Class" Url="html/538a09cf-f903-49ce-9543-c3f79a29596e.htm">
       <HelpTOCNode Title="CheckForm Constructor " Url="html/664791c4-6de7-3280-c458-316baa0cbcba.htm" />
-      <HelpTOCNode Id="bece2eff-f415-4801-99ac-fd9d8af0174a" Title="CheckForm Fields" Url="html/07b6c607-ab45-b135-a33d-8efe4f2986de.htm">
+      <HelpTOCNode Id="56ae7983-1bbc-4efb-9017-e2c55d2c022a" Title="CheckForm Fields" Url="html/07b6c607-ab45-b135-a33d-8efe4f2986de.htm">
         <HelpTOCNode Title="filesHigh Field" Url="html/c0da54f3-5f55-2b7f-cc50-ef5f86f49ae5.htm" />
         <HelpTOCNode Title="lblTitulo Field" Url="html/abe17a0c-799d-f1ea-bb9c-9ff38a242d06.htm" />
         <HelpTOCNode Title="newProjectForm Field" Url="html/3eaa0bdf-44c8-ccf9-f779-0d548a559ed8.htm" />
         <HelpTOCNode Title="padre Field" Url="html/994dc363-f230-775b-8d76-09e7d8321ec9.htm" />
         <HelpTOCNode Title="temp Field" Url="html/fc54cec5-ad2b-41dd-d4b5-9ecd6489c8d5.htm" />
+        <HelpTOCNode Title="tempDicom Field" Url="html/032907c5-ab28-0f17-23b1-f419fef12aa2.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="956ef582-1e0f-4725-8af2-65d65c8b1ee7" Title="CheckForm Methods" Url="html/e103d86d-4975-4371-584e-d2a73135fc05.htm">
+      <HelpTOCNode Id="9851d5c9-d56d-40e0-8fe2-baf8bc17c37c" Title="CheckForm Methods" Url="html/e103d86d-4975-4371-584e-d2a73135fc05.htm">
         <HelpTOCNode Title="btnCancelar_Click Method " Url="html/3043864e-e2d9-4564-2e83-2ec89af6e923.htm" />
-        <HelpTOCNode Title="btnGuardar_Click Method " Url="html/dbffbf82-e340-c9fa-cb0a-30074b857be0.htm" />
+        <HelpTOCNode Title="btnCerrar_Click Method " Url="html/58f7eb2c-69db-20a2-763f-a2c4d68a2460.htm" />
         <HelpTOCNode Title="CentrarForm Method " Url="html/f2d3f2dc-f513-1b50-2df7-7c84e4d9664f.htm" />
-        <HelpTOCNode Id="cca3597f-b95e-4dc8-bf16-6b303b0236e4" Title="Dispose Method " Url="html/de6e7818-13d8-d849-8830-b35dedb61922.htm">
+        <HelpTOCNode Id="6c45470c-cdf5-422f-aa92-91c6c040a333" Title="Dispose Method " Url="html/de6e7818-13d8-d849-8830-b35dedb61922.htm">
           <HelpTOCNode Title="Dispose Method (Boolean)" Url="html/80048ddc-ce23-b3d0-8412-fd194b8730b2.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="GetNameFile Method " Url="html/adea25fb-95d3-87c8-35eb-bc5a3fac694d.htm" />
@@ -53,206 +102,173 @@
       <HelpTOCNode Title="CheckForm Properties" Url="html/92cc3688-627b-62b8-5672-24cbe927cfe2.htm" />
       <HelpTOCNode Title="CheckForm Events" Url="html/42fd729d-3a3f-0c1d-ced2-877ca19e8c07.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="96c9b1eb-886a-405a-911b-33d7cd5f48de" Title="CLockBitmap Class" Url="html/adfe5bcf-53f2-c2e2-6806-38f22a057a44.htm">
+    <HelpTOCNode Id="c5182eab-fa42-408d-9273-705523c5fc34" Title="CLockBitmap Class" Url="html/adfe5bcf-53f2-c2e2-6806-38f22a057a44.htm">
       <HelpTOCNode Title="CLockBitmap Constructor " Url="html/deafbf38-df02-9f65-983a-d01969fa0ad3.htm" />
-      <HelpTOCNode Id="fb971cb0-47aa-4f9c-b1e1-c16d30ad94c9" Title="CLockBitmap Methods" Url="html/a960f880-9562-3dd2-66e7-0050e451f409.htm">
+      <HelpTOCNode Id="1425de24-c6b8-46bb-a3fa-17d466d7cd44" Title="CLockBitmap Methods" Url="html/a960f880-9562-3dd2-66e7-0050e451f409.htm">
         <HelpTOCNode Title="Dispose Method " Url="html/a05dfa8f-f0a2-f054-8989-64aeedcfd678.htm" />
         <HelpTOCNode Title="GetPixel Method " Url="html/12f5f0d1-c5db-1c44-29e1-20a5449f64af.htm" />
         <HelpTOCNode Title="LockBits Method " Url="html/d9581a4d-d1d1-0836-87c6-368ab12a0e0a.htm" />
         <HelpTOCNode Title="SetPixel Method " Url="html/6d4ee9cc-a614-25d6-311a-b4e9b18a529f.htm" />
         <HelpTOCNode Title="UnlockBits Method " Url="html/264db6b7-c813-b835-1b13-ba536f1e7cdc.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="311cfe52-1876-4fbb-a143-de19dd631d37" Title="CLockBitmap Properties" Url="html/b3594bc2-9cd1-7192-94b1-bb5db753db77.htm">
+      <HelpTOCNode Id="050beed9-e4f8-4aca-966f-a026fd8cdb6d" Title="CLockBitmap Properties" Url="html/b3594bc2-9cd1-7192-94b1-bb5db753db77.htm">
         <HelpTOCNode Title="Depth Property " Url="html/77eb7205-982f-5a39-95ef-f923c662fded.htm" />
         <HelpTOCNode Title="Height Property " Url="html/c93e97f6-7678-62e1-b956-6d0b730ef033.htm" />
         <HelpTOCNode Title="Pixels Property " Url="html/076b4a05-6f7c-d1ad-bb47-8e05db0a1532.htm" />
         <HelpTOCNode Title="Width Property " Url="html/6cb5cbf0-9a1a-80f6-8d2c-8c9dd5a4bfa6.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="ac4752a3-648f-4866-b8fe-7d04db6d62ad" Title="CProyecto Class" Url="html/0887e6d8-274c-3b91-7086-1b35b84be494.htm">
-      <HelpTOCNode Id="31dbd534-2ff1-4909-886e-d19b8c25a365" Title="CProyecto Constructor " Url="html/01907848-85e6-8bd1-961a-b34712515404.htm">
-        <HelpTOCNode Title="CProyecto Constructor " Url="html/6c9753fe-37e5-f4c0-4827-9e8825a465fb.htm" />
-        <HelpTOCNode Title="CProyecto Constructor (CProyecto)" Url="html/acbad3de-3341-a7ec-8d75-ba27d485cb26.htm" />
+    <HelpTOCNode Id="8632205a-b4a7-430e-a92e-8d268f7a99eb" Title="CPermisos Class" Url="html/7aef1635-9ac0-6ab2-03c5-7401ed164dd3.htm">
+      <HelpTOCNode Title="CPermisos Constructor " Url="html/7e5bc7b4-55d9-1e2f-bf61-650117e6b536.htm" />
+      <HelpTOCNode Id="4c8ae59e-43c4-4d2b-8c92-d0df2a781671" Title="CPermisos Fields" Url="html/f527589c-e13a-eb81-b7cf-4d157364f34a.htm">
+        <HelpTOCNode Title="permiso Field" Url="html/1b9007b0-9578-d1fc-9f35-6703d359d30d.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="c87681cf-f346-4102-85ea-946e5b532e06" Title="CProyecto Fields" Url="html/be8ab893-fc0b-7b8c-c0cf-08ae60bf107d.htm">
-        <HelpTOCNode Title="voxelDepth Field" Url="html/3a162bd7-7f9c-55bf-e00c-9610ea4d289d.htm" />
-        <HelpTOCNode Title="voxelHeight Field" Url="html/73b2c112-7a03-f9a5-651d-ef5cd3328450.htm" />
-        <HelpTOCNode Title="voxelWidth Field" Url="html/3be33b35-d6f4-c2af-18f0-f010fce02207.htm" />
+      <HelpTOCNode Title="CPermisos Methods" Url="html/34fd87f6-70ff-0069-e232-3cbd77677608.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="f3226e22-b11d-4a5c-8012-4ae795778005" Title="CPhantom Class" Url="html/ab751b2d-a8cf-f41f-fbf0-ea54f1702af6.htm">
+      <HelpTOCNode Id="cd75bb34-4469-45eb-a434-d9c9d08a9cc0" Title="CPhantom Constructor " Url="html/66f17382-3716-26c8-045a-5983e2c17392.htm">
+        <HelpTOCNode Title="CPhantom Constructor (CPhantom)" Url="html/49781e99-4086-39c9-9ff6-a96f966840d0.htm" />
+        <HelpTOCNode Title="CPhantom Constructor (Double, Double, Double, Double, Double, Double)" Url="html/fa8dcf14-b298-2a48-53c4-8f1d2f06017e.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="afeaf1f4-352b-49b1-a67a-023972323432" Title="CProyecto Methods" Url="html/cce1c429-74f8-915f-d9f1-e5c61ebb2d26.htm">
-        <HelpTOCNode Title="Crear Method " Url="html/f9ab95c8-8c89-9290-2d75-c4e1de21e52a.htm" />
-        <HelpTOCNode Title="CropCircle8bit Method " Url="html/2100d2df-fd20-521e-5e11-a45ad56445ea.htm" />
+      <HelpTOCNode Id="b77dbbf4-7048-4dfe-8139-1620063cd474" Title="CPhantom Fields" Url="html/914cb523-1217-12e7-1ddd-daa767e49311.htm">
+        <HelpTOCNode Title="densidad Field" Url="html/83d72fec-e55d-7fc3-4d07-9ccb193ca756.htm" />
+        <HelpTOCNode Title="desvHigh Field" Url="html/01dd4b4b-6914-3033-0ee8-a085ab29b6cc.htm" />
+        <HelpTOCNode Title="desvLow Field" Url="html/7207c33c-24ec-8f3e-3ac6-e5788f390769.htm" />
+        <HelpTOCNode Title="mediaHigh Field" Url="html/ba4aa3d4-8dfa-22a9-af88-24170c7aca0c.htm" />
+        <HelpTOCNode Title="mediaLow Field" Url="html/42556c28-ffdc-5ef1-0f7e-8b0f6b68dc83.htm" />
+        <HelpTOCNode Title="zeff Field" Url="html/4b5cadb3-b648-8948-6fff-c3bd521617a7.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="CPhantom Methods" Url="html/b696015e-458f-d04e-4f87-69410e3e785d.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="fd2882a7-9a21-43f8-b0f9-7d911f1508b8" Title="CProyecto Class" Url="html/0887e6d8-274c-3b91-7086-1b35b84be494.htm">
+      <HelpTOCNode Title="CProyecto Constructor " Url="html/2ac28495-0f55-dfd6-76cb-84398c667f64.htm" />
+      <HelpTOCNode Id="16a0025a-6dee-4ad9-96a0-0ae045e81773" Title="CProyecto Fields" Url="html/be8ab893-fc0b-7b8c-c0cf-08ae60bf107d.htm">
+        <HelpTOCNode Title="areaCore Field" Url="html/aadbfdf8-c908-b2fd-eeff-46e29cd04b30.htm" />
+        <HelpTOCNode Title="areaPhantom1 Field" Url="html/83db6b46-7869-7519-aa25-b921918256c6.htm" />
+        <HelpTOCNode Title="areaPhantom2 Field" Url="html/acd5d8e9-2086-946b-208f-a8e114a6b54d.htm" />
+        <HelpTOCNode Title="areaPhantom3 Field" Url="html/891ac38f-e941-89e0-605d-17bf3d0c04cf.htm" />
+        <HelpTOCNode Title="areasCore Field" Url="html/c99c53bd-863c-fbf3-3904-66b57a11f0c5.htm" />
+        <HelpTOCNode Title="areasDone Field" Url="html/4f13731c-c06b-142d-8336-8b23e9a55f0d.htm" />
+        <HelpTOCNode Title="datacuboHigh Field" Url="html/6439a22e-76b7-21d7-cb08-c540553dab5b.htm" />
+        <HelpTOCNode Title="datacuboLow Field" Url="html/33c1f309-a412-0c5f-883f-56a1d1ed913a.htm" />
+        <HelpTOCNode Title="folderHigh Field" Url="html/d4057fc9-54ee-08a4-c093-753dc9e0b935.htm" />
+        <HelpTOCNode Title="folderLow Field" Url="html/1d68b155-9f72-8121-4205-00541c4d479e.htm" />
+        <HelpTOCNode Title="folderPath Field" Url="html/e0ad4bae-2915-9381-3ecd-c21caa379812.htm" />
+        <HelpTOCNode Title="head Field" Url="html/2e789793-8ed2-5a60-523c-1465152d793e.htm" />
+        <HelpTOCNode Title="name Field" Url="html/0b5c5f08-c1da-20ee-6574-975298d1db53.htm" />
+        <HelpTOCNode Title="phantom1 Field" Url="html/2af89d4e-6709-ae75-ab5e-54c30955ec7d.htm" />
+        <HelpTOCNode Title="phantom2 Field" Url="html/a1fb5730-7fb3-5065-3c36-ca2e86bd1ea9.htm" />
+        <HelpTOCNode Title="phantom3 Field" Url="html/48ad4488-4ea1-f7d0-c9e4-91cc653b133c.htm" />
+        <HelpTOCNode Title="phantomEnDicom Field" Url="html/b30f80f6-4db6-e12c-090a-98d92c22fd57.htm" />
+        <HelpTOCNode Title="segmentacionDone Field" Url="html/9b21545c-7972-7585-c4fb-dcfdf585718f.htm" />
+        <HelpTOCNode Title="tail Field" Url="html/937c27fd-4c68-4450-534f-bb88cf2d888a.htm" />
+        <HelpTOCNode Title="unidadProfundidad Field" Url="html/cd3b8764-f820-a830-2853-f6410cf2c110.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="80d66077-3e47-4d38-ad9e-859451fccce7" Title="CProyecto Methods" Url="html/cce1c429-74f8-915f-d9f1-e5c61ebb2d26.htm">
         <HelpTOCNode Title="Cropper Method " Url="html/f6c34b7b-1b4a-fe1b-6a6b-d15217e9939e.htm" />
-        <HelpTOCNode Title="GenerarSegHorizontal Method " Url="html/d0e38eaf-1ec9-99f8-9a15-fd486a963f44.htm" />
-        <HelpTOCNode Title="GenerarSegTransveral Method " Url="html/a7868ca9-6866-9da5-66f9-1c365ddc3059.htm" />
-        <HelpTOCNode Title="GenerarSegVertical Method " Url="html/da2660ae-4dbe-fbf9-9c9b-f99104ec979a.htm" />
-        <HelpTOCNode Title="GetAreasDone Method " Url="html/f21fb682-0754-c63e-c747-7531b52a8ef8.htm" />
         <HelpTOCNode Title="GetCore Method " Url="html/8fd02648-c647-7ac3-83f5-1f57c6fd3af3.htm" />
         <HelpTOCNode Title="GetFolderHigh Method " Url="html/b86a42cc-e35b-03a2-38e9-4b27ae701994.htm" />
         <HelpTOCNode Title="GetFolderLow Method " Url="html/77cfc247-4c5c-3be3-3cf7-09a8ffd309a8.htm" />
         <HelpTOCNode Title="GetFolderPath Method " Url="html/08c39fa7-99eb-ece3-4418-1e360833453a.htm" />
-        <HelpTOCNode Title="GetHigh Method " Url="html/27fcae26-7292-bcb5-c546-423835b9e47a.htm" />
-        <HelpTOCNode Title="GetLengthHigh Method " Url="html/ba4c7b50-b373-59bf-df2d-40c94940439f.htm" />
-        <HelpTOCNode Title="GetLengthLow Method " Url="html/ef1861e5-e1e0-04b2-459f-6d02ed9574a8.htm" />
-        <HelpTOCNode Title="GetLow Method " Url="html/a67c7ba6-2b18-9a7a-69c8-96adc130f28e.htm" />
         <HelpTOCNode Title="GetPhantom1 Method " Url="html/3d233877-05b4-89ae-4752-e91f322ed86f.htm" />
         <HelpTOCNode Title="GetPhantom2 Method " Url="html/87bf1a4d-7c12-3b58-2aa9-9389fe2939b1.htm" />
         <HelpTOCNode Title="GetPhantom3 Method " Url="html/b1d390e3-c7ab-10b2-e6b5-067dd3ddfc22.htm" />
-        <HelpTOCNode Title="GetSegCoreHor Method " Url="html/149068fd-c98b-b23e-73ff-6cfc5f0723e0.htm" />
-        <HelpTOCNode Title="GetSegCoreTransHigh Method " Url="html/746affc8-beb6-7efa-5a43-0e8b3fba8745.htm" />
-        <HelpTOCNode Title="GetSegCoreTransLow Method " Url="html/617a8e4a-2354-7168-d829-19c03759b90c.htm" />
-        <HelpTOCNode Title="GetSegCoreVer Method " Url="html/c5434d0b-2929-7723-7b2b-64445d88cedc.htm" />
-        <HelpTOCNode Title="GetSegHorDone Method " Url="html/e439cb0c-635a-9fb3-7f12-9d55975fa936.htm" />
         <HelpTOCNode Title="GetSegmentacionDone Method " Url="html/6b6bc111-641e-bf2c-e3dd-f39ca6e2a61c.htm" />
-        <HelpTOCNode Title="GetSegPhantom1Hor Method " Url="html/6a1fffed-309e-7c47-000b-e3579bb5b486.htm" />
-        <HelpTOCNode Title="GetSegPhantom1TransHigh Method " Url="html/20fb1df6-06cf-9dde-e51c-b223db95216b.htm" />
-        <HelpTOCNode Title="GetSegPhantom1Ver Method " Url="html/069fae6d-89af-6ddf-59f7-665b4276f37f.htm" />
-        <HelpTOCNode Title="GetSegPhantom2Hor Method " Url="html/df52f1a1-ff0b-af3b-2440-879e21ccc808.htm" />
-        <HelpTOCNode Title="GetSegPhantom2TransHigh Method " Url="html/b6dab0ae-7ff1-b9bd-f732-a12c7f1449f7.htm" />
-        <HelpTOCNode Title="GetSegPhantom2Ver Method " Url="html/ce5dc2eb-7cc6-9564-773d-7cd5ea825b6a.htm" />
-        <HelpTOCNode Title="GetSegPhantom3Hor Method " Url="html/8c15685e-f0b9-926a-67f7-26be0eec35fd.htm" />
-        <HelpTOCNode Title="GetSegPhantom3TransHigh Method " Url="html/cc17f83d-529f-67e2-5f50-9b7fcf40da79.htm" />
-        <HelpTOCNode Title="GetSegPhantom3Ver Method " Url="html/f3a96b17-bc39-1a62-74e8-ff0c461df8e4.htm" />
-        <HelpTOCNode Title="GetSegTransDone Method " Url="html/22a8cbee-f9b9-dbd3-ba0e-98943b225d6d.htm" />
-        <HelpTOCNode Title="GetSegVerDone Method " Url="html/3aacf4ef-65a2-91d0-eb55-e56f6b7006e5.htm" />
         <HelpTOCNode Title="Salvar Method " Url="html/a30e359e-dd60-d7e6-093f-2af9b23d49be.htm" />
-        <HelpTOCNode Title="SetAreasDone Method " Url="html/112a0584-2cd5-8665-9821-fc2ecc7b3b1d.htm" />
         <HelpTOCNode Title="SetCore Method " Url="html/302287dc-0694-e60e-74c9-6de67e865c9a.htm" />
-        <HelpTOCNode Title="SetCoreTransHigh Method " Url="html/ea0cad6b-afb1-5b3f-8d83-104c3be7da4a.htm" />
         <HelpTOCNode Title="SetFolderPath Method " Url="html/dc2658bc-fdd1-6f11-0567-4c3055e12e6d.htm" />
-        <HelpTOCNode Id="97697f15-6685-4872-b274-04edb7ae7de4" Title="SetHigh Method " Url="html/242b705e-e140-77c4-5bd8-5ad5cd6027be.htm">
-          <HelpTOCNode Title="SetHigh Method " Url="html/64b8582f-fab0-5771-3994-3cde3b28695a.htm" />
-          <HelpTOCNode Title="SetHigh Method (Byte[])" Url="html/474323b6-887e-5b3f-7920-b990eb302da6.htm" />
-          <HelpTOCNode Title="SetHigh Method (List(Byte[]))" Url="html/42351d08-93cb-4936-beb5-e204349a35e8.htm" />
-          <HelpTOCNode Title="SetHigh Method (List(String))" Url="html/02475c58-9b7a-8d7b-1101-a8f7d45942d5.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="21ee703f-8de8-4218-a287-483fea39985b" Title="SetLow Method " Url="html/16d706d1-66fa-babe-461a-2076f641435c.htm">
-          <HelpTOCNode Title="SetLow Method " Url="html/e6f31205-b516-d25f-dcf4-b185f8f35a8c.htm" />
-          <HelpTOCNode Title="SetLow Method (Byte[])" Url="html/18087156-9676-d6d2-400c-7821e042f620.htm" />
-          <HelpTOCNode Title="SetLow Method (List(Byte[]))" Url="html/571c3e31-6acc-d023-5ab2-3ec22c16837b.htm" />
-          <HelpTOCNode Title="SetLow Method (List(String))" Url="html/54bfde64-406a-efa5-26fe-79575d98c8de.htm" />
-        </HelpTOCNode>
         <HelpTOCNode Title="SetPhantom1 Method " Url="html/d250d135-a1c7-9389-9cbd-3f775d8c9f13.htm" />
         <HelpTOCNode Title="SetPhantom2 Method " Url="html/d76a843c-5ba0-0c76-57ce-8bfd5b79d670.htm" />
         <HelpTOCNode Title="SetPhantom3 Method " Url="html/6af20a2f-0c53-3b28-94d1-d20bbf059736.htm" />
-        <HelpTOCNode Id="477b415e-0cd5-4e5f-b035-940e95582d89" Title="SetSegCoreHor Method " Url="html/fb34010c-997a-0c8e-a0a6-20c0e0f9eb75.htm">
-          <HelpTOCNode Title="SetSegCoreHor Method " Url="html/4899e4c4-13d3-7331-02da-ea206b3d73c2.htm" />
-          <HelpTOCNode Title="SetSegCoreHor Method (Byte[])" Url="html/e373c95f-d32c-ea3a-24b7-9a6b4917742a.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="84012645-ba73-4403-a6e0-112e69807e77" Title="SetSegCoreTransHigh Method " Url="html/a1503885-7c27-10f2-408b-ce65443f990e.htm">
-          <HelpTOCNode Title="SetSegCoreTransHigh Method " Url="html/20d101bf-77d7-f4f1-0623-ce2f088cdd2d.htm" />
-          <HelpTOCNode Title="SetSegCoreTransHigh Method (Byte[])" Url="html/82f5ed2b-dc68-94e1-c8a4-c1678d537ef7.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="667d0096-c362-4641-aaa8-aa051eadb156" Title="SetSegCoreTransLow Method " Url="html/fac3e3aa-dfbd-5c92-7ee0-afd49a69e3c2.htm">
-          <HelpTOCNode Title="SetSegCoreTransLow Method " Url="html/e3a986ac-0162-8cc7-af13-c240216e0dea.htm" />
-          <HelpTOCNode Title="SetSegCoreTransLow Method (Byte[])" Url="html/bb2b4257-4153-9f37-8b94-8bbf7a98d0c5.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="1bd7b961-3afa-4272-bc9c-89ecce63339e" Title="SetSegCoreVer Method " Url="html/3cfb0490-8068-f4d4-c016-4b0b2d464348.htm">
-          <HelpTOCNode Title="SetSegCoreVer Method " Url="html/2da4b6cd-af47-28ca-a025-1d0a277e20c6.htm" />
-          <HelpTOCNode Title="SetSegCoreVer Method (Byte[])" Url="html/9d1819d2-32d4-2ac3-c1ee-c3be00180840.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="SetSegHorDone Method " Url="html/639b7464-34f4-5b5c-1a73-80bc9dfd6180.htm" />
-        <HelpTOCNode Title="SetSegmentacionDone Method " Url="html/572c9ff2-1929-def9-5c3a-eeb970e30b10.htm" />
-        <HelpTOCNode Id="bd274e32-9dfc-4b5c-8154-2bacc5f52533" Title="SetSegPhantom1Hor Method " Url="html/d7019ecf-f74e-2753-735b-98c7553210e6.htm">
-          <HelpTOCNode Title="SetSegPhantom1Hor Method " Url="html/9fb6f6fc-ebdb-0691-97b9-fd7c6c83666e.htm" />
-          <HelpTOCNode Title="SetSegPhantom1Hor Method (Byte[])" Url="html/dc6542d9-53e4-f863-6204-ed468ca15026.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="fea9a610-b8b7-4c83-9265-3b338b217fd4" Title="SetSegPhantom1TransHigh Method " Url="html/292415f1-60bc-98e3-bf19-820b788b069a.htm">
-          <HelpTOCNode Title="SetSegPhantom1TransHigh Method " Url="html/ee27cddf-a2f7-4878-fb13-673756149402.htm" />
-          <HelpTOCNode Title="SetSegPhantom1TransHigh Method (Byte[])" Url="html/6201f814-c1ca-6863-e06a-d92f6df1f73d.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="2abef329-f7fc-4137-89f9-fc589ac312e1" Title="SetSegPhantom1TransLow Method " Url="html/f8fd48f0-2476-42a7-486d-f5fadfd5d7c0.htm">
-          <HelpTOCNode Title="SetSegPhantom1TransLow Method " Url="html/c1ec33d2-fc50-3a5d-0e96-4705a33365f3.htm" />
-          <HelpTOCNode Title="SetSegPhantom1TransLow Method (Byte[])" Url="html/048134d4-c804-024e-018e-4c32f221b35d.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="7c39ea73-352f-4a12-abc3-a387adf77ad7" Title="SetSegPhantom1Ver Method " Url="html/b8e0f423-695c-fcd4-c873-179bdc41fc06.htm">
-          <HelpTOCNode Title="SetSegPhantom1Ver Method " Url="html/02673c48-d0e8-7c72-ffcb-8b8182e32753.htm" />
-          <HelpTOCNode Title="SetSegPhantom1Ver Method (Byte[])" Url="html/1ad1d579-b714-5c1f-7ebb-87e16cda2f52.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="0d3e28e8-001d-4e07-bb30-3b4e4799f78a" Title="SetSegPhantom2Hor Method " Url="html/0387d9fb-e5a7-a7f8-3223-82390510a0b0.htm">
-          <HelpTOCNode Title="SetSegPhantom2Hor Method " Url="html/042f1478-5a80-9c9f-be7e-6546eab42717.htm" />
-          <HelpTOCNode Title="SetSegPhantom2Hor Method (Byte[])" Url="html/f6ee7007-8d5b-20c5-bb33-a3afeede007d.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="5ae841df-65c9-4d43-982e-9a660a859ded" Title="SetSegPhantom2TransHigh Method " Url="html/dbfe3395-a050-57cc-04a6-1bf61a1a5410.htm">
-          <HelpTOCNode Title="SetSegPhantom2TransHigh Method " Url="html/98e01f5c-3581-7c3a-0868-a9e3208cafbc.htm" />
-          <HelpTOCNode Title="SetSegPhantom2TransHigh Method (Byte[])" Url="html/853ef0e8-43f8-f7b9-b0a3-51ed62adadbe.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="66fc6659-9169-4523-a316-572a08e78ef1" Title="SetSegPhantom2TransLow Method " Url="html/d2142d7f-f400-b335-13a7-60adc66d179a.htm">
-          <HelpTOCNode Title="SetSegPhantom2TransLow Method " Url="html/224e177e-3dfa-989a-c14f-c57a91b2f2bd.htm" />
-          <HelpTOCNode Title="SetSegPhantom2TransLow Method (Byte[])" Url="html/f2e13eec-ab7a-2688-2fa4-8e7c7e3b1201.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="965e0737-483c-4ea6-8c5a-cb22225ef4fe" Title="SetSegPhantom2Ver Method " Url="html/07631fb8-e91c-b7d5-da89-4bf10a9e631b.htm">
-          <HelpTOCNode Title="SetSegPhantom2Ver Method " Url="html/f21f5874-851f-f860-af56-fa25e349bcd3.htm" />
-          <HelpTOCNode Title="SetSegPhantom2Ver Method (Byte[])" Url="html/804bb513-1466-821c-c380-36e90e5e02a6.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="35e536cf-5bd4-43fc-8b82-82757a90f148" Title="SetSegPhantom3Hor Method " Url="html/6505044c-ddd4-e975-43ae-8edfad566c52.htm">
-          <HelpTOCNode Title="SetSegPhantom3Hor Method " Url="html/f7590186-d2a3-5ebf-c25a-83e468811c03.htm" />
-          <HelpTOCNode Title="SetSegPhantom3Hor Method (Byte[])" Url="html/f1d498f6-b574-c19d-6b4c-c445a2542874.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="d7410f75-d9d4-40da-b680-47e6cc903e16" Title="SetSegPhantom3TransHigh Method " Url="html/cbded060-4e69-b942-9ebc-294a90d8860b.htm">
-          <HelpTOCNode Title="SetSegPhantom3TransHigh Method " Url="html/057a18c7-6f88-7434-d88d-70f57dae2c6a.htm" />
-          <HelpTOCNode Title="SetSegPhantom3TransHigh Method (Byte[])" Url="html/0a753d48-1522-ef9e-b791-4c7dd2001af9.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="1a80cefb-35e0-4eac-b873-c6f3f9ece819" Title="SetSegPhantom3TransLow Method " Url="html/fed2ba9a-5304-0c3c-02c3-d4d712a7e739.htm">
-          <HelpTOCNode Title="SetSegPhantom3TransLow Method " Url="html/b062dc62-6ac2-78ae-7235-7575d3c8a4e4.htm" />
-          <HelpTOCNode Title="SetSegPhantom3TransLow Method (Byte[])" Url="html/734b44da-3f98-3598-e9c9-8fc5a5b8d9ce.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="3d043137-5fcc-4a50-802e-a4ad297e4e2a" Title="SetSegPhantom3Ver Method " Url="html/ff0808dd-c5f2-e110-608e-10e0fa22d77b.htm">
-          <HelpTOCNode Title="SetSegPhantom3Ver Method " Url="html/a1dd9bac-33f3-f858-1543-6b9d78e274d9.htm" />
-          <HelpTOCNode Title="SetSegPhantom3Ver Method (Byte[])" Url="html/138f456b-e885-005d-f83b-ab9e2cc5defa.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="SetSegTransDone Method " Url="html/08585dcd-3467-fd45-3691-072dbc194723.htm" />
-        <HelpTOCNode Title="SetSegVerDone Method " Url="html/e5950e04-709c-0b7d-71e3-5364ae3cc87a.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="e9844934-5c8e-4f29-b588-ed65ac7eda92" Title="CProyecto Properties" Url="html/8d1b9f59-5ca8-5c88-f60a-095b885d14e7.htm">
-        <HelpTOCNode Title="count Property " Url="html/4a2ca357-4fee-8ce9-5f45-9067a4c22de1.htm" />
-        <HelpTOCNode Title="name Property " Url="html/e27b9eee-71c7-2c74-c770-39be26ea07dd.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="3e94fa1f-b0fe-45f5-a795-56e18b42a4cd" Title="HomeForm Class" Url="html/7d4d4d3b-84b1-dd33-17da-63b4fbe18a49.htm">
+    <HelpTOCNode Id="e35991b6-cbaa-4cc2-b45b-8d59f923d031" Title="CurvasForm Class" Url="html/24924af0-cedf-bc88-fcf4-d52fd811c333.htm">
+      <HelpTOCNode Title="CurvasForm Constructor " Url="html/d312cb96-0328-e86a-478a-6a6da46068b3.htm" />
+      <HelpTOCNode Id="68a867be-02f9-419c-850c-66a27ad6634f" Title="CurvasForm Fields" Url="html/e091fc30-c114-f721-289b-317cff33ffe8.htm">
+        <HelpTOCNode Title="Dfm Field" Url="html/1c00b703-d729-4c23-ae50-7c78f2508bac.htm" />
+        <HelpTOCNode Title="lblTitulo Field" Url="html/8ad07ce1-e9c8-3950-2cfa-54369fe5fd28.htm" />
+        <HelpTOCNode Title="padre Field" Url="html/77c4e5dd-96fd-333f-64eb-e651673a779b.htm" />
+        <HelpTOCNode Title="Pefm Field" Url="html/21576bcd-1e2c-cef5-c9b9-15699c7cefdc.htm" />
+        <HelpTOCNode Title="profundidad Field" Url="html/966009cb-e0ce-ee09-02d1-8d565df6358e.htm" />
+        <HelpTOCNode Title="Zfme Field" Url="html/2afb0aa8-b5ba-635b-2ad2-69286ae6bb76.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="5a298395-00d7-48b0-89a2-94d72986946e" Title="CurvasForm Methods" Url="html/ae00e3b8-96e8-084b-e729-bcd890348607.htm">
+        <HelpTOCNode Title="CentrarForm Method " Url="html/a642212c-ade7-fd5d-a9f3-a90757ca4a29.htm" />
+        <HelpTOCNode Id="7fec8621-ca80-4930-99ee-01b80a558375" Title="Dispose Method " Url="html/b0515aad-04fd-f586-0b4a-bc88744d4b5f.htm">
+          <HelpTOCNode Title="Dispose Method (Boolean)" Url="html/9ad429cd-dd63-af54-2f8e-e5fcad71212f.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="Estimar Method " Url="html/f06c1ec8-9480-802c-148b-0d58e6c26eb2.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="CurvasForm Properties" Url="html/938a2b8c-dac2-cb49-ee20-f2a0722597d4.htm" />
+      <HelpTOCNode Title="CurvasForm Events" Url="html/6690ea69-58a5-2059-6380-6b7e351527ba.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="053eb1b6-9ce1-4236-8dd9-9949c9b583bc" Title="CUsuario Class" Url="html/8e4cb26a-5ac1-62eb-1f45-84097ac31665.htm">
+      <HelpTOCNode Title="CUsuario Constructor " Url="html/d4ff3cbd-ff6e-10f8-9284-140bb4755505.htm" />
+      <HelpTOCNode Id="cea0e21d-8b5e-4d7a-abfc-5d5ca86783b7" Title="CUsuario Fields" Url="html/72b53f3c-4fa3-188d-e1f3-746ea8e26664.htm">
+        <HelpTOCNode Title="Afiliacion Field" Url="html/1867ba7a-40be-8fd0-1ec3-10c86d0071f3.htm" />
+        <HelpTOCNode Title="Apellidos Field" Url="html/f7a28508-a64f-9406-0b44-925eaa23d438.htm" />
+        <HelpTOCNode Title="Nombre Field" Url="html/9ee97cb8-ccf7-3bd0-8fa8-83972f0d7022.htm" />
+        <HelpTOCNode Title="permisos Field" Url="html/138be25e-19d0-9928-322b-12297fa1add5.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="CUsuario Methods" Url="html/bddc63b4-e61e-f892-75df-e57a393bbb60.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="2669f362-55b6-4025-be0a-ec89fc159507" Title="HomeForm Class" Url="html/7d4d4d3b-84b1-dd33-17da-63b4fbe18a49.htm">
       <HelpTOCNode Title="HomeForm Constructor " Url="html/496a3ec8-6def-41ff-3269-b85ba8936db5.htm" />
-      <HelpTOCNode Id="b80e9aac-9297-493f-b5b0-7bc9a3e584cb" Title="HomeForm Fields" Url="html/5b1c1e9e-6c8c-8a2a-f4a9-67c69f8f8741.htm">
+      <HelpTOCNode Id="1442d6f2-db7e-4ca6-adef-f4b22cbb00d7" Title="HomeForm Fields" Url="html/5b1c1e9e-6c8c-8a2a-f4a9-67c69f8f8741.htm">
         <HelpTOCNode Title="padre Field" Url="html/4eba5255-820e-6153-eb08-cae6675d97b8.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="ad6c9123-074f-448b-b87c-d15489c320f1" Title="HomeForm Methods" Url="html/658340e4-2eb2-9784-7466-791beeaf2bc6.htm">
+      <HelpTOCNode Id="546749b3-198c-4c4b-aaae-ee2e5b7739ec" Title="HomeForm Methods" Url="html/658340e4-2eb2-9784-7466-791beeaf2bc6.htm">
         <HelpTOCNode Title="CentrarForm Method " Url="html/a09a10a9-dd86-3f74-01d9-0899efd6bdbc.htm" />
-        <HelpTOCNode Id="36e6b870-29fa-42be-8af3-2fd57d120eb4" Title="Dispose Method " Url="html/123f8b44-0cf6-bd11-6d3f-a3a6e83d3598.htm">
+        <HelpTOCNode Id="c4d6d83e-d3d3-47df-89b8-9832d9a344f4" Title="Dispose Method " Url="html/123f8b44-0cf6-bd11-6d3f-a3a6e83d3598.htm">
           <HelpTOCNode Title="Dispose Method (Boolean)" Url="html/b536f2dc-a18f-0262-ae10-0bb852e4d1ce.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
       <HelpTOCNode Title="HomeForm Properties" Url="html/df9da159-4324-16cd-a723-45154912ebe7.htm" />
       <HelpTOCNode Title="HomeForm Events" Url="html/36e99bab-8da9-6f09-4b54-8f00a3cc8f1c.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="af023430-5e66-4a8b-84be-8725ff8ce255" Title="MainForm Class" Url="html/3fd2e42e-c607-48c0-bd35-dae93f66fe88.htm">
+    <HelpTOCNode Id="e6ac1bae-847e-4fbb-a468-1792d1ee6224" Title="MainForm Class" Url="html/3fd2e42e-c607-48c0-bd35-dae93f66fe88.htm">
       <HelpTOCNode Title="MainForm Constructor " Url="html/7d0f3cf4-a80e-7d4c-523c-eff772ed71e2.htm" />
-      <HelpTOCNode Id="0c808531-da27-4860-ac02-47ac87c2ae5a" Title="MainForm Fields" Url="html/84448e68-9eed-73fd-79f0-b02df2afe323.htm">
+      <HelpTOCNode Id="cc7e6dbd-2b1a-439c-98b7-e92fabaf5136" Title="MainForm Fields" Url="html/84448e68-9eed-73fd-79f0-b02df2afe323.htm">
+        <HelpTOCNode Title="abiertoAboutForm Field" Url="html/523301c9-1c0c-5c13-ca6e-6fb8f4cf2eba.htm" />
         <HelpTOCNode Title="abiertoCheckForm Field" Url="html/c7151e99-64fb-0ddc-42a2-57cb2eb04bec.htm" />
+        <HelpTOCNode Title="abiertoCurvasForm Field" Url="html/498e8525-cd2f-cad5-2e9c-51589eae3732.htm" />
         <HelpTOCNode Title="abiertoHomeForm Field" Url="html/f45396fc-a5e9-06d4-b2b4-2483f2fe9fae.htm" />
         <HelpTOCNode Title="abiertoNuevoProyectoForm Field" Url="html/9509de0e-50b2-0a25-1158-b51e8ea21b38.htm" />
+        <HelpTOCNode Title="abiertoPhantoms2Form Field" Url="html/594dee16-7c54-4f86-709b-86db34ea46ac.htm" />
+        <HelpTOCNode Title="abiertoPhantomsForm Field" Url="html/d0942c74-0876-7603-a946-fa0195af4198.htm" />
         <HelpTOCNode Title="abiertoPreviewSegForm Field" Url="html/1838f6ff-35e6-010c-3717-95cacfe199aa.htm" />
         <HelpTOCNode Title="abiertoProyectoForm Field" Url="html/f45ba214-eec8-1223-2adb-50b3cfeb4c2f.htm" />
         <HelpTOCNode Title="abiertoSegmentacionForm Field" Url="html/c9473cc4-6aec-fbc3-83cc-532af78bc801.htm" />
         <HelpTOCNode Title="abiertoSelectAreas2Form Field" Url="html/7009e704-1f7b-248d-ab2a-1014235f14fe.htm" />
         <HelpTOCNode Title="abiertoSelectAreasForm Field" Url="html/7ef57e3f-8da7-5880-1ae6-ebf4aedcb976.htm" />
         <HelpTOCNode Title="abiertoWaitingForm Field" Url="html/c3219b3f-74fd-1053-8d04-ad71bd88d523.htm" />
+        <HelpTOCNode Title="aboutForm Field" Url="html/3a72be36-f19d-1d69-b65e-de0eaa7a4371.htm" />
         <HelpTOCNode Title="actual Field" Url="html/1ab16386-ca5d-d7ae-a129-936fe0164b18.htm" />
         <HelpTOCNode Title="checkForm Field" Url="html/156d475b-0163-e972-bd36-aa95248e5cb4.htm" />
+        <HelpTOCNode Title="curvasForm Field" Url="html/9bf2f62e-728e-76ae-3755-ec787cd6a49c.htm" />
         <HelpTOCNode Title="homeForm Field" Url="html/e90792d5-d89e-5605-a6ba-601f36308c82.htm" />
         <HelpTOCNode Title="nuevoProyectoForm Field" Url="html/b679b0d4-6430-5070-a694-6b059d0447e6.htm" />
+        <HelpTOCNode Title="phantomForm Field" Url="html/e816d891-8ea1-dad8-b40e-5751fba06efa.htm" />
+        <HelpTOCNode Title="phantoms2Form Field" Url="html/6d5b6b15-55c6-1360-6694-2923e47bfc96.htm" />
         <HelpTOCNode Title="previewSegForm Field" Url="html/7cd7ee0d-c764-6c83-c01c-d9b6ae1948f6.htm" />
         <HelpTOCNode Title="proyectoForm Field" Url="html/26aab134-f20e-61df-7f80-4554bfa70e81.htm" />
         <HelpTOCNode Title="segmentacionForm Field" Url="html/42e5e623-3fd3-259f-bbbc-aebf81b05dc9.htm" />
         <HelpTOCNode Title="selecAreas2Form Field" Url="html/c2c2664a-b2ed-6620-9dad-b137c290eff9.htm" />
         <HelpTOCNode Title="selecAreasForm Field" Url="html/da1cd9bf-6f0e-67e9-cb3e-d20fe0ecbe10.htm" />
+        <HelpTOCNode Title="usuarios Field" Url="html/22e3d0d8-6af9-af91-ac06-83573cc88d1e.htm" />
         <HelpTOCNode Title="waitingForm Field" Url="html/ec52b372-25ae-3cae-315a-4769e487b34c.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="b21f76bc-8d92-4634-bb7a-d9151adc47ff" Title="MainForm Methods" Url="html/af1eaa8c-f4a2-e5f4-ba55-91a4095e84f4.htm">
+      <HelpTOCNode Id="7ec17050-6922-466e-a31c-a6f5bb975308" Title="MainForm Methods" Url="html/af1eaa8c-f4a2-e5f4-ba55-91a4095e84f4.htm">
         <HelpTOCNode Title="AbrirHome Method " Url="html/a8a875b8-ae91-ae70-ab1c-b85da07a1ec6.htm" />
+        <HelpTOCNode Title="AbrirProjectForm Method " Url="html/520c3260-8c4d-95c1-3452-41e7557ca9a9.htm" />
         <HelpTOCNode Title="AbrirProyecto Method " Url="html/68b0851b-0751-9a0b-21af-9127c48ce63f.htm" />
         <HelpTOCNode Title="Byte2image Method " Url="html/91948fc3-79e9-0908-9f92-25c2231225aa.htm" />
         <HelpTOCNode Title="CerrarCheckForm Method " Url="html/d66cadac-674a-134e-8a2c-131ff0aa4f39.htm" />
+        <HelpTOCNode Title="CerrarCurvasForm Method " Url="html/2d0b9c79-3891-123b-7988-4ac45d1842e7.htm" />
         <HelpTOCNode Title="CerrarHomeForm Method " Url="html/45cb65a0-05e1-f83a-c0d1-23f603d2641a.htm" />
         <HelpTOCNode Title="CerrarNuevoProyectoForm Method " Url="html/c869b0f4-eff7-32c6-8f41-7377fa80c60a.htm" />
+        <HelpTOCNode Title="CerrarPhantom2Form Method " Url="html/8a447307-49f8-7fac-0dbf-3e0d9b30df1f.htm" />
+        <HelpTOCNode Title="CerrarPhantomForm Method " Url="html/467f3314-6e02-53b0-9eff-45afd252e4f1.htm" />
         <HelpTOCNode Title="CerrarPreviewSegForm Method " Url="html/ca3f5fbc-2fc3-310b-0b3c-6c8a33e8185c.htm" />
         <HelpTOCNode Title="CerrarProjectForm Method " Url="html/70bb99f6-ce47-e4e5-9cea-74b7635e838f.htm" />
         <HelpTOCNode Title="CerrarSegmentacionForm Method " Url="html/4204bf68-6483-d3ec-3702-a6989427d8ec.htm" />
@@ -260,15 +276,15 @@
         <HelpTOCNode Title="CloseWaiting Method " Url="html/1def31fd-0f94-5556-8894-85466ce288b6.htm" />
         <HelpTOCNode Title="ColorToGrayscale Method " Url="html/3f7c5596-d199-0b73-57f9-54b399771cfe.htm" />
         <HelpTOCNode Title="CorregirOriginal2PictBox Method " Url="html/7a8505d6-1c9c-adaa-2e1e-e7517264c4bc.htm" />
-        <HelpTOCNode Id="61dc4eaa-0e24-4373-bc7c-5259b0a72ae3" Title="CorregirPictBox2Original Method " Url="html/483ea4b1-c09d-605b-8888-9c36eb718bcf.htm">
+        <HelpTOCNode Id="f16aa50c-9abd-4259-8361-c241fe734263" Title="CorregirPictBox2Original Method " Url="html/483ea4b1-c09d-605b-8888-9c36eb718bcf.htm">
           <HelpTOCNode Title="CorregirPictBox2Original Method (Int32, Int32, Int32)" Url="html/93eb1ae5-5582-1154-330d-84b4fb98b887.htm" />
           <HelpTOCNode Title="CorregirPictBox2Original Method (CCuadrado, Int32, Int32)" Url="html/77867067-7304-4438-52bb-c77a0caf35f5.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="CropCirle Method " Url="html/e5d0b3ec-6adb-b5ca-3bdf-77dcf3ac6dca.htm" />
-        <HelpTOCNode Id="b44f16a6-7103-42c4-9bb2-5e1dee1c2e92" Title="Dispose Method " Url="html/489dc874-cc84-6982-877e-107c0e9d41fb.htm">
+        <HelpTOCNode Id="6e6afc28-d0c9-423b-b3df-89ba8b84794c" Title="Dispose Method " Url="html/489dc874-cc84-6982-877e-107c0e9d41fb.htm">
           <HelpTOCNode Title="Dispose Method (Boolean)" Url="html/d35c2718-75f5-3f04-1224-531a0c63e268.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="f8eecedf-f8ec-4cfd-8914-6976db804b10" Title="Img2byte Method " Url="html/6958805f-1984-1175-bb2b-3908f4a97588.htm">
+        <HelpTOCNode Id="79ea2eee-7992-4be9-9a17-9f058902e3b1" Title="Img2byte Method " Url="html/6958805f-1984-1175-bb2b-3908f4a97588.htm">
           <HelpTOCNode Title="Img2byte Method (Bitmap)" Url="html/5c825616-00e5-a5de-e2bd-c912ce88be15.htm" />
           <HelpTOCNode Title="Img2byte Method (Image)" Url="html/a2cea0ec-37f3-bb30-53c7-a7075301abb7.htm" />
           <HelpTOCNode Title="Img2byte Method (String)" Url="html/fe6d0eb7-4507-a108-c6d7-eea2dd5a718e.htm" />
@@ -280,17 +296,81 @@
       <HelpTOCNode Title="MainForm Properties" Url="html/cd187218-557d-5f38-b858-4cd098aacc8e.htm" />
       <HelpTOCNode Title="MainForm Events" Url="html/9a201c98-291b-87e7-40fc-d31a46ee3647.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="c814e627-7c3c-4b8a-b705-9a7b486f53cf" Title="NewProjectForm Class" Url="html/8504c11f-004a-5543-2c1b-8ad8f6dfee5a.htm">
+    <HelpTOCNode Id="b3a71a72-9ed2-431a-927d-b9708a99b713" Title="MyDataCube Class" Url="html/243a7d5e-7f60-c12e-229d-c937d5bc67b1.htm">
+      <HelpTOCNode Id="ec20d3c4-c4e0-4c2b-bb8f-e1c22e920a40" Title="MyDataCube Constructor " Url="html/7241e2be-549f-e19b-54ad-b3e42b717c28.htm">
+        <HelpTOCNode Title="MyDataCube Constructor " Url="html/5bf26c40-5827-9800-eda6-11db8d50969f.htm" />
+        <HelpTOCNode Title="MyDataCube Constructor (List(String))" Url="html/48f996c3-1db5-2328-8cf7-39096df5338d.htm" />
+        <HelpTOCNode Title="MyDataCube Constructor (String[])" Url="html/fa1cb015-d801-81ae-c98f-cded17b8b9b2.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="b7904c16-27b2-4fc6-8436-0817e7e73671" Title="MyDataCube Fields" Url="html/991739b7-ca99-80a9-82c5-56ceba033cd9.htm">
+        <HelpTOCNode Title="bins Field" Url="html/0a308592-42e8-035d-88a2-6db0867619e7.htm" />
+        <HelpTOCNode Title="coresHorizontal Field" Url="html/f3d792c0-e4d6-aa3e-ea84-3a47733b7b97.htm" />
+        <HelpTOCNode Title="coresVertical Field" Url="html/0873e76b-9848-9338-84fd-fa2688ae9d1e.htm" />
+        <HelpTOCNode Title="dataCube Field" Url="html/2bc96a86-6681-f764-f2f4-bada2363282b.htm" />
+        <HelpTOCNode Title="histograma Field" Url="html/6848f552-ffa4-d927-9115-dada29ae1084.htm" />
+        <HelpTOCNode Title="widthSeg Field" Url="html/0af63365-83e2-e5b8-9ff4-5496f75ab88a.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="402b9b72-5a53-4075-94e8-95e71cd7f347" Title="MyDataCube Methods" Url="html/1cd13a19-b479-44fe-b345-90a3d5fbefc1.htm">
+        <HelpTOCNode Id="f5ac5bf4-d871-4a76-be4e-e6bb2c95a852" Title="CrearBitmap Method " Url="html/f4d9085c-bd42-aa82-fe07-063d261bd5c0.htm">
+          <HelpTOCNode Title="CrearBitmap Method " Url="html/cbd0d286-e76d-761f-4045-2f5ce5be1864.htm" />
+          <HelpTOCNode Title="CrearBitmap Method (Int32, Int32)" Url="html/197e1519-e5ef-f13a-c160-21723163b24f.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="CrearBitmapThread Method " Url="html/85207d1e-73a1-0e1e-7579-6a460ab1b542.htm" />
+        <HelpTOCNode Id="8af58a65-df8c-4d0e-a480-ff907a9c7d9c" Title="CreateBitmapCorte Method " Url="html/e1b67399-f88f-31bb-8b17-b592c2d0a208.htm">
+          <HelpTOCNode Title="CreateBitmapCorte Method (List(UInt16), Int32, Int32)" Url="html/0bd85c19-f54e-da54-ebcb-b5a6817a78c0.htm" />
+          <HelpTOCNode Title="CreateBitmapCorte Method (List(UInt16), Int32, Int32, Int32, Int32)" Url="html/fbebd893-3683-070f-b4d3-79a4a124a1f9.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="CropCirc Method " Url="html/572fc4a9-f548-66d9-6eb7-6265edd07d7f.htm" />
+        <HelpTOCNode Title="CropRect Method " Url="html/8b4d8884-7760-9372-71ee-68247949b7c3.htm" />
+        <HelpTOCNode Title="GenerarCoreHorizontal Method " Url="html/1beb7490-43cc-fecf-9cd7-79a3f00e4fff.htm" />
+        <HelpTOCNode Title="GenerarCoresHorizontales Method " Url="html/34756ce6-fde0-1529-256b-1f7a5a8a31a1.htm" />
+        <HelpTOCNode Title="GenerarCoresVerticales Method " Url="html/f58d3920-3b7d-3e68-81df-ae2148f70ad2.htm" />
+        <HelpTOCNode Title="GenerarCoreVertical Method " Url="html/45a8c68d-bc43-f8c5-c646-2a65f387e25a.htm" />
+        <HelpTOCNode Title="GenerarHistograma Method " Url="html/b2d228a0-830b-edd5-2ee9-4e1db4cf08de.htm" />
+        <HelpTOCNode Title="GetMaximo Method " Url="html/f57f4885-7000-ccbc-5c40-2fc09c3eba49.htm" />
+        <HelpTOCNode Title="GetMinimo Method " Url="html/563a26ea-ad5b-a1ff-ab7a-52aded84c8bd.htm" />
+        <HelpTOCNode Title="SegCircThread Method " Url="html/3fb79731-9b4e-0080-5fe9-04bb1857e25f.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="11b1092d-68a6-47ab-b05e-8168aea1929a" Title="MyDicom Class" Url="html/cabd3e30-17a0-d926-30dc-13dd9303dced.htm">
+      <HelpTOCNode Id="5e649c4c-5a3f-4fdd-907b-417ef29a5648" Title="MyDicom Constructor " Url="html/ad733c0a-eba2-f193-9730-f28550d6a5d3.htm">
+        <HelpTOCNode Title="MyDicom Constructor " Url="html/8f4cd21c-b28e-f600-2751-87788e2945d5.htm" />
+        <HelpTOCNode Title="MyDicom Constructor (String)" Url="html/67f68c27-0411-a17a-5d75-19b0db045c76.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="fee0556c-ae8f-4987-aa0e-933f7fd7e418" Title="MyDicom Fields" Url="html/7c226ca1-5b0a-f292-73b9-6af6fe531d21.htm">
+        <HelpTOCNode Title="bmp Field" Url="html/9872499f-fbdc-9127-128b-f3bddb9f8f40.htm" />
+        <HelpTOCNode Title="dcm Field" Url="html/cc03d4ca-10df-5a90-613e-a7da0442efb2.htm" />
+        <HelpTOCNode Title="minPixVal Field" Url="html/18050014-71f9-aeab-14de-977ffcf684a4.htm" />
+        <HelpTOCNode Title="pixelData Field" Url="html/82513e36-2b51-dc29-8013-83ef242c2c6e.htm" />
+        <HelpTOCNode Title="segCore Field" Url="html/bd592506-5557-1f2f-054c-0ec43d4888e3.htm" />
+        <HelpTOCNode Title="selector Field" Url="html/6bfdb2db-7c61-ea2c-393e-a26eec5b2b19.htm" />
+        <HelpTOCNode Title="signedImage Field" Url="html/386c55d9-87ac-7b63-a752-979d5a343cb6.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="e9463534-f05b-43db-b8f8-1df12a7d6ec0" Title="MyDicom Methods" Url="html/bd46cde6-2cbc-6b2f-cc8b-8497f32dbff8.htm">
+        <HelpTOCNode Title="CrearBitmap Method " Url="html/17b5bd3f-4faf-9254-e0f3-45a32d528fcd.htm" />
+        <HelpTOCNode Id="c423c531-96dd-44a7-b0be-81e55c8821e7" Title="CreateBitmap Method " Url="html/9c742688-ca5a-a157-1635-f63ae49ae0a9.htm">
+          <HelpTOCNode Title="CreateBitmap Method (List(UInt16), Int32, Int32)" Url="html/b76a9cc8-7820-fabc-5dbf-3798880f8a65.htm" />
+          <HelpTOCNode Title="CreateBitmap Method (List(UInt16), Int32, Int32, Int32, Int32)" Url="html/18eabb6f-a187-5f76-955d-f231280a269e.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="CropCTCircle Method " Url="html/e4d7b0b1-2030-6e5d-bff7-2b22c5c8e539.htm" />
+        <HelpTOCNode Title="CropCTRectangle Method " Url="html/c4b4e143-c87f-83e5-3acc-dd3d7fa2f124.htm" />
+        <HelpTOCNode Title="Pixels162Byte Method " Url="html/59836d60-80f8-47c3-6f03-76333398845f.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="1e496b20-3b67-4378-9b07-e5e5b17c10b3" Title="NewProjectForm Class" Url="html/8504c11f-004a-5543-2c1b-8ad8f6dfee5a.htm">
       <HelpTOCNode Title="NewProjectForm Constructor " Url="html/da505091-6074-5727-1377-d4bfb032e529.htm" />
-      <HelpTOCNode Id="830674cb-2d69-4565-bc99-c63642484e54" Title="NewProjectForm Fields" Url="html/a935610a-09c1-623c-4f5b-93104e6e8d54.htm">
+      <HelpTOCNode Id="a2476b60-86b1-4098-8339-d76a10cb117b" Title="NewProjectForm Fields" Url="html/a935610a-09c1-623c-4f5b-93104e6e8d54.htm">
         <HelpTOCNode Title="padre Field" Url="html/5ffe53fa-2363-347d-8961-313503430853.htm" />
         <HelpTOCNode Title="tempHigh Field" Url="html/682b18b8-3198-3742-a610-83ec7a3f1d8c.htm" />
         <HelpTOCNode Title="tempLow Field" Url="html/45bca008-a5b0-bb1b-0284-96f6549a8274.htm" />
+        <HelpTOCNode Title="tempPhantom1 Field" Url="html/7cc6c2dd-a2d0-e475-12dc-a8ca4fafcb30.htm" />
+        <HelpTOCNode Title="tempPhantom2 Field" Url="html/11b77f18-667e-a002-8ea3-ebc8206858b4.htm" />
+        <HelpTOCNode Title="tempPhantom3 Field" Url="html/46f74eb6-5fb7-b0f6-2348-394a97393d9c.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="39435276-a80c-4f0b-af7e-2a2fe1856efe" Title="NewProjectForm Methods" Url="html/253d55d1-52bc-d46f-7608-c94d8da91959.htm">
+      <HelpTOCNode Id="2c89ddc4-cf49-46c3-b46b-e9bc20dc12dc" Title="NewProjectForm Methods" Url="html/253d55d1-52bc-d46f-7608-c94d8da91959.htm">
         <HelpTOCNode Title="CentrarForm Method " Url="html/6c1984ed-1754-249c-f829-95c2bf2c6b77.htm" />
         <HelpTOCNode Title="CheckLargos Method " Url="html/22e00346-2cec-f3fe-83af-02108194f73a.htm" />
-        <HelpTOCNode Id="d449ecd5-e342-45a5-b346-251775da5894" Title="Dispose Method " Url="html/dbbde9e8-ea9d-306b-31aa-43382b1e1193.htm">
+        <HelpTOCNode Id="239f31e2-2339-44f7-b152-4c77de1b1efc" Title="Dispose Method " Url="html/dbbde9e8-ea9d-306b-31aa-43382b1e1193.htm">
           <HelpTOCNode Title="Dispose Method (Boolean)" Url="html/b5b90e5e-27ba-f4ed-7c05-43d7093705ff.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="SetTemp Method " Url="html/eb3fae2e-ac37-cc2f-dd6a-f038da1a265e.htm" />
@@ -298,34 +378,69 @@
       <HelpTOCNode Title="NewProjectForm Properties" Url="html/16def6ec-a483-8cce-af49-6c7e9ceeb9c9.htm" />
       <HelpTOCNode Title="NewProjectForm Events" Url="html/6b3c76ec-38f3-735b-a39c-6cfb3b8be91e.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="d87ac52d-9c8e-4903-8af9-3a77d2590c0f" Title="PreviewSegForm Class" Url="html/7f7e3e0b-1fcd-bba8-e039-353a3d0f4ee6.htm">
+    <HelpTOCNode Id="191cf49d-047b-4eae-8ad1-c27fffabaf8a" Title="Phantoms2Form Class" Url="html/fc1e40a0-53ed-783d-2737-c16ff9e9c249.htm">
+      <HelpTOCNode Title="Phantoms2Form Constructor " Url="html/63d2e2c3-71e2-7ca3-c0dd-cd81de8e7cc0.htm" />
+      <HelpTOCNode Id="b16ff001-e4ce-4bea-866f-fb7b912c1131" Title="Phantoms2Form Fields" Url="html/6bd862d1-c665-fe27-bdde-1df32b9466a2.htm">
+        <HelpTOCNode Title="lblTitulo Field" Url="html/2f23f3a3-6380-523d-fe8a-bd27ec833407.htm" />
+        <HelpTOCNode Title="newProjectForm Field" Url="html/38a2d4bb-9317-5645-7117-a24b18c00693.htm" />
+        <HelpTOCNode Title="padre Field" Url="html/af443967-e652-6b46-58fe-578f22e57fb0.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="07ef6a28-05e0-4b80-8d68-8a8ca3280c43" Title="Phantoms2Form Methods" Url="html/c8dc547d-1cf3-2e7c-5823-d79d6b3afd30.htm">
+        <HelpTOCNode Title="btnCerrar_Click Method " Url="html/912ad43a-117c-cb99-dfb0-925d9943b58f.htm" />
+        <HelpTOCNode Title="CentrarForm Method " Url="html/f0c4bf1f-6632-108e-fea0-e772fb8b6974.htm" />
+        <HelpTOCNode Id="051708fe-f111-47d8-acdd-30f9a865a765" Title="Dispose Method " Url="html/3cd5520c-2a68-b00f-f845-66f4c0212ccc.htm">
+          <HelpTOCNode Title="Dispose Method (Boolean)" Url="html/4ac89269-1867-fac6-e3c4-4c6c46cb71f5.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Title="Phantoms2Form Properties" Url="html/c5068407-758b-4ad9-cea4-6d6ac226f5cc.htm" />
+      <HelpTOCNode Title="Phantoms2Form Events" Url="html/1ed4129b-ccdc-4d06-8824-2838af86b573.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="4dec1bbd-7a2d-4b79-969e-c1f648454956" Title="PhantomsForm Class" Url="html/42edb612-ec83-f107-e7b4-fa4aaced0373.htm">
+      <HelpTOCNode Title="PhantomsForm Constructor " Url="html/5c56f054-c77f-e0ac-9589-4bbb5351b5ad.htm" />
+      <HelpTOCNode Id="0f46f644-3ae5-4e46-9000-db1c78c297f3" Title="PhantomsForm Fields" Url="html/f2b3f0d6-caf2-c06d-aea4-a0a56112a521.htm">
+        <HelpTOCNode Title="lblTitulo Field" Url="html/233eed47-4a2b-dca4-1a83-7fef7887d693.htm" />
+        <HelpTOCNode Title="newProjectForm Field" Url="html/117f6774-bf51-a447-c6d4-84f3ba89c919.htm" />
+        <HelpTOCNode Title="padre Field" Url="html/3668ae4c-943e-82d4-fe9f-baa9dd4a0ad8.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="11a53fcb-ce79-47a7-b90e-f3468d386dbb" Title="PhantomsForm Methods" Url="html/cd6fc781-11e8-6cbe-0acb-9c159db27331.htm">
+        <HelpTOCNode Title="btnCerrar_Click Method " Url="html/958bf1ad-570d-3a4a-f232-5ba947e1fccb.htm" />
+        <HelpTOCNode Title="CentrarForm Method " Url="html/ffd0183b-7a61-bc35-064b-86327d06c22a.htm" />
+        <HelpTOCNode Id="4317e0b5-ce0b-47f4-83b6-91bb3188ca9f" Title="Dispose Method " Url="html/59528dc9-8f37-95a8-8174-8f6ff105af2b.htm">
+          <HelpTOCNode Title="Dispose Method (Boolean)" Url="html/b2a65605-47f4-22d1-9596-9a76f80fce3a.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Title="PhantomsForm Properties" Url="html/4740b6e8-75d0-7b8b-77ab-bf2f19e4a235.htm" />
+      <HelpTOCNode Title="PhantomsForm Events" Url="html/339a184b-c6b3-a616-fe81-f3fce272cca9.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="94285ed7-2f22-4b0a-8098-96f4c5ef5442" Title="PreviewSegForm Class" Url="html/7f7e3e0b-1fcd-bba8-e039-353a3d0f4ee6.htm">
       <HelpTOCNode Title="PreviewSegForm Constructor " Url="html/835b4a97-f07c-50db-2ef8-f42a5358f65e.htm" />
-      <HelpTOCNode Id="fee52ae8-d7f4-4e0a-8ac5-0b297530b596" Title="PreviewSegForm Fields" Url="html/0cbe4f46-3a21-940d-6967-07f9e619bdc6.htm">
+      <HelpTOCNode Id="d0a9a4f2-26e8-4dc9-80ac-bd4a2ef0e247" Title="PreviewSegForm Fields" Url="html/0cbe4f46-3a21-940d-6967-07f9e619bdc6.htm">
         <HelpTOCNode Title="core Field" Url="html/9bb22f77-7f6d-4953-61f0-5b7ed2a27f7e.htm" />
+        <HelpTOCNode Title="grpPhantoms Field" Url="html/b12eb17a-4c46-94d5-a8cf-d5c4272247cd.htm" />
         <HelpTOCNode Title="p1 Field" Url="html/9e9c596c-e98e-8f4a-4ae4-5c24512d94bb.htm" />
         <HelpTOCNode Title="p2 Field" Url="html/09d7a584-2161-4f02-7b45-22d2cd8b5226.htm" />
         <HelpTOCNode Title="p3 Field" Url="html/e37590b1-d8ce-8067-911f-2221246ac8ef.htm" />
         <HelpTOCNode Title="padre Field" Url="html/6b12b27d-2256-65c8-f4e9-413580da516b.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="426f2bf7-2091-4cb4-ab7f-b4913962bf49" Title="PreviewSegForm Methods" Url="html/21585d86-a5aa-ad8d-8be4-32e4fbe164c4.htm">
+      <HelpTOCNode Id="5057f40f-2134-4e71-b873-80d165aa303b" Title="PreviewSegForm Methods" Url="html/21585d86-a5aa-ad8d-8be4-32e4fbe164c4.htm">
         <HelpTOCNode Title="CentrarForm Method " Url="html/939e8e4e-5145-e857-2bba-e6e1c65b1fa7.htm" />
-        <HelpTOCNode Id="5f49538b-ea76-41cd-9594-6502cac78c4e" Title="Dispose Method " Url="html/0de75512-319a-f994-b812-b3196d928cab.htm">
+        <HelpTOCNode Id="e1c18e0f-1573-4d57-9c1b-98f7e7d40215" Title="Dispose Method " Url="html/0de75512-319a-f994-b812-b3196d928cab.htm">
           <HelpTOCNode Title="Dispose Method (Boolean)" Url="html/1d882f8b-101f-ad34-8dc6-a001d52e4b48.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
       <HelpTOCNode Title="PreviewSegForm Properties" Url="html/820c6a12-1e28-3100-25a6-9f766f8e878b.htm" />
       <HelpTOCNode Title="PreviewSegForm Events" Url="html/08475e11-7ee7-1a56-e298-af78e8ff97ad.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="10e30b56-d350-48f2-8adf-14034792dfcd" Title="ProjectForm Class" Url="html/4c7941b8-1d75-e401-3c6e-46cef6d500dc.htm">
+    <HelpTOCNode Id="af6f6190-a984-41f7-807c-94038fbcf847" Title="ProjectForm Class" Url="html/4c7941b8-1d75-e401-3c6e-46cef6d500dc.htm">
       <HelpTOCNode Title="ProjectForm Constructor " Url="html/21cde3bc-b571-dcef-a3d6-7193af2cc577.htm" />
-      <HelpTOCNode Id="6bf05796-6228-492f-879d-b878d88dabf5" Title="ProjectForm Fields" Url="html/5d659438-5c2e-5c39-be70-8583c31db126.htm">
+      <HelpTOCNode Id="69efd8d9-0263-45d0-b526-9e042e2351d6" Title="ProjectForm Fields" Url="html/5d659438-5c2e-5c39-be70-8583c31db126.htm">
         <HelpTOCNode Title="padre Field" Url="html/c9e2a18f-eebf-2af3-2642-4e3b70f03c7c.htm" />
         <HelpTOCNode Title="pictAreasHigh Field" Url="html/c8c6aa88-89f2-a8d0-2d74-4571963f86d5.htm" />
         <HelpTOCNode Title="pictSegHigh Field" Url="html/ac87b4f3-7400-5451-9a50-3503e50b3c1f.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="a5885fe7-329b-4db0-8836-d89999e5def6" Title="ProjectForm Methods" Url="html/1f3b022a-6d75-c817-3f78-bd60ff575777.htm">
+      <HelpTOCNode Id="b1e4fc8a-b88c-480b-b5e5-42bd3efdb970" Title="ProjectForm Methods" Url="html/1f3b022a-6d75-c817-3f78-bd60ff575777.htm">
         <HelpTOCNode Title="CentrarForm Method " Url="html/01358b06-ae8c-8dc2-e07e-8114a5873ce4.htm" />
-        <HelpTOCNode Id="2417ab64-8d49-4af6-a5bb-fd083380602d" Title="Dispose Method " Url="html/99a2263f-2b81-1ada-578a-5e84990cd021.htm">
+        <HelpTOCNode Id="1d00f340-ddae-4af0-9155-9714aadade14" Title="Dispose Method " Url="html/99a2263f-2b81-1ada-578a-5e84990cd021.htm">
           <HelpTOCNode Title="Dispose Method (Boolean)" Url="html/b6d6cc58-cd15-6c90-0cda-0164476c19fe.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="SetForm Method " Url="html/ce3ffec5-e94d-a424-3df1-a0bb9b4d8241.htm" />
@@ -333,24 +448,23 @@
       <HelpTOCNode Title="ProjectForm Properties" Url="html/91f471b7-590b-d7b2-4b97-8ef1b567cc75.htm" />
       <HelpTOCNode Title="ProjectForm Events" Url="html/8a7d19d0-2f16-f8de-a1dd-ff8671ef212c.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="c5dd2725-0fc8-4923-9776-90ca2732f5a4" Title="SegmentacionForm Class" Url="html/75a4c432-7515-029a-b99e-c05828ca1deb.htm">
+    <HelpTOCNode Id="c24770ae-900d-4edf-a84e-7298c0906b4c" Title="SegmentacionForm Class" Url="html/75a4c432-7515-029a-b99e-c05828ca1deb.htm">
       <HelpTOCNode Title="SegmentacionForm Constructor " Url="html/9b0ea6c4-5da4-7994-e1d0-b7440fa82a7a.htm" />
-      <HelpTOCNode Id="8c846c2a-0096-4597-928e-5763d9f6e4b3" Title="SegmentacionForm Fields" Url="html/435166ec-2b20-139b-1401-53acbc83e309.htm">
+      <HelpTOCNode Id="48ae4557-5c67-420e-ad45-31166e606df8" Title="SegmentacionForm Fields" Url="html/435166ec-2b20-139b-1401-53acbc83e309.htm">
         <HelpTOCNode Title="elementosScreen Field" Url="html/5683808f-66b7-2c00-7540-4409faea2a25.htm" />
         <HelpTOCNode Title="lblTitulo Field" Url="html/e1a3e15d-5d38-3a0a-7866-95de59a65720.htm" />
         <HelpTOCNode Title="padre Field" Url="html/93cded13-167b-5f34-ac65-485d17642d17.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="e4ed44f6-c2d5-4de0-98ba-ac457664f1a3" Title="SegmentacionForm Methods" Url="html/862d14f8-a8e4-c6d0-cc8f-03c7cd6ba4cf.htm">
+      <HelpTOCNode Id="8c2d62e8-30b3-42c0-b205-410a3098ae4f" Title="SegmentacionForm Methods" Url="html/862d14f8-a8e4-c6d0-cc8f-03c7cd6ba4cf.htm">
         <HelpTOCNode Title="AddElemento Method " Url="html/9f21e2aa-63a6-bde4-cdd1-e7cbb94aa947.htm" />
         <HelpTOCNode Title="btnCancelar_Click Method " Url="html/3dee506d-dca8-b45c-488a-1b7b11d98f63.htm" />
         <HelpTOCNode Title="CentrarForm Method " Url="html/cdb2dec8-ac45-b1fa-543b-01cff3d4fd2f.htm" />
         <HelpTOCNode Title="DeteccionAutomatica Method " Url="html/44b9eb0d-5055-3dd1-7eb4-e516b0a28bc4.htm" />
         <HelpTOCNode Title="DetectarBordes Method " Url="html/66aa80f5-29de-74ff-62c4-e85d5fe24657.htm" />
-        <HelpTOCNode Id="7155cf03-41bd-4d96-9982-1dbec6b17001" Title="Dispose Method " Url="html/8e1997d3-8c5c-3cf9-9b14-ea67ee0e513e.htm">
+        <HelpTOCNode Id="d53f2bec-04ae-44d4-8b33-605dda656af0" Title="Dispose Method " Url="html/8e1997d3-8c5c-3cf9-9b14-ea67ee0e513e.htm">
           <HelpTOCNode Title="Dispose Method (Boolean)" Url="html/9ab7ae57-6f0a-1bb2-a608-8fb480bf9014.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="FormatToAForge Method " Url="html/6a047f72-c27a-533d-1982-c0462eedd658.htm" />
-        <HelpTOCNode Title="GetNameFile Method " Url="html/ada41c4d-dd7e-0b35-c4b4-6a73b1c930e2.htm" />
         <HelpTOCNode Title="LlenarList Method " Url="html/8a8474cd-470d-95e7-a8bd-1b291184be55.htm" />
         <HelpTOCNode Title="ResetCountClick Method " Url="html/41cadbac-40b6-12ba-a48d-b841d205ebeb.htm" />
         <HelpTOCNode Title="ResetList Method " Url="html/52b79e84-cc8f-98ae-db45-1bd16ef31417.htm" />
@@ -359,65 +473,97 @@
       <HelpTOCNode Title="SegmentacionForm Properties" Url="html/dba3f023-6b24-5175-fb14-f3d76e965cc1.htm" />
       <HelpTOCNode Title="SegmentacionForm Events" Url="html/87016ae0-16d6-cf9d-61a2-950de96391cf.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="55ca692a-6915-41ec-a886-ea7b4a0b051c" Title="SelectAreas2Form Class" Url="html/f238c5b7-92df-c396-51b5-8f455c42ba12.htm">
+    <HelpTOCNode Id="753adc1f-7aaa-4916-8540-0b42610057cd" Title="SelectAreas2Form Class" Url="html/f238c5b7-92df-c396-51b5-8f455c42ba12.htm">
       <HelpTOCNode Title="SelectAreas2Form Constructor " Url="html/be3e3f34-3197-73ca-3a17-e655bf2f63ca.htm" />
-      <HelpTOCNode Id="d18f5378-4a0c-43df-a269-1e5bc3506f40" Title="SelectAreas2Form Fields" Url="html/9fe58c91-5ed4-9b5a-115b-6c885a3678c6.htm">
+      <HelpTOCNode Id="3ada6798-ef83-40ba-bd98-3ed98d3b6d5e" Title="SelectAreas2Form Fields" Url="html/9fe58c91-5ed4-9b5a-115b-6c885a3678c6.htm">
         <HelpTOCNode Title="label4 Field" Url="html/253e61de-9e57-2cff-55a4-6b7aef2b5e3a.htm" />
         <HelpTOCNode Title="padre Field" Url="html/85d8f4cf-7d66-de13-ac7d-55ed612f218e.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="1518582f-8683-498f-8d86-c5eb55e589fe" Title="SelectAreas2Form Methods" Url="html/1a9d66cd-b9f6-789c-80c9-2010bdaa8389.htm">
-        <HelpTOCNode Id="5a3a6d59-5784-4608-ad7f-5b9ddc49ae2c" Title="Dispose Method " Url="html/ff797fd4-f7b7-bc57-c2d3-9e1f7bb583a5.htm">
+      <HelpTOCNode Id="63397c50-08a5-425f-81fa-165b788da6fb" Title="SelectAreas2Form Methods" Url="html/1a9d66cd-b9f6-789c-80c9-2010bdaa8389.htm">
+        <HelpTOCNode Id="25f51905-72ad-4ae9-9a5b-5ac4aaa156fd" Title="Dispose Method " Url="html/ff797fd4-f7b7-bc57-c2d3-9e1f7bb583a5.htm">
           <HelpTOCNode Title="Dispose Method (Boolean)" Url="html/ec3d8fc0-dc99-ebe5-3fd5-db207c3db92a.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Title="GetAreasCore Method " Url="html/b9509d8d-8fc1-7847-3cdd-524f7b3d1707.htm" />
-        <HelpTOCNode Title="InvalidarPictCore Method " Url="html/31354c6b-1505-9385-50eb-e57296973367.htm" />
         <HelpTOCNode Title="pictCore_Paint Method " Url="html/fb057c59-b7ae-db66-8b45-89ed7838e6f7.htm" />
-        <HelpTOCNode Title="SetRange Method " Url="html/c1b93f84-2239-ce50-dd27-16fedc5a7004.htm" />
+        <HelpTOCNode Title="Pintar Method " Url="html/47084823-eaaf-fe29-da80-afccab3b3c30.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="SelectAreas2Form Properties" Url="html/75116b59-d8b3-e6bc-9500-f8b30c42280a.htm" />
       <HelpTOCNode Title="SelectAreas2Form Events" Url="html/7780f3a4-d1be-035d-937a-f399598c1a65.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="814b5deb-260b-4a1a-b3ae-dad6f302b022" Title="SelectAreasForm Class" Url="html/69d6f508-63cc-2b90-7552-ff882a3f5eaa.htm">
+    <HelpTOCNode Id="d215e855-953a-4282-abc3-a37329e1dd33" Title="SelectAreasForm Class" Url="html/69d6f508-63cc-2b90-7552-ff882a3f5eaa.htm">
       <HelpTOCNode Title="SelectAreasForm Constructor " Url="html/51ed5cce-6d20-ed6b-48c0-30031643270a.htm" />
-      <HelpTOCNode Id="20228e6a-f366-4cbf-b5f1-92c9d3ea9ac0" Title="SelectAreasForm Fields" Url="html/7f569206-e862-0be7-ee5b-018b340ba32b.htm">
+      <HelpTOCNode Id="a804b206-a060-477e-95fd-731e3be80028" Title="SelectAreasForm Fields" Url="html/7f569206-e862-0be7-ee5b-018b340ba32b.htm">
         <HelpTOCNode Title="label4 Field" Url="html/6ec09bee-1757-db9c-8277-1f58d9d35576.htm" />
         <HelpTOCNode Title="padre Field" Url="html/b208df63-1cc8-831e-75d8-9dd6e4356b2e.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="12fdafa4-844b-4b6f-9001-f76e99daa4a9" Title="SelectAreasForm Methods" Url="html/3ff34e5e-dac8-4928-1ee2-378d5ea945f1.htm">
+      <HelpTOCNode Id="e907e573-f293-430d-89c1-e4ed61e584e8" Title="SelectAreasForm Methods" Url="html/3ff34e5e-dac8-4928-1ee2-378d5ea945f1.htm">
         <HelpTOCNode Title="AddElemento Method " Url="html/b27d98ca-4bbd-0209-450b-eb5ef5f54614.htm" />
         <HelpTOCNode Title="CentrarForm Method " Url="html/f29bc295-f1f9-cb59-0f8f-f7fa55220b27.htm" />
-        <HelpTOCNode Id="3460eafa-1f67-4eb0-9062-c97f9012f67c" Title="Dispose Method " Url="html/e6e6026e-dc68-8d4d-1315-c6e8770c68bd.htm">
+        <HelpTOCNode Id="b00e0b2c-9d09-4a20-a971-d2bcd3be6a67" Title="Dispose Method " Url="html/e6e6026e-dc68-8d4d-1315-c6e8770c68bd.htm">
           <HelpTOCNode Title="Dispose Method (Boolean)" Url="html/1cdc3566-1b63-ad6c-cbe6-c10c4ed607a2.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Title="ResetCountClick Method " Url="html/308598ce-427b-e3e7-6c72-54f0791ff60d.htm" />
         <HelpTOCNode Title="ResetCountClickCore Method " Url="html/42d1fa11-243d-92ef-5b16-38f046a7be2a.htm" />
-        <HelpTOCNode Title="SetRange Method " Url="html/19a31dd9-bf7e-e427-67ad-b234ba527470.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="SelectAreasForm Properties" Url="html/2b12e598-2332-9f9a-b4b4-d4c4d265dd79.htm" />
       <HelpTOCNode Title="SelectAreasForm Events" Url="html/4e0c5dfa-1a0d-a854-16a1-e15491913e2c.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="6dd756e1-f4af-4062-a15f-f6f48825498c" Title="SplashScreenForm Class" Url="html/7a2c5b81-0353-4986-4eee-7efdc8b6322e.htm">
+    <HelpTOCNode Id="54d3c615-5439-43e9-8baf-8740c29b60fb" Title="SplashScreenForm Class" Url="html/7a2c5b81-0353-4986-4eee-7efdc8b6322e.htm">
       <HelpTOCNode Title="SplashScreenForm Constructor " Url="html/241f08ae-c78c-f1ed-d7cf-4af8d2f8b04a.htm" />
-      <HelpTOCNode Id="b02601f0-d0d9-443e-a520-284e0264e1da" Title="SplashScreenForm Methods" Url="html/81b617c7-3f4c-b215-8c1c-d002c091af7b.htm">
-        <HelpTOCNode Id="b8439d8d-7c66-4266-8d76-75e622f9a086" Title="Dispose Method " Url="html/fdb1be61-0021-c7fb-8d2e-d0cca561f943.htm">
+      <HelpTOCNode Id="76e95791-2f80-4a7f-80a5-51230fd9083e" Title="SplashScreenForm Methods" Url="html/81b617c7-3f4c-b215-8c1c-d002c091af7b.htm">
+        <HelpTOCNode Id="d54422a5-0230-48db-8dad-8c47ea0aef04" Title="Dispose Method " Url="html/fdb1be61-0021-c7fb-8d2e-d0cca561f943.htm">
           <HelpTOCNode Title="Dispose Method (Boolean)" Url="html/d46eda24-c37e-df0e-84e2-ce5ca6cb3388.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
       <HelpTOCNode Title="SplashScreenForm Properties" Url="html/a9244219-c86d-58c6-a4e7-b86952aaf838.htm" />
       <HelpTOCNode Title="SplashScreenForm Events" Url="html/3b370a01-a6c5-7c97-c056-fb70e4c18fa7.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="58658699-9674-4ee3-ad38-68d439bca3b3" Title="WaitingForm Class" Url="html/9ffdc27e-deb0-93d5-e72e-fb06559c71f8.htm">
+    <HelpTOCNode Id="ca61a388-2938-44d0-b7d4-5887442623d1" Title="WaitingForm Class" Url="html/9ffdc27e-deb0-93d5-e72e-fb06559c71f8.htm">
       <HelpTOCNode Title="WaitingForm Constructor " Url="html/a15da49c-5363-b962-81a5-1733312bf803.htm" />
-      <HelpTOCNode Id="f6760d94-275c-455f-8d58-6773dae2779f" Title="WaitingForm Fields" Url="html/183d3663-9bf2-8c62-3281-fd1317669468.htm">
+      <HelpTOCNode Id="c21179ba-8fb9-4d8f-93fc-a788fb119d62" Title="WaitingForm Fields" Url="html/183d3663-9bf2-8c62-3281-fd1317669468.htm">
         <HelpTOCNode Title="lblTexto Field" Url="html/33b9c2ea-5584-bac2-233f-b5b5e912a58a.htm" />
         <HelpTOCNode Title="padre Field" Url="html/717e1dc2-d1e2-8c95-723f-ac494d047381.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="cec19c0a-ef86-4df1-951e-65a767eb4f1f" Title="WaitingForm Methods" Url="html/f290fc5b-e9b9-ce58-5314-e14cd0af9ca3.htm">
-        <HelpTOCNode Id="f8b89830-508f-4620-88a2-fb52f651159e" Title="Dispose Method " Url="html/211fae5a-3d49-b375-1cdd-dc28486d193a.htm">
+      <HelpTOCNode Id="adde3439-8c23-4742-bc36-64804bb37310" Title="WaitingForm Methods" Url="html/f290fc5b-e9b9-ce58-5314-e14cd0af9ca3.htm">
+        <HelpTOCNode Id="76740955-0b68-45a6-a6e8-c6894847a163" Title="Dispose Method " Url="html/211fae5a-3d49-b375-1cdd-dc28486d193a.htm">
           <HelpTOCNode Title="Dispose Method (Boolean)" Url="html/11d03810-c5eb-6d59-4672-cbc7c58baaee.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
       <HelpTOCNode Title="WaitingForm Properties" Url="html/4121d16e-bfcd-930a-2c80-08108d8ccc88.htm" />
       <HelpTOCNode Title="WaitingForm Events" Url="html/7cc02beb-c500-aed3-8703-cb30c72b283c.htm" />
     </HelpTOCNode>
+    <HelpTOCNode Id="3c33a833-38ea-4b9a-98c8-02ff08fb6a3c" Title="ZzzzRangeBar Class" Url="html/80de61aa-b2a7-a39e-de84-4b20e0591169.htm">
+      <HelpTOCNode Title="ZzzzRangeBar Constructor " Url="html/137c904c-02c5-14c7-340f-f7522d663246.htm" />
+      <HelpTOCNode Id="75157e0f-fa96-4f07-9724-5d3861dee90f" Title="ZzzzRangeBar Methods" Url="html/f6acdb01-fdfe-206b-8d11-900b94e890bd.htm">
+        <HelpTOCNode Id="f1f60088-2912-467f-a398-e94e94d0a4ee" Title="Dispose Method " Url="html/36c7b548-dfed-97a4-6398-6f17cf50abf8.htm">
+          <HelpTOCNode Title="Dispose Method (Boolean)" Url="html/233d135d-fc8b-c2ca-7108-6ab8ad2fa545.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="OnRangeChanged Method " Url="html/31d37ac1-1755-c749-0839-449ecdfac7e7.htm" />
+        <HelpTOCNode Title="OnRangeChanging Method " Url="html/16d01766-009d-a42d-63fa-c4d9123f4f6a.htm" />
+        <HelpTOCNode Title="SelectRange Method " Url="html/c58afae5-9375-62e9-95af-d52a3171fdf2.htm" />
+        <HelpTOCNode Title="SetRangeLimit Method " Url="html/7f4d7117-9004-a89d-3231-2af24647f7f5.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="2892e0e9-950a-4865-8b79-61027cac8257" Title="ZzzzRangeBar Properties" Url="html/faab10ba-3960-170b-0068-a8e35379e570.htm">
+        <HelpTOCNode Title="DivisionNum Property " Url="html/1d6f9c47-e65b-24a7-bfac-b54f94fc31b5.htm" />
+        <HelpTOCNode Title="HeightOfBar Property " Url="html/c4d08b05-0d90-9b42-c68d-8280836262c7.htm" />
+        <HelpTOCNode Title="HeightOfMark Property " Url="html/eaba84f2-086d-e31d-2067-e5a2d3ecc528.htm" />
+        <HelpTOCNode Title="HeightOfTick Property " Url="html/8083bb50-8204-a92a-83d5-bd50375ddad3.htm" />
+        <HelpTOCNode Title="InnerColor Property " Url="html/53c7ad4c-e1b9-35e6-9f03-e78cef103f64.htm" />
+        <HelpTOCNode Title="Orientation Property " Url="html/337e733b-7b0c-86d1-1d31-3abd77dc9cc7.htm" />
+        <HelpTOCNode Title="RangeMaximum Property " Url="html/e7e34a7b-45f5-6bc2-7570-ad4eed39c254.htm" />
+        <HelpTOCNode Title="RangeMinimum Property " Url="html/90aa7f28-9fc4-20b9-3caa-a3caabc0e9e6.htm" />
+        <HelpTOCNode Title="ScaleOrientation Property " Url="html/791b1b2d-57a8-7a25-3891-fee9f3bf1f60.htm" />
+        <HelpTOCNode Title="TotalMaximum Property " Url="html/554001a7-6461-4bb7-b682-ec0698739bb6.htm" />
+        <HelpTOCNode Title="TotalMinimum Property " Url="html/7f255121-258c-bfff-3f2b-942b9fe9572d.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="75c0334a-7690-4e42-9010-09410e280852" Title="ZzzzRangeBar Events" Url="html/cb5c4fc0-08cf-54dd-88e2-03c6093235e5.htm">
+        <HelpTOCNode Title="RangeChanged Event" Url="html/6c46df16-38b5-4a80-a286-50d556564612.htm" />
+        <HelpTOCNode Title="RangeChanging Event" Url="html/e8b1b114-2e04-452c-0683-2ab194ca1627.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="ZzzzRangeBar.ActiveMarkType Enumeration" Url="html/1c26a896-011a-14cf-9f8e-3625ba9181cf.htm" />
+    <HelpTOCNode Title="ZzzzRangeBar.RangeBarOrientation Enumeration" Url="html/63bcb672-a94c-3e96-da24-59db6db0a663.htm" />
+    <HelpTOCNode Title="ZzzzRangeBar.RangeChangedEventHandler Delegate" Url="html/7e24c614-7493-44f8-b949-e338c60d6ea5.htm" />
+    <HelpTOCNode Title="ZzzzRangeBar.RangeChangingEventHandler Delegate" Url="html/23123828-8c80-a9b9-7d2f-3622b11527a5.htm" />
+    <HelpTOCNode Title="ZzzzRangeBar.TopBottomOrientation Enumeration" Url="html/732f71fd-1b71-c514-c5e9-ea4814daaa1c.htm" />
   </HelpTOCNode>
 </HelpTOC>
