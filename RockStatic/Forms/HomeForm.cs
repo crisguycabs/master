@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace RockStatic
 {
+    /// <summary>
+    /// Ventana que funciona como Home al momento de ejecutar ROCKSTATIC
+    /// </summary>
     public partial class HomeForm : Form
     {
         #region variables de disenador

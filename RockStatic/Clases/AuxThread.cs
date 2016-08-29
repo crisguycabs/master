@@ -152,7 +152,7 @@ namespace RockStatic
         /// <summary>
         /// Rutina para el Threadpool para crear una imagen del pixeldata cargado
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Imagen generada a partir del pixeldata cargado</returns>
         public Bitmap CreateBitmap()
         {
             Bitmap bmp = new Bitmap(width, height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
@@ -200,7 +200,7 @@ namespace RockStatic
         /// <summary>
         /// Metodo que genera la imagen del corte longitudinal
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Imagen del corte longitudinal</returns>
         public Bitmap CreateBitmapCorte()
         {
             Bitmap bmp = new Bitmap(width, height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
@@ -259,7 +259,7 @@ namespace RockStatic
         /// <summary>
         /// Wrapper method for use with thread pool.
         /// </summary>
-        /// <param name="threadContext"></param> 
+        /// <param name="threadContext">Manejador del hilo</param> 
         public void ThreadCrearBitmap(Object threadContext)
         {
             int threadIndex = (int)threadContext;
@@ -270,7 +270,7 @@ namespace RockStatic
         /// <summary>
         /// Se segmenta la imagen (pixelDatata) que se pasa en el constructor de acuerdo con la informacion de centro y radio que se pasa en el constructor
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Imagen que contiene la segmentacion circular</returns>
         public List<ushort> SegmentarCircular()
         {
             List<ushort> pixelsCrop = new List<ushort>();
@@ -310,7 +310,7 @@ namespace RockStatic
         /// <summary>
         /// Wrapper method for use with thread pool.
         /// </summary>
-        /// <param name="threadContext"></param> 
+        /// <param name="threadContext">Manejador del hilo</param> 
         public void ThreadSegmentar(Object threadContext)
         {
             int threadIndex = (int)threadContext;

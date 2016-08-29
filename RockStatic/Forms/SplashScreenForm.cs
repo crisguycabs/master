@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace RockStatic
 {
+    /// <summary>
+    /// Ventana que se carga al inicio de la ejecucion de RockStatic
+    /// </summary>
     public partial class SplashScreenForm : Form
     {
         /// <summary>

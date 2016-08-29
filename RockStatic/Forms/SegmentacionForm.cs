@@ -18,6 +18,9 @@ using AForge.Math.Geometry;
 
 namespace RockStatic
 {
+    /// <summary>
+    /// Ventana que presenta las herramientas para realizar la segmentacion transversal de los DICOM cargados
+    /// </summary>
     public partial class SegmentacionForm : Form
     {
         #region variables de clase

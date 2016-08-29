@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace RockStatic
 {
+    /// <summary>
+    /// Clase que contiene los perfiles de lo usuario para la aplicación ROCKSTATIC
+    /// </summary>
     public class CPermisos
     {
         public string permiso;

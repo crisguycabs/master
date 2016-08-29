@@ -61,12 +61,12 @@ namespace RockStatic
         /// <summary>
         /// Constructor con asignacion
         /// </summary>
-        /// <param name="_x"></param>
-        /// <param name="_y"></param>
-        /// <param name="_width"></param>
-        /// <param name="_nombre"></param>
-        /// <param name="_ini"></param>
-        /// <param name="_fin"></param>
+        /// <param name="_x">Posicion X del centro del area de interes</param>
+        /// <param name="_y">Posicion Y del centro del area de interes</param>
+        /// <param name="_width">Ancho del area de interes</param>
+        /// <param name="_nombre">Nombre del area de interes</param>
+        /// <param name="_ini">Primer slide del area de interes</param>
+        /// <param name="_fin">Ultimo slide del area de interes</param>
         public CAreaInteres(int _x, int _y, int _width, string _nombre, int _ini, int _fin)
         {
             x = _x;
@@ -80,7 +80,7 @@ namespace RockStatic
         /// <summary>
         /// Constructor para duplicar el tipo de dato
         /// </summary>
-        /// <param name="area"></param>
+        /// <param name="area">Objeto CAreasInteres a duplicar</param>
         public CAreaInteres(CAreaInteres area)
         {
             x = area.x;

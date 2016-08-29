@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace RockStatic
 {
+    /// <summary>
+    /// Ventana para presentar la reconstruccion longitudinal 2D del volumen seleccionado (areas de interes)
+    /// </summary>
     public partial class SelectAreas2Form : Form
     {
         #region variables de disenador

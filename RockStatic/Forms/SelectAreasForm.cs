@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace RockStatic
 {
+    /// <summary>
+    /// Ventana para la selección de las areas de interes en la segmentaciones transversales
+    /// </summary>
     public partial class SelectAreasForm : Form
     {
         #region variables de disenador

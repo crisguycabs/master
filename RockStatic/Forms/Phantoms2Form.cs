@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace RockStatic
 {
+    /// <summary>
+    /// Ventana que presenta la información necesaria para el modelo simplificado de phantoms, solo densidad y numero atomico efectivo
+    /// </summary>
     public partial class Phantoms2Form : Form
     {
         #region variables de clase

@@ -4,6 +4,23 @@
         <name>RockStatic</name>
     </assembly>
     <members>
+        <member name="T:RockStatic.AboutForm">
+            <summary>
+            Ventana que contiene la información de derechos de autor de la aplicación ROCKSTATIC
+            </summary>
+        </member>
+        <member name="M:RockStatic.AboutForm.#ctor">
+            <summary>
+            Initialize Component
+            </summary>
+        </member>
+        <member name="M:RockStatic.AboutForm.AboutForm_FormClosed(System.Object,System.Windows.Forms.FormClosedEventArgs)">
+            <summary>
+            Informa al MainForm padre que se ha cerrado la ventana
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
         <member name="F:RockStatic.AboutForm.components">
             <summary>
             Required designer variable.
@@ -65,18 +82,18 @@
             <summary>
             Constructor con asignacion
             </summary>
-            <param name="_x"></param>
-            <param name="_y"></param>
-            <param name="_width"></param>
-            <param name="_nombre"></param>
-            <param name="_ini"></param>
-            <param name="_fin"></param>
+            <param name="_x">Posicion X del centro del area de interes</param>
+            <param name="_y">Posicion Y del centro del area de interes</param>
+            <param name="_width">Ancho del area de interes</param>
+            <param name="_nombre">Nombre del area de interes</param>
+            <param name="_ini">Primer slide del area de interes</param>
+            <param name="_fin">Ultimo slide del area de interes</param>
         </member>
         <member name="M:RockStatic.CAreaInteres.#ctor(RockStatic.CAreaInteres)">
             <summary>
             Constructor para duplicar el tipo de dato
             </summary>
-            <param name="area"></param>
+            <param name="area">Objeto CAreasInteres a duplicar</param>
         </member>
         <member name="T:RockStatic.AuxThread">
             <summary>
@@ -174,13 +191,13 @@
             <summary>
             Rutina para el Threadpool para crear una imagen del pixeldata cargado
             </summary>
-            <returns></returns>
+            <returns>Imagen generada a partir del pixeldata cargado</returns>
         </member>
         <member name="M:RockStatic.AuxThread.CreateBitmapCorte">
             <summary>
             Metodo que genera la imagen del corte longitudinal
             </summary>
-            <returns></returns>
+            <returns>Imagen del corte longitudinal</returns>
         </member>
         <member name="M:RockStatic.AuxThread.ThreadCrearBitmapCorte(System.Object)">
             <summary>
@@ -192,19 +209,19 @@
             <summary>
             Wrapper method for use with thread pool.
             </summary>
-            <param name="threadContext"></param> 
+            <param name="threadContext">Manejador del hilo</param> 
         </member>
         <member name="M:RockStatic.AuxThread.SegmentarCircular">
             <summary>
             Se segmenta la imagen (pixelDatata) que se pasa en el constructor de acuerdo con la informacion de centro y radio que se pasa en el constructor
             </summary>
-            <returns></returns>
+            <returns>Imagen que contiene la segmentacion circular</returns>
         </member>
         <member name="M:RockStatic.AuxThread.ThreadSegmentar(System.Object)">
             <summary>
             Wrapper method for use with thread pool.
             </summary>
-            <param name="threadContext"></param> 
+            <param name="threadContext">Manejador del hilo</param> 
         </member>
         <member name="P:RockStatic.AuxThread.Segmentacion">
             <summary>
@@ -309,40 +326,6 @@
             Constructor con asignacion. Se crea un duplicado del elemento CCirculo que se pasa como argumento
             </summary>
             <param name="punto">elemento CCirculo que se va a duplicar</param>
-        </member>
-        <member name="T:RockStatic.CLockBitmap">
-            <summary>
-            Clase para manejar pixeles unitariamente con LockBits
-            Credits: Vano Maisuradze
-            http://www.codeproject.com/Tips/240428/Work-with-bitmap-faster-with-Csharp
-            Licensed under The Code Project Open License (CPOL)
-            </summary>
-        </member>
-        <member name="M:RockStatic.CLockBitmap.LockBits">
-            <summary>
-            Lock bitmap data
-            </summary>
-        </member>
-        <member name="M:RockStatic.CLockBitmap.UnlockBits">
-            <summary>
-            Unlock bitmap data
-            </summary>
-        </member>
-        <member name="M:RockStatic.CLockBitmap.GetPixel(System.Int32,System.Int32)">
-            <summary>
-            Get the color of the specified pixel
-            </summary>
-            <param name="x"></param>
-            <param name="y"></param>
-            <returns></returns>
-        </member>
-        <member name="M:RockStatic.CLockBitmap.SetPixel(System.Int32,System.Int32,System.Drawing.Color)">
-            <summary>
-            Set the color of the specified pixel
-            </summary>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="color"></param>
         </member>
         <member name="T:RockStatic.MyDataCube">
             <summary>
@@ -622,6 +605,11 @@
             <param name="minNormalizacion">Valor minimo CT de la normalizacion</param>
             <param name="maxNormalizacion">Valor maximo CT de la normalizacion</param>
         </member>
+        <member name="T:RockStatic.CPermisos">
+            <summary>
+            Clase que contiene los perfiles de lo usuario para la aplicación ROCKSTATIC
+            </summary>
+        </member>
         <member name="T:RockStatic.CPhantom">
             <summary>
             Permite guardar la información de los phantom
@@ -674,6 +662,16 @@
             </summary>
             <param name="phantom"></param>
         </member>
+        <member name="T:RockStatic.CUsuario">
+            <summary>
+            Clase que contiene la información de los usuarios que pueden ejecutar ROCKSTATIC
+            </summary>
+        </member>
+        <member name="T:RockStatic.CurvasForm">
+            <summary>
+            Ventana que presenta las curvas de densidad y numero atomico efectivo estimadas a partir de la data CT cargada
+            </summary>
+        </member>
         <member name="F:RockStatic.CurvasForm.padre">
             <summary>
             Referencia al MainForm
@@ -699,6 +697,11 @@
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:RockStatic.PreviewSegForm">
+            <summary>
+            Ventana que presenta al usuario el resultado preliminar de la segmentacion de los elementos core y phantoms
             </summary>
         </member>
         <member name="F:RockStatic.PreviewSegForm.padre">
@@ -741,6 +744,11 @@
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:RockStatic.SegmentacionForm">
+            <summary>
+            Ventana que presenta las herramientas para realizar la segmentacion transversal de los DICOM cargados
             </summary>
         </member>
         <member name="F:RockStatic.SegmentacionForm.mouseLoc">
@@ -1161,6 +1169,11 @@
             <param name="indice">Indice necesario para nombrar la imagenByte en disco</param>
             <returns></returns>
         </member>
+        <member name="T:RockStatic.HomeForm">
+            <summary>
+            Ventana que funciona como Home al momento de ejecutar ROCKSTATIC
+            </summary>
+        </member>
         <member name="F:RockStatic.HomeForm.padre">
             <summary>
             Referencia al MainForm padre
@@ -1523,6 +1536,11 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="T:RockStatic.PhantomsForm">
+            <summary>
+            Ventana que presenta la información necesaria para el modelo completo de phantoms
+            </summary>
+        </member>
         <member name="F:RockStatic.PhantomsForm.padre">
             <summary>
             Referencia al MainForm padre
@@ -1568,6 +1586,11 @@
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:RockStatic.Phantoms2Form">
+            <summary>
+            Ventana que presenta la información necesaria para el modelo simplificado de phantoms, solo densidad y numero atomico efectivo
             </summary>
         </member>
         <member name="F:RockStatic.Phantoms2Form.padre">
@@ -1641,6 +1664,11 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="T:RockStatic.SplashScreenForm">
+            <summary>
+            Ventana que se carga al inicio de la ejecucion de RockStatic
+            </summary>
+        </member>
         <member name="F:RockStatic.SplashScreenForm.tmr">
             <summary>
             Temporizador de la pantalla Splash
@@ -1698,6 +1726,11 @@
         <member name="F:RockStatic.WaitingForm.lblTexto">
             <summary>
             Mensaje de espera a mostrar en el Form
+            </summary>
+        </member>
+        <member name="T:RockStatic.SelectAreasForm">
+            <summary>
+            Ventana para la selección de las areas de interes en la segmentaciones transversales
             </summary>
         </member>
         <member name="F:RockStatic.SelectAreasForm.pen2">
@@ -1782,6 +1815,11 @@
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:RockStatic.SelectAreas2Form">
+            <summary>
+            Ventana para presentar la reconstruccion longitudinal 2D del volumen seleccionado (areas de interes)
             </summary>
         </member>
         <member name="F:RockStatic.SelectAreas2Form.padre">

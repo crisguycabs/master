@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace RockStatic
 {
+    /// <summary>
+    /// Ventana que presenta al usuario el resultado preliminar de la segmentacion de los elementos core y phantoms
+    /// </summary>
     public partial class PreviewSegForm : Form
     {
         #region variables de disenador

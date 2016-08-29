@@ -10,12 +10,18 @@ using System.Windows.Forms;
 
 namespace RockStatic
 {
+    /// <summary>
+    /// Ventana que contiene la información de derechos de autor de la aplicación ROCKSTATIC
+    /// </summary>
     public partial class AboutForm : Form
     {
         public MainForm padre;
 
         Point lastClick;
 
+        /// <summary>
+        /// Initialize Component
+        /// </summary>
         public AboutForm()
         {
             InitializeComponent();
@@ -26,6 +32,11 @@ namespace RockStatic
             this.Close();
         }
 
+        /// <summary>
+        /// Informa al MainForm padre que se ha cerrado la ventana
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AboutForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.padre.abiertoAboutForm = false;

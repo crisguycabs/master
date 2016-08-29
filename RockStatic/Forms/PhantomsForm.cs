@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace RockStatic
 {
+    /// <summary>
+    /// Ventana que presenta la información necesaria para el modelo completo de phantoms
+    /// </summary>
     public partial class PhantomsForm : Form
     {
         #region variables de clase

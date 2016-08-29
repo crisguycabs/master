@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace RockStatic
 {
+    /// <summary>
+    /// Clase que contiene la información de los usuarios que pueden ejecutar ROCKSTATIC
+    /// </summary>
     public class CUsuario
     {
         public string Nombre;

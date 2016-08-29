@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace RockStatic
 {
+    /// <summary>
+    /// Ventana que presenta las curvas de densidad y numero atomico efectivo estimadas a partir de la data CT cargada
+    /// </summary>
     public partial class CurvasForm : Form
     {
         #region variables de clase
