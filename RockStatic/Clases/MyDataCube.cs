@@ -175,7 +175,7 @@ namespace RockStatic
         /// <summary>
         /// Genera la totalidad de las segmentaciones circulares de cores usando threads
         /// </summary>
-        /// <param name="area"></param>
+        /// <param name="area">Objeto CCuadrado con la información del area a segmentar</param>
         public void SegCircThread(CCuadrado area)
         {
             int nseg = dataCube.Count;
@@ -292,7 +292,8 @@ namespace RockStatic
         /// <summary>
         /// Se genera un plano de core horizontal que corresponde al indice que se pasa como argumento
         /// </summary>
-        /// <param name="indice">Nunmero de la fila que se debe extraer de cada DICOM</param>
+        /// <param name="indice">Numero de la fila que se debe extraer de cada DICOM</param>
+        /// <returns>Core horizontal generado en la posicion indicada</returns>
         public List<ushort> GenerarCoreHorizontal(int indice)
         {
             // se genera una MATRIZ para guardar, temporalmente, los numeros CT extraidos de todo el data cubo para cada imagen de corte horizontal
@@ -336,7 +337,8 @@ namespace RockStatic
         /// <summary>
         /// Se genera un plano de core Vertical que corresponde al indice que se pasa como argumento
         /// </summary>
-        /// <param name="indice">Nunmero de la fila que se debe extraer de cada DICOM</param>
+        /// <param name="indice">Numero de la fila que se debe extraer de cada DICOM</param>
+        /// <returns>Core vertical generado en la posicion indicada</returns>
         public List<ushort> GenerarCoreVertical(int indice)
         {
             // se genera una MATRIZ para guardar, temporalmente, los numeros CT extraidos de todo el data cubo para cada imagen de corte horizontal
@@ -423,7 +425,7 @@ namespace RockStatic
         /// <param name="pixels16">List de ushort que contiene la informacion CT de cada pixel</param>
         /// <param name="width">Ancho deseado de la imagen resultante</param>
         /// <param name="height">Alto deseado de la imagen resultante</param>
-        /// <returns></returns>
+        /// <returns>Imagen reconstruida a partir del List de ushort</returns>
         public Bitmap CreateBitmapCorte(List<ushort> pixels16, int width, int height)
         {
             Bitmap bmp = new Bitmap(width, height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
@@ -471,7 +473,7 @@ namespace RockStatic
         /// <summary>
         /// Obtiene el valor mínimo de TODO el datacubo
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Valor minimo de todo el datacubo</returns>
         public ushort GetMinimo()
         {
             ushort minimo = dataCube[0].pixelData.Min();
@@ -488,7 +490,7 @@ namespace RockStatic
         /// <summary>
         /// Obtiene el valor maximo de TODO el datacubo
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Valor maximo de todo el datacubo</returns>
         public ushort GetMaximo()
         {
             ushort maximo = dataCube[0].pixelData.Max();
@@ -510,7 +512,7 @@ namespace RockStatic
         /// <param name="height">Alto deseado de la imagen resultante</param>
         /// <param name="minNormalizacion">Valor minimo CT de la normalizacion</param>
         /// <param name="maxNormalizacion">Valor maximo CT de la normalizacion</param>
-        /// <returns></returns>
+        /// <returns>Imagen reconstruida a partir del List de ushort</returns>
         public Bitmap CreateBitmapCorte(List<ushort> pixels16, int width, int height, int minNormalizacion, int maxNormalizacion)
         {
             Bitmap bmp = new Bitmap(width, height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);

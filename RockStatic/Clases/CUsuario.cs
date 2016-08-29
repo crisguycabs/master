@@ -11,14 +11,29 @@ namespace RockStatic
     /// </summary>
     public class CUsuario
     {
+        /// <summary>
+        /// Nombre del usuario
+        /// </summary>
         public string Nombre;
 
+        /// <summary>
+        /// Apellidos del usuario
+        /// </summary>
         public string Apellidos;
 
+        /// <summary>
+        /// Tipo de afiliacion del usuario
+        /// </summary>
         public string Afiliacion;
 
+        /// <summary>
+        /// Lista de perfiles de uso que puede tener el usuario
+        /// </summary>
         public CPermisos[] permisos;
 
+        /// <summary>
+        /// Constructor por defecto
+        /// </summary>
         public CUsuario()
         {
 

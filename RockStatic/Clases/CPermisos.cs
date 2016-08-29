@@ -11,6 +11,9 @@ namespace RockStatic
     /// </summary>
     public class CPermisos
     {
+        /// <summary>
+        /// Nombre del nivel de seguridad que tiene el perfil
+        /// </summary>
         public string permiso;
 
         public CPermisos()

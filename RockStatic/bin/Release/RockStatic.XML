@@ -411,7 +411,7 @@
             <summary>
             Genera la totalidad de las segmentaciones circulares de cores usando threads
             </summary>
-            <param name="area"></param>
+            <param name="area">Objeto CCuadrado con la información del area a segmentar</param>
         </member>
         <member name="M:RockStatic.MyDataCube.CrearBitmap(System.Int32,System.Int32)">
             <summary>
@@ -429,13 +429,15 @@
             <summary>
             Se genera un plano de core horizontal que corresponde al indice que se pasa como argumento
             </summary>
-            <param name="indice">Nunmero de la fila que se debe extraer de cada DICOM</param>
+            <param name="indice">Numero de la fila que se debe extraer de cada DICOM</param>
+            <returns>Core horizontal generado en la posicion indicada</returns>
         </member>
         <member name="M:RockStatic.MyDataCube.GenerarCoreVertical(System.Int32)">
             <summary>
             Se genera un plano de core Vertical que corresponde al indice que se pasa como argumento
             </summary>
-            <param name="indice">Nunmero de la fila que se debe extraer de cada DICOM</param>
+            <param name="indice">Numero de la fila que se debe extraer de cada DICOM</param>
+            <returns>Core vertical generado en la posicion indicada</returns>
         </member>
         <member name="M:RockStatic.MyDataCube.GenerarCoresHorizontales">
             <summary>
@@ -454,19 +456,19 @@
             <param name="pixels16">List de ushort que contiene la informacion CT de cada pixel</param>
             <param name="width">Ancho deseado de la imagen resultante</param>
             <param name="height">Alto deseado de la imagen resultante</param>
-            <returns></returns>
+            <returns>Imagen reconstruida a partir del List de ushort</returns>
         </member>
         <member name="M:RockStatic.MyDataCube.GetMinimo">
             <summary>
             Obtiene el valor mínimo de TODO el datacubo
             </summary>
-            <returns></returns>
+            <returns>Valor minimo de todo el datacubo</returns>
         </member>
         <member name="M:RockStatic.MyDataCube.GetMaximo">
             <summary>
             Obtiene el valor maximo de TODO el datacubo
             </summary>
-            <returns></returns>
+            <returns>Valor maximo de todo el datacubo</returns>
         </member>
         <member name="M:RockStatic.MyDataCube.CreateBitmapCorte(System.Collections.Generic.List{System.UInt16},System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
@@ -477,7 +479,7 @@
             <param name="height">Alto deseado de la imagen resultante</param>
             <param name="minNormalizacion">Valor minimo CT de la normalizacion</param>
             <param name="maxNormalizacion">Valor maximo CT de la normalizacion</param>
-            <returns></returns>
+            <returns>Imagen reconstruida a partir del List de ushort</returns>
         </member>
         <member name="T:RockStatic.MyDicom">
             <summary>
@@ -529,7 +531,7 @@
             <summary>
             Constructor con asignación. Lee la ruta del DICOM, lo lee y decodifica la informacion de pixeles. NO NORMALIZA
             </summary>
-            <param name="ruta"></param>
+            <param name="ruta">Ruta del DICOM a leer</param>
         </member>
         <member name="M:RockStatic.MyDicom.Byte2Pixels16(System.Collections.Generic.List{System.Byte},System.Int32,System.Int32,System.Int32,System.Double,System.Double,System.String)">
             <summary>
@@ -553,7 +555,7 @@
             <param name="rescaleSlope">Valor RESCALE_SLOPE obtenido de EvilDICOM</param>
             <param name="rescaleIntercept">Valor RESCALE_INTERCEPT obtenido de EvilDICOM</param>
             <param name="photoInterpretation">Valor PHOTO_INTERPRETATION obtenido de EvilDICOM</param>
-            <returns></returns>
+            <returns>List de bytes codificado</returns>
         </member>
         <member name="M:RockStatic.MyDicom.CropCTRectangle(System.Collections.Generic.List{System.UInt16},System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
@@ -586,6 +588,7 @@
             <param name="pixels16">List de shorts con la informacion CT de cada pixel</param>
             <param name="width">Ancho deseado de la imagen</param>
             <param name="height">Alto deseado de la imagen</param>
+            <returns>Imagen resultante</returns>
         </member>
         <member name="M:RockStatic.MyDicom.CreateBitmap(System.Collections.Generic.List{System.UInt16},System.Int32,System.Int32)">
             <summary>
@@ -608,6 +611,11 @@
         <member name="T:RockStatic.CPermisos">
             <summary>
             Clase que contiene los perfiles de lo usuario para la aplicación ROCKSTATIC
+            </summary>
+        </member>
+        <member name="F:RockStatic.CPermisos.permiso">
+            <summary>
+            Nombre del nivel de seguridad que tiene el perfil
             </summary>
         </member>
         <member name="T:RockStatic.CPhantom">
@@ -660,11 +668,36 @@
             <summary>
             Constructor con duplicacion
             </summary>
-            <param name="phantom"></param>
+            <param name="phantom">Objeto CPhantom a duplicar</param>
         </member>
         <member name="T:RockStatic.CUsuario">
             <summary>
             Clase que contiene la información de los usuarios que pueden ejecutar ROCKSTATIC
+            </summary>
+        </member>
+        <member name="F:RockStatic.CUsuario.Nombre">
+            <summary>
+            Nombre del usuario
+            </summary>
+        </member>
+        <member name="F:RockStatic.CUsuario.Apellidos">
+            <summary>
+            Apellidos del usuario
+            </summary>
+        </member>
+        <member name="F:RockStatic.CUsuario.Afiliacion">
+            <summary>
+            Tipo de afiliacion del usuario
+            </summary>
+        </member>
+        <member name="F:RockStatic.CUsuario.permisos">
+            <summary>
+            Lista de perfiles de uso que puede tener el usuario
+            </summary>
+        </member>
+        <member name="M:RockStatic.CUsuario.#ctor">
+            <summary>
+            Constructor por defecto
             </summary>
         </member>
         <member name="T:RockStatic.CurvasForm">
@@ -677,9 +710,34 @@
             Referencia al MainForm
             </summary>
         </member>
+        <member name="F:RockStatic.CurvasForm.Dfm">
+            <summary>
+            Variable intermedia para el calculo de propiedades estaticas
+            </summary>
+        </member>
+        <member name="F:RockStatic.CurvasForm.Zfme">
+            <summary>
+            Variable intermedia para el calculo de propiedades estaticas
+            </summary>
+        </member>
+        <member name="F:RockStatic.CurvasForm.Pefm">
+            <summary>
+            Variable intermedia para el calculo de propiedades estaticas
+            </summary>
+        </member>
+        <member name="F:RockStatic.CurvasForm.profundidad">
+            <summary>
+            Vector con los valores de profundidad para las propiedades estaticas estimadas
+            </summary>
+        </member>
         <member name="M:RockStatic.CurvasForm.CentrarForm">
             <summary>
             Centra el Form en medio del MDI parent
+            </summary>
+        </member>
+        <member name="M:RockStatic.CurvasForm.Estimar">
+            <summary>
+            Se estiman las propiedades estáticas en función de la profundidad del core 
             </summary>
         </member>
         <member name="F:RockStatic.CurvasForm.components">
@@ -1075,35 +1133,11 @@
             <param name="rutasLow">Lista de rutas de DICOM Low a cargar en el proyecto</param>
             <param name="phantom">Indica si los DICOM contienen phantoms o no</param>
         </member>
-        <member name="M:RockStatic.CProyecto.GetSegmentacionDone">
-            <summary>
-            Devuelve el estado de la segmentacion de los elementos HIGH. True, todos los elementos segmentados; False, faltan elementos por segmentar
-            </summary>
-            <returns></returns>
-        </member>
         <member name="M:RockStatic.CProyecto.SetFolderPath(System.String)">
             <summary>
             Establece la ruta de la carpeta donde se guarda el proyecto, y las imagenes
             </summary>
             <param name="path">Ruta de la carpeta donde se guarda el proyecto</param>
-        </member>
-        <member name="M:RockStatic.CProyecto.GetFolderPath">
-            <summary>
-            Devuelve la ruta completa del folder que contiene el proyecto, el archivo RSP
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:RockStatic.CProyecto.GetFolderHigh">
-            <summary>
-            Devuelve la ruta completa del folder que contiene los elementos HIGH
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:RockStatic.CProyecto.GetFolderLow">
-            <summary>
-            Devuelve la ruta completa del folder que contiene los elementos LOW
-            </summary>
-            <returns></returns>
         </member>
         <member name="M:RockStatic.CProyecto.Salvar">
             <summary>
@@ -1120,7 +1154,7 @@
             <summary>
             Devuelve el tipo de dato CCuadrado que contiene las coordenadas de la segmentacion del Core
             </summary>
-            <returns></returns>
+            <returns>Objeto CCuadrado con la informacion del area del core</returns>
         </member>
         <member name="M:RockStatic.CProyecto.SetPhantom1(RockStatic.CCuadrado)">
             <summary>
@@ -1144,30 +1178,19 @@
             <summary>
             Devuelve el tipo de dato CCuadrado que contiene las coordenadas de la segmentacion del Phantom1
             </summary>
-            <returns></returns>
+            <returns>Objeto CCuadrado con la informacion del area del phantom 1</returns>
         </member>
         <member name="M:RockStatic.CProyecto.GetPhantom2">
             <summary>
             Devuelve el tipo de dato CCuadrado que contiene las coordenadas de la segmentacion del Phantom2
             </summary>
-            <returns></returns>
+            <returns>Objeto CCuadrado con la informacion del area del phantom 2</returns>
         </member>
         <member name="M:RockStatic.CProyecto.GetPhantom3">
             <summary>
             Devuelve el tipo de dato CCuadrado que contiene las coordenadas de la segmentacion del Phantom3
             </summary>
-            <returns></returns>
-        </member>
-        <member name="M:RockStatic.CProyecto.Cropper(System.Byte[],RockStatic.CCuadrado,System.String,System.String,System.Int32)">
-            <summary>
-            Toma una imagenByte, la transforma a imagen, recorta el area señalada, la guarda en disco como imagenByte y devuelve una imagenByte
-            </summary>
-            <param name="srcByte">Byte[] con la imagen a recortar</param>
-            <param name="area">CCuadrado que contiene el area a recortar</param>
-            <param name="path">Folder donde se debe guardar la imagenByte recortada</param>
-            <param name="nombre">Nombre que se le debe dar a la imagenByte recortada</param>
-            <param name="indice">Indice necesario para nombrar la imagenByte en disco</param>
-            <returns></returns>
+            <returns>Objeto CCuadrado con la informacion del area del phantom 3</returns>
         </member>
         <member name="T:RockStatic.HomeForm">
             <summary>
@@ -1199,6 +1222,11 @@
         <member name="T:RockStatic.MainForm">
             <summary>
             Form principal. Contiene los tipos de datos globales y métodos estáticos
+            </summary>
+        </member>
+        <member name="F:RockStatic.MainForm.usuarios">
+            <summary>
+            Lista de usuarios admitidos para usar RockStatic
             </summary>
         </member>
         <member name="F:RockStatic.MainForm.nuevoProyectoForm">
@@ -1234,6 +1262,16 @@
         <member name="F:RockStatic.MainForm.abiertoCheckForm">
             <summary>
             Variable que indica si la ventana CheckForm esta abierta o no
+            </summary>
+        </member>
+        <member name="F:RockStatic.MainForm.abiertoAboutForm">
+            <summary>
+            Indica si el form AboutForm esta abierto o no
+            </summary>
+        </member>
+        <member name="F:RockStatic.MainForm.aboutForm">
+            <summary>
+            Instancia del form AboutForm
             </summary>
         </member>
         <member name="F:RockStatic.MainForm.abiertoPhantomsForm">
@@ -1328,14 +1366,19 @@
         </member>
         <member name="M:RockStatic.MainForm.AbrirProjectForm">
             <summary>
-            
+            Abre la ventana ProjectForm
             </summary>
         </member>
         <member name="M:RockStatic.MainForm.ShowWaiting(System.String)">
             <summary>
             Se muestra la ventana WaitingForm, con el mensaje que se muestra como argumento
             </summary>
-            <param name="mensaje"></param>
+            <param name="mensaje">Mensaje a mostrar en pantalla</param>
+        </member>
+        <member name="M:RockStatic.MainForm.CloseWaiting">
+            <summary>
+            Cierra la ventana WaitingForm
+            </summary>
         </member>
         <member name="M:RockStatic.MainForm.CorregirPictBox2Original(RockStatic.CCuadrado,System.Int32,System.Int32)">
             <summary>
@@ -1359,9 +1402,9 @@
             <summary>
             Toma una imagen (el slide completo) y recorta un area circular delimitada por el elemento CCuadrado
             </summary>
-            <param name="source">Imagen original de la que se extraera el corte circular</param>
+            <param name="srcImage">Imagen original de la que se extraera el corte circular</param>
             <param name="elemento">Area de corte</param>
-            <returns></returns>
+            <returns>Imagen recortada</returns>
         </member>
         <member name="M:RockStatic.MainForm.CorregirPictBox2Original(System.Int32,System.Int32,System.Int32)">
             <summary>
@@ -1377,37 +1420,67 @@
             Se crea un nuevo proyecto
             </summary>
         </member>
-        <member name="M:RockStatic.MainForm.Img2byte(System.String)">
+        <member name="M:RockStatic.MainForm.CerrarHomeForm">
             <summary>
-            Convierte una imagen en byte[]
+            Cierra la ventana HomeForm
             </summary>
-            <param name="imageLocation">Ruta de la imagen en disco</param>
-            <returns></returns>
         </member>
-        <member name="M:RockStatic.MainForm.Img2byte(System.Drawing.Bitmap)">
+        <member name="M:RockStatic.MainForm.CerrarCurvasForm">
             <summary>
-            Convierte una imagen en byte[]
+            Cierra la ventana CurvasForm
             </summary>
-            <param name="imageLocation">Ruta de la imagen en disco</param>
-            <returns></returns>
         </member>
-        <member name="M:RockStatic.MainForm.Byte2image(System.Byte[])">
+        <member name="M:RockStatic.MainForm.AbrirHome">
             <summary>
-            Convierte un byte[] en imagen
+            Abre la ventana AbrirForm
             </summary>
-            <param name="byteArrayIn">imagen en formato de byte[]</param>
-            <returns></returns>
         </member>
         <member name="M:RockStatic.MainForm.SeleccionarProyecto">
             <summary>
             Se selecciona la ruta donde se encuentra el archivo RSP
             </summary>
+            <returns>True, el archivo se pudo abrir; False, el archivo no se pudo abrir</returns>
         </member>
         <member name="M:RockStatic.MainForm.AbrirProyecto(System.String)">
             <summary>
             Con la ruta del archivo RSP se procede a cargar en memoria el proyecto
             </summary>
             <param name="ruta"></param>
+        </member>
+        <member name="M:RockStatic.MainForm.CerrarPreviewSegForm">
+            <summary>
+            Cierra la ventana PreviewSegForm
+            </summary>
+        </member>
+        <member name="M:RockStatic.MainForm.CerrarCheckForm">
+            <summary>
+            Cierra la ventana CheckForm
+            </summary>
+        </member>
+        <member name="M:RockStatic.MainForm.CerrarPhantomForm">
+            <summary>
+            Cierra la ventana PhantomForm
+            </summary>
+        </member>
+        <member name="M:RockStatic.MainForm.CerrarPhantom2Form">
+            <summary>
+            Cierra la ventana Phantom2Form
+            </summary>
+        </member>
+        <member name="M:RockStatic.MainForm.CerrarSegmentacionForm">
+            <summary>
+            Cierra la ventana SegmentacionForm
+            </summary>
+        </member>
+        <member name="M:RockStatic.MainForm.CerrarProjectForm">
+            <summary>
+            Cierra la ventana ProjectForm
+            </summary>
+        </member>
+        <member name="M:RockStatic.MainForm.CerrarSelectAreasForm">
+            <summary>
+            Cierra la ventana SelectAreasForm
+            </summary>
         </member>
         <member name="F:RockStatic.MainForm.components">
             <summary>
@@ -1564,7 +1637,16 @@
             </summary>
             <param name="media">Valor de la media de la distribucion normal</param>
             <param name="desv">Valor de la desvStd de la distribucion normal</param>
-            <returns></returns>
+            <param name="x">Vector de 101 elementos con el eje X de la campana de Gauss</param>
+            <returns>Vector de 101 elementos con el eje Y de la campana de Gauss</returns>
+        </member>
+        <member name="M:RockStatic.PhantomsForm.GenerarCampanaX(System.Double,System.Double)">
+            <summary>
+            Genera un vector de 101 elementos con los elementos X que forman una campana de Gauss
+            </summary>
+            <param name="media">Valor de la media de la distribucion normal</param>
+            <param name="desv">Valor de la desvStd de la distribucion normal</param>
+            <returns>Vector de 101 elementos con el eje X de la campana de Gauss</returns>
         </member>
         <member name="M:RockStatic.PhantomsForm.CentrarForm">
             <summary>

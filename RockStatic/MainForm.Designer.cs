@@ -290,7 +290,6 @@
             this.Text = "ROCK STATIC";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainForm_Paint);
             this.menuMain.ResumeLayout(false);
             this.menuMain.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);

@@ -141,15 +141,6 @@ namespace RockStatic
         //--
 
         /// <summary>
-        /// Devuelve el estado de la segmentacion de los elementos HIGH. True, todos los elementos segmentados; False, faltan elementos por segmentar
-        /// </summary>
-        /// <returns></returns>
-        public bool GetSegmentacionDone()
-        {
-            return segmentacionDone;
-        }
-
-        /// <summary>
         /// Establece la ruta de la carpeta donde se guarda el proyecto, y las imagenes
         /// </summary>
         /// <param name="path">Ruta de la carpeta donde se guarda el proyecto</param>
@@ -162,33 +153,6 @@ namespace RockStatic
 
             // ruta imagenes LOW
             this.folderLow = folderPath + "low\\";
-        }
-
-        /// <summary>
-        /// Devuelve la ruta completa del folder que contiene el proyecto, el archivo RSP
-        /// </summary>
-        /// <returns></returns>
-        public string GetFolderPath()
-        {
-            return folderPath;
-        }
-
-        /// <summary>
-        /// Devuelve la ruta completa del folder que contiene los elementos HIGH
-        /// </summary>
-        /// <returns></returns>
-        public string GetFolderHigh()
-        {
-            return folderHigh;
-        }
-
-        /// <summary>
-        /// Devuelve la ruta completa del folder que contiene los elementos LOW
-        /// </summary>
-        /// <returns></returns>
-        public string GetFolderLow()
-        {
-            return folderLow;
         }
 
         /// <summary>
@@ -363,7 +327,7 @@ namespace RockStatic
         /// <summary>
         /// Devuelve el tipo de dato CCuadrado que contiene las coordenadas de la segmentacion del Core
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Objeto CCuadrado con la informacion del area del core</returns>
         public CCuadrado GetCore()
         {
             return areaCore;
@@ -402,7 +366,7 @@ namespace RockStatic
         /// <summary>
         /// Devuelve el tipo de dato CCuadrado que contiene las coordenadas de la segmentacion del Phantom1
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Objeto CCuadrado con la informacion del area del phantom 1</returns>
         public CCuadrado GetPhantom1()
         {
             return areaPhantom1;
@@ -411,7 +375,7 @@ namespace RockStatic
         /// <summary>
         /// Devuelve el tipo de dato CCuadrado que contiene las coordenadas de la segmentacion del Phantom2
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Objeto CCuadrado con la informacion del area del phantom 2</returns>
         public CCuadrado GetPhantom2()
         {
             return areaPhantom2;
@@ -420,88 +384,10 @@ namespace RockStatic
         /// <summary>
         /// Devuelve el tipo de dato CCuadrado que contiene las coordenadas de la segmentacion del Phantom3
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Objeto CCuadrado con la informacion del area del phantom 3</returns>
         public CCuadrado GetPhantom3()
         {
             return areaPhantom3;
-        }
-
-        /// <summary>
-        /// Toma una imagenByte, la transforma a imagen, recorta el area señalada, la guarda en disco como imagenByte y devuelve una imagenByte
-        /// </summary>
-        /// <param name="srcByte">Byte[] con la imagen a recortar</param>
-        /// <param name="area">CCuadrado que contiene el area a recortar</param>
-        /// <param name="path">Folder donde se debe guardar la imagenByte recortada</param>
-        /// <param name="nombre">Nombre que se le debe dar a la imagenByte recortada</param>
-        /// <param name="indice">Indice necesario para nombrar la imagenByte en disco</param>
-        /// <returns></returns>
-        public static byte[] Cropper(byte[] srcByte,CCuadrado area,string path, string nombre, int indice)
-        {
-            DateTime ini = DateTime.Now;
-
-            // se transforma a imagen el byteImage guardado
-            Bitmap srcImage = (Bitmap)MainForm.Byte2image(srcByte);
-
-            // se crea un rectangulo para realizar el corte
-            Rectangle rectArea = new Rectangle(area.x - area.width, area.y - area.width, area.width * 2, area.width * 2);
-
-            // se crea la imagen destino
-            Bitmap rectImage = new Bitmap(srcImage.Width, srcImage.Height, srcImage.PixelFormat);
-
-            // se realiza el corte, a una imagen CUADRADA
-            rectImage = srcImage.Clone(rectArea, srcImage.PixelFormat);
-
-            BitmapData bmd = rectImage.LockBits(new Rectangle(0, 0, rectImage.Width, rectImage.Height), System.Drawing.Imaging.ImageLockMode.ReadOnly, rectImage.PixelFormat);
-
-            unsafe
-            {
-                int pixelSize = 3;
-                int i, j, j1, i1;
-                byte b = Convert.ToByte(Color.Black.R);
-
-                double centroX = Convert.ToDouble(rectImage.Width) / 2;
-                double centroY = centroX;
-                double distancia, dx, dy;
-
-                for (i = 0; i < bmd.Height; ++i)
-                {
-                    byte* row = (byte*)bmd.Scan0 + (i * bmd.Stride);
-                    i1 = i * bmd.Width;
-
-                    for (j = 0; j < bmd.Width; ++j)
-                    {
-                        j1 = j * pixelSize;
-
-                        dx = i - centroX;
-                        dy = j - centroY;
-                        distancia = Math.Sqrt((dx*dx)+(dy*dy));
-
-                        if (distancia > centroX)
-                        {
-                            row[j1] = b;            // Red
-                            row[j1 + 1] = b;        // Green
-                            row[j1 + 2] = b;        // Blue       
-                        }
-                    }
-                }
-
-            }
-
-            rectImage.UnlockBits(bmd);
-
-            DateTime fin = DateTime.Now;
-            TimeSpan span = fin - ini;
-
-            // se convierte a byte
-            byte[] tempByte = MainForm.Img2byte(rectImage);
-            
-            rectImage.Dispose();
-            srcImage.Dispose();
-
-            // se guarda en disco
-            File.WriteAllBytes(path + nombre + indice, tempByte);
-
-            return tempByte;
-        }             
+        }        
     }
 }

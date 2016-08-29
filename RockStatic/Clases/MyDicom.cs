@@ -69,7 +69,7 @@ namespace RockStatic
         /// <summary>
         /// Constructor con asignación. Lee la ruta del DICOM, lo lee y decodifica la informacion de pixeles. NO NORMALIZA
         /// </summary>
-        /// <param name="ruta"></param>
+        /// <param name="ruta">Ruta del DICOM a leer</param>
         public MyDicom(string ruta)
         {
             dcm = DICOMObject.Read(@ruta);
@@ -151,7 +151,7 @@ namespace RockStatic
         /// <param name="rescaleSlope">Valor RESCALE_SLOPE obtenido de EvilDICOM</param>
         /// <param name="rescaleIntercept">Valor RESCALE_INTERCEPT obtenido de EvilDICOM</param>
         /// <param name="photoInterpretation">Valor PHOTO_INTERPRETATION obtenido de EvilDICOM</param>
-        /// <returns></returns>
+        /// <returns>List de bytes codificado</returns>
         public List<byte> Pixels162Byte(List<ushort> pixels16, int pixelRepresentation, double rescaleSlope, double rescaleIntercept, string photoInterpretation)
         {
             List<byte> pixelValues = new List<byte>();
@@ -273,6 +273,7 @@ namespace RockStatic
         /// <param name="pixels16">List de shorts con la informacion CT de cada pixel</param>
         /// <param name="width">Ancho deseado de la imagen</param>
         /// <param name="height">Alto deseado de la imagen</param>
+        /// <returns>Imagen resultante</returns>
         public static Bitmap CrearBitmap(List<ushort> pixels16, int width, int height)
         {
             Bitmap bmp = new Bitmap(width, height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);

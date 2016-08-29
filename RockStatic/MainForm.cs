@@ -21,6 +21,9 @@ namespace RockStatic
     {
         #region Variables de Diseñador
 
+        /// <summary>
+        /// Lista de usuarios admitidos para usar RockStatic
+        /// </summary>
         public List<CUsuario> usuarios;
 
         /// <summary>
@@ -58,8 +61,14 @@ namespace RockStatic
         /// </summary>
         public bool abiertoCheckForm;
 
+        /// <summary>
+        /// Indica si el form AboutForm esta abierto o no
+        /// </summary>
         public bool abiertoAboutForm;
 
+        /// <summary>
+        /// Instancia del form AboutForm
+        /// </summary>
         public AboutForm aboutForm;
 
         /// <summary>
@@ -162,7 +171,7 @@ namespace RockStatic
         }
 
         /// <summary>
-        /// 
+        /// Abre la ventana ProjectForm
         /// </summary>
         public void AbrirProjectForm()
         {
@@ -176,7 +185,7 @@ namespace RockStatic
         /// <summary>
         /// Se muestra la ventana WaitingForm, con el mensaje que se muestra como argumento
         /// </summary>
-        /// <param name="mensaje"></param>
+        /// <param name="mensaje">Mensaje a mostrar en pantalla</param>
         public void ShowWaiting(string mensaje)
         {
             if (!this.abiertoWaitingForm)
@@ -194,6 +203,9 @@ namespace RockStatic
             }
         }
 
+        /// <summary>
+        /// Cierra la ventana WaitingForm
+        /// </summary>
         public void CloseWaiting()
         {
             abiertoWaitingForm = false;
@@ -244,9 +256,9 @@ namespace RockStatic
         /// <summary>
         /// Toma una imagen (el slide completo) y recorta un area circular delimitada por el elemento CCuadrado
         /// </summary>
-        /// <param name="source">Imagen original de la que se extraera el corte circular</param>
+        /// <param name="srcImage">Imagen original de la que se extraera el corte circular</param>
         /// <param name="elemento">Area de corte</param>
-        /// <returns></returns>
+        /// <returns>Imagen recortada</returns>
         public static Bitmap CropCirle(Bitmap srcImage, CCuadrado elemento)
         {
             // primero se extrae el area rectangular del slide que se pasa como argumento
@@ -273,98 +285,6 @@ namespace RockStatic
             g.DrawImage(bmp, 0, 0);
 
             return dstImage;
-        }
-
-
-        public static Bitmap ColorToGrayscale(Bitmap bmp)
-        {
-            int w = bmp.Width,
-            h = bmp.Height,
-            r, ic, oc, bmpStride, outputStride, bytesPerPixel;
-            PixelFormat pfIn = bmp.PixelFormat;
-            ColorPalette palette;
-            Bitmap output;
-            BitmapData bmpData, outputData;
-
-            //Create the new bitmap
-            output = new Bitmap(w, h, PixelFormat.Format8bppIndexed);
-
-            //Build a grayscale color Palette
-            palette = output.Palette;
-            for (int i = 0; i < 256; i++)
-            {
-                Color tmp = Color.FromArgb(255, i, i, i);
-                palette.Entries[i] = Color.FromArgb(255, i, i, i);
-            }
-            output.Palette = palette;
-
-            //No need to convert formats if already in 8 bit
-            if (pfIn == PixelFormat.Format8bppIndexed)
-            {
-                output = (Bitmap)bmp.Clone();
-
-                //Make sure the palette is a grayscale palette and not some other
-                //8-bit indexed palette
-                output.Palette = palette;
-
-                return output;
-            }
-
-            //Get the number of bytes per pixel
-            switch (pfIn)
-            {
-                case PixelFormat.Format24bppRgb: bytesPerPixel = 3; break;
-                case PixelFormat.Format32bppArgb: bytesPerPixel = 4; break;
-                case PixelFormat.Format32bppRgb: bytesPerPixel = 4; break;
-                default: throw new InvalidOperationException("Image format not supported");
-            }
-
-            //Lock the images
-            bmpData = bmp.LockBits(new Rectangle(0, 0, w, h), ImageLockMode.ReadOnly,
-            pfIn);
-            outputData = output.LockBits(new Rectangle(0, 0, w, h), ImageLockMode.WriteOnly,
-            PixelFormat.Format8bppIndexed);
-            bmpStride = bmpData.Stride;
-            outputStride = outputData.Stride;
-
-            //Traverse each pixel of the image
-            unsafe
-            {
-                byte* bmpPtr = (byte*)bmpData.Scan0.ToPointer(),
-                outputPtr = (byte*)outputData.Scan0.ToPointer();
-
-                if (bytesPerPixel == 3)
-                {
-                    //Convert the pixel to it's luminance using the formula:
-                    // L = .299*R + .587*G + .114*B
-                    //Note that ic is the input column and oc is the output column
-                    for (r = 0; r < h; r++)
-                        for (ic = oc = 0; oc < w; ic += 3, ++oc)
-                            outputPtr[r * outputStride + oc] = (byte)(int)
-                            (0.299f * bmpPtr[r * bmpStride + ic] +
-                            0.587f * bmpPtr[r * bmpStride + ic + 1] +
-                            0.114f * bmpPtr[r * bmpStride + ic + 2]);
-                }
-                else //bytesPerPixel == 4
-                {
-                    //Convert the pixel to it's luminance using the formula:
-                    // L = alpha * (.299*R + .587*G + .114*B)
-                    //Note that ic is the input column and oc is the output column
-                    for (r = 0; r < h; r++)
-                        for (ic = oc = 0; oc < w; ic += 4, ++oc)
-                            outputPtr[r * outputStride + oc] = (byte)(int)
-                            ((bmpPtr[r * bmpStride + ic] / 255.0f) *
-                            (0.299f * bmpPtr[r * bmpStride + ic + 1] +
-                            0.587f * bmpPtr[r * bmpStride + ic + 2] +
-                            0.114f * bmpPtr[r * bmpStride + ic + 3]));
-                }
-            }
-
-            //Unlock the images
-            bmp.UnlockBits(bmpData);
-            output.UnlockBits(outputData);
-
-            return output;
         }
 
         /// <summary>
@@ -429,18 +349,27 @@ namespace RockStatic
             this.nuevoProyectoForm = null;
         }
 
+        /// <summary>
+        /// Cierra la ventana HomeForm
+        /// </summary>
         public void CerrarHomeForm()
         {
             this.abiertoHomeForm = false;
             this.homeForm = null;
         }
 
+        /// <summary>
+        /// Cierra la ventana CurvasForm
+        /// </summary>
         public void CerrarCurvasForm()
         {
             this.abiertoCurvasForm = false;
             this.curvasForm = null;
         }
 
+        /// <summary>
+        /// Abre la ventana AbrirForm
+        /// </summary>
         public void AbrirHome()
         {
             homeForm = new HomeForm();
@@ -448,58 +377,6 @@ namespace RockStatic
             homeForm.padre = this;
             this.abiertoHomeForm = true;
             homeForm.Show();
-        }
-
-        /// <summary>
-        /// Convierte una imagen en byte[]
-        /// </summary>
-        /// <param name="imageLocation">Ruta de la imagen en disco</param>
-        /// <returns></returns>
-        public static byte[] Img2byte(string imageLocation)
-        {
-            byte[] imageData = null;
-            FileInfo fileInfo = new FileInfo(imageLocation);
-            long imageFileLength = fileInfo.Length;
-            FileStream fs = new FileStream(imageLocation, FileMode.Open, FileAccess.Read);
-            BinaryReader br = new BinaryReader(fs);
-            imageData = br.ReadBytes((int)imageFileLength);
-            return imageData;
-        }
-
-        /// <summary>
-        /// Convierte una imagen en byte[]
-        /// </summary>
-        /// <param name="imageLocation">Ruta de la imagen en disco</param>
-        /// <returns></returns>
-        public static byte[] Img2byte(Bitmap srcImg)
-        {
-            ImageConverter _imageConverter = new ImageConverter();
-            byte[] xByte = (byte[])_imageConverter.ConvertTo(srcImg, typeof(byte[]));
-            return xByte;
-        }
-
-        public static byte[] Img2byte(Image srcImg)
-        {
-            ImageConverter _imageConverter = new ImageConverter();
-            byte[] xByte = (byte[])_imageConverter.ConvertTo(srcImg, typeof(byte[]));
-            return xByte;
-        }
-
-        /// <summary>
-        /// Convierte un byte[] en imagen
-        /// </summary>
-        /// <param name="byteArrayIn">imagen en formato de byte[]</param>
-        /// <returns></returns>
-        public static Image Byte2image(byte[] byteArrayIn)
-        {
-            try
-            {
-                MemoryStream ms = new MemoryStream(byteArrayIn, 0, byteArrayIn.Length);
-                ms.Write(byteArrayIn, 0, byteArrayIn.Length);
-                Image returnImage = Image.FromStream(ms, true);
-                return returnImage;
-            }
-            catch { return null; }
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -529,6 +406,7 @@ namespace RockStatic
         /// <summary>
         /// Se selecciona la ruta donde se encuentra el archivo RSP
         /// </summary>
+        /// <returns>True, el archivo se pudo abrir; False, el archivo no se pudo abrir</returns>
         public bool SeleccionarProyecto()
         {
             OpenFileDialog openFile = new OpenFileDialog();
@@ -848,42 +726,63 @@ namespace RockStatic
             return true;
         }
 
+        /// <summary>
+        /// Cierra la ventana PreviewSegForm
+        /// </summary>
         public void CerrarPreviewSegForm()
         {
             this.abiertoPreviewSegForm = false;
             this.previewSegForm = null;
         }
 
+        /// <summary>
+        /// Cierra la ventana CheckForm
+        /// </summary>
         public void CerrarCheckForm()
         {
             this.abiertoCheckForm = false;
             this.checkForm = null;
         }
 
+        /// <summary>
+        /// Cierra la ventana PhantomForm
+        /// </summary>
         public void CerrarPhantomForm()
         {
             this.abiertoPhantomsForm = false;
             this.phantomForm = null;
         }
 
+        /// <summary>
+        /// Cierra la ventana Phantom2Form
+        /// </summary>
         public void CerrarPhantom2Form()
         {
             this.abiertoPhantoms2Form = false;
             this.phantoms2Form = null;
         }
 
+        /// <summary>
+        /// Cierra la ventana SegmentacionForm
+        /// </summary>
         public void CerrarSegmentacionForm()
         {
             this.abiertoSegmentacionForm = false;
             this.segmentacionForm = null;
         }
 
+        /// <summary>
+        /// Cierra la ventana ProjectForm
+        /// </summary>
         public void CerrarProjectForm()
         {
             this.abiertoProyectoForm = false;
             this.proyectoForm = null;
         }
-
+        
+        /// <summary>
+        /// Cierra la ventana SelectAreasForm
+        /// </summary>
         public void CerrarSelectAreasForm()
         {
             if (this.selecAreasForm != null)
@@ -920,11 +819,6 @@ namespace RockStatic
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void MainForm_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)

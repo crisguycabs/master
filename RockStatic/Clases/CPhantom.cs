@@ -63,7 +63,7 @@ namespace RockStatic
         /// <summary>
         /// Constructor con duplicacion
         /// </summary>
-        /// <param name="phantom"></param>
+        /// <param name="phantom">Objeto CPhantom a duplicar</param>
         public CPhantom(CPhantom phantom)
         {
             this.mediaHigh = phantom.mediaHigh;

@@ -24,8 +24,24 @@ namespace RockStatic
         /// </summary>
         public MainForm padre;
 
-        public double[] Dfm, Zfme, Pefm;
+        /// <summary>
+        /// Variable intermedia para el calculo de propiedades estaticas
+        /// </summary>
+        public double[] Dfm;
 
+        /// <summary>
+        /// Variable intermedia para el calculo de propiedades estaticas
+        /// </summary>
+        public double[] Zfme;
+
+        /// <summary>
+        /// Variable intermedia para el calculo de propiedades estaticas
+        /// </summary>
+        public double[] Pefm;
+
+        /// <summary>
+        /// Vector con los valores de profundidad para las propiedades estaticas estimadas
+        /// </summary>
         public double[] profundidad;
 
         #endregion
@@ -73,6 +89,9 @@ namespace RockStatic
             this.Close();
         }
 
+        /// <summary>
+        /// Se estiman las propiedades estáticas en función de la profundidad del core 
+        /// </summary>
         public void Estimar()
         {
             // se toma la informacion de segmentacion vs areas de interes y se estiman las propiedades petrofisicas estaticas

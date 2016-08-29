@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shfbBuild product="Sandcastle Help File Builder" version="2015.1.12.0" projectFile="C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\docRock.shfbproj" started="29/08/2016 03:58:57 p.m.">
+<shfbBuild product="Sandcastle Help File Builder" version="2015.1.12.0" projectFile="C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\docRock.shfbproj" started="29/08/2016 04:48:28 p.m.">
 <buildStep step="Initializing">
 Finding tools...
 The Sandcastle tools are located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\&#39;
@@ -12,6 +12,9 @@ Loading and initializing plug-ins...
 Lightweight Website Style Version 2015.1.12.0
 Copyright &#169; 2006-2015, Eric Woodruff, All Rights Reserved
 Portions Copyright &#169; 2014, Sam Harwell, All Rights Reserved
+</buildStep>
+<buildStep step="ClearWorkFolder">
+Clearing working folder...
 </buildStep>
 <buildStep step="ValidatingDocumentationSources">
 Validating and copying documentation source information
@@ -26,7 +29,7 @@ Copying XML comments files
 Generating shared content files (es-ES, Espa&#241;ol (Espa&#241;a))...
 SHFB: Warning BE0003: Sandcastle shared content for the &#39;es-ES, Espa&#241;ol (Espa&#241;a)&#39; language could not be found.  Using &#39;en-US, English (US)&#39; defaults.
 <plugIn name="Lightweight Website Style" behavior="After" priority="1000">
-</plugIn>    Last step completed in 00:00:00.0080
+</plugIn>    Last step completed in 00:00:00.0070
 </buildStep>
 <buildStep step="GenerateApiFilter">
 Generating API filter for MRefBuilder...
@@ -35,7 +38,7 @@ Generating API filter for MRefBuilder...
 <buildStep step="GenerateReflectionInfo">
 Generating reflection information...
 [C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe]
-Compilaci&#162;n iniciada a las 29/08/2016 03:58:59 p.m..
+Compilaci&#162;n iniciada a las 29/08/2016 04:48:30 p.m..
 Proyecto &quot;C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\GenerateRefInfo.proj&quot; en nodo 1 (destinos predeterminados).
 PrepareForBuild:
   Creando directorio &quot;obj\Debug\&quot;.
@@ -44,7 +47,7 @@ GenerateRefInfo:
   Copyright &#184; 2006-2015, Microsoft Corporation, All Rights Reserved.
   Portions Copyright &#184; 2006-2014, Eric Woodruff, All Rights Reserved.
   Loaded 1 assemblies for reflection and 1 dependency assemblies.
-  Wrote information on 1 namespaces, 32 types, and 919 members
+  Wrote information on 1 namespaces, 31 types, and 895 members
   Copiando el archivo de &quot;reflection.org&quot; en &quot;reflection.all&quot;.
   XslTransform (v2015.1.12.0)
   Copyright &#184; 2006-2015, Microsoft Corporation, All Rights Reserved.
@@ -54,13 +57,13 @@ Compilaci&#162;n del proyecto terminada &quot;C:\Users\Hdsp\Dropbox\CodigosPetro
 
 Compilaci&#162;n correcta.
 
-Tiempo transcurrido 00:00:01.39
-    Last step completed in 00:00:01.6401
+Tiempo transcurrido 00:00:01.38
+    Last step completed in 00:00:01.6641
 </buildStep>
 <buildStep step="TransformReflectionInfo">
 Transforming reflection output...
 [C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe]
-Compilaci&#162;n iniciada a las 29/08/2016 03:59:01 p.m..
+Compilaci&#162;n iniciada a las 29/08/2016 04:48:32 p.m..
 Proyecto &quot;C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\TransformManifest.proj&quot; en nodo 1 (destinos predeterminados).
 TransformManifest:
   XslTransform (v2015.1.12.0)
@@ -80,17 +83,17 @@ Compilaci&#162;n del proyecto terminada &quot;C:\Users\Hdsp\Dropbox\CodigosPetro
 
 Compilaci&#162;n correcta.
 
-Tiempo transcurrido 00:00:02.93
-    Last step completed in 00:00:03.4152
+Tiempo transcurrido 00:00:02.99
+    Last step completed in 00:00:03.4642
 </buildStep>
 <buildStep step="GenerateNamespaceSummaries">
 Generating namespace summary information...
-    Last step completed in 00:00:00.0980
+    Last step completed in 00:00:00.1090
 </buildStep>
 <buildStep step="CopyAdditionalContent">
 Copying additional content files...
 No additional content to copy
-    Last step completed in 00:00:00.0040
+    Last step completed in 00:00:00.0030
 </buildStep>
 <buildStep step="MergeTablesOfContents">
 Merging conceptual and additional tables of contents...
@@ -99,7 +102,7 @@ Merging conceptual and additional tables of contents...
 <buildStep step="GenerateIntermediateTableOfContents">
 Generating intermediate table of contents file...
 [C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe]
-Compilaci&#162;n iniciada a las 29/08/2016 03:59:04 p.m..
+Compilaci&#162;n iniciada a las 29/08/2016 04:48:35 p.m..
 Proyecto &quot;C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\GenerateIntermediateTOC.proj&quot; en nodo 1 (destinos predeterminados).
 GenerateIntermediateTOC:
   XslTransform (v2015.1.12.0)
@@ -112,22 +115,22 @@ Compilaci&#162;n correcta.
 
 Tiempo transcurrido 00:00:00.62
 Generating conceptual content intermediate TOC file...
-    Last step completed in 00:00:00.8961
+    Last step completed in 00:00:00.8730
 </buildStep>
 <buildStep step="CreateBuildAssemblerConfigs">
 Creating Sandcastle configuration files...
     sandcastle.config
-    Last step completed in 00:00:00.5200
+    Last step completed in 00:00:00.5610
 </buildStep>
 <buildStep step="MergeCustomConfigs">
 Merging custom build component configurations
 C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\sandcastle.config
-    Last step completed in 00:00:00.0580
+    Last step completed in 00:00:00.0660
 </buildStep>
 <buildStep step="BuildReferenceTopics">
 Building reference help topics...
 [C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe]
-Compilaci&#162;n iniciada a las 29/08/2016 03:59:06 p.m..
+Compilaci&#162;n iniciada a las 29/08/2016 04:48:37 p.m..
 Proyecto &quot;C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj&quot; en nodo 1 (destinos predeterminados).
 BuildReferenceTopics:
   BuildAssembler (v2015.1.12.0)
@@ -159,21 +162,7 @@ BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.AboutForm.padre] 
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.AboutForm.pictureBox1] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.AboutForm.pictureBox2] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.AboutForm.richTextBox1] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [P:RockStatic.AuxThread.Corte] Missing &lt;value&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.AuxThread.CreateBitmap] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.AuxThread.CreateBitmapCorte] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [P:RockStatic.AuxThread.Segmentacion] Missing &lt;value&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.AuxThread.SegmentarCircular] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.AuxThread.ThreadCrearBitmap(System.Object)] Missing &lt;param name=&quot;threadContext&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.AuxThread.ThreadCrearBitmapCorte(System.Object)] Missing &lt;param name=&quot;threadContext&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.AuxThread.ThreadSegmentar(System.Object)] Missing &lt;param name=&quot;threadContext&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CAreaInteres.#ctor(RockStatic.CAreaInteres)] Missing &lt;param name=&quot;area&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CAreaInteres.#ctor(System.Int32,System.Int32,System.Int32,System.String,System.Int32,System.Int32)] Missing &lt;param name=&quot;_x&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CAreaInteres.#ctor(System.Int32,System.Int32,System.Int32,System.String,System.Int32,System.Int32)] Missing &lt;param name=&quot;_y&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CAreaInteres.#ctor(System.Int32,System.Int32,System.Int32,System.String,System.Int32,System.Int32)] Missing &lt;param name=&quot;_width&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CAreaInteres.#ctor(System.Int32,System.Int32,System.Int32,System.String,System.Int32,System.Int32)] Missing &lt;param name=&quot;_nombre&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CAreaInteres.#ctor(System.Int32,System.Int32,System.Int32,System.String,System.Int32,System.Int32)] Missing &lt;param name=&quot;_ini&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CAreaInteres.#ctor(System.Int32,System.Int32,System.Int32,System.String,System.Int32,System.Int32)] Missing &lt;param name=&quot;_fin&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CCuadrado.#ctor(System.Int32,System.Int32,System.Int32)] Missing &lt;param name=&quot;inW&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.CheckForm.btnCancelar] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CheckForm.btnCancelar_Click(System.Object,System.EventArgs)] Missing &lt;param name=&quot;sender&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
@@ -226,35 +215,6 @@ BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CheckForm.trackEl
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CheckForm.trackElementos_ValueChanged(System.Object,System.EventArgs)] Missing &lt;param name=&quot;sender&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CheckForm.trackElementos_ValueChanged(System.Object,System.EventArgs)] Missing &lt;param name=&quot;e&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.CheckForm.txtCounter] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CLockBitmap.#ctor(System.Drawing.Bitmap)] Missing &lt;param name=&quot;source&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.CLockBitmap.bitmapData] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [P:RockStatic.CLockBitmap.Depth] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [P:RockStatic.CLockBitmap.Depth] Missing &lt;value&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CLockBitmap.GetPixel(System.Int32,System.Int32)] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CLockBitmap.GetPixel(System.Int32,System.Int32)] Missing &lt;param name=&quot;x&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CLockBitmap.GetPixel(System.Int32,System.Int32)] Missing &lt;param name=&quot;y&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [P:RockStatic.CLockBitmap.Height] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [P:RockStatic.CLockBitmap.Height] Missing &lt;value&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.CLockBitmap.Iptr] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [P:RockStatic.CLockBitmap.Pixels] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [P:RockStatic.CLockBitmap.Pixels] Missing &lt;value&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CLockBitmap.SetPixel(System.Int32,System.Int32,System.Drawing.Color)] Missing &lt;param name=&quot;x&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CLockBitmap.SetPixel(System.Int32,System.Int32,System.Drawing.Color)] Missing &lt;param name=&quot;y&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CLockBitmap.SetPixel(System.Int32,System.Int32,System.Drawing.Color)] Missing &lt;param name=&quot;color&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.CLockBitmap.source] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [P:RockStatic.CLockBitmap.Width] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [P:RockStatic.CLockBitmap.Width] Missing &lt;value&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.CPermisos.permiso] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CPhantom.#ctor(RockStatic.CPhantom)] Missing &lt;param name=&quot;phantom&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CProyecto.Cropper(System.Byte[],RockStatic.CCuadrado,System.String,System.String,System.Int32)] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CProyecto.GetCore] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CProyecto.GetFolderHigh] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CProyecto.GetFolderLow] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CProyecto.GetFolderPath] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CProyecto.GetPhantom1] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CProyecto.GetPhantom2] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CProyecto.GetPhantom3] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CProyecto.GetSegmentacionDone] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.CurvasForm.btnCerrar] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CurvasForm.btnCerrar_Click(System.Object,System.EventArgs)] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CurvasForm.btnCerrar_Click(System.Object,System.EventArgs)] Missing &lt;param name=&quot;sender&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
@@ -271,8 +231,6 @@ BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CurvasForm.Curvas
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CurvasForm.CurvasForm_Load(System.Object,System.EventArgs)] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CurvasForm.CurvasForm_Load(System.Object,System.EventArgs)] Missing &lt;param name=&quot;sender&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CurvasForm.CurvasForm_Load(System.Object,System.EventArgs)] Missing &lt;param name=&quot;e&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.CurvasForm.Dfm] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CurvasForm.Estimar] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.CurvasForm.lastClick] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.CurvasForm.lblTitulo] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CurvasForm.lblTitulo_DoubleClick(System.Object,System.EventArgs)] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
@@ -284,13 +242,6 @@ BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CurvasForm.lblTit
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CurvasForm.lblTitulo_MouseMove(System.Object,System.Windows.Forms.MouseEventArgs)] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CurvasForm.lblTitulo_MouseMove(System.Object,System.Windows.Forms.MouseEventArgs)] Missing &lt;param name=&quot;sender&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.CurvasForm.lblTitulo_MouseMove(System.Object,System.Windows.Forms.MouseEventArgs)] Missing &lt;param name=&quot;e&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.CurvasForm.Pefm] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.CurvasForm.profundidad] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.CurvasForm.Zfme] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.CUsuario.Afiliacion] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.CUsuario.Apellidos] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.CUsuario.Nombre] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.CUsuario.permisos] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.HomeForm.btnNew] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.HomeForm.btnNew_Click(System.Object,System.EventArgs)] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.HomeForm.btnNew_Click(System.Object,System.EventArgs)] Missing &lt;param name=&quot;sender&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
@@ -344,10 +295,6 @@ BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.HomeForm.pictureB
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.HomeForm.pictureBox3] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.HomeForm.pictureBox4] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.HomeForm.pictureBox5] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.MainForm.abiertoAboutForm] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.MainForm.aboutForm] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.AbrirHome] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.AbrirProjectForm] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.AbrirProyecto(System.String)] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.AbrirProyecto(System.String)] Missing &lt;param name=&quot;ruta&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.MainForm.acercaDeToolStripMenuItem] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
@@ -371,40 +318,18 @@ BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.MainForm.btnMinim
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.btnMinimize_Click(System.Object,System.EventArgs)] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.btnMinimize_Click(System.Object,System.EventArgs)] Missing &lt;param name=&quot;sender&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.btnMinimize_Click(System.Object,System.EventArgs)] Missing &lt;param name=&quot;e&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.Byte2image(System.Byte[])] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.MainForm.cargarProyectoToolStripMenuItem] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.cargarProyectoToolStripMenuItem_Click(System.Object,System.EventArgs)] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.cargarProyectoToolStripMenuItem_Click(System.Object,System.EventArgs)] Missing &lt;param name=&quot;sender&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.cargarProyectoToolStripMenuItem_Click(System.Object,System.EventArgs)] Missing &lt;param name=&quot;e&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.CerrarCheckForm] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.CerrarCurvasForm] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.CerrarHomeForm] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.CerrarNuevoProyectoForm] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.CerrarPhantom2Form] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.CerrarPhantomForm] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.CerrarPreviewSegForm] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.CerrarProjectForm] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.CerrarSegmentacionForm] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.CerrarSelectAreasForm] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.CloseWaiting] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.ColorToGrayscale(System.Drawing.Bitmap)] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.ColorToGrayscale(System.Drawing.Bitmap)] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.ColorToGrayscale(System.Drawing.Bitmap)] Missing &lt;param name=&quot;bmp&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.CorregirOriginal2PictBox(RockStatic.CCuadrado,System.Int32,System.Int32)] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.CorregirPictBox2Original(RockStatic.CCuadrado,System.Int32,System.Int32)] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.CorregirPictBox2Original(System.Int32,System.Int32,System.Int32)] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.CropCirle(System.Drawing.Bitmap,RockStatic.CCuadrado)] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.CropCirle(System.Drawing.Bitmap,RockStatic.CCuadrado)] Missing &lt;param name=&quot;srcImage&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.MainForm.guiaDeUsuarioToolStripMenuItem] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.guiaDeUsuarioToolStripMenuItem_Click(System.Object,System.EventArgs)] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.guiaDeUsuarioToolStripMenuItem_Click(System.Object,System.EventArgs)] Missing &lt;param name=&quot;sender&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.guiaDeUsuarioToolStripMenuItem_Click(System.Object,System.EventArgs)] Missing &lt;param name=&quot;e&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.Img2byte(System.Drawing.Bitmap)] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.Img2byte(System.Drawing.Bitmap)] Missing &lt;param name=&quot;srcImg&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.Img2byte(System.Drawing.Image)] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.Img2byte(System.Drawing.Image)] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.Img2byte(System.Drawing.Image)] Missing &lt;param name=&quot;srcImg&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.Img2byte(System.String)] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.MainForm.label1] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.MainForm.lastClick] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.MainForm_FormClosed(System.Object,System.Windows.Forms.FormClosedEventArgs)] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
@@ -413,9 +338,6 @@ BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.MainForm
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.MainForm_Load(System.Object,System.EventArgs)] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.MainForm_Load(System.Object,System.EventArgs)] Missing &lt;param name=&quot;sender&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.MainForm_Load(System.Object,System.EventArgs)] Missing &lt;param name=&quot;e&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.MainForm_Paint(System.Object,System.Windows.Forms.PaintEventArgs)] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.MainForm_Paint(System.Object,System.Windows.Forms.PaintEventArgs)] Missing &lt;param name=&quot;sender&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.MainForm_Paint(System.Object,System.Windows.Forms.PaintEventArgs)] Missing &lt;param name=&quot;e&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.MainForm.menuMain] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.MainForm.nuevoProyectoToolStripMenuItem] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.nuevoProyectoToolStripMenuItem_Click(System.Object,System.EventArgs)] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
@@ -437,22 +359,13 @@ BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.MainForm.salirToo
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.salirToolStripMenuItem_Click(System.Object,System.EventArgs)] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.salirToolStripMenuItem_Click(System.Object,System.EventArgs)] Missing &lt;param name=&quot;sender&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.salirToolStripMenuItem_Click(System.Object,System.EventArgs)] Missing &lt;param name=&quot;e&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.SeleccionarProyecto] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.ShowWaiting(System.String)] Missing &lt;param name=&quot;mensaje&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.MainForm.tableLayoutPanel1] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.tableLayoutPanel1_CellPaint(System.Object,System.Windows.Forms.TableLayoutCellPaintEventArgs)] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.tableLayoutPanel1_CellPaint(System.Object,System.Windows.Forms.TableLayoutCellPaintEventArgs)] Missing &lt;param name=&quot;sender&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MainForm.tableLayoutPanel1_CellPaint(System.Object,System.Windows.Forms.TableLayoutCellPaintEventArgs)] Missing &lt;param name=&quot;e&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.MainForm.toolStripContainer1] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.MainForm.toolStripSeparator1] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.MainForm.usuarios] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.MainForm.ventanaToolStripMenuItem] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MyDataCube.CreateBitmapCorte(System.Collections.Generic.List{System.UInt16},System.Int32,System.Int32)] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MyDataCube.CreateBitmapCorte(System.Collections.Generic.List{System.UInt16},System.Int32,System.Int32,System.Int32,System.Int32)] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MyDataCube.GenerarCoreHorizontal(System.Int32)] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MyDataCube.GenerarCoreVertical(System.Int32)] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MyDataCube.GetMaximo] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MyDataCube.GetMinimo] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MyDataCube.SegCircThread(RockStatic.CCuadrado)] Missing &lt;param name=&quot;area&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MyDicom.#ctor(System.String)] Missing &lt;param name=&quot;ruta&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.MyDicom.Byte2Pixels16(System.Collections.Generic.List{System.Byte},System.Int32,System.Int32,System.Int32,System.Double,System.Double,System.String)] Missing &lt;returns&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
@@ -1159,11 +1072,6 @@ BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.ZzzzRangeBar.colo
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.ZzzzRangeBar.colorRange] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.ZzzzRangeBar.colorShadowDark] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.ZzzzRangeBar.colorShadowLight] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [P:RockStatic.ZzzzRangeBar.DivisionNum] Missing &lt;value&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [P:RockStatic.ZzzzRangeBar.HeightOfBar] Missing &lt;value&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [P:RockStatic.ZzzzRangeBar.HeightOfMark] Missing &lt;value&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [P:RockStatic.ZzzzRangeBar.HeightOfTick] Missing &lt;value&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [P:RockStatic.ZzzzRangeBar.InnerColor] Missing &lt;value&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.ZzzzRangeBar.LMarkPnt] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.ZzzzRangeBar.MarkHeight] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.ZzzzRangeBar.MarkWidth] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
@@ -1197,7 +1105,6 @@ BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.ZzzzRangeBar.OnRa
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.ZzzzRangeBar.OnSizeChanged(System.Object,System.EventArgs)] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.ZzzzRangeBar.OnSizeChanged(System.Object,System.EventArgs)] Missing &lt;param name=&quot;sender&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:RockStatic.ZzzzRangeBar.OnSizeChanged(System.Object,System.EventArgs)] Missing &lt;param name=&quot;e&quot;/&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [P:RockStatic.ZzzzRangeBar.Orientation] Missing &lt;value&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.ZzzzRangeBar.orientationBar] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.ZzzzRangeBar.orientationScale] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.ZzzzRangeBar.PosL] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
@@ -1205,15 +1112,10 @@ BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.ZzzzRangeBar.PosR
 BuildAssembler : warning : ShowMissingComponent: [E:RockStatic.ZzzzRangeBar.RangeChanged] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [E:RockStatic.ZzzzRangeBar.RangeChanging] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.ZzzzRangeBar.rangeMax] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [P:RockStatic.ZzzzRangeBar.RangeMaximum] Missing &lt;value&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.ZzzzRangeBar.rangeMin] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [P:RockStatic.ZzzzRangeBar.RangeMinimum] Missing &lt;value&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.ZzzzRangeBar.RMarkPnt] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [P:RockStatic.ZzzzRangeBar.ScaleOrientation] Missing &lt;value&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.ZzzzRangeBar.sizeShadow] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.ZzzzRangeBar.TickHeight] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [P:RockStatic.ZzzzRangeBar.TotalMaximum] Missing &lt;value&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-BuildAssembler : warning : ShowMissingComponent: [P:RockStatic.ZzzzRangeBar.TotalMinimum] Missing &lt;value&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.ZzzzRangeBar.XPosMax] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [F:RockStatic.ZzzzRangeBar.XPosMin] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [T:RockStatic.ZzzzRangeBar.ActiveMarkType] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
@@ -1221,20 +1123,20 @@ BuildAssembler : warning : ShowMissingComponent: [T:RockStatic.ZzzzRangeBar.Rang
 BuildAssembler : warning : ShowMissingComponent: [T:RockStatic.ZzzzRangeBar.RangeChangedEventHandler] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [T:RockStatic.ZzzzRangeBar.RangeChangingEventHandler] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [T:RockStatic.ZzzzRangeBar.TopBottomOrientation] Missing &lt;summary&gt; documentation [C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj]
-  Processed 1044 topic(s)
-  1086 warning(s)
-  CopyFromIndexComponent: &quot;reflection&quot; in-memory cache entries used: 9 of 15.
+  Processed 1015 topic(s)
+  985 warning(s)
+  CopyFromIndexComponent: &quot;reflection&quot; in-memory cache entries used: 8 of 15.
   CopyFromIndexComponent: &quot;comments&quot; in-memory cache entries used: 5 of 30.
 Compilaci&#162;n del proyecto terminada &quot;C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\BuildReferenceTopics.proj&quot; (destinos predeterminados).
 
 Compilaci&#162;n correcta.
 
-Tiempo transcurrido 00:00:24.67
-    Last step completed in 00:00:24.9814
+Tiempo transcurrido 00:00:24.42
+    Last step completed in 00:00:24.7324
 </buildStep>
 <buildStep step="CombiningIntermediateTocFiles">
 Combining conceptual and API intermediate TOC files...
-    Last step completed in 00:00:00.0070
+    Last step completed in 00:00:00.0080
 </buildStep>
 <buildStep step="ExtractingHtmlInfo">
 Extracting HTML info for HTML Help 1 and/or website...
@@ -1246,11 +1148,11 @@ E-Mail: Eric@EWoodruff.us
 SHFB: Warning SHE0001: LCID &#39;3082&#39; not found in configuration file.  Defaulting to ANSI code page value of &#39;1252&#39;, encoding charset &#39;Windows-1252&#39;.
 
 Processing Help 1 files in C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\Output\HtmlHelp1
-Processed 1044 HTML files
+Processed 1015 HTML files
 Sorting keywords and generating See Also indices
 Saving HTML Help 1 keyword index to C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\Documentacion de Desarrollo RockStatic.hhk
 Saving HTML Help 1 table of contents to C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\Documentacion de Desarrollo RockStatic.hhc
-    Last step completed in 00:00:02.2741
+    Last step completed in 00:00:02.0801
 </buildStep>
 <buildStep step="CopyStandardHelpContent">
 Copying standard help content...
@@ -1317,19 +1219,19 @@ C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyle
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-zh-CN.css -&gt; C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\Output\HtmlHelp1\styles\branding-zh-CN.css
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-zh-TW.css -&gt; C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\Output\HtmlHelp1\styles\branding-zh-TW.css
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding.css -&gt; C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\Output\HtmlHelp1\styles\branding.css
-    Last step completed in 00:00:00.4940
+    Last step completed in 00:00:00.8680
 </buildStep>
 <buildStep step="GenerateHelpFormatTableOfContents">
 Generating HTML Help 1 table of contents file...
-    Last step completed in 00:00:00.0010
+    Last step completed in 00:00:00.0020
 </buildStep>
 <buildStep step="GenerateHelpFileIndex">
 Generating HTML Help 1 index file...
-    Last step completed in 00:00:00.0010
+    Last step completed in 00:00:00.0020
 </buildStep>
 <buildStep step="GenerateHelpProject">
 Generating HTML Help 1 project file...
-    Last step completed in 00:00:00.0110
+    Last step completed in 00:00:00.0090
 </buildStep>
 <buildStep step="CompilingHelpFile">
 Compiling HTML Help 1 file...
@@ -1344,11 +1246,11 @@ Compiling HTML Help 1 file...
   
   
   
-  Compile time: 0 minutes, 20 seconds
+  Compile time: 0 minutes, 19 seconds
   
-  1,046	Topics
+  1,017	Topics
   
-  11,089	Local links
+  10,789	Local links
   
   0	Internet links
   
@@ -1358,19 +1260,19 @@ Compiling HTML Help 1 file...
   
   
   
-  Created c:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\Output\HtmlHelp1\Documentacion de Desarrollo RockStatic.chm, 1,475,229 bytes
+  Created c:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\Help\Working\Output\HtmlHelp1\Documentacion de Desarrollo RockStatic.chm, 1,468,385 bytes
   
-  Compression decreased file by 9,467,457 bytes.
+  Compression decreased file by 9,360,834 bytes.
   
-    Last step completed in 00:00:22.9503
+    Last step completed in 00:00:20.7092
 </buildStep>
 <buildStep step="CleanIntermediates">
 Removing intermediate files...
-    Last step completed in 00:00:00.1960
+    Last step completed in 00:00:00.2140
 </buildStep>
 <buildStep step="Completed">
 
-Build completed successfully at 29/08/2016 03:59:57 p.m..  Total time: 00:00:59.3954
+Build completed successfully at 29/08/2016 04:49:25 p.m..  Total time: 00:00:57.2183
 
 </buildStep>
 </shfbBuild>

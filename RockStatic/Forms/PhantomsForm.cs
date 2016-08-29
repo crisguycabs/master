@@ -233,7 +233,8 @@ namespace RockStatic
         /// </summary>
         /// <param name="media">Valor de la media de la distribucion normal</param>
         /// <param name="desv">Valor de la desvStd de la distribucion normal</param>
-        /// <returns></returns>
+        /// <param name="x">Vector de 101 elementos con el eje X de la campana de Gauss</param>
+        /// <returns>Vector de 101 elementos con el eje Y de la campana de Gauss</returns>
         private List<double> GenerarCampanaY(double media, double desv, List<double> x)
         {
             List<double> campanay = new List<double>();
@@ -250,6 +251,12 @@ namespace RockStatic
             return campanay;
         }
 
+        /// <summary>
+        /// Genera un vector de 101 elementos con los elementos X que forman una campana de Gauss
+        /// </summary>
+        /// <param name="media">Valor de la media de la distribucion normal</param>
+        /// <param name="desv">Valor de la desvStd de la distribucion normal</param>
+        /// <returns>Vector de 101 elementos con el eje X de la campana de Gauss</returns>
         private List<double> GenerarCampanaX(double media, double desv)
         {
             List<double> campanax = new List<double>();
