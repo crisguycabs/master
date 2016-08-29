@@ -4,7 +4,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>3.10</ProductVersion>
-    <ProjectGuid>8350ff95-302a-4bf9-959d-c15e9759691a</ProjectGuid>
+    <ProjectGuid>1ac60c8b-7622-4606-90ef-b33843ff0335</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
     <OutputName>RSinstallerWix</OutputName>
     <OutputType>Package</OutputType>
