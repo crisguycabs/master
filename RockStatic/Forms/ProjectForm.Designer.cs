@@ -40,16 +40,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.menuProject = new System.Windows.Forms.MenuStrip();
-            this.proyectoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.segmentarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.elementosHighToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.elementosLowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.areasDeInteresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.elementosHighToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.elementosLowToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.cerrarProyectoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblProyecto = new System.Windows.Forms.Label();
             this.grpCurvas = new System.Windows.Forms.GroupBox();
             this.btnCurvas = new System.Windows.Forms.Button();
@@ -58,7 +48,6 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictAreasHigh)).BeginInit();
-            this.menuProject.SuspendLayout();
             this.grpCurvas.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -199,84 +188,6 @@
             this.btnSave.MouseEnter += new System.EventHandler(this.btnSegHigh_MouseEnter);
             this.btnSave.MouseLeave += new System.EventHandler(this.btnSegHigh_MouseLeave);
             // 
-            // menuProject
-            // 
-            this.menuProject.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.proyectoToolStripMenuItem});
-            this.menuProject.Location = new System.Drawing.Point(0, 0);
-            this.menuProject.MdiWindowListItem = this.proyectoToolStripMenuItem;
-            this.menuProject.Name = "menuProject";
-            this.menuProject.Size = new System.Drawing.Size(470, 24);
-            this.menuProject.TabIndex = 12;
-            this.menuProject.Text = "menuStrip1";
-            this.menuProject.Visible = false;
-            // 
-            // proyectoToolStripMenuItem
-            // 
-            this.proyectoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.segmentarToolStripMenuItem,
-            this.areasDeInteresToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.cerrarProyectoToolStripMenuItem});
-            this.proyectoToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.Insert;
-            this.proyectoToolStripMenuItem.MergeIndex = 1;
-            this.proyectoToolStripMenuItem.Name = "proyectoToolStripMenuItem";
-            this.proyectoToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.proyectoToolStripMenuItem.Text = "&Proyecto";
-            // 
-            // segmentarToolStripMenuItem
-            // 
-            this.segmentarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.elementosHighToolStripMenuItem,
-            this.elementosLowToolStripMenuItem});
-            this.segmentarToolStripMenuItem.Name = "segmentarToolStripMenuItem";
-            this.segmentarToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
-            this.segmentarToolStripMenuItem.Text = "&Segmentar";
-            // 
-            // elementosHighToolStripMenuItem
-            // 
-            this.elementosHighToolStripMenuItem.Name = "elementosHighToolStripMenuItem";
-            this.elementosHighToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.elementosHighToolStripMenuItem.Text = "Elementos &High";
-            // 
-            // elementosLowToolStripMenuItem
-            // 
-            this.elementosLowToolStripMenuItem.Name = "elementosLowToolStripMenuItem";
-            this.elementosLowToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.elementosLowToolStripMenuItem.Text = "Elementos &Low";
-            // 
-            // areasDeInteresToolStripMenuItem
-            // 
-            this.areasDeInteresToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.elementosHighToolStripMenuItem1,
-            this.elementosLowToolStripMenuItem1});
-            this.areasDeInteresToolStripMenuItem.Name = "areasDeInteresToolStripMenuItem";
-            this.areasDeInteresToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
-            this.areasDeInteresToolStripMenuItem.Text = "&Areas de Interes";
-            // 
-            // elementosHighToolStripMenuItem1
-            // 
-            this.elementosHighToolStripMenuItem1.Name = "elementosHighToolStripMenuItem1";
-            this.elementosHighToolStripMenuItem1.Size = new System.Drawing.Size(158, 22);
-            this.elementosHighToolStripMenuItem1.Text = "Elementos &High";
-            // 
-            // elementosLowToolStripMenuItem1
-            // 
-            this.elementosLowToolStripMenuItem1.Name = "elementosLowToolStripMenuItem1";
-            this.elementosLowToolStripMenuItem1.Size = new System.Drawing.Size(158, 22);
-            this.elementosLowToolStripMenuItem1.Text = "Elementos &Low";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(154, 6);
-            // 
-            // cerrarProyectoToolStripMenuItem
-            // 
-            this.cerrarProyectoToolStripMenuItem.Name = "cerrarProyectoToolStripMenuItem";
-            this.cerrarProyectoToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
-            this.cerrarProyectoToolStripMenuItem.Text = "&Cerrar Proyecto";
-            // 
             // lblProyecto
             // 
             this.lblProyecto.BackColor = System.Drawing.Color.Green;
@@ -343,12 +254,10 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.menuProject);
             this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuProject;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ProjectForm";
@@ -361,11 +270,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictAreasHigh)).EndInit();
-            this.menuProject.ResumeLayout(false);
-            this.menuProject.PerformLayout();
             this.grpCurvas.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -380,16 +286,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.MenuStrip menuProject;
-        private System.Windows.Forms.ToolStripMenuItem proyectoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem segmentarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem elementosHighToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem elementosLowToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem areasDeInteresToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem elementosHighToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem elementosLowToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem cerrarProyectoToolStripMenuItem;
         private System.Windows.Forms.Label lblProyecto;
         public System.Windows.Forms.PictureBox pictSegHigh;
         public System.Windows.Forms.PictureBox pictAreasHigh;

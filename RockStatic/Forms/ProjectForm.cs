@@ -82,16 +82,14 @@ namespace RockStatic
         private void btnSave_Click(object sender, EventArgs e)
         {
             this.padre.actual.Salvar();
+
+            MessageBox.Show("El proyecto " + this.padre.actual.name + "ha sido guardado en disco con exito", "Operacion exitosa!", MessageBoxButtons.OK, MessageBoxIcon.None);
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             // se cierra esta ventana, y todas las demas, y se abre el HomeForm
-            if (padre.abiertoCheckForm) padre.checkForm.Close();
-            if (padre.abiertoNuevoProyectoForm) padre.nuevoProyectoForm.Close();
-
-            this.padre.AbrirHome();
-            this.Close();
+            padre.CloseAll();                        
         }
 
         /// <summary>

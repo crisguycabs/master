@@ -40,6 +40,7 @@
             this.pictPhantom2 = new System.Windows.Forms.PictureBox();
             this.pictPhantom1 = new System.Windows.Forms.PictureBox();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnSelTrans = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictCore)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numActual)).BeginInit();
@@ -182,12 +183,28 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // btnSelTrans
+            // 
+            this.btnSelTrans.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSelTrans.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnSelTrans.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnSelTrans.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.btnSelTrans.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelTrans.Location = new System.Drawing.Point(628, 669);
+            this.btnSelTrans.Name = "btnSelTrans";
+            this.btnSelTrans.Size = new System.Drawing.Size(129, 23);
+            this.btnSelTrans.TabIndex = 13;
+            this.btnSelTrans.Text = "Seg Transversal";
+            this.btnSelTrans.UseVisualStyleBackColor = false;
+            this.btnSelTrans.Click += new System.EventHandler(this.btnSelTrans_Click);
+            // 
             // SelectAreas2Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(843, 701);
+            this.Controls.Add(this.btnSelTrans);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.grpPhantoms);
             this.Controls.Add(this.groupBox1);
@@ -198,7 +215,7 @@
             this.MinimizeBox = false;
             this.Name = "SelectAreas2Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SelectAreas2Form";            
+            this.Text = "SelectAreas2Form";
             this.Load += new System.EventHandler(this.SelectAreas2Form_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.SelectAreas2Form_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.pictCore)).EndInit();
@@ -227,5 +244,6 @@
         private System.Windows.Forms.TrackBar trackCortes;
         private System.Windows.Forms.NumericUpDown numActual;
         private System.Windows.Forms.Label lblActual;
+        private System.Windows.Forms.Button btnSelTrans;
     }
 }

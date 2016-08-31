@@ -182,7 +182,7 @@
             this.btnCrear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCrear.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCrear.Location = new System.Drawing.Point(274, 343);
+            this.btnCrear.Location = new System.Drawing.Point(200, 343);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(68, 23);
             this.btnCrear.TabIndex = 4;
@@ -200,7 +200,7 @@
             this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(200, 343);
+            this.btnCancelar.Location = new System.Drawing.Point(274, 343);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(68, 23);
             this.btnCancelar.TabIndex = 5;
@@ -476,13 +476,8 @@
         private System.Windows.Forms.TextBox txtNewName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSelHigh;
-        private System.Windows.Forms.PictureBox pictHigh;
-        private System.Windows.Forms.Button btnCheckHigh;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSelLow;
-        private System.Windows.Forms.Button btnCheckLow;
-        private System.Windows.Forms.PictureBox pictLow;
-        private System.Windows.Forms.Button btnCrear;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label lblError;
         private System.Windows.Forms.Label lblTitle;
@@ -500,5 +495,10 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox lstUnidades;
+        public System.Windows.Forms.PictureBox pictHigh;
+        public System.Windows.Forms.Button btnCheckHigh;
+        public System.Windows.Forms.Button btnCheckLow;
+        public System.Windows.Forms.PictureBox pictLow;
+        public System.Windows.Forms.Button btnCrear;
     }
 }

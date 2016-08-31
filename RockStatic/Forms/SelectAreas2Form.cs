@@ -249,6 +249,11 @@ namespace RockStatic
         {
             trackCortes.Value = Convert.ToInt32(numActual.Value);
             trackCortes_Scroll(sender, e);
+        }
+
+        private void btnSelTrans_Click(object sender, EventArgs e)
+        {
+            padre.selecAreasForm.Select();
         }              
     }
 }

@@ -314,7 +314,7 @@ namespace RockStatic
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if(MessageBox.Show("Desea salir?","",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes) this.Close();
         }
 
         /// <summary>
@@ -340,6 +340,7 @@ namespace RockStatic
 
         private void nuevoProyectoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CloseAll();
             NuevoProyecto();
         }
 
@@ -395,10 +396,7 @@ namespace RockStatic
         private void cargarProyectoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // se cierra cualquier ventana que exista abierta
-            if (abiertoCheckForm) checkForm.Close();
-            if (abiertoHomeForm) homeForm.Close();
-            if (abiertoNuevoProyectoForm) nuevoProyectoForm.Close();
-            if (abiertoProyectoForm) proyectoForm.Close();
+            CloseAll();
 
             SeleccionarProyecto();
         }
@@ -889,6 +887,26 @@ namespace RockStatic
         private void guiaDeUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start(@"help.pdf");
+        }
+
+        /// <summary>
+        /// Se cierran todas las ventanas disponibles y se vuelve al Home
+        /// </summary>
+        public void CloseAll()
+        {
+            if (abiertoCheckForm) checkForm.Close();
+            if (abiertoNuevoProyectoForm) nuevoProyectoForm.Close();
+            if (abiertoCurvasForm) curvasForm.Close();
+            if (abiertoPhantoms2Form) phantoms2Form.Close();
+            if (abiertoPhantomsForm) phantomForm.Close();
+            if (abiertoPreviewSegForm) previewSegForm.Close();
+            if (abiertoSegmentacionForm) segmentacionForm.Close();
+            if (abiertoSelectAreas2Form) selecAreas2Form.Close();
+            if (abiertoSelectAreasForm) selecAreasForm.Close();
+            if (abiertoHomeForm) homeForm.Close();
+            if (abiertoProyectoForm) proyectoForm.Close();
+
+            AbrirHome();            
         }
     }
 }

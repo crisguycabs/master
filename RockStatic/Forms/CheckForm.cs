@@ -199,7 +199,8 @@ namespace RockStatic
                 for (int i = 0; i < temp.Count; i++)
                     newProjectForm.tempLow.Add(temp[i]);
             }
-            
+
+            newProjectForm.CheckLargos();
             this.Close();
         }
 
@@ -210,6 +211,27 @@ namespace RockStatic
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            // caso particular que se borre el unico elemento de la lista
+            if (lstElementos.Items.Count == 1)
+            {
+                if (filesHigh)
+                {
+                    newProjectForm.tempHigh.Clear();
+                    newProjectForm.btnCheckHigh.Enabled = false;
+                    newProjectForm.pictHigh.Image = Properties.Resources.redX;                    
+                }
+                else
+                {
+                    newProjectForm.tempLow.Clear();
+                    newProjectForm.btnCheckLow.Enabled = false;
+                    newProjectForm.pictLow.Image = Properties.Resources.redX;
+                }
+                newProjectForm.CheckLargos();
+                newProjectForm.btnCrear.Enabled = false;
+                this.Close();
+                return;
+            }
+
             // se toma el indice seleccionado y se borra de la lista temporal, asi como de los dicom
             int indice = lstElementos.SelectedIndex;
             temp.RemoveAt(indice);

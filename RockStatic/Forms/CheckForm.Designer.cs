@@ -54,7 +54,7 @@
             this.btnCerrar.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.Green;
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerrar.Location = new System.Drawing.Point(746, 590);
+            this.btnCerrar.Location = new System.Drawing.Point(665, 590);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(75, 25);
             this.btnCerrar.TabIndex = 3;
@@ -106,7 +106,6 @@
             this.lstElementos.ItemHeight = 14;
             this.lstElementos.Location = new System.Drawing.Point(500, 42);
             this.lstElementos.Name = "lstElementos";
-            this.lstElementos.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lstElementos.Size = new System.Drawing.Size(321, 534);
             this.lstElementos.TabIndex = 2;
             this.lstElementos.DoubleClick += new System.EventHandler(this.lstElementos_DoubleClick);
@@ -116,7 +115,7 @@
             this.btnCancelar.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.Green;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Location = new System.Drawing.Point(665, 590);
+            this.btnCancelar.Location = new System.Drawing.Point(745, 590);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 25);
             this.btnCancelar.TabIndex = 3;

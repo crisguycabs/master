@@ -77,6 +77,7 @@
             this.numFrom = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnSelLong = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictCore)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numActual)).BeginInit();
@@ -120,7 +121,7 @@
             this.btnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Location = new System.Drawing.Point(139, 20);
+            this.btnCancelar.Location = new System.Drawing.Point(226, 20);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(70, 23);
             this.btnCancelar.TabIndex = 10;
@@ -636,7 +637,7 @@
             this.btnGuardar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Location = new System.Drawing.Point(222, 20);
+            this.btnGuardar.Location = new System.Drawing.Point(147, 20);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(70, 23);
             this.btnGuardar.TabIndex = 10;
@@ -649,6 +650,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.btnCancelar);
+            this.groupBox4.Controls.Add(this.btnSelLong);
             this.groupBox4.Controls.Add(this.btnGuardar);
             this.groupBox4.Location = new System.Drawing.Point(529, 448);
             this.groupBox4.Name = "groupBox4";
@@ -745,6 +747,23 @@
             this.label7.Size = new System.Drawing.Size(45, 14);
             this.label7.TabIndex = 21;
             this.label7.Text = "Desde:";
+            // 
+            // btnSelLong
+            // 
+            this.btnSelLong.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSelLong.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnSelLong.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnSelLong.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.btnSelLong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelLong.Location = new System.Drawing.Point(9, 20);
+            this.btnSelLong.Name = "btnSelLong";
+            this.btnSelLong.Size = new System.Drawing.Size(129, 23);
+            this.btnSelLong.TabIndex = 10;
+            this.btnSelLong.Text = "Seg Longitudinal";
+            this.btnSelLong.UseVisualStyleBackColor = false;
+            this.btnSelLong.Click += new System.EventHandler(this.btnSelLong_Click);
+            this.btnSelLong.MouseEnter += new System.EventHandler(this.btnCerrar_MouseEnter);
+            this.btnSelLong.MouseLeave += new System.EventHandler(this.btnCerrar_MouseLeave);
             // 
             // SelectAreasForm
             // 
@@ -845,6 +864,7 @@
         private System.Windows.Forms.Button btnSelall;
         private System.Windows.Forms.ListBox lstAreas;
         private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Button btnSelLong;
 
     }
 }

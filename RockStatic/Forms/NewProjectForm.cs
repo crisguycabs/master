@@ -158,7 +158,7 @@ namespace RockStatic
                 btnCheckHigh.Enabled = true;
                 CheckLargos();
 
-                // se cierra la ventana NewProyectForm
+                // se cierra la ventana de espera
                 padre.CloseWaiting();
             }
         }
@@ -265,6 +265,14 @@ namespace RockStatic
 
             if (saveFile.ShowDialog() == DialogResult.OK)
             {
+                // se verifica que no exista una carpeta con el mismo nombre
+                string previous = System.IO.Path.GetDirectoryName(saveFile.FileName) + "\\" + Path.GetFileNameWithoutExtension(saveFile.FileName);
+                if (Directory.Exists(previous))
+                {
+                    MessageBox.Show("Ya existe un proyecto con el nombre " + Path.GetFileNameWithoutExtension(saveFile.FileName) + ". Cambie el nombre del proyecto o escoga otra ruta donde guardarlo.", "Error de duplicado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;                    
+                }
+
                 DateTime ini = DateTime.Now;
                 // se muestra la ventana de espera
                 padre.ShowWaiting("Espere mientras RockStatic crea el nuevo proyecto...");
@@ -293,6 +301,7 @@ namespace RockStatic
                 // nombre y ruta de la carpeta del proyecto
                 string folderPath = di.ToString() + "\\" + padre.actual.name;
                 padre.actual.SetFolderPath(folderPath);
+
                 Directory.CreateDirectory(folderPath);
 
                 // se crea la carpeta de imagenes HIGH

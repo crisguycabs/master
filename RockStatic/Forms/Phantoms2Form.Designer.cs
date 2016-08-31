@@ -289,7 +289,7 @@
             this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(161, 182);
+            this.btnCancelar.Location = new System.Drawing.Point(236, 182);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(68, 23);
             this.btnCancelar.TabIndex = 22;
@@ -307,7 +307,7 @@
             this.btnCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrar.Location = new System.Drawing.Point(236, 182);
+            this.btnCerrar.Location = new System.Drawing.Point(161, 182);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(68, 23);
             this.btnCerrar.TabIndex = 23;

@@ -209,7 +209,7 @@
             this.Name = "HomeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HOME";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HomeForm_FormClosed);            
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HomeForm_FormClosed);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.HomeForm_Paint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.HomeForm_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.HomeForm_MouseMove);
@@ -230,13 +230,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnNew;
-        private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox5;
+        public System.Windows.Forms.Button btnOpen;
 
     }
 }

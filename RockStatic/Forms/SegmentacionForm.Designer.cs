@@ -59,15 +59,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.pictSmall = new System.Windows.Forms.PictureBox();
-            this.menuSegmentacion = new System.Windows.Forms.MenuStrip();
-            this.segmentacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.segmentacionAutomaticaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.segmentacionManualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.previsualizarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cancelarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnReset = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -86,7 +77,6 @@
             this.grpManual.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictSmall)).BeginInit();
-            this.menuSegmentacion.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackContraste)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBrillo)).BeginInit();
@@ -97,7 +87,7 @@
             this.trackElementos.Location = new System.Drawing.Point(4, 617);
             this.trackElementos.Name = "trackElementos";
             this.trackElementos.Size = new System.Drawing.Size(526, 45);
-            this.trackElementos.TabIndex = 1;            
+            this.trackElementos.TabIndex = 1;
             this.trackElementos.ValueChanged += new System.EventHandler(this.trackElementos_ValueChanged);
             // 
             // lblTitulo
@@ -138,7 +128,7 @@
             this.btnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Location = new System.Drawing.Point(10, 16);
+            this.btnCancelar.Location = new System.Drawing.Point(115, 16);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 25);
             this.btnCancelar.TabIndex = 3;
@@ -491,7 +481,7 @@
             this.btnSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Location = new System.Drawing.Point(115, 16);
+            this.btnSave.Location = new System.Drawing.Point(10, 16);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 25);
             this.btnSave.TabIndex = 3;
@@ -511,80 +501,6 @@
             this.pictSmall.TabIndex = 17;
             this.pictSmall.TabStop = false;
             this.pictSmall.Paint += new System.Windows.Forms.PaintEventHandler(this.pictSmall_Paint);
-            // 
-            // menuSegmentacion
-            // 
-            this.menuSegmentacion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuSegmentacion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.segmentacionToolStripMenuItem});
-            this.menuSegmentacion.Location = new System.Drawing.Point(0, 0);
-            this.menuSegmentacion.MdiWindowListItem = this.segmentacionToolStripMenuItem;
-            this.menuSegmentacion.Name = "menuSegmentacion";
-            this.menuSegmentacion.Size = new System.Drawing.Size(1024, 24);
-            this.menuSegmentacion.TabIndex = 18;
-            this.menuSegmentacion.Text = "menuStrip1";
-            this.menuSegmentacion.Visible = false;
-            // 
-            // segmentacionToolStripMenuItem
-            // 
-            this.segmentacionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.segmentacionAutomaticaToolStripMenuItem,
-            this.segmentacionManualToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.previsualizarToolStripMenuItem1,
-            this.toolStripSeparator1,
-            this.guardarToolStripMenuItem,
-            this.cancelarToolStripMenuItem});
-            this.segmentacionToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.Insert;
-            this.segmentacionToolStripMenuItem.MergeIndex = 1;
-            this.segmentacionToolStripMenuItem.Name = "segmentacionToolStripMenuItem";
-            this.segmentacionToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
-            this.segmentacionToolStripMenuItem.Text = "&Segmentacion";
-            // 
-            // segmentacionAutomaticaToolStripMenuItem
-            // 
-            this.segmentacionAutomaticaToolStripMenuItem.Name = "segmentacionAutomaticaToolStripMenuItem";
-            this.segmentacionAutomaticaToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            this.segmentacionAutomaticaToolStripMenuItem.Text = "Segmentacion &Automatica";
-            this.segmentacionAutomaticaToolStripMenuItem.Click += new System.EventHandler(this.segmentacionAutomaticaToolStripMenuItem_Click);
-            // 
-            // segmentacionManualToolStripMenuItem
-            // 
-            this.segmentacionManualToolStripMenuItem.Name = "segmentacionManualToolStripMenuItem";
-            this.segmentacionManualToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            this.segmentacionManualToolStripMenuItem.Text = "Segmentacion &Manual";
-            this.segmentacionManualToolStripMenuItem.Click += new System.EventHandler(this.segmentacionManualToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(212, 6);
-            // 
-            // previsualizarToolStripMenuItem1
-            // 
-            this.previsualizarToolStripMenuItem1.Name = "previsualizarToolStripMenuItem1";
-            this.previsualizarToolStripMenuItem1.Size = new System.Drawing.Size(215, 22);
-            this.previsualizarToolStripMenuItem1.Text = "&Previsualizar";
-            this.previsualizarToolStripMenuItem1.Click += new System.EventHandler(this.btnPreview_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(212, 6);
-            // 
-            // guardarToolStripMenuItem
-            // 
-            this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            this.guardarToolStripMenuItem.Text = "&Guardar";
-            this.guardarToolStripMenuItem.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // cancelarToolStripMenuItem
-            // 
-            this.cancelarToolStripMenuItem.Name = "cancelarToolStripMenuItem";
-            this.cancelarToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            this.cancelarToolStripMenuItem.Text = "&Cancelar";
-            this.cancelarToolStripMenuItem.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // groupBox2
             // 
@@ -671,11 +587,9 @@
             this.Controls.Add(this.grpAuto);
             this.Controls.Add(this.trackElementos);
             this.Controls.Add(this.lblTitulo);
-            this.Controls.Add(this.menuSegmentacion);
             this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuSegmentacion;
             this.Name = "SegmentacionForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "REVISAR ELEMENTOS";
@@ -697,8 +611,6 @@
             this.grpManual.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictSmall)).EndInit();
-            this.menuSegmentacion.ResumeLayout(false);
-            this.menuSegmentacion.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackContraste)).EndInit();
@@ -740,15 +652,6 @@
         private System.Windows.Forms.Button btnPreview;
         private System.Windows.Forms.NumericUpDown num2;
         private System.Windows.Forms.NumericUpDown num1;
-        private System.Windows.Forms.MenuStrip menuSegmentacion;
-        private System.Windows.Forms.ToolStripMenuItem segmentacionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem segmentacionAutomaticaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem segmentacionManualToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem guardarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cancelarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem previsualizarToolStripMenuItem1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;

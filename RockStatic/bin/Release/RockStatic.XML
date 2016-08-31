@@ -1482,6 +1482,11 @@
             Cierra la ventana SelectAreasForm
             </summary>
         </member>
+        <member name="M:RockStatic.MainForm.CloseAll">
+            <summary>
+            Se cierran todas las ventanas disponibles y se vuelve al Home
+            </summary>
+        </member>
         <member name="F:RockStatic.MainForm.components">
             <summary>
             Required designer variable.

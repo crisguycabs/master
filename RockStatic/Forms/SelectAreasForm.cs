@@ -713,6 +713,13 @@ namespace RockStatic
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            // se verifica que se hallan creado al menos un area
+            if (padre.actual.areasCore.Count < 1)
+            {
+                MessageBox.Show("No existen areas seleccionadas a guardar", "Error al guardar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
             this.padre.actual.areasDone = true;
 
             // se guarda en disco
@@ -722,6 +729,11 @@ namespace RockStatic
             this.padre.proyectoForm.SetForm();
 
             this.padre.CerrarSelectAreasForm();            
+        }
+
+        private void btnSelLong_Click(object sender, EventArgs e)
+        {
+            padre.selecAreas2Form.Select();
         }        
     }
 }

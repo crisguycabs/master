@@ -316,5 +316,10 @@ namespace RockStatic
                 sw.Close();
             }
         }
+
+        private void chart2_MouseClick(object sender, MouseEventArgs e)
+        {
+            btnExportar.Focus();
+        }
     }
 }

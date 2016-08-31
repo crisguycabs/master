@@ -99,13 +99,17 @@
             chartArea1.AxisX.MajorTickMark.Enabled = false;
             chartArea1.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
             chartArea1.AxisX2.MajorTickMark.Enabled = false;
+            chartArea1.AxisX2.ScaleView.Zoomable = false;
             chartArea1.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
             chartArea1.AxisY.IsReversed = true;
             chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
             chartArea1.AxisY.MajorTickMark.Enabled = false;
+            chartArea1.AxisY.ScaleView.Zoomable = false;
+            chartArea1.AxisY.ScrollBar.Enabled = false;
             chartArea1.AxisY.Title = "PROFUNDIDAD";
             chartArea1.AxisY.TitleFont = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea1.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea1.AxisY2.ScaleView.Zoomable = false;
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
             this.chart1.Location = new System.Drawing.Point(0, 19);
@@ -124,26 +128,30 @@
             title1.ForeColor = System.Drawing.Color.Green;
             title1.Name = "Deff";
             title1.Text = "Deff";
-            this.chart1.Titles.Add(title1);            
+            this.chart1.Titles.Add(title1);
             // 
             // chart2
             // 
             chartArea2.AxisX.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
             chartArea2.AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
             chartArea2.AxisX.MajorTickMark.Enabled = false;
+            chartArea2.AxisX.ScaleView.Zoomable = false;
+            chartArea2.AxisX.ScrollBar.Enabled = false;
             chartArea2.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
             chartArea2.AxisX2.MajorTickMark.Enabled = false;
+            chartArea2.AxisX2.ScaleView.Zoomable = false;
+            chartArea2.AxisX2.ScrollBar.Enabled = false;
             chartArea2.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
             chartArea2.AxisY.IsReversed = true;
             chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
             chartArea2.AxisY.MajorTickMark.Enabled = false;
+            chartArea2.AxisY.ScaleView.Zoomable = false;
+            chartArea2.AxisY.ScrollBar.Enabled = false;
             chartArea2.AxisY.Title = "PROFUNDIDAD";
             chartArea2.AxisY.TitleFont = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea2.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
-            chartArea2.CursorX.IsUserEnabled = true;
-            chartArea2.CursorX.IsUserSelectionEnabled = true;
-            chartArea2.CursorY.IsUserEnabled = true;
-            chartArea2.CursorY.IsUserSelectionEnabled = true;
+            chartArea2.AxisY2.ScaleView.Zoomable = false;
+            chartArea2.AxisY2.ScrollBar.Enabled = false;
             chartArea2.Name = "ChartArea1";
             this.chart2.ChartAreas.Add(chartArea2);
             this.chart2.Location = new System.Drawing.Point(250, 19);
@@ -162,6 +170,7 @@
             title2.Name = "Deff";
             title2.Text = "Zeff";
             this.chart2.Titles.Add(title2);
+            this.chart2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart2_MouseClick);
             // 
             // CurvasForm
             // 
