@@ -16,6 +16,13 @@ namespace RockVision
 
         Point lastClick;
 
+        /// <summary>
+        /// indica si la ventana esta abierta o no
+        /// </summary>
+        bool abiertoHomeForm = false;
+
+        public HomeForm homeForm = null;
+
         #endregion
 
         public MainForm()
@@ -30,6 +37,24 @@ namespace RockVision
             menuMain.BackColor = Color.FromArgb(255, 255, 255);
             this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
             this.Refresh();
+
+            AbrirHomeForm();
+        }
+
+        public void AbrirHomeForm()
+        {
+            if (!abiertoHomeForm)
+            {
+                homeForm = new HomeForm();
+                homeForm.MdiParent = this;
+                homeForm.padre = this;
+                this.abiertoHomeForm = true;
+                homeForm.Show();
+            }
+            else
+            {
+                homeForm.Select();
+            }
         }
 
         private void tableLayoutPanel1_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
