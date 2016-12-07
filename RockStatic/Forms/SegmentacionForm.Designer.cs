@@ -517,13 +517,19 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(420, 23);
+            this.btnReset.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnReset.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnReset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReset.Location = new System.Drawing.Point(402, 23);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.Size = new System.Drawing.Size(95, 23);
             this.btnReset.TabIndex = 11;
-            this.btnReset.Text = "Reset";
+            this.btnReset.Text = "Reestablecer";
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            this.btnReset.MouseEnter += new System.EventHandler(this.btnSubir_MouseEnter);
+            this.btnReset.MouseLeave += new System.EventHandler(this.btnSubir_MouseLeave);
             // 
             // label4
             // 

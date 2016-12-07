@@ -74,7 +74,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(214, 41);
             this.label6.TabIndex = 3;
-            this.label6.Text = "CARACTERIZACION ESTATICA DE ROCAS";
+            this.label6.Text = "CARACTERIZACIÓN ESTÁTICA DE ROCAS";
             // 
             // btnNew
             // 

@@ -71,13 +71,13 @@
             this.numUntil = new System.Windows.Forms.NumericUpDown();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnSelLong = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.lstAreas = new System.Windows.Forms.ListBox();
             this.btnSelall = new System.Windows.Forms.Button();
             this.numFrom = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.btnSelLong = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictCore)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numActual)).BeginInit();
@@ -592,7 +592,7 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(70, 23);
             this.btnDelete.TabIndex = 23;
-            this.btnDelete.Text = "Borar";
+            this.btnDelete.Text = "Borrar";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -657,6 +657,23 @@
             this.groupBox4.Size = new System.Drawing.Size(305, 56);
             this.groupBox4.TabIndex = 22;
             this.groupBox4.TabStop = false;
+            // 
+            // btnSelLong
+            // 
+            this.btnSelLong.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSelLong.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnSelLong.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnSelLong.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.btnSelLong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelLong.Location = new System.Drawing.Point(9, 20);
+            this.btnSelLong.Name = "btnSelLong";
+            this.btnSelLong.Size = new System.Drawing.Size(129, 23);
+            this.btnSelLong.TabIndex = 10;
+            this.btnSelLong.Text = "Seg Longitudinal";
+            this.btnSelLong.UseVisualStyleBackColor = false;
+            this.btnSelLong.Click += new System.EventHandler(this.btnSelLong_Click);
+            this.btnSelLong.MouseEnter += new System.EventHandler(this.btnCerrar_MouseEnter);
+            this.btnSelLong.MouseLeave += new System.EventHandler(this.btnCerrar_MouseLeave);
             // 
             // groupBox5
             // 
@@ -747,23 +764,6 @@
             this.label7.Size = new System.Drawing.Size(45, 14);
             this.label7.TabIndex = 21;
             this.label7.Text = "Desde:";
-            // 
-            // btnSelLong
-            // 
-            this.btnSelLong.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSelLong.FlatAppearance.BorderColor = System.Drawing.Color.Green;
-            this.btnSelLong.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
-            this.btnSelLong.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
-            this.btnSelLong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSelLong.Location = new System.Drawing.Point(9, 20);
-            this.btnSelLong.Name = "btnSelLong";
-            this.btnSelLong.Size = new System.Drawing.Size(129, 23);
-            this.btnSelLong.TabIndex = 10;
-            this.btnSelLong.Text = "Seg Longitudinal";
-            this.btnSelLong.UseVisualStyleBackColor = false;
-            this.btnSelLong.Click += new System.EventHandler(this.btnSelLong_Click);
-            this.btnSelLong.MouseEnter += new System.EventHandler(this.btnCerrar_MouseEnter);
-            this.btnSelLong.MouseLeave += new System.EventHandler(this.btnCerrar_MouseLeave);
             // 
             // SelectAreasForm
             // 

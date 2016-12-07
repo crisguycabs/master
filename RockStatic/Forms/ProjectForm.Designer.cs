@@ -57,7 +57,7 @@
             this.lblSeg.Name = "lblSeg";
             this.lblSeg.Size = new System.Drawing.Size(223, 33);
             this.lblSeg.TabIndex = 7;
-            this.lblSeg.Text = "Aun no ha realizado la segmentacion de los slides";
+            this.lblSeg.Text = "Aun no ha realizado la segmentación de los slides";
             // 
             // pictSegHigh
             // 
@@ -79,7 +79,7 @@
             this.groupBox1.Size = new System.Drawing.Size(233, 79);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "SEGMENTACION";
+            this.groupBox1.Text = "SEGMENTACIÓN";
             // 
             // btnSegHigh
             // 
@@ -108,7 +108,7 @@
             this.groupBox2.Size = new System.Drawing.Size(233, 79);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "AREAS DE INTERES";
+            this.groupBox2.Text = "ÁREAS DE INTERES";
             // 
             // pictAreasHigh
             // 
@@ -143,7 +143,7 @@
             this.lblArea.Name = "lblArea";
             this.lblArea.Size = new System.Drawing.Size(219, 38);
             this.lblArea.TabIndex = 7;
-            this.lblArea.Text = "Aun no ha seleccionado las areas de interes";
+            this.lblArea.Text = "Aún no ha seleccionado las areas de interes";
             // 
             // groupBox3
             // 
@@ -238,7 +238,7 @@
             this.lblCurvas.Name = "lblCurvas";
             this.lblCurvas.Size = new System.Drawing.Size(223, 33);
             this.lblCurvas.TabIndex = 7;
-            this.lblCurvas.Text = "Aun no ha realizado la segmentacion de los slides";
+            this.lblCurvas.Text = "Aún no ha realizado la segmentación de los slides";
             // 
             // ProjectForm
             // 
