@@ -105,12 +105,12 @@ namespace RockStatic
         /// <summary>
         /// Profundidad de la cabeza de la muestra
         /// </summary>
-        public long head=0;
+        public double head=0;
 
         /// <summary>
         /// Profundida de la cola de la muestra
         /// </summary>
-        public long tail=0;
+        public double tail=0;
 
         /// <summary>
         /// Unidades de profundidad

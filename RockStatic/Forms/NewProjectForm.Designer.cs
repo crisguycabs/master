@@ -88,7 +88,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(113, 14);
             this.label2.TabIndex = 3;
-            this.label2.Text = "HIGH Energy Dicom:";
+            this.label2.Text = "Dicom Alta Energia:";
             // 
             // btnSelHigh
             // 
@@ -132,9 +132,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(10, 119);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(109, 14);
+            this.label3.Size = new System.Drawing.Size(115, 14);
             this.label3.TabIndex = 3;
-            this.label3.Text = "LOW Energy Dicom:";
+            this.label3.Text = "Dicom Baja Energia:";
             // 
             // btnSelLow
             // 
@@ -388,6 +388,7 @@
             // 
             // lstUnidades
             // 
+            this.lstUnidades.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.lstUnidades.FormattingEnabled = true;
             this.lstUnidades.Items.AddRange(new object[] {
             "m",

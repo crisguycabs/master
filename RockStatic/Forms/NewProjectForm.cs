@@ -289,8 +289,8 @@ namespace RockStatic
                 padre.actual.datacuboLow.CrearBitmapThread();
 
                 // se guardan la profundidad de cabeza y cola
-                padre.actual.head = Convert.ToInt64(numHead.Value);
-                padre.actual.tail = Convert.ToInt64(numTail.Value);
+                padre.actual.head = Convert.ToDouble(numHead.Value);
+                padre.actual.tail = Convert.ToDouble(numTail.Value);
 
                 // se guardan las unidades de la profundidad
                 padre.actual.unidadProfundidad = lstUnidades.Items[lstUnidades.SelectedIndex].ToString();

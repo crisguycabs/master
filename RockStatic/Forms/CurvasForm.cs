@@ -296,6 +296,11 @@ namespace RockStatic
 
             chart1.ChartAreas[0].AxisX.Interval = chart1.ChartAreas[0].AxisX2.Interval = (chart1.ChartAreas[0].AxisX.Maximum - chart1.ChartAreas[0].AxisX.Minimum) / 4;
             chart2.ChartAreas[0].AxisX.Interval = chart2.ChartAreas[0].AxisX2.Interval = (chart2.ChartAreas[0].AxisX.Maximum - chart2.ChartAreas[0].AxisX.Minimum) / 4;
+
+            chart1.ChartAreas[0].AxisY.Minimum = profundidad[0];
+            chart1.ChartAreas[0].AxisY.Maximum = profundidad[profundidad.Length-1];
+            chart2.ChartAreas[0].AxisY.Minimum = profundidad[0];
+            chart2.ChartAreas[0].AxisY.Maximum = profundidad[profundidad.Length - 1];
         }        
 
         private void btnExportar_Click(object sender, EventArgs e)
@@ -320,6 +325,11 @@ namespace RockStatic
         private void chart2_MouseClick(object sender, MouseEventArgs e)
         {
             btnExportar.Focus();
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
