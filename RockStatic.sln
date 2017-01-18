@@ -5,8 +5,6 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockStatic", "RockStatic\RockStatic.csproj", "{80B0A9D6-8E0A-4D7F-AFB0-B13479E1C1FA}"
 EndProject
-Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "RSinstallerWix", "RSinstallerWix\RSinstallerWix.wixproj", "{1AC60C8B-7622-4606-90EF-B33843FF0335}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockVision", "RockVision\RockVision.csproj", "{524F5839-8280-4D68-8146-D06636685AA0}"
 EndProject
 Global
@@ -29,16 +27,6 @@ Global
 		{80B0A9D6-8E0A-4D7F-AFB0-B13479E1C1FA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{80B0A9D6-8E0A-4D7F-AFB0-B13479E1C1FA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{80B0A9D6-8E0A-4D7F-AFB0-B13479E1C1FA}.Release|x86.ActiveCfg = Release|Any CPU
-		{1AC60C8B-7622-4606-90EF-B33843FF0335}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{1AC60C8B-7622-4606-90EF-B33843FF0335}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{1AC60C8B-7622-4606-90EF-B33843FF0335}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{1AC60C8B-7622-4606-90EF-B33843FF0335}.Debug|x86.ActiveCfg = Debug|x86
-		{1AC60C8B-7622-4606-90EF-B33843FF0335}.Debug|x86.Build.0 = Debug|x86
-		{1AC60C8B-7622-4606-90EF-B33843FF0335}.Release|Any CPU.ActiveCfg = Release|x86
-		{1AC60C8B-7622-4606-90EF-B33843FF0335}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{1AC60C8B-7622-4606-90EF-B33843FF0335}.Release|Mixed Platforms.Build.0 = Release|x86
-		{1AC60C8B-7622-4606-90EF-B33843FF0335}.Release|x86.ActiveCfg = Release|x86
-		{1AC60C8B-7622-4606-90EF-B33843FF0335}.Release|x86.Build.0 = Release|x86
 		{524F5839-8280-4D68-8146-D06636685AA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{524F5839-8280-4D68-8146-D06636685AA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{524F5839-8280-4D68-8146-D06636685AA0}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
