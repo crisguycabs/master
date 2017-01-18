@@ -69,7 +69,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(149, 32);
             this.label6.TabIndex = 11;
-            this.label6.Text = "CARACTERIZACION DINAMICA DE ROCAS";
+            this.label6.Text = "VISUALIZACION DE MUESTRAS DE ROCAS";
             // 
             // label1
             // 
@@ -124,7 +124,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::RockVision.Properties.Resources.RockStaticBlue;
+            this.pictureBox1.Image = global::RockVision.Properties.Resources.RV;
             this.pictureBox1.Location = new System.Drawing.Point(5, 9);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(118, 113);

@@ -32,7 +32,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnOpen = new System.Windows.Forms.Button();
-            this.btnNew = new System.Windows.Forms.Button();
+            this.btnNewv = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,6 +41,7 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnNewe = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -67,7 +68,7 @@
             // label3
             // 
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label3.Location = new System.Drawing.Point(14, 197);
+            this.label3.Location = new System.Drawing.Point(14, 203);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(500, 2);
             this.label3.TabIndex = 17;
@@ -79,26 +80,26 @@
             this.btnOpen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.btnOpen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpen.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOpen.Location = new System.Drawing.Point(274, 155);
+            this.btnOpen.Location = new System.Drawing.Point(353, 151);
             this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(133, 30);
+            this.btnOpen.Size = new System.Drawing.Size(133, 44);
             this.btnOpen.TabIndex = 15;
             this.btnOpen.Text = "ABRIR PROYECTO";
             this.btnOpen.UseVisualStyleBackColor = true;
             // 
-            // btnNew
+            // btnNewv
             // 
-            this.btnNew.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnNew.FlatAppearance.MouseDownBackColor = System.Drawing.Color.CornflowerBlue;
-            this.btnNew.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
-            this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNew.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNew.Location = new System.Drawing.Point(120, 155);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(133, 30);
-            this.btnNew.TabIndex = 16;
-            this.btnNew.Text = "CREAR PROYECTO";
-            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNewv.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnNewv.FlatAppearance.MouseDownBackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnNewv.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
+            this.btnNewv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNewv.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewv.Location = new System.Drawing.Point(41, 151);
+            this.btnNewv.Name = "btnNewv";
+            this.btnNewv.Size = new System.Drawing.Size(133, 44);
+            this.btnNewv.TabIndex = 16;
+            this.btnNewv.Text = "CREAR PROYECTO VISUALIZACION";
+            this.btnNewv.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -107,7 +108,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(214, 41);
             this.label6.TabIndex = 14;
-            this.label6.Text = "CARACTERIZACION ESTATICA DE ROCAS";
+            this.label6.Text = "VISUALIZACION DE MUESTRAS DE ROCAS";
             // 
             // label2
             // 
@@ -116,9 +117,9 @@
             this.label2.ForeColor = System.Drawing.Color.RoyalBlue;
             this.label2.Location = new System.Drawing.Point(203, 58);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(214, 35);
+            this.label2.Size = new System.Drawing.Size(216, 35);
             this.label2.TabIndex = 13;
-            this.label2.Text = "ROCKSTATIC";
+            this.label2.Text = "ROCKVISION";
             // 
             // label1
             // 
@@ -130,7 +131,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::RockVision.Properties.Resources.RockStaticBlue;
+            this.pictureBox1.Image = global::RockVision.Properties.Resources.RV;
             this.pictureBox1.Location = new System.Drawing.Point(122, 56);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(78, 78);
@@ -141,7 +142,7 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = global::RockVision.Properties.Resources.ecopetrol;
-            this.pictureBox5.Location = new System.Drawing.Point(343, 206);
+            this.pictureBox5.Location = new System.Drawing.Point(343, 213);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(171, 80);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -151,7 +152,7 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::RockVision.Properties.Resources.Logo_Big;
-            this.pictureBox4.Location = new System.Drawing.Point(257, 206);
+            this.pictureBox4.Location = new System.Drawing.Point(257, 213);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(80, 80);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -161,7 +162,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::RockVision.Properties.Resources.colciencias;
-            this.pictureBox3.Location = new System.Drawing.Point(171, 206);
+            this.pictureBox3.Location = new System.Drawing.Point(171, 213);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(80, 80);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -171,26 +172,41 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::RockVision.Properties.Resources.UISLogo;
-            this.pictureBox2.Location = new System.Drawing.Point(14, 206);
+            this.pictureBox2.Location = new System.Drawing.Point(14, 213);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(150, 80);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 12;
             this.pictureBox2.TabStop = false;
             // 
+            // btnNewe
+            // 
+            this.btnNewe.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnNewe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnNewe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
+            this.btnNewe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNewe.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewe.Location = new System.Drawing.Point(197, 151);
+            this.btnNewe.Name = "btnNewe";
+            this.btnNewe.Size = new System.Drawing.Size(133, 44);
+            this.btnNewe.TabIndex = 21;
+            this.btnNewe.Text = "CREAR PROYECTO ESTIMACION";
+            this.btnNewe.UseVisualStyleBackColor = true;
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(526, 302);
+            this.ClientSize = new System.Drawing.Size(526, 307);
+            this.Controls.Add(this.btnNewe);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnOpen);
-            this.Controls.Add(this.btnNew);
+            this.Controls.Add(this.btnNewv);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox3);
@@ -220,11 +236,12 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.Button btnOpen;
-        private System.Windows.Forms.Button btnNew;
+        private System.Windows.Forms.Button btnNewv;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnNewe;
     }
 }
