@@ -100,6 +100,7 @@
             this.btnNewv.TabIndex = 16;
             this.btnNewv.Text = "CREAR PROYECTO VISUALIZACION";
             this.btnNewv.UseVisualStyleBackColor = true;
+            this.btnNewv.Click += new System.EventHandler(this.btnNewv_Click);
             // 
             // label6
             // 
@@ -218,6 +219,7 @@
             this.Name = "HomeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HomeForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HomeForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();

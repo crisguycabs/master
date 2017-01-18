@@ -103,6 +103,16 @@ namespace RockVision.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap hour_glass_icon {
+            get {
+                object obj = ResourceManager.GetObject("hour-glass-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Logo_Big {
             get {
                 object obj = ResourceManager.GetObject("Logo_Big", resourceCulture);

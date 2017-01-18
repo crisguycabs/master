@@ -14,6 +14,16 @@ namespace RockVision
     {
         #region variables de diseñador
 
+        /// <summary>
+        /// Instancia del form WaitingForm
+        /// </summary>
+        public WaitingForm waitingForm;
+
+        /// <summary>
+        /// Variable que indica si la ventana WaitingForm esta abierta o no
+        /// </summary>
+        public bool abiertoWaitingForm;
+
         Point lastClick;
 
         /// <summary>
@@ -21,7 +31,20 @@ namespace RockVision
         /// </summary>
         bool abiertoHomeForm = false;
 
+        /// <summary>
+        /// instancia de HomeForm
+        /// </summary>
         public HomeForm homeForm = null;
+
+        /// <summary>
+        /// indica si la ventana esta abierta o no
+        /// </summary>
+        public bool abiertoNuevoProyectoForm = false;
+
+        /// <summary>
+        /// instancia de NewProjectVForm
+        /// </summary>
+        public NewProjectVForm nuevoProyectoVForm = null;
 
         #endregion
 
@@ -55,6 +78,12 @@ namespace RockVision
             {
                 homeForm.Select();
             }
+        }
+
+        public void CerrarHomeForm()
+        {
+            this.abiertoHomeForm = false;
+            this.homeForm = null;
         }
 
         private void tableLayoutPanel1_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
@@ -119,6 +148,75 @@ namespace RockVision
             {
                 this.Left += e.X - lastClick.X;
                 this.Top += e.Y - lastClick.Y;
+            }
+        }
+
+        /// <summary>
+        /// Se muestra la ventana WaitingForm, con el mensaje que se muestra como argumento
+        /// </summary>
+        /// <param name="mensaje">Mensaje a mostrar en pantalla</param>
+        public void ShowWaiting(string mensaje)
+        {
+            if (!this.abiertoWaitingForm)
+            {
+                waitingForm = new WaitingForm();
+                waitingForm.lblTexto.Text = mensaje;
+                abiertoWaitingForm = true;
+                waitingForm.Show();
+                Application.DoEvents();
+            }
+            else
+            {
+                waitingForm.lblTexto.Text = mensaje;
+                Application.DoEvents();
+            }
+        }
+
+        /// <summary>
+        /// Cierra la ventana WaitingForm
+        /// </summary>
+        public void CloseWaiting()
+        {
+            abiertoWaitingForm = false;
+            waitingForm.Close();
+            Application.DoEvents();
+        }
+
+        /// <summary>
+        /// Se crea un nuevo proyecto de visualizacion
+        /// </summary>
+        public void NuevoProyectoV()
+        {
+            OpenFileDialog seldicom = new OpenFileDialog();
+            seldicom.Multiselect = true;
+
+            List<string> temp= new List<string>();
+
+            if (seldicom.ShowDialog() == DialogResult.OK)
+            {
+                // se muestra la ventana de espera
+                ShowWaiting("Espere mientras RockVision carga los elementos seleccionados...");
+
+                for (int i = 0; i < seldicom.FileNames.Length; i++)
+                    temp.Add(seldicom.FileNames[i]);
+                // se cierra la ventana de espera
+                CloseWaiting();
+            }
+
+            // Se abre el Form para visualizar los archivos dicom escogidos
+            if (!abiertoNuevoProyectoForm)
+            {
+                nuevoProyectoVForm = new NewProjectVForm();
+                nuevoProyectoVForm.MdiParent = this;
+                nuevoProyectoVForm.padre = this;
+                this.abiertoNuevoProyectoForm = true;
+                nuevoProyectoVForm.elementos = temp;
+                nuevoProyectoVForm.Show();
+            }
+            else
+            {
+                nuevoProyectoVForm.Select();
+                nuevoProyectoVForm.elementos = temp;
             }
         }
     }
