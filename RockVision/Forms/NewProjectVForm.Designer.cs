@@ -55,7 +55,8 @@
             this.trackElementos.Location = new System.Drawing.Point(2, 576);
             this.trackElementos.Name = "trackElementos";
             this.trackElementos.Size = new System.Drawing.Size(495, 45);
-            this.trackElementos.TabIndex = 10;
+            this.trackElementos.TabIndex = 1;
+            this.trackElementos.ValueChanged += new System.EventHandler(this.trackElementos_ValueChanged);
             // 
             // lblTitulo
             // 
@@ -67,44 +68,56 @@
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(828, 30);
             this.lblTitulo.TabIndex = 15;
-            this.lblTitulo.Text = "BIENVENIDO!";
+            this.lblTitulo.Text = "LISTA DE DICOMS A CARGAR";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblTitulo.DoubleClick += new System.EventHandler(this.lblTitulo_DoubleClick);
+            this.lblTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblTitulo_MouseDown);
+            this.lblTitulo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblTitulo_MouseMove);
             // 
             // btnDelete
             // 
             this.btnDelete.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Location = new System.Drawing.Point(584, 592);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 25);
-            this.btnDelete.TabIndex = 12;
+            this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "Eliminar";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.btnDelete.MouseEnter += new System.EventHandler(this.btnSubir_MouseEnter);
+            this.btnDelete.MouseLeave += new System.EventHandler(this.btnSubir_MouseLeave);
             // 
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Location = new System.Drawing.Point(745, 592);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 25);
-            this.btnCancelar.TabIndex = 13;
+            this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.btnCancelar.MouseEnter += new System.EventHandler(this.btnSubir_MouseEnter);
+            this.btnCancelar.MouseLeave += new System.EventHandler(this.btnSubir_MouseLeave);
             // 
             // btnCerrar
             // 
             this.btnCerrar.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrar.Location = new System.Drawing.Point(665, 592);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(75, 25);
-            this.btnCerrar.TabIndex = 14;
-            this.btnCerrar.Text = "Guardar";
+            this.btnCerrar.TabIndex = 4;
+            this.btnCerrar.Text = "Crear";
             this.btnCerrar.UseVisualStyleBackColor = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            this.btnCerrar.MouseEnter += new System.EventHandler(this.btnSubir_MouseEnter);
+            this.btnCerrar.MouseLeave += new System.EventHandler(this.btnSubir_MouseLeave);
             // 
             // lstElementos
             // 
@@ -115,7 +128,8 @@
             this.lstElementos.Location = new System.Drawing.Point(500, 44);
             this.lstElementos.Name = "lstElementos";
             this.lstElementos.Size = new System.Drawing.Size(321, 534);
-            this.lstElementos.TabIndex = 11;
+            this.lstElementos.TabIndex = 2;
+            this.lstElementos.DoubleClick += new System.EventHandler(this.lstElementos_DoubleClick);
             // 
             // pictElemento
             // 
@@ -147,6 +161,9 @@
             this.Name = "NewProjectVForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "REVISAR ELEMENTOS NUEVO PROYECTO DE VISUALIZACION";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NewProjectVForm_FormClosed);
+            this.Load += new System.EventHandler(this.NewProjectVForm_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.NewProjectVForm_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.trackElementos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictElemento)).EndInit();
             this.ResumeLayout(false);

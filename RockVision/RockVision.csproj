@@ -74,10 +74,10 @@
     <Compile Include="Forms\SplashScreenForm.Designer.cs">
       <DependentUpon>SplashScreenForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="WaitingForm.cs">
+    <Compile Include="Forms\WaitingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WaitingForm.Designer.cs">
+    <Compile Include="Forms\WaitingForm.Designer.cs">
       <DependentUpon>WaitingForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Forms\HomeForm.resx">
@@ -102,7 +102,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="WaitingForm.resx">
+    <EmbeddedResource Include="Forms\WaitingForm.resx">
       <DependentUpon>WaitingForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

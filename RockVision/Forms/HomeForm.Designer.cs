@@ -62,8 +62,8 @@
             this.label4.Text = "BIENVENIDO";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label4.DoubleClick += new System.EventHandler(this.label4_DoubleClick);
-            this.label4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
-            this.label4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
+            this.label4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblTitulo_MouseDown);
+            this.label4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblTitulo_MouseMove);
             // 
             // label3
             // 
@@ -86,6 +86,8 @@
             this.btnOpen.TabIndex = 15;
             this.btnOpen.Text = "ABRIR PROYECTO";
             this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.MouseEnter += new System.EventHandler(this.btnNew_MouseEnter);
+            this.btnOpen.MouseLeave += new System.EventHandler(this.btnNew_MouseLeave);
             // 
             // btnNewv
             // 
@@ -101,6 +103,8 @@
             this.btnNewv.Text = "CREAR PROYECTO VISUALIZACION";
             this.btnNewv.UseVisualStyleBackColor = true;
             this.btnNewv.Click += new System.EventHandler(this.btnNewv_Click);
+            this.btnNewv.MouseEnter += new System.EventHandler(this.btnNew_MouseEnter);
+            this.btnNewv.MouseLeave += new System.EventHandler(this.btnNew_MouseLeave);
             // 
             // label6
             // 
@@ -193,6 +197,8 @@
             this.btnNewe.TabIndex = 21;
             this.btnNewe.Text = "CREAR PROYECTO ESTIMACION";
             this.btnNewe.UseVisualStyleBackColor = true;
+            this.btnNewe.MouseEnter += new System.EventHandler(this.btnNew_MouseEnter);
+            this.btnNewe.MouseLeave += new System.EventHandler(this.btnNew_MouseLeave);
             // 
             // HomeForm
             // 
@@ -220,6 +226,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HomeForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HomeForm_FormClosed);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.HomeForm_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();

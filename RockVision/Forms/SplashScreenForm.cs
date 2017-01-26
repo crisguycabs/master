@@ -24,7 +24,7 @@ namespace RockVision
 
         private void SplashScreenForm_Paint(object sender, PaintEventArgs e)
         {
-            ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, Color.DarkBlue, 1, ButtonBorderStyle.Solid, Color.DarkBlue, 1, ButtonBorderStyle.Solid, Color.DarkBlue, 1, ButtonBorderStyle.Solid, Color.DarkBlue, 1, ButtonBorderStyle.Solid);
+            ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, Color.RoyalBlue, 1, ButtonBorderStyle.Solid, Color.DarkBlue, 1, ButtonBorderStyle.Solid, Color.DarkBlue, 1, ButtonBorderStyle.Solid, Color.DarkBlue, 1, ButtonBorderStyle.Solid);
         }
 
         void tmr_Tick(object sender, EventArgs e)

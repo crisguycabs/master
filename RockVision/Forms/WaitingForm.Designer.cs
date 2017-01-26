@@ -37,9 +37,9 @@
             // 
             // lblTexto
             // 
-            this.lblTexto.Location = new System.Drawing.Point(90, 66);
+            this.lblTexto.Location = new System.Drawing.Point(90, 53);
             this.lblTexto.Name = "lblTexto";
-            this.lblTexto.Size = new System.Drawing.Size(156, 67);
+            this.lblTexto.Size = new System.Drawing.Size(156, 59);
             this.lblTexto.TabIndex = 12;
             this.lblTexto.Text = "Por favor espere mientras RockVision procesa...";
             // 
@@ -59,7 +59,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::RockVision.Properties.Resources.hour_glass_icon;
-            this.pictureBox1.Location = new System.Drawing.Point(22, 58);
+            this.pictureBox1.Location = new System.Drawing.Point(22, 45);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(53, 67);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -71,7 +71,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(258, 141);
+            this.ClientSize = new System.Drawing.Size(258, 125);
             this.ControlBox = false;
             this.Controls.Add(this.lblTexto);
             this.Controls.Add(this.pictureBox1);
@@ -80,6 +80,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WaitingForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PROCESANDO...";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.WaitingForm_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

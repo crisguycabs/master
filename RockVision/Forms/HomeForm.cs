@@ -28,20 +28,6 @@ namespace RockVision
             InitializeComponent();
         }
 
-        private void panel2_MouseDown(object sender, MouseEventArgs e)
-        {
-            lastClick = e.Location;
-        }
-
-        private void panel2_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                this.Left += e.X - lastClick.X;
-                this.Top += e.Y - lastClick.Y;
-            }
-        }
-
         public void CentrarForm()
         {
             //this.Location = new System.Drawing.Point((Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2, (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2);
@@ -56,7 +42,6 @@ namespace RockVision
         private void btnNewv_Click(object sender, EventArgs e)
         {
             // se escogen los dicom que se quieren visualizar
-
             padre.NuevoProyectoV();
             this.Close();
         }
@@ -64,6 +49,35 @@ namespace RockVision
         private void HomeForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.padre.CerrarHomeForm();
+        }
+
+        private void btnNew_MouseEnter(object sender, EventArgs e)
+        {
+            ((System.Windows.Forms.Button)(sender)).ForeColor = Color.White;
+        }
+
+        private void btnNew_MouseLeave(object sender, EventArgs e)
+        {
+            ((System.Windows.Forms.Button)(sender)).ForeColor = Control.DefaultForeColor;
+        }
+
+        private void lblTitulo_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastClick = e.Location;
+        }
+
+        private void lblTitulo_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastClick.X;
+                this.Top += e.Y - lastClick.Y;
+            }
+        }
+
+        private void HomeForm_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawRectangle(new Pen(Color.RoyalBlue, 2), this.DisplayRectangle); 
         }
     }
 }

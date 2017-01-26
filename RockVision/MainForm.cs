@@ -39,7 +39,7 @@ namespace RockVision
         /// <summary>
         /// indica si la ventana esta abierta o no
         /// </summary>
-        public bool abiertoNuevoProyectoForm = false;
+        public bool abiertoNuevoProyectoVForm = false;
 
         /// <summary>
         /// instancia de NewProjectVForm
@@ -194,22 +194,17 @@ namespace RockVision
 
             if (seldicom.ShowDialog() == DialogResult.OK)
             {
-                // se muestra la ventana de espera
-                ShowWaiting("Espere mientras RockVision carga los elementos seleccionados...");
-
                 for (int i = 0; i < seldicom.FileNames.Length; i++)
-                    temp.Add(seldicom.FileNames[i]);
-                // se cierra la ventana de espera
-                CloseWaiting();
+                    temp.Add(seldicom.FileNames[i]);                
             }
 
             // Se abre el Form para visualizar los archivos dicom escogidos
-            if (!abiertoNuevoProyectoForm)
+            if (!abiertoNuevoProyectoVForm)
             {
                 nuevoProyectoVForm = new NewProjectVForm();
                 nuevoProyectoVForm.MdiParent = this;
                 nuevoProyectoVForm.padre = this;
-                this.abiertoNuevoProyectoForm = true;
+                this.abiertoNuevoProyectoVForm = true;
                 nuevoProyectoVForm.elementos = temp;
                 nuevoProyectoVForm.Show();
             }
@@ -218,6 +213,12 @@ namespace RockVision
                 nuevoProyectoVForm.Select();
                 nuevoProyectoVForm.elementos = temp;
             }
+        }
+
+        public void CerrarNewProjectVForm()
+        {
+            this.abiertoNuevoProyectoVForm=false;
+            this.nuevoProyectoVForm=null;        
         }
     }
 }
