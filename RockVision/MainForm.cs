@@ -46,6 +46,11 @@ namespace RockVision
         /// </summary>
         public NewProjectVForm nuevoProyectoVForm = null;
 
+        /// <summary>
+        /// proyecto actual de visualizacion
+        /// </summary>
+        public CProyectoV actualV = null;
+
         #endregion
 
         public MainForm()

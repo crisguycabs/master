@@ -194,7 +194,7 @@ namespace RockVision
                 // se muestra la ventana de espera
                 padre.ShowWaiting("Espere mientras RockStatic crea el nuevo proyecto...");
 
-
+                padre.actualV = new CProyectoV(saveFile.FileName, elementos);                
 
                 // se cierra la ventana de espera
                 padre.CloseWaiting();
