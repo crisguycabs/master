@@ -205,6 +205,9 @@ namespace RockVision
 
                 // se cierra la ventana
                 this.Close();
+
+                // se abre la ventana de visualizacion
+                this.padre.AbrirVisualForm();
             }
         }
     }

@@ -36,27 +36,27 @@ namespace RockVision
         /// <summary>
         /// lista que contiene los limites de la segmentacion 2D
         /// </summary>
-        public List<uint> segmentacion2D = null;
+        public List<uint> segmentacion2D = new List<uint>();
 
         /// <summary>
         /// lista de colores para la segmentacion 2D
         /// </summary>
-        public List<System.Drawing.Color> colorSeg2D = null;
+        public List<System.Drawing.Color> colorSeg2D = new List<System.Drawing.Color>();
 
         /// <summary>
         /// valores limites de la normalizacion. Vector de 2 posiciones: [0] valor minimo, [1] valor maximo
         /// </summary>
-        public uint[] normalizacion2D = null;
+        public uint[] normalizacion2D = new uint[2];
 
         /// <summary>
         /// lista que contiene los limites de la segmentacion 3D
         /// </summary>
-        public List<uint> segmentacion3D = null;
+        public List<uint> segmentacion3D = new List<uint>();
 
         /// <summary>
         /// lista de colores para la segmentacion 3D
         /// </summary>
-        public List<System.Drawing.Color> colorSeg3D = null;
+        public List<System.Drawing.Color> colorSeg3D = new List<System.Drawing.Color>();
 
         /// <summary>
         /// numero del plano de corte XY. -1 indica que no hay plano de corte
@@ -86,23 +86,29 @@ namespace RockVision
             name = System.IO.Path.GetFileNameWithoutExtension(path);
 
             // ruta de la carpeta que contiene el proyecto
-            folder = System.IO.Path.GetDirectoryName(path);
+            folder = System.IO.Path.GetDirectoryName(path) + "\\" + name;
 
             // ruta del proyecto = ruta del folder + nombre
-            ruta = path;
+            ruta = folder + "\\" + name + ".rvv";
 
             // se crea la carpeta del proyecto
-            System.IO.Directory.CreateDirectory(path);
+            System.IO.Directory.CreateDirectory(folder);
 
             // se crea la carpeta de los dicom
-            System.IO.Directory.CreateDirectory(path + "\\files");
+            System.IO.Directory.CreateDirectory(folder + "\\files");
 
-            // se mueven todos los dicom a la carpeta FILEs
-            foreach (string dicom in elementos)
+            // se mueven todos los dicom a la carpeta FILES con un nombre generico
+            List<string> elementos2 = new List<string>();
+            for (int i = 0; i < elementos.Count;i++)
             {
-                string nombre=System.IO.Path.GetFileName(dicom);
-                System.IO.File.Copy(dicom, path + "\\files\\" + nombre);
+                string nombre = System.IO.Path.GetFileName(elementos[i]);
+                string ext = System.IO.Path.GetExtension(elementos[i]);
+                elementos2.Add(folder + "\\files\\" + i + ext);
+                System.IO.File.Copy(elementos[i], elementos2[i]);
             }
+
+            // se cargan los elementos copiados en el datacubo
+            this.datacubo = new RockStatic.MyDataCube(elementos2);
 
             // se crea el archivo del proyecto, .RVV
             System.IO.StreamWriter sw = new System.IO.StreamWriter(ruta,false);

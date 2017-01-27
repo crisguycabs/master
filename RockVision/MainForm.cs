@@ -15,6 +15,16 @@ namespace RockVision
         #region variables de diseñador
 
         /// <summary>
+        /// Instancia de la ventana
+        /// </summary>
+        public VisualForm visualForm = null;
+
+        /// <summary>
+        /// indica si la ventana esta abierta o no
+        /// </summary>
+        public bool abiertoVisualForm = false;
+
+        /// <summary>
         /// Instancia del form WaitingForm
         /// </summary>
         public WaitingForm waitingForm;
@@ -231,6 +241,28 @@ namespace RockVision
         {
             this.abiertoNuevoProyectoVForm=false;
             this.nuevoProyectoVForm=null;        
+        }
+
+        public void AbrirVisualForm()
+        {
+            if (!abiertoVisualForm)
+            {
+                visualForm = new VisualForm();
+                visualForm.MdiParent = this;
+                visualForm.padre = this;
+                this.abiertoVisualForm = true;
+                visualForm.Show();
+            }
+            else
+            {
+                visualForm.Select();
+            }
+        }
+
+        public void CerrarVisualForm()
+        {
+            this.abiertoVisualForm = false;
+            visualForm = null;
         }
     }
 }
