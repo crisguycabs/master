@@ -14,6 +14,11 @@ namespace RockVision
         #region variables de clase
 
         /// <summary>
+        /// nombre del proyectoV
+        /// </summary>
+        public string name = "";
+
+        /// <summary>
         /// ruta en disco del archivo .RVV
         /// </summary>
         public string ruta="";
@@ -77,11 +82,14 @@ namespace RockVision
         /// <param name="elementos">lista de elementos dicom a incluir en el proyecto</param>
         public CProyectoV(string path, List<string> elementos)
         {
+            // nombre del proyecto
+            name = System.IO.Path.GetFileNameWithoutExtension(path);
+
             // ruta de la carpeta que contiene el proyecto
             folder = System.IO.Path.GetDirectoryName(path);
 
             // ruta del proyecto = ruta del folder + nombre
-            ruta = folder + "\\" + System.IO.Path.GetFileName(path);
+            ruta = path;
 
             // se crea la carpeta del proyecto
             System.IO.Directory.CreateDirectory(path);
@@ -98,8 +106,9 @@ namespace RockVision
 
             // se crea el archivo del proyecto, .RVV
             System.IO.StreamWriter sw = new System.IO.StreamWriter(ruta,false);
-
             sw.Close();
+
+            // se guarda la informacion del proyecto (info por derecto)
         }
 
         /// <summary>
@@ -107,7 +116,54 @@ namespace RockVision
         /// </summary>
         public void Guardar()
         {
+            // se abre el archivo
+            System.IO.StreamWriter sw = new System.IO.StreamWriter(ruta, false);
 
+            // se escribe el cabezote
+            sw.WriteLine("PROYECTO DE ROCKVISION: VISUALIZACION DE MUESTRAS DE ROCAS");
+            sw.WriteLine("COPYRIGHT CRISOSTOMO ALBERTO BARAJAS SOLANO");
+            sw.WriteLine("HDSP, UIS, 2017");
+            sw.WriteLine("");
+            sw.WriteLine("SE PROHIBE LA MODIFICACION DE CUALQUIERA DE LOS ARCHIVOS RELACIONADOS");
+            sw.WriteLine("CON EL SOFTWARE ROCKSTATIC SIN LA DEBIDA AUTORIZACION DEL AUTOR O DEL");
+            sw.WriteLine("DIRECTOR DEL GRUPO HDSP");
+            sw.WriteLine("=====================================================================");
+            sw.WriteLine("");
+            sw.WriteLine("NAME");
+            sw.WriteLine(name);
+            sw.WriteLine("RUTA");
+            sw.WriteLine(ruta);
+            sw.WriteLine("");
+            sw.WriteLine("SEGMENTACION2D");
+            for (int i = 0; i < segmentacion2D.Count; i++)
+                sw.WriteLine(segmentacion2D[i].ToString());
+            sw.WriteLine("");
+            sw.WriteLine("COLORSEG2D");
+            for (int i = 0; i < colorSeg2D.Count; i++)
+                sw.WriteLine(colorSeg2D[i].ToString());
+            sw.WriteLine("");
+            sw.WriteLine("NORMALIZACION2D");
+            sw.WriteLine(normalizacion2D[0].ToString());
+            sw.WriteLine(normalizacion2D[1].ToString());
+            sw.WriteLine("");
+            sw.WriteLine("SEGMENTACION3D");
+            for (int i = 0; i < segmentacion3D.Count; i++)
+                sw.WriteLine(segmentacion3D[i].ToString());
+            sw.WriteLine("");
+            sw.WriteLine("COLORSEG3D");
+            for (int i = 0; i < colorSeg3D.Count; i++)
+                sw.WriteLine(colorSeg3D[i].ToString());
+            sw.WriteLine("");
+            sw.WriteLine("PLANOXY");
+            sw.WriteLine(planoXY.ToString());
+            sw.WriteLine("");
+            sw.WriteLine("PLANOXZ");
+            sw.WriteLine(planoXZ.ToString());
+            sw.WriteLine("");
+            sw.WriteLine("PLANOYZ");
+            sw.WriteLine(planoYZ.ToString());
+            sw.WriteLine("");
+            sw.Close();
         }
     }
 }
