@@ -109,6 +109,7 @@ namespace RockVision
             sw.Close();
 
             // se guarda la informacion del proyecto (info por derecto)
+            Guardar();
         }
 
         /// <summary>

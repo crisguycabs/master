@@ -202,6 +202,13 @@ namespace RockVision
                 for (int i = 0; i < seldicom.FileNames.Length; i++)
                     temp.Add(seldicom.FileNames[i]);                
             }
+            else
+            {
+                // se cancela abrir un nuevo proyecto
+                return;
+            }
+
+            CerrarHomeForm();
 
             // Se abre el Form para visualizar los archivos dicom escogidos
             if (!abiertoNuevoProyectoVForm)

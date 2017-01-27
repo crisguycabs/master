@@ -117,7 +117,11 @@ namespace RockVision
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            // se cancelo la creacion de un nuevo proyecto
             this.Close();
+            
+            // se abre de nuevo la ventana de HomeForm
+            padre.AbrirHomeForm();
         }
 
         private void NewProjectVForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -192,12 +196,15 @@ namespace RockVision
                 }
 
                 // se muestra la ventana de espera
-                padre.ShowWaiting("Espere mientras RockStatic crea el nuevo proyecto...");
+                padre.ShowWaiting("Espere mientras RockVision crea el nuevo proyecto...");
 
                 padre.actualV = new CProyectoV(saveFile.FileName, elementos);                
 
                 // se cierra la ventana de espera
                 padre.CloseWaiting();
+
+                // se cierra la ventana
+                this.Close();
             }
         }
     }

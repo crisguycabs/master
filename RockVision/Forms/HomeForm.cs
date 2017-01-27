@@ -43,7 +43,6 @@ namespace RockVision
         {
             // se escogen los dicom que se quieren visualizar
             padre.NuevoProyectoV();
-            this.Close();
         }
 
         private void HomeForm_FormClosed(object sender, FormClosedEventArgs e)
