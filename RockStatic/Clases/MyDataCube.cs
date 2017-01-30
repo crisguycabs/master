@@ -216,7 +216,7 @@ namespace RockStatic
         }
 
         /// <summary>
-        /// Genera el histograma y las marcas de clase para el datacubo, con 100 bins
+        /// Genera el histograma y las marcas de clase para el datacubo, con bins = raiz de numero de datos
         /// </summary>
         public void GenerarHistograma()
         {
@@ -237,17 +237,24 @@ namespace RockStatic
 
             }
 
+            // se calcula el numero de bins como la raiz del total de elementos
+            double ancho = Convert.ToDouble(dataCube[0].selector.Columns.Data);
+            double alto = Convert.ToDouble(dataCube[0].selector.Rows.Data);
+            double largo = Convert.ToDouble(dataCube.Count);
+            int nbins = Convert.ToInt32(Math.Ceiling(Math.Sqrt(ancho * alto * largo)));
+            this.histograma = new uint[nbins];
+
             // se calculan los limites de cada marca de clase
-            double step = (double)(((double)(maximo - minimo)) / 100);
-            ushort[] limites = new ushort[101];
-            double[] tempLimites = new double[101];
+            double step = (double)(((double)(maximo - minimo)) / Convert.ToDouble(nbins));
+            ushort[] limites = new ushort[nbins+1];
+            double[] tempLimites = new double[nbins+1];
             limites[0] = minimo;
-            for (int i = 1; i < 101; i++)
+            for (int i = 1; i < (nbins+1); i++)
             {
                 tempLimites[i] = tempLimites[i - 1] + step;
                 limites[i] = (ushort)(tempLimites[i]);
             }
-            limites[100] = maximo;
+            limites[nbins] = maximo;
 
             uint bincount = 0;
             int ibin = 0;
@@ -275,14 +282,14 @@ namespace RockStatic
                         histograma[ibin - 1] = histograma[ibin - 1] + bincount;
                         bincount = 1;
                         ibin++;
-                        if (ibin > 100)
-                            ibin = 100;
+                        if (ibin > nbins)
+                            ibin = nbins;
                     }
                 }
             }
 
             // se calculan las marcas de clase
-            bins = new ushort[100];
+            bins = new ushort[nbins];
             for (int i = 0; i < bins.Length; i++)
             {
                 bins[i] = (ushort)((limites[i] + limites[i + 1]) / 2);

@@ -79,7 +79,7 @@
             this.tab3D.Location = new System.Drawing.Point(4, 23);
             this.tab3D.Name = "tab3D";
             this.tab3D.Padding = new System.Windows.Forms.Padding(3);
-            this.tab3D.Size = new System.Drawing.Size(1192, 643);
+            this.tab3D.Size = new System.Drawing.Size(1192, 593);
             this.tab3D.TabIndex = 1;
             this.tab3D.Text = "Visualizacion3D";
             // 
@@ -101,6 +101,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VISUALIZACION";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VisualForm_FormClosed);
+            this.Load += new System.EventHandler(this.VisualForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 

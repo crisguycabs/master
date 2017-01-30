@@ -76,6 +76,10 @@ namespace RockVision
             this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
             this.Refresh();
 
+            Left = Top = 0;
+            Width = Screen.PrimaryScreen.WorkingArea.Width;
+            Height = Screen.PrimaryScreen.WorkingArea.Height;
+
             AbrirHomeForm();
         }
 

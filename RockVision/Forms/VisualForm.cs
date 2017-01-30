@@ -61,5 +61,10 @@ namespace RockVision
                 this.Top += e.Y - lastClick.Y;
             }
         }
+
+        private void VisualForm_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
