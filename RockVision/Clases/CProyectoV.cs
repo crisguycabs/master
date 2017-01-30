@@ -114,16 +114,16 @@ namespace RockVision
             this.datacubo = new RockStatic.MyDataCube(elementos2);
 
             // la segmentacion transversal es TODO el DICOM
+            for (int i = 0; i < this.datacubo.dataCube.Count; i++) this.datacubo.dataCube[i].segCore = this.datacubo.dataCube[i].pixelData;
+
+            // hay tantos cortes horizontales como
             this.datacubo.widthSeg = Convert.ToInt32(this.datacubo.dataCube[0].selector.Rows.Data);
             
             // se crean las segmentaciones horizontales
-            System.DateTime ini = System.DateTime.Now;
-            
-            for (int i = 0; i < this.datacubo.dataCube.Count; i++) this.datacubo.dataCube[i].segCore = this.datacubo.dataCube[i].pixelData;
-            this.datacubo.GenerarCoresHorizontales();
-
-            System.DateTime fin = System.DateTime.Now;
-            System.Windows.Forms.MessageBox.Show(((fin - ini).Milliseconds + 1000 * (fin - ini).Seconds).ToString());
+            //System.DateTime ini = System.DateTime.Now;
+            this.datacubo.GenerarCortesHorizontalesRV();
+            //System.DateTime fin = System.DateTime.Now;
+            //System.Windows.Forms.MessageBox.Show(((fin - ini).Milliseconds + 1000 * (fin - ini).Seconds).ToString());
 
             // se genera el histograma
             this.datacubo.GenerarHistograma();

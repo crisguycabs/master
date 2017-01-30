@@ -208,6 +208,7 @@ namespace RockVision
         {
             OpenFileDialog seldicom = new OpenFileDialog();
             seldicom.Multiselect = true;
+            seldicom.Title="Escoga los archivos dicom a visualizar";
 
             List<string> temp= new List<string>();
 
