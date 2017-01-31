@@ -49,22 +49,24 @@
             this.trackCorte = new System.Windows.Forms.TrackBar();
             this.labelSlide = new System.Windows.Forms.Label();
             this.trackBar = new System.Windows.Forms.TrackBar();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupUmbral = new System.Windows.Forms.GroupBox();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnBorrar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.dataGrid = new System.Windows.Forms.DataGridView();
-            this.rangoMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rangoMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.color = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.chkHabilitar = new System.Windows.Forms.CheckBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupNorm = new System.Windows.Forms.GroupBox();
             this.pictGradiente = new System.Windows.Forms.PictureBox();
             this.rangeBar = new Zzzz.ZzzzRangeBar();
             this.labelMin = new System.Windows.Forms.Label();
             this.labelMax = new System.Windows.Forms.Label();
             this.pictTrans = new System.Windows.Forms.PictureBox();
             this.tab3D = new System.Windows.Forms.TabPage();
+            this.chkNorm = new System.Windows.Forms.CheckBox();
+            this.chkUmbral = new System.Windows.Forms.CheckBox();
+            this.rangoMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rangoMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.color = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCerrar = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tab2D.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictHor)).BeginInit();
@@ -74,9 +76,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.numHmin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackCorte)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar)).BeginInit();
-            this.groupBox2.SuspendLayout();
+            this.groupUmbral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.groupNorm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictGradiente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictTrans)).BeginInit();
             this.SuspendLayout();
@@ -111,14 +113,17 @@
             // tab2D
             // 
             this.tab2D.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tab2D.Controls.Add(this.chkUmbral);
+            this.tab2D.Controls.Add(this.chkNorm);
+            this.tab2D.Controls.Add(this.btnCerrar);
             this.tab2D.Controls.Add(this.pictHor);
             this.tab2D.Controls.Add(this.groupBox3);
             this.tab2D.Controls.Add(this.labelCorte);
             this.tab2D.Controls.Add(this.trackCorte);
             this.tab2D.Controls.Add(this.labelSlide);
             this.tab2D.Controls.Add(this.trackBar);
-            this.tab2D.Controls.Add(this.groupBox2);
-            this.tab2D.Controls.Add(this.groupBox1);
+            this.tab2D.Controls.Add(this.groupUmbral);
+            this.tab2D.Controls.Add(this.groupNorm);
             this.tab2D.Controls.Add(this.pictTrans);
             this.tab2D.Location = new System.Drawing.Point(4, 23);
             this.tab2D.Name = "tab2D";
@@ -277,25 +282,24 @@
             this.trackBar.TabIndex = 20;
             this.trackBar.Scroll += new System.EventHandler(this.trackBar_Scroll);
             // 
-            // groupBox2
+            // groupUmbral
             // 
-            this.groupBox2.Controls.Add(this.btnLimpiar);
-            this.groupBox2.Controls.Add(this.btnBorrar);
-            this.groupBox2.Controls.Add(this.btnAgregar);
-            this.groupBox2.Controls.Add(this.dataGrid);
-            this.groupBox2.Controls.Add(this.chkHabilitar);
-            this.groupBox2.Location = new System.Drawing.Point(365, 339);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(365, 140);
-            this.groupBox2.TabIndex = 18;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "UMBRALIZAR";
+            this.groupUmbral.Controls.Add(this.btnLimpiar);
+            this.groupUmbral.Controls.Add(this.btnBorrar);
+            this.groupUmbral.Controls.Add(this.btnAgregar);
+            this.groupUmbral.Controls.Add(this.dataGrid);
+            this.groupUmbral.Enabled = false;
+            this.groupUmbral.Location = new System.Drawing.Point(365, 371);
+            this.groupUmbral.Name = "groupUmbral";
+            this.groupUmbral.Size = new System.Drawing.Size(365, 140);
+            this.groupUmbral.TabIndex = 18;
+            this.groupUmbral.TabStop = false;
             // 
             // btnLimpiar
             // 
             this.btnLimpiar.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLimpiar.Location = new System.Drawing.Point(271, 77);
+            this.btnLimpiar.Location = new System.Drawing.Point(281, 77);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
             this.btnLimpiar.TabIndex = 13;
@@ -309,7 +313,7 @@
             // 
             this.btnBorrar.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.btnBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBorrar.Location = new System.Drawing.Point(271, 48);
+            this.btnBorrar.Location = new System.Drawing.Point(281, 48);
             this.btnBorrar.Name = "btnBorrar";
             this.btnBorrar.Size = new System.Drawing.Size(75, 23);
             this.btnBorrar.TabIndex = 13;
@@ -321,14 +325,16 @@
             // 
             // btnAgregar
             // 
+            this.btnAgregar.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAgregar.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregar.Location = new System.Drawing.Point(271, 19);
+            this.btnAgregar.Location = new System.Drawing.Point(281, 19);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 13;
             this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             this.btnAgregar.MouseEnter += new System.EventHandler(this.btnSubir_MouseEnter);
             this.btnAgregar.MouseLeave += new System.EventHandler(this.btnSubir_MouseLeave);
             // 
@@ -347,57 +353,23 @@
             this.color});
             this.dataGrid.Location = new System.Drawing.Point(9, 19);
             this.dataGrid.Name = "dataGrid";
-            this.dataGrid.Size = new System.Drawing.Size(236, 117);
+            this.dataGrid.Size = new System.Drawing.Size(266, 117);
             this.dataGrid.TabIndex = 12;
             this.dataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_CellClick);
             this.dataGrid.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGrid_CellMouseClick);
             this.dataGrid.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_RowValidated);
             // 
-            // rangoMin
+            // groupNorm
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rangoMin.DefaultCellStyle = dataGridViewCellStyle1;
-            this.rangoMin.HeaderText = "Minimo";
-            this.rangoMin.Name = "rangoMin";
-            this.rangoMin.Width = 75;
-            // 
-            // rangoMax
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rangoMax.DefaultCellStyle = dataGridViewCellStyle2;
-            this.rangoMax.HeaderText = "Maximo";
-            this.rangoMax.Name = "rangoMax";
-            this.rangoMax.Width = 75;
-            // 
-            // color
-            // 
-            this.color.HeaderText = "Color";
-            this.color.Name = "color";
-            this.color.Width = 45;
-            // 
-            // chkHabilitar
-            // 
-            this.chkHabilitar.AutoSize = true;
-            this.chkHabilitar.Location = new System.Drawing.Point(276, 109);
-            this.chkHabilitar.Name = "chkHabilitar";
-            this.chkHabilitar.Size = new System.Drawing.Size(75, 18);
-            this.chkHabilitar.TabIndex = 11;
-            this.chkHabilitar.Text = "Habilitar";
-            this.chkHabilitar.UseVisualStyleBackColor = true;
-            this.chkHabilitar.CheckedChanged += new System.EventHandler(this.chkHabilitar_CheckedChanged);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.pictGradiente);
-            this.groupBox1.Controls.Add(this.rangeBar);
-            this.groupBox1.Controls.Add(this.labelMin);
-            this.groupBox1.Controls.Add(this.labelMax);
-            this.groupBox1.Location = new System.Drawing.Point(365, 224);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(365, 108);
-            this.groupBox1.TabIndex = 17;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "NORMALIZAR";
+            this.groupNorm.Controls.Add(this.pictGradiente);
+            this.groupNorm.Controls.Add(this.rangeBar);
+            this.groupNorm.Controls.Add(this.labelMin);
+            this.groupNorm.Controls.Add(this.labelMax);
+            this.groupNorm.Location = new System.Drawing.Point(365, 238);
+            this.groupNorm.Name = "groupNorm";
+            this.groupNorm.Size = new System.Drawing.Size(365, 108);
+            this.groupNorm.TabIndex = 17;
+            this.groupNorm.TabStop = false;
             // 
             // pictGradiente
             // 
@@ -465,6 +437,67 @@
             this.tab3D.TabIndex = 1;
             this.tab3D.Text = "Visualizacion3D";
             // 
+            // chkNorm
+            // 
+            this.chkNorm.AutoSize = true;
+            this.chkNorm.Checked = true;
+            this.chkNorm.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkNorm.Location = new System.Drawing.Point(365, 225);
+            this.chkNorm.Name = "chkNorm";
+            this.chkNorm.Size = new System.Drawing.Size(86, 18);
+            this.chkNorm.TabIndex = 25;
+            this.chkNorm.Text = "Normalizar";
+            this.chkNorm.UseVisualStyleBackColor = true;
+            this.chkNorm.CheckedChanged += new System.EventHandler(this.chkNorm_CheckedChanged);
+            // 
+            // chkUmbral
+            // 
+            this.chkUmbral.AutoSize = true;
+            this.chkUmbral.Location = new System.Drawing.Point(365, 358);
+            this.chkUmbral.Name = "chkUmbral";
+            this.chkUmbral.Size = new System.Drawing.Size(84, 18);
+            this.chkUmbral.TabIndex = 26;
+            this.chkUmbral.Text = "Segmentar";
+            this.chkUmbral.UseVisualStyleBackColor = true;
+            this.chkUmbral.CheckedChanged += new System.EventHandler(this.chkUmbral_CheckedChanged);
+            // 
+            // rangoMin
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rangoMin.DefaultCellStyle = dataGridViewCellStyle1;
+            this.rangoMin.HeaderText = "Minimo";
+            this.rangoMin.Name = "rangoMin";
+            this.rangoMin.Width = 75;
+            // 
+            // rangoMax
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rangoMax.DefaultCellStyle = dataGridViewCellStyle2;
+            this.rangoMax.HeaderText = "Maximo";
+            this.rangoMax.Name = "rangoMax";
+            this.rangoMax.Width = 75;
+            // 
+            // color
+            // 
+            this.color.HeaderText = "Color";
+            this.color.Name = "color";
+            this.color.Width = 55;
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrar.Location = new System.Drawing.Point(655, 517);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(75, 23);
+            this.btnCerrar.TabIndex = 13;
+            this.btnCerrar.Text = "Cerrar";
+            this.btnCerrar.UseVisualStyleBackColor = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            this.btnCerrar.MouseEnter += new System.EventHandler(this.btnSubir_MouseEnter);
+            this.btnCerrar.MouseLeave += new System.EventHandler(this.btnSubir_MouseLeave);
+            // 
             // VisualForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -477,11 +510,9 @@
             this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(1200, 650);
-            this.MinimumSize = new System.Drawing.Size(1200, 650);
             this.Name = "VisualForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "VISUALIZACION";
+            this.Text = "Visualizacion de Cores";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VisualForm_FormClosed);
             this.Load += new System.EventHandler(this.VisualForm_Load);
             this.tabControl1.ResumeLayout(false);
@@ -495,11 +526,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numHmin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackCorte)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.groupUmbral.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupNorm.ResumeLayout(false);
+            this.groupNorm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictGradiente)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictTrans)).EndInit();
             this.ResumeLayout(false);
@@ -512,16 +542,12 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tab2D;
         private System.Windows.Forms.TabPage tab3D;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupUmbral;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnBorrar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.DataGridView dataGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rangoMin;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rangoMax;
-        private System.Windows.Forms.DataGridViewTextBoxColumn color;
-        private System.Windows.Forms.CheckBox chkHabilitar;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupNorm;
         private Zzzz.ZzzzRangeBar rangeBar;
         private System.Windows.Forms.Label labelMin;
         private System.Windows.Forms.Label labelMax;
@@ -538,5 +564,11 @@
         private System.Windows.Forms.PictureBox pictHor;
         private System.Windows.Forms.Label labelCorte;
         private System.Windows.Forms.TrackBar trackCorte;
+        private System.Windows.Forms.CheckBox chkNorm;
+        private System.Windows.Forms.CheckBox chkUmbral;
+        private System.Windows.Forms.Button btnCerrar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rangoMin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rangoMax;
+        private System.Windows.Forms.DataGridViewTextBoxColumn color;
     }
 }

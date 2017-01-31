@@ -24,7 +24,7 @@ namespace RockVision
         /// <summary>
         /// ruta en disco del archivo .RVV
         /// </summary>
-        public string ruta="";
+        public string ruta = "";
 
         /// <summary>
         /// ruta de la carpeta del proyecto
@@ -39,7 +39,7 @@ namespace RockVision
         /// <summary>
         /// lista que contiene los limites de la segmentacion 2D
         /// </summary>
-        public List<uint> segmentacion2D = new List<uint>();
+        public List<int> segmentacion2D = new List<int>();
 
         /// <summary>
         /// lista de colores para la segmentacion 2D
@@ -49,12 +49,12 @@ namespace RockVision
         /// <summary>
         /// valores limites de la normalizacion. Vector de 2 posiciones: [0] valor minimo, [1] valor maximo
         /// </summary>
-        public uint[] normalizacion2D = new uint[2];
+        public int[] normalizacion2D = new int[2];
 
         /// <summary>
         /// lista que contiene los limites de la segmentacion 3D
         /// </summary>
-        public List<uint> segmentacion3D = new List<uint>();
+        public List<int> segmentacion3D = new List<int>();
 
         /// <summary>
         /// lista de colores para la segmentacion 3D
@@ -79,7 +79,90 @@ namespace RockVision
         #endregion
 
         /// <summary>
-        /// Constructor con asignacion
+        /// Constructor con asignacion para cargar un proyecto existente en disco
+        /// </summary>
+        /// <param name="path"></param>
+        public CProyectoV(string path)
+        {
+            // se lee el archivo
+            System.IO.StreamReader sr = new System.IO.StreamReader(path);
+
+            string line="";
+            
+            this.ruta = path;
+
+            while ((line = sr.ReadLine()) != null)
+            {
+                switch (line)
+                {
+                    case "NAME":
+                        this.name = sr.ReadLine();
+                        break;
+
+                    case "SEGMENTACION2D":
+                        this.segmentacion2D = new List<int>();
+                        while ((line = sr.ReadLine()) != "") this.segmentacion2D.Add(Convert.ToInt32(line));
+                        break;
+
+                    case "COLORSEG2D":
+                        this.colorSeg2D = new List<System.Drawing.Color>();
+                        while ((line = sr.ReadLine()) != "")
+                        {
+                            line=line.Replace("Color [", "");
+                            line=line.Replace("]", "");
+                            this.colorSeg2D.Add(System.Drawing.Color.FromName(line));
+                        }
+                        break;
+
+                    case "NORMALIZACION2D":
+                        this.normalizacion2D = new int[2];
+                        normalizacion2D[0] = Convert.ToInt32(sr.ReadLine());
+                        normalizacion2D[1] = Convert.ToInt32(sr.ReadLine());
+                        break;
+
+                    case "SEGMENTACION3D":
+                        this.segmentacion3D = new List<int>();
+                        while ((line = sr.ReadLine()) != "") this.segmentacion3D.Add(Convert.ToInt32(line));
+                        break;
+
+                    case "COLORSEG3D":
+                        this.colorSeg3D = new List<System.Drawing.Color>();
+                        while ((line = sr.ReadLine()) != "") this.colorSeg3D.Add(System.Drawing.Color.FromName(line));
+                        break;
+
+                    case "PLANOXY":
+                        this.planoXY = Convert.ToInt32(sr.ReadLine());
+                        break;
+
+                    case "PLANOXZ":
+                        this.planoXZ = Convert.ToInt32(sr.ReadLine());
+                        break;
+
+                    case "PLANOYZ":
+                        this.planoYZ = Convert.ToInt32(sr.ReadLine());
+                        break;
+                }
+            }
+
+            // se leen todos y cada uno de los archivos dicom que estan en la carpeta files
+            string folder = System.IO.Path.GetDirectoryName(path) + "\\files";
+            string[] nfiles = System.IO.Directory.GetFiles(folder);
+            this.datacubo = new RockStatic.MyDataCube(nfiles);
+
+            // la segmentacion transversal es TODO el DICOM
+            for (int i = 0; i < this.datacubo.dataCube.Count; i++) this.datacubo.dataCube[i].segCore = this.datacubo.dataCube[i].pixelData;
+
+            // hay tantos cortes horizontales como
+            this.datacubo.widthSeg = Convert.ToInt32(this.datacubo.dataCube[0].selector.Rows.Data);
+
+            this.datacubo.GenerarCortesHorizontalesRV();
+            
+            // se genera el histograma
+            this.datacubo.GenerarHistograma();            
+        }
+
+        /// <summary>
+        /// Constructor con asignacion para nuevos proyectos
         /// </summary>
         /// <param name="path">ruta del proyecto</param>
         /// <param name="elementos">lista de elementos dicom a incluir en el proyecto</param>
@@ -102,11 +185,11 @@ namespace RockVision
 
             // se mueven todos los dicom a la carpeta FILES con un nombre generico
             List<string> elementos2 = new List<string>();
-            for (int i = 0; i < elementos.Count;i++)
+            for (int i = 0; i < elementos.Count; i++)
             {
                 string nombre = System.IO.Path.GetFileName(elementos[i]);
                 string ext = System.IO.Path.GetExtension(elementos[i]);
-                elementos2.Add(folder + "\\files\\" + i + ext);
+                elementos2.Add(folder + "\\files\\" + i.ToString("000000") + ext);
                 System.IO.File.Copy(elementos[i], elementos2[i]);
             }
 
@@ -118,7 +201,7 @@ namespace RockVision
 
             // hay tantos cortes horizontales como
             this.datacubo.widthSeg = Convert.ToInt32(this.datacubo.dataCube[0].selector.Rows.Data);
-            
+
             // se crean las segmentaciones horizontales
             //System.DateTime ini = System.DateTime.Now;
             this.datacubo.GenerarCortesHorizontalesRV();
@@ -128,8 +211,12 @@ namespace RockVision
             // se genera el histograma
             this.datacubo.GenerarHistograma();
 
+            normalizacion2D = new int[2];
+            normalizacion2D[0] = datacubo.GetMinimo();
+            normalizacion2D[1] = datacubo.GetMaximo();
+
             // se crea el archivo del proyecto, .RVV
-            System.IO.StreamWriter sw = new System.IO.StreamWriter(ruta,false);
+            System.IO.StreamWriter sw = new System.IO.StreamWriter(ruta, false);
             sw.Close();
 
             // se guarda la informacion del proyecto (info por derecto)

@@ -60,4 +60,3 @@ C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\
 C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\obj\Release\RockStatic.application
 C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\obj\Release\RockStatic.exe
 C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\obj\Release\RockStatic.pdb
-C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\obj\Release\RockStatic.csprojResolveAssemblyReference.cache

@@ -62,6 +62,9 @@ namespace RockVision
         int maxPixelValue;    // Updated July 2012
         int minPixelValue;
 
+        // lista de colores preferidos
+        List<System.Drawing.Color> colores = new List<Color>();
+        
         #endregion
 
 
@@ -188,7 +191,16 @@ namespace RockVision
             }
 
             UmbralizarHistograma();
-            if (chkHabilitar.Checked) pictTrans.Image = Umbralizar(trackBar.Value);
+            if (chkNorm.Checked)
+            {
+                pictTrans.Image = Normalizar(trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                pictHor.Image = NormalizarH(trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+            }
+            else
+            {
+                pictTrans.Image = Umbralizar(trackBar.Value);
+                pictHor.Image = UmbralizarH(trackCorte.Value);
+            }
 
             controlValidar = true;
         }
@@ -202,6 +214,12 @@ namespace RockVision
         /// <returns></returns>
         private Bitmap Umbralizar(int indice)
         {
+            // failsafe: no hay valores de umbralizacion
+            if (umbral.Count <= 0)
+            {
+                return Normalizar(trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+            }
+
             Bitmap imagen = new Bitmap(padre.actualV.datacubo.dataCube[indice].selector.Columns.Data, padre.actualV.datacubo.dataCube[indice].selector.Rows.Data, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
 
             BitmapData bmd = imagen.LockBits(new Rectangle(0, 0, imagen.Width, imagen.Height), System.Drawing.Imaging.ImageLockMode.ReadOnly, imagen.PixelFormat);
@@ -242,6 +260,97 @@ namespace RockVision
                     {
                         valorCT = padre.actualV.datacubo.dataCube[indice].pixelData[i * bmd.Width + j];
                         colorOriginal = Convert.ToInt32(Convert.ToDouble(padre.actualV.datacubo.dataCube[indice].pixelData[i * bmd.Width + j] - rangeBar.RangeMinimum) * ((double)255) / range);
+                        if (colorOriginal < 0) colorOriginal = 0;
+                        if (colorOriginal > 255) colorOriginal = 255;
+                        b = Convert.ToByte(colorOriginal);
+                        j1 = j * pixelSize;
+
+                        nuevoR = b;
+                        nuevoG = b;
+                        nuevoB = b;
+
+                        // se recorre la lista de umbrales
+                        for (int k = 0; k < umbral.Count; k++)
+                        {
+                            if ((valorCT >= umbral[k].minimo) & (valorCT <= umbral[k].maximo))
+                            {
+                                // esta dentro del rango, se repinta ese pixel
+                                nuevoR = bR[k];
+                                nuevoG = bG[k];
+                                nuevoB = bB[k];
+                            }
+                        }
+
+                        row[j1] = nuevoB;            // Red
+                        row[j1 + 1] = nuevoG;        // Green
+                        row[j1 + 2] = nuevoR;        // Blue                                                   
+                    }
+                }
+            }
+            imagen.UnlockBits(bmd);
+
+            return imagen;
+        }
+
+        /// <summary>
+        /// Para un corte horizontal especifico (indice) pinta de un color especifico los valores CT que se encuentran dentro de minimoValor y maximoValor
+        /// </summary>
+        /// <param name="indice"></param>
+        /// <param name="minimoValor"></param>
+        /// <param name="maximoValor"></param>
+        /// <returns></returns>
+        private Bitmap UmbralizarH(int indice)
+        {
+            // failsafe: no hay valores de umbralizacion
+            if (umbral.Count <= 0)
+            {
+                return NormalizarH(trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+            }
+
+            int alto = padre.actualV.datacubo.dataCube[0].selector.Columns.Data;
+            int total = padre.actualV.datacubo.coresHorizontal[0].Count;
+            int ancho = Convert.ToInt32(Convert.ToDouble(total) / Convert.ToDouble(alto));
+
+            Bitmap imagen = new Bitmap(ancho, alto, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+
+            BitmapData bmd = imagen.LockBits(new Rectangle(0, 0, imagen.Width, imagen.Height), System.Drawing.Imaging.ImageLockMode.ReadOnly, imagen.PixelFormat);
+
+            int valorCT;
+            int colorOriginal;
+
+            unsafe
+            {
+                int pixelSize = 3;
+                int i, j, j1, i1;
+                byte b;
+
+                // se prepara una lista con todos los posibles colores de los intervalos
+                List<byte> bR = new List<byte>();
+                List<byte> bG = new List<byte>();
+                List<byte> bB = new List<byte>();
+
+                for (int k = 0; k < umbral.Count; k++)
+                {
+                    bR.Add(Convert.ToByte(umbral[k].color.R));
+                    bG.Add(Convert.ToByte(umbral[k].color.G));
+                    bB.Add(Convert.ToByte(umbral[k].color.B));
+                }
+
+                byte nuevoR;
+                byte nuevoG;
+                byte nuevoB;
+
+                double range = rangeBar.RangeMaximum - rangeBar.RangeMinimum;
+
+                for (i = 0; i < bmd.Height; ++i)
+                {
+                    byte* row = (byte*)bmd.Scan0 + (i * bmd.Stride);
+                    i1 = i * bmd.Width;
+
+                    for (j = 0; j < bmd.Width; ++j)
+                    {
+                        valorCT = padre.actualV.datacubo.coresHorizontal[indice][i * bmd.Width + j];
+                        colorOriginal = Convert.ToInt32(Convert.ToDouble(padre.actualV.datacubo.coresHorizontal[indice][i * bmd.Width + j] - rangeBar.RangeMinimum) * ((double)255) / range);
                         if (colorOriginal < 0) colorOriginal = 0;
                         if (colorOriginal > 255) colorOriginal = 255;
                         b = Convert.ToByte(colorOriginal);
@@ -329,11 +438,11 @@ namespace RockVision
         /// <returns></returns>
         private Bitmap NormalizarH(int indice, int minimoValor, int maximoValor)
         {
-            int alto=padre.actualV.datacubo.dataCube[0].selector.Columns.Data;
-            int total=padre.actualV.datacubo.coresHorizontal[0].Count;
+            int alto = padre.actualV.datacubo.dataCube[0].selector.Columns.Data;
+            int total = padre.actualV.datacubo.coresHorizontal[0].Count;
 
-            int ancho=Convert.ToInt32(Convert.ToDouble(total)/Convert.ToDouble(alto));
-            return RockStatic.MyDicom.CrearBitmap(padre.actualV.datacubo.coresHorizontal[indice], ancho, alto);
+            int ancho = Convert.ToInt32(Convert.ToDouble(total) / Convert.ToDouble(alto));
+            return RockStatic.MyDicom.CrearBitmap(padre.actualV.datacubo.coresHorizontal[indice], ancho, alto, minimoValor, maximoValor);
 
             /*
             // width height
@@ -373,7 +482,7 @@ namespace RockVision
 
             return imagen;
              */
-            
+
         }
 
         private Bitmap CrearGradiente(int minimoValorRango, int maximoValorRango)
@@ -447,6 +556,13 @@ namespace RockVision
 
         private void VisualForm_Load(object sender, EventArgs e)
         {
+            // colores favoritos para la segmentacion del histograma
+            colores.Add(Color.DodgerBlue);
+            colores.Add(Color.SpringGreen);
+            colores.Add(Color.Gold);
+            colores.Add(Color.Orange);
+            colores.Add(Color.Red);
+
             // color semi-transparente para la segunda serie del chart
             chart1.Series[0].Color = Color.FromArgb(50, Color.Green);
 
@@ -472,11 +588,20 @@ namespace RockVision
             // minimo y maximo de la barra de rango para normalizacion
             rangeBar.TotalMaximum = maxPixelValue;
             rangeBar.TotalMinimum = minPixelValue;
-            rangeBar.RangeMaximum = maxPixelValue;
-            rangeBar.RangeMinimum = minPixelValue;
+            try
+            {
+                rangeBar.RangeMaximum = padre.actualV.normalizacion2D[1];
+                rangeBar.RangeMinimum = padre.actualV.normalizacion2D[0];
+            }
+            catch
+            {
+                rangeBar.RangeMaximum = maxPixelValue;
+                rangeBar.RangeMinimum = minPixelValue;
+            }
+            
 
-            padre.actualV.normalizacion2D[0] = Convert.ToUInt32(minPixelValue);
-            padre.actualV.normalizacion2D[1] = Convert.ToUInt32(maxPixelValue);
+            padre.actualV.normalizacion2D[0] = minPixelValue;
+            padre.actualV.normalizacion2D[1] = maxPixelValue;
 
             pictGradiente.Image = CrearGradiente(rangeBar.RangeMinimum, rangeBar.RangeMaximum);
 
@@ -535,18 +660,17 @@ namespace RockVision
             trackBar.Maximum = padre.actualV.datacubo.dataCube.Count - 1;
             trackBar.Value = 0;
             trackBar.TickFrequency = Convert.ToInt32(padre.actualV.datacubo.dataCube.Count / 100);
+            labelSlide.Text = "Slide " + (trackBar.Value + 1).ToString() + " de " + padre.actualV.datacubo.dataCube.Count;
 
             pictTrans.Image = Normalizar(0, minPixelValue, maxPixelValue);
 
             trackCorte.Minimum = 0;
-            trackCorte.Maximum = padre.actualV.datacubo.coresHorizontal.Length-1;
+            trackCorte.Maximum = padre.actualV.datacubo.coresHorizontal.Length - 1;
             trackCorte.Value = Convert.ToInt32(padre.actualV.datacubo.coresHorizontal.Length / 2);
             trackBar.TickFrequency = Convert.ToInt32(padre.actualV.datacubo.coresHorizontal.Length / 100);
+            labelCorte.Text = "Corte " + (trackCorte.Value + 1).ToString() + " de " + padre.actualV.datacubo.coresHorizontal.Length;
 
             pictHor.Image = NormalizarH(trackCorte.Value, minPixelValue, maxPixelValue);
-        
-            labelSlide.Text = "Slide " + (trackBar.Value + 1).ToString() + " de " + padre.actualV.datacubo.dataCube.Count;
-            labelSlide.Text = "Corte " + (trackCorte.Value + 1).ToString() + " de " + padre.actualV.datacubo.coresHorizontal.Length;
 
             pictGradiente.Image = CrearGradiente(rangeBar.RangeMinimum, rangeBar.RangeMaximum);
 
@@ -561,6 +685,30 @@ namespace RockVision
             numHmax.Value = maxPixelValue;
 
             pictHor.Invalidate();
+            pictTrans.Invalidate();
+
+            // si existe informacion de la segmentacion se carga en 
+            try
+            {
+                umbral = new List<CUmbralCT>();
+                for (int i = 0; i < (padre.actualV.segmentacion2D.Count-1); i++)
+                {
+                    umbral.Add(new CUmbralCT(padre.actualV.segmentacion2D[i], padre.actualV.segmentacion2D[i + 1], padre.actualV.colorSeg2D[i]));
+                    
+                    dataGrid.Rows.Add();
+                    dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[0].Value = umbral.Last().minimo;
+                    dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[1].Value = umbral.Last().maximo;
+                    dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[2].Style.BackColor = dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[2].Style.ForeColor = dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[2].Style.SelectionBackColor = dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[2].Style.SelectionForeColor = umbral.Last().color;
+                }
+
+                UmbralizarHistograma();
+            }
+            catch
+            {
+            }
+
+            // se cierra la ventana HomeForm
+            if (padre.abiertoHomeForm) padre.homeForm.Close();
         }
 
         private void rangeBar_RangeChanging(object sender, EventArgs e)
@@ -580,30 +728,12 @@ namespace RockVision
             // se debe ajustar la imagen normalizada, y umbralizada, de cada dicom segun se vaya cambiando el rangebar
             // se pregunta si se debe tambien umbralizar, o si solo es necesario normalizar y presentar la imagen normalizada
             pictTrans.Image = Normalizar(this.trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
-            
+            pictHor.Image = NormalizarH(this.trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+
             pictGradiente.Image = CrearGradiente(rangeBar.RangeMinimum, rangeBar.RangeMaximum);
 
-            padre.actualV.normalizacion2D[0] = Convert.ToUInt32(rangeBar.RangeMinimum);
-            padre.actualV.normalizacion2D[1] = Convert.ToUInt32(rangeBar.RangeMaximum);
-        }
-
-        private void trackBar_Scroll(object sender, EventArgs e)
-        {
-            // se debe ajustar la imagen normalizada, y umbralizada, de cada dicom segun se vaya cambiando el trackbar
-
-            // primero se normaliza la imagen 
-            pictTrans.Image = Normalizar(this.trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
-
-            // se pregunta si se debe tambien umbralizar, o si solo es necesario normalizar y presentar la imagen normalizada
-            if (chkHabilitar.Checked)
-            {
-                pictTrans.Image = Umbralizar(trackBar.Value);
-            }
-            //else pictureBox1.Image = dd[trackBar.Value].bmp;
-
-            labelSlide.Text = "Slide " + (trackBar.Value+1) + " de " + padre.actualV.datacubo.dataCube.Count;
-            pictHor.Invalidate();
-            pictTrans.Invalidate();
+            padre.actualV.normalizacion2D[0] = rangeBar.RangeMinimum;
+            padre.actualV.normalizacion2D[1] = rangeBar.RangeMaximum;
         }
 
         private void dataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -615,9 +745,20 @@ namespace RockVision
                 {
                     umbral[dataGrid.CurrentCell.RowIndex].color = dataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = dataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.ForeColor = dataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.SelectionBackColor = dataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.SelectionForeColor = colorDialog1.Color;
                     UmbralizarHistograma();
-                    if (chkHabilitar.Checked) pictTrans.Image = Umbralizar(trackBar.Value);
+                    if (chkNorm.Checked)
+                    {
+                        pictTrans.Image = Normalizar(trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                        pictHor.Image = NormalizarH(trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                    }
+                    else
+                    {
+                        pictTrans.Image = Umbralizar(trackBar.Value);
+                        pictHor.Image = UmbralizarH(trackCorte.Value);
+                    }
                 }
             }
+
+            SetSegmentacion2D();
         }
 
         private void dataGrid_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -723,16 +864,18 @@ namespace RockVision
             umbral[e.RowIndex].color = dataGrid.Rows[e.RowIndex].Cells[2].Style.BackColor;
 
             UmbralizarHistograma();
-            if (chkHabilitar.Checked) pictTrans.Image = Umbralizar(trackBar.Value);
-        }
-
-        private void chkHabilitar_CheckedChanged(object sender, EventArgs e)
-        {
-            pictTrans.Image = Normalizar(trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
-            if (chkHabilitar.Checked)
+            if (chkNorm.Checked)
+            {
+                pictTrans.Image = Normalizar(trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                pictHor.Image = NormalizarH(trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+            }
+            else
             {
                 pictTrans.Image = Umbralizar(trackBar.Value);
+                pictHor.Image = UmbralizarH(trackCorte.Value);
             }
+
+            SetSegmentacion2D();
         }
 
         private void btnSubir_MouseEnter(object sender, EventArgs e)
@@ -750,11 +893,26 @@ namespace RockVision
             int indice = dataGrid.CurrentCell.RowIndex;
             dataGrid.Rows.RemoveAt(indice);
             umbral.RemoveAt(indice);
+
+            ResetChart();
+
+            pictTrans.Image = Umbralizar(trackBar.Value);
+            pictHor.Image = UmbralizarH(trackCorte.Value);
+
+            SetSegmentacion2D();
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
+            // se limpia el datagridview
+            dataGrid.Rows.Clear();
+            
             ResetChart();
+            
+            pictTrans.Image = Normalizar(trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+            pictHor.Image = NormalizarH(trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+
+            SetSegmentacion2D();
         }
 
         private void numHmin_ValueChanged(object sender, EventArgs e)
@@ -773,25 +931,6 @@ namespace RockVision
 
             if (numHmax.Value <= numHmin.Value) numHmax.Value = numHmin.Value + 1;
             chart1.ChartAreas[0].AxisX.Maximum = Convert.ToDouble(numHmax.Value);
-        }
-
-        private void trackCorte_Scroll(object sender, EventArgs e)
-        {
-            // se debe ajustar la imagen normalizada, y umbralizada, de cada dicom segun se vaya cambiando el trackbar
-
-            // primero se normaliza la imagen 
-            pictHor.Image = NormalizarH(this.trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
-
-            // se pregunta si se debe tambien umbralizar, o si solo es necesario normalizar y presentar la imagen normalizada
-            if (chkHabilitar.Checked)
-            {
-                //pictTrans.Image = Umbralizar(trackBar.Value);
-            }
-            //else pictureBox1.Image = dd[trackBar.Value].bmp;
-
-            labelCorte.Text = "Corte " + (trackCorte.Value+1) + " de " + padre.actualV.datacubo.dataCube.Count;
-            pictHor.Invalidate();
-            pictTrans.Invalidate();
         }
 
         private void tab2D_Click(object sender, EventArgs e)
@@ -814,7 +953,7 @@ namespace RockVision
             double xcero = 0;
 
             Pen brocha2 = new Pen(Color.FromArgb(128, 0, 255, 0));
-            brocha2.Width=2;
+            brocha2.Width = 3;
 
             if (imgWidth / imgHeight > boxWidth / boxHeight)
             {
@@ -845,9 +984,9 @@ namespace RockVision
             double alto = padre.actualV.datacubo.dataCube[0].selector.Columns.Data;
             double total = padre.actualV.datacubo.coresHorizontal[0].Count;
             double ancho = Convert.ToInt32(total / alto);
-            int factor = Convert.ToInt32(ancho/Convert.ToInt32(padre.actualV.datacubo.dataCube.Count));
+            int factor = Convert.ToInt32(ancho / Convert.ToInt32(padre.actualV.datacubo.dataCube.Count));
 
-            int pos=Convert.ToInt32((trackBar.Value * scale*factor) + xcero);
+            int pos = Convert.ToInt32((trackBar.Value * scale * factor) + xcero);
             e.Graphics.DrawLine(brocha2, pos, 0, pos, pictHor.Height);
         }
 
@@ -866,7 +1005,7 @@ namespace RockVision
             double xcero = 0;
 
             Pen brocha2 = new Pen(Color.FromArgb(128, 0, 255, 0));
-            brocha2.Width = 2;
+            brocha2.Width = 3;
 
             if (imgWidth / imgHeight > boxWidth / boxHeight)
             {
@@ -893,14 +1032,154 @@ namespace RockVision
                 xcero = (boxWidth - scale * imgWidth) / 2;
             }
 
-            // se averigua el factor de escalado del corte horizontal
-            double alto = padre.actualV.datacubo.dataCube[0].selector.Columns.Data;
-            double total = padre.actualV.datacubo.coresHorizontal[0].Count;
-            double ancho = Convert.ToInt32(total / alto);
-            double factor = ancho / Convert.ToDouble(padre.actualV.datacubo.dataCube.Count);
-
-            int pos = Convert.ToInt32((trackBar.Value * scale / factor) + ycero);
+            int pos = Convert.ToInt32((trackCorte.Value * scale) + ycero);
             e.Graphics.DrawLine(brocha2, 0, pos, pictTrans.Width, pos);
+        }
+
+        private void trackBar_Scroll(object sender, EventArgs e)
+        {
+            // se debe ajustar la imagen normalizada, y umbralizada, de cada dicom segun se vaya cambiando el trackbar
+
+            if (chkNorm.Checked)
+            {
+                pictTrans.Image = Normalizar(trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                pictHor.Image = NormalizarH(trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+            }
+            else
+            {
+                pictTrans.Image = Umbralizar(trackBar.Value);
+                pictHor.Image = UmbralizarH(trackCorte.Value);
+            }
+
+            labelSlide.Text = "Slide " + (trackBar.Value + 1) + " de " + padre.actualV.datacubo.dataCube.Count;
+            pictHor.Invalidate();
+        }
+
+        private void trackCorte_Scroll(object sender, EventArgs e)
+        {
+            // se debe ajustar la imagen normalizada, y umbralizada, de cada dicom segun se vaya cambiando el trackbar
+
+            if (chkNorm.Checked)
+            {
+                pictTrans.Image = Normalizar(trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                pictHor.Image = NormalizarH(trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+            }
+            else
+            {
+                pictTrans.Image = Umbralizar(trackBar.Value);
+                pictHor.Image = UmbralizarH(trackCorte.Value);
+            }
+
+            labelCorte.Text = "Corte " + (trackCorte.Value + 1) + " de " + padre.actualV.datacubo.dataCube[0].selector.Rows.Data;
+            pictTrans.Invalidate();
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            // se agrega un nuevo umbral
+            // si no hay umbrales creados, se crea uno que cubra todo el rango
+            if (umbral.Count == 0)
+            {
+                CUmbralCT temp = new CUmbralCT(minPixelValue, maxPixelValue, colores[0]);
+                umbral.Add(temp);
+
+                dataGrid.Rows.Add();
+                dataGrid.Rows[0].Cells[0].Value = minPixelValue + 20;
+                dataGrid.Rows[0].Cells[1].Value = maxPixelValue;
+                dataGrid.Rows[0].Cells[2].Style.BackColor = dataGrid.Rows[0].Cells[2].Style.ForeColor = dataGrid.Rows[0].Cells[2].Style.SelectionBackColor = dataGrid.Rows[0].Cells[2].Style.SelectionForeColor = colores[0];
+            }
+            else
+            {
+                Color colorAagregar;
+                if (umbral.Count < colores.Count) colorAagregar = colores[umbral.Count];
+                else colorAagregar = colores[umbral.Count - 1];
+                
+                // se agrega un nuevo umbral a continuacion del ultimo, hasta el valor maximo
+                CUmbralCT temp = new CUmbralCT(umbral.Last().maximo, maxPixelValue, colorAagregar);
+                umbral.Add(temp);                
+
+                dataGrid.Rows.Add();
+                dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[0].Value = umbral.Last().minimo;
+                dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[1].Value = umbral.Last().maximo;
+                dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[2].Style.BackColor = dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[2].Style.ForeColor = dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[2].Style.SelectionBackColor = dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[2].Style.SelectionForeColor = colorAagregar;
+            }
+
+            UmbralizarHistograma();
+
+            if (chkNorm.Checked)
+            {
+                pictTrans.Image = Normalizar(trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                pictHor.Image = NormalizarH(trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+            }
+            else
+            {
+                pictTrans.Image = Umbralizar(trackBar.Value);
+                pictHor.Image = UmbralizarH(trackCorte.Value);
+            }
+
+            SetSegmentacion2D();
+        }
+
+        /// <summary>
+        /// Envía al proyecto la información de la segmentacion 2D
+        /// </summary>
+        public void SetSegmentacion2D()
+        {
+            // se guardan los colores de la segmentacion
+            padre.actualV.colorSeg2D=new List<Color>();
+            padre.actualV.segmentacion2D = new List<int>();
+            padre.actualV.segmentacion2D.Add(umbral[0].minimo);
+
+            if (umbral.Count > 0)
+            {
+                for (int i = 0; i < umbral.Count; i++)
+                {
+                    padre.actualV.segmentacion2D.Add(umbral[i].maximo);
+                    padre.actualV.colorSeg2D.Add(umbral[i].color);
+                }
+            }
+            else return;
+        }
+
+        private void chkNorm_CheckedChanged(object sender, EventArgs e)
+        {
+            chkUmbral.Checked=!chkNorm.Checked;
+            groupNorm.Enabled = chkNorm.Checked;
+
+            if (chkNorm.Checked)
+            {
+                pictTrans.Image = Normalizar(trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                pictHor.Image = NormalizarH(trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+            }
+            else
+            {
+                pictTrans.Image = Umbralizar(trackBar.Value);
+                pictHor.Image = UmbralizarH(trackCorte.Value);
+            }
+        }
+
+        private void chkUmbral_CheckedChanged(object sender, EventArgs e)
+        {
+            chkNorm.Checked = !chkUmbral.Checked;
+            groupUmbral.Enabled = chkUmbral.Checked;
+
+            if (chkNorm.Checked)
+            {
+                pictTrans.Image = Normalizar(trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                pictHor.Image = NormalizarH(trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+            }
+            else
+            {
+                pictTrans.Image = Umbralizar(trackBar.Value);
+                pictHor.Image = UmbralizarH(trackCorte.Value);
+            }
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            padre.actualV.Guardar();
+            this.Close();
+            padre.AbrirHomeForm();
         }
     }
 }

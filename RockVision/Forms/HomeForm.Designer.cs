@@ -86,6 +86,7 @@
             this.btnOpen.TabIndex = 15;
             this.btnOpen.Text = "ABRIR PROYECTO";
             this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             this.btnOpen.MouseEnter += new System.EventHandler(this.btnNew_MouseEnter);
             this.btnOpen.MouseLeave += new System.EventHandler(this.btnNew_MouseLeave);
             // 

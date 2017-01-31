@@ -78,5 +78,23 @@ namespace RockVision
         {
             e.Graphics.DrawRectangle(new Pen(Color.RoyalBlue, 2), this.DisplayRectangle); 
         }
+
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openproj = new OpenFileDialog();
+            openproj.Title = "Escoga el archivo del proyecto a abrir";
+            if (openproj.ShowDialog() == DialogResult.OK)
+            {
+                if (System.IO.Path.GetExtension(openproj.FileName) == ".rvv")
+                {
+                    padre.AbrirProyectoV(openproj.FileName);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("El archivo escogido no es archivo de proyecto valido para RockVision", "Error al abrir!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }

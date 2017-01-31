@@ -761,6 +761,16 @@
             <param name="minNormalizacion">Valor minimo CT de la normalizacion</param>
             <param name="maxNormalizacion">Valor maximo CT de la normalizacion</param>
         </member>
+        <member name="M:RockStatic.MyDicom.CrearBitmap(System.Collections.Generic.List{System.UInt16},System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Crea un Bitmap a partir de la informacion de pixeles, en CT, normalizando segun los límites que se le pasan, y guarda la imagen en la instancia bmp de la clase
+            </summary>
+            <param name="pixels16">List de shorts con la informacion CT de cada pixel</param>
+            <param name="width">Ancho deseado de la imagen</param>
+            <param name="height">Alto deseado de la imagen</param>
+            <param name="minNormalizacion">Valor minimo CT de la normalizacion</param>
+            <param name="maxNormalizacion">Valor maximo CT de la normalizacion</param>
+        </member>
         <member name="T:RockStatic.CPermisos">
             <summary>
             Clase que contiene los perfiles de lo usuario para la aplicación ROCKSTATIC

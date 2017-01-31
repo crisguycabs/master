@@ -39,7 +39,7 @@ namespace RockVision
         /// <summary>
         /// indica si la ventana esta abierta o no
         /// </summary>
-        bool abiertoHomeForm = false;
+        public bool abiertoHomeForm = false;
 
         /// <summary>
         /// instancia de HomeForm
@@ -223,7 +223,7 @@ namespace RockVision
                 return;
             }
 
-            CerrarHomeForm();
+            homeForm.Close();
 
             // Se abre el Form para visualizar los archivos dicom escogidos
             if (!abiertoNuevoProyectoVForm)
@@ -240,6 +240,23 @@ namespace RockVision
                 nuevoProyectoVForm.Select();
                 nuevoProyectoVForm.elementos = temp;
             }
+        }
+
+        /// <summary>
+        /// se crea un nuevo proyecto a partir de la ruta del proyecto
+        /// </summary>
+        /// <param name="ruta"></param>
+        public void AbrirProyectoV(string ruta)
+        {
+            // se muestra la ventana de espera
+            ShowWaiting("Espere mientras RockVision crea el nuevo proyecto...");
+
+            // se crea el proyecto a partir de la ruta
+            this.actualV = new CProyectoV(ruta);
+            this.AbrirVisualForm();
+
+            // se cierra la ventana de espera
+            CloseWaiting();
         }
 
         public void CerrarNewProjectVForm()
