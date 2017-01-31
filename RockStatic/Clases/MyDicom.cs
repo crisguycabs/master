@@ -418,5 +418,58 @@ namespace RockStatic
 
             bmp.UnlockBits(bmd);
         }
+
+        /// <summary>
+        /// Crea un Bitmap a partir de la informacion de pixeles, en CT, normalizando segun los límites que se le pasan, y guarda la imagen en la instancia bmp de la clase
+        /// </summary>
+        /// <param name="pixels16">List de shorts con la informacion CT de cada pixel</param>
+        /// <param name="width">Ancho deseado de la imagen</param>
+        /// <param name="height">Alto deseado de la imagen</param>
+        /// <param name="minNormalizacion">Valor minimo CT de la normalizacion</param>
+        /// <param name="maxNormalizacion">Valor maximo CT de la normalizacion</param>
+        public static Bitmap CrearBitmap(List<ushort> pixels16, int width, int height, int minNormalizacion, int maxNormalizacion)
+        {
+            Bitmap bmp = new Bitmap(width, height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+
+            BitmapData bmd = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), System.Drawing.Imaging.ImageLockMode.ReadOnly, bmp.PixelFormat);
+
+            double maximoValor = maxNormalizacion;
+            double minimoValor = minNormalizacion;
+            double range = maximoValor - minimoValor;
+            double color;
+
+            unsafe
+            {
+                int pixelSize = 3;
+                int i, j, j1, i1;
+                byte b;
+
+                for (i = 0; i < bmd.Height; ++i)
+                {
+                    byte* row = (byte*)bmd.Scan0 + (i * bmd.Stride);
+                    i1 = i * bmd.Width;
+
+                    for (j = 0; j < bmd.Width; ++j)
+                    {
+                        // se normaliza de 0 a 255
+                        color = Convert.ToInt32(Convert.ToDouble(pixels16[i * bmd.Width + j] - minimoValor) * ((double)255) / range);
+                        if (color < 0) color = 0;
+                        if (color > 255) color = 255;
+
+                        // se convierte el color gris a byte
+                        b = Convert.ToByte(color);
+                        j1 = j * pixelSize;
+
+                        row[j1] = b;            // Red
+                        row[j1 + 1] = b;        // Green
+                        row[j1 + 2] = b;        // Blue
+                    }
+                }
+            }
+
+            bmp.UnlockBits(bmd);
+
+            return bmp;
+        }
     }
 }

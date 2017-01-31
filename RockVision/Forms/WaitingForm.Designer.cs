@@ -37,11 +37,12 @@
             // 
             // lblTexto
             // 
-            this.lblTexto.Location = new System.Drawing.Point(90, 53);
+            this.lblTexto.Location = new System.Drawing.Point(90, 50);
             this.lblTexto.Name = "lblTexto";
-            this.lblTexto.Size = new System.Drawing.Size(156, 59);
+            this.lblTexto.Size = new System.Drawing.Size(200, 59);
             this.lblTexto.TabIndex = 12;
             this.lblTexto.Text = "Por favor espere mientras RockVision procesa...";
+            this.lblTexto.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label4
             // 
@@ -51,7 +52,7 @@
             this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(258, 30);
+            this.label4.Size = new System.Drawing.Size(302, 30);
             this.label4.TabIndex = 10;
             this.label4.Text = "PROCESANDO...";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -71,7 +72,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(258, 125);
+            this.ClientSize = new System.Drawing.Size(302, 125);
             this.ControlBox = false;
             this.Controls.Add(this.lblTexto);
             this.Controls.Add(this.pictureBox1);

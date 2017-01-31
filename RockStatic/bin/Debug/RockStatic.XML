@@ -4,6 +4,147 @@
         <name>RockStatic</name>
     </assembly>
     <members>
+        <member name="T:RockStatic.DescriptiveResult">
+            <summary>
+            Clase de estadistica descriptiva. Jan Low, 2008. https://www.codeproject.com/Articles/27340/A-User-Friendly-C-Descriptive-Statistic-Class
+            </summary>
+        </member>
+        <member name="M:RockStatic.DescriptiveResult.#ctor">
+            <summary>
+            DescriptiveResult default constructor
+            </summary>
+        </member>
+        <member name="F:RockStatic.DescriptiveResult.Count">
+            <summary>
+            Count
+            </summary>
+        </member>
+        <member name="F:RockStatic.DescriptiveResult.Sum">
+            <summary>
+            Sum
+            </summary>
+        </member>
+        <member name="F:RockStatic.DescriptiveResult.Mean">
+            <summary>
+            Arithmatic mean
+            </summary>
+        </member>
+        <member name="F:RockStatic.DescriptiveResult.GeometricMean">
+            <summary>
+            Geometric mean
+            </summary>
+        </member>
+        <member name="F:RockStatic.DescriptiveResult.HarmonicMean">
+            <summary>
+            Harmonic mean
+            </summary>
+        </member>
+        <member name="F:RockStatic.DescriptiveResult.Min">
+            <summary>
+            Minimum value
+            </summary>
+        </member>
+        <member name="F:RockStatic.DescriptiveResult.Max">
+            <summary>
+            Maximum value
+            </summary>
+        </member>
+        <member name="F:RockStatic.DescriptiveResult.Range">
+            <summary>
+            The range of the values
+            </summary>
+        </member>
+        <member name="F:RockStatic.DescriptiveResult.Variance">
+            <summary>
+            Sample variance
+            </summary>
+        </member>
+        <member name="F:RockStatic.DescriptiveResult.StdDev">
+            <summary>
+            Sample standard deviation
+            </summary>
+        </member>
+        <member name="F:RockStatic.DescriptiveResult.Skewness">
+            <summary>
+            Skewness of the data distribution
+            </summary>
+        </member>
+        <member name="F:RockStatic.DescriptiveResult.Kurtosis">
+            <summary>
+            Kurtosis of the data distribution
+            </summary>
+        </member>
+        <member name="F:RockStatic.DescriptiveResult.IQR">
+            <summary>
+            Interquartile range
+            </summary>
+        </member>
+        <member name="F:RockStatic.DescriptiveResult.Median">
+            <summary>
+            Median, or second quartile, or at 50 percentile
+            </summary>
+        </member>
+        <member name="F:RockStatic.DescriptiveResult.FirstQuartile">
+            <summary>
+            First quartile, at 25 percentile
+            </summary>
+        </member>
+        <member name="F:RockStatic.DescriptiveResult.ThirdQuartile">
+            <summary>
+            Third quartile, at 75 percentile
+            </summary>
+        </member>
+        <member name="F:RockStatic.DescriptiveResult.SumOfError">
+            <summary>
+            Sum of Error
+            </summary>
+        </member>
+        <member name="F:RockStatic.DescriptiveResult.SumOfErrorSquare">
+            <summary>
+            The sum of the squares of errors
+            </summary>
+        </member>
+        <member name="M:RockStatic.DescriptiveResult.Percentile(System.Double)">
+            <summary>
+            Percentile
+            </summary>
+            <param name="percent">Pecentile, between 0 to 100</param>
+            <returns>Percentile</returns>
+        </member>
+        <member name="T:RockStatic.Descriptive">
+            <summary>
+            Descriptive class
+            </summary>
+        </member>
+        <member name="F:RockStatic.Descriptive.Result">
+            <summary>
+            Descriptive results
+            </summary>
+        </member>
+        <member name="M:RockStatic.Descriptive.#ctor">
+            <summary>
+            Descriptive analysis default constructor
+            </summary>
+        </member>
+        <member name="M:RockStatic.Descriptive.#ctor(System.Double[])">
+            <summary>
+            Descriptive analysis constructor
+            </summary>
+            <param name="dataVariable">Data array</param>
+        </member>
+        <member name="M:RockStatic.Descriptive.Analyze">
+            <summary>
+            Run the analysis to obtain descriptive information of the data
+            </summary>
+        </member>
+        <member name="M:RockStatic.Descriptive.percentile(System.Double[],System.Double)">
+            <summary>
+            Calculate percentile of a sorted data set
+            </summary>
+            <param name="sortedData"></param>
+            <param name="p"></param>
+            <returns></returns>
+        </member>
         <member name="T:RockStatic.AboutForm">
             <summary>
             Ventana que contiene la información de derechos de autor de la aplicación ROCKSTATIC
@@ -422,12 +563,19 @@
         </member>
         <member name="M:RockStatic.MyDataCube.GenerarHistograma">
             <summary>
-            Genera el histograma y las marcas de clase para el datacubo, con 100 bins
+            Genera el histograma y las marcas de clase para el datacubo, con bins = raiz de numero de datos
             </summary>
         </member>
         <member name="M:RockStatic.MyDataCube.GenerarCoreHorizontal(System.Int32)">
             <summary>
             Se genera un plano de core horizontal que corresponde al indice que se pasa como argumento
+            </summary>
+            <param name="indice">Numero de la fila que se debe extraer de cada DICOM</param>
+            <returns>Core horizontal generado en la posicion indicada</returns>
+        </member>
+        <member name="M:RockStatic.MyDataCube.GenerarCoreHorizontalRV(System.Int32)">
+            <summary>
+            Se genera un plano de core horizontal que corresponde al indice que se pasa como argumento. Version RV
             </summary>
             <param name="indice">Numero de la fila que se debe extraer de cada DICOM</param>
             <returns>Core horizontal generado en la posicion indicada</returns>
@@ -442,6 +590,11 @@
         <member name="M:RockStatic.MyDataCube.GenerarCoresHorizontales">
             <summary>
             Genera todos y cada uno de los planos de corte horizontales del core. No genera imágenes sino los List de ushort para cada plano de corte
+            </summary>
+        </member>
+        <member name="M:RockStatic.MyDataCube.GenerarCortesHorizontalesRV">
+            <summary>
+            Genera todos y cada uno de los planos de corte horizontales del core. No genera imágenes sino los List de ushort para cada plano de corte. Version para RV
             </summary>
         </member>
         <member name="M:RockStatic.MyDataCube.GenerarCoresVerticales">
@@ -599,6 +752,16 @@
             <param name="height">Alto deseado de la imagen</param>
         </member>
         <member name="M:RockStatic.MyDicom.CreateBitmap(System.Collections.Generic.List{System.UInt16},System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Crea un Bitmap a partir de la informacion de pixeles, en CT, normalizando segun los límites que se le pasan, y guarda la imagen en la instancia bmp de la clase
+            </summary>
+            <param name="pixels16">List de shorts con la informacion CT de cada pixel</param>
+            <param name="width">Ancho deseado de la imagen</param>
+            <param name="height">Alto deseado de la imagen</param>
+            <param name="minNormalizacion">Valor minimo CT de la normalizacion</param>
+            <param name="maxNormalizacion">Valor maximo CT de la normalizacion</param>
+        </member>
+        <member name="M:RockStatic.MyDicom.CrearBitmap(System.Collections.Generic.List{System.UInt16},System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Crea un Bitmap a partir de la informacion de pixeles, en CT, normalizando segun los límites que se le pasan, y guarda la imagen en la instancia bmp de la clase
             </summary>

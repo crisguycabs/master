@@ -358,15 +358,13 @@ namespace RockStatic
             for (int i = 0; i < alto; i++)
                 temp[i] = new ushort[ancho];
 
-            int ini = indice * Convert.ToInt16(this.widthSeg);
-
-            // se empieza a llenar cada columna de la imagen nueva con la fila de cada DICOM
-            for (int j = 0; j < ancho; j++)
+            int ini = indice * Convert.ToInt16(dataCube[0].selector.Columns.Data);
+            for (int i = 0; i < alto; i++)
             {
-                for (int i = 0; i < alto; i++)
+                for (int j = 0; j < ancho; j++)
                 {
-                    temp[i][j] = dataCube[j].segCore[ini + i];
-                }                
+                    temp[i][j] = dataCube[j].pixelData[ini + i];
+                }
             }
 
             // se calcula el factor de escalado debido al espaciado entre Slides

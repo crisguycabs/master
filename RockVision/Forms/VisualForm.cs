@@ -188,7 +188,7 @@ namespace RockVision
             }
 
             UmbralizarHistograma();
-            if (chkHabilitar.Checked) picTrans.Image = Umbralizar(trackBar.Value);
+            if (chkHabilitar.Checked) pictTrans.Image = Umbralizar(trackBar.Value);
 
             controlValidar = true;
         }
@@ -320,9 +320,64 @@ namespace RockVision
             return imagen;
         }
 
+        /// <summary>
+        /// Normaliza una imagen de un corte horizontal
+        /// </summary>
+        /// <param name="indice"></param>
+        /// <param name="minimoValor"></param>
+        /// <param name="maximoValor"></param>
+        /// <returns></returns>
+        private Bitmap NormalizarH(int indice, int minimoValor, int maximoValor)
+        {
+            int alto=padre.actualV.datacubo.dataCube[0].selector.Columns.Data;
+            int total=padre.actualV.datacubo.coresHorizontal[0].Count;
+
+            int ancho=Convert.ToInt32(Convert.ToDouble(total)/Convert.ToDouble(alto));
+            return RockStatic.MyDicom.CrearBitmap(padre.actualV.datacubo.coresHorizontal[indice], ancho, alto);
+
+            /*
+            // width height
+            Bitmap imagen = new Bitmap(padre.actualV.datacubo.dataCube.Count, padre.actualV.datacubo.dataCube[indice].selector.Columns.Data, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+
+            BitmapData bmd = imagen.LockBits(new Rectangle(0, 0, imagen.Width, imagen.Height), System.Drawing.Imaging.ImageLockMode.ReadOnly, imagen.PixelFormat);
+
+            // se normaliza de 0 a 255
+            double range = maximoValor - minimoValor;
+            double color;
+
+            unsafe
+            {
+                int pixelSize = 3;
+                int i, j, j1, i1;
+                byte b;
+
+                for (i = 0; i < bmd.Height; ++i)
+                {
+                    byte* row = (byte*)bmd.Scan0 + (i * bmd.Stride);
+                    i1 = i * bmd.Width;
+
+                    for (j = 0; j < bmd.Width; ++j)
+                    {
+                        color = Convert.ToInt32(Convert.ToDouble(padre.actualV.datacubo.coresHorizontal[indice][i * bmd.Width + j] - minimoValor) * ((double)255) / range);
+                        if (color < 0) color = 0;
+                        if (color > 255) color = 255;
+                        b = Convert.ToByte(color);
+                        j1 = j * pixelSize;
+                        row[j1] = b;            // Red
+                        row[j1 + 1] = b;        // Green
+                        row[j1 + 2] = b;        // Blue
+                    }
+                }
+            }
+            imagen.UnlockBits(bmd);
+
+            return imagen;
+             */
+            
+        }
+
         private Bitmap CrearGradiente(int minimoValorRango, int maximoValorRango)
         {
-
             Bitmap imggrad = new Bitmap(pictGradiente.Width, pictGradiente.Height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
             BitmapData bmdgrad = imggrad.LockBits(new Rectangle(0, 0, pictGradiente.Width, pictGradiente.Height), System.Drawing.Imaging.ImageLockMode.ReadOnly, imggrad.PixelFormat);
 
@@ -481,15 +536,31 @@ namespace RockVision
             trackBar.Value = 0;
             trackBar.TickFrequency = Convert.ToInt32(padre.actualV.datacubo.dataCube.Count / 100);
 
-            picTrans.Image = Normalizar(0, minPixelValue, maxPixelValue);    
+            pictTrans.Image = Normalizar(0, minPixelValue, maxPixelValue);
+
+            trackCorte.Minimum = 0;
+            trackCorte.Maximum = padre.actualV.datacubo.coresHorizontal.Length-1;
+            trackCorte.Value = Convert.ToInt32(padre.actualV.datacubo.coresHorizontal.Length / 2);
+            trackBar.TickFrequency = Convert.ToInt32(padre.actualV.datacubo.coresHorizontal.Length / 100);
+
+            pictHor.Image = NormalizarH(trackCorte.Value, minPixelValue, maxPixelValue);
         
             labelSlide.Text = "Slide " + (trackBar.Value + 1).ToString() + " de " + padre.actualV.datacubo.dataCube.Count;
+            labelSlide.Text = "Corte " + (trackCorte.Value + 1).ToString() + " de " + padre.actualV.datacubo.coresHorizontal.Length;
 
             pictGradiente.Image = CrearGradiente(rangeBar.RangeMinimum, rangeBar.RangeMaximum);
 
             barPopup.Minimum = minPixelValue + 20;
             barPopup.Maximum = maxPixelValue;
             barPopup.Value = Convert.ToInt32((barPopup.Maximum - barPopup.Minimum) / 2) + barPopup.Minimum;
+
+            // minimo y maximo de los numericUpDown del histograma
+            numHmin.Minimum = numHmax.Minimum = minPixelValue;
+            numHmin.Maximum = numHmax.Maximum = maxPixelValue;
+            numHmin.Value = minPixelValue;
+            numHmax.Value = maxPixelValue;
+
+            pictHor.Invalidate();
         }
 
         private void rangeBar_RangeChanging(object sender, EventArgs e)
@@ -508,7 +579,7 @@ namespace RockVision
 
             // se debe ajustar la imagen normalizada, y umbralizada, de cada dicom segun se vaya cambiando el rangebar
             // se pregunta si se debe tambien umbralizar, o si solo es necesario normalizar y presentar la imagen normalizada
-            picTrans.Image = Normalizar(this.trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+            pictTrans.Image = Normalizar(this.trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
             
             pictGradiente.Image = CrearGradiente(rangeBar.RangeMinimum, rangeBar.RangeMaximum);
 
@@ -521,16 +592,315 @@ namespace RockVision
             // se debe ajustar la imagen normalizada, y umbralizada, de cada dicom segun se vaya cambiando el trackbar
 
             // primero se normaliza la imagen 
-            picTrans.Image = Normalizar(this.trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+            pictTrans.Image = Normalizar(this.trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
 
             // se pregunta si se debe tambien umbralizar, o si solo es necesario normalizar y presentar la imagen normalizada
             if (chkHabilitar.Checked)
             {
-                picTrans.Image = Umbralizar(trackBar.Value);
+                pictTrans.Image = Umbralizar(trackBar.Value);
             }
             //else pictureBox1.Image = dd[trackBar.Value].bmp;
 
-            labelSlide.Text = "Slide " + trackBar.Value + " de " + padre.actualV.datacubo.dataCube.Count; 
-        }        
+            labelSlide.Text = "Slide " + (trackBar.Value+1) + " de " + padre.actualV.datacubo.dataCube.Count;
+            pictHor.Invalidate();
+            pictTrans.Invalidate();
+        }
+
+        private void dataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 2)
+            {
+                colorDialog1 = new ColorDialog();
+                if (colorDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    umbral[dataGrid.CurrentCell.RowIndex].color = dataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = dataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.ForeColor = dataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.SelectionBackColor = dataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.SelectionForeColor = colorDialog1.Color;
+                    UmbralizarHistograma();
+                    if (chkHabilitar.Checked) pictTrans.Image = Umbralizar(trackBar.Value);
+                }
+            }
+        }
+
+        private void dataGrid_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if ((e.ColumnIndex < 2) & (e.Button == MouseButtons.Right))
+            {
+                filaActual = e.RowIndex;
+                columnaActual = e.ColumnIndex;
+
+                barPopup.Location = this.PointToClient(Cursor.Position);
+                barPopup.Value = Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
+
+                Controls.Add(barPopup);
+                popup = true;
+
+                dataGrid.SendToBack();
+                barPopup.BringToFront();
+            }
+            if ((e.Button == MouseButtons.Left) & (popup))
+            {
+                Controls.Remove(barPopup);
+                popup = false;
+            }
+        }
+
+        private void dataGrid_RowValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            // pueden existir 4 casos para validar
+            // (1) El nuevo valor es menor que minpixelvalue
+            // (2) El nuevo valor es mayor que maxpixelvalue
+            // (3) El nuevo valor de maxRange es menor que el valor de minRange
+            // (4) El nuevo valor de minRange es mayor que el valor de maxRange
+
+            // el nuevo valor de minRange debe cumplir las condiciones (1) (2) y (4)
+            // el nuevo valor de maxRange debe cumplir las condiciones (1) (2) y (3)
+
+            // si incumple alguna de las condiciones, se resete al valor guardaddo en memoria en la lista de umbrales
+
+            if (!controlValidar) return;
+
+            bool errorMin = false;
+            bool errorMax = false;
+
+            // condicion (1)
+            if (Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells[0].Value) < minPixelValue)
+            {
+                dataGrid.Rows[e.RowIndex].Cells[0].Value = umbral[e.RowIndex].minimo;
+                errorMin = true;
+            }
+            if (Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells[1].Value) < minPixelValue)
+            {
+                dataGrid.Rows[e.RowIndex].Cells[1].Value = umbral[e.RowIndex].maximo;
+                errorMax = true;
+            }
+
+            // condicion (2)
+            if (Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells[0].Value) > maxPixelValue)
+            {
+                dataGrid.Rows[e.RowIndex].Cells[0].Value = umbral[e.RowIndex].minimo;
+                errorMin = true;
+            }
+            if (Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells[1].Value) > maxPixelValue)
+            {
+                dataGrid.Rows[e.RowIndex].Cells[1].Value = umbral[e.RowIndex].maximo;
+                errorMax = true;
+            }
+
+            // condicion (3)
+            if (Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells[1].Value) < umbral[e.RowIndex].minimo)
+            {
+                dataGrid.Rows[e.RowIndex].Cells[1].Value = umbral[e.RowIndex].maximo;
+                errorMax = true;
+            }
+
+            // condicion (4)
+            if (Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells[0].Value) > umbral[e.RowIndex].maximo)
+            {
+                dataGrid.Rows[e.RowIndex].Cells[0].Value = umbral[e.RowIndex].minimo;
+                errorMin = true;
+            }
+
+            // si  no se encuentran errores al valiar entonces si se guardan los nuevos valores
+            if (!errorMin)
+            {
+                umbral[e.RowIndex].minimo = Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells[0].Value);
+
+                // se revisa que el umbral.maximo anterior coincida con el nuevo valor de minimo, si existe mas de un elemento
+                if ((umbral.Count > 1) & (e.RowIndex > 0))
+                {
+                    dataGrid.Rows[e.RowIndex - 1].Cells[1].Value = umbral[e.RowIndex - 1].maximo = umbral[e.RowIndex].minimo;
+                }
+            }
+            if (!errorMax)
+            {
+                umbral[e.RowIndex].maximo = Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells[1].Value);
+
+                // se revisa que el umbral.minimo siguiente coincida con el nuevo valor de maximo, si existe mas de un elemento
+                if ((umbral.Count > 1) & (e.RowIndex < (umbral.Count - 1)))
+                {
+                    dataGrid.Rows[e.RowIndex + 1].Cells[0].Value = umbral[e.RowIndex + 1].minimo = umbral[e.RowIndex].maximo;
+                }
+            }
+            umbral[e.RowIndex].color = dataGrid.Rows[e.RowIndex].Cells[2].Style.BackColor;
+
+            UmbralizarHistograma();
+            if (chkHabilitar.Checked) pictTrans.Image = Umbralizar(trackBar.Value);
+        }
+
+        private void chkHabilitar_CheckedChanged(object sender, EventArgs e)
+        {
+            pictTrans.Image = Normalizar(trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+            if (chkHabilitar.Checked)
+            {
+                pictTrans.Image = Umbralizar(trackBar.Value);
+            }
+        }
+
+        private void btnSubir_MouseEnter(object sender, EventArgs e)
+        {
+            ((System.Windows.Forms.Button)(sender)).ForeColor = Color.White;
+        }
+
+        private void btnSubir_MouseLeave(object sender, EventArgs e)
+        {
+            ((System.Windows.Forms.Button)(sender)).ForeColor = Color.Black;
+        }
+
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            int indice = dataGrid.CurrentCell.RowIndex;
+            dataGrid.Rows.RemoveAt(indice);
+            umbral.RemoveAt(indice);
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            ResetChart();
+        }
+
+        private void numHmin_ValueChanged(object sender, EventArgs e)
+        {
+            // se cambia el limite izq del eje X del chat
+            // se debe verificar que el limite izq no sea >= que el limite derecho
+
+            if (numHmin.Value >= numHmax.Value) numHmin.Value = numHmax.Value - 1;
+            chart1.ChartAreas[0].AxisX.Minimum = Convert.ToDouble(numHmin.Value);
+        }
+
+        private void numHmax_ValueChanged(object sender, EventArgs e)
+        {
+            // se cambia el limite der del eje X del chat
+            // se debe verificar que el limite der no sea <= que el limite izq
+
+            if (numHmax.Value <= numHmin.Value) numHmax.Value = numHmin.Value + 1;
+            chart1.ChartAreas[0].AxisX.Maximum = Convert.ToDouble(numHmax.Value);
+        }
+
+        private void trackCorte_Scroll(object sender, EventArgs e)
+        {
+            // se debe ajustar la imagen normalizada, y umbralizada, de cada dicom segun se vaya cambiando el trackbar
+
+            // primero se normaliza la imagen 
+            pictHor.Image = NormalizarH(this.trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+
+            // se pregunta si se debe tambien umbralizar, o si solo es necesario normalizar y presentar la imagen normalizada
+            if (chkHabilitar.Checked)
+            {
+                //pictTrans.Image = Umbralizar(trackBar.Value);
+            }
+            //else pictureBox1.Image = dd[trackBar.Value].bmp;
+
+            labelCorte.Text = "Corte " + (trackCorte.Value+1) + " de " + padre.actualV.datacubo.dataCube.Count;
+            pictHor.Invalidate();
+            pictTrans.Invalidate();
+        }
+
+        private void tab2D_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictHor_Paint(object sender, PaintEventArgs e)
+        {
+            // se pintan la linea de posicion
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+            double imgWidth = pictHor.Image.Width;
+            double imgHeight = pictHor.Image.Height;
+            double boxWidth = pictHor.Size.Width;
+            double boxHeight = pictHor.Size.Height;
+
+            double scale;
+            double ycero = 0;
+            double xcero = 0;
+
+            Pen brocha2 = new Pen(Color.FromArgb(128, 0, 255, 0));
+            brocha2.Width=2;
+
+            if (imgWidth / imgHeight > boxWidth / boxHeight)
+            {
+                //If true, that means that the image is stretched through the width of the control.
+                //'In other words: the image is limited by the width.
+
+                //The scale of the image in the Picture Box.
+                scale = boxWidth / imgWidth;
+
+                //Since the image is in the middle, this code is used to determinate the empty space in the height
+                //'by getting the difference between the box height and the image actual displayed height and dividing it by 2.
+                ycero = (boxHeight - scale * imgHeight) / 2;
+            }
+            else
+            {
+                //If false, that means that the image is stretched through the height of the control.
+                //'In other words: the image is limited by the height.
+
+                //The scale of the image in the Picture Box.
+                scale = boxHeight / imgHeight;
+
+                //Since the image is in the middle, this code is used to determinate the empty space in the width
+                //'by getting the difference between the box width and the image actual displayed width and dividing it by 2.
+                xcero = (boxWidth - scale * imgWidth) / 2;
+            }
+
+            // se averigua el factor de escalado del corte horizontal
+            double alto = padre.actualV.datacubo.dataCube[0].selector.Columns.Data;
+            double total = padre.actualV.datacubo.coresHorizontal[0].Count;
+            double ancho = Convert.ToInt32(total / alto);
+            int factor = Convert.ToInt32(ancho/Convert.ToInt32(padre.actualV.datacubo.dataCube.Count));
+
+            int pos=Convert.ToInt32((trackBar.Value * scale*factor) + xcero);
+            e.Graphics.DrawLine(brocha2, pos, 0, pos, pictHor.Height);
+        }
+
+        private void pictTrans_Paint(object sender, PaintEventArgs e)
+        {
+            // se pintan la linea de posicion
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+            double imgWidth = pictTrans.Image.Width;
+            double imgHeight = pictTrans.Image.Height;
+            double boxWidth = pictTrans.Size.Width;
+            double boxHeight = pictTrans.Size.Height;
+
+            double scale;
+            double ycero = 0;
+            double xcero = 0;
+
+            Pen brocha2 = new Pen(Color.FromArgb(128, 0, 255, 0));
+            brocha2.Width = 2;
+
+            if (imgWidth / imgHeight > boxWidth / boxHeight)
+            {
+                //If true, that means that the image is stretched through the width of the control.
+                //'In other words: the image is limited by the width.
+
+                //The scale of the image in the Picture Box.
+                scale = boxWidth / imgWidth;
+
+                //Since the image is in the middle, this code is used to determinate the empty space in the height
+                //'by getting the difference between the box height and the image actual displayed height and dividing it by 2.
+                ycero = (boxHeight - scale * imgHeight) / 2;
+            }
+            else
+            {
+                //If false, that means that the image is stretched through the height of the control.
+                //'In other words: the image is limited by the height.
+
+                //The scale of the image in the Picture Box.
+                scale = boxHeight / imgHeight;
+
+                //Since the image is in the middle, this code is used to determinate the empty space in the width
+                //'by getting the difference between the box width and the image actual displayed width and dividing it by 2.
+                xcero = (boxWidth - scale * imgWidth) / 2;
+            }
+
+            // se averigua el factor de escalado del corte horizontal
+            double alto = padre.actualV.datacubo.dataCube[0].selector.Columns.Data;
+            double total = padre.actualV.datacubo.coresHorizontal[0].Count;
+            double ancho = Convert.ToInt32(total / alto);
+            double factor = ancho / Convert.ToDouble(padre.actualV.datacubo.dataCube.Count);
+
+            int pos = Convert.ToInt32((trackBar.Value * scale / factor) + ycero);
+            e.Graphics.DrawLine(brocha2, 0, pos, pictTrans.Width, pos);
+        }
     }
 }
