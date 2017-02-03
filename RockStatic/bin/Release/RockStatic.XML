@@ -675,6 +675,11 @@
             Selector del objeto DICOM cargado
             </summary>
         </member>
+        <member name="F:RockStatic.MyDicom.histograma">
+            <summary>
+            histograma del pixelData del slide
+            </summary>
+        </member>
         <member name="M:RockStatic.MyDicom.#ctor">
             <summary>
             Constructor por defecto
@@ -685,6 +690,12 @@
             Constructor con asignación. Lee la ruta del DICOM, lo lee y decodifica la informacion de pixeles. NO NORMALIZA
             </summary>
             <param name="ruta">Ruta del DICOM a leer</param>
+        </member>
+        <member name="M:RockStatic.MyDicom.GenerarHistograma">
+            <summary>
+            Devuelve el histograma del pixeldata del slide
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:RockStatic.MyDicom.Byte2Pixels16(System.Collections.Generic.List{System.Byte},System.Int32,System.Int32,System.Int32,System.Double,System.Double,System.String)">
             <summary>

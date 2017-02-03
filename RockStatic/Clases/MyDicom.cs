@@ -18,6 +18,8 @@ namespace RockStatic
     /// </summary>
     public class MyDicom
     {
+        #region variables de clase
+
         /// <summary>
         /// Minimo valor del DICOM. Es necesario mantener este valor para efectos de codificación de los pixel_data y escritura en disco
         /// </summary>
@@ -52,7 +54,14 @@ namespace RockStatic
         /// Selector del objeto DICOM cargado
         /// </summary>
         public DICOMSelector selector = null;
- 
+
+        /// <summary>
+        /// histograma del pixelData del slide
+        /// </summary>
+        public int[,] histograma = null;
+
+        #endregion
+
         /// <summary>
         /// Constructor por defecto
         /// </summary>
@@ -76,7 +85,62 @@ namespace RockStatic
             selector = dcm.GetSelector();
             pixelData = Byte2Pixels16((List<byte>)selector.PixelData.Data_, Convert.ToInt16(selector.Columns.Data), Convert.ToInt16(selector.Rows.Data), Convert.ToInt16(selector.PixelRepresentation.Data), Convert.ToDouble(selector.RescaleSlope.Data), Convert.ToDouble(selector.RescaleIntercept.Data), Convert.ToString(selector.PhotometricInterpretation.Data));
         }
- 
+
+        /// <summary>
+        /// Devuelve el histograma del pixeldata del slide
+        /// </summary>
+        /// <returns></returns>
+        public void GenerarHistograma()
+        {
+            int nbins = Convert.ToInt32(Math.Sqrt(pixelData.Count));
+            histograma = new int[nbins, 2];
+
+            // se busca el minimo y el maximo
+            int minimo = pixelData.Min();
+            int maximo = pixelData.Max();
+
+            // se calculan los limites de cada marca de clase
+            double step = (double)(((double)(maximo - minimo)) / Convert.ToDouble(nbins));
+            int[] limites = new int[nbins + 1];
+            double[] tempLimites = new double[nbins + 1];
+            limites[0] = minimo;
+            for (int i = 1; i < (nbins + 1); i++)
+            {
+                tempLimites[i] = tempLimites[i - 1] + step;
+                limites[i] = (ushort)(tempLimites[i]);
+            }
+            limites[nbins] = maximo;
+
+            List<ushort> pixelsOrdenados = new List<ushort>();
+            for (int j = 0; j < pixelData.Count; j++)
+                pixelsOrdenados.Add(pixelData[j]);
+            // se ordenan los pixeles
+            pixelsOrdenados.Sort();
+
+            // se empiezan a contar cuantos elementos caben en cada bin
+            int bincount = 0;
+            int ibin = 1;
+            for (int j = 0; j < pixelsOrdenados.Count; j++)
+            {
+                if (pixelsOrdenados[j] <= limites[ibin])
+                    bincount++;
+                else
+                {
+                    histograma[ibin - 1,1] = histograma[ibin - 1,1] + bincount;
+                    bincount = 1;
+                    ibin++;
+                    if (ibin > nbins)
+                        ibin = nbins;
+                }
+            }
+
+            // se calculan las marcas de clase
+            for (int i = 0; i < (histograma.Length/2); i++)
+            {
+                histograma[i, 0] = (ushort)((limites[i] + limites[i + 1]) / 2);
+            }            
+        }
+
         /// <summary>
         /// Decodifica la informacion binaria de PIXEL_DATA en numeros CT
         /// </summary>

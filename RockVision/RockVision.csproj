@@ -41,6 +41,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EvilDICOM.1.5.1.7\lib\net45\EvilDICOM.dll</HintPath>
     </Reference>
+    <Reference Include="Kitware.mummy.Runtime">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\ActiViz.NET 5.8.0 OpenSource Edition\bin\Kitware.mummy.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Kitware.VTK">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\ActiViz.NET 5.8.0 OpenSource Edition\bin\Kitware.VTK.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms.DataVisualization" />

@@ -45,9 +45,10 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.numHmax = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.numHmin = new System.Windows.Forms.NumericUpDown();
             this.lblHmin = new System.Windows.Forms.Label();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.rangeHist = new Zzzz.ZzzzRangeBar();
             this.labelCorte = new System.Windows.Forms.Label();
             this.trackCorte = new System.Windows.Forms.TrackBar();
             this.labelSlide = new System.Windows.Forms.Label();
@@ -62,27 +63,43 @@
             this.color = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupNorm = new System.Windows.Forms.GroupBox();
             this.pictGradiente = new System.Windows.Forms.PictureBox();
+            this.numNmax = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.numNmin = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
             this.rangeBar = new Zzzz.ZzzzRangeBar();
-            this.labelMin = new System.Windows.Forms.Label();
-            this.labelMax = new System.Windows.Forms.Label();
             this.pictTrans = new System.Windows.Forms.PictureBox();
             this.tab3D = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.trackBar3 = new System.Windows.Forms.TrackBar();
+            this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.renderWindowControl1 = new Kitware.VTK.RenderWindowControl();
             this.tabControl1.SuspendLayout();
             this.tab2D.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictHor)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numHmax)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHmin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackCorte)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar)).BeginInit();
             this.groupUmbral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.groupNorm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictGradiente)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numNmax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numNmin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictTrans)).BeginInit();
             this.tab3D.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -138,11 +155,11 @@
             // chkUmbral
             // 
             this.chkUmbral.AutoSize = true;
-            this.chkUmbral.Location = new System.Drawing.Point(365, 358);
+            this.chkUmbral.Location = new System.Drawing.Point(365, 399);
             this.chkUmbral.Name = "chkUmbral";
-            this.chkUmbral.Size = new System.Drawing.Size(84, 18);
+            this.chkUmbral.Size = new System.Drawing.Size(150, 18);
             this.chkUmbral.TabIndex = 26;
-            this.chkUmbral.Text = "Segmentar";
+            this.chkUmbral.Text = "Segmentar Histograma";
             this.chkUmbral.UseVisualStyleBackColor = true;
             this.chkUmbral.CheckedChanged += new System.EventHandler(this.chkUmbral_CheckedChanged);
             // 
@@ -151,7 +168,7 @@
             this.chkNorm.AutoSize = true;
             this.chkNorm.Checked = true;
             this.chkNorm.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkNorm.Location = new System.Drawing.Point(365, 225);
+            this.chkNorm.Location = new System.Drawing.Point(365, 260);
             this.chkNorm.Name = "chkNorm";
             this.chkNorm.Size = new System.Drawing.Size(86, 18);
             this.chkNorm.TabIndex = 25;
@@ -164,7 +181,7 @@
             this.btnCerrar.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerrar.Location = new System.Drawing.Point(655, 517);
+            this.btnCerrar.Location = new System.Drawing.Point(655, 563);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(75, 23);
             this.btnCerrar.TabIndex = 13;
@@ -188,15 +205,16 @@
             // 
             this.groupBox3.Controls.Add(this.numHmax);
             this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.chart1);
             this.groupBox3.Controls.Add(this.numHmin);
             this.groupBox3.Controls.Add(this.lblHmin);
+            this.groupBox3.Controls.Add(this.chart1);
+            this.groupBox3.Controls.Add(this.rangeHist);
             this.groupBox3.Location = new System.Drawing.Point(365, 6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(365, 211);
+            this.groupBox3.Size = new System.Drawing.Size(365, 242);
             this.groupBox3.TabIndex = 23;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "HISTOGRAMA";
+            this.groupBox3.Text = "HISTOGRAMA CT";
             // 
             // numHmax
             // 
@@ -205,7 +223,7 @@
             0,
             0,
             0});
-            this.numHmax.Location = new System.Drawing.Point(191, 181);
+            this.numHmax.Location = new System.Drawing.Point(191, 213);
             this.numHmax.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -225,11 +243,34 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(137, 183);
+            this.label1.Location = new System.Drawing.Point(137, 215);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 14);
             this.label1.TabIndex = 23;
             this.label1.Text = "Maximo:";
+            // 
+            // numHmin
+            // 
+            this.numHmin.Increment = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.numHmin.Location = new System.Drawing.Point(63, 213);
+            this.numHmin.Name = "numHmin";
+            this.numHmin.Size = new System.Drawing.Size(57, 22);
+            this.numHmin.TabIndex = 22;
+            this.numHmin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numHmin.ValueChanged += new System.EventHandler(this.numHmin_ValueChanged);
+            // 
+            // lblHmin
+            // 
+            this.lblHmin.AutoSize = true;
+            this.lblHmin.Location = new System.Drawing.Point(9, 215);
+            this.lblHmin.Name = "lblHmin";
+            this.lblHmin.Size = new System.Drawing.Size(55, 14);
+            this.lblHmin.TabIndex = 10;
+            this.lblHmin.Text = "Minimo: ";
             // 
             // chart1
             // 
@@ -264,28 +305,25 @@
             this.chart1.TabIndex = 16;
             this.chart1.Text = "chart1";
             // 
-            // numHmin
+            // rangeHist
             // 
-            this.numHmin.Increment = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.numHmin.Location = new System.Drawing.Point(63, 181);
-            this.numHmin.Name = "numHmin";
-            this.numHmin.Size = new System.Drawing.Size(57, 22);
-            this.numHmin.TabIndex = 22;
-            this.numHmin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numHmin.ValueChanged += new System.EventHandler(this.numHmin_ValueChanged);
-            // 
-            // lblHmin
-            // 
-            this.lblHmin.AutoSize = true;
-            this.lblHmin.Location = new System.Drawing.Point(9, 183);
-            this.lblHmin.Name = "lblHmin";
-            this.lblHmin.Size = new System.Drawing.Size(55, 14);
-            this.lblHmin.TabIndex = 10;
-            this.lblHmin.Text = "Minimo: ";
+            this.rangeHist.DivisionNum = 1;
+            this.rangeHist.Font = new System.Drawing.Font("Microsoft Sans Serif", 2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rangeHist.HeightOfBar = 5;
+            this.rangeHist.HeightOfMark = 15;
+            this.rangeHist.HeightOfTick = 2;
+            this.rangeHist.InnerColor = System.Drawing.Color.Green;
+            this.rangeHist.Location = new System.Drawing.Point(7, 174);
+            this.rangeHist.Name = "rangeHist";
+            this.rangeHist.Orientation = Zzzz.ZzzzRangeBar.RangeBarOrientation.horizontal;
+            this.rangeHist.RangeMaximum = 10;
+            this.rangeHist.RangeMinimum = 10;
+            this.rangeHist.ScaleOrientation = Zzzz.ZzzzRangeBar.TopBottomOrientation.bottom;
+            this.rangeHist.Size = new System.Drawing.Size(350, 40);
+            this.rangeHist.TabIndex = 21;
+            this.rangeHist.TotalMaximum = 100;
+            this.rangeHist.TotalMinimum = 10;
+            this.rangeHist.RangeChanging += new Zzzz.ZzzzRangeBar.RangeChangedEventHandler(this.rangeHist_RangeChanging);
             // 
             // labelCorte
             // 
@@ -330,7 +368,7 @@
             this.groupUmbral.Controls.Add(this.btnAgregar);
             this.groupUmbral.Controls.Add(this.dataGrid);
             this.groupUmbral.Enabled = false;
-            this.groupUmbral.Location = new System.Drawing.Point(365, 371);
+            this.groupUmbral.Location = new System.Drawing.Point(365, 412);
             this.groupUmbral.Name = "groupUmbral";
             this.groupUmbral.Size = new System.Drawing.Size(365, 140);
             this.groupUmbral.TabIndex = 18;
@@ -425,12 +463,14 @@
             // groupNorm
             // 
             this.groupNorm.Controls.Add(this.pictGradiente);
+            this.groupNorm.Controls.Add(this.numNmax);
+            this.groupNorm.Controls.Add(this.label5);
+            this.groupNorm.Controls.Add(this.numNmin);
+            this.groupNorm.Controls.Add(this.label6);
             this.groupNorm.Controls.Add(this.rangeBar);
-            this.groupNorm.Controls.Add(this.labelMin);
-            this.groupNorm.Controls.Add(this.labelMax);
-            this.groupNorm.Location = new System.Drawing.Point(365, 238);
+            this.groupNorm.Location = new System.Drawing.Point(365, 273);
             this.groupNorm.Name = "groupNorm";
-            this.groupNorm.Size = new System.Drawing.Size(365, 108);
+            this.groupNorm.Size = new System.Drawing.Size(365, 115);
             this.groupNorm.TabIndex = 17;
             this.groupNorm.TabStop = false;
             // 
@@ -442,6 +482,62 @@
             this.pictGradiente.TabIndex = 20;
             this.pictGradiente.TabStop = false;
             // 
+            // numNmax
+            // 
+            this.numNmax.Increment = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.numNmax.Location = new System.Drawing.Point(191, 87);
+            this.numNmax.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.numNmax.Name = "numNmax";
+            this.numNmax.Size = new System.Drawing.Size(57, 22);
+            this.numNmax.TabIndex = 28;
+            this.numNmax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numNmax.Value = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.numNmax.ValueChanged += new System.EventHandler(this.numNmax_ValueChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(137, 89);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 14);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "Maximo:";
+            // 
+            // numNmin
+            // 
+            this.numNmin.Increment = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.numNmin.Location = new System.Drawing.Point(63, 87);
+            this.numNmin.Name = "numNmin";
+            this.numNmin.Size = new System.Drawing.Size(57, 22);
+            this.numNmin.TabIndex = 26;
+            this.numNmin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numNmin.ValueChanged += new System.EventHandler(this.numNmin_ValueChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(9, 89);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(55, 14);
+            this.label6.TabIndex = 25;
+            this.label6.Text = "Minimo: ";
+            // 
             // rangeBar
             // 
             this.rangeBar.DivisionNum = 1;
@@ -450,7 +546,7 @@
             this.rangeBar.HeightOfMark = 15;
             this.rangeBar.HeightOfTick = 2;
             this.rangeBar.InnerColor = System.Drawing.Color.Green;
-            this.rangeBar.Location = new System.Drawing.Point(9, 46);
+            this.rangeBar.Location = new System.Drawing.Point(7, 46);
             this.rangeBar.Name = "rangeBar";
             this.rangeBar.Orientation = Zzzz.ZzzzRangeBar.RangeBarOrientation.horizontal;
             this.rangeBar.RangeMaximum = 10;
@@ -461,24 +557,6 @@
             this.rangeBar.TotalMaximum = 100;
             this.rangeBar.TotalMinimum = 10;
             this.rangeBar.RangeChanging += new Zzzz.ZzzzRangeBar.RangeChangedEventHandler(this.rangeBar_RangeChanging);
-            // 
-            // labelMin
-            // 
-            this.labelMin.AutoSize = true;
-            this.labelMin.Location = new System.Drawing.Point(6, 89);
-            this.labelMin.Name = "labelMin";
-            this.labelMin.Size = new System.Drawing.Size(42, 14);
-            this.labelMin.TabIndex = 10;
-            this.labelMin.Text = "label1";
-            // 
-            // labelMax
-            // 
-            this.labelMax.AutoSize = true;
-            this.labelMax.Location = new System.Drawing.Point(118, 89);
-            this.labelMax.Name = "labelMax";
-            this.labelMax.Size = new System.Drawing.Size(42, 14);
-            this.labelMax.TabIndex = 9;
-            this.labelMax.Text = "label1";
             // 
             // pictTrans
             // 
@@ -493,6 +571,7 @@
             // tab3D
             // 
             this.tab3D.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tab3D.Controls.Add(this.groupBox1);
             this.tab3D.Controls.Add(this.renderWindowControl1);
             this.tab3D.Location = new System.Drawing.Point(4, 23);
             this.tab3D.Name = "tab3D";
@@ -502,6 +581,87 @@
             this.tab3D.Text = "Visualizacion3D";
             this.tab3D.Click += new System.EventHandler(this.tab3D_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.trackBar1);
+            this.groupBox1.Controls.Add(this.btnReset);
+            this.groupBox1.Controls.Add(this.trackBar3);
+            this.groupBox1.Controls.Add(this.trackBar2);
+            this.groupBox1.Location = new System.Drawing.Point(8, 505);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(571, 77);
+            this.groupBox1.TabIndex = 14;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Rotacion";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(390, 51);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(32, 14);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Eje Z";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(230, 51);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(32, 14);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Eje Y";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(70, 51);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(32, 14);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Eje X";
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(6, 20);
+            this.trackBar1.Maximum = 360;
+            this.trackBar1.Minimum = -360;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(160, 45);
+            this.trackBar1.TabIndex = 11;
+            // 
+            // btnReset
+            // 
+            this.btnReset.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReset.Location = new System.Drawing.Point(490, 20);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.TabIndex = 10;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            // 
+            // trackBar3
+            // 
+            this.trackBar3.Location = new System.Drawing.Point(326, 20);
+            this.trackBar3.Maximum = 360;
+            this.trackBar3.Minimum = -360;
+            this.trackBar3.Name = "trackBar3";
+            this.trackBar3.Size = new System.Drawing.Size(160, 45);
+            this.trackBar3.TabIndex = 13;
+            // 
+            // trackBar2
+            // 
+            this.trackBar2.Location = new System.Drawing.Point(166, 20);
+            this.trackBar2.Maximum = 360;
+            this.trackBar2.Minimum = -360;
+            this.trackBar2.Name = "trackBar2";
+            this.trackBar2.Size = new System.Drawing.Size(160, 45);
+            this.trackBar2.TabIndex = 12;
+            // 
             // renderWindowControl1
             // 
             this.renderWindowControl1.AddTestActors = false;
@@ -509,7 +669,7 @@
             this.renderWindowControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.renderWindowControl1.Location = new System.Drawing.Point(8, 6);
             this.renderWindowControl1.Name = "renderWindowControl1";
-            this.renderWindowControl1.Size = new System.Drawing.Size(571, 323);
+            this.renderWindowControl1.Size = new System.Drawing.Size(571, 489);
             this.renderWindowControl1.TabIndex = 1;
             this.renderWindowControl1.TestText = null;
             // 
@@ -537,8 +697,8 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numHmax)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHmin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackCorte)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar)).EndInit();
             this.groupUmbral.ResumeLayout(false);
@@ -546,8 +706,15 @@
             this.groupNorm.ResumeLayout(false);
             this.groupNorm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictGradiente)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numNmax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numNmin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictTrans)).EndInit();
             this.tab3D.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -565,8 +732,6 @@
         private System.Windows.Forms.DataGridView dataGrid;
         private System.Windows.Forms.GroupBox groupNorm;
         private Zzzz.ZzzzRangeBar rangeBar;
-        private System.Windows.Forms.Label labelMin;
-        private System.Windows.Forms.Label labelMax;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.PictureBox pictTrans;
         private System.Windows.Forms.TrackBar trackBar;
@@ -587,5 +752,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn rangoMax;
         private System.Windows.Forms.DataGridViewTextBoxColumn color;
         private Kitware.VTK.RenderWindowControl renderWindowControl1;
+        private System.Windows.Forms.TrackBar trackBar3;
+        private System.Windows.Forms.TrackBar trackBar2;
+        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private Zzzz.ZzzzRangeBar rangeHist;
+        private System.Windows.Forms.NumericUpDown numNmax;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown numNmin;
+        private System.Windows.Forms.Label label6;
     }
 }

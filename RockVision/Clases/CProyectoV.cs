@@ -144,6 +144,8 @@ namespace RockVision
                 }
             }
 
+            sr.Close();
+
             // se leen todos y cada uno de los archivos dicom que estan en la carpeta files
             string folder = System.IO.Path.GetDirectoryName(path) + "\\files";
             string[] nfiles = System.IO.Directory.GetFiles(folder);
@@ -158,7 +160,9 @@ namespace RockVision
             this.datacubo.GenerarCortesHorizontalesRV();
             
             // se genera el histograma
-            this.datacubo.GenerarHistograma();            
+            this.datacubo.GenerarHistograma();
+            // se generan los histogramas individuales
+            for (int i = 0; i < datacubo.dataCube.Count; i++) datacubo.dataCube[i].GenerarHistograma();
         }
 
         /// <summary>
@@ -210,6 +214,8 @@ namespace RockVision
 
             // se genera el histograma
             this.datacubo.GenerarHistograma();
+            // se generan los histogramas individuales
+            for (int i = 0; i < datacubo.dataCube.Count; i++) datacubo.dataCube[i].GenerarHistograma();
 
             normalizacion2D = new int[2];
             normalizacion2D[0] = datacubo.GetMinimo();

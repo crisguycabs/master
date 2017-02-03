@@ -64,9 +64,11 @@ namespace RockVision
 
         // lista de colores preferidos
         List<System.Drawing.Color> colores = new List<Color>();
+
+        // habilitar cambios
+        bool habilitarCambios = true;
         
         #endregion
-
 
         public VisualForm()
         {
@@ -605,8 +607,12 @@ namespace RockVision
 
             pictGradiente.Image = CrearGradiente(rangeBar.RangeMinimum, rangeBar.RangeMaximum);
 
-            labelMin.Text = "Min: " + rangeBar.RangeMinimum.ToString();
-            labelMax.Text = "Max: " + rangeBar.RangeMaximum.ToString();
+            numNmin.Minimum = minPixelValue;
+            numNmin.Maximum = maxPixelValue;
+            numNmax.Minimum = minPixelValue;
+            numNmax.Maximum = maxPixelValue;
+            numNmin.Value = minPixelValue;
+            numNmax.Value = maxPixelValue;
 
             rango = maxPixelValue - minPixelValue;
 
@@ -684,6 +690,12 @@ namespace RockVision
             numHmin.Value = minPixelValue;
             numHmax.Value = maxPixelValue;
 
+            // minimo y maximo del RangeBar del histograma
+            rangeHist.TotalMinimum = minPixelValue;
+            rangeHist.TotalMaximum = maxPixelValue;
+            rangeHist.RangeMinimum = minPixelValue;
+            rangeHist.RangeMaximum = maxPixelValue;
+
             pictHor.Invalidate();
             pictTrans.Invalidate();
 
@@ -707,14 +719,23 @@ namespace RockVision
             {
             }
 
+            //SetHistogramaSlide(0);
+
             // se cierra la ventana HomeForm
             if (padre.abiertoHomeForm) padre.homeForm.Close();
         }
 
         private void rangeBar_RangeChanging(object sender, EventArgs e)
         {
-            labelMin.Text = "Min: " + rangeBar.RangeMinimum.ToString();
-            labelMax.Text = "Max: " + rangeBar.RangeMaximum.ToString();
+            if (habilitarCambios)
+            {
+                habilitarCambios = false;
+
+                numNmin.Value = rangeBar.RangeMinimum;
+                numNmax.Value = rangeBar.RangeMaximum;
+                
+                habilitarCambios = true;
+            }
 
             // se prepara la serie Selected
             chart1.Series[0].Points.Clear();
@@ -917,20 +938,40 @@ namespace RockVision
 
         private void numHmin_ValueChanged(object sender, EventArgs e)
         {
-            // se cambia el limite izq del eje X del chat
-            // se debe verificar que el limite izq no sea >= que el limite derecho
+            if (habilitarCambios)
+            {
+                habilitarCambios = false;
 
-            if (numHmin.Value >= numHmax.Value) numHmin.Value = numHmax.Value - 1;
-            chart1.ChartAreas[0].AxisX.Minimum = Convert.ToDouble(numHmin.Value);
+                // se cambia el limite izq del eje X del chat
+                // se debe verificar que el limite izq no sea >= que el limite derecho
+
+                if (numHmin.Value >= numHmax.Value) numHmin.Value = numHmax.Value - 1;
+                if (rangeHist.RangeMinimum >= rangeHist.RangeMaximum) rangeHist.RangeMinimum = rangeHist.RangeMaximum - 1;
+
+                rangeHist.RangeMinimum = Convert.ToInt32(numHmin.Value);
+                chart1.ChartAreas[0].AxisX.Minimum = Convert.ToDouble(numHmin.Value);
+
+                habilitarCambios = true;
+            }
         }
 
         private void numHmax_ValueChanged(object sender, EventArgs e)
         {
-            // se cambia el limite der del eje X del chat
-            // se debe verificar que el limite der no sea <= que el limite izq
+            if (habilitarCambios)
+            {
+                habilitarCambios = false;
 
-            if (numHmax.Value <= numHmin.Value) numHmax.Value = numHmin.Value + 1;
-            chart1.ChartAreas[0].AxisX.Maximum = Convert.ToDouble(numHmax.Value);
+                // se cambia el limite der del eje X del chat
+                // se debe verificar que el limite der no sea <= que el limite izq
+
+                if (numHmax.Value <= numHmin.Value) numHmax.Value = numHmin.Value + 1;
+                if (rangeHist.RangeMaximum <= rangeHist.RangeMinimum) rangeHist.RangeMaximum = rangeHist.RangeMinimum + 1;
+
+                rangeHist.RangeMaximum = Convert.ToInt32(numHmax.Value);
+                chart1.ChartAreas[0].AxisX.Maximum = Convert.ToDouble(numHmax.Value);
+
+                habilitarCambios = true;
+            }
         }
 
         private void tab2D_Click(object sender, EventArgs e)
@@ -1053,6 +1094,34 @@ namespace RockVision
 
             labelSlide.Text = "Slide " + (trackBar.Value + 1) + " de " + padre.actualV.datacubo.dataCube.Count;
             pictHor.Invalidate();
+
+            //SetHistogramaSlide(trackBar.Value);
+        }
+
+        /// <summary>
+        /// Se agrega el histograma del i-slide al chart
+        /// </summary>
+        /// <param name="i"></param>
+        private void SetHistogramaSlide(int islide)
+        {
+            // se verifica si existe la serie adicional o no
+            if (chart1.Series.Count > (umbral.Count + 2))
+            {
+                // existe la serie adicional, se elimina
+                chart1.Series.RemoveAt(chart1.Series.Count - 1);
+            }
+
+            // se agrega la serie
+            chart1.Series.Add("slide");
+            int indice = chart1.Series.Count - 1;
+            chart1.Series[indice].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            chart1.Series[indice].Color = Color.Black;
+
+            // se agregan los puntos
+            for (int i = 0; i < padre.actualV.datacubo.dataCube[islide].histograma.Length / 2; i++)
+            {
+                chart1.Series[indice].Points.AddXY(padre.actualV.datacubo.dataCube[islide].histograma[i, 0], padre.actualV.datacubo.dataCube[islide].histograma[i, 1]);
+            }            
         }
 
         private void trackCorte_Scroll(object sender, EventArgs e)
@@ -1185,6 +1254,46 @@ namespace RockVision
         private void tab3D_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void rangeHist_RangeChanging(object sender, EventArgs e)
+        {
+            if (habilitarCambios)
+            {
+                habilitarCambios = false;
+
+                numHmin.Value = rangeHist.RangeMinimum;
+                numHmax.Value = rangeHist.RangeMaximum;
+
+                chart1.ChartAreas[0].AxisX.Minimum = Convert.ToDouble(numHmin.Value);
+                chart1.ChartAreas[0].AxisX.Maximum = Convert.ToDouble(numHmax.Value);
+
+                habilitarCambios = true;
+            }
+        }
+
+        private void numNmin_ValueChanged(object sender, EventArgs e)
+        {
+            if (habilitarCambios)
+            {
+                habilitarCambios = false;
+
+                rangeBar.RangeMinimum = Convert.ToInt32(numNmin.Value);
+
+                habilitarCambios = true;
+            }
+        }
+
+        private void numNmax_ValueChanged(object sender, EventArgs e)
+        {
+            if (habilitarCambios)
+            {
+                habilitarCambios = false;
+
+                rangeBar.RangeMaximum = Convert.ToInt32(numNmax.Value);
+
+                habilitarCambios = true;
+            }
         }
     }
 }
