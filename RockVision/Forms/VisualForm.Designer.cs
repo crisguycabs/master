@@ -38,6 +38,9 @@
             this.lblTitulo = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tab2D = new System.Windows.Forms.TabPage();
+            this.chkUmbral = new System.Windows.Forms.CheckBox();
+            this.chkNorm = new System.Windows.Forms.CheckBox();
+            this.btnCerrar = new System.Windows.Forms.Button();
             this.pictHor = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.numHmax = new System.Windows.Forms.NumericUpDown();
@@ -54,6 +57,9 @@
             this.btnBorrar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.dataGrid = new System.Windows.Forms.DataGridView();
+            this.rangoMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rangoMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.color = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupNorm = new System.Windows.Forms.GroupBox();
             this.pictGradiente = new System.Windows.Forms.PictureBox();
             this.rangeBar = new Zzzz.ZzzzRangeBar();
@@ -61,12 +67,7 @@
             this.labelMax = new System.Windows.Forms.Label();
             this.pictTrans = new System.Windows.Forms.PictureBox();
             this.tab3D = new System.Windows.Forms.TabPage();
-            this.chkNorm = new System.Windows.Forms.CheckBox();
-            this.chkUmbral = new System.Windows.Forms.CheckBox();
-            this.rangoMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rangoMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.color = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnCerrar = new System.Windows.Forms.Button();
+            this.renderWindowControl1 = new Kitware.VTK.RenderWindowControl();
             this.tabControl1.SuspendLayout();
             this.tab2D.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictHor)).BeginInit();
@@ -81,6 +82,7 @@
             this.groupNorm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictGradiente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictTrans)).BeginInit();
+            this.tab3D.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -132,6 +134,45 @@
             this.tab2D.TabIndex = 0;
             this.tab2D.Text = "Visualizacion 2D";
             this.tab2D.Click += new System.EventHandler(this.tab2D_Click);
+            // 
+            // chkUmbral
+            // 
+            this.chkUmbral.AutoSize = true;
+            this.chkUmbral.Location = new System.Drawing.Point(365, 358);
+            this.chkUmbral.Name = "chkUmbral";
+            this.chkUmbral.Size = new System.Drawing.Size(84, 18);
+            this.chkUmbral.TabIndex = 26;
+            this.chkUmbral.Text = "Segmentar";
+            this.chkUmbral.UseVisualStyleBackColor = true;
+            this.chkUmbral.CheckedChanged += new System.EventHandler(this.chkUmbral_CheckedChanged);
+            // 
+            // chkNorm
+            // 
+            this.chkNorm.AutoSize = true;
+            this.chkNorm.Checked = true;
+            this.chkNorm.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkNorm.Location = new System.Drawing.Point(365, 225);
+            this.chkNorm.Name = "chkNorm";
+            this.chkNorm.Size = new System.Drawing.Size(86, 18);
+            this.chkNorm.TabIndex = 25;
+            this.chkNorm.Text = "Normalizar";
+            this.chkNorm.UseVisualStyleBackColor = true;
+            this.chkNorm.CheckedChanged += new System.EventHandler(this.chkNorm_CheckedChanged);
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrar.Location = new System.Drawing.Point(655, 517);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(75, 23);
+            this.btnCerrar.TabIndex = 13;
+            this.btnCerrar.Text = "Cerrar";
+            this.btnCerrar.UseVisualStyleBackColor = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            this.btnCerrar.MouseEnter += new System.EventHandler(this.btnSubir_MouseEnter);
+            this.btnCerrar.MouseLeave += new System.EventHandler(this.btnSubir_MouseLeave);
             // 
             // pictHor
             // 
@@ -359,6 +400,28 @@
             this.dataGrid.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGrid_CellMouseClick);
             this.dataGrid.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_RowValidated);
             // 
+            // rangoMin
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rangoMin.DefaultCellStyle = dataGridViewCellStyle1;
+            this.rangoMin.HeaderText = "Minimo";
+            this.rangoMin.Name = "rangoMin";
+            this.rangoMin.Width = 75;
+            // 
+            // rangoMax
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rangoMax.DefaultCellStyle = dataGridViewCellStyle2;
+            this.rangoMax.HeaderText = "Maximo";
+            this.rangoMax.Name = "rangoMax";
+            this.rangoMax.Width = 75;
+            // 
+            // color
+            // 
+            this.color.HeaderText = "Color";
+            this.color.Name = "color";
+            this.color.Width = 55;
+            // 
             // groupNorm
             // 
             this.groupNorm.Controls.Add(this.pictGradiente);
@@ -430,73 +493,25 @@
             // tab3D
             // 
             this.tab3D.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tab3D.Controls.Add(this.renderWindowControl1);
             this.tab3D.Location = new System.Drawing.Point(4, 23);
             this.tab3D.Name = "tab3D";
             this.tab3D.Padding = new System.Windows.Forms.Padding(3);
             this.tab3D.Size = new System.Drawing.Size(1192, 593);
             this.tab3D.TabIndex = 1;
             this.tab3D.Text = "Visualizacion3D";
+            this.tab3D.Click += new System.EventHandler(this.tab3D_Click);
             // 
-            // chkNorm
+            // renderWindowControl1
             // 
-            this.chkNorm.AutoSize = true;
-            this.chkNorm.Checked = true;
-            this.chkNorm.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkNorm.Location = new System.Drawing.Point(365, 225);
-            this.chkNorm.Name = "chkNorm";
-            this.chkNorm.Size = new System.Drawing.Size(86, 18);
-            this.chkNorm.TabIndex = 25;
-            this.chkNorm.Text = "Normalizar";
-            this.chkNorm.UseVisualStyleBackColor = true;
-            this.chkNorm.CheckedChanged += new System.EventHandler(this.chkNorm_CheckedChanged);
-            // 
-            // chkUmbral
-            // 
-            this.chkUmbral.AutoSize = true;
-            this.chkUmbral.Location = new System.Drawing.Point(365, 358);
-            this.chkUmbral.Name = "chkUmbral";
-            this.chkUmbral.Size = new System.Drawing.Size(84, 18);
-            this.chkUmbral.TabIndex = 26;
-            this.chkUmbral.Text = "Segmentar";
-            this.chkUmbral.UseVisualStyleBackColor = true;
-            this.chkUmbral.CheckedChanged += new System.EventHandler(this.chkUmbral_CheckedChanged);
-            // 
-            // rangoMin
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rangoMin.DefaultCellStyle = dataGridViewCellStyle1;
-            this.rangoMin.HeaderText = "Minimo";
-            this.rangoMin.Name = "rangoMin";
-            this.rangoMin.Width = 75;
-            // 
-            // rangoMax
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rangoMax.DefaultCellStyle = dataGridViewCellStyle2;
-            this.rangoMax.HeaderText = "Maximo";
-            this.rangoMax.Name = "rangoMax";
-            this.rangoMax.Width = 75;
-            // 
-            // color
-            // 
-            this.color.HeaderText = "Color";
-            this.color.Name = "color";
-            this.color.Width = 55;
-            // 
-            // btnCerrar
-            // 
-            this.btnCerrar.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerrar.Location = new System.Drawing.Point(655, 517);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(75, 23);
-            this.btnCerrar.TabIndex = 13;
-            this.btnCerrar.Text = "Cerrar";
-            this.btnCerrar.UseVisualStyleBackColor = false;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
-            this.btnCerrar.MouseEnter += new System.EventHandler(this.btnSubir_MouseEnter);
-            this.btnCerrar.MouseLeave += new System.EventHandler(this.btnSubir_MouseLeave);
+            this.renderWindowControl1.AddTestActors = false;
+            this.renderWindowControl1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.renderWindowControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.renderWindowControl1.Location = new System.Drawing.Point(8, 6);
+            this.renderWindowControl1.Name = "renderWindowControl1";
+            this.renderWindowControl1.Size = new System.Drawing.Size(571, 323);
+            this.renderWindowControl1.TabIndex = 1;
+            this.renderWindowControl1.TestText = null;
             // 
             // VisualForm
             // 
@@ -532,6 +547,7 @@
             this.groupNorm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictGradiente)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictTrans)).EndInit();
+            this.tab3D.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -570,5 +586,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn rangoMin;
         private System.Windows.Forms.DataGridViewTextBoxColumn rangoMax;
         private System.Windows.Forms.DataGridViewTextBoxColumn color;
+        private Kitware.VTK.RenderWindowControl renderWindowControl1;
     }
 }

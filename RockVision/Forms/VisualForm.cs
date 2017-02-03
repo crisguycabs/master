@@ -1181,5 +1181,10 @@ namespace RockVision
             this.Close();
             padre.AbrirHomeForm();
         }
+
+        private void tab3D_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
