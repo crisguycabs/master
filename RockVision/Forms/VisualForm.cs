@@ -39,11 +39,6 @@ namespace RockVision
         /// </summary>
         int[] serieAll;
 
-        /// <summary>
-        /// serie para el chart
-        /// </summary>
-        System.Windows.Forms.DataVisualization.Charting.Series serieChartAll;
-
         int maxValAll = 0;
 
         /// <summary>
@@ -67,7 +62,7 @@ namespace RockVision
 
         // habilitar cambios
         bool habilitarCambios = true;
-        
+
         #endregion
 
         public VisualForm()
@@ -108,36 +103,33 @@ namespace RockVision
             }
         }
 
+        // Resetea el chart y pinta la serie de normalizacion y el histograma general
         public void ResetChart()
         {
-            // se hace un duplicado de la serie 0
-            System.Windows.Forms.DataVisualization.Charting.Series serie0 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            serie0 = chart1.Series[0];
+            // se elimina cualquier serie que no sea la de normalizacion y el histograma general
+            while (chart1.Series.Count > 2)
+                chart1.Series.RemoveAt(2);
 
-            // se limpian las series
-            foreach (var series in chart1.Series)
-            {
-                series.Points.Clear();
-            }
-            chart1.Series.Clear();
+            // se limpian las series de normalizacion [0] y del histograma general
+            chart1.Series[0].Points.Clear();
+            chart1.Series[1].Points.Clear();
 
-            // se prepara la serie0
-            serie0.Points.AddXY(minPixelValue, 0);
-            serie0.Points.AddXY(rangeBar.RangeMinimum, 0);
-            serie0.Points.AddXY(rangeBar.RangeMinimum, maxValAll);
-            serie0.Points.AddXY(rangeBar.RangeMaximum, maxValAll);
-            serie0.Points.AddXY(rangeBar.RangeMaximum, 0);
-            serie0.Points.AddXY(maxPixelValue, 0);
+            chart1.ChartAreas[0].AxisX.Minimum = minPixelValue;
+            chart1.ChartAreas[0].AxisX.Maximum = maxPixelValue;
 
-            // se vuelve a llenar la serieChartAll
-            for (int i = 0; i < serieAll.Length; i++)
-            {
-                serieChartAll.Points.AddXY(minPixelValue + i, serieAll[i]);
-            }
+            numAmplitud.Value = maxValAll;
 
-            // se agrega la serie0 y la serieChartAll
-            chart1.Series.Add(serie0);
-            chart1.Series.Add(serieChartAll);
+            // se llena la serie de normalizacion
+            chart1.Series[0].Points.AddXY(minPixelValue, 0);
+            chart1.Series[0].Points.AddXY(rangeBar.RangeMinimum, 0);
+            chart1.Series[0].Points.AddXY(rangeBar.RangeMinimum, padre.actualV.datacubo.histograma.Max());
+            chart1.Series[0].Points.AddXY(rangeBar.RangeMaximum, padre.actualV.datacubo.histograma.Max());
+            chart1.Series[0].Points.AddXY(rangeBar.RangeMaximum, 0);
+            chart1.Series[0].Points.AddXY(maxPixelValue, 0);
+
+            // se llena la serie del histograma
+            for (int i = 1; i < padre.actualV.datacubo.histograma.Length; i++)
+                chart1.Series[1].Points.AddXY(padre.actualV.datacubo.bins[i], padre.actualV.datacubo.histograma[i]);
         }
 
         /// <summary>
@@ -155,18 +147,21 @@ namespace RockVision
 
                 // se agrega la serie
                 chart1.Series.Add(i.ToString());
-
+                
                 // se le da el color a la serie
                 chart1.Series[i + 2].Color = umbral[i].color;
 
-                // se llenan los valores
-                // se preparan los indices para recorrer la serie All
+                // se agregan a la serie los valores del histograma que esten dentro de los límites del umbral
                 int ini = umbral[i].minimo - minPixelValue;
                 int fin = umbral[i].maximo - minPixelValue;
-                for (int j = ini; j < fin; j++)
+
+                for (int j = 0; j < padre.actualV.datacubo.histograma.Length; j++)
                 {
-                    chart1.Series[i + 2].Points.Add(serieChartAll.Points[j]);
-                }
+                    if ((padre.actualV.datacubo.bins[j] >= ini) & (padre.actualV.datacubo.bins[j] <= fin))
+                    {
+                        chart1.Series[i + 2].Points.AddXY(padre.actualV.datacubo.bins[j], padre.actualV.datacubo.histograma[j]);
+                    }
+                }                
             }
         }
 
@@ -600,7 +595,6 @@ namespace RockVision
                 rangeBar.RangeMaximum = maxPixelValue;
                 rangeBar.RangeMinimum = minPixelValue;
             }
-            
 
             padre.actualV.normalizacion2D[0] = minPixelValue;
             padre.actualV.normalizacion2D[1] = maxPixelValue;
@@ -616,52 +610,15 @@ namespace RockVision
 
             rango = maxPixelValue - minPixelValue;
 
-            // se prepara la data que alimentara el histograma
-            chart1.Series[0].Points.Clear();
-            chart1.Series[1].Points.Clear();
-            serieAll = new int[Convert.ToInt32(rango) + 1];
-            chart1.ChartAreas[0].AxisX.Minimum = minPixelValue;
-            chart1.ChartAreas[0].AxisX.Maximum = maxPixelValue;
-            chart1.ChartAreas[0].AxisX.Interval = Convert.ToInt32(rango / 10);
-
-            // se ponen las series en cero
-            for (int i = 0; i < rango; i++) serieAll[i] = 0;
-
-            // se llena la serie All
-            for (int i = 0; i < padre.actualV.datacubo.dataCube.Count; i++)
+            // se halla el maximo valor del histograma
+            maxValAll = Convert.ToInt32(padre.actualV.datacubo.histograma[1]);
+            for (int i = 2; i < padre.actualV.datacubo.histograma.Length; i++)
             {
-                for (int j = 0; j < padre.actualV.datacubo.dataCube[i].pixelData.Count; j++)
-                {
-                    // no se cuenta el valor minimo (vacio de la imagen CT)
-                    if (padre.actualV.datacubo.dataCube[i].pixelData[j] > minPixelValue) serieAll[Convert.ToInt32(padre.actualV.datacubo.dataCube[i].pixelData[j] - minPixelValue)]++;
-                }
-            }
-            serieAll[0] = 0;
-            maxValAll = serieAll.Max();
-
-            // se prepara la serieChartAll
-            serieChartAll = new System.Windows.Forms.DataVisualization.Charting.Series();
-            serieChartAll.ChartType = chart1.Series[1].ChartType;
-            serieChartAll.ChartArea = chart1.Series[1].ChartArea;
-            serieChartAll.Color = Color.CornflowerBlue;
-            for (int i = 0; i < serieAll.Length; i++)
-            {
-                serieChartAll.Points.AddXY(minPixelValue + i, serieAll[i]);
+                if (padre.actualV.datacubo.histograma[i] > maxValAll) maxValAll = Convert.ToInt32(padre.actualV.datacubo.histograma[i]);
             }
 
-            // se agrega la serie al chart
-            chart1.Series.RemoveAt(1);
-            chart1.Series.Add(serieChartAll);
-
-            // se agrega la serie Selected para NORMALIZACION
-            chart1.Series[0].Points.Clear();
-            chart1.Series[0].Points.AddXY(minPixelValue, 0);
-            chart1.Series[0].Points.AddXY(rangeBar.RangeMinimum, 0);
-            chart1.Series[0].Points.AddXY(rangeBar.RangeMinimum, maxValAll);
-            chart1.Series[0].Points.AddXY(rangeBar.RangeMaximum, maxValAll);
-            chart1.Series[0].Points.AddXY(rangeBar.RangeMaximum, 0);
-            chart1.Series[0].Points.AddXY(maxPixelValue, 0);
-
+            ResetChart();
+                
             trackBar.Minimum = 0;
             trackBar.Maximum = padre.actualV.datacubo.dataCube.Count - 1;
             trackBar.Value = 0;
@@ -703,10 +660,10 @@ namespace RockVision
             try
             {
                 umbral = new List<CUmbralCT>();
-                for (int i = 0; i < (padre.actualV.segmentacion2D.Count-1); i++)
+                for (int i = 0; i < (padre.actualV.segmentacion2D.Count - 1); i++)
                 {
                     umbral.Add(new CUmbralCT(padre.actualV.segmentacion2D[i], padre.actualV.segmentacion2D[i + 1], padre.actualV.colorSeg2D[i]));
-                    
+
                     dataGrid.Rows.Add();
                     dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[0].Value = umbral.Last().minimo;
                     dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[1].Value = umbral.Last().maximo;
@@ -719,10 +676,41 @@ namespace RockVision
             {
             }
 
-            //SetHistogramaSlide(0);
-
             // se cierra la ventana HomeForm
             if (padre.abiertoHomeForm) padre.homeForm.Close();
+        }
+
+        /// <summary>
+        /// pinta el histograma del slide en el chart
+        /// </summary>
+        public void SetHistogramaSlide(int slide)
+        {
+            // numero de series que DEBERIAN haber
+            int nseries = 2 + umbral.Count;
+
+            if (chart1.Series.Count > nseries)
+            {
+                // hay una serie adicional, de histograma de slide, y se debe eliminar
+                chart1.Series.RemoveAt(chart1.Series.Count - 1);
+            }
+
+            // se crea la nueva serie
+            System.Windows.Forms.DataVisualization.Charting.Series histslide = new System.Windows.Forms.DataVisualization.Charting.Series();
+            histslide.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            histslide.Color = Color.Black;
+
+            int i;
+            try
+            {
+                for (i = 1; i < padre.actualV.datacubo.dataCube[slide].histograma.Length; i++)
+                    histslide.Points.AddXY(padre.actualV.datacubo.bins[i], padre.actualV.datacubo.dataCube[slide].histograma[i]);
+            }
+            catch
+            {
+                MessageBox.Show("error");
+            }
+
+            chart1.Series.Add(histslide);
         }
 
         private void rangeBar_RangeChanging(object sender, EventArgs e)
@@ -733,7 +721,7 @@ namespace RockVision
 
                 numNmin.Value = rangeBar.RangeMinimum;
                 numNmax.Value = rangeBar.RangeMaximum;
-                
+
                 habilitarCambios = true;
             }
 
@@ -927,9 +915,9 @@ namespace RockVision
         {
             // se limpia el datagridview
             dataGrid.Rows.Clear();
-            
+
             ResetChart();
-            
+
             pictTrans.Image = Normalizar(trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
             pictHor.Image = NormalizarH(trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
 
@@ -1098,32 +1086,6 @@ namespace RockVision
             //SetHistogramaSlide(trackBar.Value);
         }
 
-        /// <summary>
-        /// Se agrega el histograma del i-slide al chart
-        /// </summary>
-        /// <param name="i"></param>
-        private void SetHistogramaSlide(int islide)
-        {
-            // se verifica si existe la serie adicional o no
-            if (chart1.Series.Count > (umbral.Count + 2))
-            {
-                // existe la serie adicional, se elimina
-                chart1.Series.RemoveAt(chart1.Series.Count - 1);
-            }
-
-            // se agrega la serie
-            chart1.Series.Add("slide");
-            int indice = chart1.Series.Count - 1;
-            chart1.Series[indice].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            chart1.Series[indice].Color = Color.Black;
-
-            // se agregan los puntos
-            for (int i = 0; i < padre.actualV.datacubo.dataCube[islide].histograma.Length / 2; i++)
-            {
-                chart1.Series[indice].Points.AddXY(padre.actualV.datacubo.dataCube[islide].histograma[i, 0], padre.actualV.datacubo.dataCube[islide].histograma[i, 1]);
-            }            
-        }
-
         private void trackCorte_Scroll(object sender, EventArgs e)
         {
             // se debe ajustar la imagen normalizada, y umbralizada, de cada dicom segun se vaya cambiando el trackbar
@@ -1162,10 +1124,10 @@ namespace RockVision
                 Color colorAagregar;
                 if (umbral.Count < colores.Count) colorAagregar = colores[umbral.Count];
                 else colorAagregar = colores[umbral.Count - 1];
-                
+
                 // se agrega un nuevo umbral a continuacion del ultimo, hasta el valor maximo
                 CUmbralCT temp = new CUmbralCT(umbral.Last().maximo, maxPixelValue, colorAagregar);
-                umbral.Add(temp);                
+                umbral.Add(temp);
 
                 dataGrid.Rows.Add();
                 dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[0].Value = umbral.Last().minimo;
@@ -1195,7 +1157,7 @@ namespace RockVision
         public void SetSegmentacion2D()
         {
             // se guardan los colores de la segmentacion
-            padre.actualV.colorSeg2D=new List<Color>();
+            padre.actualV.colorSeg2D = new List<Color>();
             padre.actualV.segmentacion2D = new List<int>();
             padre.actualV.segmentacion2D.Add(umbral[0].minimo);
 
@@ -1212,7 +1174,7 @@ namespace RockVision
 
         private void chkNorm_CheckedChanged(object sender, EventArgs e)
         {
-            chkUmbral.Checked=!chkNorm.Checked;
+            chkUmbral.Checked = !chkNorm.Checked;
             groupNorm.Enabled = chkNorm.Checked;
 
             if (chkNorm.Checked)
@@ -1294,6 +1256,11 @@ namespace RockVision
 
                 habilitarCambios = true;
             }
+        }
+
+        private void numAmplitud_ValueChanged(object sender, EventArgs e)
+        {
+            this.chart1.ChartAreas[0].AxisY.Maximum = Convert.ToDouble(this.numAmplitud.Value);
         }
     }
 }

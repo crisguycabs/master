@@ -26,14 +26,19 @@ namespace RockStatic
         public List<MyDicom> dataCube = null;
 
         /// <summary>
-        /// Guarda la informacion del histograma en 100 bins
+        /// Guarda la informacion del histograma
         /// </summary>
         public uint[] histograma = null;
 
         /// <summary>
-        /// Marcas de clase del histograma de 100 bins
+        /// Marcas de clase del histograma 
         /// </summary>
         public ushort[] bins = null;
+
+        /// <summary>
+        /// Limites de cada bin
+        /// </summary>
+        ushort[] limites = null;
 
         /// <summary>
         /// List que contiene los List de ushort que contienen los pixeles CT para cada corte horizontal del core
@@ -216,7 +221,7 @@ namespace RockStatic
         }
 
         /// <summary>
-        /// Genera el histograma y las marcas de clase para el datacubo, con bins = raiz de numero de datos
+        /// Genera el histograma general y por slide, las marcas de clase para el datacubo, limites de cada bin, con bins = raiz de numero de datos
         /// </summary>
         public void GenerarHistograma()
         {
@@ -242,11 +247,13 @@ namespace RockStatic
             double alto = Convert.ToDouble(dataCube[0].selector.Rows.Data);
             double largo = Convert.ToDouble(dataCube.Count);
             int nbins = Convert.ToInt32(Math.Ceiling(Math.Sqrt(ancho * alto * largo)));
+            
+            // se instancia el histograma general 
             this.histograma = new uint[nbins];
-
+            
             // se calculan los limites de cada marca de clase
             double step = (double)(((double)(maximo - minimo)) / Convert.ToDouble(nbins));
-            ushort[] limites = new ushort[nbins+1];
+            limites = new ushort[nbins+1];
             double[] tempLimites = new double[nbins+1];
             limites[0] = minimo;
             for (int i = 1; i < (nbins+1); i++)
@@ -262,6 +269,9 @@ namespace RockStatic
             List<ushort> pixelsOrdenados = new List<ushort>();
             for (int i = 0; i < dataCube.Count; i++)
             {
+                // se instancia el histograma de cada slide
+                dataCube[i].histograma = new uint[nbins];
+
                 // se genera una copia de los pixeles para poder ordenarlos
                 pixelsOrdenados.Clear();
                 for (int j = 0; j < dataCube[i].pixelData.Count; j++)
@@ -279,8 +289,16 @@ namespace RockStatic
                         bincount++;
                     else
                     {
+                        // se agrega la cuenta al histograma general
                         histograma[ibin - 1] = histograma[ibin - 1] + bincount;
-                        bincount = 1;
+
+                        // se agrega la cuenta al histograma del slide
+                        dataCube[i].histograma[ibin - 1] = bincount;
+
+                        // se reseta el contador
+                        bincount = 0;
+
+                        // se continua con el siguiente bin
                         ibin++;
                         if (ibin > nbins)
                             ibin = nbins;

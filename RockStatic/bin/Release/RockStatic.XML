@@ -481,12 +481,17 @@
         </member>
         <member name="F:RockStatic.MyDataCube.histograma">
             <summary>
-            Guarda la informacion del histograma en 100 bins
+            Guarda la informacion del histograma
             </summary>
         </member>
         <member name="F:RockStatic.MyDataCube.bins">
             <summary>
-            Marcas de clase del histograma de 100 bins
+            Marcas de clase del histograma 
+            </summary>
+        </member>
+        <member name="F:RockStatic.MyDataCube.limites">
+            <summary>
+            Limites de cada bin
             </summary>
         </member>
         <member name="F:RockStatic.MyDataCube.coresHorizontal">
@@ -563,7 +568,7 @@
         </member>
         <member name="M:RockStatic.MyDataCube.GenerarHistograma">
             <summary>
-            Genera el histograma y las marcas de clase para el datacubo, con bins = raiz de numero de datos
+            Genera el histograma general y por slide, las marcas de clase para el datacubo, limites de cada bin, con bins = raiz de numero de datos
             </summary>
         </member>
         <member name="M:RockStatic.MyDataCube.GenerarCoreHorizontal(System.Int32)">
@@ -677,7 +682,7 @@
         </member>
         <member name="F:RockStatic.MyDicom.histograma">
             <summary>
-            histograma del pixelData del slide
+            Guarda la informacion del histograma del slide
             </summary>
         </member>
         <member name="M:RockStatic.MyDicom.#ctor">
@@ -690,12 +695,6 @@
             Constructor con asignación. Lee la ruta del DICOM, lo lee y decodifica la informacion de pixeles. NO NORMALIZA
             </summary>
             <param name="ruta">Ruta del DICOM a leer</param>
-        </member>
-        <member name="M:RockStatic.MyDicom.GenerarHistograma">
-            <summary>
-            Devuelve el histograma del pixeldata del slide
-            </summary>
-            <returns></returns>
         </member>
         <member name="M:RockStatic.MyDicom.Byte2Pixels16(System.Collections.Generic.List{System.Byte},System.Int32,System.Int32,System.Int32,System.Double,System.Double,System.String)">
             <summary>

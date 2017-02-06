@@ -43,6 +43,8 @@
             this.btnCerrar = new System.Windows.Forms.Button();
             this.pictHor = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.numAmplitud = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
             this.numHmax = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.numHmin = new System.Windows.Forms.NumericUpDown();
@@ -83,6 +85,7 @@
             this.tab2D.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictHor)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numAmplitud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHmax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHmin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -203,6 +206,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.numAmplitud);
+            this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.numHmax);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.numHmin);
@@ -216,6 +221,39 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "HISTOGRAMA CT";
             // 
+            // numAmplitud
+            // 
+            this.numAmplitud.Increment = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.numAmplitud.Location = new System.Drawing.Point(298, 213);
+            this.numAmplitud.Maximum = new decimal(new int[] {
+            99999999,
+            0,
+            0,
+            0});
+            this.numAmplitud.Name = "numAmplitud";
+            this.numAmplitud.Size = new System.Drawing.Size(63, 22);
+            this.numAmplitud.TabIndex = 26;
+            this.numAmplitud.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numAmplitud.Value = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.numAmplitud.ValueChanged += new System.EventHandler(this.numAmplitud_ValueChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(239, 215);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(60, 14);
+            this.label7.TabIndex = 25;
+            this.label7.Text = "Amplitud:";
+            // 
             // numHmax
             // 
             this.numHmax.Increment = new decimal(new int[] {
@@ -223,7 +261,7 @@
             0,
             0,
             0});
-            this.numHmax.Location = new System.Drawing.Point(191, 213);
+            this.numHmax.Location = new System.Drawing.Point(174, 213);
             this.numHmax.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -243,7 +281,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(137, 215);
+            this.label1.Location = new System.Drawing.Point(122, 215);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 14);
             this.label1.TabIndex = 23;
@@ -256,7 +294,7 @@
             0,
             0,
             0});
-            this.numHmin.Location = new System.Drawing.Point(63, 213);
+            this.numHmin.Location = new System.Drawing.Point(55, 213);
             this.numHmin.Name = "numHmin";
             this.numHmin.Size = new System.Drawing.Size(57, 22);
             this.numHmin.TabIndex = 22;
@@ -266,7 +304,7 @@
             // lblHmin
             // 
             this.lblHmin.AutoSize = true;
-            this.lblHmin.Location = new System.Drawing.Point(9, 215);
+            this.lblHmin.Location = new System.Drawing.Point(5, 215);
             this.lblHmin.Name = "lblHmin";
             this.lblHmin.Size = new System.Drawing.Size(55, 14);
             this.lblHmin.TabIndex = 10;
@@ -696,6 +734,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictHor)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numAmplitud)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHmax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHmin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
@@ -765,5 +804,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown numNmin;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown numAmplitud;
+        private System.Windows.Forms.Label label7;
     }
 }

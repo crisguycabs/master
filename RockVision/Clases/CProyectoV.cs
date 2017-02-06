@@ -160,9 +160,7 @@ namespace RockVision
             this.datacubo.GenerarCortesHorizontalesRV();
             
             // se genera el histograma
-            this.datacubo.GenerarHistograma();
-            // se generan los histogramas individuales
-            for (int i = 0; i < datacubo.dataCube.Count; i++) datacubo.dataCube[i].GenerarHistograma();
+            this.datacubo.GenerarHistograma();            
         }
 
         /// <summary>
@@ -214,9 +212,7 @@ namespace RockVision
 
             // se genera el histograma
             this.datacubo.GenerarHistograma();
-            // se generan los histogramas individuales
-            for (int i = 0; i < datacubo.dataCube.Count; i++) datacubo.dataCube[i].GenerarHistograma();
-
+            
             normalizacion2D = new int[2];
             normalizacion2D[0] = datacubo.GetMinimo();
             normalizacion2D[1] = datacubo.GetMaximo();
