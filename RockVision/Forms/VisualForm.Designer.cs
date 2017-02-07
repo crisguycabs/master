@@ -60,9 +60,6 @@
             this.btnBorrar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.dataGrid = new System.Windows.Forms.DataGridView();
-            this.rangoMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rangoMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.color = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupNorm = new System.Windows.Forms.GroupBox();
             this.pictGradiente = new System.Windows.Forms.PictureBox();
             this.numNmax = new System.Windows.Forms.NumericUpDown();
@@ -81,6 +78,10 @@
             this.trackBar3 = new System.Windows.Forms.TrackBar();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.renderWindowControl1 = new Kitware.VTK.RenderWindowControl();
+            this.Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.rangoMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rangoMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.color = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tab2D.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictHor)).BeginInit();
@@ -465,38 +466,18 @@
             this.dataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
             this.rangoMin,
             this.rangoMax,
             this.color});
             this.dataGrid.Location = new System.Drawing.Point(9, 19);
             this.dataGrid.Name = "dataGrid";
+            this.dataGrid.RowHeadersVisible = false;
             this.dataGrid.Size = new System.Drawing.Size(266, 117);
             this.dataGrid.TabIndex = 12;
             this.dataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_CellClick);
             this.dataGrid.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGrid_CellMouseClick);
             this.dataGrid.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_RowValidated);
-            // 
-            // rangoMin
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rangoMin.DefaultCellStyle = dataGridViewCellStyle1;
-            this.rangoMin.HeaderText = "Minimo";
-            this.rangoMin.Name = "rangoMin";
-            this.rangoMin.Width = 75;
-            // 
-            // rangoMax
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rangoMax.DefaultCellStyle = dataGridViewCellStyle2;
-            this.rangoMax.HeaderText = "Maximo";
-            this.rangoMax.Name = "rangoMax";
-            this.rangoMax.Width = 75;
-            // 
-            // color
-            // 
-            this.color.HeaderText = "Color";
-            this.color.Name = "color";
-            this.color.Width = 55;
             // 
             // groupNorm
             // 
@@ -711,6 +692,34 @@
             this.renderWindowControl1.TabIndex = 1;
             this.renderWindowControl1.TestText = null;
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "3D";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 30;
+            // 
+            // rangoMin
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rangoMin.DefaultCellStyle = dataGridViewCellStyle1;
+            this.rangoMin.HeaderText = "Minimo";
+            this.rangoMin.Name = "rangoMin";
+            this.rangoMin.Width = 75;
+            // 
+            // rangoMax
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rangoMax.DefaultCellStyle = dataGridViewCellStyle2;
+            this.rangoMax.HeaderText = "Maximo";
+            this.rangoMax.Name = "rangoMax";
+            this.rangoMax.Width = 75;
+            // 
+            // color
+            // 
+            this.color.HeaderText = "Color";
+            this.color.Name = "color";
+            this.color.Width = 55;
+            // 
             // VisualForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -787,9 +796,6 @@
         private System.Windows.Forms.CheckBox chkNorm;
         private System.Windows.Forms.CheckBox chkUmbral;
         private System.Windows.Forms.Button btnCerrar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rangoMin;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rangoMax;
-        private System.Windows.Forms.DataGridViewTextBoxColumn color;
         private Kitware.VTK.RenderWindowControl renderWindowControl1;
         private System.Windows.Forms.TrackBar trackBar3;
         private System.Windows.Forms.TrackBar trackBar2;
@@ -806,5 +812,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown numAmplitud;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rangoMin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rangoMax;
+        private System.Windows.Forms.DataGridViewTextBoxColumn color;
     }
 }

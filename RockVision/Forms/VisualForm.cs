@@ -171,20 +171,20 @@ namespace RockVision
 
             dataGrid.Rows[filaActual].Cells[columnaActual].Value = barPopup.Value;
 
-            if (columnaActual == 0) umbral[filaActual].minimo = barPopup.Value;
+            if (columnaActual == 1) umbral[filaActual].minimo = barPopup.Value;
             else umbral[filaActual].maximo = barPopup.Value;
 
 
             // se revisa que el umbral.maximo anterior coincida con el nuevo valor de minimo, si existe mas de un elemento
             if ((umbral.Count > 1) & (filaActual > 0))
             {
-                dataGrid.Rows[filaActual - 1].Cells[1].Value = umbral[filaActual - 1].maximo = umbral[filaActual].minimo;
+                dataGrid.Rows[filaActual - 1].Cells[2].Value = umbral[filaActual - 1].maximo = umbral[filaActual].minimo;
             }
 
             // se revisa que el umbral.minimo siguiente coincida con el nuevo valor de maximo, si existe mas de un elemento
             if ((umbral.Count > 1) & (filaActual < (umbral.Count - 1)))
             {
-                dataGrid.Rows[filaActual + 1].Cells[0].Value = umbral[filaActual + 1].minimo = umbral[filaActual].maximo;
+                dataGrid.Rows[filaActual + 1].Cells[1].Value = umbral[filaActual + 1].minimo = umbral[filaActual].maximo;
             }
 
             UmbralizarHistograma();
@@ -572,6 +572,9 @@ namespace RockVision
             barPopup.Size = new Size(200, 23);
             barPopup.SmallChange = 1;
             barPopup.Scroll += barPopup_Scroll;
+            barPopup.Leave +=barPopup_Leave;
+            barPopup.LostFocus +=barPopup_Leave;
+            barPopup.MouseLeave += barPopup_Leave;
 
             // se hallan el minimo y el maximo de todos los pixeles de dicom leidos para normalizar
             minPixelValue = padre.actualV.datacubo.dataCube[0].pixelData.Min();
@@ -665,9 +668,10 @@ namespace RockVision
                     umbral.Add(new CUmbralCT(padre.actualV.segmentacion2D[i], padre.actualV.segmentacion2D[i + 1], padre.actualV.colorSeg2D[i]));
 
                     dataGrid.Rows.Add();
-                    dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[0].Value = umbral.Last().minimo;
-                    dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[1].Value = umbral.Last().maximo;
-                    dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[2].Style.BackColor = dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[2].Style.ForeColor = dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[2].Style.SelectionBackColor = dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[2].Style.SelectionForeColor = umbral.Last().color;
+                    dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[0].Value = true;
+                    dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[1].Value = umbral.Last().minimo;
+                    dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[2].Value = umbral.Last().maximo;
+                    dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[3].Style.BackColor = dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[3].Style.ForeColor = dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[3].Style.SelectionBackColor = dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[3].Style.SelectionForeColor = umbral.Last().color;
                 }
 
                 UmbralizarHistograma();
@@ -747,7 +751,7 @@ namespace RockVision
 
         private void dataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 2)
+            if (e.ColumnIndex == 3)
             {
                 colorDialog1 = new ColorDialog();
                 if (colorDialog1.ShowDialog() == DialogResult.OK)
@@ -772,7 +776,7 @@ namespace RockVision
 
         private void dataGrid_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if ((e.ColumnIndex < 2) & (e.Button == MouseButtons.Right))
+            if ((e.ColumnIndex >= 1) & (e.ColumnIndex <= 2) & (e.Button == MouseButtons.Right))
             {
                 filaActual = e.RowIndex;
                 columnaActual = e.ColumnIndex;
@@ -787,6 +791,15 @@ namespace RockVision
                 barPopup.BringToFront();
             }
             if ((e.Button == MouseButtons.Left) & (popup))
+            {
+                Controls.Remove(barPopup);
+                popup = false;
+            }
+        }
+
+        private void barPopup_Leave(object sender, System.EventArgs e)
+        {
+            if (popup)
             {
                 Controls.Remove(barPopup);
                 popup = false;
@@ -812,38 +825,38 @@ namespace RockVision
             bool errorMax = false;
 
             // condicion (1)
-            if (Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells[0].Value) < minPixelValue)
+            if (Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells[1].Value) < minPixelValue)
             {
                 dataGrid.Rows[e.RowIndex].Cells[0].Value = umbral[e.RowIndex].minimo;
                 errorMin = true;
             }
-            if (Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells[1].Value) < minPixelValue)
+            if (Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells[2].Value) < minPixelValue)
             {
                 dataGrid.Rows[e.RowIndex].Cells[1].Value = umbral[e.RowIndex].maximo;
                 errorMax = true;
             }
 
             // condicion (2)
-            if (Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells[0].Value) > maxPixelValue)
+            if (Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells[1].Value) > maxPixelValue)
             {
                 dataGrid.Rows[e.RowIndex].Cells[0].Value = umbral[e.RowIndex].minimo;
                 errorMin = true;
             }
-            if (Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells[1].Value) > maxPixelValue)
+            if (Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells[2].Value) > maxPixelValue)
             {
                 dataGrid.Rows[e.RowIndex].Cells[1].Value = umbral[e.RowIndex].maximo;
                 errorMax = true;
             }
 
             // condicion (3)
-            if (Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells[1].Value) < umbral[e.RowIndex].minimo)
+            if (Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells[2].Value) < umbral[e.RowIndex].minimo)
             {
                 dataGrid.Rows[e.RowIndex].Cells[1].Value = umbral[e.RowIndex].maximo;
                 errorMax = true;
             }
 
             // condicion (4)
-            if (Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells[0].Value) > umbral[e.RowIndex].maximo)
+            if (Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells[1].Value) > umbral[e.RowIndex].maximo)
             {
                 dataGrid.Rows[e.RowIndex].Cells[0].Value = umbral[e.RowIndex].minimo;
                 errorMin = true;
@@ -852,25 +865,25 @@ namespace RockVision
             // si  no se encuentran errores al valiar entonces si se guardan los nuevos valores
             if (!errorMin)
             {
-                umbral[e.RowIndex].minimo = Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells[0].Value);
+                umbral[e.RowIndex].minimo = Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells[1].Value);
 
                 // se revisa que el umbral.maximo anterior coincida con el nuevo valor de minimo, si existe mas de un elemento
                 if ((umbral.Count > 1) & (e.RowIndex > 0))
                 {
-                    dataGrid.Rows[e.RowIndex - 1].Cells[1].Value = umbral[e.RowIndex - 1].maximo = umbral[e.RowIndex].minimo;
+                    dataGrid.Rows[e.RowIndex - 1].Cells[2].Value = umbral[e.RowIndex - 1].maximo = umbral[e.RowIndex].minimo;
                 }
             }
             if (!errorMax)
             {
-                umbral[e.RowIndex].maximo = Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells[1].Value);
+                umbral[e.RowIndex].maximo = Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells[2].Value);
 
                 // se revisa que el umbral.minimo siguiente coincida con el nuevo valor de maximo, si existe mas de un elemento
                 if ((umbral.Count > 1) & (e.RowIndex < (umbral.Count - 1)))
                 {
-                    dataGrid.Rows[e.RowIndex + 1].Cells[0].Value = umbral[e.RowIndex + 1].minimo = umbral[e.RowIndex].maximo;
+                    dataGrid.Rows[e.RowIndex + 1].Cells[1].Value = umbral[e.RowIndex + 1].minimo = umbral[e.RowIndex].maximo;
                 }
             }
-            umbral[e.RowIndex].color = dataGrid.Rows[e.RowIndex].Cells[2].Style.BackColor;
+            umbral[e.RowIndex].color = dataGrid.Rows[e.RowIndex].Cells[3].Style.BackColor;
 
             UmbralizarHistograma();
             if (chkNorm.Checked)
@@ -1115,9 +1128,10 @@ namespace RockVision
                 umbral.Add(temp);
 
                 dataGrid.Rows.Add();
-                dataGrid.Rows[0].Cells[0].Value = minPixelValue + 20;
-                dataGrid.Rows[0].Cells[1].Value = maxPixelValue;
-                dataGrid.Rows[0].Cells[2].Style.BackColor = dataGrid.Rows[0].Cells[2].Style.ForeColor = dataGrid.Rows[0].Cells[2].Style.SelectionBackColor = dataGrid.Rows[0].Cells[2].Style.SelectionForeColor = colores[0];
+                dataGrid.Rows[0].Cells[0].Value = true;
+                dataGrid.Rows[0].Cells[1].Value = minPixelValue + 20;
+                dataGrid.Rows[0].Cells[2].Value = maxPixelValue;
+                dataGrid.Rows[0].Cells[3].Style.BackColor = dataGrid.Rows[0].Cells[3].Style.ForeColor = dataGrid.Rows[0].Cells[3].Style.SelectionBackColor = dataGrid.Rows[0].Cells[3].Style.SelectionForeColor = colores[0];
             }
             else
             {
@@ -1130,9 +1144,10 @@ namespace RockVision
                 umbral.Add(temp);
 
                 dataGrid.Rows.Add();
-                dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[0].Value = umbral.Last().minimo;
-                dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[1].Value = umbral.Last().maximo;
-                dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[2].Style.BackColor = dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[2].Style.ForeColor = dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[2].Style.SelectionBackColor = dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[2].Style.SelectionForeColor = colorAagregar;
+                dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[0].Value = true;
+                dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[1].Value = umbral.Last().minimo;
+                dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[2].Value = umbral.Last().maximo;
+                dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[3].Style.BackColor = dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[3].Style.ForeColor = dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[3].Style.SelectionBackColor = dataGrid.Rows[dataGrid.Rows.Count - 1].Cells[3].Style.SelectionForeColor = colorAagregar;
             }
 
             UmbralizarHistograma();
