@@ -601,6 +601,8 @@ namespace RockVision
             // minimo y maximo de la barra de rango para normalizacion
             rangeBar.TotalMaximum = maxPixelValue;
             rangeBar.TotalMinimum = minPixelValue;
+            rangeBar.RangeMaximum = maxPixelValue;
+            rangeBar.RangeMinimum = minPixelValue;
             try
             {
                 rangeBar.RangeMaximum = padre.actualV.normalizacion2D[1];
@@ -612,18 +614,15 @@ namespace RockVision
                 rangeBar.RangeMinimum = minPixelValue;
             }
 
-            padre.actualV.normalizacion2D[0] = minPixelValue;
-            padre.actualV.normalizacion2D[1] = maxPixelValue;
-
             pictGradiente.Image = CrearGradiente(rangeBar.RangeMinimum, rangeBar.RangeMaximum);
 
+            habilitarCambios = false;
             numNmin.Minimum = minPixelValue;
             numNmin.Maximum = maxPixelValue;
             numNmax.Minimum = minPixelValue;
             numNmax.Maximum = maxPixelValue;
-            numNmin.Value = minPixelValue;
-            numNmax.Value = maxPixelValue;
-
+            habilitarCambios = true;
+            
             rango = maxPixelValue - minPixelValue;
 
             // se halla el maximo valor del histograma
@@ -641,7 +640,7 @@ namespace RockVision
             trackBar.TickFrequency = Convert.ToInt32(padre.actualV.datacubo.dataCube.Count / 100);
             labelSlide.Text = "Slide " + (trackBar.Value + 1).ToString() + " de " + padre.actualV.datacubo.dataCube.Count;
 
-            pictTrans.Image = Normalizar(0, minPixelValue, maxPixelValue);
+            pictTrans.Image = Normalizar(0, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
 
             trackCorte.Minimum = 0;
             trackCorte.Maximum = padre.actualV.datacubo.coresHorizontal.Length - 1;
@@ -668,6 +667,9 @@ namespace RockVision
             rangeHist.TotalMaximum = maxPixelValue;
             rangeHist.RangeMinimum = minPixelValue;
             rangeHist.RangeMaximum = maxPixelValue;
+
+            numNmin.Value = padre.actualV.normalizacion2D[0];
+            numNmax.Value = padre.actualV.normalizacion2D[1];
 
             pictHor.Invalidate();
             pictTrans.Invalidate();
@@ -699,6 +701,7 @@ namespace RockVision
             
             // se agregan los puntos 3D. solo se cargan los pixeles que tengan un valor CT mayor a 20
 
+            padre.CloseWaiting();
 
             // se cierra la ventana HomeForm
             if (padre.abiertoHomeForm) padre.homeForm.Close();
@@ -1286,6 +1289,25 @@ namespace RockVision
 
                 rangeBar.RangeMinimum = Convert.ToInt32(numNmin.Value);
 
+                // se debe ajustar la imagen normalizada, y umbralizada, de cada dicom segun se vaya cambiando el rangebar
+                // se pregunta si se debe tambien umbralizar, o si solo es necesario normalizar y presentar la imagen normalizada
+                pictTrans.Image = Normalizar(this.trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                pictHor.Image = NormalizarH(this.trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+
+                pictGradiente.Image = CrearGradiente(rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+
+                padre.actualV.normalizacion2D[0] = rangeBar.RangeMinimum;
+                padre.actualV.normalizacion2D[1] = rangeBar.RangeMaximum;
+
+                // se prepara la serie Selected
+                chart1.Series[0].Points.Clear();
+                chart1.Series[0].Points.AddXY(minPixelValue, 0);
+                chart1.Series[0].Points.AddXY(rangeBar.RangeMinimum, 0);
+                chart1.Series[0].Points.AddXY(rangeBar.RangeMinimum, maxValAll);
+                chart1.Series[0].Points.AddXY(rangeBar.RangeMaximum, maxValAll);
+                chart1.Series[0].Points.AddXY(rangeBar.RangeMaximum, 0);
+                chart1.Series[0].Points.AddXY(maxPixelValue, 0);
+
                 habilitarCambios = true;
             }
         }
@@ -1297,6 +1319,25 @@ namespace RockVision
                 habilitarCambios = false;
 
                 rangeBar.RangeMaximum = Convert.ToInt32(numNmax.Value);
+
+                // se debe ajustar la imagen normalizada, y umbralizada, de cada dicom segun se vaya cambiando el rangebar
+                // se pregunta si se debe tambien umbralizar, o si solo es necesario normalizar y presentar la imagen normalizada
+                pictTrans.Image = Normalizar(this.trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                pictHor.Image = NormalizarH(this.trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+
+                pictGradiente.Image = CrearGradiente(rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+
+                padre.actualV.normalizacion2D[0] = rangeBar.RangeMinimum;
+                padre.actualV.normalizacion2D[1] = rangeBar.RangeMaximum;
+
+                // se prepara la serie Selected
+                chart1.Series[0].Points.Clear();
+                chart1.Series[0].Points.AddXY(minPixelValue, 0);
+                chart1.Series[0].Points.AddXY(rangeBar.RangeMinimum, 0);
+                chart1.Series[0].Points.AddXY(rangeBar.RangeMinimum, maxValAll);
+                chart1.Series[0].Points.AddXY(rangeBar.RangeMaximum, maxValAll);
+                chart1.Series[0].Points.AddXY(rangeBar.RangeMaximum, 0);
+                chart1.Series[0].Points.AddXY(maxPixelValue, 0);
 
                 habilitarCambios = true;
             }
