@@ -242,12 +242,9 @@ namespace RockStatic
 
             }
 
-            // se calcula el numero de bins como la raiz del total de elementos
-            double ancho = Convert.ToDouble(dataCube[0].selector.Columns.Data);
-            double alto = Convert.ToDouble(dataCube[0].selector.Rows.Data);
-            double largo = Convert.ToDouble(dataCube.Count);
-            int nbins = Convert.ToInt32(Math.Ceiling(Math.Sqrt(ancho * alto * largo)));
-            
+            // se toman tantos bins como el maximo del rango de valores
+            int nbins = Convert.ToInt32(maximo);
+
             // se instancia el histograma general 
             this.histograma = new uint[nbins];
             
@@ -293,7 +290,7 @@ namespace RockStatic
                         histograma[ibin - 1] = histograma[ibin - 1] + bincount;
 
                         // se agrega la cuenta al histograma del slide
-                        dataCube[i].histograma[ibin - 1] = bincount;
+                        // dataCube[i].histograma[ibin - 1] = bincount;
 
                         // se reseta el contador
                         bincount = 0;

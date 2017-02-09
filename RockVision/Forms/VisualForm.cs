@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Imaging;
+using Kitware.VTK;
 
 namespace RockVision
 {
@@ -62,6 +63,11 @@ namespace RockVision
 
         // habilitar cambios
         bool habilitarCambios = true;
+
+        /// <summary>
+        /// Puntos 3D
+        /// </summary>
+        vtkPoints points;
 
         #endregion
 
@@ -150,6 +156,7 @@ namespace RockVision
                 
                 // se le da el color a la serie
                 chart1.Series[i + 2].Color = umbral[i].color;
+                chart1.Series[i + 2].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
 
                 // se agregan a la serie los valores del histograma que esten dentro de los límites del umbral
                 int ini = umbral[i].minimo - minPixelValue;
@@ -163,6 +170,10 @@ namespace RockVision
                     }
                 }                
             }
+
+            chart1.ChartAreas[0].AxisX.Minimum = Convert.ToDouble(numHmin.Value);
+            chart1.ChartAreas[0].AxisX.Maximum = Convert.ToDouble(numHmax.Value);
+            chart1.ChartAreas[0].AxisY.Maximum = Convert.ToDouble(numAmplitud.Value);
         }
 
         private void barPopup_Scroll(object sender, EventArgs e)
@@ -553,6 +564,8 @@ namespace RockVision
 
         private void VisualForm_Load(object sender, EventArgs e)
         {
+            padre.ShowWaiting("Espere mientras RockVision prepara la visualizacion 2D");
+
             // colores favoritos para la segmentacion del histograma
             colores.Add(Color.DodgerBlue);
             colores.Add(Color.SpringGreen);
@@ -659,7 +672,7 @@ namespace RockVision
             pictHor.Invalidate();
             pictTrans.Invalidate();
 
-            // si existe informacion de la segmentacion se carga en 
+            // si existe informacion de la segmentacion se carga en el datagrid
             try
             {
                 umbral = new List<CUmbralCT>();
@@ -680,8 +693,24 @@ namespace RockVision
             {
             }
 
+            // se preparan algunos elementos en RV3D
+
+            padre.ShowWaiting("Espere mientras RockVision prepara la visualizacion 3D");
+            
+            // se agregan los puntos 3D. solo se cargan los pixeles que tengan un valor CT mayor a 20
+
+
             // se cierra la ventana HomeForm
             if (padre.abiertoHomeForm) padre.homeForm.Close();
+        }
+
+        public void Set3Dpoints(int minimo, int maximo)
+        {
+            // se limpian los puntos existentes
+            points = new vtkPoints();
+            points.Reset();
+
+
         }
 
         /// <summary>
@@ -808,7 +837,7 @@ namespace RockVision
 
         private void dataGrid_RowValidated(object sender, DataGridViewCellEventArgs e)
         {
-            // pueden existir 4 casos para validar
+            // pueden existir 4 casos de error para validar
             // (1) El nuevo valor es menor que minpixelvalue
             // (2) El nuevo valor es mayor que maxpixelvalue
             // (3) El nuevo valor de maxRange es menor que el valor de minRange
@@ -1029,7 +1058,7 @@ namespace RockVision
             int factor = Convert.ToInt32(ancho / Convert.ToInt32(padre.actualV.datacubo.dataCube.Count));
 
             int pos = Convert.ToInt32((trackBar.Value * scale * factor) + xcero);
-            e.Graphics.DrawLine(brocha2, pos, 0, pos, pictHor.Height);
+            e.Graphics.DrawLine(brocha2, pos, 0, pos, pictHor.Height);            
         }
 
         private void pictTrans_Paint(object sender, PaintEventArgs e)
@@ -1124,7 +1153,7 @@ namespace RockVision
             // si no hay umbrales creados, se crea uno que cubra todo el rango
             if (umbral.Count == 0)
             {
-                CUmbralCT temp = new CUmbralCT(minPixelValue, maxPixelValue, colores[0]);
+                CUmbralCT temp = new CUmbralCT(minPixelValue + 20, maxPixelValue, colores[0]);
                 umbral.Add(temp);
 
                 dataGrid.Rows.Add();

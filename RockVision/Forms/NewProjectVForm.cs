@@ -32,6 +32,16 @@ namespace RockVision
         /// </summary>
         public RockStatic.MyDataCube tempDicom = null;
 
+        /// <summary>
+        /// guarda el centro X del circulo de segmentacion
+        /// </summary>
+        public int centroX = 0;
+
+        /// <summary>
+        /// guarda el centro Y del circulo de segmentacion
+        /// </summary>
+        public int centroY = 0;
+
         #endregion
 
         public NewProjectVForm()
@@ -71,6 +81,16 @@ namespace RockVision
 
             // se genera el texto del counter
             txtCounter.Text = "1 de " + elementos.Count.ToString();
+
+            // tamaño por defecto del circulo de segmentacion
+            numRadio.Value = Convert.ToInt32((this.pictElemento.Width / 2)) - 10;
+
+            // centro del circulo de segmentacion
+            centroX = pictElemento.Width / 2;
+            centroY = pictElemento.Height / 2;
+
+            // se pinta el circulo de segmentacion
+            pictElemento.Invalidate();
 
             // se cierra la ventana de espera
             padre.CloseWaiting();
@@ -198,7 +218,47 @@ namespace RockVision
                 // se muestra la ventana de espera
                 padre.ShowWaiting("Espere mientras RockVision crea el nuevo proyecto...");
 
-                padre.actualV = new CProyectoV(saveFile.FileName, elementos);                
+                // se convierte el centro y radio del circulo de segmentacion a coordenadas de la imagen
+
+                double imgWidth = pictElemento.Image.Width;
+                double imgHeight = pictElemento.Image.Height;
+                double boxWidth = pictElemento.Size.Width;
+                double boxHeight = pictElemento.Size.Height;
+
+                double scale;
+                double ycero = 0;
+                double xcero = 0;
+
+                if (imgWidth / imgHeight > boxWidth / boxHeight)
+                {
+                    //If true, that means that the image is stretched through the width of the control.
+                    //'In other words: the image is limited by the width.
+
+                    //The scale of the image in the Picture Box.
+                    scale = boxWidth / imgWidth;
+
+                    //Since the image is in the middle, this code is used to determinate the empty space in the height
+                    //'by getting the difference between the box height and the image actual displayed height and dividing it by 2.
+                    ycero = (boxHeight - scale * imgHeight) / 2;
+                }
+                else
+                {
+                    //If false, that means that the image is stretched through the height of the control.
+                    //'In other words: the image is limited by the height.
+
+                    //The scale of the image in the Picture Box.
+                    scale = boxHeight / imgHeight;
+
+                    //Since the image is in the middle, this code is used to determinate the empty space in the width
+                    //'by getting the difference between the box width and the image actual displayed width and dividing it by 2.
+                    xcero = (boxWidth - scale * imgWidth) / 2;
+                }
+
+                centroX = Convert.ToInt32((Convert.ToDouble(centroX) - xcero) / scale);
+                centroY = Convert.ToInt32((Convert.ToDouble(centroY) - ycero) / scale);
+                int radio = Convert.ToInt32(Convert.ToDouble(numRadio.Value) / scale);
+
+                padre.actualV = new CProyectoV(saveFile.FileName, centroX, centroY, radio, elementos);                
 
                 // se cierra la ventana de espera
                 padre.CloseWaiting();
@@ -209,6 +269,47 @@ namespace RockVision
                 // se abre la ventana de visualizacion
                 this.padre.AbrirVisualForm();
             }
+        }
+
+        private void pictElemento_Paint(object sender, PaintEventArgs e)
+        {
+            // se dibuja el circulo de la segmentacion
+            
+            Pen brocha2 = new Pen(Color.FromArgb(128, 0, 255, 0));
+            brocha2.Width = 2;
+
+            int r=Convert.ToInt32(numRadio.Value);
+
+            e.Graphics.DrawEllipse(brocha2, centroX - r, centroY - r, 2 * r, 2 * r);
+        }
+
+        private void btnUp_Click(object sender, EventArgs e)
+        {
+            centroY--;
+            pictElemento.Invalidate();
+        }
+
+        private void btnDown_Click(object sender, EventArgs e)
+        {
+            centroY++;
+            pictElemento.Invalidate();
+        }
+
+        private void btnLeft_Click(object sender, EventArgs e)
+        {
+            centroX--;
+            pictElemento.Invalidate();
+        }
+
+        private void btnRight_Click(object sender, EventArgs e)
+        {
+            centroX++;
+            pictElemento.Invalidate();
+        }
+
+        private void numRadio_ValueChanged(object sender, EventArgs e)
+        {
+            pictElemento.Invalidate();
         }
     }
 }

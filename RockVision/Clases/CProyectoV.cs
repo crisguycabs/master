@@ -17,6 +17,21 @@ namespace RockVision
         #region variables de clase
 
         /// <summary>
+        /// centro X de la segmentacion
+        /// </summary>
+        public int segX = 0;
+
+        /// <summary>
+        /// centro Y de la segmentacion
+        /// </summary>
+        public int segY = 0;
+
+        /// <summary>
+        /// radio de la segmentacion
+        /// </summary>
+        public int segR = 0;
+
+        /// <summary>
         /// nombre del proyectoV
         /// </summary>
         public string name = "";
@@ -99,6 +114,18 @@ namespace RockVision
                         this.name = sr.ReadLine();
                         break;
 
+                    case "SEGMENTACIONX":
+                        this.segX = Convert.ToInt32(sr.ReadLine());
+                        break;
+
+                    case "SEGMENTACIONY":
+                        this.segY = Convert.ToInt32(sr.ReadLine());
+                        break;
+
+                    case "SEGMENTACIONR":
+                        this.segR = Convert.ToInt32(sr.ReadLine());
+                        break;
+
                     case "SEGMENTACION2D":
                         this.segmentacion2D = new List<int>();
                         while ((line = sr.ReadLine()) != "") this.segmentacion2D.Add(Convert.ToInt32(line));
@@ -168,7 +195,7 @@ namespace RockVision
         /// </summary>
         /// <param name="path">ruta del proyecto</param>
         /// <param name="elementos">lista de elementos dicom a incluir en el proyecto</param>
-        public CProyectoV(string path, List<string> elementos)
+        public CProyectoV(string path, int segmentacionX, int segmentacionY, int radio, List<string> elementos)
         {
             // nombre del proyecto
             name = System.IO.Path.GetFileNameWithoutExtension(path);
@@ -198,6 +225,10 @@ namespace RockVision
             // se cargan los elementos copiados en el datacubo
             this.datacubo = new RockStatic.MyDataCube(elementos2);
 
+            // se realiza la segmentacion transversal
+            for (int i = 0; i < this.datacubo.dataCube.Count;i++)
+                this.datacubo.dataCube[i].pixelData = this.datacubo.dataCube[i].CropCTCircle(segmentacionX, segmentacionY, radio, this.datacubo.dataCube[i].selector.Columns.Data, this.datacubo.dataCube[i].selector.Rows.Data);
+            
             // la segmentacion transversal es TODO el DICOM
             for (int i = 0; i < this.datacubo.dataCube.Count; i++) this.datacubo.dataCube[i].segCore = this.datacubo.dataCube[i].pixelData;
 
@@ -210,9 +241,14 @@ namespace RockVision
             //System.DateTime fin = System.DateTime.Now;
             //System.Windows.Forms.MessageBox.Show(((fin - ini).Milliseconds + 1000 * (fin - ini).Seconds).ToString());
 
+            // informacion de la segmentacino
+            segX = segmentacionX;
+            segY = segmentacionY;
+            segR = radio;
+
             // se genera el histograma
             this.datacubo.GenerarHistograma();
-            
+                        
             normalizacion2D = new int[2];
             normalizacion2D[0] = datacubo.GetMinimo();
             normalizacion2D[1] = datacubo.GetMaximo();
@@ -247,6 +283,15 @@ namespace RockVision
             sw.WriteLine(name);
             sw.WriteLine("RUTA");
             sw.WriteLine(ruta);
+            sw.WriteLine("");
+            sw.WriteLine("SEGMENTACIONX");
+            sw.WriteLine(segX.ToString());
+            sw.WriteLine("");
+            sw.WriteLine("SEGMENTACIONY");
+            sw.WriteLine(segY.ToString());
+            sw.WriteLine("");
+            sw.WriteLine("SEGMENTACIONR");
+            sw.WriteLine(segR.ToString());
             sw.WriteLine("");
             sw.WriteLine("SEGMENTACION2D");
             for (int i = 0; i < segmentacion2D.Count; i++)

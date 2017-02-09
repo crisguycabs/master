@@ -744,6 +744,17 @@
             <param name="width">Ancho de la imagen original</param>
             <param name="height">Alto de la imagen original</param>
         </member>
+        <member name="M:RockStatic.MyDicom.CropCTCircle(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Toma el List de ushort, que se mapea a una imagen BMP, y recorta los elementos que se mapean un area circular de centro (xcenter,ycenter) de radio rad
+            </summary>
+            <param name="pixels16">List con la información CT en cada pixel</param>
+            <param name="xcenter">Coordenadas cartesianas del centro X, con cero en la esquina superior izquierda</param>
+            <param name="ycenter">Coordenadas cartesianas del centro Y, con cero en la esquina superior izquierda</param>
+            <param name="rad">Radio del circulo a extraer</param>
+            <param name="width">Ancho de la imagen original</param>
+            <param name="height">Alto de la imagen original</param>
+        </member>
         <member name="M:RockStatic.MyDicom.CrearBitmap(System.Collections.Generic.List{System.UInt16},System.Int32,System.Int32)">
             <summary>
             Crea un Bitmap a partir de la informacion de pixeles, en CT
