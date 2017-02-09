@@ -1297,8 +1297,7 @@ namespace RockVision
                 pictGradiente.Image = CrearGradiente(rangeBar.RangeMinimum, rangeBar.RangeMaximum);
 
                 padre.actualV.normalizacion2D[0] = rangeBar.RangeMinimum;
-                padre.actualV.normalizacion2D[1] = rangeBar.RangeMaximum;
-
+                
                 // se prepara la serie Selected
                 chart1.Series[0].Points.Clear();
                 chart1.Series[0].Points.AddXY(minPixelValue, 0);
@@ -1327,7 +1326,6 @@ namespace RockVision
 
                 pictGradiente.Image = CrearGradiente(rangeBar.RangeMinimum, rangeBar.RangeMaximum);
 
-                padre.actualV.normalizacion2D[0] = rangeBar.RangeMinimum;
                 padre.actualV.normalizacion2D[1] = rangeBar.RangeMaximum;
 
                 // se prepara la serie Selected
