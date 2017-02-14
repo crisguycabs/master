@@ -64,10 +64,8 @@ namespace RockVision
         // habilitar cambios
         bool habilitarCambios = true;
 
-        /// <summary>
-        /// Puntos 3D
-        /// </summary>
-        vtkPoints points;
+        vtkRenderWindow renderWindow;
+        vtkRenderer renderer;
 
         #endregion
 
@@ -695,11 +693,38 @@ namespace RockVision
             {
             }
 
-            // se preparan algunos elementos en RV3D
+            // se preparan los controles para RV3D
 
             padre.ShowWaiting("Espere mientras RockVision prepara la visualizacion 3D");
-            
-            // se agregan los puntos 3D. solo se cargan los pixeles que tengan un valor CT mayor a 20
+
+            habilitarCambios = false;
+
+            // maximos y minimos
+
+            rangeCorteX.TotalMinimum = 0;
+            rangeCorteY.TotalMinimum = 0;
+            rangeCorteZ.TotalMinimum = 0;
+            trckPlanoX.Minimum = 0;
+            trckPlanoY.Minimum = 0;
+            trckPlanoZ.Minimum = 0;
+
+            rangeCorteX.TotalMaximum = trckPlanoX.Maximum = padre.actualV.datacubo.dataCube[0].selector.Columns.Data - 1;
+            rangeCorteY.TotalMaximum = trckPlanoY.Maximum = padre.actualV.datacubo.dataCube[0].selector.Rows.Data - 1;
+            rangeCorteZ.TotalMaximum = trckPlanoZ.Maximum = padre.actualV.datacubo.dataCube.Count - 1;
+
+            // valores de los trackbar
+
+            rangeCorteX.RangeMinimum = rangeCorteX.TotalMinimum;
+            rangeCorteX.RangeMaximum = rangeCorteX.TotalMaximum;
+            rangeCorteY.RangeMinimum = rangeCorteY.TotalMinimum;
+            rangeCorteY.RangeMaximum = rangeCorteY.TotalMaximum;
+            rangeCorteZ.RangeMinimum = rangeCorteZ.TotalMinimum;
+            rangeCorteZ.RangeMaximum = rangeCorteZ.TotalMaximum;
+            trckPlanoX.Value = trckPlanoX.Maximum / 2;
+            trckPlanoY.Value = trckPlanoY.Maximum / 2;
+            trckPlanoZ.Value = trckPlanoZ.Maximum / 2;
+
+            habilitarCambios = true;
 
             padre.CloseWaiting();
 
@@ -707,46 +732,168 @@ namespace RockVision
             if (padre.abiertoHomeForm) padre.homeForm.Close();
         }
 
-        public void Set3Dpoints(int minimo, int maximo)
+        /// <summary>
+        /// se toman los limites de los planos de corte en cada eje (2 planos para cada eje) y se agregan solo los puntos que conforman el cascaron al control VTK
+        /// </summary>
+        public void Visual3Dcortes()
         {
-            // se limpian los puntos existentes
-            points = new vtkPoints();
-            points.Reset();
+            // se recorre de manera tridimensional, primero el plano transversal y luego la profundidad, los puntos
+            // se agregan aquellos puntos que esten cerca/sobre el convex hull
 
+            // primero se revisan los limites en Z y luego en cada plano transversal
 
+            
+            
+            // se crean los puntos que pertenecen en la circunferencia
+            List<System.Drawing.Point> listaCirc = new List<Point>();
+            double dist = 0;
+            double tol = 0.5;
+            for (int i = 0; i < padre.actualV.datacubo.dataCube[0].selector.Columns.Data; i++)
+            {
+                for (int j = 0; j < padre.actualV.datacubo.dataCube[0].selector.Rows.Data; j++)
+                {
+                    dist = Math.Sqrt(Convert.ToDouble((i - padre.actualV.segX) * (i - padre.actualV.segX)) + Convert.ToDouble((j - padre.actualV.segY) * (j - padre.actualV.segY)));
+                    if (Math.Abs(dist - Convert.ToDouble(padre.actualV.segR)) <= tol) // el punto esta dentro de la tolerancia de la tolerancia
+                        listaCirc.Add(new Point(i, j));
+                }
+            }
+
+            // se evalua cada punto de la circunferencia, por cuadrantes. Se reduce la circunferencia de acuerdo con los planos de corte
+            for (int i = 0; i < listaCirc.Count; i++)
+            {
+                if ((listaCirc[i].X <= padre.actualV.segX) & (listaCirc[i].Y <= padre.actualV.segY)) // primer cuadrante, arriba a la izq
+                {
+                    if (listaCirc[i].X <= rangeCorteX.RangeMinimum) listaCirc[i] = new Point(rangeCorteX.RangeMinimum,listaCirc[i].Y);
+                    if (listaCirc[i].Y <= rangeCorteY.RangeMinimum) listaCirc[i] = new Point(listaCirc[i].X, rangeCorteY.RangeMinimum);
+                }
+                else if ((listaCirc[i].X > padre.actualV.segX) & (listaCirc[i].Y <= padre.actualV.segY)) // segundo cuadrante, arriba a la derecha
+                {
+                    if (listaCirc[i].X >= rangeCorteX.RangeMaximum) listaCirc[i] = new Point(rangeCorteX.RangeMaximum, listaCirc[i].Y);
+                    if (listaCirc[i].Y <= rangeCorteY.RangeMinimum) listaCirc[i] = new Point(listaCirc[i].X, rangeCorteY.RangeMinimum);
+                }
+                else if ((listaCirc[i].X <= padre.actualV.segX) & (listaCirc[i].Y > padre.actualV.segY)) // tercer cuadrante, abajo a la izq
+                {
+                    if (listaCirc[i].X <= rangeCorteX.RangeMinimum) listaCirc[i] = new Point(rangeCorteX.RangeMinimum, listaCirc[i].Y);
+                    if (listaCirc[i].Y >= rangeCorteY.RangeMaximum) listaCirc[i] = new Point(listaCirc[i].X, rangeCorteY.RangeMaximum);
+                }
+                else if ((listaCirc[i].X > padre.actualV.segX) & (listaCirc[i].Y > padre.actualV.segY)) // segundo cuadrante, abajo a la derecha
+                {
+                    if (listaCirc[i].X >= rangeCorteX.RangeMaximum) listaCirc[i] = new Point(rangeCorteX.RangeMaximum, listaCirc[i].Y);
+                    if (listaCirc[i].Y >= rangeCorteY.RangeMaximum) listaCirc[i] = new Point(listaCirc[i].X, rangeCorteY.RangeMaximum);
+                }
+            }
+
+            // se empiezan a agregar los puntos, en las coordenadas especificadas, al control VTK, con el correspondiente color
+            Visualize3DCortes(listaCirc);
         }
 
         /// <summary>
-        /// pinta el histograma del slide en el chart
+        /// Toma los puntos escogidos en Visual3Dcortes y los pinta en el corte 
         /// </summary>
-        public void SetHistogramaSlide(int slide)
+        /// <param name="hull"></param>
+        private void Visualize3DCortes(List<System.Drawing.Point> hull)
         {
-            // numero de series que DEBERIAN haber
-            int nseries = 2 + umbral.Count;
+            vtkImageData.GlobalWarningDisplayOff();
 
-            if (chart1.Series.Count > nseries)
+            int ancho = Convert.ToInt32(padre.actualV.datacubo.dataCube[0].selector.Columns.Data);
+            int alto = Convert.ToInt32(padre.actualV.datacubo.dataCube[0].selector.Rows.Data);
+            int pixSlide = ancho * alto;
+            int x = 0; // columnas
+            int y = 0; // filas
+
+            int largoCilindro = padre.actualV.datacubo.dataCube.Count;
+            int altoCilindro = Convert.ToInt32(padre.actualV.datacubo.dataCube[0].selector.Rows.Data / 2);
+            int anchoCilindro = Convert.ToInt32(padre.actualV.datacubo.dataCube[0].selector.Columns.Data / 2);
+
+            double centerX = 0;
+            double centerY = 0;
+            double centerZ = 0;
+
+            // se calcula el factor de escalado debido al espaciado entre Slides
+            double resZ = Convert.ToDouble(padre.actualV.datacubo.dataCube[0].selector.SliceThickness.Data);
+            double resXY = Convert.ToDouble(padre.actualV.datacubo.dataCube[0].selector.PixelSpacing.Data_[0]);
+            int factorZ = Convert.ToInt32(resZ / resXY); { }
+
+            // factor de escalado
+            double factor = 100;
+
+            // se preparan los colores
+            vtkUnsignedCharArray colors = new vtkUnsignedCharArray();
+            colors.SetName("Colors");
+            colors.SetNumberOfComponents(3);
+
+            vtkPoints puntos = new vtkPoints();
+            for (int i = 0; i < hull.Count; i++)
             {
-                // hay una serie adicional, de histograma de slide, y se debe eliminar
-                chart1.Series.RemoveAt(chart1.Series.Count - 1);
+                // se agrega la coordenada Z desde el primer valor hasta el ultimo del rango de seleccion
+                for (int z = rangeCorteZ.RangeMinimum; z < rangeCorteZ.RangeMaximum; z++)
+                {
+                    puntos.InsertNextPoint(hull[i].X, hull[i].Y, z);
+                }
             }
 
-            // se crea la nueva serie
-            System.Windows.Forms.DataVisualization.Charting.Series histslide = new System.Windows.Forms.DataVisualization.Charting.Series();
-            histslide.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            histslide.Color = Color.Black;
+            vtkPolyData polydata = new vtkPolyData();
+            polydata.SetPoints(puntos);
 
-            int i;
+            /*
+            vtkPolyData polydata = new vtkPolyData();
+            polydata.SetPoints(puntos);
+
+            vtkSurfaceReconstructionFilter surf = new vtkSurfaceReconstructionFilter();
+            surf.SetInput(polydata);
+
+            vtkContourFilter cf = new vtkContourFilter();
+            cf.SetInputConnection(surf.GetOutputPort());
+            cf.SetValue(0, 0.0);
+
+            vtkReverseSense reverse = new vtkReverseSense();
+            reverse.SetInputConnection(cf.GetOutputPort());
+            reverse.ReverseCellsOn();
+            reverse.ReverseNormalsOn();
+
+            vtkPolyDataMapper map = vtkPolyDataMapper.New();
+            map.SetInputConnection(reverse.GetOutputPort());
+            map.ScalarVisibilityOff();
+
+            vtkActor actor = vtkActor.New();
+            actor.SetMapper(map);
+
+            renderer.AddActor(actor);
+
+            renderer.Render();
+            */
+
+            vtkMarchingCubes mc = vtkMarchingCubes.New();
+            mc.SetInput(polydata);
+            mc.ComputeNormalsOn();
+            mc.ComputeGradientsOn();
+            mc.SetValue(0, 50);
+
+            vtkPolyDataConnectivityFilter confilter = vtkPolyDataConnectivityFilter.New();
+            confilter.SetInputConnection(mc.GetOutputPort());
+            confilter.SetExtractionModeToLargestRegion();
+
+            // Create a mapper
+            vtkPolyDataMapper mapper = vtkPolyDataMapper.New();
+            mapper.SetInputConnection(confilter.GetOutputPort());
+            
+            mapper.ScalarVisibilityOff();    // utilize actor's property I set
+
+            // Visualize
+            vtkActor actor = vtkActor.New();
+            actor.GetProperty().SetColor(1, 1, 1);
+            actor.SetMapper(mapper);
+
+            this.renderWindowControl1_Load(new object(), new EventArgs());
+
             try
             {
-                for (i = 1; i < padre.actualV.datacubo.dataCube[slide].histograma.Length; i++)
-                    histslide.Points.AddXY(padre.actualV.datacubo.bins[i], padre.actualV.datacubo.dataCube[slide].histograma[i]);
+                renderer.AddActor(actor);
             }
             catch
             {
                 MessageBox.Show("error");
             }
-
-            chart1.Series.Add(histslide);
         }
 
         private void rangeBar_RangeChanging(object sender, EventArgs e)
@@ -1344,6 +1491,28 @@ namespace RockVision
         private void numAmplitud_ValueChanged(object sender, EventArgs e)
         {
             this.chart1.ChartAreas[0].AxisY.Maximum = Convert.ToDouble(this.numAmplitud.Value);
+        }
+
+        private void renderWindowControl1_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                renderWindow = renderWindowControl1.RenderWindow;
+                renderer = renderWindow.GetRenderers().GetFirstRenderer();
+                renderer.SetBackground(1, 1, 1);
+                renderer.SetInteractive(0);
+
+                Visual3Dcortes();
+            }
+            catch
+            {
+                MessageBox.Show("error");
+            }
+        }
+
+        private void dataGrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

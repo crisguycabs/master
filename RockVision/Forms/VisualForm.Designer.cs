@@ -38,10 +38,45 @@
             this.lblTitulo = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tab2D = new System.Windows.Forms.TabPage();
+            this.pictHor = new System.Windows.Forms.PictureBox();
+            this.labelCorte = new System.Windows.Forms.Label();
+            this.trackCorte = new System.Windows.Forms.TrackBar();
+            this.labelSlide = new System.Windows.Forms.Label();
+            this.trackBar = new System.Windows.Forms.TrackBar();
+            this.pictTrans = new System.Windows.Forms.PictureBox();
+            this.tab3D = new System.Windows.Forms.TabPage();
+            this.tabCortes = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnResetCorte = new System.Windows.Forms.Button();
+            this.rangeCorteX = new Zzzz.ZzzzRangeBar();
+            this.rangeCorteY = new Zzzz.ZzzzRangeBar();
+            this.rangeCorteZ = new Zzzz.ZzzzRangeBar();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.trckPlanoZ = new System.Windows.Forms.TrackBar();
+            this.label14 = new System.Windows.Forms.Label();
+            this.btnResetPlano = new System.Windows.Forms.Button();
+            this.trckPlanoX = new System.Windows.Forms.TrackBar();
+            this.trckPlanoY = new System.Windows.Forms.TrackBar();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label11 = new System.Windows.Forms.Label();
+            this.trckTransparencia = new System.Windows.Forms.TrackBar();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.trckRotX = new System.Windows.Forms.TrackBar();
+            this.btnResetRot = new System.Windows.Forms.Button();
+            this.trckRotZ = new System.Windows.Forms.TrackBar();
+            this.trckRotY = new System.Windows.Forms.TrackBar();
+            this.renderWindowControl1 = new Kitware.VTK.RenderWindowControl();
             this.chkUmbral = new System.Windows.Forms.CheckBox();
             this.chkNorm = new System.Windows.Forms.CheckBox();
             this.btnCerrar = new System.Windows.Forms.Button();
-            this.pictHor = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.numAmplitud = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
@@ -51,10 +86,6 @@
             this.lblHmin = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.rangeHist = new Zzzz.ZzzzRangeBar();
-            this.labelCorte = new System.Windows.Forms.Label();
-            this.trackCorte = new System.Windows.Forms.TrackBar();
-            this.labelSlide = new System.Windows.Forms.Label();
-            this.trackBar = new System.Windows.Forms.TrackBar();
             this.groupUmbral = new System.Windows.Forms.GroupBox();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnBorrar = new System.Windows.Forms.Button();
@@ -71,58 +102,36 @@
             this.numNmin = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.rangeBar = new Zzzz.ZzzzRangeBar();
-            this.pictTrans = new System.Windows.Forms.PictureBox();
-            this.tab3D = new System.Windows.Forms.TabPage();
-            this.renderWindowControl1 = new Kitware.VTK.RenderWindowControl();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.trckRotX = new System.Windows.Forms.TrackBar();
-            this.btnResetRot = new System.Windows.Forms.Button();
-            this.trckRotZ = new System.Windows.Forms.TrackBar();
-            this.trckRotY = new System.Windows.Forms.TrackBar();
-            this.tabCortes = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.trckCorteY = new System.Windows.Forms.TrackBar();
-            this.trckCorteZ = new System.Windows.Forms.TrackBar();
-            this.btnResetCorte = new System.Windows.Forms.Button();
-            this.trckCorteX = new System.Windows.Forms.TrackBar();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.tabControl1.SuspendLayout();
             this.tab2D.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictHor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackCorte)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictTrans)).BeginInit();
+            this.tab3D.SuspendLayout();
+            this.tabCortes.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trckPlanoZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trckPlanoX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trckPlanoY)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trckTransparencia)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trckRotX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trckRotZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trckRotY)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numAmplitud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHmax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHmin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackCorte)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar)).BeginInit();
             this.groupUmbral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.groupNorm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictGradiente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numNmax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numNmin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictTrans)).BeginInit();
-            this.tab3D.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trckRotX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trckRotZ)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trckRotY)).BeginInit();
-            this.tabCortes.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trckCorteY)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trckCorteZ)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trckCorteX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -169,6 +178,412 @@
             this.tab2D.Text = "Visualizacion 2D";
             this.tab2D.Click += new System.EventHandler(this.tab2D_Click);
             // 
+            // pictHor
+            // 
+            this.pictHor.Location = new System.Drawing.Point(8, 416);
+            this.pictHor.Name = "pictHor";
+            this.pictHor.Size = new System.Drawing.Size(350, 84);
+            this.pictHor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictHor.TabIndex = 24;
+            this.pictHor.TabStop = false;
+            this.pictHor.Paint += new System.Windows.Forms.PaintEventHandler(this.pictHor_Paint);
+            // 
+            // labelCorte
+            // 
+            this.labelCorte.Location = new System.Drawing.Point(208, 536);
+            this.labelCorte.Name = "labelCorte";
+            this.labelCorte.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.labelCorte.Size = new System.Drawing.Size(150, 13);
+            this.labelCorte.TabIndex = 21;
+            this.labelCorte.Text = "Corte 0 de 0";
+            this.labelCorte.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // trackCorte
+            // 
+            this.trackCorte.Location = new System.Drawing.Point(8, 505);
+            this.trackCorte.Name = "trackCorte";
+            this.trackCorte.Size = new System.Drawing.Size(350, 45);
+            this.trackCorte.TabIndex = 20;
+            this.trackCorte.Scroll += new System.EventHandler(this.trackCorte_Scroll);
+            // 
+            // labelSlide
+            // 
+            this.labelSlide.Location = new System.Drawing.Point(209, 393);
+            this.labelSlide.Name = "labelSlide";
+            this.labelSlide.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.labelSlide.Size = new System.Drawing.Size(150, 13);
+            this.labelSlide.TabIndex = 21;
+            this.labelSlide.Text = "Slide 0 de 0";
+            this.labelSlide.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // trackBar
+            // 
+            this.trackBar.Location = new System.Drawing.Point(9, 362);
+            this.trackBar.Name = "trackBar";
+            this.trackBar.Size = new System.Drawing.Size(350, 45);
+            this.trackBar.TabIndex = 20;
+            this.trackBar.Scroll += new System.EventHandler(this.trackBar_Scroll);
+            // 
+            // pictTrans
+            // 
+            this.pictTrans.Location = new System.Drawing.Point(8, 6);
+            this.pictTrans.Name = "pictTrans";
+            this.pictTrans.Size = new System.Drawing.Size(350, 350);
+            this.pictTrans.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictTrans.TabIndex = 15;
+            this.pictTrans.TabStop = false;
+            this.pictTrans.Paint += new System.Windows.Forms.PaintEventHandler(this.pictTrans_Paint);
+            // 
+            // tab3D
+            // 
+            this.tab3D.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tab3D.Controls.Add(this.tabCortes);
+            this.tab3D.Controls.Add(this.groupBox2);
+            this.tab3D.Controls.Add(this.renderWindowControl1);
+            this.tab3D.Location = new System.Drawing.Point(4, 23);
+            this.tab3D.Name = "tab3D";
+            this.tab3D.Padding = new System.Windows.Forms.Padding(3);
+            this.tab3D.Size = new System.Drawing.Size(587, 593);
+            this.tab3D.TabIndex = 1;
+            this.tab3D.Text = "Visualizacion3D";
+            this.tab3D.Click += new System.EventHandler(this.tab3D_Click);
+            // 
+            // tabCortes
+            // 
+            this.tabCortes.Controls.Add(this.tabPage1);
+            this.tabCortes.Controls.Add(this.tabPage4);
+            this.tabCortes.Controls.Add(this.tabPage2);
+            this.tabCortes.Location = new System.Drawing.Point(8, 499);
+            this.tabCortes.Name = "tabCortes";
+            this.tabCortes.SelectedIndex = 0;
+            this.tabCortes.Size = new System.Drawing.Size(573, 85);
+            this.tabCortes.TabIndex = 19;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.label4);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.btnResetCorte);
+            this.tabPage1.Controls.Add(this.rangeCorteX);
+            this.tabPage1.Controls.Add(this.rangeCorteY);
+            this.tabPage1.Controls.Add(this.rangeCorteZ);
+            this.tabPage1.Location = new System.Drawing.Point(4, 23);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(565, 58);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Cortes Cilindro";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(386, 37);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(32, 14);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Eje Z";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(226, 37);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(32, 14);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Eje Y";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(66, 37);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(32, 14);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Eje X";
+            // 
+            // btnResetCorte
+            // 
+            this.btnResetCorte.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnResetCorte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetCorte.Location = new System.Drawing.Point(485, 6);
+            this.btnResetCorte.Name = "btnResetCorte";
+            this.btnResetCorte.Size = new System.Drawing.Size(75, 23);
+            this.btnResetCorte.TabIndex = 10;
+            this.btnResetCorte.Text = "Reset";
+            this.btnResetCorte.UseVisualStyleBackColor = true;
+            // 
+            // rangeCorteX
+            // 
+            this.rangeCorteX.DivisionNum = 1;
+            this.rangeCorteX.Font = new System.Drawing.Font("Microsoft Sans Serif", 2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rangeCorteX.HeightOfBar = 5;
+            this.rangeCorteX.HeightOfMark = 15;
+            this.rangeCorteX.HeightOfTick = 2;
+            this.rangeCorteX.InnerColor = System.Drawing.Color.RoyalBlue;
+            this.rangeCorteX.Location = new System.Drawing.Point(5, -7);
+            this.rangeCorteX.Name = "rangeCorteX";
+            this.rangeCorteX.Orientation = Zzzz.ZzzzRangeBar.RangeBarOrientation.horizontal;
+            this.rangeCorteX.RangeMaximum = 10;
+            this.rangeCorteX.RangeMinimum = 10;
+            this.rangeCorteX.ScaleOrientation = Zzzz.ZzzzRangeBar.TopBottomOrientation.bottom;
+            this.rangeCorteX.Size = new System.Drawing.Size(154, 45);
+            this.rangeCorteX.TabIndex = 18;
+            this.rangeCorteX.TotalMaximum = 100;
+            this.rangeCorteX.TotalMinimum = 10;
+            // 
+            // rangeCorteY
+            // 
+            this.rangeCorteY.DivisionNum = 1;
+            this.rangeCorteY.Font = new System.Drawing.Font("Microsoft Sans Serif", 2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rangeCorteY.HeightOfBar = 5;
+            this.rangeCorteY.HeightOfMark = 15;
+            this.rangeCorteY.HeightOfTick = 2;
+            this.rangeCorteY.InnerColor = System.Drawing.Color.RoyalBlue;
+            this.rangeCorteY.Location = new System.Drawing.Point(165, -7);
+            this.rangeCorteY.Name = "rangeCorteY";
+            this.rangeCorteY.Orientation = Zzzz.ZzzzRangeBar.RangeBarOrientation.horizontal;
+            this.rangeCorteY.RangeMaximum = 10;
+            this.rangeCorteY.RangeMinimum = 10;
+            this.rangeCorteY.ScaleOrientation = Zzzz.ZzzzRangeBar.TopBottomOrientation.bottom;
+            this.rangeCorteY.Size = new System.Drawing.Size(154, 45);
+            this.rangeCorteY.TabIndex = 19;
+            this.rangeCorteY.TotalMaximum = 100;
+            this.rangeCorteY.TotalMinimum = 10;
+            // 
+            // rangeCorteZ
+            // 
+            this.rangeCorteZ.DivisionNum = 1;
+            this.rangeCorteZ.Font = new System.Drawing.Font("Microsoft Sans Serif", 2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rangeCorteZ.HeightOfBar = 5;
+            this.rangeCorteZ.HeightOfMark = 15;
+            this.rangeCorteZ.HeightOfTick = 2;
+            this.rangeCorteZ.InnerColor = System.Drawing.Color.RoyalBlue;
+            this.rangeCorteZ.Location = new System.Drawing.Point(325, -7);
+            this.rangeCorteZ.Name = "rangeCorteZ";
+            this.rangeCorteZ.Orientation = Zzzz.ZzzzRangeBar.RangeBarOrientation.horizontal;
+            this.rangeCorteZ.RangeMaximum = 10;
+            this.rangeCorteZ.RangeMinimum = 10;
+            this.rangeCorteZ.ScaleOrientation = Zzzz.ZzzzRangeBar.TopBottomOrientation.bottom;
+            this.rangeCorteZ.Size = new System.Drawing.Size(154, 45);
+            this.rangeCorteZ.TabIndex = 20;
+            this.rangeCorteZ.TotalMaximum = 100;
+            this.rangeCorteZ.TotalMinimum = 10;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.label12);
+            this.tabPage4.Controls.Add(this.label13);
+            this.tabPage4.Controls.Add(this.trckPlanoZ);
+            this.tabPage4.Controls.Add(this.label14);
+            this.tabPage4.Controls.Add(this.btnResetPlano);
+            this.tabPage4.Controls.Add(this.trckPlanoX);
+            this.tabPage4.Controls.Add(this.trckPlanoY);
+            this.tabPage4.Location = new System.Drawing.Point(4, 23);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(565, 58);
+            this.tabPage4.TabIndex = 2;
+            this.tabPage4.Text = "Cortes Longitudinales";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(386, 37);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(32, 14);
+            this.label12.TabIndex = 24;
+            this.label12.Text = "Eje Z";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(226, 37);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(32, 14);
+            this.label13.TabIndex = 23;
+            this.label13.Text = "Eje Y";
+            // 
+            // trckPlanoZ
+            // 
+            this.trckPlanoZ.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.trckPlanoZ.Location = new System.Drawing.Point(322, 6);
+            this.trckPlanoZ.Maximum = 100;
+            this.trckPlanoZ.Name = "trckPlanoZ";
+            this.trckPlanoZ.Size = new System.Drawing.Size(160, 45);
+            this.trckPlanoZ.TabIndex = 21;
+            this.trckPlanoZ.TickFrequency = 5;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(66, 37);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(32, 14);
+            this.label14.TabIndex = 22;
+            this.label14.Text = "Eje X";
+            // 
+            // btnResetPlano
+            // 
+            this.btnResetPlano.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnResetPlano.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetPlano.Location = new System.Drawing.Point(485, 6);
+            this.btnResetPlano.Name = "btnResetPlano";
+            this.btnResetPlano.Size = new System.Drawing.Size(75, 23);
+            this.btnResetPlano.TabIndex = 18;
+            this.btnResetPlano.Text = "Reset";
+            this.btnResetPlano.UseVisualStyleBackColor = true;
+            // 
+            // trckPlanoX
+            // 
+            this.trckPlanoX.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.trckPlanoX.Location = new System.Drawing.Point(2, 6);
+            this.trckPlanoX.Maximum = 100;
+            this.trckPlanoX.Name = "trckPlanoX";
+            this.trckPlanoX.Size = new System.Drawing.Size(160, 45);
+            this.trckPlanoX.TabIndex = 19;
+            this.trckPlanoX.TickFrequency = 5;
+            // 
+            // trckPlanoY
+            // 
+            this.trckPlanoY.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.trckPlanoY.Location = new System.Drawing.Point(162, 6);
+            this.trckPlanoY.Maximum = 100;
+            this.trckPlanoY.Name = "trckPlanoY";
+            this.trckPlanoY.Size = new System.Drawing.Size(160, 45);
+            this.trckPlanoY.TabIndex = 20;
+            this.trckPlanoY.TickFrequency = 5;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.label11);
+            this.tabPage2.Controls.Add(this.trckTransparencia);
+            this.tabPage2.Location = new System.Drawing.Point(4, 23);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(565, 58);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Transparencia";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 20);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(116, 14);
+            this.label11.TabIndex = 15;
+            this.label11.Text = "Cantidad de puntos:";
+            // 
+            // trckTransparencia
+            // 
+            this.trckTransparencia.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.trckTransparencia.Location = new System.Drawing.Point(124, 13);
+            this.trckTransparencia.Maximum = 50;
+            this.trckTransparencia.Minimum = 10;
+            this.trckTransparencia.Name = "trckTransparencia";
+            this.trckTransparencia.Size = new System.Drawing.Size(160, 45);
+            this.trckTransparencia.TabIndex = 11;
+            this.trckTransparencia.TickFrequency = 5;
+            this.trckTransparencia.Value = 30;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.trckRotX);
+            this.groupBox2.Controls.Add(this.btnResetRot);
+            this.groupBox2.Controls.Add(this.trckRotZ);
+            this.groupBox2.Controls.Add(this.trckRotY);
+            this.groupBox2.Location = new System.Drawing.Point(8, 416);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(571, 77);
+            this.groupBox2.TabIndex = 18;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Rotacion";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(390, 51);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(32, 14);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "Eje Z";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(230, 51);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(32, 14);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "Eje Y";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(70, 51);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(32, 14);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "Eje X";
+            // 
+            // trckRotX
+            // 
+            this.trckRotX.Location = new System.Drawing.Point(6, 20);
+            this.trckRotX.Maximum = 360;
+            this.trckRotX.Minimum = -360;
+            this.trckRotX.Name = "trckRotX";
+            this.trckRotX.Size = new System.Drawing.Size(160, 45);
+            this.trckRotX.TabIndex = 11;
+            this.trckRotX.TickFrequency = 45;
+            // 
+            // btnResetRot
+            // 
+            this.btnResetRot.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnResetRot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetRot.Location = new System.Drawing.Point(486, 20);
+            this.btnResetRot.Name = "btnResetRot";
+            this.btnResetRot.Size = new System.Drawing.Size(75, 23);
+            this.btnResetRot.TabIndex = 10;
+            this.btnResetRot.Text = "Reset";
+            this.btnResetRot.UseVisualStyleBackColor = true;
+            // 
+            // trckRotZ
+            // 
+            this.trckRotZ.Location = new System.Drawing.Point(326, 20);
+            this.trckRotZ.Maximum = 360;
+            this.trckRotZ.Minimum = -360;
+            this.trckRotZ.Name = "trckRotZ";
+            this.trckRotZ.Size = new System.Drawing.Size(160, 45);
+            this.trckRotZ.TabIndex = 13;
+            this.trckRotZ.TickFrequency = 45;
+            // 
+            // trckRotY
+            // 
+            this.trckRotY.Location = new System.Drawing.Point(166, 20);
+            this.trckRotY.Maximum = 360;
+            this.trckRotY.Minimum = -360;
+            this.trckRotY.Name = "trckRotY";
+            this.trckRotY.Size = new System.Drawing.Size(160, 45);
+            this.trckRotY.TabIndex = 12;
+            this.trckRotY.TickFrequency = 45;
+            // 
+            // renderWindowControl1
+            // 
+            this.renderWindowControl1.AddTestActors = false;
+            this.renderWindowControl1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.renderWindowControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.renderWindowControl1.Location = new System.Drawing.Point(8, 6);
+            this.renderWindowControl1.Name = "renderWindowControl1";
+            this.renderWindowControl1.Size = new System.Drawing.Size(571, 406);
+            this.renderWindowControl1.TabIndex = 1;
+            this.renderWindowControl1.TestText = null;
+            this.renderWindowControl1.Load += new System.EventHandler(this.renderWindowControl1_Load);
+            // 
             // chkUmbral
             // 
             this.chkUmbral.AutoSize = true;
@@ -207,16 +622,6 @@
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             this.btnCerrar.MouseEnter += new System.EventHandler(this.btnSubir_MouseEnter);
             this.btnCerrar.MouseLeave += new System.EventHandler(this.btnSubir_MouseLeave);
-            // 
-            // pictHor
-            // 
-            this.pictHor.Location = new System.Drawing.Point(8, 416);
-            this.pictHor.Name = "pictHor";
-            this.pictHor.Size = new System.Drawing.Size(350, 84);
-            this.pictHor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictHor.TabIndex = 24;
-            this.pictHor.TabStop = false;
-            this.pictHor.Paint += new System.Windows.Forms.PaintEventHandler(this.pictHor_Paint);
             // 
             // groupBox3
             // 
@@ -348,7 +753,7 @@
             series1.Name = "Series2";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
-            series2.Color = System.Drawing.Color.LightGray;
+            series2.Color = System.Drawing.Color.LightBlue;
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.chart1.Series.Add(series1);
@@ -364,7 +769,7 @@
             this.rangeHist.HeightOfBar = 5;
             this.rangeHist.HeightOfMark = 15;
             this.rangeHist.HeightOfTick = 2;
-            this.rangeHist.InnerColor = System.Drawing.Color.Green;
+            this.rangeHist.InnerColor = System.Drawing.Color.RoyalBlue;
             this.rangeHist.Location = new System.Drawing.Point(7, 174);
             this.rangeHist.Name = "rangeHist";
             this.rangeHist.Orientation = Zzzz.ZzzzRangeBar.RangeBarOrientation.horizontal;
@@ -376,42 +781,6 @@
             this.rangeHist.TotalMaximum = 100;
             this.rangeHist.TotalMinimum = 10;
             this.rangeHist.RangeChanging += new Zzzz.ZzzzRangeBar.RangeChangedEventHandler(this.rangeHist_RangeChanging);
-            // 
-            // labelCorte
-            // 
-            this.labelCorte.Location = new System.Drawing.Point(208, 536);
-            this.labelCorte.Name = "labelCorte";
-            this.labelCorte.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelCorte.Size = new System.Drawing.Size(150, 13);
-            this.labelCorte.TabIndex = 21;
-            this.labelCorte.Text = "Corte 0 de 0";
-            this.labelCorte.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // trackCorte
-            // 
-            this.trackCorte.Location = new System.Drawing.Point(8, 505);
-            this.trackCorte.Name = "trackCorte";
-            this.trackCorte.Size = new System.Drawing.Size(350, 45);
-            this.trackCorte.TabIndex = 20;
-            this.trackCorte.Scroll += new System.EventHandler(this.trackCorte_Scroll);
-            // 
-            // labelSlide
-            // 
-            this.labelSlide.Location = new System.Drawing.Point(209, 393);
-            this.labelSlide.Name = "labelSlide";
-            this.labelSlide.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelSlide.Size = new System.Drawing.Size(150, 13);
-            this.labelSlide.TabIndex = 21;
-            this.labelSlide.Text = "Slide 0 de 0";
-            this.labelSlide.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // trackBar
-            // 
-            this.trackBar.Location = new System.Drawing.Point(9, 362);
-            this.trackBar.Name = "trackBar";
-            this.trackBar.Size = new System.Drawing.Size(350, 45);
-            this.trackBar.TabIndex = 20;
-            this.trackBar.Scroll += new System.EventHandler(this.trackBar_Scroll);
             // 
             // groupUmbral
             // 
@@ -490,6 +859,7 @@
             this.dataGrid.TabIndex = 12;
             this.dataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_CellClick);
             this.dataGrid.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGrid_CellMouseClick);
+            this.dataGrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_CellValueChanged);
             this.dataGrid.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_RowValidated);
             // 
             // Column1
@@ -605,7 +975,7 @@
             this.rangeBar.HeightOfBar = 5;
             this.rangeBar.HeightOfMark = 15;
             this.rangeBar.HeightOfTick = 2;
-            this.rangeBar.InnerColor = System.Drawing.Color.Green;
+            this.rangeBar.InnerColor = System.Drawing.Color.RoyalBlue;
             this.rangeBar.Location = new System.Drawing.Point(7, 46);
             this.rangeBar.Name = "rangeBar";
             this.rangeBar.Orientation = Zzzz.ZzzzRangeBar.RangeBarOrientation.horizontal;
@@ -617,253 +987,6 @@
             this.rangeBar.TotalMaximum = 100;
             this.rangeBar.TotalMinimum = 10;
             this.rangeBar.RangeChanging += new Zzzz.ZzzzRangeBar.RangeChangedEventHandler(this.rangeBar_RangeChanging);
-            // 
-            // pictTrans
-            // 
-            this.pictTrans.Location = new System.Drawing.Point(8, 6);
-            this.pictTrans.Name = "pictTrans";
-            this.pictTrans.Size = new System.Drawing.Size(350, 350);
-            this.pictTrans.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictTrans.TabIndex = 15;
-            this.pictTrans.TabStop = false;
-            this.pictTrans.Paint += new System.Windows.Forms.PaintEventHandler(this.pictTrans_Paint);
-            // 
-            // tab3D
-            // 
-            this.tab3D.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tab3D.Controls.Add(this.tabCortes);
-            this.tab3D.Controls.Add(this.groupBox2);
-            this.tab3D.Controls.Add(this.renderWindowControl1);
-            this.tab3D.Location = new System.Drawing.Point(4, 23);
-            this.tab3D.Name = "tab3D";
-            this.tab3D.Padding = new System.Windows.Forms.Padding(3);
-            this.tab3D.Size = new System.Drawing.Size(587, 593);
-            this.tab3D.TabIndex = 1;
-            this.tab3D.Text = "Visualizacion3D";
-            this.tab3D.Click += new System.EventHandler(this.tab3D_Click);
-            // 
-            // renderWindowControl1
-            // 
-            this.renderWindowControl1.AddTestActors = false;
-            this.renderWindowControl1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.renderWindowControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.renderWindowControl1.Location = new System.Drawing.Point(8, 6);
-            this.renderWindowControl1.Name = "renderWindowControl1";
-            this.renderWindowControl1.Size = new System.Drawing.Size(571, 406);
-            this.renderWindowControl1.TabIndex = 1;
-            this.renderWindowControl1.TestText = null;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.trckRotX);
-            this.groupBox2.Controls.Add(this.btnResetRot);
-            this.groupBox2.Controls.Add(this.trckRotZ);
-            this.groupBox2.Controls.Add(this.trckRotY);
-            this.groupBox2.Location = new System.Drawing.Point(8, 416);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(571, 77);
-            this.groupBox2.TabIndex = 18;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Rotacion";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(390, 51);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(32, 14);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "Eje Z";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(230, 51);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(32, 14);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "Eje Y";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(70, 51);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(32, 14);
-            this.label10.TabIndex = 15;
-            this.label10.Text = "Eje X";
-            // 
-            // trckRotX
-            // 
-            this.trckRotX.Location = new System.Drawing.Point(6, 20);
-            this.trckRotX.Maximum = 360;
-            this.trckRotX.Minimum = -360;
-            this.trckRotX.Name = "trckRotX";
-            this.trckRotX.Size = new System.Drawing.Size(160, 45);
-            this.trckRotX.TabIndex = 11;
-            this.trckRotX.TickFrequency = 45;
-            // 
-            // btnResetRot
-            // 
-            this.btnResetRot.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnResetRot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResetRot.Location = new System.Drawing.Point(486, 20);
-            this.btnResetRot.Name = "btnResetRot";
-            this.btnResetRot.Size = new System.Drawing.Size(75, 23);
-            this.btnResetRot.TabIndex = 10;
-            this.btnResetRot.Text = "Reset";
-            this.btnResetRot.UseVisualStyleBackColor = true;
-            // 
-            // trckRotZ
-            // 
-            this.trckRotZ.Location = new System.Drawing.Point(326, 20);
-            this.trckRotZ.Maximum = 360;
-            this.trckRotZ.Minimum = -360;
-            this.trckRotZ.Name = "trckRotZ";
-            this.trckRotZ.Size = new System.Drawing.Size(160, 45);
-            this.trckRotZ.TabIndex = 13;
-            this.trckRotZ.TickFrequency = 45;
-            // 
-            // trckRotY
-            // 
-            this.trckRotY.Location = new System.Drawing.Point(166, 20);
-            this.trckRotY.Maximum = 360;
-            this.trckRotY.Minimum = -360;
-            this.trckRotY.Name = "trckRotY";
-            this.trckRotY.Size = new System.Drawing.Size(160, 45);
-            this.trckRotY.TabIndex = 12;
-            this.trckRotY.TickFrequency = 45;
-            // 
-            // tabCortes
-            // 
-            this.tabCortes.Controls.Add(this.tabPage1);
-            this.tabCortes.Controls.Add(this.tabPage2);
-            this.tabCortes.Location = new System.Drawing.Point(8, 499);
-            this.tabCortes.Name = "tabCortes";
-            this.tabCortes.SelectedIndex = 0;
-            this.tabCortes.Size = new System.Drawing.Size(573, 85);
-            this.tabCortes.TabIndex = 19;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.trckCorteZ);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.btnResetCorte);
-            this.tabPage1.Controls.Add(this.trckCorteX);
-            this.tabPage1.Controls.Add(this.trckCorteY);
-            this.tabPage1.Location = new System.Drawing.Point(4, 23);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(565, 58);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Cortes";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.label11);
-            this.tabPage2.Controls.Add(this.trackBar1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 23);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(565, 58);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Transparencia";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // trckCorteY
-            // 
-            this.trckCorteY.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trckCorteY.Location = new System.Drawing.Point(162, 6);
-            this.trckCorteY.Maximum = 100;
-            this.trckCorteY.Name = "trckCorteY";
-            this.trckCorteY.Size = new System.Drawing.Size(160, 45);
-            this.trckCorteY.TabIndex = 12;
-            this.trckCorteY.TickFrequency = 5;
-            // 
-            // trckCorteZ
-            // 
-            this.trckCorteZ.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trckCorteZ.Location = new System.Drawing.Point(322, 6);
-            this.trckCorteZ.Maximum = 100;
-            this.trckCorteZ.Name = "trckCorteZ";
-            this.trckCorteZ.Size = new System.Drawing.Size(160, 45);
-            this.trckCorteZ.TabIndex = 13;
-            this.trckCorteZ.TickFrequency = 5;
-            // 
-            // btnResetCorte
-            // 
-            this.btnResetCorte.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnResetCorte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResetCorte.Location = new System.Drawing.Point(482, 6);
-            this.btnResetCorte.Name = "btnResetCorte";
-            this.btnResetCorte.Size = new System.Drawing.Size(75, 23);
-            this.btnResetCorte.TabIndex = 10;
-            this.btnResetCorte.Text = "Reset";
-            this.btnResetCorte.UseVisualStyleBackColor = true;
-            // 
-            // trckCorteX
-            // 
-            this.trckCorteX.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trckCorteX.Location = new System.Drawing.Point(2, 6);
-            this.trckCorteX.Maximum = 100;
-            this.trckCorteX.Name = "trckCorteX";
-            this.trckCorteX.Size = new System.Drawing.Size(160, 45);
-            this.trckCorteX.TabIndex = 11;
-            this.trckCorteX.TickFrequency = 5;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(66, 37);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 14);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Eje X";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(226, 37);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 14);
-            this.label3.TabIndex = 16;
-            this.label3.Text = "Eje Y";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(386, 37);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(32, 14);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Eje Z";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 20);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(116, 14);
-            this.label11.TabIndex = 15;
-            this.label11.Text = "Cantidad de puntos:";
-            // 
-            // trackBar1
-            // 
-            this.trackBar1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar1.Location = new System.Drawing.Point(124, 13);
-            this.trackBar1.Maximum = 50;
-            this.trackBar1.Minimum = 20;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(160, 45);
-            this.trackBar1.TabIndex = 11;
-            this.trackBar1.TickFrequency = 5;
-            this.trackBar1.Value = 40;
             // 
             // VisualForm
             // 
@@ -892,14 +1015,32 @@
             this.tab2D.ResumeLayout(false);
             this.tab2D.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictHor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackCorte)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictTrans)).EndInit();
+            this.tab3D.ResumeLayout(false);
+            this.tabCortes.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trckPlanoZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trckPlanoX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trckPlanoY)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trckTransparencia)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trckRotX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trckRotZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trckRotY)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numAmplitud)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHmax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHmin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackCorte)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar)).EndInit();
             this.groupUmbral.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
             this.groupNorm.ResumeLayout(false);
@@ -907,22 +1048,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictGradiente)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numNmax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numNmin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictTrans)).EndInit();
-            this.tab3D.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trckRotX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trckRotZ)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trckRotY)).EndInit();
-            this.tabCortes.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trckCorteY)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trckCorteZ)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trckCorteX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -981,13 +1106,21 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TrackBar trckCorteZ;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnResetCorte;
-        private System.Windows.Forms.TrackBar trckCorteX;
-        private System.Windows.Forms.TrackBar trckCorteY;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.TrackBar trckTransparencia;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TrackBar trckPlanoZ;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button btnResetPlano;
+        private System.Windows.Forms.TrackBar trckPlanoX;
+        private System.Windows.Forms.TrackBar trckPlanoY;
+        private Zzzz.ZzzzRangeBar rangeCorteX;
+        private Zzzz.ZzzzRangeBar rangeCorteY;
+        private Zzzz.ZzzzRangeBar rangeCorteZ;
     }
 }
