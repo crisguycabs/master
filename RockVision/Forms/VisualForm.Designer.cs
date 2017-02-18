@@ -36,15 +36,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VisualForm));
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tab2D = new System.Windows.Forms.TabPage();
             this.pictHor = new System.Windows.Forms.PictureBox();
             this.labelCorte = new System.Windows.Forms.Label();
             this.trackCorte = new System.Windows.Forms.TrackBar();
             this.labelSlide = new System.Windows.Forms.Label();
             this.trackBar = new System.Windows.Forms.TrackBar();
             this.pictTrans = new System.Windows.Forms.PictureBox();
-            this.tab3D = new System.Windows.Forms.TabPage();
             this.tabCortes = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
@@ -102,13 +99,13 @@
             this.numNmin = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.rangeBar = new Zzzz.ZzzzRangeBar();
-            this.tabControl1.SuspendLayout();
-            this.tab2D.SuspendLayout();
+            this.tab3D = new System.Windows.Forms.TabPage();
+            this.tab2D = new System.Windows.Forms.TabPage();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             ((System.ComponentModel.ISupportInitialize)(this.pictHor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackCorte)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictTrans)).BeginInit();
-            this.tab3D.SuspendLayout();
             this.tabCortes.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -132,6 +129,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictGradiente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numNmax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numNmin)).BeginInit();
+            this.tab3D.SuspendLayout();
+            this.tab2D.SuspendLayout();
+            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -150,39 +150,12 @@
             this.lblTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblTitulo_MouseDown);
             this.lblTitulo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblTitulo_MouseMove);
             // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tab2D);
-            this.tabControl1.Controls.Add(this.tab3D);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tabControl1.Location = new System.Drawing.Point(0, 30);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(595, 620);
-            this.tabControl1.TabIndex = 20;
-            // 
-            // tab2D
-            // 
-            this.tab2D.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tab2D.Controls.Add(this.pictHor);
-            this.tab2D.Controls.Add(this.labelCorte);
-            this.tab2D.Controls.Add(this.trackCorte);
-            this.tab2D.Controls.Add(this.labelSlide);
-            this.tab2D.Controls.Add(this.trackBar);
-            this.tab2D.Controls.Add(this.pictTrans);
-            this.tab2D.Location = new System.Drawing.Point(4, 23);
-            this.tab2D.Name = "tab2D";
-            this.tab2D.Padding = new System.Windows.Forms.Padding(3);
-            this.tab2D.Size = new System.Drawing.Size(587, 593);
-            this.tab2D.TabIndex = 0;
-            this.tab2D.Text = "Visualizacion 2D";
-            this.tab2D.Click += new System.EventHandler(this.tab2D_Click);
-            // 
             // pictHor
             // 
+            this.pictHor.BackColor = System.Drawing.Color.Black;
             this.pictHor.Location = new System.Drawing.Point(8, 416);
             this.pictHor.Name = "pictHor";
-            this.pictHor.Size = new System.Drawing.Size(350, 84);
+            this.pictHor.Size = new System.Drawing.Size(573, 117);
             this.pictHor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictHor.TabIndex = 24;
             this.pictHor.TabStop = false;
@@ -190,7 +163,7 @@
             // 
             // labelCorte
             // 
-            this.labelCorte.Location = new System.Drawing.Point(208, 536);
+            this.labelCorte.Location = new System.Drawing.Point(431, 571);
             this.labelCorte.Name = "labelCorte";
             this.labelCorte.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.labelCorte.Size = new System.Drawing.Size(150, 13);
@@ -200,15 +173,15 @@
             // 
             // trackCorte
             // 
-            this.trackCorte.Location = new System.Drawing.Point(8, 505);
+            this.trackCorte.Location = new System.Drawing.Point(8, 539);
             this.trackCorte.Name = "trackCorte";
-            this.trackCorte.Size = new System.Drawing.Size(350, 45);
+            this.trackCorte.Size = new System.Drawing.Size(573, 45);
             this.trackCorte.TabIndex = 20;
             this.trackCorte.Scroll += new System.EventHandler(this.trackCorte_Scroll);
             // 
             // labelSlide
             // 
-            this.labelSlide.Location = new System.Drawing.Point(209, 393);
+            this.labelSlide.Location = new System.Drawing.Point(431, 394);
             this.labelSlide.Name = "labelSlide";
             this.labelSlide.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.labelSlide.Size = new System.Drawing.Size(150, 13);
@@ -220,33 +193,20 @@
             // 
             this.trackBar.Location = new System.Drawing.Point(9, 362);
             this.trackBar.Name = "trackBar";
-            this.trackBar.Size = new System.Drawing.Size(350, 45);
+            this.trackBar.Size = new System.Drawing.Size(572, 45);
             this.trackBar.TabIndex = 20;
             this.trackBar.Scroll += new System.EventHandler(this.trackBar_Scroll);
             // 
             // pictTrans
             // 
+            this.pictTrans.BackColor = System.Drawing.Color.Black;
             this.pictTrans.Location = new System.Drawing.Point(8, 6);
             this.pictTrans.Name = "pictTrans";
-            this.pictTrans.Size = new System.Drawing.Size(350, 350);
+            this.pictTrans.Size = new System.Drawing.Size(573, 350);
             this.pictTrans.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictTrans.TabIndex = 15;
             this.pictTrans.TabStop = false;
             this.pictTrans.Paint += new System.Windows.Forms.PaintEventHandler(this.pictTrans_Paint);
-            // 
-            // tab3D
-            // 
-            this.tab3D.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tab3D.Controls.Add(this.tabCortes);
-            this.tab3D.Controls.Add(this.groupBox2);
-            this.tab3D.Controls.Add(this.renderWindowControl1);
-            this.tab3D.Location = new System.Drawing.Point(4, 23);
-            this.tab3D.Name = "tab3D";
-            this.tab3D.Padding = new System.Windows.Forms.Padding(3);
-            this.tab3D.Size = new System.Drawing.Size(587, 593);
-            this.tab3D.TabIndex = 1;
-            this.tab3D.Text = "Visualizacion3D";
-            this.tab3D.Click += new System.EventHandler(this.tab3D_Click);
             // 
             // tabCortes
             // 
@@ -579,7 +539,7 @@
             this.renderWindowControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.renderWindowControl1.Location = new System.Drawing.Point(8, 6);
             this.renderWindowControl1.Name = "renderWindowControl1";
-            this.renderWindowControl1.Size = new System.Drawing.Size(571, 406);
+            this.renderWindowControl1.Size = new System.Drawing.Size(571, 404);
             this.renderWindowControl1.TabIndex = 1;
             this.renderWindowControl1.TestText = null;
             this.renderWindowControl1.Load += new System.EventHandler(this.renderWindowControl1_Load);
@@ -988,6 +948,49 @@
             this.rangeBar.TotalMinimum = 10;
             this.rangeBar.RangeChanging += new Zzzz.ZzzzRangeBar.RangeChangedEventHandler(this.rangeBar_RangeChanging);
             // 
+            // tab3D
+            // 
+            this.tab3D.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tab3D.Controls.Add(this.tabCortes);
+            this.tab3D.Controls.Add(this.groupBox2);
+            this.tab3D.Controls.Add(this.renderWindowControl1);
+            this.tab3D.Location = new System.Drawing.Point(4, 23);
+            this.tab3D.Name = "tab3D";
+            this.tab3D.Padding = new System.Windows.Forms.Padding(3);
+            this.tab3D.Size = new System.Drawing.Size(587, 593);
+            this.tab3D.TabIndex = 1;
+            this.tab3D.Text = "Visualizacion3D";
+            this.tab3D.Click += new System.EventHandler(this.tab3D_Click);
+            // 
+            // tab2D
+            // 
+            this.tab2D.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tab2D.Controls.Add(this.pictHor);
+            this.tab2D.Controls.Add(this.labelCorte);
+            this.tab2D.Controls.Add(this.trackCorte);
+            this.tab2D.Controls.Add(this.labelSlide);
+            this.tab2D.Controls.Add(this.trackBar);
+            this.tab2D.Controls.Add(this.pictTrans);
+            this.tab2D.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tab2D.Location = new System.Drawing.Point(4, 23);
+            this.tab2D.Name = "tab2D";
+            this.tab2D.Padding = new System.Windows.Forms.Padding(3);
+            this.tab2D.Size = new System.Drawing.Size(587, 593);
+            this.tab2D.TabIndex = 0;
+            this.tab2D.Text = "Visualizacion 2D";
+            this.tab2D.Click += new System.EventHandler(this.tab2D_Click);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tab2D);
+            this.tabControl1.Controls.Add(this.tab3D);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tabControl1.Location = new System.Drawing.Point(0, 30);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(595, 620);
+            this.tabControl1.TabIndex = 20;
+            // 
             // VisualForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -1011,14 +1014,10 @@
             this.Text = "Visualizacion de Cores";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VisualForm_FormClosed);
             this.Load += new System.EventHandler(this.VisualForm_Load);
-            this.tabControl1.ResumeLayout(false);
-            this.tab2D.ResumeLayout(false);
-            this.tab2D.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictHor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackCorte)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictTrans)).EndInit();
-            this.tab3D.ResumeLayout(false);
             this.tabCortes.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -1048,6 +1047,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictGradiente)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numNmax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numNmin)).EndInit();
+            this.tab3D.ResumeLayout(false);
+            this.tab2D.ResumeLayout(false);
+            this.tab2D.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1056,9 +1059,6 @@
         #endregion
 
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tab2D;
-        private System.Windows.Forms.TabPage tab3D;
         private System.Windows.Forms.GroupBox groupUmbral;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnBorrar;
@@ -1122,5 +1122,8 @@
         private Zzzz.ZzzzRangeBar rangeCorteX;
         private Zzzz.ZzzzRangeBar rangeCorteY;
         private Zzzz.ZzzzRangeBar rangeCorteZ;
+        private System.Windows.Forms.TabPage tab3D;
+        private System.Windows.Forms.TabPage tab2D;
+        private System.Windows.Forms.TabControl tabControl1;
     }
 }

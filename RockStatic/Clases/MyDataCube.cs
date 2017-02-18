@@ -398,6 +398,47 @@ namespace RockStatic
         }
 
         /// <summary>
+        /// Se genera un plano de core vertical que corresponde al indice que se pasa como argumento. Version RV
+        /// </summary>
+        /// <param name="indice">Numero de la columna que se debe extraer de cada DICOM</param>
+        /// <returns>Core vertical generado en la posicion indicada</returns>
+        public List<ushort> GenerarCoreVerticalRV(int indice)
+        {
+            // se genera una MATRIZ para guardar, temporalmente, los numeros CT extraidos de todo el data cubo para cada imagen de corte vertical
+            // una vez extraida la matriz se mapea a una imagen Bitmap
+
+            // se crea la matriz temporal y se inicializa
+            int alto = Convert.ToInt16(dataCube[0].selector.Rows.Data);
+            int ancho = dataCube.Count;
+            ushort[][] temp = new ushort[alto][];
+            for (int i = 0; i < alto; i++)
+                temp[i] = new ushort[ancho];
+
+            int ini = indice * Convert.ToInt16(dataCube[0].selector.Rows.Data);
+            for (int i = 0; i < alto; i++)
+            {
+                for (int j = 0; j < ancho; j++)
+                {
+                    temp[i][j] = dataCube[j].pixelData[ini + i];
+                }
+            }
+
+            // se calcula el factor de escalado debido al espaciado entre Slides
+            double resZ = Convert.ToDouble(dataCube[0].selector.SliceThickness.Data);
+            double resXY = Convert.ToDouble(dataCube[0].selector.PixelSpacing.Data_[0]);
+            int factor = Convert.ToInt32(resZ / resXY); { }
+
+            // se convierte a un List<ushort> para poder usarlo en el mapeo a Bitmap
+            List<ushort> pixels16 = new List<ushort>();
+            for (int i = 0; i < alto; i++)
+                for (int j = 0; j < ancho; j++)
+                    for (int k = 0; k < factor; k++)
+                        pixels16.Add(temp[i][j]);
+
+            return pixels16;
+        }
+
+        /// <summary>
         /// Se genera un plano de core Vertical que corresponde al indice que se pasa como argumento
         /// </summary>
         /// <param name="indice">Numero de la fila que se debe extraer de cada DICOM</param>
@@ -474,6 +515,21 @@ namespace RockStatic
             {
                 coresHorizontal[i] = new List<ushort>();
                 coresHorizontal[i] = GenerarCoreHorizontalRV(i);
+            }
+        }
+
+        /// <summary>
+        /// Genera todos y cada uno de los planos de corte verticales del core. No genera imágenes sino los List de ushort para cada plano de corte. Version para RV
+        /// </summary>
+        public void GenerarCortesVerticalesRV()
+        {
+            // se genera un List<ushort> por cada pixel de altura de un DICOM
+            coresVertical = new List<ushort>[dataCube[0].selector.Columns.Data];
+
+            for (int i = 0; i < coresVertical.Length; i++)
+            {
+                coresVertical[i] = new List<ushort>();
+                coresVertical[i] = GenerarCoreVerticalRV(i);
             }
         }
 

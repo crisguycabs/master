@@ -185,6 +185,7 @@ namespace RockVision
             this.datacubo.widthSeg = Convert.ToInt32(this.datacubo.dataCube[0].selector.Rows.Data);
 
             this.datacubo.GenerarCortesHorizontalesRV();
+            this.datacubo.GenerarCortesVerticalesRV();
             
             // se genera el histograma
             this.datacubo.GenerarHistograma();            
@@ -238,6 +239,7 @@ namespace RockVision
             // se crean las segmentaciones horizontales
             //System.DateTime ini = System.DateTime.Now;
             this.datacubo.GenerarCortesHorizontalesRV();
+            this.datacubo.GenerarCortesVerticalesRV();
             //System.DateTime fin = System.DateTime.Now;
             //System.Windows.Forms.MessageBox.Show(((fin - ini).Milliseconds + 1000 * (fin - ini).Seconds).ToString());
 

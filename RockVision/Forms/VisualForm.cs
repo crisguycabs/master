@@ -746,17 +746,33 @@ namespace RockVision
             
             // se crean los puntos que pertenecen en la circunferencia
             List<System.Drawing.Point> listaCirc = new List<Point>();
+            
+            /*
             double dist = 0;
             double tol = 0.5;
-            for (int i = 0; i < padre.actualV.datacubo.dataCube[0].selector.Columns.Data; i++)
+            for (int i = 0; i < padre.actualV.datacubo.dataCube[0].selector.Columns.Data; i=i+2)
             {
-                for (int j = 0; j < padre.actualV.datacubo.dataCube[0].selector.Rows.Data; j++)
+                for (int j = 0; j < padre.actualV.datacubo.dataCube[0].selector.Rows.Data; j=j+2)
                 {
                     dist = Math.Sqrt(Convert.ToDouble((i - padre.actualV.segX) * (i - padre.actualV.segX)) + Convert.ToDouble((j - padre.actualV.segY) * (j - padre.actualV.segY)));
                     if (Math.Abs(dist - Convert.ToDouble(padre.actualV.segR)) <= tol) // el punto esta dentro de la tolerancia de la tolerancia
                         listaCirc.Add(new Point(i, j));
                 }
             }
+            */
+
+            // se calculan los puntos de la circunferencia cada dos grados
+            for (int i = 0; i < 200; i++)
+            {
+                double angulo = Convert.ToDouble(i) * Math.PI / Convert.ToDouble(100);
+                double x = Math.Cos(angulo) * Convert.ToDouble(padre.actualV.segR) + padre.actualV.segX;
+                double y = Math.Sin(angulo) * Convert.ToDouble(padre.actualV.segR) + padre.actualV.segY;
+                listaCirc.Add(new Point(Convert.ToInt32(x),Convert.ToInt32(y)));                
+            }
+
+
+            int contador = 0;
+            contador++;
 
             // se evalua cada punto de la circunferencia, por cuadrantes. Se reduce la circunferencia de acuerdo con los planos de corte
             for (int i = 0; i < listaCirc.Count; i++)
@@ -823,22 +839,83 @@ namespace RockVision
             colors.SetNumberOfComponents(3);
 
             vtkPoints puntos = new vtkPoints();
-            for (int i = 0; i < hull.Count; i++)
+
+            for (int z = 0; z < 2; z++)
             {
-                // se agrega la coordenada Z desde el primer valor hasta el ultimo del rango de seleccion
-                for (int z = rangeCorteZ.RangeMinimum; z < rangeCorteZ.RangeMaximum; z++)
+                for (int i = 0; i < hull.Count / 2; i++)
                 {
                     puntos.InsertNextPoint(hull[i].X, hull[i].Y, z);
                 }
             }
 
+            /*
+            for (int i = 0; i < hull.Count/2; i++)
+            {
+                
+                // se agrega la coordenada Z desde el primer valor hasta el ultimo del rango de seleccion
+                for (int z = rangeCorteZ.RangeMinimum; z < rangeCorteZ.RangeMaximum; z++)
+                {
+                    puntos.InsertNextPoint(hull[i].X, hull[i].Y, z);
+                }
+                 
+
+                // se agrega la coordenada Z desde el primer valor hasta el ultimo del rango de seleccion
+                for (int z = 0; z < 2; z++)
+                {
+                    puntos.InsertNextPoint(hull[i].X, hull[i].Y, z);
+                }
+            }*/
+
             vtkPolyData polydata = new vtkPolyData();
             polydata.SetPoints(puntos);
+
+            vtkSurfaceReconstructionFilter surf = new vtkSurfaceReconstructionFilter();
+            surf.SetInput(polydata);
+
+            vtkContourFilter cf = new vtkContourFilter();
+            cf.SetInputConnection(surf.GetOutputPort());
+            cf.SetValue(0, 0.0);
 
             /*
-            vtkPolyData polydata = new vtkPolyData();
-            polydata.SetPoints(puntos);
+            vtkReverseSense reverse = new vtkReverseSense();
+            reverse.SetInputConnection(cf.GetOutputPort());
+            reverse.ReverseCellsOn();
+            reverse.ReverseNormalsOn();
 
+            vtkPolyDataMapper map = vtkPolyDataMapper.New();
+            map.SetInputConnection(reverse.GetOutputPort());
+            map.ScalarVisibilityOff();*/
+
+            vtkPolyDataMapper map = vtkPolyDataMapper.New();
+            map.SetInputConnection(cf.GetOutputPort());
+            map.ScalarVisibilityOff();
+
+            vtkActor surfaceActor = new vtkActor();
+            surfaceActor.SetMapper(map);
+
+            renderer.AddActor(surfaceActor);
+            //renderer.SetBackground(0.2, 0.3, 0.4);
+
+            //renderWindow.Render();
+
+            /*
+            vtkDataSetMapper originalMapper = new vtkDataSetMapper();
+            originalMapper.SetInput(polydata);
+
+            vtkActor originalActor = new vtkActor();
+            originalActor.SetMapper(originalMapper);
+            originalActor.GetProperty().SetColor(1, 0, 0);
+
+            renderWindow = renderWindowControl1.RenderWindow;
+            renderer = renderWindow.GetRenderers().GetFirstRenderer();
+            renderer.SetBackground(0, 0, 0);
+            renderer.SetInteractive(0);
+             
+
+            renderer.AddActor(originalActor);
+             */
+
+            /*
             vtkSurfaceReconstructionFilter surf = new vtkSurfaceReconstructionFilter();
             surf.SetInput(polydata);
 
@@ -858,11 +935,10 @@ namespace RockVision
             vtkActor actor = vtkActor.New();
             actor.SetMapper(map);
 
-            renderer.AddActor(actor);
+            renderer.AddActor(actor);    
+             * */
 
-            renderer.Render();
-            */
-
+            /*
             vtkMarchingCubes mc = vtkMarchingCubes.New();
             mc.SetInput(polydata);
             mc.ComputeNormalsOn();
@@ -884,7 +960,7 @@ namespace RockVision
             actor.GetProperty().SetColor(1, 1, 1);
             actor.SetMapper(mapper);
 
-            this.renderWindowControl1_Load(new object(), new EventArgs());
+            //this.renderWindowControl1_Load(new object(), new EventArgs());
 
             try
             {
@@ -894,6 +970,7 @@ namespace RockVision
             {
                 MessageBox.Show("error");
             }
+            */
         }
 
         private void rangeBar_RangeChanging(object sender, EventArgs e)
@@ -1499,7 +1576,7 @@ namespace RockVision
             {
                 renderWindow = renderWindowControl1.RenderWindow;
                 renderer = renderWindow.GetRenderers().GetFirstRenderer();
-                renderer.SetBackground(1, 1, 1);
+                renderer.SetBackground(0, 0, 0);
                 renderer.SetInteractive(0);
 
                 Visual3Dcortes();

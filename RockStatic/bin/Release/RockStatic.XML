@@ -585,6 +585,13 @@
             <param name="indice">Numero de la fila que se debe extraer de cada DICOM</param>
             <returns>Core horizontal generado en la posicion indicada</returns>
         </member>
+        <member name="M:RockStatic.MyDataCube.GenerarCoreVerticalRV(System.Int32)">
+            <summary>
+            Se genera un plano de core vertical que corresponde al indice que se pasa como argumento. Version RV
+            </summary>
+            <param name="indice">Numero de la columna que se debe extraer de cada DICOM</param>
+            <returns>Core vertical generado en la posicion indicada</returns>
+        </member>
         <member name="M:RockStatic.MyDataCube.GenerarCoreVertical(System.Int32)">
             <summary>
             Se genera un plano de core Vertical que corresponde al indice que se pasa como argumento
@@ -600,6 +607,11 @@
         <member name="M:RockStatic.MyDataCube.GenerarCortesHorizontalesRV">
             <summary>
             Genera todos y cada uno de los planos de corte horizontales del core. No genera imágenes sino los List de ushort para cada plano de corte. Version para RV
+            </summary>
+        </member>
+        <member name="M:RockStatic.MyDataCube.GenerarCortesVerticalesRV">
+            <summary>
+            Genera todos y cada uno de los planos de corte verticales del core. No genera imágenes sino los List de ushort para cada plano de corte. Version para RV
             </summary>
         </member>
         <member name="M:RockStatic.MyDataCube.GenerarCoresVerticales">
