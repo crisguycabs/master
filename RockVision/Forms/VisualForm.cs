@@ -701,25 +701,32 @@ namespace RockVision
 
             // maximos y minimos
 
+            /*
             rangeCorteX.TotalMinimum = 0;
             rangeCorteY.TotalMinimum = 0;
             rangeCorteZ.TotalMinimum = 0;
+             */
             trckPlanoX.Minimum = 0;
             trckPlanoY.Minimum = 0;
             trckPlanoZ.Minimum = 0;
 
+            /*
             rangeCorteX.TotalMaximum = trckPlanoX.Maximum = padre.actualV.datacubo.dataCube[0].selector.Columns.Data - 1;
             rangeCorteY.TotalMaximum = trckPlanoY.Maximum = padre.actualV.datacubo.dataCube[0].selector.Rows.Data - 1;
             rangeCorteZ.TotalMaximum = trckPlanoZ.Maximum = padre.actualV.datacubo.dataCube.Count - 1;
+            */
 
             // valores de los trackbar
 
+            /*
             rangeCorteX.RangeMinimum = rangeCorteX.TotalMinimum;
             rangeCorteX.RangeMaximum = rangeCorteX.TotalMaximum;
             rangeCorteY.RangeMinimum = rangeCorteY.TotalMinimum;
             rangeCorteY.RangeMaximum = rangeCorteY.TotalMaximum;
             rangeCorteZ.RangeMinimum = rangeCorteZ.TotalMinimum;
             rangeCorteZ.RangeMaximum = rangeCorteZ.TotalMaximum;
+            */
+
             trckPlanoX.Value = trckPlanoX.Maximum / 2;
             trckPlanoY.Value = trckPlanoY.Maximum / 2;
             trckPlanoZ.Value = trckPlanoZ.Maximum / 2;
@@ -737,70 +744,73 @@ namespace RockVision
         /// </summary>
         public void Visual3Dcortes()
         {
-            // se recorre de manera tridimensional, primero el plano transversal y luego la profundidad, los puntos
-            // se agregan aquellos puntos que esten cerca/sobre el convex hull
+            
+            //// se recorre de manera tridimensional, primero el plano transversal y luego la profundidad, los puntos
+            //// se agregan aquellos puntos que esten cerca/sobre el convex hull
 
-            // primero se revisan los limites en Z y luego en cada plano transversal
+            //// primero se revisan los limites en Z y luego en cada plano transversal
 
             
             
-            // se crean los puntos que pertenecen en la circunferencia
-            List<System.Drawing.Point> listaCirc = new List<Point>();
+            //// se crean los puntos que pertenecen en la circunferencia
+            //List<System.Drawing.Point> listaCirc = new List<Point>();
             
-            /*
-            double dist = 0;
-            double tol = 0.5;
-            for (int i = 0; i < padre.actualV.datacubo.dataCube[0].selector.Columns.Data; i=i+2)
-            {
-                for (int j = 0; j < padre.actualV.datacubo.dataCube[0].selector.Rows.Data; j=j+2)
-                {
-                    dist = Math.Sqrt(Convert.ToDouble((i - padre.actualV.segX) * (i - padre.actualV.segX)) + Convert.ToDouble((j - padre.actualV.segY) * (j - padre.actualV.segY)));
-                    if (Math.Abs(dist - Convert.ToDouble(padre.actualV.segR)) <= tol) // el punto esta dentro de la tolerancia de la tolerancia
-                        listaCirc.Add(new Point(i, j));
-                }
-            }
-            */
+            ///*
+            //double dist = 0;
+            //double tol = 0.5;
+            //for (int i = 0; i < padre.actualV.datacubo.dataCube[0].selector.Columns.Data; i=i+2)
+            //{
+            //    for (int j = 0; j < padre.actualV.datacubo.dataCube[0].selector.Rows.Data; j=j+2)
+            //    {
+            //        dist = Math.Sqrt(Convert.ToDouble((i - padre.actualV.segX) * (i - padre.actualV.segX)) + Convert.ToDouble((j - padre.actualV.segY) * (j - padre.actualV.segY)));
+            //        if (Math.Abs(dist - Convert.ToDouble(padre.actualV.segR)) <= tol) // el punto esta dentro de la tolerancia de la tolerancia
+            //            listaCirc.Add(new Point(i, j));
+            //    }
+            //}
+            //*/
 
-            // se calculan los puntos de la circunferencia cada dos grados
-            for (int i = 0; i < 200; i++)
-            {
-                double angulo = Convert.ToDouble(i) * Math.PI / Convert.ToDouble(100);
-                double x = Math.Cos(angulo) * Convert.ToDouble(padre.actualV.segR) + padre.actualV.segX;
-                double y = Math.Sin(angulo) * Convert.ToDouble(padre.actualV.segR) + padre.actualV.segY;
-                listaCirc.Add(new Point(Convert.ToInt32(x),Convert.ToInt32(y)));                
-            }
+            //// se calculan los puntos de la circunferencia cada dos grados
+            //for (int i = 0; i < 200; i++)
+            //{
+            //    double angulo = Convert.ToDouble(i) * Math.PI / Convert.ToDouble(100);
+            //    double x = Math.Cos(angulo) * Convert.ToDouble(padre.actualV.segR) + padre.actualV.segX;
+            //    double y = Math.Sin(angulo) * Convert.ToDouble(padre.actualV.segR) + padre.actualV.segY;
+            //    listaCirc.Add(new Point(Convert.ToInt32(x),Convert.ToInt32(y)));                
+            //}
 
 
-            int contador = 0;
-            contador++;
+            //int contador = 0;
+            //contador++;
 
-            // se evalua cada punto de la circunferencia, por cuadrantes. Se reduce la circunferencia de acuerdo con los planos de corte
-            for (int i = 0; i < listaCirc.Count; i++)
-            {
-                if ((listaCirc[i].X <= padre.actualV.segX) & (listaCirc[i].Y <= padre.actualV.segY)) // primer cuadrante, arriba a la izq
-                {
-                    if (listaCirc[i].X <= rangeCorteX.RangeMinimum) listaCirc[i] = new Point(rangeCorteX.RangeMinimum,listaCirc[i].Y);
-                    if (listaCirc[i].Y <= rangeCorteY.RangeMinimum) listaCirc[i] = new Point(listaCirc[i].X, rangeCorteY.RangeMinimum);
-                }
-                else if ((listaCirc[i].X > padre.actualV.segX) & (listaCirc[i].Y <= padre.actualV.segY)) // segundo cuadrante, arriba a la derecha
-                {
-                    if (listaCirc[i].X >= rangeCorteX.RangeMaximum) listaCirc[i] = new Point(rangeCorteX.RangeMaximum, listaCirc[i].Y);
-                    if (listaCirc[i].Y <= rangeCorteY.RangeMinimum) listaCirc[i] = new Point(listaCirc[i].X, rangeCorteY.RangeMinimum);
-                }
-                else if ((listaCirc[i].X <= padre.actualV.segX) & (listaCirc[i].Y > padre.actualV.segY)) // tercer cuadrante, abajo a la izq
-                {
-                    if (listaCirc[i].X <= rangeCorteX.RangeMinimum) listaCirc[i] = new Point(rangeCorteX.RangeMinimum, listaCirc[i].Y);
-                    if (listaCirc[i].Y >= rangeCorteY.RangeMaximum) listaCirc[i] = new Point(listaCirc[i].X, rangeCorteY.RangeMaximum);
-                }
-                else if ((listaCirc[i].X > padre.actualV.segX) & (listaCirc[i].Y > padre.actualV.segY)) // segundo cuadrante, abajo a la derecha
-                {
-                    if (listaCirc[i].X >= rangeCorteX.RangeMaximum) listaCirc[i] = new Point(rangeCorteX.RangeMaximum, listaCirc[i].Y);
-                    if (listaCirc[i].Y >= rangeCorteY.RangeMaximum) listaCirc[i] = new Point(listaCirc[i].X, rangeCorteY.RangeMaximum);
-                }
-            }
+            //// se evalua cada punto de la circunferencia, por cuadrantes. Se reduce la circunferencia de acuerdo con los planos de corte
+            //for (int i = 0; i < listaCirc.Count; i++)
+            //{
+            //    if ((listaCirc[i].X <= padre.actualV.segX) & (listaCirc[i].Y <= padre.actualV.segY)) // primer cuadrante, arriba a la izq
+            //    {
+            //        if (listaCirc[i].X <= rangeCorteX.RangeMinimum) listaCirc[i] = new Point(rangeCorteX.RangeMinimum,listaCirc[i].Y);
+            //        if (listaCirc[i].Y <= rangeCorteY.RangeMinimum) listaCirc[i] = new Point(listaCirc[i].X, rangeCorteY.RangeMinimum);
+            //    }
+            //    else if ((listaCirc[i].X > padre.actualV.segX) & (listaCirc[i].Y <= padre.actualV.segY)) // segundo cuadrante, arriba a la derecha
+            //    {
+            //        if (listaCirc[i].X >= rangeCorteX.RangeMaximum) listaCirc[i] = new Point(rangeCorteX.RangeMaximum, listaCirc[i].Y);
+            //        if (listaCirc[i].Y <= rangeCorteY.RangeMinimum) listaCirc[i] = new Point(listaCirc[i].X, rangeCorteY.RangeMinimum);
+            //    }
+            //    else if ((listaCirc[i].X <= padre.actualV.segX) & (listaCirc[i].Y > padre.actualV.segY)) // tercer cuadrante, abajo a la izq
+            //    {
+            //        if (listaCirc[i].X <= rangeCorteX.RangeMinimum) listaCirc[i] = new Point(rangeCorteX.RangeMinimum, listaCirc[i].Y);
+            //        if (listaCirc[i].Y >= rangeCorteY.RangeMaximum) listaCirc[i] = new Point(listaCirc[i].X, rangeCorteY.RangeMaximum);
+            //    }
+            //    else if ((listaCirc[i].X > padre.actualV.segX) & (listaCirc[i].Y > padre.actualV.segY)) // segundo cuadrante, abajo a la derecha
+            //    {
+            //        if (listaCirc[i].X >= rangeCorteX.RangeMaximum) listaCirc[i] = new Point(rangeCorteX.RangeMaximum, listaCirc[i].Y);
+            //        if (listaCirc[i].Y >= rangeCorteY.RangeMaximum) listaCirc[i] = new Point(listaCirc[i].X, rangeCorteY.RangeMaximum);
+            //    }
+            //}
 
-            // se empiezan a agregar los puntos, en las coordenadas especificadas, al control VTK, con el correspondiente color
-            Visualize3DCortes(listaCirc);
+            //// se empiezan a agregar los puntos, en las coordenadas especificadas, al control VTK, con el correspondiente color
+            //Visualize3DCortes(listaCirc);
+
+            
         }
 
         /// <summary>

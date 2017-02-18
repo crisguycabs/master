@@ -43,14 +43,6 @@
             this.trackBar = new System.Windows.Forms.TrackBar();
             this.pictTrans = new System.Windows.Forms.PictureBox();
             this.tabCortes = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnResetCorte = new System.Windows.Forms.Button();
-            this.rangeCorteX = new Zzzz.ZzzzRangeBar();
-            this.rangeCorteY = new Zzzz.ZzzzRangeBar();
-            this.rangeCorteZ = new Zzzz.ZzzzRangeBar();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -107,7 +99,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictTrans)).BeginInit();
             this.tabCortes.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trckPlanoZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trckPlanoX)).BeginInit();
@@ -210,7 +201,6 @@
             // 
             // tabCortes
             // 
-            this.tabCortes.Controls.Add(this.tabPage1);
             this.tabCortes.Controls.Add(this.tabPage4);
             this.tabCortes.Controls.Add(this.tabPage2);
             this.tabCortes.Location = new System.Drawing.Point(8, 499);
@@ -218,118 +208,6 @@
             this.tabCortes.SelectedIndex = 0;
             this.tabCortes.Size = new System.Drawing.Size(573, 85);
             this.tabCortes.TabIndex = 19;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.btnResetCorte);
-            this.tabPage1.Controls.Add(this.rangeCorteX);
-            this.tabPage1.Controls.Add(this.rangeCorteY);
-            this.tabPage1.Controls.Add(this.rangeCorteZ);
-            this.tabPage1.Location = new System.Drawing.Point(4, 23);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(565, 58);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Cortes Cilindro";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(386, 37);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(32, 14);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Eje Z";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(226, 37);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 14);
-            this.label3.TabIndex = 16;
-            this.label3.Text = "Eje Y";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(66, 37);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 14);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Eje X";
-            // 
-            // btnResetCorte
-            // 
-            this.btnResetCorte.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnResetCorte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResetCorte.Location = new System.Drawing.Point(485, 6);
-            this.btnResetCorte.Name = "btnResetCorte";
-            this.btnResetCorte.Size = new System.Drawing.Size(75, 23);
-            this.btnResetCorte.TabIndex = 10;
-            this.btnResetCorte.Text = "Reset";
-            this.btnResetCorte.UseVisualStyleBackColor = true;
-            // 
-            // rangeCorteX
-            // 
-            this.rangeCorteX.DivisionNum = 1;
-            this.rangeCorteX.Font = new System.Drawing.Font("Microsoft Sans Serif", 2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rangeCorteX.HeightOfBar = 5;
-            this.rangeCorteX.HeightOfMark = 15;
-            this.rangeCorteX.HeightOfTick = 2;
-            this.rangeCorteX.InnerColor = System.Drawing.Color.RoyalBlue;
-            this.rangeCorteX.Location = new System.Drawing.Point(5, -7);
-            this.rangeCorteX.Name = "rangeCorteX";
-            this.rangeCorteX.Orientation = Zzzz.ZzzzRangeBar.RangeBarOrientation.horizontal;
-            this.rangeCorteX.RangeMaximum = 10;
-            this.rangeCorteX.RangeMinimum = 10;
-            this.rangeCorteX.ScaleOrientation = Zzzz.ZzzzRangeBar.TopBottomOrientation.bottom;
-            this.rangeCorteX.Size = new System.Drawing.Size(154, 45);
-            this.rangeCorteX.TabIndex = 18;
-            this.rangeCorteX.TotalMaximum = 100;
-            this.rangeCorteX.TotalMinimum = 10;
-            // 
-            // rangeCorteY
-            // 
-            this.rangeCorteY.DivisionNum = 1;
-            this.rangeCorteY.Font = new System.Drawing.Font("Microsoft Sans Serif", 2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rangeCorteY.HeightOfBar = 5;
-            this.rangeCorteY.HeightOfMark = 15;
-            this.rangeCorteY.HeightOfTick = 2;
-            this.rangeCorteY.InnerColor = System.Drawing.Color.RoyalBlue;
-            this.rangeCorteY.Location = new System.Drawing.Point(165, -7);
-            this.rangeCorteY.Name = "rangeCorteY";
-            this.rangeCorteY.Orientation = Zzzz.ZzzzRangeBar.RangeBarOrientation.horizontal;
-            this.rangeCorteY.RangeMaximum = 10;
-            this.rangeCorteY.RangeMinimum = 10;
-            this.rangeCorteY.ScaleOrientation = Zzzz.ZzzzRangeBar.TopBottomOrientation.bottom;
-            this.rangeCorteY.Size = new System.Drawing.Size(154, 45);
-            this.rangeCorteY.TabIndex = 19;
-            this.rangeCorteY.TotalMaximum = 100;
-            this.rangeCorteY.TotalMinimum = 10;
-            // 
-            // rangeCorteZ
-            // 
-            this.rangeCorteZ.DivisionNum = 1;
-            this.rangeCorteZ.Font = new System.Drawing.Font("Microsoft Sans Serif", 2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rangeCorteZ.HeightOfBar = 5;
-            this.rangeCorteZ.HeightOfMark = 15;
-            this.rangeCorteZ.HeightOfTick = 2;
-            this.rangeCorteZ.InnerColor = System.Drawing.Color.RoyalBlue;
-            this.rangeCorteZ.Location = new System.Drawing.Point(325, -7);
-            this.rangeCorteZ.Name = "rangeCorteZ";
-            this.rangeCorteZ.Orientation = Zzzz.ZzzzRangeBar.RangeBarOrientation.horizontal;
-            this.rangeCorteZ.RangeMaximum = 10;
-            this.rangeCorteZ.RangeMinimum = 10;
-            this.rangeCorteZ.ScaleOrientation = Zzzz.ZzzzRangeBar.TopBottomOrientation.bottom;
-            this.rangeCorteZ.Size = new System.Drawing.Size(154, 45);
-            this.rangeCorteZ.TabIndex = 20;
-            this.rangeCorteZ.TotalMaximum = 100;
-            this.rangeCorteZ.TotalMinimum = 10;
             // 
             // tabPage4
             // 
@@ -1019,8 +897,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictTrans)).EndInit();
             this.tabCortes.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trckPlanoZ)).EndInit();
@@ -1103,11 +979,6 @@
         private System.Windows.Forms.TrackBar trckRotZ;
         private System.Windows.Forms.TrackBar trckRotY;
         private System.Windows.Forms.TabControl tabCortes;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnResetCorte;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TrackBar trckTransparencia;
@@ -1119,9 +990,6 @@
         private System.Windows.Forms.Button btnResetPlano;
         private System.Windows.Forms.TrackBar trckPlanoX;
         private System.Windows.Forms.TrackBar trckPlanoY;
-        private Zzzz.ZzzzRangeBar rangeCorteX;
-        private Zzzz.ZzzzRangeBar rangeCorteY;
-        private Zzzz.ZzzzRangeBar rangeCorteZ;
         private System.Windows.Forms.TabPage tab3D;
         private System.Windows.Forms.TabPage tab2D;
         private System.Windows.Forms.TabControl tabControl1;
