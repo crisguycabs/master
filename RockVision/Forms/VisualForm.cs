@@ -16,6 +16,10 @@ namespace RockVision
     {
         #region variales de diseñador
 
+        double lastRotX = 0;
+        double lastRotY = 0;
+        double lastRotZ = 0;
+
         /// <summary>
         /// Referencia al MainForm padre
         /// </summary>
@@ -63,6 +67,41 @@ namespace RockVision
 
         // habilitar cambios
         bool habilitarCambios = true;
+
+        /// <summary>
+        /// Plano secante XY
+        /// </summary>
+        vtkActor texturedPlaneXY;
+
+        /// <summary>
+        /// Plano secante XZ
+        /// </summary>
+        vtkActor texturedPlaneXZ;
+
+        /// <summary>
+        /// Plano secante YZ
+        /// </summary>
+        vtkActor texturedPlaneYZ;
+
+        /// <summary>
+        /// Factor de escalado
+        /// </summary>
+        double factor;
+
+        /// <summary>
+        /// imagen para el plano transversal
+        /// </summary>
+        Bitmap imagenXY;
+
+        /// <summary>
+        /// imagen para el plano horizontal
+        /// </summary>
+        Bitmap imagenXZ;
+
+        /// <summary>
+        /// imagen para el plano vertical
+        /// </summary>
+        Bitmap imagenYZ;
 
         vtkRenderWindow renderWindow;
         vtkRenderer renderer;
@@ -390,6 +429,97 @@ namespace RockVision
         }
 
         /// <summary>
+        /// Para un corte vertical especifico (indice) pinta de un color especifico los valores CT que se encuentran dentro de minimoValor y maximoValor
+        /// </summary>
+        /// <param name="indice"></param>
+        /// <param name="minimoValor"></param>
+        /// <param name="maximoValor"></param>
+        /// <returns></returns>
+        private Bitmap UmbralizarV(int indice)
+        {
+            // failsafe: no hay valores de umbralizacion
+            if (umbral.Count <= 0)
+            {
+                return NormalizarV(trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+            }
+
+            int alto = padre.actualV.datacubo.dataCube[0].selector.Rows.Data;
+            int total = padre.actualV.datacubo.coresHorizontal[0].Count;
+            int ancho = Convert.ToInt32(Convert.ToDouble(total) / Convert.ToDouble(alto));
+
+            Bitmap imagen = new Bitmap(ancho, alto, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+
+            BitmapData bmd = imagen.LockBits(new Rectangle(0, 0, imagen.Width, imagen.Height), System.Drawing.Imaging.ImageLockMode.ReadOnly, imagen.PixelFormat);
+
+            int valorCT;
+            int colorOriginal;
+
+            unsafe
+            {
+                int pixelSize = 3;
+                int i, j, j1, i1;
+                byte b;
+
+                // se prepara una lista con todos los posibles colores de los intervalos
+                List<byte> bR = new List<byte>();
+                List<byte> bG = new List<byte>();
+                List<byte> bB = new List<byte>();
+
+                for (int k = 0; k < umbral.Count; k++)
+                {
+                    bR.Add(Convert.ToByte(umbral[k].color.R));
+                    bG.Add(Convert.ToByte(umbral[k].color.G));
+                    bB.Add(Convert.ToByte(umbral[k].color.B));
+                }
+
+                byte nuevoR;
+                byte nuevoG;
+                byte nuevoB;
+
+                double range = rangeBar.RangeMaximum - rangeBar.RangeMinimum;
+
+                for (i = 0; i < bmd.Height; ++i)
+                {
+                    byte* row = (byte*)bmd.Scan0 + (i * bmd.Stride);
+                    i1 = i * bmd.Width;
+
+                    for (j = 0; j < bmd.Width; ++j)
+                    {
+                        valorCT = padre.actualV.datacubo.coresHorizontal[indice][i * bmd.Width + j];
+                        colorOriginal = Convert.ToInt32(Convert.ToDouble(padre.actualV.datacubo.coresVertical[indice][i * bmd.Width + j] - rangeBar.RangeMinimum) * ((double)255) / range);
+                        if (colorOriginal < 0) colorOriginal = 0;
+                        if (colorOriginal > 255) colorOriginal = 255;
+                        b = Convert.ToByte(colorOriginal);
+                        j1 = j * pixelSize;
+
+                        nuevoR = b;
+                        nuevoG = b;
+                        nuevoB = b;
+
+                        // se recorre la lista de umbrales
+                        for (int k = 0; k < umbral.Count; k++)
+                        {
+                            if ((valorCT >= umbral[k].minimo) & (valorCT <= umbral[k].maximo))
+                            {
+                                // esta dentro del rango, se repinta ese pixel
+                                nuevoR = bR[k];
+                                nuevoG = bG[k];
+                                nuevoB = bB[k];
+                            }
+                        }
+
+                        row[j1] = nuevoB;            // Red
+                        row[j1 + 1] = nuevoG;        // Green
+                        row[j1 + 2] = nuevoR;        // Blue                                                   
+                    }
+                }
+            }
+            imagen.UnlockBits(bmd);
+
+            return imagen;
+        }
+
+        /// <summary>
         /// Para un dicom en especifico (indice) normaliza a escala de grises los valores CT que se encuentran dentro de minimoValor y maximoValor
         /// </summary>
         /// <param name="indice"></param>
@@ -449,6 +579,62 @@ namespace RockVision
 
             int ancho = Convert.ToInt32(Convert.ToDouble(total) / Convert.ToDouble(alto));
             return RockStatic.MyDicom.CrearBitmap(padre.actualV.datacubo.coresHorizontal[indice], ancho, alto, minimoValor, maximoValor);
+
+            /*
+            // width height
+            Bitmap imagen = new Bitmap(padre.actualV.datacubo.dataCube.Count, padre.actualV.datacubo.dataCube[indice].selector.Columns.Data, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+
+            BitmapData bmd = imagen.LockBits(new Rectangle(0, 0, imagen.Width, imagen.Height), System.Drawing.Imaging.ImageLockMode.ReadOnly, imagen.PixelFormat);
+
+            // se normaliza de 0 a 255
+            double range = maximoValor - minimoValor;
+            double color;
+
+            unsafe
+            {
+                int pixelSize = 3;
+                int i, j, j1, i1;
+                byte b;
+
+                for (i = 0; i < bmd.Height; ++i)
+                {
+                    byte* row = (byte*)bmd.Scan0 + (i * bmd.Stride);
+                    i1 = i * bmd.Width;
+
+                    for (j = 0; j < bmd.Width; ++j)
+                    {
+                        color = Convert.ToInt32(Convert.ToDouble(padre.actualV.datacubo.coresHorizontal[indice][i * bmd.Width + j] - minimoValor) * ((double)255) / range);
+                        if (color < 0) color = 0;
+                        if (color > 255) color = 255;
+                        b = Convert.ToByte(color);
+                        j1 = j * pixelSize;
+                        row[j1] = b;            // Red
+                        row[j1 + 1] = b;        // Green
+                        row[j1 + 2] = b;        // Blue
+                    }
+                }
+            }
+            imagen.UnlockBits(bmd);
+
+            return imagen;
+             */
+
+        }
+
+        /// <summary>
+        /// Normaliza una imagen de un corte vertical
+        /// </summary>
+        /// <param name="indice"></param>
+        /// <param name="minimoValor"></param>
+        /// <param name="maximoValor"></param>
+        /// <returns></returns>
+        private Bitmap NormalizarV(int indice, int minimoValor, int maximoValor)
+        {
+            int alto = padre.actualV.datacubo.dataCube[0].selector.Rows.Data;
+            int total = padre.actualV.datacubo.coresVertical[0].Count;
+
+            int ancho = Convert.ToInt32(Convert.ToDouble(total) / Convert.ToDouble(alto));
+            return RockStatic.MyDicom.CrearBitmap(padre.actualV.datacubo.coresVertical[indice], ancho, alto, minimoValor, maximoValor);
 
             /*
             // width height
@@ -701,35 +887,20 @@ namespace RockVision
 
             // maximos y minimos
 
-            /*
-            rangeCorteX.TotalMinimum = 0;
-            rangeCorteY.TotalMinimum = 0;
-            rangeCorteZ.TotalMinimum = 0;
-             */
-            trckPlanoX.Minimum = 0;
-            trckPlanoY.Minimum = 0;
-            trckPlanoZ.Minimum = 0;
+            trckPlanoXY.Minimum = 1;
+            trckPlanoXZ.Minimum = 1;
+            trckPlanoYZ.Minimum = 1;
+            trckPlanoXY.Maximum = padre.actualV.datacubo.dataCube.Count;
+            trckPlanoXZ.Maximum = padre.actualV.datacubo.coresHorizontal.Length;
+            trckPlanoYZ.Maximum = padre.actualV.datacubo.coresVertical.Length;
 
-            /*
-            rangeCorteX.TotalMaximum = trckPlanoX.Maximum = padre.actualV.datacubo.dataCube[0].selector.Columns.Data - 1;
-            rangeCorteY.TotalMaximum = trckPlanoY.Maximum = padre.actualV.datacubo.dataCube[0].selector.Rows.Data - 1;
-            rangeCorteZ.TotalMaximum = trckPlanoZ.Maximum = padre.actualV.datacubo.dataCube.Count - 1;
-            */
+            trckPlanoXY.Value = trckPlanoXY.Maximum / 2;
+            trckPlanoXZ.Value = trckPlanoXZ.Maximum / 2;
+            trckPlanoYZ.Value = trckPlanoYZ.Maximum / 2;
 
-            // valores de los trackbar
-
-            /*
-            rangeCorteX.RangeMinimum = rangeCorteX.TotalMinimum;
-            rangeCorteX.RangeMaximum = rangeCorteX.TotalMaximum;
-            rangeCorteY.RangeMinimum = rangeCorteY.TotalMinimum;
-            rangeCorteY.RangeMaximum = rangeCorteY.TotalMaximum;
-            rangeCorteZ.RangeMinimum = rangeCorteZ.TotalMinimum;
-            rangeCorteZ.RangeMaximum = rangeCorteZ.TotalMaximum;
-            */
-
-            trckPlanoX.Value = trckPlanoX.Maximum / 2;
-            trckPlanoY.Value = trckPlanoY.Maximum / 2;
-            trckPlanoZ.Value = trckPlanoZ.Maximum / 2;
+            lblPlanoXY.Text = "Plano XY: " + trckPlanoXY.Value.ToString();
+            lblPlanoXZ.Text = "Plano XZ: " + trckPlanoXZ.Value.ToString();
+            lblPlanoYZ.Text = "Plano YZ: " + trckPlanoYZ.Value.ToString();
 
             habilitarCambios = true;
 
@@ -1589,7 +1760,10 @@ namespace RockVision
                 renderer.SetBackground(0, 0, 0);
                 renderer.SetInteractive(0);
 
-                Visual3Dcortes();
+                // Visual3Dcortes();
+
+                Visual3Dplanos();
+                btnResetRot_Click(sender, e);
             }
             catch
             {
@@ -1597,9 +1771,352 @@ namespace RockVision
             }
         }
 
-        private void dataGrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        /// <summary>
+        /// Se encarga de visualizar los 3 planos secantes en el control VTK
+        /// </summary>
+        private void Visual3Dplanos()
         {
+            // se preparan y se guardan las texturas a cargar en los planos de corte
+            imagenXY = null;
+            imagenXZ = null;
+            imagenYZ = null;
 
+            if (chkNorm.Checked)
+            {
+                imagenXY = Normalizar(trckPlanoXY.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                imagenXZ = NormalizarH(trckPlanoXZ.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                imagenYZ = NormalizarV(trckPlanoYZ.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+            }
+            else
+            {
+                imagenXY = Umbralizar(trckPlanoXY.Value);
+                imagenXY = UmbralizarH(trckPlanoXZ.Value);
+                imagenXY = UmbralizarV(trckPlanoYZ.Value);                
+            }
+
+            imagenXY.MakeTransparent(Color.Black);
+            imagenXZ.MakeTransparent(Color.Black);
+            imagenYZ.MakeTransparent(Color.Black);
+
+            imagenXY.Save("imagenXY.png", ImageFormat.Png);
+            imagenXZ.Save("imagenXZ.png", ImageFormat.Png);
+            imagenYZ.Save("imagenYZ.png", ImageFormat.Png);
+
+            // se leen las imagenes desde disco para cargar a los planos
+            vtkPNGReader jpegreaderXY = new vtkPNGReader();
+            jpegreaderXY.SetFileName("imagenXY.png");
+
+            vtkPNGReader jpegreaderXZ = new vtkPNGReader();
+            jpegreaderXZ.SetFileName("imagenXZ.png");
+
+            vtkPNGReader jpegreaderYZ = new vtkPNGReader();
+            jpegreaderYZ.SetFileName("imagenYZ.png");
+
+            vtkPlaneSource planoXY = new vtkPlaneSource();
+            vtkPlaneSource planoXZ = new vtkPlaneSource();
+            vtkPlaneSource planoYZ = new vtkPlaneSource();
+
+            factor = 100;
+            double lx = Convert.ToDouble(imagenXY.Width) / factor;
+            double ly = Convert.ToDouble(imagenXY.Height) / factor; 
+            double lz = Convert.ToDouble(imagenXZ.Width) / factor;
+
+            double posicionZ = ((imagenXZ.Width / Convert.ToDouble(2)) - Convert.ToDouble(trckPlanoXY.Value*padre.actualV.datacubo.factorZ)) / factor;
+            double posicionY = ((imagenXY.Height / Convert.ToDouble(2)) - Convert.ToDouble(trckPlanoXZ.Value)) / factor;
+            double posicionX = ((imagenXY.Width / Convert.ToDouble(2)) - Convert.ToDouble(trckPlanoYZ.Value)) / factor;
+
+            planoXY = CrearPlano2(0, 0, posicionZ, lx, ly, 0, "z");
+            planoXZ = CrearPlano2(0, posicionY, 0, lx, 0, lz, "y");
+            planoYZ = CrearPlano2(posicionX, 0, 0, 0, ly, lz, "x");
+
+            vtkTexture textureXY = new vtkTexture();
+            textureXY.SetInputConnection(jpegreaderXY.GetOutputPort());
+
+            vtkTexture textureXZ = new vtkTexture();
+            textureXZ.SetInputConnection(jpegreaderXZ.GetOutputPort());
+
+            vtkTexture textureYZ = new vtkTexture();
+            textureYZ.SetInputConnection(jpegreaderYZ.GetOutputPort());
+
+            // plano XY
+            vtkPolyDataMapper planeMapperXY = vtkPolyDataMapper.New();
+            planeMapperXY.SetInputConnection(planoXY.GetOutputPort());
+
+            texturedPlaneXY = new vtkActor();
+            texturedPlaneXY.SetMapper(planeMapperXY);
+            texturedPlaneXY.SetTexture(textureXY);
+
+            // plano XZ
+            vtkPolyDataMapper planeMapperXZ = vtkPolyDataMapper.New();
+            planeMapperXZ.SetInputConnection(planoXZ.GetOutputPort());
+
+            texturedPlaneXZ = new vtkActor();
+            texturedPlaneXZ.SetMapper(planeMapperXZ);
+            texturedPlaneXZ.SetTexture(textureXZ);
+
+            // plano YZ
+            vtkPolyDataMapper planeMapperYZ = vtkPolyDataMapper.New();
+            planeMapperYZ.SetInputConnection(planoYZ.GetOutputPort());
+
+            texturedPlaneYZ = new vtkActor();
+            texturedPlaneYZ.SetMapper(planeMapperYZ);
+            texturedPlaneYZ.SetTexture(textureYZ);
+
+            renderer.AddActor(texturedPlaneXY);
+            renderer.AddActor(texturedPlaneXZ);
+            renderer.AddActor(texturedPlaneYZ);
+
+            vtkAxesActor axes = new vtkAxesActor();
+            vtkTextProperty prop = new vtkTextProperty();
+            prop.SetColor(1,1,1);
+            prop.SetBold(1);
+            prop.SetFontSize(20);
+            //prop.SetOpacity(0.8);
+            axes.GetXAxisCaptionActor2D().SetCaptionTextProperty(prop);
+            axes.GetYAxisCaptionActor2D().SetCaptionTextProperty(prop);
+            axes.GetZAxisCaptionActor2D().SetCaptionTextProperty(prop);
+
+            axes.GetXAxisCaptionActor2D().GetTextActor().SetTextScaleModeToNone();
+            axes.GetYAxisCaptionActor2D().GetTextActor().SetTextScaleModeToNone();
+            axes.GetZAxisCaptionActor2D().GetTextActor().SetTextScaleModeToNone();
+
+            axes.SetShaftTypeToCylinder();
+            axes.SetTotalLength(1, 1, 1);
+            axes.SetTipTypeToSphere();
+            
+            vtkRenderWindowInteractor renderWindowInteractor = new vtkRenderWindowInteractor();
+            renderWindowInteractor.SetRenderWindow(renderWindow);
+            renderWindowInteractor.SetInteractorStyle(new vtkInteractorStyleImage());
+           
+            vtkOrientationMarkerWidget widget = new vtkOrientationMarkerWidget();
+            widget.SetOutlineColor(0.9300, 0.5700, 0.1300);
+            widget.SetOrientationMarker(axes);
+            widget.SetInteractor(renderWindowInteractor);
+            //widget.SetViewport(0.0, 0.0, 0.4, 0.4);
+            widget.SetEnabled(1);
+            widget.InteractiveOff();
+
+            
+                        
+            //axes.GetXAxisTipProperty().SetRepresentationToWireframe();
+            //axes.GetXAxisTipProperty().SetOpacity(0.4);
+            //axes.GetXAxisShaftProperty().SetRepresentationToWireframe();
+            //axes.GetXAxisShaftProperty().SetOpacity(0.4);
+
+            //axes.GetYAxisTipProperty().SetRepresentationToWireframe();
+            //axes.GetYAxisTipProperty().SetOpacity(0.4);
+            //axes.GetYAxisShaftProperty().SetRepresentationToWireframe();
+            //axes.GetYAxisShaftProperty().SetOpacity(0.4);
+
+            //axes.GetZAxisTipProperty().SetRepresentationToWireframe();
+            //axes.GetZAxisTipProperty().SetOpacity(0.4);
+            //axes.GetZAxisShaftProperty().SetRepresentationToWireframe();
+            //axes.GetZAxisShaftProperty().SetOpacity(0.4);
+            
+
+            //renderer.AddActor(axes);
+
+            //vtkTransform transladar = new vtkTransform();
+            //transladar.Translate((3 * lx / 2), 0, lz/2);
+            //axes.SetUserTransform(transladar);
+
+            //renderer.AddActor(axes);
+
+            renderWindowInteractor.Start();
+        }
+
+        private void trckPlanoX_Scroll(object sender, EventArgs e)
+        {
+            // lz=imagenXZ.width
+            // el numero del corte transversal esta dado por trckPlanoXY
+            // se convierte a posicion de pixeles usando padre.actualV.datacubo.factorZ
+            // luego se reduce al factor que se usa en el ambiente 3D
+
+            double posZ = Convert.ToDouble(trckPlanoXY.Value) * padre.actualV.datacubo.factorZ / this.factor;
+
+            // esta posicion se debe restar al "cero"
+            posZ = ((Convert.ToDouble(imagenYZ.Width) / 2) / factor) - posZ;
+
+            vtkTransform transladar = new vtkTransform();
+            transladar.Translate(0, 0, posZ);
+
+            texturedPlaneXY.SetUserTransform(transladar);
+
+            renderer.Render();
+            renderWindowControl1.Refresh();
+
+            lblPlanoXY.Text = "Plano XY: " + (trckPlanoXY.Value).ToString();
+        }
+
+        /// <summary>
+        /// Crea un plano con posicion custom y normal a uno de los tres ejes cartesianos
+        /// </summary>
+        /// <param name="ox">centro del plano</param>
+        /// <param name="oy">centro del plano</param>
+        /// <param name="oz">centro del plano</param>
+        /// <param name="lx"></param>
+        /// <param name="ly"></param>
+        /// <param name="lz"></param>
+        /// <param name="eje"></param>
+        /// <returns></returns>
+        public vtkPlaneSource CrearPlano2(double ox, double oy, double oz, double lx, double ly, double lz, string eje)
+        {
+            vtkPlaneSource planeSource = new vtkPlaneSource();
+
+            planeSource.SetXResolution(1);
+            planeSource.SetYResolution(1);
+
+            double cx, cy, cz;
+
+            switch (eje)
+            {
+                case "x": // plano perpendicular al eje X, se dibuja en el plano YZ
+
+                    cx = ox;
+                    cy = oy - (ly / 2);
+                    cz = oz - (lz / 2);
+
+                    planeSource.SetOrigin(cx, cy, cz);
+                    planeSource.SetPoint1(cx, cy + ly, cz);
+                    planeSource.SetPoint2(cx, cy, cz + lz);
+                    planeSource.SetXResolution(Convert.ToInt32(ly));
+                    planeSource.SetYResolution(Convert.ToInt32(lz));
+
+                    planeSource.SetNormal(1, 0, 0);
+
+                    break;
+
+                case "y": // plano perpendicular al eje Y, se dibuja en el plano XZ
+
+                    cx = ox - (lx / 2);
+                    cy = oy;
+                    cz = oz - (lz / 2);
+
+                    planeSource.SetOrigin(cx, cy, cz);
+                    planeSource.SetPoint1(cx + lx, cy, cz);
+                    planeSource.SetPoint2(cx, cy, cz + lz);
+                    planeSource.SetXResolution(Convert.ToInt32(lx));
+                    planeSource.SetYResolution(Convert.ToInt32(lz));
+
+                    planeSource.SetNormal(0, 1, 0);
+
+                    break;
+
+                case "z": // plano perpendicular al eje Z, se dibuja en el plano XY
+
+                    cx = ox - (lx / 2);
+                    cy = oy - (ly / 2);
+                    cz = oz;
+
+                    planeSource.SetOrigin(cx, cy, cz);
+                    planeSource.SetPoint1(cx + lx, cy, cz);
+                    planeSource.SetPoint2(cx, cy + ly, cz);
+                    planeSource.SetXResolution(Convert.ToInt32(lx));
+                    planeSource.SetYResolution(Convert.ToInt32(ly));
+
+                    planeSource.SetNormal(0, 0, 1);
+
+                    break;
+            }
+
+            return planeSource;
+        }
+
+        private void trckRotX_Scroll(object sender, EventArgs e)
+        {
+            double valorRotarX = Convert.ToInt32(Convert.ToDouble(trckRotX.Value) / Convert.ToDouble(4)) -lastRotX;
+            lastRotX = Convert.ToDouble(trckRotX.Value) / Convert.ToDouble(4);
+
+            vtkTransform t = new vtkTransform();
+            t.RotateX((valorRotarX));
+
+            renderer.GetActiveCamera().ApplyTransform(t);
+            renderWindowControl1.Invalidate();
+        }
+
+        private void trckRotY_Scroll(object sender, EventArgs e)
+        {
+            double valorRotarY = Convert.ToInt32(Convert.ToDouble(trckRotY.Value) / Convert.ToDouble(4)) - lastRotY;
+            lastRotY = Convert.ToDouble(trckRotY.Value) / Convert.ToDouble(4);
+
+            vtkTransform t = new vtkTransform();
+            t.RotateY((valorRotarY));
+
+            renderer.GetActiveCamera().ApplyTransform(t);
+            renderWindowControl1.Invalidate();
+        }
+
+        private void trckRotZ_Scroll(object sender, EventArgs e)
+        {
+            double valorRotarZ = Convert.ToInt32(Convert.ToDouble(trckRotZ.Value) / Convert.ToDouble(4)) - lastRotZ;
+            lastRotZ = Convert.ToDouble(trckRotZ.Value) / Convert.ToDouble(4);
+
+            vtkTransform t = new vtkTransform();
+            t.RotateZ((valorRotarZ));
+
+            renderer.GetActiveCamera().ApplyTransform(t);
+            renderWindowControl1.Invalidate();
+        }
+
+        private void btnResetRot_Click(object sender, EventArgs e)
+        {
+            lastRotX = 0;
+            lastRotY = 0;
+            lastRotZ = 0;
+            trckRotX.Value = 0;
+            trckRotY.Value = 0;
+            trckRotZ.Value = 0;
+
+            //renderer.GetActiveCamera().SetPosition(position0[0], position0[1], position0[2]);
+            renderer.GetActiveCamera().SetPosition(6.551632,3.149799,7.519487);
+            renderer.GetActiveCamera().SetViewUp(-0.259344,0.931174,-0.256232);
+            renderer.GetActiveCamera().SetFocalPoint(-0.430526,-0.736878,0.461197);
+
+            renderer.ResetCameraClippingRange();
+            //renderer.ResetCamera();
+
+            renderWindowControl1.Invalidate();           
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("error");
+        }
+
+        private void trckPlanoXZ_Scroll(object sender, EventArgs e)
+        {
+            double posY = Convert.ToDouble(trckPlanoXZ.Value) / this.factor;
+
+            // esta posicion se debe restar al "cero"
+            posY = ((Convert.ToDouble(imagenXY.Height) / 2) / factor) - posY;
+
+            vtkTransform transladar = new vtkTransform();
+            transladar.Translate(0, posY, 0);
+
+            texturedPlaneXZ.SetUserTransform(transladar);
+
+            renderer.Render();
+            renderWindowControl1.Refresh();
+
+            lblPlanoXZ.Text = "Plano XZ: " + (trckPlanoXZ.Value).ToString();
+        }
+
+        private void trckPlanoYZ_Scroll(object sender, EventArgs e)
+        {
+            double posX = Convert.ToDouble(trckPlanoYZ.Value) / this.factor;
+
+            // esta posicion se debe restar al "cero"
+            posX = ((Convert.ToDouble(imagenXY.Width) / 2) / factor) - posX;
+
+            vtkTransform transladar = new vtkTransform();
+            transladar.Translate(posX, 0, 0);
+
+            texturedPlaneYZ.SetUserTransform(transladar);
+
+            renderer.Render();
+            renderWindowControl1.Refresh();
+
+            lblPlanoYZ.Text = "Plano YZ: " + (trckPlanoYZ.Value).ToString();
         }
     }
 }

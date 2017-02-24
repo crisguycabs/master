@@ -44,13 +44,13 @@
             this.pictTrans = new System.Windows.Forms.PictureBox();
             this.tabCortes = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.trckPlanoZ = new System.Windows.Forms.TrackBar();
-            this.label14 = new System.Windows.Forms.Label();
+            this.lblPlanoYZ = new System.Windows.Forms.Label();
+            this.lblPlanoXZ = new System.Windows.Forms.Label();
+            this.trckPlanoYZ = new System.Windows.Forms.TrackBar();
+            this.lblPlanoXY = new System.Windows.Forms.Label();
             this.btnResetPlano = new System.Windows.Forms.Button();
-            this.trckPlanoX = new System.Windows.Forms.TrackBar();
-            this.trckPlanoY = new System.Windows.Forms.TrackBar();
+            this.trckPlanoXY = new System.Windows.Forms.TrackBar();
+            this.trckPlanoXZ = new System.Windows.Forms.TrackBar();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label11 = new System.Windows.Forms.Label();
             this.trckTransparencia = new System.Windows.Forms.TrackBar();
@@ -94,15 +94,16 @@
             this.tab3D = new System.Windows.Forms.TabPage();
             this.tab2D = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictHor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackCorte)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictTrans)).BeginInit();
             this.tabCortes.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trckPlanoZ)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trckPlanoX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trckPlanoY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trckPlanoYZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trckPlanoXY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trckPlanoXZ)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trckTransparencia)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -211,13 +212,13 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.label12);
-            this.tabPage4.Controls.Add(this.label13);
-            this.tabPage4.Controls.Add(this.trckPlanoZ);
-            this.tabPage4.Controls.Add(this.label14);
+            this.tabPage4.Controls.Add(this.lblPlanoYZ);
+            this.tabPage4.Controls.Add(this.lblPlanoXZ);
+            this.tabPage4.Controls.Add(this.trckPlanoYZ);
+            this.tabPage4.Controls.Add(this.lblPlanoXY);
             this.tabPage4.Controls.Add(this.btnResetPlano);
-            this.tabPage4.Controls.Add(this.trckPlanoX);
-            this.tabPage4.Controls.Add(this.trckPlanoY);
+            this.tabPage4.Controls.Add(this.trckPlanoXY);
+            this.tabPage4.Controls.Add(this.trckPlanoXZ);
             this.tabPage4.Location = new System.Drawing.Point(4, 23);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(565, 58);
@@ -225,42 +226,43 @@
             this.tabPage4.Text = "Cortes Longitudinales";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // label12
+            // lblPlanoYZ
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(386, 37);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(32, 14);
-            this.label12.TabIndex = 24;
-            this.label12.Text = "Eje Z";
+            this.lblPlanoYZ.AutoSize = true;
+            this.lblPlanoYZ.Location = new System.Drawing.Point(364, 37);
+            this.lblPlanoYZ.Name = "lblPlanoYZ";
+            this.lblPlanoYZ.Size = new System.Drawing.Size(77, 14);
+            this.lblPlanoYZ.TabIndex = 24;
+            this.lblPlanoYZ.Text = "Plano YZ: 999";
             // 
-            // label13
+            // lblPlanoXZ
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(226, 37);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(32, 14);
-            this.label13.TabIndex = 23;
-            this.label13.Text = "Eje Y";
+            this.lblPlanoXZ.AutoSize = true;
+            this.lblPlanoXZ.Location = new System.Drawing.Point(204, 37);
+            this.lblPlanoXZ.Name = "lblPlanoXZ";
+            this.lblPlanoXZ.Size = new System.Drawing.Size(77, 14);
+            this.lblPlanoXZ.TabIndex = 23;
+            this.lblPlanoXZ.Text = "Plano XZ: 999";
             // 
-            // trckPlanoZ
+            // trckPlanoYZ
             // 
-            this.trckPlanoZ.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trckPlanoZ.Location = new System.Drawing.Point(322, 6);
-            this.trckPlanoZ.Maximum = 100;
-            this.trckPlanoZ.Name = "trckPlanoZ";
-            this.trckPlanoZ.Size = new System.Drawing.Size(160, 45);
-            this.trckPlanoZ.TabIndex = 21;
-            this.trckPlanoZ.TickFrequency = 5;
+            this.trckPlanoYZ.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.trckPlanoYZ.Location = new System.Drawing.Point(322, 6);
+            this.trckPlanoYZ.Maximum = 100;
+            this.trckPlanoYZ.Name = "trckPlanoYZ";
+            this.trckPlanoYZ.Size = new System.Drawing.Size(160, 45);
+            this.trckPlanoYZ.TabIndex = 21;
+            this.trckPlanoYZ.TickFrequency = 5;
+            this.trckPlanoYZ.Scroll += new System.EventHandler(this.trckPlanoYZ_Scroll);
             // 
-            // label14
+            // lblPlanoXY
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(66, 37);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(32, 14);
-            this.label14.TabIndex = 22;
-            this.label14.Text = "Eje X";
+            this.lblPlanoXY.AutoSize = true;
+            this.lblPlanoXY.Location = new System.Drawing.Point(44, 37);
+            this.lblPlanoXY.Name = "lblPlanoXY";
+            this.lblPlanoXY.Size = new System.Drawing.Size(76, 14);
+            this.lblPlanoXY.TabIndex = 22;
+            this.lblPlanoXY.Text = "Plano XY: 999";
             // 
             // btnResetPlano
             // 
@@ -273,25 +275,27 @@
             this.btnResetPlano.Text = "Reset";
             this.btnResetPlano.UseVisualStyleBackColor = true;
             // 
-            // trckPlanoX
+            // trckPlanoXY
             // 
-            this.trckPlanoX.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trckPlanoX.Location = new System.Drawing.Point(2, 6);
-            this.trckPlanoX.Maximum = 100;
-            this.trckPlanoX.Name = "trckPlanoX";
-            this.trckPlanoX.Size = new System.Drawing.Size(160, 45);
-            this.trckPlanoX.TabIndex = 19;
-            this.trckPlanoX.TickFrequency = 5;
+            this.trckPlanoXY.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.trckPlanoXY.Location = new System.Drawing.Point(2, 6);
+            this.trckPlanoXY.Maximum = 100;
+            this.trckPlanoXY.Name = "trckPlanoXY";
+            this.trckPlanoXY.Size = new System.Drawing.Size(160, 45);
+            this.trckPlanoXY.TabIndex = 19;
+            this.trckPlanoXY.TickFrequency = 5;
+            this.trckPlanoXY.Scroll += new System.EventHandler(this.trckPlanoX_Scroll);
             // 
-            // trckPlanoY
+            // trckPlanoXZ
             // 
-            this.trckPlanoY.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trckPlanoY.Location = new System.Drawing.Point(162, 6);
-            this.trckPlanoY.Maximum = 100;
-            this.trckPlanoY.Name = "trckPlanoY";
-            this.trckPlanoY.Size = new System.Drawing.Size(160, 45);
-            this.trckPlanoY.TabIndex = 20;
-            this.trckPlanoY.TickFrequency = 5;
+            this.trckPlanoXZ.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.trckPlanoXZ.Location = new System.Drawing.Point(162, 6);
+            this.trckPlanoXZ.Maximum = 100;
+            this.trckPlanoXZ.Name = "trckPlanoXZ";
+            this.trckPlanoXZ.Size = new System.Drawing.Size(160, 45);
+            this.trckPlanoXZ.TabIndex = 20;
+            this.trckPlanoXZ.TickFrequency = 5;
+            this.trckPlanoXZ.Scroll += new System.EventHandler(this.trckPlanoXZ_Scroll);
             // 
             // tabPage2
             // 
@@ -372,12 +376,13 @@
             // trckRotX
             // 
             this.trckRotX.Location = new System.Drawing.Point(6, 20);
-            this.trckRotX.Maximum = 360;
-            this.trckRotX.Minimum = -360;
+            this.trckRotX.Maximum = 1440;
+            this.trckRotX.Minimum = -1440;
             this.trckRotX.Name = "trckRotX";
             this.trckRotX.Size = new System.Drawing.Size(160, 45);
             this.trckRotX.TabIndex = 11;
-            this.trckRotX.TickFrequency = 45;
+            this.trckRotX.TickFrequency = 180;
+            this.trckRotX.Scroll += new System.EventHandler(this.trckRotX_Scroll);
             // 
             // btnResetRot
             // 
@@ -389,31 +394,34 @@
             this.btnResetRot.TabIndex = 10;
             this.btnResetRot.Text = "Reset";
             this.btnResetRot.UseVisualStyleBackColor = true;
+            this.btnResetRot.Click += new System.EventHandler(this.btnResetRot_Click);
             // 
             // trckRotZ
             // 
             this.trckRotZ.Location = new System.Drawing.Point(326, 20);
-            this.trckRotZ.Maximum = 360;
-            this.trckRotZ.Minimum = -360;
+            this.trckRotZ.Maximum = 1440;
+            this.trckRotZ.Minimum = -1440;
             this.trckRotZ.Name = "trckRotZ";
             this.trckRotZ.Size = new System.Drawing.Size(160, 45);
             this.trckRotZ.TabIndex = 13;
-            this.trckRotZ.TickFrequency = 45;
+            this.trckRotZ.TickFrequency = 180;
+            this.trckRotZ.Scroll += new System.EventHandler(this.trckRotZ_Scroll);
             // 
             // trckRotY
             // 
             this.trckRotY.Location = new System.Drawing.Point(166, 20);
-            this.trckRotY.Maximum = 360;
-            this.trckRotY.Minimum = -360;
+            this.trckRotY.Maximum = 1440;
+            this.trckRotY.Minimum = -1440;
             this.trckRotY.Name = "trckRotY";
             this.trckRotY.Size = new System.Drawing.Size(160, 45);
             this.trckRotY.TabIndex = 12;
-            this.trckRotY.TickFrequency = 45;
+            this.trckRotY.TickFrequency = 180;
+            this.trckRotY.Scroll += new System.EventHandler(this.trckRotY_Scroll);
             // 
             // renderWindowControl1
             // 
             this.renderWindowControl1.AddTestActors = false;
-            this.renderWindowControl1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.renderWindowControl1.BackColor = System.Drawing.Color.Black;
             this.renderWindowControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.renderWindowControl1.Location = new System.Drawing.Point(8, 6);
             this.renderWindowControl1.Name = "renderWindowControl1";
@@ -697,7 +705,6 @@
             this.dataGrid.TabIndex = 12;
             this.dataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_CellClick);
             this.dataGrid.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGrid_CellMouseClick);
-            this.dataGrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_CellValueChanged);
             this.dataGrid.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_RowValidated);
             // 
             // Column1
@@ -837,7 +844,7 @@
             this.tab3D.Padding = new System.Windows.Forms.Padding(3);
             this.tab3D.Size = new System.Drawing.Size(587, 593);
             this.tab3D.TabIndex = 1;
-            this.tab3D.Text = "Visualizacion3D";
+            this.tab3D.Text = "Visualizacion 3D";
             this.tab3D.Click += new System.EventHandler(this.tab3D_Click);
             // 
             // tab2D
@@ -869,6 +876,16 @@
             this.tabControl1.Size = new System.Drawing.Size(595, 620);
             this.tabControl1.TabIndex = 20;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(600, 612);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 27;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // VisualForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -876,6 +893,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(972, 650);
             this.ControlBox = false;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.chkUmbral);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.chkNorm);
@@ -899,9 +917,9 @@
             this.tabCortes.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trckPlanoZ)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trckPlanoX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trckPlanoY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trckPlanoYZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trckPlanoXY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trckPlanoXZ)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trckTransparencia)).EndInit();
@@ -983,15 +1001,16 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TrackBar trckTransparencia;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TrackBar trckPlanoZ;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lblPlanoYZ;
+        private System.Windows.Forms.Label lblPlanoXZ;
+        private System.Windows.Forms.TrackBar trckPlanoYZ;
+        private System.Windows.Forms.Label lblPlanoXY;
         private System.Windows.Forms.Button btnResetPlano;
-        private System.Windows.Forms.TrackBar trckPlanoX;
-        private System.Windows.Forms.TrackBar trckPlanoY;
+        private System.Windows.Forms.TrackBar trckPlanoXY;
+        private System.Windows.Forms.TrackBar trckPlanoXZ;
         private System.Windows.Forms.TabPage tab3D;
         private System.Windows.Forms.TabPage tab2D;
         private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.Button button1;
     }
 }

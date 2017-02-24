@@ -509,6 +509,11 @@
             Indica el ancho de la imagen segmentada resultante
             </summary>
         </member>
+        <member name="F:RockStatic.MyDataCube.factorZ">
+            <summary>
+            factor de escalado para el largo de los cortes horizontales y verticales
+            </summary>
+        </member>
         <member name="M:RockStatic.MyDataCube.#ctor">
             <summary>
             Constructor por defecto

@@ -56,6 +56,11 @@ namespace RockStatic
         public int widthSeg = 0;
 
         /// <summary>
+        /// factor de escalado para el largo de los cortes horizontales y verticales
+        /// </summary>
+        public double factorZ = 0;
+
+        /// <summary>
         /// Constructor por defecto
         /// </summary>
         public MyDataCube()
@@ -386,6 +391,8 @@ namespace RockStatic
             double resZ = Convert.ToDouble(dataCube[0].selector.SliceThickness.Data);
             double resXY = Convert.ToDouble(dataCube[0].selector.PixelSpacing.Data_[0]);
             int factor = Convert.ToInt32(resZ / resXY); { }
+
+            this.factorZ = factor;
 
             // se convierte a un List<ushort> para poder usarlo en el mapeo a Bitmap
             List<ushort> pixels16 = new List<ushort>();
