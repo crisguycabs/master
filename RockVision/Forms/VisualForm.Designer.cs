@@ -136,7 +136,7 @@
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(972, 30);
             this.lblTitulo.TabIndex = 19;
-            this.lblTitulo.Text = "BIENVENIDO";
+            this.lblTitulo.Text = "VISUALIZACION 2D/3D";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblTitulo.DoubleClick += new System.EventHandler(this.lblTitulo_DoubleClick);
             this.lblTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblTitulo_MouseDown);
@@ -209,6 +209,8 @@
             this.tabCortes.SelectedIndex = 0;
             this.tabCortes.Size = new System.Drawing.Size(573, 85);
             this.tabCortes.TabIndex = 19;
+            this.tabCortes.SelectedIndexChanged += new System.EventHandler(this.tabCortes_TabIndexChanged);
+            this.tabCortes.TabIndexChanged += new System.EventHandler(this.tabCortes_TabIndexChanged);
             // 
             // tabPage4
             // 
@@ -306,7 +308,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(565, 58);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Transparencia";
+            this.tabPage2.Text = "Dispersión";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // label11
@@ -322,13 +324,16 @@
             // 
             this.trckTransparencia.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.trckTransparencia.Location = new System.Drawing.Point(124, 13);
-            this.trckTransparencia.Maximum = 50;
-            this.trckTransparencia.Minimum = 10;
+            this.trckTransparencia.Maximum = 30;
+            this.trckTransparencia.Minimum = 5;
             this.trckTransparencia.Name = "trckTransparencia";
             this.trckTransparencia.Size = new System.Drawing.Size(160, 45);
             this.trckTransparencia.TabIndex = 11;
             this.trckTransparencia.TickFrequency = 5;
-            this.trckTransparencia.Value = 30;
+            this.trckTransparencia.Value = 20;
+            this.trckTransparencia.Scroll += new System.EventHandler(this.trckTransparencia_Scroll);
+            this.trckTransparencia.MouseDown += new System.Windows.Forms.MouseEventHandler(this.trckTransparencia_MouseDown);
+            this.trckTransparencia.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trckTransparencia_MouseUp);
             // 
             // groupBox2
             // 

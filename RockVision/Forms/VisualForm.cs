@@ -20,6 +20,8 @@ namespace RockVision
         double lastRotY = 0;
         double lastRotZ = 0;
 
+        bool mouseDownTransparencia = false;
+
         /// <summary>
         /// Referencia al MainForm padre
         /// </summary>
@@ -38,11 +40,6 @@ namespace RockVision
         System.Windows.Forms.TrackBar barPopup;
 
         bool controlValidar = true;
-
-        /// <summary>
-        /// serie para el chat
-        /// </summary>
-        int[] serieAll;
 
         int maxValAll = 0;
 
@@ -102,6 +99,13 @@ namespace RockVision
         /// imagen para el plano vertical
         /// </summary>
         Bitmap imagenYZ;
+
+        /// <summary>
+        /// array de texturas de valores nor
+        /// </summary>
+        vtkTexture[] texturasNormXY;
+
+
 
         vtkRenderWindow renderWindow;
         vtkRenderer renderer;
@@ -748,7 +752,7 @@ namespace RockVision
 
         private void VisualForm_Load(object sender, EventArgs e)
         {
-            padre.ShowWaiting("Espere mientras RockVision prepara la visualizacion 2D");
+            padre.ShowWaiting("Espere mientras RockVision prepara la visualizacion 2D y 3D");
 
             // colores favoritos para la segmentacion del histograma
             colores.Add(Color.DodgerBlue);
@@ -903,6 +907,9 @@ namespace RockVision
             lblPlanoYZ.Text = "Plano YZ: " + trckPlanoYZ.Value.ToString();
 
             habilitarCambios = true;
+
+            // se guardan TODAS las texturas en disco y luego se cargan al vtkTexture
+            // para l
 
             padre.CloseWaiting();
 
@@ -1753,6 +1760,7 @@ namespace RockVision
 
         private void renderWindowControl1_Load(object sender, EventArgs e)
         {
+            //padre.ShowWaiting("Espere mientras RockVision prepara la visualizacion 3D");
             try
             {
                 renderWindow = renderWindowControl1.RenderWindow;
@@ -1769,6 +1777,7 @@ namespace RockVision
             {
                 MessageBox.Show("error");
             }
+            //padre.CloseWaiting();
         }
 
         /// <summary>
@@ -1922,7 +1931,7 @@ namespace RockVision
 
             //renderer.AddActor(axes);
 
-            renderWindowInteractor.Start();
+            renderWindowInteractor.Start();            
         }
 
         private void trckPlanoX_Scroll(object sender, EventArgs e)
@@ -1942,10 +1951,91 @@ namespace RockVision
 
             texturedPlaneXY.SetUserTransform(transladar);
 
+            // se prepara la imagen a montar como textura
+            Bitmap imagen;
+            if (chkNorm.Checked)
+            {
+                imagen = Normalizar(trckPlanoXY.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);                
+            }
+            else
+            {
+                imagen = Umbralizar(trckPlanoXY.Value);                
+            }
+
+            /*
+            // se guarda la imagen en disco
+            //DateTime tini = DateTime.Now;
+            imagen.MakeTransparent(Color.Black);
+            imagen.Save("tempXY.png", ImageFormat.Png);
+            //DateTime tfinal = DateTime.Now;
+
+            // se carga la imagen y se prepara la textura
+            vtkPNGReader jpegreaderXY = new vtkPNGReader();
+            jpegreaderXY.SetFileName("tempXY.png");
+            vtkTexture textureXY = new vtkTexture();
+            textureXY.SetInputConnection(jpegreaderXY.GetOutputPort());
+
+            texturedPlaneXY.SetTexture(textureXY);*/
+
+            vtkImageImport import = new vtkImageImport();
+            import.SetDataExtent(0, imagen.Width - 1, 0, imagen.Height - 1, 0, 0);
+            import.SetDataScalarTypeToShort();
+            import.SetImportVoidPointer(GetPixels(imagen));
+            import.UpdateWholeExtent();
+
+            //vtkImageData imagenvtk = import.GetOutput();
+
+            vtkTexture textureXY = new vtkTexture();
+            textureXY.SetInputConnection(import.GetOutputPort());
+            texturedPlaneXY.SetTexture(textureXY);
+
+
             renderer.Render();
             renderWindowControl1.Refresh();
 
             lblPlanoXY.Text = "Plano XY: " + (trckPlanoXY.Value).ToString();
+        }
+
+        public System.IntPtr GetPixels(Bitmap imagen)
+        {
+            unsafe
+            {
+
+                BitmapData bmd = imagen.LockBits(new Rectangle(0, 0, imagen.Width, imagen.Height), System.Drawing.Imaging.ImageLockMode.ReadOnly, imagen.PixelFormat);
+
+                int indice = 0;
+                short[] colores = new short[imagen.Height * imagen.Width];
+
+
+
+                int pixelSize = 3;
+                int i, j, j1, i1;
+                byte b;
+
+                for (i = 0; i < bmd.Height; ++i)
+                {
+                    byte* row = (byte*)bmd.Scan0 + (i * bmd.Stride);
+                    i1 = i * bmd.Width;
+
+                    for (j = 0; j < bmd.Width; ++j)
+                    {
+                        // dado que es una imagen en escala de grises => los canales R G y B son el mismo valor
+                        j1 = j * pixelSize;
+                        b = row[j1];            // Red  
+
+                        indice = i1 + j;
+                        colores[indice] = (short)Convert.ToInt32(row[j1]);
+                    }
+                }
+
+                imagen.UnlockBits(bmd);
+
+                fixed (short* pArray = colores)
+                {
+                    IntPtr intPtr = new IntPtr((void*)pArray);
+                    return intPtr;
+                }
+            }
         }
 
         /// <summary>
@@ -2118,5 +2208,236 @@ namespace RockVision
 
             lblPlanoYZ.Text = "Plano YZ: " + (trckPlanoYZ.Value).ToString();
         }
+
+        private void tabCortes_TabIndexChanged(object sender, EventArgs e)
+        {
+            // se cambia el tab señalado
+            if (tabCortes.SelectedIndex == 1) // se ha seleccionado el modo de dispersion
+            {
+                // se limpia el control vtk
+                renderer.RemoveAllViewProps();
+                renderWindowControl1.Refresh();
+
+                Visual3DDispersion();
+            }
+        }
+
+        /// <summary>
+        /// Visualizacion en modo dispersion
+        /// </summary>
+        public void Visual3DDispersion()
+        {
+            // se prepara algo de informacion necesaria
+            
+            factor = 100;
+            double lx = Convert.ToDouble(padre.actualV.datacubo.dataCube[0].selector.Columns.Data) / factor;
+            double ly = Convert.ToDouble(padre.actualV.datacubo.dataCube[0].selector.Rows.Data) / factor;
+            
+            int alto = padre.actualV.datacubo.dataCube[0].selector.Rows.Data;
+            int total = padre.actualV.datacubo.coresVertical[0].Count;
+            int ancho = Convert.ToInt32(Convert.ToDouble(total) / Convert.ToDouble(alto));
+            double lz = Convert.ToDouble(ancho) / factor;
+
+            // se crea el cilindro de referencia
+            vtkCylinderSource cylinderSource = vtkCylinderSource.New();
+            cylinderSource.SetCenter(0.0, 0.0, 0.0);
+            cylinderSource.SetRadius(lx / 2);
+            cylinderSource.SetHeight(lz);
+            cylinderSource.SetResolution(20);
+
+            // Create a mapper and actor
+            vtkPolyDataMapper mapper = vtkPolyDataMapper.New();
+            mapper.SetInputConnection(cylinderSource.GetOutputPort());
+            vtkActor cilindro = vtkActor.New();
+            cilindro.SetMapper(mapper);
+            cilindro.GetProperty().SetOpacity(0.15);
+            cilindro.GetProperty().SetRepresentationToWireframe();
+            
+            vtkTransform t = new vtkTransform();
+            t.RotateX((90));
+            cilindro.SetUserTransform(t);
+
+            renderer.AddActor(cilindro);
+            
+
+            Random rnd = new Random(Environment.TickCount);
+
+            double centerx, centery, centerz;
+            int color;
+
+            double range=Convert.ToDouble(rangeBar.RangeMaximum-rangeBar.RangeMinimum);
+
+            vtkPoints points = new vtkPoints();
+
+            // se preparan los colores
+            vtkUnsignedCharArray colors = new vtkUnsignedCharArray();
+            colors.SetName("Colors");
+            colors.SetNumberOfComponents(3);
+            int probabilidad = 0;
+            
+            // se crean los puntos de dispersion
+
+            bool grises = chkNorm.Checked;
+
+            // se verifica si hay informacion de segmentacion. Si no hay entonces igual se grafica en grises
+            if ((dataGrid.Rows.Count > 0) & (!chkUmbral.Checked)) grises = true;
+
+            if (grises)
+            {
+                // se colocan los puntos en escala de grises
+
+                // se recorren todos los puntos, o punto de por medio
+                for (int k = 0; k < padre.actualV.datacubo.dataCube.Count; k = k + 4)
+                {
+                    for (int i = 0; i < padre.actualV.datacubo.dataCube[k].selector.Rows.Data; i = i + 3)
+                    {
+                        for (int j = 0; j < padre.actualV.datacubo.dataCube[k].selector.Columns.Data; j = j + 3)
+                        {
+                            // cada pixel se verifica si se grafica o no según la cantidad de puntos seleccionado en el trackbar trckTransparencia
+                            probabilidad = rnd.Next(0, 100);
+                            if (probabilidad < trckTransparencia.Value)
+                            {
+                                color = Convert.ToInt32(Convert.ToDouble(padre.actualV.datacubo.dataCube[k].pixelData[i * padre.actualV.datacubo.dataCube[k].selector.Columns.Data + j] - rangeBar.RangeMinimum) * ((double)255) / range);
+
+                                // solo entran los pixeles con un color mayor o igual a 5
+                                if (color >= 5)
+                                {
+                                    // el pixel entra a la visualizacion
+
+                                    if (color < 5) color = 5;       // normalizacion de los limites
+                                    if (color > 255) color = 255;
+
+                                    // coordenadas del pixel
+                                    centerz = (lz / 2) - (Convert.ToDouble(k) * padre.actualV.datacubo.factorZ / factor);
+                                    centerx = (lx / 2) - (Convert.ToDouble(i) / factor);
+                                    centery = (ly / 2) - (Convert.ToDouble(j) / factor);
+
+                                    points.InsertNextPoint(centerx, centery, centerz);
+                                    colors.InsertNextTuple3(color, color, color);
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+            else
+            {
+                // se colocan los puntos en modo segmentacion. un color para cada segmentacion
+
+                int rojo=0;
+                int verde=0;
+                int azul=0;
+
+                // se recorren todos los puntos, o punto de por medio
+                for (int k = 0; k < padre.actualV.datacubo.dataCube.Count; k = k + 4)
+                {
+                    for (int i = 0; i < padre.actualV.datacubo.dataCube[k].selector.Rows.Data; i = i + 3)
+                    {
+                        for (int j = 0; j < padre.actualV.datacubo.dataCube[k].selector.Columns.Data; j = j + 3)
+                        {
+                            // cada pixel se verifica si se grafica o no según la cantidad de puntos seleccionado en el trackbar trckTransparencia
+                            probabilidad = rnd.Next(0, 100);
+                            if (probabilidad < trckTransparencia.Value)
+                            {
+                                color = Convert.ToInt32(Convert.ToDouble(padre.actualV.datacubo.dataCube[k].pixelData[i * padre.actualV.datacubo.dataCube[k].selector.Columns.Data + j] - rangeBar.RangeMinimum) * ((double)255) / range);
+
+                                // solo entran los pixeles con un color mayor o igual a 5
+                                if (color >= 5)
+                                {
+                                    // el pixel entra a la visualizacion
+
+                                    // se busca a que intervalo pertenece el pixel
+                                    bool perteneceSegmentacion = false;
+
+                                    int iseg = 0;
+                                    int pixel = 0;
+                                    int minimo = 0;
+                                    int maximo = 0;
+                                    for (iseg = 0; iseg < dataGrid.Rows.Count; iseg++)
+                                    {
+                                        pixel = padre.actualV.datacubo.dataCube[k].pixelData[i * padre.actualV.datacubo.dataCube[k].selector.Columns.Data + j];
+                                        minimo = Convert.ToInt32(dataGrid.Rows[iseg].Cells[1].Value);
+                                        maximo = Convert.ToInt32(dataGrid.Rows[iseg].Cells[2].Value);
+                                        if ((pixel >= minimo) & (pixel <= maximo))
+                                        {
+                                            perteneceSegmentacion = true;
+                                            break;
+                                        }
+                                    }
+
+                                    if (perteneceSegmentacion)
+                                    {
+                                        rojo = Convert.ToInt32(dataGrid.Rows[iseg].Cells[3].Style.BackColor.R);
+                                        verde = Convert.ToInt32(dataGrid.Rows[iseg].Cells[3].Style.BackColor.G);
+                                        azul = Convert.ToInt32(dataGrid.Rows[iseg].Cells[3].Style.BackColor.B);
+
+                                        // coordenadas del pixel
+                                        centerz = (lz / 2) - (Convert.ToDouble(k) * padre.actualV.datacubo.factorZ / factor);
+                                        centerx = (lx / 2) - (Convert.ToDouble(i) / factor);
+                                        centery = (ly / 2) - (Convert.ToDouble(j) / factor);
+
+                                        points.InsertNextPoint(centerx, centery, centerz);
+                                        colors.InsertNextTuple3(rojo, verde, azul);
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+
+            vtkPolyData pointsPolyData = new vtkPolyData();
+            pointsPolyData.SetPoints(points);
+
+            vtkVertexGlyphFilter vertexFilter = new vtkVertexGlyphFilter();
+            vertexFilter.SetInputConnection(pointsPolyData.GetProducerPort());
+            vertexFilter.Update();
+
+            vtkPolyData polydata = new vtkPolyData();
+            polydata.ShallowCopy(vertexFilter.GetOutput());
+
+            polydata.GetPointData().SetScalars(colors);
+
+            vtkPolyDataMapper mapperPoints = vtkPolyDataMapper.New();
+            mapperPoints.SetInputConnection(polydata.GetProducerPort());
+
+            vtkActor actorPoints = new vtkActor();
+            actorPoints.SetMapper(mapperPoints);
+            actorPoints.GetProperty().SetPointSize(2);
+            actorPoints.GetProperty().SetOpacity(0.5);
+
+
+            renderer.AddActor(actorPoints);
+            renderWindowControl1.Refresh();
+        }
+
+        private void trckTransparencia_Scroll(object sender, EventArgs e)
+        {
+            if (mouseDownTransparencia) return;
+
+            renderer.RemoveAllViewProps();
+            renderWindowControl1.Refresh();
+
+            Visual3DDispersion();
+        }
+
+        private void trckTransparencia_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDownTransparencia = true;
+        }
+
+        private void trckTransparencia_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (!mouseDownTransparencia) return;
+
+            mouseDownTransparencia = false;
+
+            renderer.RemoveAllViewProps();
+            renderWindowControl1.Refresh();
+
+            Visual3DDispersion();
+        }        
     }
 }
