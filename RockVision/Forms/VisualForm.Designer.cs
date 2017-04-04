@@ -42,16 +42,6 @@
             this.labelSlide = new System.Windows.Forms.Label();
             this.trackBar = new System.Windows.Forms.TrackBar();
             this.pictTrans = new System.Windows.Forms.PictureBox();
-            this.tabCortes = new System.Windows.Forms.TabControl();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.lblPlanoYZ = new System.Windows.Forms.Label();
-            this.lblPlanoXZ = new System.Windows.Forms.Label();
-            this.trckPlanoYZ = new System.Windows.Forms.TrackBar();
-            this.lblPlanoXY = new System.Windows.Forms.Label();
-            this.btnResetPlano = new System.Windows.Forms.Button();
-            this.trckPlanoXY = new System.Windows.Forms.TrackBar();
-            this.trckPlanoXZ = new System.Windows.Forms.TrackBar();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label11 = new System.Windows.Forms.Label();
             this.trckTransparencia = new System.Windows.Forms.TrackBar();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -92,6 +82,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.rangeBar = new Zzzz.ZzzzRangeBar();
             this.tab3D = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tab2D = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.button1 = new System.Windows.Forms.Button();
@@ -99,12 +90,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackCorte)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictTrans)).BeginInit();
-            this.tabCortes.SuspendLayout();
-            this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trckPlanoYZ)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trckPlanoXY)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trckPlanoXZ)).BeginInit();
-            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trckTransparencia)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trckRotX)).BeginInit();
@@ -122,6 +107,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numNmax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numNmin)).BeginInit();
             this.tab3D.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.tab2D.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
@@ -200,121 +186,10 @@
             this.pictTrans.TabStop = false;
             this.pictTrans.Paint += new System.Windows.Forms.PaintEventHandler(this.pictTrans_Paint);
             // 
-            // tabCortes
-            // 
-            this.tabCortes.Controls.Add(this.tabPage4);
-            this.tabCortes.Controls.Add(this.tabPage2);
-            this.tabCortes.Location = new System.Drawing.Point(8, 499);
-            this.tabCortes.Name = "tabCortes";
-            this.tabCortes.SelectedIndex = 0;
-            this.tabCortes.Size = new System.Drawing.Size(573, 85);
-            this.tabCortes.TabIndex = 19;
-            this.tabCortes.SelectedIndexChanged += new System.EventHandler(this.tabCortes_TabIndexChanged);
-            this.tabCortes.TabIndexChanged += new System.EventHandler(this.tabCortes_TabIndexChanged);
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.lblPlanoYZ);
-            this.tabPage4.Controls.Add(this.lblPlanoXZ);
-            this.tabPage4.Controls.Add(this.trckPlanoYZ);
-            this.tabPage4.Controls.Add(this.lblPlanoXY);
-            this.tabPage4.Controls.Add(this.btnResetPlano);
-            this.tabPage4.Controls.Add(this.trckPlanoXY);
-            this.tabPage4.Controls.Add(this.trckPlanoXZ);
-            this.tabPage4.Location = new System.Drawing.Point(4, 23);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(565, 58);
-            this.tabPage4.TabIndex = 2;
-            this.tabPage4.Text = "Cortes Longitudinales";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // lblPlanoYZ
-            // 
-            this.lblPlanoYZ.AutoSize = true;
-            this.lblPlanoYZ.Location = new System.Drawing.Point(364, 37);
-            this.lblPlanoYZ.Name = "lblPlanoYZ";
-            this.lblPlanoYZ.Size = new System.Drawing.Size(77, 14);
-            this.lblPlanoYZ.TabIndex = 24;
-            this.lblPlanoYZ.Text = "Plano YZ: 999";
-            // 
-            // lblPlanoXZ
-            // 
-            this.lblPlanoXZ.AutoSize = true;
-            this.lblPlanoXZ.Location = new System.Drawing.Point(204, 37);
-            this.lblPlanoXZ.Name = "lblPlanoXZ";
-            this.lblPlanoXZ.Size = new System.Drawing.Size(77, 14);
-            this.lblPlanoXZ.TabIndex = 23;
-            this.lblPlanoXZ.Text = "Plano XZ: 999";
-            // 
-            // trckPlanoYZ
-            // 
-            this.trckPlanoYZ.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trckPlanoYZ.Location = new System.Drawing.Point(322, 6);
-            this.trckPlanoYZ.Maximum = 100;
-            this.trckPlanoYZ.Name = "trckPlanoYZ";
-            this.trckPlanoYZ.Size = new System.Drawing.Size(160, 45);
-            this.trckPlanoYZ.TabIndex = 21;
-            this.trckPlanoYZ.TickFrequency = 5;
-            this.trckPlanoYZ.Scroll += new System.EventHandler(this.trckPlanoYZ_Scroll);
-            // 
-            // lblPlanoXY
-            // 
-            this.lblPlanoXY.AutoSize = true;
-            this.lblPlanoXY.Location = new System.Drawing.Point(44, 37);
-            this.lblPlanoXY.Name = "lblPlanoXY";
-            this.lblPlanoXY.Size = new System.Drawing.Size(76, 14);
-            this.lblPlanoXY.TabIndex = 22;
-            this.lblPlanoXY.Text = "Plano XY: 999";
-            // 
-            // btnResetPlano
-            // 
-            this.btnResetPlano.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnResetPlano.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResetPlano.Location = new System.Drawing.Point(485, 6);
-            this.btnResetPlano.Name = "btnResetPlano";
-            this.btnResetPlano.Size = new System.Drawing.Size(75, 23);
-            this.btnResetPlano.TabIndex = 18;
-            this.btnResetPlano.Text = "Reset";
-            this.btnResetPlano.UseVisualStyleBackColor = true;
-            // 
-            // trckPlanoXY
-            // 
-            this.trckPlanoXY.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trckPlanoXY.Location = new System.Drawing.Point(2, 6);
-            this.trckPlanoXY.Maximum = 100;
-            this.trckPlanoXY.Name = "trckPlanoXY";
-            this.trckPlanoXY.Size = new System.Drawing.Size(160, 45);
-            this.trckPlanoXY.TabIndex = 19;
-            this.trckPlanoXY.TickFrequency = 5;
-            this.trckPlanoXY.Scroll += new System.EventHandler(this.trckPlanoX_Scroll);
-            // 
-            // trckPlanoXZ
-            // 
-            this.trckPlanoXZ.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trckPlanoXZ.Location = new System.Drawing.Point(162, 6);
-            this.trckPlanoXZ.Maximum = 100;
-            this.trckPlanoXZ.Name = "trckPlanoXZ";
-            this.trckPlanoXZ.Size = new System.Drawing.Size(160, 45);
-            this.trckPlanoXZ.TabIndex = 20;
-            this.trckPlanoXZ.TickFrequency = 5;
-            this.trckPlanoXZ.Scroll += new System.EventHandler(this.trckPlanoXZ_Scroll);
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.label11);
-            this.tabPage2.Controls.Add(this.trckTransparencia);
-            this.tabPage2.Location = new System.Drawing.Point(4, 23);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(565, 58);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Dispersión";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 20);
+            this.label11.Location = new System.Drawing.Point(12, 21);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(116, 14);
             this.label11.TabIndex = 15;
@@ -323,14 +198,14 @@
             // trckTransparencia
             // 
             this.trckTransparencia.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trckTransparencia.Location = new System.Drawing.Point(124, 13);
+            this.trckTransparencia.Location = new System.Drawing.Point(130, 19);
             this.trckTransparencia.Maximum = 30;
             this.trckTransparencia.Minimum = 5;
             this.trckTransparencia.Name = "trckTransparencia";
             this.trckTransparencia.Size = new System.Drawing.Size(160, 45);
             this.trckTransparencia.TabIndex = 11;
             this.trckTransparencia.TickFrequency = 5;
-            this.trckTransparencia.Value = 20;
+            this.trckTransparencia.Value = 10;
             this.trckTransparencia.Scroll += new System.EventHandler(this.trckTransparencia_Scroll);
             this.trckTransparencia.MouseDown += new System.Windows.Forms.MouseEventHandler(this.trckTransparencia_MouseDown);
             this.trckTransparencia.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trckTransparencia_MouseUp);
@@ -344,7 +219,7 @@
             this.groupBox2.Controls.Add(this.btnResetRot);
             this.groupBox2.Controls.Add(this.trckRotZ);
             this.groupBox2.Controls.Add(this.trckRotY);
-            this.groupBox2.Location = new System.Drawing.Point(8, 416);
+            this.groupBox2.Location = new System.Drawing.Point(8, 439);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(571, 77);
             this.groupBox2.TabIndex = 18;
@@ -430,7 +305,7 @@
             this.renderWindowControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.renderWindowControl1.Location = new System.Drawing.Point(8, 6);
             this.renderWindowControl1.Name = "renderWindowControl1";
-            this.renderWindowControl1.Size = new System.Drawing.Size(571, 404);
+            this.renderWindowControl1.Size = new System.Drawing.Size(571, 427);
             this.renderWindowControl1.TabIndex = 1;
             this.renderWindowControl1.TestText = null;
             this.renderWindowControl1.Load += new System.EventHandler(this.renderWindowControl1_Load);
@@ -836,21 +711,33 @@
             this.rangeBar.TabIndex = 1;
             this.rangeBar.TotalMaximum = 100;
             this.rangeBar.TotalMinimum = 10;
+            this.rangeBar.RangeChanged += new Zzzz.ZzzzRangeBar.RangeChangedEventHandler(this.rangeBar_RangeChanged);
             this.rangeBar.RangeChanging += new Zzzz.ZzzzRangeBar.RangeChangedEventHandler(this.rangeBar_RangeChanging);
             // 
             // tab3D
             // 
             this.tab3D.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tab3D.Controls.Add(this.tabCortes);
+            this.tab3D.Controls.Add(this.groupBox1);
             this.tab3D.Controls.Add(this.groupBox2);
             this.tab3D.Controls.Add(this.renderWindowControl1);
             this.tab3D.Location = new System.Drawing.Point(4, 23);
             this.tab3D.Name = "tab3D";
             this.tab3D.Padding = new System.Windows.Forms.Padding(3);
-            this.tab3D.Size = new System.Drawing.Size(587, 593);
+            this.tab3D.Size = new System.Drawing.Size(587, 843);
             this.tab3D.TabIndex = 1;
             this.tab3D.Text = "Visualizacion 3D";
             this.tab3D.Click += new System.EventHandler(this.tab3D_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.trckTransparencia);
+            this.groupBox1.Location = new System.Drawing.Point(8, 519);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(571, 66);
+            this.groupBox1.TabIndex = 19;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Dispersion";
             // 
             // tab2D
             // 
@@ -865,7 +752,7 @@
             this.tab2D.Location = new System.Drawing.Point(4, 23);
             this.tab2D.Name = "tab2D";
             this.tab2D.Padding = new System.Windows.Forms.Padding(3);
-            this.tab2D.Size = new System.Drawing.Size(587, 593);
+            this.tab2D.Size = new System.Drawing.Size(587, 843);
             this.tab2D.TabIndex = 0;
             this.tab2D.Text = "Visualizacion 2D";
             this.tab2D.Click += new System.EventHandler(this.tab2D_Click);
@@ -878,8 +765,9 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 30);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(595, 620);
+            this.tabControl1.Size = new System.Drawing.Size(595, 870);
             this.tabControl1.TabIndex = 20;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -896,7 +784,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(972, 650);
+            this.ClientSize = new System.Drawing.Size(972, 900);
             this.ControlBox = false;
             this.Controls.Add(this.button1);
             this.Controls.Add(this.chkUmbral);
@@ -919,14 +807,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackCorte)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictTrans)).EndInit();
-            this.tabCortes.ResumeLayout(false);
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trckPlanoYZ)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trckPlanoXY)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trckPlanoXZ)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trckTransparencia)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -947,6 +827,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numNmax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numNmin)).EndInit();
             this.tab3D.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tab2D.ResumeLayout(false);
             this.tab2D.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -1001,21 +883,12 @@
         private System.Windows.Forms.Button btnResetRot;
         private System.Windows.Forms.TrackBar trckRotZ;
         private System.Windows.Forms.TrackBar trckRotY;
-        private System.Windows.Forms.TabControl tabCortes;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TrackBar trckTransparencia;
-        private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.Label lblPlanoYZ;
-        private System.Windows.Forms.Label lblPlanoXZ;
-        private System.Windows.Forms.TrackBar trckPlanoYZ;
-        private System.Windows.Forms.Label lblPlanoXY;
-        private System.Windows.Forms.Button btnResetPlano;
-        private System.Windows.Forms.TrackBar trckPlanoXY;
-        private System.Windows.Forms.TrackBar trckPlanoXZ;
         private System.Windows.Forms.TabPage tab3D;
         private System.Windows.Forms.TabPage tab2D;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

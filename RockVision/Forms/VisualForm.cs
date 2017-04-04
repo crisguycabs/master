@@ -66,46 +66,16 @@ namespace RockVision
         bool habilitarCambios = true;
 
         /// <summary>
-        /// Plano secante XY
-        /// </summary>
-        vtkActor texturedPlaneXY;
-
-        /// <summary>
-        /// Plano secante XZ
-        /// </summary>
-        vtkActor texturedPlaneXZ;
-
-        /// <summary>
-        /// Plano secante YZ
-        /// </summary>
-        vtkActor texturedPlaneYZ;
-
-        /// <summary>
         /// Factor de escalado
         /// </summary>
         double factor;
 
         /// <summary>
-        /// imagen para el plano transversal
+        /// Indica si ya ha sido creado, o no, el renderwindow de VTK
         /// </summary>
-        Bitmap imagenXY;
+        bool renderCargado = false;
 
-        /// <summary>
-        /// imagen para el plano horizontal
-        /// </summary>
-        Bitmap imagenXZ;
-
-        /// <summary>
-        /// imagen para el plano vertical
-        /// </summary>
-        Bitmap imagenYZ;
-
-        /// <summary>
-        /// array de texturas de valores nor
-        /// </summary>
-        vtkTexture[] texturasNormXY;
-
-
+        DateTime dateRenderCargado;
 
         vtkRenderWindow renderWindow;
         vtkRenderer renderer;
@@ -194,7 +164,7 @@ namespace RockVision
 
                 // se agrega la serie
                 chart1.Series.Add(i.ToString());
-                
+
                 // se le da el color a la serie
                 chart1.Series[i + 2].Color = umbral[i].color;
                 chart1.Series[i + 2].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
@@ -209,7 +179,7 @@ namespace RockVision
                     {
                         chart1.Series[i + 2].Points.AddXY(padre.actualV.datacubo.bins[j], padre.actualV.datacubo.histograma[j]);
                     }
-                }                
+                }
             }
 
             chart1.ChartAreas[0].AxisX.Minimum = Convert.ToDouble(numHmin.Value);
@@ -773,8 +743,8 @@ namespace RockVision
             barPopup.Size = new Size(200, 23);
             barPopup.SmallChange = 1;
             barPopup.Scroll += barPopup_Scroll;
-            barPopup.Leave +=barPopup_Leave;
-            barPopup.LostFocus +=barPopup_Leave;
+            barPopup.Leave += barPopup_Leave;
+            barPopup.LostFocus += barPopup_Leave;
             barPopup.MouseLeave += barPopup_Leave;
 
             // se hallan el minimo y el maximo de todos los pixeles de dicom leidos para normalizar
@@ -810,7 +780,7 @@ namespace RockVision
             numNmax.Minimum = minPixelValue;
             numNmax.Maximum = maxPixelValue;
             habilitarCambios = true;
-            
+
             rango = maxPixelValue - minPixelValue;
 
             // se halla el maximo valor del histograma
@@ -821,7 +791,7 @@ namespace RockVision
             }
 
             ResetChart();
-                
+
             trackBar.Minimum = 0;
             trackBar.Maximum = padre.actualV.datacubo.dataCube.Count - 1;
             trackBar.Value = 0;
@@ -883,36 +853,6 @@ namespace RockVision
             {
             }
 
-            // se preparan los controles para RV3D
-
-            padre.ShowWaiting("Espere mientras RockVision prepara la visualizacion 3D");
-
-            habilitarCambios = false;
-
-            // maximos y minimos
-
-            trckPlanoXY.Minimum = 1;
-            trckPlanoXZ.Minimum = 1;
-            trckPlanoYZ.Minimum = 1;
-            trckPlanoXY.Maximum = padre.actualV.datacubo.dataCube.Count;
-            trckPlanoXZ.Maximum = padre.actualV.datacubo.coresHorizontal.Length;
-            trckPlanoYZ.Maximum = padre.actualV.datacubo.coresVertical.Length;
-
-            trckPlanoXY.Value = trckPlanoXY.Maximum / 2;
-            trckPlanoXZ.Value = trckPlanoXZ.Maximum / 2;
-            trckPlanoYZ.Value = trckPlanoYZ.Maximum / 2;
-
-            lblPlanoXY.Text = "Plano XY: " + trckPlanoXY.Value.ToString();
-            lblPlanoXZ.Text = "Plano XZ: " + trckPlanoXZ.Value.ToString();
-            lblPlanoYZ.Text = "Plano YZ: " + trckPlanoYZ.Value.ToString();
-
-            habilitarCambios = true;
-
-            // se guardan TODAS las texturas en disco y luego se cargan al vtkTexture
-            // para l
-
-            padre.CloseWaiting();
-
             // se cierra la ventana HomeForm
             if (padre.abiertoHomeForm) padre.homeForm.Close();
         }
@@ -922,17 +862,17 @@ namespace RockVision
         /// </summary>
         public void Visual3Dcortes()
         {
-            
+
             //// se recorre de manera tridimensional, primero el plano transversal y luego la profundidad, los puntos
             //// se agregan aquellos puntos que esten cerca/sobre el convex hull
 
             //// primero se revisan los limites en Z y luego en cada plano transversal
 
-            
-            
+
+
             //// se crean los puntos que pertenecen en la circunferencia
             //List<System.Drawing.Point> listaCirc = new List<Point>();
-            
+
             ///*
             //double dist = 0;
             //double tol = 0.5;
@@ -988,7 +928,7 @@ namespace RockVision
             //// se empiezan a agregar los puntos, en las coordenadas especificadas, al control VTK, con el correspondiente color
             //Visualize3DCortes(listaCirc);
 
-            
+
         }
 
         /// <summary>
@@ -1342,6 +1282,14 @@ namespace RockVision
             }
 
             SetSegmentacion2D();
+
+            if ((tabControl1.SelectedIndex == 1) && (renderCargado))
+            {
+                renderer.RemoveAllViewProps();
+                Visual3DDispersion();
+                btnResetRot_Click(sender, e);
+                renderWindowControl1.Refresh();
+            }
         }
 
         private void btnSubir_MouseEnter(object sender, EventArgs e)
@@ -1473,7 +1421,7 @@ namespace RockVision
             int factor = Convert.ToInt32(ancho / Convert.ToInt32(padre.actualV.datacubo.dataCube.Count));
 
             int pos = Convert.ToInt32((trackBar.Value * scale * factor) + xcero);
-            e.Graphics.DrawLine(brocha2, pos, 0, pos, pictHor.Height);            
+            e.Graphics.DrawLine(brocha2, pos, 0, pos, pictHor.Height);
         }
 
         private void pictTrans_Paint(object sender, PaintEventArgs e)
@@ -1646,10 +1594,25 @@ namespace RockVision
                 pictTrans.Image = Umbralizar(trackBar.Value);
                 pictHor.Image = UmbralizarH(trackCorte.Value);
             }
+
+            if ((tabControl1.SelectedIndex == 1) && (renderCargado))
+            {
+                try
+                {
+                    renderer.RemoveAllViewProps();
+                    renderWindowControl1.Refresh();
+                    renderWindowControl1_Load(sender, e);
+                }
+                catch
+                {
+
+                }
+            }
         }
 
         private void chkUmbral_CheckedChanged(object sender, EventArgs e)
         {
+
             chkNorm.Checked = !chkUmbral.Checked;
             groupUmbral.Enabled = chkUmbral.Checked;
 
@@ -1662,6 +1625,20 @@ namespace RockVision
             {
                 pictTrans.Image = Umbralizar(trackBar.Value);
                 pictHor.Image = UmbralizarH(trackCorte.Value);
+            }
+
+            if ((tabControl1.SelectedIndex == 1) && (renderCargado))
+            {
+                try
+                {
+                    renderer.RemoveAllViewProps();
+                    renderWindowControl1.Refresh();
+                    renderWindowControl1_Load(sender, e);
+                }
+                catch
+                {
+
+                }
             }
         }
 
@@ -1709,7 +1686,7 @@ namespace RockVision
                 pictGradiente.Image = CrearGradiente(rangeBar.RangeMinimum, rangeBar.RangeMaximum);
 
                 padre.actualV.normalizacion2D[0] = rangeBar.RangeMinimum;
-                
+
                 // se prepara la serie Selected
                 chart1.Series[0].Points.Clear();
                 chart1.Series[0].Points.AddXY(minPixelValue, 0);
@@ -1770,8 +1747,12 @@ namespace RockVision
 
                 // Visual3Dcortes();
 
-                Visual3Dplanos();
+                //Visual3Dplanos();
+                Visual3DDispersion();
                 btnResetRot_Click(sender, e);
+
+                renderCargado = true;
+                dateRenderCargado = DateTime.Now;
             }
             catch
             {
@@ -1785,6 +1766,8 @@ namespace RockVision
         /// </summary>
         private void Visual3Dplanos()
         {
+            /*
+
             // se preparan y se guardan las texturas a cargar en los planos de corte
             imagenXY = null;
             imagenXZ = null;
@@ -1931,69 +1914,9 @@ namespace RockVision
 
             //renderer.AddActor(axes);
 
-            renderWindowInteractor.Start();            
-        }
-
-        private void trckPlanoX_Scroll(object sender, EventArgs e)
-        {
-            // lz=imagenXZ.width
-            // el numero del corte transversal esta dado por trckPlanoXY
-            // se convierte a posicion de pixeles usando padre.actualV.datacubo.factorZ
-            // luego se reduce al factor que se usa en el ambiente 3D
-
-            double posZ = Convert.ToDouble(trckPlanoXY.Value) * padre.actualV.datacubo.factorZ / this.factor;
-
-            // esta posicion se debe restar al "cero"
-            posZ = ((Convert.ToDouble(imagenYZ.Width) / 2) / factor) - posZ;
-
-            vtkTransform transladar = new vtkTransform();
-            transladar.Translate(0, 0, posZ);
-
-            texturedPlaneXY.SetUserTransform(transladar);
-
-            // se prepara la imagen a montar como textura
-            Bitmap imagen;
-            if (chkNorm.Checked)
-            {
-                imagen = Normalizar(trckPlanoXY.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);                
-            }
-            else
-            {
-                imagen = Umbralizar(trckPlanoXY.Value);                
-            }
-
-            /*
-            // se guarda la imagen en disco
-            //DateTime tini = DateTime.Now;
-            imagen.MakeTransparent(Color.Black);
-            imagen.Save("tempXY.png", ImageFormat.Png);
-            //DateTime tfinal = DateTime.Now;
-
-            // se carga la imagen y se prepara la textura
-            vtkPNGReader jpegreaderXY = new vtkPNGReader();
-            jpegreaderXY.SetFileName("tempXY.png");
-            vtkTexture textureXY = new vtkTexture();
-            textureXY.SetInputConnection(jpegreaderXY.GetOutputPort());
-
-            texturedPlaneXY.SetTexture(textureXY);*/
-
-            vtkImageImport import = new vtkImageImport();
-            import.SetDataExtent(0, imagen.Width - 1, 0, imagen.Height - 1, 0, 0);
-            import.SetDataScalarTypeToShort();
-            import.SetImportVoidPointer(GetPixels(imagen));
-            import.UpdateWholeExtent();
-
-            //vtkImageData imagenvtk = import.GetOutput();
-
-            vtkTexture textureXY = new vtkTexture();
-            textureXY.SetInputConnection(import.GetOutputPort());
-            texturedPlaneXY.SetTexture(textureXY);
-
-
-            renderer.Render();
-            renderWindowControl1.Refresh();
-
-            lblPlanoXY.Text = "Plano XY: " + (trckPlanoXY.Value).ToString();
+            renderWindowInteractor.Start();
+            
+            */
         }
 
         public System.IntPtr GetPixels(Bitmap imagen)
@@ -2114,7 +2037,7 @@ namespace RockVision
 
         private void trckRotX_Scroll(object sender, EventArgs e)
         {
-            double valorRotarX = Convert.ToInt32(Convert.ToDouble(trckRotX.Value) / Convert.ToDouble(4)) -lastRotX;
+            double valorRotarX = Convert.ToInt32(Convert.ToDouble(trckRotX.Value) / Convert.ToDouble(4)) - lastRotX;
             lastRotX = Convert.ToDouble(trckRotX.Value) / Convert.ToDouble(4);
 
             vtkTransform t = new vtkTransform();
@@ -2158,68 +2081,19 @@ namespace RockVision
             trckRotZ.Value = 0;
 
             //renderer.GetActiveCamera().SetPosition(position0[0], position0[1], position0[2]);
-            renderer.GetActiveCamera().SetPosition(6.551632,3.149799,7.519487);
-            renderer.GetActiveCamera().SetViewUp(-0.259344,0.931174,-0.256232);
-            renderer.GetActiveCamera().SetFocalPoint(-0.430526,-0.736878,0.461197);
+            renderer.GetActiveCamera().SetPosition(6.551632, 3.149799, 7.519487);
+            renderer.GetActiveCamera().SetViewUp(-0.259344, 0.931174, -0.256232);
+            renderer.GetActiveCamera().SetFocalPoint(-0.430526, -0.736878, 0.461197);
 
             renderer.ResetCameraClippingRange();
             //renderer.ResetCamera();
 
-            renderWindowControl1.Invalidate();           
+            renderWindowControl1.Invalidate();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("error");
-        }
-
-        private void trckPlanoXZ_Scroll(object sender, EventArgs e)
-        {
-            double posY = Convert.ToDouble(trckPlanoXZ.Value) / this.factor;
-
-            // esta posicion se debe restar al "cero"
-            posY = ((Convert.ToDouble(imagenXY.Height) / 2) / factor) - posY;
-
-            vtkTransform transladar = new vtkTransform();
-            transladar.Translate(0, posY, 0);
-
-            texturedPlaneXZ.SetUserTransform(transladar);
-
-            renderer.Render();
-            renderWindowControl1.Refresh();
-
-            lblPlanoXZ.Text = "Plano XZ: " + (trckPlanoXZ.Value).ToString();
-        }
-
-        private void trckPlanoYZ_Scroll(object sender, EventArgs e)
-        {
-            double posX = Convert.ToDouble(trckPlanoYZ.Value) / this.factor;
-
-            // esta posicion se debe restar al "cero"
-            posX = ((Convert.ToDouble(imagenXY.Width) / 2) / factor) - posX;
-
-            vtkTransform transladar = new vtkTransform();
-            transladar.Translate(posX, 0, 0);
-
-            texturedPlaneYZ.SetUserTransform(transladar);
-
-            renderer.Render();
-            renderWindowControl1.Refresh();
-
-            lblPlanoYZ.Text = "Plano YZ: " + (trckPlanoYZ.Value).ToString();
-        }
-
-        private void tabCortes_TabIndexChanged(object sender, EventArgs e)
-        {
-            // se cambia el tab señalado
-            if (tabCortes.SelectedIndex == 1) // se ha seleccionado el modo de dispersion
-            {
-                // se limpia el control vtk
-                renderer.RemoveAllViewProps();
-                renderWindowControl1.Refresh();
-
-                Visual3DDispersion();
-            }
         }
 
         /// <summary>
@@ -2228,11 +2102,11 @@ namespace RockVision
         public void Visual3DDispersion()
         {
             // se prepara algo de informacion necesaria
-            
+
             factor = 100;
             double lx = Convert.ToDouble(padre.actualV.datacubo.dataCube[0].selector.Columns.Data) / factor;
             double ly = Convert.ToDouble(padre.actualV.datacubo.dataCube[0].selector.Rows.Data) / factor;
-            
+
             int alto = padre.actualV.datacubo.dataCube[0].selector.Rows.Data;
             int total = padre.actualV.datacubo.coresVertical[0].Count;
             int ancho = Convert.ToInt32(Convert.ToDouble(total) / Convert.ToDouble(alto));
@@ -2252,20 +2126,20 @@ namespace RockVision
             cilindro.SetMapper(mapper);
             cilindro.GetProperty().SetOpacity(0.15);
             cilindro.GetProperty().SetRepresentationToWireframe();
-            
+
             vtkTransform t = new vtkTransform();
             t.RotateX((90));
             cilindro.SetUserTransform(t);
 
             renderer.AddActor(cilindro);
-            
+
 
             Random rnd = new Random(Environment.TickCount);
 
             double centerx, centery, centerz;
             int color;
 
-            double range=Convert.ToDouble(rangeBar.RangeMaximum-rangeBar.RangeMinimum);
+            double range = Convert.ToDouble(rangeBar.RangeMaximum - rangeBar.RangeMinimum);
 
             vtkPoints points = new vtkPoints();
 
@@ -2274,7 +2148,7 @@ namespace RockVision
             colors.SetName("Colors");
             colors.SetNumberOfComponents(3);
             int probabilidad = 0;
-            
+
             // se crean los puntos de dispersion
 
             bool grises = chkNorm.Checked;
@@ -2325,9 +2199,9 @@ namespace RockVision
             {
                 // se colocan los puntos en modo segmentacion. un color para cada segmentacion
 
-                int rojo=0;
-                int verde=0;
-                int azul=0;
+                int rojo = 0;
+                int verde = 0;
+                int azul = 0;
 
                 // se recorren todos los puntos, o punto de por medio
                 for (int k = 0; k < padre.actualV.datacubo.dataCube.Count; k = k + 4)
@@ -2408,8 +2282,39 @@ namespace RockVision
             actorPoints.GetProperty().SetPointSize(2);
             actorPoints.GetProperty().SetOpacity(0.5);
 
-
             renderer.AddActor(actorPoints);
+
+            /*
+            vtkAxesActor axes = new vtkAxesActor();
+            vtkTextProperty prop = new vtkTextProperty();
+            prop.SetColor(1, 1, 1);
+            prop.SetBold(1);
+            prop.SetFontSize(20);
+            //prop.SetOpacity(0.8);
+            axes.GetXAxisCaptionActor2D().SetCaptionTextProperty(prop);
+            axes.GetYAxisCaptionActor2D().SetCaptionTextProperty(prop);
+            axes.GetZAxisCaptionActor2D().SetCaptionTextProperty(prop);
+
+            axes.GetXAxisCaptionActor2D().GetTextActor().SetTextScaleModeToNone();
+            axes.GetYAxisCaptionActor2D().GetTextActor().SetTextScaleModeToNone();
+            axes.GetZAxisCaptionActor2D().GetTextActor().SetTextScaleModeToNone();
+
+            axes.SetShaftTypeToCylinder();
+            axes.SetTotalLength(1, 1, 1);
+            axes.SetTipTypeToSphere();
+
+            vtkRenderWindowInteractor renderWindowInteractor = new vtkRenderWindowInteractor();
+            renderWindowInteractor.SetRenderWindow(renderWindow);
+            renderWindowInteractor.SetInteractorStyle(new vtkInteractorStyleImage());
+
+            vtkOrientationMarkerWidget widget = new vtkOrientationMarkerWidget();
+            widget.SetOutlineColor(0.9300, 0.5700, 0.1300);
+            widget.SetOrientationMarker(axes);
+            widget.SetInteractor(renderWindowInteractor);
+            //widget.SetViewport(0.0, 0.0, 0.4, 0.4);
+            widget.SetEnabled(1);
+            widget.InteractiveOn();*/
+
             renderWindowControl1.Refresh();
         }
 
@@ -2438,6 +2343,41 @@ namespace RockVision
             renderWindowControl1.Refresh();
 
             Visual3DDispersion();
-        }        
+        }
+
+        private void rangeBar_RangeChanged(object sender, EventArgs e)
+        {
+            // se cambio el rango de la normalizacion y se debe re-dibujar el VTK
+
+            // se verifica que se esté en el tab de VTK y se halla cargado el renderer
+
+            if ((tabControl1.SelectedIndex == 1) && (renderCargado))
+            {
+                renderer.RemoveAllViewProps();
+                Visual3DDispersion();
+                btnResetRot_Click(sender, e);
+                renderWindowControl1.Refresh();
+            }
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // se cambio la pestaña del tabcontrol y se verifica que recien no se halla cargado el renderwindow
+            // si el renderwindow ya ha sido cargado hace tiempo se pide re-dibujar el VTK para tomar los cambios en normalizacion y umbralizacion
+
+            DateTime now = DateTime.Now;
+
+            if ((now - dateRenderCargado).TotalMilliseconds >= 500)
+            { 
+                // han pasado mas de 500ms desde que se cargo el renderwindow, asi que se debe re-dibujar el vtk
+                if ((tabControl1.SelectedIndex == 1) && (renderCargado))
+                {
+                    renderer.RemoveAllViewProps();
+                    Visual3DDispersion();
+                    btnResetRot_Click(sender, e);
+                    renderWindowControl1.Refresh();
+                }
+            }
+        }
     }
 }
