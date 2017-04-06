@@ -213,12 +213,12 @@ namespace RockVision
             if (chkNorm.Checked)
             {
                 pictTrans.Image = Normalizar(trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
-                pictHor.Image = NormalizarH(trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                pictHor.Image = NormalizarH(trackHor.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
             }
             else
             {
                 pictTrans.Image = Umbralizar(trackBar.Value);
-                pictHor.Image = UmbralizarH(trackCorte.Value);
+                pictHor.Image = UmbralizarH(trackHor.Value);
             }
 
             controlValidar = true;
@@ -323,7 +323,7 @@ namespace RockVision
             // failsafe: no hay valores de umbralizacion
             if (umbral.Count <= 0)
             {
-                return NormalizarH(trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                return NormalizarH(trackHor.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
             }
 
             int alto = padre.actualV.datacubo.dataCube[0].selector.Columns.Data;
@@ -414,7 +414,7 @@ namespace RockVision
             // failsafe: no hay valores de umbralizacion
             if (umbral.Count <= 0)
             {
-                return NormalizarV(trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                return NormalizarV(trackHor.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
             }
 
             int alto = padre.actualV.datacubo.dataCube[0].selector.Rows.Data;
@@ -800,13 +800,21 @@ namespace RockVision
 
             pictTrans.Image = Normalizar(0, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
 
-            trackCorte.Minimum = 0;
-            trackCorte.Maximum = padre.actualV.datacubo.coresHorizontal.Length - 1;
-            trackCorte.Value = Convert.ToInt32(padre.actualV.datacubo.coresHorizontal.Length / 2);
-            trackBar.TickFrequency = Convert.ToInt32(padre.actualV.datacubo.coresHorizontal.Length / 100);
-            labelCorte.Text = "Corte " + (trackCorte.Value + 1).ToString() + " de " + padre.actualV.datacubo.coresHorizontal.Length;
+            trackHor.Minimum = 0;
+            trackHor.Maximum = padre.actualV.datacubo.coresHorizontal.Length - 1;
+            trackHor.Value = Convert.ToInt32(padre.actualV.datacubo.coresHorizontal.Length / 2);
+            trackHor.TickFrequency = Convert.ToInt32(padre.actualV.datacubo.coresHorizontal.Length / 100);
+            lblHor.Text = "Corte " + (trackHor.Value + 1).ToString() + " de " + padre.actualV.datacubo.coresHorizontal.Length;
 
-            pictHor.Image = NormalizarH(trackCorte.Value, minPixelValue, maxPixelValue);
+            pictHor.Image = NormalizarH(trackHor.Value, minPixelValue, maxPixelValue);
+
+            trackVer.Minimum = 0;
+            trackVer.Maximum = padre.actualV.datacubo.coresVertical.Length - 1;
+            trackVer.Value = Convert.ToInt32(padre.actualV.datacubo.coresVertical.Length / 2);
+            trackVer.TickFrequency = Convert.ToInt32(padre.actualV.datacubo.coresVertical.Length / 100);
+            lblVer.Text = "Corte " + (trackVer.Value + 1).ToString() + " de " + padre.actualV.datacubo.coresVertical.Length;
+
+            pictVer.Image = NormalizarH(trackVer.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
 
             pictGradiente.Image = CrearGradiente(rangeBar.RangeMinimum, rangeBar.RangeMaximum);
 
@@ -831,6 +839,7 @@ namespace RockVision
 
             pictHor.Invalidate();
             pictTrans.Invalidate();
+            pictVer.Invalidate();
 
             // si existe informacion de la segmentacion se carga en el datagrid
             try
@@ -1125,7 +1134,8 @@ namespace RockVision
             // se debe ajustar la imagen normalizada, y umbralizada, de cada dicom segun se vaya cambiando el rangebar
             // se pregunta si se debe tambien umbralizar, o si solo es necesario normalizar y presentar la imagen normalizada
             pictTrans.Image = Normalizar(this.trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
-            pictHor.Image = NormalizarH(this.trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+            pictHor.Image = NormalizarH(this.trackHor.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+            pictVer.Image = NormalizarH(this.trackVer.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
 
             pictGradiente.Image = CrearGradiente(rangeBar.RangeMinimum, rangeBar.RangeMaximum);
 
@@ -1145,12 +1155,14 @@ namespace RockVision
                     if (chkNorm.Checked)
                     {
                         pictTrans.Image = Normalizar(trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
-                        pictHor.Image = NormalizarH(trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                        pictHor.Image = NormalizarH(trackHor.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                        pictVer.Image=NormalizarH(trackVer.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
                     }
                     else
                     {
                         pictTrans.Image = Umbralizar(trackBar.Value);
-                        pictHor.Image = UmbralizarH(trackCorte.Value);
+                        pictHor.Image = UmbralizarH(trackHor.Value);
+                        pictVer.Image = UmbralizarH(trackVer.Value);
                     }
                 }
             }
@@ -1187,7 +1199,7 @@ namespace RockVision
             {
                 Controls.Remove(barPopup);
                 popup = false;
-            }
+            }           
         }
 
         private void dataGrid_RowValidated(object sender, DataGridViewCellEventArgs e)
@@ -1273,12 +1285,14 @@ namespace RockVision
             if (chkNorm.Checked)
             {
                 pictTrans.Image = Normalizar(trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
-                pictHor.Image = NormalizarH(trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                pictHor.Image = NormalizarH(trackHor.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                pictVer.Image = NormalizarH(trackVer.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
             }
             else
             {
                 pictTrans.Image = Umbralizar(trackBar.Value);
-                pictHor.Image = UmbralizarH(trackCorte.Value);
+                pictHor.Image = UmbralizarH(trackHor.Value);
+                pictVer.Image = UmbralizarH(trackVer.Value);
             }
 
             SetSegmentacion2D();
@@ -1311,7 +1325,7 @@ namespace RockVision
             ResetChart();
 
             pictTrans.Image = Umbralizar(trackBar.Value);
-            pictHor.Image = UmbralizarH(trackCorte.Value);
+            pictHor.Image = UmbralizarH(trackHor.Value);
 
             SetSegmentacion2D();
         }
@@ -1324,7 +1338,7 @@ namespace RockVision
             ResetChart();
 
             pictTrans.Image = Normalizar(trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
-            pictHor.Image = NormalizarH(trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+            pictHor.Image = NormalizarH(trackHor.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
 
             SetSegmentacion2D();
         }
@@ -1422,6 +1436,9 @@ namespace RockVision
 
             int pos = Convert.ToInt32((trackBar.Value * scale * factor) + xcero);
             e.Graphics.DrawLine(brocha2, pos, 0, pos, pictHor.Height);
+
+            pos = Convert.ToInt32((trackVer.Value * scale) + ycero);
+            e.Graphics.DrawLine(brocha2, 0, pos, pictHor.Width, pos);
         }
 
         private void pictTrans_Paint(object sender, PaintEventArgs e)
@@ -1466,8 +1483,11 @@ namespace RockVision
                 xcero = (boxWidth - scale * imgWidth) / 2;
             }
 
-            int pos = Convert.ToInt32((trackCorte.Value * scale) + ycero);
+            int pos = Convert.ToInt32((trackHor.Value * scale) + ycero);
             e.Graphics.DrawLine(brocha2, 0, pos, pictTrans.Width, pos);
+
+            pos = Convert.ToInt32((trackVer.Value * scale) + xcero);
+            e.Graphics.DrawLine(brocha2, pos, 0, pos, pictTrans.Height);
         }
 
         private void trackBar_Scroll(object sender, EventArgs e)
@@ -1477,16 +1497,18 @@ namespace RockVision
             if (chkNorm.Checked)
             {
                 pictTrans.Image = Normalizar(trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
-                pictHor.Image = NormalizarH(trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                pictHor.Image = NormalizarH(trackHor.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
             }
             else
             {
                 pictTrans.Image = Umbralizar(trackBar.Value);
-                pictHor.Image = UmbralizarH(trackCorte.Value);
+                pictHor.Image = UmbralizarH(trackHor.Value);
             }
 
             labelSlide.Text = "Slide " + (trackBar.Value + 1) + " de " + padre.actualV.datacubo.dataCube.Count;
+            
             pictHor.Invalidate();
+            pictVer.Invalidate();
 
             //SetHistogramaSlide(trackBar.Value);
         }
@@ -1498,16 +1520,18 @@ namespace RockVision
             if (chkNorm.Checked)
             {
                 pictTrans.Image = Normalizar(trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
-                pictHor.Image = NormalizarH(trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                pictHor.Image = NormalizarH(trackHor.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
             }
             else
             {
                 pictTrans.Image = Umbralizar(trackBar.Value);
-                pictHor.Image = UmbralizarH(trackCorte.Value);
+                pictHor.Image = UmbralizarH(trackHor.Value);
             }
 
-            labelCorte.Text = "Corte " + (trackCorte.Value + 1) + " de " + padre.actualV.datacubo.dataCube[0].selector.Rows.Data;
+            lblHor.Text = "Corte " + (trackHor.Value + 1) + " de " + padre.actualV.datacubo.dataCube[0].selector.Rows.Data;
+
             pictTrans.Invalidate();
+            pictVer.Invalidate();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -1547,12 +1571,12 @@ namespace RockVision
             if (chkNorm.Checked)
             {
                 pictTrans.Image = Normalizar(trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
-                pictHor.Image = NormalizarH(trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                pictHor.Image = NormalizarH(trackHor.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
             }
             else
             {
                 pictTrans.Image = Umbralizar(trackBar.Value);
-                pictHor.Image = UmbralizarH(trackCorte.Value);
+                pictHor.Image = UmbralizarH(trackHor.Value);
             }
 
             SetSegmentacion2D();
@@ -1587,12 +1611,14 @@ namespace RockVision
             if (chkNorm.Checked)
             {
                 pictTrans.Image = Normalizar(trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
-                pictHor.Image = NormalizarH(trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                pictHor.Image = NormalizarH(trackHor.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                pictVer.Image = NormalizarH(trackVer.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
             }
             else
             {
                 pictTrans.Image = Umbralizar(trackBar.Value);
-                pictHor.Image = UmbralizarH(trackCorte.Value);
+                pictHor.Image = UmbralizarH(trackHor.Value);
+                pictVer.Image = UmbralizarH(trackVer.Value);
             }
 
             if ((tabControl1.SelectedIndex == 1) && (renderCargado))
@@ -1619,12 +1645,14 @@ namespace RockVision
             if (chkNorm.Checked)
             {
                 pictTrans.Image = Normalizar(trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
-                pictHor.Image = NormalizarH(trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                pictHor.Image = NormalizarH(trackHor.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                pictVer.Image = NormalizarH(trackVer.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
             }
             else
             {
                 pictTrans.Image = Umbralizar(trackBar.Value);
-                pictHor.Image = UmbralizarH(trackCorte.Value);
+                pictHor.Image = UmbralizarH(trackHor.Value);
+                pictVer.Image = UmbralizarH(trackVer.Value);
             }
 
             if ((tabControl1.SelectedIndex == 1) && (renderCargado))
@@ -1681,7 +1709,7 @@ namespace RockVision
                 // se debe ajustar la imagen normalizada, y umbralizada, de cada dicom segun se vaya cambiando el rangebar
                 // se pregunta si se debe tambien umbralizar, o si solo es necesario normalizar y presentar la imagen normalizada
                 pictTrans.Image = Normalizar(this.trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
-                pictHor.Image = NormalizarH(this.trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                pictHor.Image = NormalizarH(this.trackHor.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
 
                 pictGradiente.Image = CrearGradiente(rangeBar.RangeMinimum, rangeBar.RangeMaximum);
 
@@ -1711,7 +1739,7 @@ namespace RockVision
                 // se debe ajustar la imagen normalizada, y umbralizada, de cada dicom segun se vaya cambiando el rangebar
                 // se pregunta si se debe tambien umbralizar, o si solo es necesario normalizar y presentar la imagen normalizada
                 pictTrans.Image = Normalizar(this.trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
-                pictHor.Image = NormalizarH(this.trackCorte.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                pictHor.Image = NormalizarH(this.trackHor.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
 
                 pictGradiente.Image = CrearGradiente(rangeBar.RangeMinimum, rangeBar.RangeMaximum);
 
@@ -2378,6 +2406,84 @@ namespace RockVision
                     renderWindowControl1.Refresh();
                 }
             }
+        }
+
+        private void trackVer_Scroll(object sender, EventArgs e)
+        {
+            // se debe ajustar la imagen normalizada, y umbralizada, de cada dicom segun se vaya cambiando el trackbar
+
+            if (chkNorm.Checked)
+            {
+                pictTrans.Image = Normalizar(trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                pictHor.Image = NormalizarH(trackHor.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                pictVer.Image = NormalizarH(trackVer.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+            }
+            else
+            {
+                pictTrans.Image = Umbralizar(trackBar.Value);
+                pictHor.Image = UmbralizarH(trackHor.Value);
+                pictVer.Image = UmbralizarH(trackVer.Value);
+            }
+
+            lblVer.Text = "Corte " + (trackVer.Value + 1) + " de " + padre.actualV.datacubo.dataCube[0].selector.Columns.Data;
+
+            pictTrans.Invalidate();
+            pictHor.Invalidate();
+        }
+
+        private void pictVer_Paint(object sender, PaintEventArgs e)
+        {
+            // se pintan la linea de posicion
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+            double imgWidth = pictVer.Image.Width;
+            double imgHeight = pictVer.Image.Height;
+            double boxWidth = pictVer.Size.Width;
+            double boxHeight = pictVer.Size.Height;
+
+            double scale;
+            double ycero = 0;
+            double xcero = 0;
+
+            Pen brocha2 = new Pen(Color.FromArgb(128, 0, 255, 0));
+            brocha2.Width = 3;
+
+            if (imgWidth / imgHeight > boxWidth / boxHeight)
+            {
+                //If true, that means that the image is stretched through the width of the control.
+                //'In other words: the image is limited by the width.
+
+                //The scale of the image in the Picture Box.
+                scale = boxWidth / imgWidth;
+
+                //Since the image is in the middle, this code is used to determinate the empty space in the height
+                //'by getting the difference between the box height and the image actual displayed height and dividing it by 2.
+                ycero = (boxHeight - scale * imgHeight) / 2;
+            }
+            else
+            {
+                //If false, that means that the image is stretched through the height of the control.
+                //'In other words: the image is limited by the height.
+
+                //The scale of the image in the Picture Box.
+                scale = boxHeight / imgHeight;
+
+                //Since the image is in the middle, this code is used to determinate the empty space in the width
+                //'by getting the difference between the box width and the image actual displayed width and dividing it by 2.
+                xcero = (boxWidth - scale * imgWidth) / 2;
+            }
+
+            // se averigua el factor de escalado del corte vertical
+            double alto = padre.actualV.datacubo.dataCube[0].selector.Rows.Data;
+            double total = padre.actualV.datacubo.coresHorizontal[0].Count;
+            double ancho = Convert.ToInt32(total / alto);
+            int factor = Convert.ToInt32(ancho / Convert.ToInt32(padre.actualV.datacubo.dataCube.Count));
+
+            int pos = Convert.ToInt32((trackBar.Value * scale * factor) + xcero);
+            e.Graphics.DrawLine(brocha2, pos, 0, pos, pictVer.Height);
+
+            pos = Convert.ToInt32((trackHor.Value * scale) + ycero);
+            e.Graphics.DrawLine(brocha2, 0, pos, pictVer.Width, pos);
         }
     }
 }

@@ -37,8 +37,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VisualForm));
             this.lblTitulo = new System.Windows.Forms.Label();
             this.pictHor = new System.Windows.Forms.PictureBox();
-            this.labelCorte = new System.Windows.Forms.Label();
-            this.trackCorte = new System.Windows.Forms.TrackBar();
+            this.lblHor = new System.Windows.Forms.Label();
+            this.trackHor = new System.Windows.Forms.TrackBar();
             this.labelSlide = new System.Windows.Forms.Label();
             this.trackBar = new System.Windows.Forms.TrackBar();
             this.pictTrans = new System.Windows.Forms.PictureBox();
@@ -86,8 +86,11 @@
             this.tab2D = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.button1 = new System.Windows.Forms.Button();
+            this.pictVer = new System.Windows.Forms.PictureBox();
+            this.lblVer = new System.Windows.Forms.Label();
+            this.trackVer = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictHor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackCorte)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackHor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictTrans)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trckTransparencia)).BeginInit();
@@ -110,6 +113,8 @@
             this.groupBox1.SuspendLayout();
             this.tab2D.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictVer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackVer)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -133,29 +138,29 @@
             this.pictHor.BackColor = System.Drawing.Color.Black;
             this.pictHor.Location = new System.Drawing.Point(8, 416);
             this.pictHor.Name = "pictHor";
-            this.pictHor.Size = new System.Drawing.Size(573, 117);
+            this.pictHor.Size = new System.Drawing.Size(573, 160);
             this.pictHor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictHor.TabIndex = 24;
             this.pictHor.TabStop = false;
             this.pictHor.Paint += new System.Windows.Forms.PaintEventHandler(this.pictHor_Paint);
             // 
-            // labelCorte
+            // lblHor
             // 
-            this.labelCorte.Location = new System.Drawing.Point(431, 571);
-            this.labelCorte.Name = "labelCorte";
-            this.labelCorte.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelCorte.Size = new System.Drawing.Size(150, 13);
-            this.labelCorte.TabIndex = 21;
-            this.labelCorte.Text = "Corte 0 de 0";
-            this.labelCorte.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblHor.Location = new System.Drawing.Point(431, 610);
+            this.lblHor.Name = "lblHor";
+            this.lblHor.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblHor.Size = new System.Drawing.Size(150, 13);
+            this.lblHor.TabIndex = 21;
+            this.lblHor.Text = "Corte 0 de 0";
+            this.lblHor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // trackCorte
+            // trackHor
             // 
-            this.trackCorte.Location = new System.Drawing.Point(8, 539);
-            this.trackCorte.Name = "trackCorte";
-            this.trackCorte.Size = new System.Drawing.Size(573, 45);
-            this.trackCorte.TabIndex = 20;
-            this.trackCorte.Scroll += new System.EventHandler(this.trackCorte_Scroll);
+            this.trackHor.Location = new System.Drawing.Point(8, 578);
+            this.trackHor.Name = "trackHor";
+            this.trackHor.Size = new System.Drawing.Size(573, 45);
+            this.trackHor.TabIndex = 20;
+            this.trackHor.Scroll += new System.EventHandler(this.trackCorte_Scroll);
             // 
             // labelSlide
             // 
@@ -219,7 +224,7 @@
             this.groupBox2.Controls.Add(this.btnResetRot);
             this.groupBox2.Controls.Add(this.trckRotZ);
             this.groupBox2.Controls.Add(this.trckRotY);
-            this.groupBox2.Location = new System.Drawing.Point(8, 439);
+            this.groupBox2.Location = new System.Drawing.Point(8, 686);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(571, 77);
             this.groupBox2.TabIndex = 18;
@@ -305,7 +310,7 @@
             this.renderWindowControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.renderWindowControl1.Location = new System.Drawing.Point(8, 6);
             this.renderWindowControl1.Name = "renderWindowControl1";
-            this.renderWindowControl1.Size = new System.Drawing.Size(571, 427);
+            this.renderWindowControl1.Size = new System.Drawing.Size(571, 674);
             this.renderWindowControl1.TabIndex = 1;
             this.renderWindowControl1.TestText = null;
             this.renderWindowControl1.Load += new System.EventHandler(this.renderWindowControl1_Load);
@@ -732,7 +737,7 @@
             // 
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.trckTransparencia);
-            this.groupBox1.Location = new System.Drawing.Point(8, 519);
+            this.groupBox1.Location = new System.Drawing.Point(8, 769);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(571, 66);
             this.groupBox1.TabIndex = 19;
@@ -742,9 +747,12 @@
             // tab2D
             // 
             this.tab2D.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tab2D.Controls.Add(this.pictVer);
+            this.tab2D.Controls.Add(this.lblVer);
+            this.tab2D.Controls.Add(this.trackVer);
             this.tab2D.Controls.Add(this.pictHor);
-            this.tab2D.Controls.Add(this.labelCorte);
-            this.tab2D.Controls.Add(this.trackCorte);
+            this.tab2D.Controls.Add(this.lblHor);
+            this.tab2D.Controls.Add(this.trackHor);
             this.tab2D.Controls.Add(this.labelSlide);
             this.tab2D.Controls.Add(this.trackBar);
             this.tab2D.Controls.Add(this.pictTrans);
@@ -779,6 +787,35 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // pictVer
+            // 
+            this.pictVer.BackColor = System.Drawing.Color.Black;
+            this.pictVer.Location = new System.Drawing.Point(8, 631);
+            this.pictVer.Name = "pictVer";
+            this.pictVer.Size = new System.Drawing.Size(573, 160);
+            this.pictVer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictVer.TabIndex = 27;
+            this.pictVer.TabStop = false;
+            this.pictVer.Paint += new System.Windows.Forms.PaintEventHandler(this.pictVer_Paint);
+            // 
+            // lblVer
+            // 
+            this.lblVer.Location = new System.Drawing.Point(431, 824);
+            this.lblVer.Name = "lblVer";
+            this.lblVer.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblVer.Size = new System.Drawing.Size(150, 13);
+            this.lblVer.TabIndex = 26;
+            this.lblVer.Text = "Corte 0 de 0";
+            this.lblVer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // trackVer
+            // 
+            this.trackVer.Location = new System.Drawing.Point(8, 792);
+            this.trackVer.Name = "trackVer";
+            this.trackVer.Size = new System.Drawing.Size(573, 45);
+            this.trackVer.TabIndex = 25;
+            this.trackVer.Scroll += new System.EventHandler(this.trackVer_Scroll);
+            // 
             // VisualForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -804,7 +841,7 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VisualForm_FormClosed);
             this.Load += new System.EventHandler(this.VisualForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictHor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackCorte)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackHor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictTrans)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trckTransparencia)).EndInit();
@@ -832,6 +869,8 @@
             this.tab2D.ResumeLayout(false);
             this.tab2D.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictVer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackVer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -858,8 +897,8 @@
         private System.Windows.Forms.NumericUpDown numHmin;
         private System.Windows.Forms.Label lblHmin;
         private System.Windows.Forms.PictureBox pictHor;
-        private System.Windows.Forms.Label labelCorte;
-        private System.Windows.Forms.TrackBar trackCorte;
+        private System.Windows.Forms.Label lblHor;
+        private System.Windows.Forms.TrackBar trackHor;
         private System.Windows.Forms.CheckBox chkNorm;
         private System.Windows.Forms.CheckBox chkUmbral;
         private System.Windows.Forms.Button btnCerrar;
@@ -890,5 +929,8 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.PictureBox pictVer;
+        private System.Windows.Forms.Label lblVer;
+        private System.Windows.Forms.TrackBar trackVer;
     }
 }
