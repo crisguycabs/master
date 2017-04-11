@@ -1166,7 +1166,7 @@ namespace RockVision
                     }
                 }
             }
-
+            
             SetSegmentacion2D();
         }
 
@@ -2268,7 +2268,7 @@ namespace RockVision
                                         }
                                     }
 
-                                    if (perteneceSegmentacion)
+                                    if ((perteneceSegmentacion) & (((bool)(dataGrid.Rows[iseg].Cells[0].Value))==true))
                                     {
                                         rojo = Convert.ToInt32(dataGrid.Rows[iseg].Cells[3].Style.BackColor.R);
                                         verde = Convert.ToInt32(dataGrid.Rows[iseg].Cells[3].Style.BackColor.G);
@@ -2484,6 +2484,26 @@ namespace RockVision
 
             pos = Convert.ToInt32((trackHor.Value * scale) + ycero);
             e.Graphics.DrawLine(brocha2, 0, pos, pictVer.Width, pos);
+        }
+
+        private void dataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // se hacen efectivos cambios como el check/uncheck de la columna 0
+            dataGrid.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+
+        private void dataGrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 1)
+            {
+                // esta en modo 3D y se hizo algún cambio en el dataGridView
+                // se vuelve a dibujar
+
+                renderer.RemoveAllViewProps();
+                Visual3DDispersion();
+                //btnResetRot_Click(sender, e);
+                renderWindowControl1.Refresh();
+            }
         }
     }
 }
