@@ -1,2 +1,144 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RockStatic.CAreaInteres" Collapsed="true">
+    <Position X="7.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAIAAAACAQAAAAAAAAAAAAAAAAABgAAAAAAA=</HashCode>
+      <FileName>Clases\CAreaInteres.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RockStatic.CCuadrado" Collapsed="true">
+    <Position X="11" Y="4.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAQAAAAAAAAAAAAAAAAABgAAAAAAA=</HashCode>
+      <FileName>Clases\CCuadrado.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RockStatic.CPhantom" Collapsed="true">
+    <Position X="8.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAABAAAAAAgAAAABAAAQAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Clases\CPhantom.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RockStatic.CProyecto" Collapsed="true">
+    <Position X="8.25" Y="4.5" Width="1.5" />
+    <AssociationLine Name="areaCore" Type="RockStatic.CCuadrado" FixedFromPoint="true">
+      <Path>
+        <Point X="9.75" Y="4.625" />
+        <Point X="11" Y="4.625" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="areaPhantom1" Type="RockStatic.CCuadrado" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="9.5" Y="4.5" />
+        <Point X="9.5" Y="4.125" />
+        <Point X="11.75" Y="4.125" />
+        <Point X="11.75" Y="4.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.006" Y="0.487" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="areaPhantom3" Type="RockStatic.CCuadrado" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="9.438" Y="5.062" />
+        <Point X="9.438" Y="5.437" />
+        <Point X="11.75" Y="5.437" />
+        <Point X="11.75" Y="5.062" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="datacuboHigh" Type="RockStatic.MyDataCube">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.068" Y="0.341" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="datacuboLow" Type="RockStatic.MyDataCube">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.143" Y="-0.484" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="phantom1" Type="RockStatic.CPhantom" FixedFromPoint="true">
+      <Path>
+        <Point X="9.062" Y="5.062" />
+        <Point X="9.062" Y="6.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.07" Y="0.735" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="phantom3" Type="RockStatic.CPhantom" FixedFromPoint="true">
+      <Path>
+        <Point X="8.812" Y="5.062" />
+        <Point X="8.812" Y="6.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.112" Y="0.391" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="areasCore" Type="RockStatic.CAreaInteres" FixedFromPoint="true">
+      <Path>
+        <Point X="8.438" Y="4.5" />
+        <Point X="8.438" Y="3.812" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>EgkAAKAAgEAIAAAGICAgAAABkQAEAAAAEEQAAACAIgk=</HashCode>
+      <FileName>Clases\CProyecto.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="areaCore" />
+      <Field Name="areaPhantom1" />
+      <Field Name="areaPhantom2" />
+      <Field Name="areaPhantom3" />
+      <Field Name="datacuboHigh" />
+      <Field Name="datacuboLow" />
+      <Field Name="phantom1" />
+      <Field Name="phantom2" />
+      <Field Name="phantom3" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="areasCore" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="RockStatic.MyDataCube" Collapsed="true">
+    <Position X="5.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAoACAAQIIQAUAGQMBAAAAAAAAAIAAAAAUQABQAAUAI=</HashCode>
+      <FileName>Clases\MyDataCube.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="dataCube" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="RockStatic.MyDicom" Collapsed="true">
+    <Position X="5.25" Y="2.75" Width="1.5" />
+    <AssociationLine Name="dcm" Type="EvilDICOM.Core.DICOMObject" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.438" Y="2.75" />
+        <Point X="6.438" Y="2" />
+        <Point X="7.75" Y="2" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAACAKAAAAAAAIAABAgAASAIIAAAAAAAABACAAAECA=</HashCode>
+      <FileName>Clases\MyDicom.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="dcm" />
+      <Field Name="selector" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="EvilDICOM.Core.DICOMObject" Collapsed="true">
+    <Position X="7.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="EvilDICOM.Core.Selection.DICOMSelector" Collapsed="true">
+    <Position X="7.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

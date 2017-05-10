@@ -276,8 +276,7 @@
     <EmbeddedResource Include="RangeBar.resx">
       <DependentUpon>RangeBar.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="ClassDiagram3.cd" />
-    <None Include="ClassDiagram8.cd" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">

@@ -1,2 +1,117 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RockStatic.MainForm" Collapsed="true">
+    <Position X="14" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GGCMsCMAEiBgGBZaJAnAMBASGAEYXgOQRoFGg4DAFrY=</HashCode>
+      <FileName>MainForm.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="aboutForm" />
+      <Field Name="checkForm" />
+      <Field Name="curvasForm" />
+      <Field Name="homeForm" />
+      <Field Name="nuevoProyectoForm" />
+      <Field Name="phantomForm" />
+      <Field Name="phantoms2Form" />
+      <Field Name="previewSegForm" />
+      <Field Name="proyectoForm" />
+      <Field Name="segmentacionForm" />
+      <Field Name="selecAreas2Form" />
+      <Field Name="selecAreasForm" />
+      <Field Name="waitingForm" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RockStatic.AboutForm" Collapsed="true">
+    <Position X="11" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACCIAAAAKIAAJAAAACAAAACAAEAAAAAAAAQAABAEIA=</HashCode>
+      <FileName>Forms\AboutForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RockStatic.CheckForm" Collapsed="true">
+    <Position X="17" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IBCAAgCAAKIAQJQAABKCAAADAAFgAQCAAAAAQEkAEYY=</HashCode>
+      <FileName>Forms\CheckForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RockStatic.CurvasForm" Collapsed="true">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAQACAAaIAAYSAAFCAAAICAAGAAAAAQAAAQAAAEEA=</HashCode>
+      <FileName>Forms\CurvasForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RockStatic.HomeForm" Collapsed="true">
+    <Position X="14" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAhCQASAAABAAAIiAQAACIwEYAAgBAAAAQABIkAA=</HashCode>
+      <FileName>Forms\HomeForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RockStatic.NewProjectForm" Collapsed="true">
+    <Position X="14" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAUGCACCKGAGAZAABojMAEMCAAFAhIAAQEACDABBESQ=</HashCode>
+      <FileName>Forms\NewProjectForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RockStatic.PhantomsForm" Collapsed="true">
+    <Position X="17" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>/xCBggCNIKIEAJQAAACAAAACAAlAEgAOACgAAAgkkDA=</HashCode>
+      <FileName>Forms\PhantomsForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RockStatic.Phantoms2Form" Collapsed="true">
+    <Position X="17" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>wBCBAgCAAKIAAJQAAACAAAACAANAAAACACgAQAgAEAI=</HashCode>
+      <FileName>Forms\Phantoms2Form.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RockStatic.PreviewSegForm" Collapsed="true">
+    <Position X="11" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CCQAAACAgCgCARBAAAiAAAACIQEAQAAAgKAAAAAAEAA=</HashCode>
+      <FileName>Forms\PreviewSegForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RockStatic.ProjectForm" Collapsed="true">
+    <Position X="11" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CASiAECAAKASAAAACACAAAEKEAEAARAAACAEigIAkDg=</HashCode>
+      <FileName>Forms\ProjectForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RockStatic.SegmentacionForm" Collapsed="true">
+    <Position X="17" Y="7.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>BHAEAqDCEeoEQJXgcAOKIEADiUdhBRFAMiDlwdMJETY=</HashCode>
+      <FileName>Forms\SegmentacionForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RockStatic.SelectAreas2Form" Collapsed="true">
+    <Position X="11" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAKACgCoCQdAEAACQAADGAEFEAAAAAGAAAAAAUAA=</HashCode>
+      <FileName>Forms\SelectAreas2Form.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RockStatic.SelectAreasForm" Collapsed="true">
+    <Position X="14" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>hCCVAKHCkygESZEgIgieIEEHCcN5IUECICihEuBKEQY=</HashCode>
+      <FileName>Forms\SelectAreasForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RockStatic.WaitingForm" Collapsed="true">
+    <Position X="14" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEACAAABAAABCAAAACAAAAAAAAAAAAAABAEAA=</HashCode>
+      <FileName>Forms\WaitingForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
