@@ -37,7 +37,6 @@ C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\
 C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\bin\Release\EvilDICOM.xml
 C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\bin\Release\MathNet.Numerics.xml
 C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\bin\Release\ZzzzRangeBar.pdb
-C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\obj\Release\RockStatic.csprojResolveAssemblyReference.cache
 C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\obj\Release\RockStatic.AboutForm.resources
 C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\obj\Release\RockStatic.CurvasForm.resources
 C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\obj\Release\RockStatic.Phantoms2Form.resources

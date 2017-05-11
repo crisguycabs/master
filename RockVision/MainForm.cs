@@ -57,6 +57,16 @@ namespace RockVision
         public NewProjectVForm nuevoProyectoVForm = null;
 
         /// <summary>
+        /// indica si la ventana esta abierta o no
+        /// </summary>
+        public bool abiertoNuevoProyectoDForm = false;
+
+        /// <summary>
+        /// instancia de NewProjectVForm
+        /// </summary>
+        public NewProjectDForm nuevoProyectoDForm = null;
+
+        /// <summary>
         /// proyecto actual de visualizacion
         /// </summary>
         public CProyectoV actualV = null;
@@ -243,6 +253,29 @@ namespace RockVision
         }
 
         /// <summary>
+        /// Se crea un nuevo proyecto de caracterización dinámica
+        /// </summary>
+        public void NuevoProyectoD()
+        {
+            homeForm.Close();
+
+            // Se abre el Form para visualizar los archivos dicom escogidos
+            if (!abiertoNuevoProyectoDForm)
+            {
+                nuevoProyectoDForm = new NewProjectDForm();
+                nuevoProyectoDForm.MdiParent = this;
+                nuevoProyectoDForm.padre = this;
+                this.abiertoNuevoProyectoDForm = true;
+                nuevoProyectoDForm.Show();
+            }
+            else
+            {
+                nuevoProyectoDForm.Select();
+                
+            }
+        }
+
+        /// <summary>
         /// se crea un nuevo proyecto a partir de la ruta del proyecto
         /// </summary>
         /// <param name="ruta"></param>
@@ -263,6 +296,12 @@ namespace RockVision
         {
             this.abiertoNuevoProyectoVForm=false;
             this.nuevoProyectoVForm=null;        
+        }
+
+        public void CerrarNewProjectDForm()
+        {
+            this.abiertoNuevoProyectoDForm = false;
+            this.nuevoProyectoDForm = null;
         }
 
         public void AbrirVisualForm()

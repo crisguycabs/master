@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Clases\CProyectoV.cs" />
     <Compile Include="Clases\CUmbralCT.cs" />
+    <Compile Include="Clases\CProyectoD.cs" />
     <Compile Include="Forms\HomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +85,12 @@
     </Compile>
     <Compile Include="Forms\NewProjectVForm.Designer.cs">
       <DependentUpon>NewProjectVForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NewProjectDForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewProjectDForm.Designer.cs">
+      <DependentUpon>NewProjectDForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,6 +114,9 @@
     </Compile>
     <EmbeddedResource Include="Forms\HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewProjectDForm.resx">
+      <DependentUpon>NewProjectDForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NewProjectVForm.resx">
       <DependentUpon>NewProjectVForm.cs</DependentUpon>

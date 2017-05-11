@@ -96,5 +96,11 @@ namespace RockVision
                 }
             }
         }
+
+        private void btnNewe_Click(object sender, EventArgs e)
+        {
+            // se escogen los dicom que se quieren visualizar
+            padre.NuevoProyectoD();
+        }
     }
 }

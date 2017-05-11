@@ -198,6 +198,7 @@
             this.btnNewe.TabIndex = 21;
             this.btnNewe.Text = "CREAR PROYECTO ESTIMACION";
             this.btnNewe.UseVisualStyleBackColor = true;
+            this.btnNewe.Click += new System.EventHandler(this.btnNewe_Click);
             this.btnNewe.MouseEnter += new System.EventHandler(this.btnNew_MouseEnter);
             this.btnNewe.MouseLeave += new System.EventHandler(this.btnNew_MouseLeave);
             // 
