@@ -19,6 +19,8 @@ namespace RockVision
 
         public MainForm padre;
 
+        string folderDefault = "";
+
         #endregion
 
         public NewProjectDForm()
@@ -81,7 +83,8 @@ namespace RockVision
         private void btnSelCTRo_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
-
+            if (folderDefault != "") fbd.SelectedPath = System.IO.Path.GetDirectoryName(folderDefault);
+            
             if (fbd.ShowDialog() == DialogResult.OK)
             {
                 if (Directory.GetFiles(fbd.SelectedPath, "*.dcm").Length == 0)
@@ -91,6 +94,7 @@ namespace RockVision
                 else
                 {
                     txtCTRo.Text = fbd.SelectedPath.ToString();
+                    folderDefault = fbd.SelectedPath.ToString();
                 }
             }
         }
@@ -98,6 +102,7 @@ namespace RockVision
         private void btnSelCTRw_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
+            if (folderDefault != "") fbd.SelectedPath = System.IO.Path.GetDirectoryName(folderDefault);
 
             if (fbd.ShowDialog() == DialogResult.OK)
             {
@@ -108,6 +113,7 @@ namespace RockVision
                 else
                 {
                     txtCTRw.Text = fbd.SelectedPath.ToString();
+                    folderDefault = fbd.SelectedPath.ToString();
                 }
             }
         }
@@ -115,6 +121,7 @@ namespace RockVision
         private void btnAddCTtemp_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
+            if (folderDefault != "") fbd.SelectedPath = System.IO.Path.GetDirectoryName(folderDefault);
             
             if (fbd.ShowDialog() == DialogResult.OK)
             {
@@ -126,6 +133,7 @@ namespace RockVision
                 {
                     lstCTtemp.Items.Add(fbd.SelectedPath.ToString());
                     lstCTtemp.SelectedIndex = lstCTtemp.Items.Count - 1;
+                    folderDefault = fbd.SelectedPath.ToString();
                 }
             }
         }
@@ -174,6 +182,63 @@ namespace RockVision
             catch
             {
             }
+        }
+
+        private void btnCrear_Click(object sender, EventArgs e)
+        {
+            // se hacen algunas verificaciones
+            // deben existir las rutas de CTRo, CTRw y al menos dos instantes temporales
+
+            if (string.IsNullOrWhiteSpace(txtCTRo.Text))
+            {
+                MessageBox.Show("No se ha indicado una ruta para el data cubo de referencia de la roca saturada de crudo.\r\n\r\nIndique una ruta e intentelo de nuevo", "Error de selección de DICOMS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtCTRw.Text))
+            {
+                MessageBox.Show("No se ha indicado una ruta para el data cubo de referencia de la roca saturada de agua.\r\n\r\nIndique una ruta e intentelo de nuevo", "Error de selección de DICOMS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if(lstCTtemp.Items.Count<2)
+            {
+                MessageBox.Show("No se han indicado suficientes cubos de datos temporales.\r\n\r\nIndique mas rutas e intentelo de nuevo", "Error de selección de DICOMS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Se abre el Form para visualizar los archivos dicom escogidos
+            if (!padre.abiertoCheckForm)
+            {
+                padre.checkForm = new CheckForm();
+                padre.checkForm.MdiParent = padre;
+                padre.checkForm.padre = padre;
+                padre.abiertoCheckForm = true;
+
+                padre.checkForm.valorCTo = Convert.ToDouble(this.numCTo.Value);
+                padre.checkForm.valorCTw = Convert.ToDouble(this.numCTw.Value);
+                padre.checkForm.rutaCTRo = txtCTRo.Text;
+                padre.checkForm.rutaCTRw = txtCTRw.Text;
+
+                padre.checkForm.rutaCTtemp = new List<string>();
+                for (int i = 0; i < lstCTtemp.Items.Count; i++) padre.checkForm.rutaCTtemp.Add(lstCTtemp.Items[i].ToString());
+                
+                padre.checkForm.Show();
+            }
+            else
+            {
+                padre.checkForm.valorCTo = Convert.ToDouble(this.numCTo);
+                padre.checkForm.valorCTw = Convert.ToDouble(this.numCTw);
+                padre.checkForm.rutaCTRo = txtCTRo.Text;
+                padre.checkForm.rutaCTRw = txtCTRw.Text;
+
+                padre.checkForm.rutaCTtemp = new List<string>();
+                for (int i = 0; i < lstCTtemp.Items.Count; i++) padre.checkForm.rutaCTtemp.Add(lstCTtemp.Items[i].ToString());
+
+                padre.checkForm.Select();
+            }
+
+            this.Close();
         }
     }
 }

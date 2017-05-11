@@ -338,6 +338,7 @@
             this.btnCrear.TabIndex = 24;
             this.btnCrear.Text = "Continuar";
             this.btnCrear.UseVisualStyleBackColor = false;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             this.btnCrear.MouseEnter += new System.EventHandler(this.btnSubir_MouseEnter);
             this.btnCrear.MouseLeave += new System.EventHandler(this.btnSubir_MouseLeave);
             // 

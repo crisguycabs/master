@@ -62,14 +62,29 @@ namespace RockVision
         public bool abiertoNuevoProyectoDForm = false;
 
         /// <summary>
-        /// instancia de NewProjectVForm
+        /// instancia de NewProjectDForm
         /// </summary>
         public NewProjectDForm nuevoProyectoDForm = null;
+
+        /// <summary>
+        /// indica si la ventana esta abierta o no
+        /// </summary>
+        public bool abiertoCheckForm = false;
+
+        /// <summary>
+        /// instancia de CheckForm
+        /// </summary>
+        public CheckForm checkForm = null;
 
         /// <summary>
         /// proyecto actual de visualizacion
         /// </summary>
         public CProyectoV actualV = null;
+
+        /// <summary>
+        /// proyecto actual de caracterizacion dinamica
+        /// </summary>
+        public CProyectoD actualD = null;
 
         #endregion
 
@@ -270,8 +285,7 @@ namespace RockVision
             }
             else
             {
-                nuevoProyectoDForm.Select();
-                
+                nuevoProyectoDForm.Select();                
             }
         }
 
@@ -302,6 +316,12 @@ namespace RockVision
         {
             this.abiertoNuevoProyectoDForm = false;
             this.nuevoProyectoDForm = null;
+        }
+
+        public void CerrarCheckForm()
+        {
+            this.abiertoCheckForm = false;
+            this.checkForm = null;
         }
 
         public void AbrirVisualForm()
