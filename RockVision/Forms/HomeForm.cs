@@ -90,6 +90,11 @@ namespace RockVision
                     padre.AbrirProyectoV(openproj.FileName);
                     this.Close();
                 }
+                else if (System.IO.Path.GetExtension(openproj.FileName) == ".rvd")
+                {
+                    padre.AbrirProyectoD(openproj.FileName);
+                    this.Close();
+                }
                 else
                 {
                     MessageBox.Show("El archivo escogido no es archivo de proyecto valido para RockVision", "Error al abrir!", MessageBoxButtons.OK, MessageBoxIcon.Error);

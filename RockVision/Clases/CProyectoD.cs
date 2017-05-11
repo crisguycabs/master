@@ -76,6 +76,139 @@ namespace RockVision
         #endregion
 
         /// <summary>
+        /// Constructor con asignacion para cargar un proyecto existente en disco
+        /// </summary>
+        /// <param name="path"></param>
+        public CProyectoD(string path)
+        {
+            // se lee el archivo
+            System.IO.StreamReader sr = new System.IO.StreamReader(path);
+
+            string line="";
+            
+            this.ruta = path;
+
+            List<string> datacubostemporales = new List<string>();
+
+            while ((line = sr.ReadLine()) != null)
+            {
+                switch (line)
+                {
+                    case "NAME":
+                        this.name = sr.ReadLine();
+                        break;
+
+                    case "SEGMENTACIONX":
+                        this.segX = Convert.ToInt32(sr.ReadLine());
+                        break;
+
+                    case "SEGMENTACIONY":
+                        this.segY = Convert.ToInt32(sr.ReadLine());
+                        break;
+
+                    case "SEGMENTACIONR":
+                        this.segR = Convert.ToInt32(sr.ReadLine());
+                        break;
+
+                    case "SEGMENTACION2D":
+                        this.segmentacion2D = new List<int>();
+                        while ((line = sr.ReadLine()) != "") this.segmentacion2D.Add(Convert.ToInt32(line));
+                        break;
+
+                    case "COLORSEG2D":
+                        this.colorSeg2D = new List<System.Drawing.Color>();
+                        while ((line = sr.ReadLine()) != "")
+                        {
+                            line=line.Replace("Color [", "");
+                            line=line.Replace("]", "");
+                            this.colorSeg2D.Add(System.Drawing.Color.FromName(line));
+                        }
+                        break;
+
+                    case "SEGMENTACION3D":
+                        this.segmentacion3D = new List<int>();
+                        while ((line = sr.ReadLine()) != "") this.segmentacion3D.Add(Convert.ToInt32(line));
+                        break;
+
+                    case "COLORSEG3D":
+                        this.colorSeg3D = new List<System.Drawing.Color>();
+                        while ((line = sr.ReadLine()) != "") this.colorSeg3D.Add(System.Drawing.Color.FromName(line));
+                        break;         
+           
+                    case "CTo":
+                        this.valorCTo = Convert.ToDouble(sr.ReadLine());
+                        break;
+
+                    case "CTw":
+                        this.valorCTw = Convert.ToDouble(sr.ReadLine());
+                        break;
+
+                    case "DATACUBOSTEMPORALES":
+                        while ((line = sr.ReadLine()) != "") datacubostemporales.Add(sr.ReadLine());
+                        break;
+                }
+            }
+
+            sr.Close();
+
+            // se leen todos y cada uno de los archivos dicom que estan en la carpeta CTRo
+            string folder = System.IO.Path.GetDirectoryName(path) + "\\CTRo";
+            string[] nfiles = System.IO.Directory.GetFiles(folder);
+
+            this.datacubos = new List<RockStatic.MyDataCube>();
+            this.datacubos.Add(new RockStatic.MyDataCube(nfiles));
+
+            // se segmentan los DICOM segun la informacion que se cargo desde el archivo
+            for (int i = 0; i < this.datacubos[this.datacubos.Count - 1].dataCube.Count; i++)
+                this.datacubos[this.datacubos.Count - 1].dataCube[i].pixelData = this.datacubos[this.datacubos.Count - 1].dataCube[i].CropCTCircle(segX, segY, segR, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Columns.Data, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Rows.Data);
+
+            // la segmentacion transversal es TODO el DICOM
+            for (int i = 0; i < this.datacubos[this.datacubos.Count - 1].dataCube.Count; i++) this.datacubos[this.datacubos.Count - 1].dataCube[i].segCore = this.datacubos[this.datacubos.Count - 1].dataCube[i].pixelData;
+
+            // hay tantos cortes horizontales como
+            this.datacubos[this.datacubos.Count - 1].widthSeg = Convert.ToInt32(this.datacubos[this.datacubos.Count-1].dataCube[0].selector.Rows.Data);
+
+
+            // se leen todos y cada uno de los archivos dicom que estan en la carpeta CTRw
+            folder = System.IO.Path.GetDirectoryName(path) + "\\CTRw";
+            nfiles = System.IO.Directory.GetFiles(folder);
+
+            this.datacubos = new List<RockStatic.MyDataCube>();
+            this.datacubos.Add(new RockStatic.MyDataCube(nfiles));
+
+            // se segmentan los DICOM segun la informacion que se cargo desde el archivo
+            for (int i = 0; i < this.datacubos[this.datacubos.Count - 1].dataCube.Count; i++)
+                this.datacubos[this.datacubos.Count - 1].dataCube[i].pixelData = this.datacubos[this.datacubos.Count - 1].dataCube[i].CropCTCircle(segX, segY, segR, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Columns.Data, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Rows.Data);
+
+            // la segmentacion transversal es TODO el DICOM
+            for (int i = 0; i < this.datacubos[this.datacubos.Count - 1].dataCube.Count; i++) this.datacubos[this.datacubos.Count - 1].dataCube[i].segCore = this.datacubos[this.datacubos.Count - 1].dataCube[i].pixelData;
+
+            // hay tantos cortes horizontales como
+            this.datacubos[this.datacubos.Count - 1].widthSeg = Convert.ToInt32(this.datacubos[this.datacubos.Count - 1].dataCube[0].selector.Rows.Data);
+
+
+            // se leen todos y cada uno de los archivos dicom que estan en las carpetas temporales
+            for(int j=0;j<datacubostemporales.Count;j++)
+            {
+                folder = System.IO.Path.GetDirectoryName(path) + "\\" + datacubostemporales[j];
+                nfiles = System.IO.Directory.GetFiles(folder);
+
+                this.datacubos = new List<RockStatic.MyDataCube>();
+                this.datacubos.Add(new RockStatic.MyDataCube(nfiles));
+
+                // se segmentan los DICOM segun la informacion que se cargo desde el archivo
+                for (int i = 0; i < this.datacubos[this.datacubos.Count - 1].dataCube.Count; i++)
+                    this.datacubos[this.datacubos.Count - 1].dataCube[i].pixelData = this.datacubos[this.datacubos.Count - 1].dataCube[i].CropCTCircle(segX, segY, segR, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Columns.Data, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Rows.Data);
+                
+                // la segmentacion transversal es TODO el DICOM
+                for (int i = 0; i < this.datacubos[this.datacubos.Count - 1].dataCube.Count; i++) this.datacubos[this.datacubos.Count - 1].dataCube[i].segCore = this.datacubos[this.datacubos.Count - 1].dataCube[i].pixelData;
+
+                // hay tantos cortes horizontales como
+                this.datacubos[this.datacubos.Count - 1].widthSeg = Convert.ToInt32(this.datacubos[this.datacubos.Count - 1].dataCube[0].selector.Rows.Data);
+            }
+        }
+
+        /// <summary>
         /// Constructor con asignacion para nuevos proyectos
         /// </summary>
         /// <param name="path"></param>
@@ -211,8 +344,9 @@ namespace RockVision
             sw.WriteLine(this.valorCTw.ToString("#.000"));
             sw.WriteLine("");
             sw.WriteLine("DATACUBOSTEMPORALES");
-            for (int i = 0; i < datacubos.Count; i++)
-                sw.WriteLine("T" + (i + 1).ToString());
+            for (int i = 2; i < datacubos.Count; i++)
+                sw.WriteLine("T" + (i - 1).ToString());
+            sw.WriteLine("");
             sw.Close();
         }
 

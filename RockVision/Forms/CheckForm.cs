@@ -375,7 +375,10 @@ namespace RockVision
                 this.Close();
 
                 // se abre la ventana del proyecto de caracterizacion dinamica
-                
+                ProjectDForm visualizar = new ProjectDForm();
+                visualizar.padre = this.padre;
+                visualizar.MdiParent = this.padre;
+                visualizar.Show();
             }
         }
     }

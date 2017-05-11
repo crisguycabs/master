@@ -306,6 +306,28 @@ namespace RockVision
             CloseWaiting();
         }
 
+        /// <summary>
+        /// se crea un nuevo proyecto a partir de la ruta del proyecto
+        /// </summary>
+        /// <param name="ruta"></param>
+        public void AbrirProyectoD(string ruta)
+        {
+            // se muestra la ventana de espera
+            ShowWaiting("Espere mientras RockVision crea el nuevo proyecto...");
+
+            // se crea el proyecto a partir de la ruta
+            this.actualD = new CProyectoD(ruta);
+
+            // se abre la ventana del proyecto de caracterizacion dinamica
+            ProjectDForm visualizar = new ProjectDForm();
+            visualizar.padre = this;
+            visualizar.MdiParent = this;
+            visualizar.Show();
+
+            // se cierra la ventana de espera
+            CloseWaiting();
+        }
+
         public void CerrarNewProjectVForm()
         {
             this.abiertoNuevoProyectoVForm=false;

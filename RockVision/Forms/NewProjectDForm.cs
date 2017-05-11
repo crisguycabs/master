@@ -83,7 +83,7 @@ namespace RockVision
         private void btnSelCTRo_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
-            if (folderDefault != "") fbd.SelectedPath = System.IO.Path.GetDirectoryName(folderDefault);
+            if (folderDefault != "") fbd.SelectedPath = folderDefault;
             
             if (fbd.ShowDialog() == DialogResult.OK)
             {
@@ -102,8 +102,7 @@ namespace RockVision
         private void btnSelCTRw_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
-            if (folderDefault != "") fbd.SelectedPath = System.IO.Path.GetDirectoryName(folderDefault);
-
+            if (folderDefault != "") fbd.SelectedPath = folderDefault;
             if (fbd.ShowDialog() == DialogResult.OK)
             {
                 if (Directory.GetFiles(fbd.SelectedPath, "*.dcm").Length == 0)
@@ -121,8 +120,7 @@ namespace RockVision
         private void btnAddCTtemp_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
-            if (folderDefault != "") fbd.SelectedPath = System.IO.Path.GetDirectoryName(folderDefault);
-            
+            if (folderDefault != "") fbd.SelectedPath = folderDefault;
             if (fbd.ShowDialog() == DialogResult.OK)
             {
                 if (Directory.GetFiles(fbd.SelectedPath, "*.dcm").Length == 0)
