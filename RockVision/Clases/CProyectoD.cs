@@ -69,9 +69,49 @@ namespace RockVision
         /// </summary>
         public List<System.Drawing.Color> colorSeg3D = new List<System.Drawing.Color>();
 
+        /// <summary>
+        /// valor CT del crudo
+        /// </summary>
         public double valorCTo=0;
 
+        /// <summary>
+        /// valor CT del agua dopada
+        /// </summary>
         public double valorCTw=0;
+
+        /// <summary>
+        /// indica si ya es estimo, o no, la porosidad
+        /// </summary>
+        public bool porosidadEstimada = false;
+
+        /// <summary>
+        /// porosidad estimada
+        /// </summary>
+        public double[] porosidad = null;
+
+        public double[] meanSo = null;
+
+        public double[] meanSw = null;
+
+        public double[] vPorosidadSlide = null;
+
+        public List<double[]> mStmean = null;
+
+        public List<double[]> mSato = null;
+
+        public List<double[]> mSatw = null;
+
+        public double[] mVo = null;
+
+        public double[] mVw = null;
+
+        public bool Soestimada = false;
+
+        public bool Swestimada = false;
+
+        public bool Voestimada = false;
+
+        public bool Vwestimada = false;
 
         #endregion
 
@@ -144,7 +184,7 @@ namespace RockVision
                         break;
 
                     case "DATACUBOSTEMPORALES":
-                        while ((line = sr.ReadLine()) != "") datacubostemporales.Add(sr.ReadLine());
+                        while ((line = sr.ReadLine()) != "") datacubostemporales.Add(line);
                         break;
                 }
             }
@@ -173,7 +213,6 @@ namespace RockVision
             folder = System.IO.Path.GetDirectoryName(path) + "\\CTRw";
             nfiles = System.IO.Directory.GetFiles(folder);
 
-            this.datacubos = new List<RockStatic.MyDataCube>();
             this.datacubos.Add(new RockStatic.MyDataCube(nfiles));
 
             // se segmentan los DICOM segun la informacion que se cargo desde el archivo
@@ -193,7 +232,6 @@ namespace RockVision
                 folder = System.IO.Path.GetDirectoryName(path) + "\\" + datacubostemporales[j];
                 nfiles = System.IO.Directory.GetFiles(folder);
 
-                this.datacubos = new List<RockStatic.MyDataCube>();
                 this.datacubos.Add(new RockStatic.MyDataCube(nfiles));
 
                 // se segmentan los DICOM segun la informacion que se cargo desde el archivo
@@ -340,7 +378,7 @@ namespace RockVision
             sw.WriteLine("CTo");
             sw.WriteLine(this.valorCTo.ToString("#.000"));
             sw.WriteLine("");
-            sw.WriteLine("CTr");
+            sw.WriteLine("CTw");
             sw.WriteLine(this.valorCTw.ToString("#.000"));
             sw.WriteLine("");
             sw.WriteLine("DATACUBOSTEMPORALES");
@@ -394,6 +432,188 @@ namespace RockVision
             {
                 return false;
             }            
+        }
+
+        /// <summary>
+        /// Estima la saturacion de crudo
+        /// </summary>
+        /// <returns></returns>
+        public bool EstimarSo()
+        {
+            try 
+            {
+                // se debe promediar el valor CT de cada slide de los datacubos temporales
+                this.mStmean = new List<double[]>();
+                this.mSato = new List<double[]>();
+
+                for (int it = 2; it < datacubos.Count;it++)
+                {
+                    double[] Stmean = new double[datacubos[it].dataCube.Count];
+                    
+                    for(int i=0;i<datacubos[it].dataCube.Count;i++)
+                    {
+                        List<double> valoresSlide = new List<double>();
+
+                        for(int j=0;j<datacubos[it].dataCube[i].pixelData.Count;j++)
+                        {
+                            if (datacubos[it].dataCube[i].pixelData[j] > 0) valoresSlide.Add(datacubos[it].dataCube[i].pixelData[j]);
+                        }
+
+                        Stmean[i] = valoresSlide.Average();
+                    }
+
+                    mStmean.Add(Stmean);
+
+                    double[] Sato = new double[datacubos[it].dataCube.Count];
+                    for (int i = 0; i < datacubos[it].dataCube.Count; i++)
+                    {
+                        // sato(i)=(Stmean(i)-Sw1mean(i))/(So1mean(i)-Sw1mean(i));
+                        Sato[i] = (Stmean[i] - meanSw[i]) / (meanSo[i] - meanSw[i]);
+                        if (Sato[i] > 1) Sato[i] = 1;
+                        if (Sato[i] <0) Sato[i] = 0;
+                    }
+
+                    mSato.Add(Sato);
+                }
+
+                Soestimada = true;
+
+                return true;
+            }
+            catch 
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Estima la saturacion de crudo
+        /// </summary>
+        /// <returns></returns>
+        public bool EstimarSw()
+        {
+            try
+            {
+                // se debe promediar el valor CT de cada slide de los datacubos temporales
+                this.mStmean = new List<double[]>();
+                this.mSatw = new List<double[]>();
+
+                for (int it = 2; it < datacubos.Count; it++)
+                {
+                    double[] Stmean = new double[datacubos[it].dataCube.Count];
+
+                    for (int i = 0; i < datacubos[it].dataCube.Count; i++)
+                    {
+                        List<double> valoresSlide = new List<double>();
+
+                        for (int j = 0; j < datacubos[it].dataCube[i].pixelData.Count; j++)
+                        {
+                            if (datacubos[it].dataCube[i].pixelData[j] > 0) valoresSlide.Add(datacubos[it].dataCube[i].pixelData[j]);
+                        }
+
+                        Stmean[i] = valoresSlide.Average();
+                    }
+
+                    mStmean.Add(Stmean);
+
+                    double[] Satw = new double[datacubos[it].dataCube.Count];
+                    for (int i = 0; i < datacubos[it].dataCube.Count; i++)
+                    {
+                        // sato(i)=(Stmean(i)-Sw1mean(i))/(So1mean(i)-Sw1mean(i));
+                        Satw[i] = (Stmean[i] - meanSw[i]) / (meanSo[i] - meanSw[i]);
+                        if (Satw[i] > 1) Satw[i] = 1;
+                        if (Satw[i] < 0) Satw[i] = 0;
+                    }
+
+                    mSatw.Add(Satw);
+                }
+
+                Swestimada = true;
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool EstimarVo()
+        {
+            try
+            {
+                // se estima el volumen del voxel
+                double vVoxel = datacubos[0].dataCube[0].selector.PixelSpacing.Data_[0] * datacubos[0].dataCube[0].selector.PixelSpacing.Data_[1] * datacubos[0].dataCube[0].selector.SliceThickness.Data;
+                
+                // el area es el de un circulo para cada slide
+                double vSlide = Math.PI * Convert.ToDouble(this.segR * this.segR)*vVoxel;
+
+                vPorosidadSlide = new double[porosidad.Length];
+
+                for (int i = 0; i < porosidad.Length; i++) vPorosidadSlide[i] = vSlide * porosidad[i];
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Estima la porosidad efectiva usando los datacubos saturados de crudo y de agua
+        /// </summary>
+        /// <returns></returns>
+        public bool EstimarPorosidad()
+        {
+            try
+            {
+                // se debe promediar el valor CT de cada slide del datacubo saturado de crudo y de agua
+                this.porosidad = new double[datacubos[0].dataCube.Count];
+
+                List<double> So;
+                List<double> Sw;
+                meanSo = new double[datacubos[0].dataCube.Count];
+                meanSw = new double[datacubos[0].dataCube.Count];
+
+                for (int i = 0; i < datacubos[0].dataCube.Count;i++)
+                {
+                    So = new List<double>();
+                    Sw = new List<double>();
+
+                    for (int j = 0; j < datacubos[0].dataCube[i].pixelData.Count; j++)
+                    {
+                        if(datacubos[0].dataCube[i].pixelData[j]>0)
+                        {
+                            try
+                            {
+                                //meanSo[i] += Convert.ToDouble(datacubos[0].dataCube[i].pixelData[j]);
+                                //meanSw[i] += Convert.ToDouble(datacubos[1].dataCube[i].pixelData[j]);
+                                //nPixel++;
+
+                                So.Add(Convert.ToDouble(datacubos[0].dataCube[i].pixelData[j]));
+                                Sw.Add(Convert.ToDouble(datacubos[1].dataCube[i].pixelData[j]));
+                            }
+                            catch 
+                            {
+                                MessageBox.Show("Error encontrado");
+                            }
+                        }
+                    }
+
+                    meanSo[i] = So.Average();
+                    meanSw[i] = Sw.Average();
+                    porosidad[i] = Math.Abs((So.Average() - Sw.Average()) / (valorCTo - valorCTw));
+                }
+
+                this.porosidadEstimada = true;
+                
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

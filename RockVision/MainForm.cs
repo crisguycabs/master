@@ -86,6 +86,10 @@ namespace RockVision
         /// </summary>
         public CProyectoD actualD = null;
 
+        public bool abiertoProyectoDForm = false;
+
+        public ProjectDForm proyectoDForm = null;
+
         #endregion
 
         public MainForm()
@@ -313,19 +317,31 @@ namespace RockVision
         public void AbrirProyectoD(string ruta)
         {
             // se muestra la ventana de espera
-            ShowWaiting("Espere mientras RockVision crea el nuevo proyecto...");
+            ShowWaiting("Espere mientras RockVision carga el proyecto...");
 
             // se crea el proyecto a partir de la ruta
             this.actualD = new CProyectoD(ruta);
-
-            // se abre la ventana del proyecto de caracterizacion dinamica
-            ProjectDForm visualizar = new ProjectDForm();
-            visualizar.padre = this;
-            visualizar.MdiParent = this;
-            visualizar.Show();
+            this.AbrirProyectoDForm();
+            
 
             // se cierra la ventana de espera
             CloseWaiting();
+        }
+
+        public void AbrirProyectoDForm()
+        {
+            if (!abiertoProyectoDForm)
+            {
+                proyectoDForm = new ProjectDForm();
+                proyectoDForm.MdiParent = this;
+                proyectoDForm.padre = this;
+                this.abiertoProyectoDForm = true;
+                proyectoDForm.Show();
+            }
+            else
+            {
+                proyectoDForm.Select();
+            }
         }
 
         public void CerrarNewProjectVForm()
@@ -344,6 +360,12 @@ namespace RockVision
         {
             this.abiertoCheckForm = false;
             this.checkForm = null;
+        }
+
+        public void CerrarProyectoDForm()
+        {
+            this.abiertoProyectoDForm = false;
+            this.proyectoDForm = null;
         }
 
         public void AbrirVisualForm()
