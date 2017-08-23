@@ -683,7 +683,7 @@ namespace RockStatic
                 actual.areaCore = new CCuadrado(areaCore);
                 actual.areaPhantom1 = new CCuadrado(areaP1);
                 actual.areaPhantom2 = new CCuadrado(areaP2);
-                actual.areaPhantom2 = new CCuadrado(areaP2);
+                actual.areaPhantom3 = new CCuadrado(areaP3);
 
                 actual.datacuboHigh.widthSeg = actual.areaCore.width * 2;
                 actual.datacuboLow.widthSeg = actual.areaCore.width * 2;

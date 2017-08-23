@@ -481,12 +481,17 @@
         </member>
         <member name="F:RockStatic.MyDataCube.histograma">
             <summary>
-            Guarda la informacion del histograma en 100 bins
+            Guarda la informacion del histograma
             </summary>
         </member>
         <member name="F:RockStatic.MyDataCube.bins">
             <summary>
-            Marcas de clase del histograma de 100 bins
+            Marcas de clase del histograma 
+            </summary>
+        </member>
+        <member name="F:RockStatic.MyDataCube.limites">
+            <summary>
+            Limites de cada bin
             </summary>
         </member>
         <member name="F:RockStatic.MyDataCube.coresHorizontal">
@@ -502,6 +507,11 @@
         <member name="F:RockStatic.MyDataCube.widthSeg">
             <summary>
             Indica el ancho de la imagen segmentada resultante
+            </summary>
+        </member>
+        <member name="F:RockStatic.MyDataCube.factorZ">
+            <summary>
+            factor de escalado para el largo de los cortes horizontales y verticales
             </summary>
         </member>
         <member name="M:RockStatic.MyDataCube.#ctor">
@@ -563,7 +573,7 @@
         </member>
         <member name="M:RockStatic.MyDataCube.GenerarHistograma">
             <summary>
-            Genera el histograma y las marcas de clase para el datacubo, con bins = raiz de numero de datos
+            Genera el histograma general y por slide, las marcas de clase para el datacubo, limites de cada bin, con bins = raiz de numero de datos
             </summary>
         </member>
         <member name="M:RockStatic.MyDataCube.GenerarCoreHorizontal(System.Int32)">
@@ -580,6 +590,13 @@
             <param name="indice">Numero de la fila que se debe extraer de cada DICOM</param>
             <returns>Core horizontal generado en la posicion indicada</returns>
         </member>
+        <member name="M:RockStatic.MyDataCube.GenerarCoreVerticalRV(System.Int32)">
+            <summary>
+            Se genera un plano de core vertical que corresponde al indice que se pasa como argumento. Version RV
+            </summary>
+            <param name="indice">Numero de la columna que se debe extraer de cada DICOM</param>
+            <returns>Core vertical generado en la posicion indicada</returns>
+        </member>
         <member name="M:RockStatic.MyDataCube.GenerarCoreVertical(System.Int32)">
             <summary>
             Se genera un plano de core Vertical que corresponde al indice que se pasa como argumento
@@ -595,6 +612,11 @@
         <member name="M:RockStatic.MyDataCube.GenerarCortesHorizontalesRV">
             <summary>
             Genera todos y cada uno de los planos de corte horizontales del core. No genera imágenes sino los List de ushort para cada plano de corte. Version para RV
+            </summary>
+        </member>
+        <member name="M:RockStatic.MyDataCube.GenerarCortesVerticalesRV">
+            <summary>
+            Genera todos y cada uno de los planos de corte verticales del core. No genera imágenes sino los List de ushort para cada plano de corte. Version para RV
             </summary>
         </member>
         <member name="M:RockStatic.MyDataCube.GenerarCoresVerticales">
@@ -675,6 +697,11 @@
             Selector del objeto DICOM cargado
             </summary>
         </member>
+        <member name="F:RockStatic.MyDicom.histograma">
+            <summary>
+            Guarda la informacion del histograma del slide
+            </summary>
+        </member>
         <member name="M:RockStatic.MyDicom.#ctor">
             <summary>
             Constructor por defecto
@@ -724,6 +751,17 @@
             <returns></returns>
         </member>
         <member name="M:RockStatic.MyDicom.CropCTCircle(System.Collections.Generic.List{System.UInt16},System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Toma el List de ushort, que se mapea a una imagen BMP, y recorta los elementos que se mapean un area circular de centro (xcenter,ycenter) de radio rad
+            </summary>
+            <param name="pixels16">List con la información CT en cada pixel</param>
+            <param name="xcenter">Coordenadas cartesianas del centro X, con cero en la esquina superior izquierda</param>
+            <param name="ycenter">Coordenadas cartesianas del centro Y, con cero en la esquina superior izquierda</param>
+            <param name="rad">Radio del circulo a extraer</param>
+            <param name="width">Ancho de la imagen original</param>
+            <param name="height">Alto de la imagen original</param>
+        </member>
+        <member name="M:RockStatic.MyDicom.CropCTCircle(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Toma el List de ushort, que se mapea a una imagen BMP, y recorta los elementos que se mapean un area circular de centro (xcenter,ycenter) de radio rad
             </summary>

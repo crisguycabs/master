@@ -34,7 +34,6 @@ namespace RockVision
             this.label4.Text = this.Text = this.padre.actualD.name.ToUpper();
             
         }
-
         private void lblTitulo_DoubleClick(object sender, EventArgs e)
         {
             CentrarForm();

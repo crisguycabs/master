@@ -32,7 +32,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="RockStatic.MyDicom" Collapsed="true">
-    <Position X="10" Y="6" Width="1.5" />
+    <Position X="9.75" Y="6" Width="1.5" />
     <TypeIdentifier />
     <ShowAsAssociation>
       <Field Name="dcm" />
@@ -40,12 +40,34 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="EvilDICOM.Core.DICOMObject" Collapsed="true">
-    <Position X="10" Y="7.25" Width="1.5" />
+    <Position X="9.75" Y="7.25" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Class Name="EvilDICOM.Core.Selection.DICOMSelector" Collapsed="true">
-    <Position X="10" Y="4.75" Width="1.5" />
+    <Position X="9.75" Y="4.75" Width="1.5" />
     <TypeIdentifier />
+  </Class>
+  <Class Name="RockVision.CProyectoD" Collapsed="true">
+    <Position X="5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEnAMAABIgAAAIABAGEACATACEAAAAAAAABAgEADI=</HashCode>
+      <FileName>Clases\CProyectoD.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="colorSeg2D" />
+      <Field Name="colorSeg3D" />
+      <Field Name="datacubos" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="RockVision.CUmbralCT" Collapsed="true">
+    <Position X="7.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAACAAEAAAAAAAAA=</HashCode>
+      <FileName>Clases\CUmbralCT.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="color" />
+    </ShowAsAssociation>
   </Class>
   <Struct Name="System.Drawing.Color" Collapsed="true">
     <Position X="7.25" Y="3.5" Width="1.5" />
