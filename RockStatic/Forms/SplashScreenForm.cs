@@ -29,7 +29,8 @@ namespace RockStatic
         {
             tmr = new Timer();
             //set time interval 3 sec
-            tmr.Interval = 3000;
+            //tmr.Interval = 3000;
+            tmr.Interval = 3;
             //starts the timer
             tmr.Start();
             tmr.Tick += tmr_Tick;

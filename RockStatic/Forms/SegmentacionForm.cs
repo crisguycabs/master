@@ -643,6 +643,13 @@ namespace RockStatic
                     // se guarda en disco
                     this.padre.actual.Salvar();
 
+                    // se genera la segmentacion transversal
+                    // this.padre.actual.datacuboHigh.SegCircThread(padre.actual.areaCore);
+                    // this.padre.actual.datacuboLow.SegCircThread(padre.actual.areaCore);
+
+                    this.padre.actual.datacuboHigh.SegCircThread(new CCuadrado(padre.actual.areaCore.x - padre.actual.areaCore.width/2, padre.actual.areaCore.y+padre.actual.areaCore.width/2, padre.actual.areaCore.width));
+                    this.padre.actual.datacuboLow.SegCircThread(new CCuadrado(padre.actual.areaCore.x - padre.actual.areaCore.width/2, padre.actual.areaCore.y + padre.actual.areaCore.width/2, padre.actual.areaCore.width));
+
                     // se recortan los core y phantom para cada elemento HIGH y LOW
                     this.padre.ShowWaiting("Por favor espere mientras RockStatic realiza la segmentacion de los elementos");
                     this.padre.actual.datacuboHigh.GenerarCoresHorizontales();

@@ -126,9 +126,9 @@ namespace RockStatic
             // si existe informacion de phantoms en los DICOM
             if (padre.actual.phantomEnDicom)
             {
-                //this.pictP1.Image = MainForm.Byte2image(elementosP1[0]);
-                //this.pictP2.Image = MainForm.Byte2image(elementosP2[0]);
-                //this.pictP3.Image = MainForm.Byte2image(elementosP3[0]);
+                /*this.pictP1.Image = MainForm.Byte2image(elementosP1[0]);
+                this.pictP2.Image = MainForm.Byte2image(elementosP2[0]);
+                this.pictP3.Image = MainForm.Byte2image(elementosP3[0]);*/
             }
             else
             {
