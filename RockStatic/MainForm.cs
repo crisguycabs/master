@@ -689,8 +689,10 @@ namespace RockStatic
                 actual.datacuboLow.widthSeg = actual.areaCore.width * 2;
 
                 // se genera la segmentacion
-                actual.datacuboHigh.SegCircThread(actual.areaCore);
-                actual.datacuboLow.SegCircThread(actual.areaCore);
+                //actual.datacuboHigh.SegCircThread(actual.areaCore);
+                //actual.datacuboLow.SegCircThread(actual.areaCore);
+                actual.datacuboHigh.SegCircThread(new CCuadrado(actual.areaCore.x - actual.areaCore.width / 2, actual.areaCore.y + actual.areaCore.width / 2, actual.areaCore.width));
+                actual.datacuboLow.SegCircThread(new CCuadrado(actual.areaCore.x - actual.areaCore.width / 2, actual.areaCore.y + actual.areaCore.width / 2, actual.areaCore.width));
 
                 // se crean los cortes longitudinales
                 actual.datacuboHigh.GenerarCoresHorizontales();                
