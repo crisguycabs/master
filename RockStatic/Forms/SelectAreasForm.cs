@@ -113,7 +113,8 @@ namespace RockStatic
             pen2.DashPattern = dashValues;
             
             // control de cambios
-            changes = true;
+            //changes = true;
+            changes = false;
 
             // se prepara la barra
             this.trackElementos.Minimum = 1;
@@ -139,14 +140,17 @@ namespace RockStatic
             // se preparan los numericUpDown
             numActual.Minimum = 1;
             numActual.Maximum = padre.actual.datacuboHigh.dataCube.Count;
+            changes = false;
             numActual.Value = 1;
 
             numFrom.Minimum = 1;
             numFrom.Maximum = padre.actual.datacuboHigh.dataCube.Count;
+            changes = false;
             numFrom.Value = 1;
 
             numUntil.Minimum = 1;
             numUntil.Maximum = padre.actual.datacuboHigh.dataCube.Count;
+            changes = false;
             numUntil.Value = padre.actual.datacuboHigh.dataCube.Count;
             
             countAreas = 0;
