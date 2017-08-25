@@ -649,10 +649,17 @@ namespace RockStatic
                     // se genera la segmentacion transversal
                     // this.padre.actual.datacuboHigh.SegCircThread(padre.actual.areaCore);
                     // this.padre.actual.datacuboLow.SegCircThread(padre.actual.areaCore);
-                    this.padre.actual.datacuboHigh.SegCircThread(new CCuadrado(padre.actual.areaCore.x - padre.actual.areaCore.width/2, padre.actual.areaCore.y+padre.actual.areaCore.width/2, padre.actual.areaCore.width));
-                    this.padre.actual.datacuboLow.SegCircThread(new CCuadrado(padre.actual.areaCore.x - padre.actual.areaCore.width/2, padre.actual.areaCore.y + padre.actual.areaCore.width/2, padre.actual.areaCore.width));
+                    this.padre.actual.datacuboHigh.SegCircThread(new CCuadrado(padre.actual.areaCore.x - padre.actual.areaCore.width/2, padre.actual.areaCore.y+padre.actual.areaCore.width/2, padre.actual.areaCore.width),"core");
+                    this.padre.actual.datacuboLow.SegCircThread(new CCuadrado(padre.actual.areaCore.x - padre.actual.areaCore.width/2, padre.actual.areaCore.y + padre.actual.areaCore.width/2, padre.actual.areaCore.width),"core");
+                    padre.actual.datacuboHigh.SegCircThread(new CCuadrado(padre.actual.areaPhantom1.x - padre.actual.areaPhantom1.width / 2, padre.actual.areaPhantom1.y + padre.actual.areaPhantom1.width / 2, padre.actual.areaPhantom1.width), "p1");
+                    padre.actual.datacuboLow.SegCircThread(new CCuadrado(padre.actual.areaPhantom1.x - padre.actual.areaPhantom1.width / 2, padre.actual.areaPhantom1.y + padre.actual.areaPhantom1.width / 2, padre.actual.areaPhantom1.width), "p1");
+                    padre.actual.datacuboHigh.SegCircThread(new CCuadrado(padre.actual.areaPhantom2.x - padre.actual.areaPhantom2.width / 2, padre.actual.areaPhantom2.y + padre.actual.areaPhantom2.width / 2, padre.actual.areaPhantom2.width), "p2");
+                    padre.actual.datacuboLow.SegCircThread(new CCuadrado(padre.actual.areaPhantom2.x - padre.actual.areaPhantom2.width / 2, padre.actual.areaPhantom2.y + padre.actual.areaPhantom2.width / 2, padre.actual.areaPhantom2.width), "p2");
+                    padre.actual.datacuboHigh.SegCircThread(new CCuadrado(padre.actual.areaPhantom3.x - padre.actual.areaPhantom3.width / 2, padre.actual.areaPhantom3.y + padre.actual.areaPhantom3.width / 2, padre.actual.areaPhantom3.width), "p3");
+                    padre.actual.datacuboLow.SegCircThread(new CCuadrado(padre.actual.areaPhantom3.x - padre.actual.areaPhantom3.width / 2, padre.actual.areaPhantom3.y + padre.actual.areaPhantom3.width / 2, padre.actual.areaPhantom3.width), "p3");
 
-                    // se recortan los core y phantom para cada elemento HIGH y LOW
+                    
+                    // se generan los cortes longitudinales
                     this.padre.actual.datacuboHigh.GenerarCoresHorizontales();
                     this.padre.actual.datacuboHigh.GenerarCoresVerticales();
                     this.padre.actual.datacuboLow.GenerarCoresHorizontales();
@@ -701,8 +708,8 @@ namespace RockStatic
                     DateTime ini = DateTime.Now;
 
                     // se genera la segmentacion transversal
-                    this.padre.actual.datacuboHigh.SegCircThread(new CCuadrado(padre.actual.areaCore.x - padre.actual.areaCore.width / 2, padre.actual.areaCore.y + padre.actual.areaCore.width / 2, padre.actual.areaCore.width));
-                    this.padre.actual.datacuboLow.SegCircThread(new CCuadrado(padre.actual.areaCore.x - padre.actual.areaCore.width / 2, padre.actual.areaCore.y + padre.actual.areaCore.width / 2, padre.actual.areaCore.width));
+                    this.padre.actual.datacuboHigh.SegCircThread(new CCuadrado(padre.actual.areaCore.x - padre.actual.areaCore.width / 2, padre.actual.areaCore.y + padre.actual.areaCore.width / 2, padre.actual.areaCore.width), "core");
+                    this.padre.actual.datacuboLow.SegCircThread(new CCuadrado(padre.actual.areaCore.x - padre.actual.areaCore.width / 2, padre.actual.areaCore.y + padre.actual.areaCore.width / 2, padre.actual.areaCore.width), "core");
 
                     // se generan los cortes longitudinales
                     this.padre.actual.datacuboHigh.GenerarCoresHorizontales();

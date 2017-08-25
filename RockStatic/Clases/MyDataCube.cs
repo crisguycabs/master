@@ -186,7 +186,8 @@ namespace RockStatic
         /// Genera la totalidad de las segmentaciones circulares de cores usando threads
         /// </summary>
         /// <param name="area">Objeto CCuadrado con la información del area a segmentar</param>
-        public void SegCircThread(CCuadrado area)
+        /// <param name="elemento">"'core','p1','p2','p3'</param>
+        public void SegCircThread(CCuadrado area,string elemento)
         {
             int nseg = dataCube.Count;
             ManualResetEvent[] doneEvents = new ManualResetEvent[nseg];
@@ -206,10 +207,34 @@ namespace RockStatic
             foreach (var e in doneEvents)
                 e.WaitOne();
 
-            for (int i = 0; i < nseg; i++)
+            switch(elemento)
             {
-                this.dataCube[i].segCore = threads[i].Segmentacion;
+                case "p1":
+                    for (int i = 0; i < nseg; i++)
+                    {
+                        this.dataCube[i].segPhantom1 = threads[i].Segmentacion;
+                    }
+                    break;
+                case "p2":
+                    for (int i = 0; i < nseg; i++)
+                    {
+                        this.dataCube[i].segPhantom2 = threads[i].Segmentacion;
+                    }
+                    break;
+                case "p3":
+                    for (int i = 0; i < nseg; i++)
+                    {
+                        this.dataCube[i].segPhantom3 = threads[i].Segmentacion;
+                    }
+                    break;
+                default:
+                    for (int i = 0; i < nseg; i++)
+                    {
+                        this.dataCube[i].segCore = threads[i].Segmentacion;
+                    }
+                    break;
             }
+            
         }
 
         /// <summary>

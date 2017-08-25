@@ -691,8 +691,14 @@ namespace RockStatic
                 // se genera la segmentacion
                 //actual.datacuboHigh.SegCircThread(actual.areaCore);
                 //actual.datacuboLow.SegCircThread(actual.areaCore);
-                actual.datacuboHigh.SegCircThread(new CCuadrado(actual.areaCore.x - actual.areaCore.width / 2, actual.areaCore.y + actual.areaCore.width / 2, actual.areaCore.width));
-                actual.datacuboLow.SegCircThread(new CCuadrado(actual.areaCore.x - actual.areaCore.width / 2, actual.areaCore.y + actual.areaCore.width / 2, actual.areaCore.width));
+                actual.datacuboHigh.SegCircThread(new CCuadrado(actual.areaCore.x - actual.areaCore.width / 2, actual.areaCore.y + actual.areaCore.width / 2, actual.areaCore.width),"core");
+                actual.datacuboLow.SegCircThread(new CCuadrado(actual.areaCore.x - actual.areaCore.width / 2, actual.areaCore.y + actual.areaCore.width / 2, actual.areaCore.width), "core");
+                actual.datacuboHigh.SegCircThread(new CCuadrado(actual.areaPhantom1.x - actual.areaPhantom1.width / 2, actual.areaPhantom1.y + actual.areaPhantom1.width / 2, actual.areaPhantom1.width), "p1");
+                actual.datacuboLow.SegCircThread(new CCuadrado(actual.areaPhantom1.x - actual.areaPhantom1.width / 2, actual.areaPhantom1.y + actual.areaPhantom1.width / 2, actual.areaPhantom1.width), "p1");
+                actual.datacuboHigh.SegCircThread(new CCuadrado(actual.areaPhantom2.x - actual.areaPhantom2.width / 2, actual.areaPhantom2.y + actual.areaPhantom2.width / 2, actual.areaPhantom2.width), "p2");
+                actual.datacuboLow.SegCircThread(new CCuadrado(actual.areaPhantom2.x - actual.areaPhantom2.width / 2, actual.areaPhantom2.y + actual.areaPhantom2.width / 2, actual.areaPhantom2.width), "p2");
+                actual.datacuboHigh.SegCircThread(new CCuadrado(actual.areaPhantom3.x - actual.areaPhantom3.width / 2, actual.areaPhantom3.y + actual.areaPhantom3.width / 2, actual.areaPhantom3.width), "p3");
+                actual.datacuboLow.SegCircThread(new CCuadrado(actual.areaPhantom3.x - actual.areaPhantom3.width / 2, actual.areaPhantom3.y + actual.areaPhantom3.width / 2, actual.areaPhantom3.width), "p3");
 
                 // se crean los cortes longitudinales
                 actual.datacuboHigh.GenerarCoresHorizontales();                

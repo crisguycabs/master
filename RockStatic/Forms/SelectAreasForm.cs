@@ -127,6 +127,9 @@ namespace RockStatic
             // si existe informacion de phantoms en los DICOM
             if (padre.actual.phantomEnDicom)
             {
+                this.pictP1.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segPhantom1, padre.actual.areaPhantom1.width * 2, padre.actual.areaPhantom1.width * 2);
+                this.pictP2.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segPhantom2, padre.actual.areaPhantom2.width * 2, padre.actual.areaPhantom2.width * 2);
+                this.pictP3.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segPhantom3, padre.actual.areaPhantom3.width * 2, padre.actual.areaPhantom3.width * 2);
                 /*this.pictP1.Image = MainForm.Byte2image(elementosP1[0]);
                 this.pictP2.Image = MainForm.Byte2image(elementosP2[0]);
                 this.pictP3.Image = MainForm.Byte2image(elementosP3[0]);*/

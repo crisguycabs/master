@@ -44,6 +44,21 @@ namespace RockStatic
         /// List que contiene los pixeles CT de la segmentacion transversal del core del DICOM
         /// </summary>
         public List<ushort> segCore = null;
+
+        /// <summary>
+        /// List que contiene los pixeles CT de la segmentacion transversal del phantom1 del DICOM
+        /// </summary>
+        public List<ushort> segPhantom1 = null;
+
+        /// <summary>
+        /// List que contiene los pixeles CT de la segmentacion transversal del phantom2 del DICOM
+        /// </summary>
+        public List<ushort> segPhantom2 = null;
+
+        /// <summary>
+        /// List que contiene los pixeles CT de la segmentacion transversal del phantom3 del DICOM
+        /// </summary>
+        public List<ushort> segPhantom3 = null;
  
         /// <summary>
         /// Objeto DICOM cargado

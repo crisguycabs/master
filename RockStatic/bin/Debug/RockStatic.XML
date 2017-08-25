@@ -558,11 +558,12 @@
             Genera la totalidad de los bitmap del datacubo usando threads
             </summary>
         </member>
-        <member name="M:RockStatic.MyDataCube.SegCircThread(RockStatic.CCuadrado)">
+        <member name="M:RockStatic.MyDataCube.SegCircThread(RockStatic.CCuadrado,System.String)">
             <summary>
             Genera la totalidad de las segmentaciones circulares de cores usando threads
             </summary>
             <param name="area">Objeto CCuadrado con la información del area a segmentar</param>
+            <param name="elemento">"'core','p1','p2','p3'</param>
         </member>
         <member name="M:RockStatic.MyDataCube.CrearBitmap(System.Int32,System.Int32)">
             <summary>
@@ -685,6 +686,21 @@
         <member name="F:RockStatic.MyDicom.segCore">
             <summary>
             List que contiene los pixeles CT de la segmentacion transversal del core del DICOM
+            </summary>
+        </member>
+        <member name="F:RockStatic.MyDicom.segPhantom1">
+            <summary>
+            List que contiene los pixeles CT de la segmentacion transversal del phantom1 del DICOM
+            </summary>
+        </member>
+        <member name="F:RockStatic.MyDicom.segPhantom2">
+            <summary>
+            List que contiene los pixeles CT de la segmentacion transversal del phantom2 del DICOM
+            </summary>
+        </member>
+        <member name="F:RockStatic.MyDicom.segPhantom3">
+            <summary>
+            List que contiene los pixeles CT de la segmentacion transversal del phantom3 del DICOM
             </summary>
         </member>
         <member name="F:RockStatic.MyDicom.dcm">
