@@ -88,6 +88,7 @@
             this.trackElementos.Name = "trackElementos";
             this.trackElementos.Size = new System.Drawing.Size(526, 45);
             this.trackElementos.TabIndex = 1;
+            this.trackElementos.Scroll += new System.EventHandler(this.trackElementos_Scroll);
             this.trackElementos.ValueChanged += new System.EventHandler(this.trackElementos_ValueChanged);
             // 
             // lblTitulo

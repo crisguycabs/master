@@ -116,11 +116,54 @@ namespace RockStatic
             //changes = true;
             changes = false;
 
+
+
+            //// voy a modificar 
+
+            if (padre.actual.phantomEnDicom)
+            {
+
+                this.padre.ShowWaiting("Por favor espere mientras RockStatic realiza la segmentacion de los elementos");
+
+                // se genera la segmentacion transversal
+                // this.padre.actual.datacuboHigh.SegCircThread(padre.actual.areaCore);
+                // this.padre.actual.datacuboLow.SegCircThread(padre.actual.areaCore);
+                this.padre.actual.datacuboHigh.SegCircThread(new CCuadrado(padre.actual.areaCore.x - padre.actual.areaCore.width / 2, padre.actual.areaCore.y + padre.actual.areaCore.width / 2, padre.actual.areaCore.width), "core");
+                this.padre.actual.datacuboLow.SegCircThread(new CCuadrado(padre.actual.areaCore.x - padre.actual.areaCore.width / 2, padre.actual.areaCore.y + padre.actual.areaCore.width / 2, padre.actual.areaCore.width), "core");
+                padre.actual.datacuboHigh.SegCircThread(new CCuadrado(padre.actual.areaPhantom1.x - padre.actual.areaPhantom1.width / 2, padre.actual.areaPhantom1.y + padre.actual.areaPhantom1.width / 2, padre.actual.areaPhantom1.width), "p1");
+                padre.actual.datacuboLow.SegCircThread(new CCuadrado(padre.actual.areaPhantom1.x - padre.actual.areaPhantom1.width / 2, padre.actual.areaPhantom1.y + padre.actual.areaPhantom1.width / 2, padre.actual.areaPhantom1.width), "p1");
+                padre.actual.datacuboHigh.SegCircThread(new CCuadrado(padre.actual.areaPhantom2.x - padre.actual.areaPhantom2.width / 2, padre.actual.areaPhantom2.y + padre.actual.areaPhantom2.width / 2, padre.actual.areaPhantom2.width), "p2");
+                padre.actual.datacuboLow.SegCircThread(new CCuadrado(padre.actual.areaPhantom2.x - padre.actual.areaPhantom2.width / 2, padre.actual.areaPhantom2.y + padre.actual.areaPhantom2.width / 2, padre.actual.areaPhantom2.width), "p2");
+                padre.actual.datacuboHigh.SegCircThread(new CCuadrado(padre.actual.areaPhantom3.x - padre.actual.areaPhantom3.width / 2, padre.actual.areaPhantom3.y + padre.actual.areaPhantom3.width / 2, padre.actual.areaPhantom3.width), "p3");
+                padre.actual.datacuboLow.SegCircThread(new CCuadrado(padre.actual.areaPhantom3.x - padre.actual.areaPhantom3.width / 2, padre.actual.areaPhantom3.y + padre.actual.areaPhantom3.width / 2, padre.actual.areaPhantom3.width), "p3");
+
+
+                // se generan los cortes longitudinales
+                this.padre.actual.datacuboHigh.GenerarCoresHorizontales();
+                this.padre.actual.datacuboHigh.GenerarCoresVerticales();
+                this.padre.actual.datacuboLow.GenerarCoresHorizontales();
+                this.padre.actual.datacuboLow.GenerarCoresVerticales();
+
+                this.padre.CloseWaiting();
+
+                //this.Close();
+
+            }
+
+
+
+
             // se prepara la barra
             this.trackElementos.Minimum = 1;
             this.trackElementos.Maximum = padre.actual.datacuboHigh.dataCube.Count;
             this.trackElementos.TickFrequency = (int)(padre.actual.datacuboHigh.dataCube.Count / 10);
             this.trackElementos.Value = 1;
+
+
+
+
+
+
 
             this.pictCore.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segCore, padre.actual.areaCore.width * 2, padre.actual.areaCore.width * 2);
 

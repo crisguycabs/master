@@ -1172,5 +1172,10 @@ namespace RockStatic
 
             //pictElemento.Invalidate();
         }
+
+        private void trackElementos_Scroll(object sender, EventArgs e)
+        {
+
+        }
     }
 }
