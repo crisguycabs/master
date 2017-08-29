@@ -705,8 +705,7 @@ namespace RockStatic
 
                     // se recortan los core y phantom para cada elemento HIGH y LOW
                     this.padre.ShowWaiting("Por favor espere mientras RockStatic realiza la segmentacion de los elementos");
-                    DateTime ini = DateTime.Now;
-
+                    
                     // se genera la segmentacion transversal
                     this.padre.actual.datacuboHigh.SegCircThread(new CCuadrado(padre.actual.areaCore.x - padre.actual.areaCore.width / 2, padre.actual.areaCore.y + padre.actual.areaCore.width / 2, padre.actual.areaCore.width), "core");
                     this.padre.actual.datacuboLow.SegCircThread(new CCuadrado(padre.actual.areaCore.x - padre.actual.areaCore.width / 2, padre.actual.areaCore.y + padre.actual.areaCore.width / 2, padre.actual.areaCore.width), "core");
@@ -717,10 +716,7 @@ namespace RockStatic
                     this.padre.actual.datacuboLow.GenerarCoresHorizontales();
                     this.padre.actual.datacuboLow.GenerarCoresVerticales();
                     
-                    DateTime fin = DateTime.Now;
                     this.padre.CloseWaiting();
-
-                    MessageBox.Show((fin - ini).Seconds + "s:" + (fin - ini).Milliseconds + "ms");
 
                     this.Close();
                 }

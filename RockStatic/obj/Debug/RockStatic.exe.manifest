@@ -103,14 +103,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="RockStatic.exe" size="2276352">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="RockStatic.exe" size="2275840">
       <assemblyIdentity name="RockStatic" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>gSU5MPkf81kkBSAkVWBuA9dO2K0c5hJSJz8P8SmQBbA=</dsig:DigestValue>
+        <dsig:DigestValue>GKztzUTHuJ93CAzoJbm7TSpKRde7kft84/W0i84RroY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
