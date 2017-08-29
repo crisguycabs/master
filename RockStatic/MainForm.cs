@@ -262,12 +262,12 @@ namespace RockStatic
         public static Bitmap CropCirle(Bitmap srcImage, CCuadrado elemento)
         {
             // primero se extrae el area rectangular del slide que se pasa como argumento
-            Bitmap bmp = new Bitmap(elemento.width * 2, elemento.width * 2);
+            Bitmap bmp = new Bitmap(elemento.width, elemento.width);
             Graphics g = Graphics.FromImage(bmp);
             Rectangle selectedArea = new Rectangle();
-            selectedArea.X = elemento.x - elemento.width;
-            selectedArea.Y = elemento.y - elemento.width;
-            selectedArea.Width = selectedArea.Height = elemento.width * 2;
+            selectedArea.X = elemento.x;
+            selectedArea.Y = elemento.y;
+            selectedArea.Width = selectedArea.Height = elemento.width;
             g.DrawImage(srcImage, 0, 0, selectedArea, GraphicsUnit.Pixel);
 
             // la imagen bmp contiene el recorte rectangular
@@ -685,20 +685,20 @@ namespace RockStatic
                 actual.areaPhantom2 = new CCuadrado(areaP2);
                 actual.areaPhantom3 = new CCuadrado(areaP3);
 
-                actual.datacuboHigh.widthSeg = actual.areaCore.width * 2;
-                actual.datacuboLow.widthSeg = actual.areaCore.width * 2;
+                actual.datacuboHigh.widthSeg = actual.areaCore.width;
+                actual.datacuboLow.widthSeg = actual.areaCore.width;
 
                 // se genera la segmentacion
                 //actual.datacuboHigh.SegCircThread(actual.areaCore);
                 //actual.datacuboLow.SegCircThread(actual.areaCore);
-                actual.datacuboHigh.SegCircThread(new CCuadrado(actual.areaCore.x - actual.areaCore.width / 2, actual.areaCore.y + actual.areaCore.width / 2, actual.areaCore.width),"core");
-                actual.datacuboLow.SegCircThread(new CCuadrado(actual.areaCore.x - actual.areaCore.width / 2, actual.areaCore.y + actual.areaCore.width / 2, actual.areaCore.width), "core");
-                actual.datacuboHigh.SegCircThread(new CCuadrado(actual.areaPhantom1.x - actual.areaPhantom1.width / 2, actual.areaPhantom1.y + actual.areaPhantom1.width / 2, actual.areaPhantom1.width), "p1");
-                actual.datacuboLow.SegCircThread(new CCuadrado(actual.areaPhantom1.x - actual.areaPhantom1.width / 2, actual.areaPhantom1.y + actual.areaPhantom1.width / 2, actual.areaPhantom1.width), "p1");
-                actual.datacuboHigh.SegCircThread(new CCuadrado(actual.areaPhantom2.x - actual.areaPhantom2.width / 2, actual.areaPhantom2.y + actual.areaPhantom2.width / 2, actual.areaPhantom2.width), "p2");
-                actual.datacuboLow.SegCircThread(new CCuadrado(actual.areaPhantom2.x - actual.areaPhantom2.width / 2, actual.areaPhantom2.y + actual.areaPhantom2.width / 2, actual.areaPhantom2.width), "p2");
-                actual.datacuboHigh.SegCircThread(new CCuadrado(actual.areaPhantom3.x - actual.areaPhantom3.width / 2, actual.areaPhantom3.y + actual.areaPhantom3.width / 2, actual.areaPhantom3.width), "p3");
-                actual.datacuboLow.SegCircThread(new CCuadrado(actual.areaPhantom3.x - actual.areaPhantom3.width / 2, actual.areaPhantom3.y + actual.areaPhantom3.width / 2, actual.areaPhantom3.width), "p3");
+                actual.datacuboHigh.SegCircThread(new CCuadrado(actual.areaCore.x, actual.areaCore.y, actual.areaCore.width),"core");
+                actual.datacuboLow.SegCircThread(new CCuadrado(actual.areaCore.x, actual.areaCore.y, actual.areaCore.width), "core");
+                actual.datacuboHigh.SegCircThread(new CCuadrado(actual.areaPhantom1.x, actual.areaPhantom1.y, actual.areaPhantom1.width), "p1");
+                actual.datacuboLow.SegCircThread(new CCuadrado(actual.areaPhantom1.x, actual.areaPhantom1.y, actual.areaPhantom1.width), "p1");
+                actual.datacuboHigh.SegCircThread(new CCuadrado(actual.areaPhantom2.x, actual.areaPhantom2.y, actual.areaPhantom2.width), "p2");
+                actual.datacuboLow.SegCircThread(new CCuadrado(actual.areaPhantom2.x, actual.areaPhantom2.y, actual.areaPhantom2.width), "p2");
+                actual.datacuboHigh.SegCircThread(new CCuadrado(actual.areaPhantom3.x, actual.areaPhantom3.y, actual.areaPhantom3.width), "p3");
+                actual.datacuboLow.SegCircThread(new CCuadrado(actual.areaPhantom3.x, actual.areaPhantom3.y, actual.areaPhantom3.width), "p3");
 
                 // se crean los cortes longitudinales
                 actual.datacuboHigh.GenerarCoresHorizontales();                

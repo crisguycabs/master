@@ -419,6 +419,11 @@ namespace RockStatic
             punto.width = Convert.ToInt32(Math.Sqrt(Math.Pow(punto.x - tempClicks[0].x, 2) + Math.Pow(punto.y - tempClicks[0].y, 2)));
             punto.nombre = "Area " + countAreas;
 
+            // se corrigue de coordenadas (cx,cy,r) a (ex,ey,w)
+            punto.x -= punto.width;
+            punto.y -= punto.width;
+            punto.width *= 2;
+
             elementosScreen.Add(punto);
             AddList(punto);
             // se obliga al PictureBox que se resetee y dibuje todos los elementos que hayan en memoria
@@ -460,10 +465,11 @@ namespace RockStatic
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             for (int i = 0; i < elementosScreen.Count; i++)
             {
-                if (i == lstElementos.SelectedIndex) e.Graphics.DrawEllipse(pen2, elementosScreen[i].x - elementosScreen[i].width, elementosScreen[i].y - elementosScreen[i].width, 2 * elementosScreen[i].width, 2 * elementosScreen[i].width);
-                else e.Graphics.DrawEllipse(pen1, elementosScreen[i].x - elementosScreen[i].width, elementosScreen[i].y - elementosScreen[i].width, 2 * elementosScreen[i].width, 2 * elementosScreen[i].width);
-                //if (i == lstElementos.SelectedIndex) e.Graphics.DrawEllipse(pen2, elementosScreen[i].x - elementosScreen[i].r, elementosScreen[i].y - elementosScreen[i].r, 2 * elementosScreen[i].r, 2 * elementosScreen[i].r);
-                //else e.Graphics.DrawEllipse(pen1, elementosScreen[i].x - elementosScreen[i].r, elementosScreen[i].y - elementosScreen[i].r, 2 * elementosScreen[i].r, 2 * elementosScreen[i].r);
+                //if (i == lstElementos.SelectedIndex) e.Graphics.DrawEllipse(pen2, elementosScreen[i].x - elementosScreen[i].width, elementosScreen[i].y - elementosScreen[i].width, 2 * elementosScreen[i].width, 2 * elementosScreen[i].width);
+                //else e.Graphics.DrawEllipse(pen1, elementosScreen[i].x - elementosScreen[i].width, elementosScreen[i].y - elementosScreen[i].width, 2 * elementosScreen[i].width, 2 * elementosScreen[i].width);
+
+                if (i == lstElementos.SelectedIndex) e.Graphics.DrawEllipse(pen2, elementosScreen[i].x, elementosScreen[i].y, elementosScreen[i].width,elementosScreen[i].width);
+                else e.Graphics.DrawEllipse(pen1, elementosScreen[i].x, elementosScreen[i].y, elementosScreen[i].width, elementosScreen[i].width);
             }
             controlPaint = false;
         }
@@ -644,6 +650,7 @@ namespace RockStatic
                     // se guarda en disco
                     this.padre.actual.Salvar();
 
+                    /*
                     this.padre.ShowWaiting("Por favor espere mientras RockStatic realiza la segmentacion de los elementos");
 
                     // se genera la segmentacion transversal
@@ -665,7 +672,7 @@ namespace RockStatic
                     this.padre.actual.datacuboLow.GenerarCoresHorizontales();
                     this.padre.actual.datacuboLow.GenerarCoresVerticales();
                     
-                    this.padre.CloseWaiting();
+                    this.padre.CloseWaiting();*/
 
                     this.Close();
                 }
@@ -703,6 +710,7 @@ namespace RockStatic
                     // se guarda en disco
                     this.padre.actual.Salvar();
 
+                    /*
                     // se recortan los core y phantom para cada elemento HIGH y LOW
                     this.padre.ShowWaiting("Por favor espere mientras RockStatic realiza la segmentacion de los elementos");
                     
@@ -716,7 +724,7 @@ namespace RockStatic
                     this.padre.actual.datacuboLow.GenerarCoresHorizontales();
                     this.padre.actual.datacuboLow.GenerarCoresVerticales();
                     
-                    this.padre.CloseWaiting();
+                    this.padre.CloseWaiting();*/
 
                     this.Close();
                 }
@@ -771,6 +779,8 @@ namespace RockStatic
                 g.DrawImage(pictElemento.Image, iniX, iniY, selectedArea, GraphicsUnit.Pixel);
                 g.DrawEllipse(pen3, 58, 58, 8, 8);
                 pictSmall.Image = bmp;
+
+                lblTest.Text = "x: " + e.X.ToString() + " y: " + e.Y.ToString();
             }
         }
 

@@ -65,6 +65,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.trackContraste = new System.Windows.Forms.TrackBar();
             this.trackBrillo = new System.Windows.Forms.TrackBar();
+            this.lblTest = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackElementos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictElemento)).BeginInit();
             this.grpAuto.SuspendLayout();
@@ -576,6 +577,15 @@
             this.trackBrillo.TickFrequency = 32;
             this.trackBrillo.Scroll += new System.EventHandler(this.trackBrillo_Scroll);
             // 
+            // lblTest
+            // 
+            this.lblTest.AutoSize = true;
+            this.lblTest.Location = new System.Drawing.Point(535, 178);
+            this.lblTest.Name = "lblTest";
+            this.lblTest.Size = new System.Drawing.Size(42, 14);
+            this.lblTest.TabIndex = 20;
+            this.lblTest.Text = "label5";
+            // 
             // SegmentacionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -583,6 +593,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(741, 666);
             this.ControlBox = false;
+            this.Controls.Add(this.lblTest);
             this.Controls.Add(this.pictElemento);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.pictSmall);
@@ -665,5 +676,6 @@
         private System.Windows.Forms.TrackBar trackContraste;
         private System.Windows.Forms.TrackBar trackBrillo;
         private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Label lblTest;
     }
 }
