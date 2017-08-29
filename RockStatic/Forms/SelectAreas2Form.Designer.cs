@@ -120,9 +120,10 @@
             // 
             // trackCortes
             // 
-            this.trackCortes.Location = new System.Drawing.Point(1, 377);
+            this.trackCortes.Location = new System.Drawing.Point(771, 21);
             this.trackCortes.Name = "trackCortes";
-            this.trackCortes.Size = new System.Drawing.Size(818, 45);
+            this.trackCortes.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackCortes.Size = new System.Drawing.Size(45, 351);
             this.trackCortes.TabIndex = 11;
             this.trackCortes.Scroll += new System.EventHandler(this.trackCortes_Scroll);
             // 
