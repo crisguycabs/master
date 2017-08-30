@@ -199,7 +199,8 @@ namespace RockStatic
             for (int i = 0; i < nseg; i++)
             {
                 doneEvents[i] = new ManualResetEvent(false);
-                AuxThread thread = new AuxThread(this.dataCube[i].pixelData, area.x, area.y, area.width, width, height, doneEvents[i]);
+                // AuxThread thread = new AuxThread(this.dataCube[i].pixelData, area.x + (area.width / 2), area.y + (area.width / 2), area.width/2, width, height, doneEvents[i]);
+                AuxThread thread = new AuxThread(this.dataCube[i].pixelData, area.x, area.y, area.width/2, width, height, doneEvents[i]);
                 threads[i] = thread;
                 ThreadPool.QueueUserWorkItem(thread.ThreadSegmentar, i);
             }
