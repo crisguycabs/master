@@ -85,7 +85,8 @@ namespace RockStatic
         {
             //slideActual = 0;
 
-            int nelemento=Convert.ToInt32(padre.actual.datacuboHigh.widthSeg/2);
+            //int nelemento=Convert.ToInt32(padre.actual.datacuboHigh.widthSeg/2);
+            int nelemento = Convert.ToInt32(padre.actual.datacuboHigh.widthSeg/2 );
             minimo = padre.actual.datacuboHigh.GetMinimo();
             maximo = padre.actual.datacuboHigh.GetMaximo();
             double resZ = Convert.ToDouble(padre.actual.datacuboHigh.dataCube[0].selector.SliceThickness.Data);
@@ -93,7 +94,7 @@ namespace RockStatic
             factor = Convert.ToInt32(resZ / resXY);
 
             Bitmap corte;
-            corte = padre.actual.datacuboHigh.CreateBitmapCorte(padre.actual.datacuboHigh.coresHorizontal[nelemento], padre.actual.datacuboHigh.dataCube.Count * factor, padre.actual.datacuboHigh.widthSeg, minimo, maximo);
+            corte = padre.actual.datacuboHigh.CreateBitmapCorte(padre.actual.datacuboHigh.coresHorizontal[0], padre.actual.datacuboHigh.dataCube.Count * factor, padre.actual.datacuboHigh.widthSeg, minimo, maximo);
             
             int width = corte.Width;
             int height = corte.Height;

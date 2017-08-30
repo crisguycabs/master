@@ -109,6 +109,11 @@ namespace RockStatic
         private void HomeForm_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawRectangle(new Pen(Color.Green, 2), this.DisplayRectangle);       
+        }
+
+        private void HomeForm_Load(object sender, EventArgs e)
+        {
+
         }    
     }
 }

@@ -701,9 +701,17 @@ namespace RockStatic
                 actual.datacuboLow.SegCircThread(new CCuadrado(actual.areaPhantom3.x, actual.areaPhantom3.y, actual.areaPhantom3.width), "p3");
 
                 // se crean los cortes longitudinales
-                actual.datacuboHigh.GenerarCoresHorizontales();                
-                actual.datacuboLow.GenerarCoresHorizontales();                
+                //actual.datacuboHigh.GenerarCoresHorizontales();                
+                //actual.datacuboLow.GenerarCoresHorizontales();
+
+                // se generan los cortes longitudinales
+                actual.datacuboHigh.GenerarCoresHorizontales();
+                actual.datacuboHigh.GenerarCoresVerticales();
+                actual.datacuboLow.GenerarCoresHorizontales();
+                actual.datacuboLow.GenerarCoresVerticales();
+
             }
+
             actual.areasDone = areasDone;
             if (areasDone)
             {

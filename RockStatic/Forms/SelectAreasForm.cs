@@ -137,14 +137,14 @@ namespace RockStatic
                 //padre.actual.datacuboHigh.SegCircThread(new CCuadrado(padre.actual.areaPhantom3.x - padre.actual.areaPhantom3.width / 2, padre.actual.areaPhantom3.y + padre.actual.areaPhantom3.width / 2, padre.actual.areaPhantom3.width), "p3");
                 //padre.actual.datacuboLow.SegCircThread(new CCuadrado(padre.actual.areaPhantom3.x - padre.actual.areaPhantom3.width / 2, padre.actual.areaPhantom3.y + padre.actual.areaPhantom3.width / 2, padre.actual.areaPhantom3.width), "p3");
 
-                this.padre.actual.datacuboHigh.SegCircThread(padre.actual.areaCore, "core");
-                this.padre.actual.datacuboLow.SegCircThread(padre.actual.areaCore, "core");
-                padre.actual.datacuboHigh.SegCircThread(new CCuadrado(padre.actual.areaPhantom1.x, padre.actual.areaPhantom1.y, padre.actual.areaPhantom1.width), "p1");
-                padre.actual.datacuboLow.SegCircThread(new CCuadrado(padre.actual.areaPhantom1.x, padre.actual.areaPhantom1.y, padre.actual.areaPhantom1.width), "p1");
-                padre.actual.datacuboHigh.SegCircThread(new CCuadrado(padre.actual.areaPhantom2.x, padre.actual.areaPhantom2.y, padre.actual.areaPhantom2.width), "p2");
-                padre.actual.datacuboLow.SegCircThread(new CCuadrado(padre.actual.areaPhantom2.x, padre.actual.areaPhantom2.y, padre.actual.areaPhantom2.width), "p2");
-                padre.actual.datacuboHigh.SegCircThread(new CCuadrado(padre.actual.areaPhantom3.x, padre.actual.areaPhantom3.y, padre.actual.areaPhantom3.width), "p3");
-                padre.actual.datacuboLow.SegCircThread(new CCuadrado(padre.actual.areaPhantom3.x, padre.actual.areaPhantom3.y, padre.actual.areaPhantom3.width), "p3");
+                this.padre.actual.datacuboHigh.SegCircThread(new CCuadrado(padre.actual.areaCore.x , padre.actual.areaCore.y , padre.actual.areaCore.width), "core");
+                this.padre.actual.datacuboLow.SegCircThread(new CCuadrado(padre.actual.areaCore.x, padre.actual.areaCore.y, padre.actual.areaCore.width), "core");
+                padre.actual.datacuboHigh.SegCircThread(padre.actual.areaPhantom1, "p1");
+                padre.actual.datacuboLow.SegCircThread(padre.actual.areaPhantom1, "p1");
+                padre.actual.datacuboHigh.SegCircThread(padre.actual.areaPhantom2, "p2");
+                padre.actual.datacuboLow.SegCircThread(padre.actual.areaPhantom2, "p2");
+                padre.actual.datacuboHigh.SegCircThread(padre.actual.areaPhantom3, "p3");
+                padre.actual.datacuboLow.SegCircThread(padre.actual.areaPhantom1, "p3");
 
                 // se generan los cortes longitudinales
                 this.padre.actual.datacuboHigh.GenerarCoresHorizontales();
@@ -160,8 +160,12 @@ namespace RockStatic
                 this.padre.ShowWaiting("Por favor espere mientras RockStatic realiza la segmentacion de los elementos");
 
                 // se genera la segmentacion transversal
-                this.padre.actual.datacuboHigh.SegCircThread(new CCuadrado(padre.actual.areaCore.x - padre.actual.areaCore.width / 2, padre.actual.areaCore.y + padre.actual.areaCore.width / 2, padre.actual.areaCore.width), "core");
-                this.padre.actual.datacuboLow.SegCircThread(new CCuadrado(padre.actual.areaCore.x - padre.actual.areaCore.width / 2, padre.actual.areaCore.y + padre.actual.areaCore.width / 2, padre.actual.areaCore.width), "core");
+
+                //this.padre.actual.datacuboHigh.SegCircThread(new CCuadrado(padre.actual.areaCore.x - padre.actual.areaCore.width / 2, padre.actual.areaCore.y + padre.actual.areaCore.width / 2, padre.actual.areaCore.width), "core");
+                //this.padre.actual.datacuboLow.SegCircThread(new CCuadrado(padre.actual.areaCore.x - padre.actual.areaCore.width / 2, padre.actual.areaCore.y + padre.actual.areaCore.width / 2, padre.actual.areaCore.width), "core");
+
+                this.padre.actual.datacuboHigh.SegCircThread(padre.actual.areaCore, "core");
+                this.padre.actual.datacuboLow.SegCircThread(padre.actual.areaCore, "core");
 
                 // se generan los cortes longitudinales
                 this.padre.actual.datacuboHigh.GenerarCoresHorizontales();
@@ -186,9 +190,14 @@ namespace RockStatic
             
             if (padre.actual.phantomEnDicom)
             {
-                this.pictP1.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segPhantom1, padre.actual.areaPhantom1.width * 2, padre.actual.areaPhantom1.width * 2);
-                this.pictP2.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segPhantom2, padre.actual.areaPhantom2.width * 2, padre.actual.areaPhantom2.width * 2);
-                this.pictP3.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segPhantom3, padre.actual.areaPhantom3.width * 2, padre.actual.areaPhantom3.width * 2);
+                //this.pictP1.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segPhantom1, padre.actual.areaPhantom1.width * 2, padre.actual.areaPhantom1.width * 2);
+                //this.pictP2.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segPhantom2, padre.actual.areaPhantom2.width * 2, padre.actual.areaPhantom2.width * 2);
+                //this.pictP3.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segPhantom3, padre.actual.areaPhantom3.width * 2, padre.actual.areaPhantom3.width * 2);
+
+                this.pictP1.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segPhantom1, padre.actual.areaPhantom1.width , padre.actual.areaPhantom1.width );
+                this.pictP2.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segPhantom2, padre.actual.areaPhantom2.width , padre.actual.areaPhantom2.width );
+                this.pictP3.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segPhantom3, padre.actual.areaPhantom3.width , padre.actual.areaPhantom3.width );
+
                 /*this.pictP1.Image = MainForm.Byte2image(elementosP1[0]);
                 this.pictP2.Image = MainForm.Byte2image(elementosP2[0]);
                 this.pictP3.Image = MainForm.Byte2image(elementosP3[0]);*/

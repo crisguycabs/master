@@ -210,6 +210,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HOME";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HomeForm_FormClosed);
+            this.Load += new System.EventHandler(this.HomeForm_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.HomeForm_Paint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.HomeForm_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.HomeForm_MouseMove);
