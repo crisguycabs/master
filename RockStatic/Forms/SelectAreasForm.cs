@@ -116,6 +116,8 @@ namespace RockStatic
             //changes = true;
             changes = false;
 
+            padre.actual.datacuboHigh.widthSeg = padre.actual.areaCore.width;
+            padre.actual.datacuboLow.widthSeg = padre.actual.areaCore.width;
 
 
             //// voy a modificar 
@@ -144,7 +146,7 @@ namespace RockStatic
                 padre.actual.datacuboHigh.SegCircThread(padre.actual.areaPhantom2, "p2");
                 padre.actual.datacuboLow.SegCircThread(padre.actual.areaPhantom2, "p2");
                 padre.actual.datacuboHigh.SegCircThread(padre.actual.areaPhantom3, "p3");
-                padre.actual.datacuboLow.SegCircThread(padre.actual.areaPhantom1, "p3");
+                padre.actual.datacuboLow.SegCircThread(padre.actual.areaPhantom3, "p3");
 
                 // se generan los cortes longitudinales
                 this.padre.actual.datacuboHigh.GenerarCoresHorizontales();
@@ -553,7 +555,7 @@ namespace RockStatic
         /// </summary>
         private void Filtrar(int n)
         {
-            Bitmap temp = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[n - 1].segCore, padre.actual.areaCore.width * 2, padre.actual.areaCore.width * 2);
+            Bitmap temp = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[n - 1].segCore, padre.actual.areaCore.width, padre.actual.areaCore.width);                          
             
             AForge.Imaging.Filters.BrightnessCorrection brillo = new AForge.Imaging.Filters.BrightnessCorrection(Convert.ToInt32(trackBrillo.Value));
             AForge.Imaging.Filters.ContrastCorrection contraste = new AForge.Imaging.Filters.ContrastCorrection(Convert.ToInt32(trackContraste.Value));
