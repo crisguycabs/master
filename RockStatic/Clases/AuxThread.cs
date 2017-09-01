@@ -281,24 +281,24 @@ namespace RockStatic
             {
                 for (int j = 0; j < width; j++)
                 {
-                    if ((i >= (xcenter - rad)) && (i < (xcenter + rad)) && (j >= (ycenter - rad)) && (j < (ycenter + rad)))
+                    if ((i >= xcenter ) && (i < (xcenter + rad)) && (j >= ycenter) && (j < (ycenter + rad)))
                     {
-                        // si esta dentro del area cuadrada
-                        int dx = i - xcenter;
-                        int dy = j - ycenter;
-                        dist = Math.Sqrt(dx * dx + dy * dy);
+                        //// si esta dentro del area cuadrada
+                        //int dx = i - xcenter;
+                        //int dy = j - ycenter;
+                        //dist = Math.Sqrt(dx * dx + dy * dy);
 
-                        if (dist <= rad)
-                        {
-                            // si esta dentro del circulo
-                            pixelsCrop.Add(pixels16[k]);
-                        }
-                        else
-                        {
-                            // si esta dentro del area cuadrado pero fuera del circulo
-                            pixelsCrop.Add(0);
-                        }
-
+                        //if (dist <= rad)
+                        //{
+                        //    // si esta dentro del circulo
+                        //    pixelsCrop.Add(pixels16[k]);
+                        //}
+                        //else
+                        //{
+                        //    // si esta dentro del area cuadrado pero fuera del circulo
+                        //    pixelsCrop.Add(0);
+                        //}
+                        pixelsCrop.Add(pixels16[k]);
                     }
                     k++;
                 }
