@@ -277,28 +277,31 @@ namespace RockStatic
             int k = 0;
             double dist;
 
+            double cx = Convert.ToDouble(xcenter)+Convert.ToDouble(rad)/2;
+            double cy = Convert.ToDouble(ycenter) + Convert.ToDouble(rad) / 2;
+
             for (int i = 0; i < height; i++)
             {
                 for (int j = 0; j < width; j++)
                 {
                     if ((i >= xcenter ) && (i < (xcenter + rad)) && (j >= ycenter) && (j < (ycenter + rad)))
                     {
-                        //// si esta dentro del area cuadrada
-                        //int dx = i - xcenter;
-                        //int dy = j - ycenter;
-                        //dist = Math.Sqrt(dx * dx + dy * dy);
+                        // si esta dentro del area cuadrada
+                        double dx = (double)i - cx;
+                        double dy = (double)j - cy;
+                        dist = Math.Sqrt(dx * dx + dy * dy);
 
-                        //if (dist <= rad)
-                        //{
-                        //    // si esta dentro del circulo
-                        //    pixelsCrop.Add(pixels16[k]);
-                        //}
-                        //else
-                        //{
-                        //    // si esta dentro del area cuadrado pero fuera del circulo
-                        //    pixelsCrop.Add(0);
-                        //}
-                        pixelsCrop.Add(pixels16[k]);
+                        if (dist <= Convert.ToDouble(rad) / 2)
+                        {
+                            // si esta dentro del circulo
+                            int pos = ((j - 1) * this.width) + i;
+                            pixelsCrop.Add(pixels16[pos]);
+                        }
+                        else
+                        {
+                            // si esta dentro del area cuadrado pero fuera del circulo
+                            pixelsCrop.Add(0);
+                        }
                     }
                     k++;
                 }
