@@ -276,17 +276,17 @@
             Valor maximo CT de la normalizacion
             </summary>
         </member>
-        <member name="F:RockStatic.AuxThread.xcenter">
+        <member name="F:RockStatic.AuxThread.xesquina">
             <summary>
             Centro del circulo de la segmentacion circular
             </summary>
         </member>
-        <member name="F:RockStatic.AuxThread.ycenter">
+        <member name="F:RockStatic.AuxThread.yesquina">
             <summary>
             Centro del circulo de la segmentacion circular
             </summary>
         </member>
-        <member name="F:RockStatic.AuxThread.rad">
+        <member name="F:RockStatic.AuxThread.diametro">
             <summary>
             Radio del circulo de la segmentacion circular
             </summary>
@@ -321,9 +321,9 @@
             Constructor con asignación para realizar la segmentacion circular, con threads, del core de un datacubo
             </summary>
             <param name="_pixels16">copia de los pixeles que se van a procesar</param>
-            <param name="_xcenter">Coordenadas cartesianas del centro X, con cero en la esquina superior izquierda</param>
-            <param name="_ycenter">Coordenadas cartesianas del centro Y, con cero en la esquina superior izquierda</param>
-            <param name="_rad">Radio del circulo a extraer</param>
+            <param name="_xesquina">Coordenadas cartesianas x, la esquina superior de un cuadrado</param>
+            <param name="_yesquina">Coordenadas cartesianas y, la esquina superior de un cuadrado</param>
+            <param name="_diametro">Diametro del circulo a extraer</param>
             <param name="_width">Ancho de la imagen original</param>
             <param name="_height">Alto de la imagen original</param>
             <param name="_done">Parametro para el control del ThreadPool</param>

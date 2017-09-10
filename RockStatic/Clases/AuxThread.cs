@@ -59,17 +59,17 @@ namespace RockStatic
         /// <summary>
         /// Centro del circulo de la segmentacion circular
         /// </summary>
-        int xcenter;
+        int xesquina;
 
         /// <summary>
         /// Centro del circulo de la segmentacion circular
         /// </summary>
-        int ycenter;
+        int yesquina;
 
         /// <summary>
         /// Radio del circulo de la segmentacion circular
         /// </summary>
-        int rad;
+        int diametro;
 
         /// <summary>
         /// Manejador de finalizacion del thread
@@ -127,13 +127,13 @@ namespace RockStatic
         /// Constructor con asignación para realizar la segmentacion circular, con threads, del core de un datacubo
         /// </summary>
         /// <param name="_pixels16">copia de los pixeles que se van a procesar</param>
-        /// <param name="_xcenter">Coordenadas cartesianas del centro X, con cero en la esquina superior izquierda</param>
-        /// <param name="_ycenter">Coordenadas cartesianas del centro Y, con cero en la esquina superior izquierda</param>
-        /// <param name="_rad">Radio del circulo a extraer</param>
+        /// <param name="_xesquina">Coordenadas cartesianas x, la esquina superior de un cuadrado</param>
+        /// <param name="_yesquina">Coordenadas cartesianas y, la esquina superior de un cuadrado</param>
+        /// <param name="_diametro">Diametro del circulo a extraer</param>
         /// <param name="_width">Ancho de la imagen original</param>
         /// <param name="_height">Alto de la imagen original</param>
         /// <param name="_done">Parametro para el control del ThreadPool</param>
-        public AuxThread(List<ushort> _pixels16, int _xcenter, int _ycenter, int _rad, int _width, int _height, ManualResetEvent _done)
+        public AuxThread(List<ushort> _pixels16, int _xesquina, int _yesquina, int _diametro, int _width, int _height, ManualResetEvent _done)
         {
             pixels16 = new List<ushort>();
             for (int i = 0; i < _pixels16.Count; i++)
@@ -142,9 +142,9 @@ namespace RockStatic
             width = _width;
             height = _height;
 
-            xcenter = _xcenter;
-            ycenter = _ycenter;
-            rad = _rad;
+            xesquina = _xesquina;
+            yesquina = _yesquina;
+            diametro = _diametro;
 
             _doneEvent = _done;
         }
@@ -277,21 +277,21 @@ namespace RockStatic
             int k = 0;
             double dist;
 
-            double cx = Convert.ToDouble(xcenter)+Convert.ToDouble(rad)/2;
-            double cy = Convert.ToDouble(ycenter) + Convert.ToDouble(rad) / 2;
+            double cx = Convert.ToDouble(xesquina)+Convert.ToDouble(diametro)/2;
+            double cy = Convert.ToDouble(yesquina) + Convert.ToDouble(diametro) / 2;
 
             for (int i = 0; i < height; i++)
             {
                 for (int j = 0; j < width; j++)
                 {
-                    if ((i >= xcenter ) && (i < (xcenter + rad)) && (j >= ycenter) && (j < (ycenter + rad)))
+                    if ((i >= xesquina ) && (i < (xesquina + diametro)) && (j >= yesquina) && (j < (yesquina + diametro)))
                     {
                         // si esta dentro del area cuadrada
                         double dx = (double)i - cx;
                         double dy = (double)j - cy;
                         dist = Math.Sqrt(dx * dx + dy * dy);
 
-                        if (dist <= Convert.ToDouble(rad) / 2)
+                        if (dist <= Convert.ToDouble(diametro) / 2)
                         {
                             // si esta dentro del circulo
                             int pos = ((j - 1) * this.width) + i;
