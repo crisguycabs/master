@@ -96,15 +96,124 @@ namespace RockStatic
         {
             // se toma la informacion de segmentacion vs areas de interes y se estiman las propiedades petrofisicas estaticas
 
-            // se preparan los generadores de CT aleatorios para cada phantom
-            var phantom1High = new MathNet.Numerics.Distributions.Normal(padre.actual.phantom1.mediaHigh, padre.actual.phantom1.desvHigh);
-            var phantom1Low = new MathNet.Numerics.Distributions.Normal(padre.actual.phantom1.mediaLow, padre.actual.phantom1.desvLow);
+            double meanP1high = 0;
+            double desvP1high = 0;
+            double meanP2high = 0;
+            double desvP2high = 0;
+            double meanP3high = 0;
+            double desvP3high = 0;
 
-            var phantom2High = new MathNet.Numerics.Distributions.Normal(padre.actual.phantom2.mediaHigh, padre.actual.phantom2.desvHigh);
-            var phantom2Low = new MathNet.Numerics.Distributions.Normal(padre.actual.phantom2.mediaLow, padre.actual.phantom2.desvLow);
+            double meanP1low = 0;
+            double desvP1low = 0;
+            double meanP2low = 0;
+            double desvP2low = 0;
+            double meanP3low = 0;
+            double desvP3low = 0;
 
-            var phantom3High = new MathNet.Numerics.Distributions.Normal(padre.actual.phantom3.mediaHigh, padre.actual.phantom3.desvHigh);
-            var phantom3Low = new MathNet.Numerics.Distributions.Normal(padre.actual.phantom3.mediaLow, padre.actual.phantom3.desvLow);
+            if (padre.actual.phantomEnDicom)
+            {
+                // existe informacion de phantoms en los dicom, se toma la info de la segmentacion transversal
+
+                // para el phantom1 High
+                List<double> numerosCT = new List<double>();
+                for(int i=0;i<padre.actual.datacuboHigh.dataCube.Count;i++)
+                {
+                    for (int j = 0; j < padre.actual.datacuboHigh.dataCube[i].segPhantom1.Count; j++)
+                    {
+                        if(padre.actual.datacuboHigh.dataCube[i].segPhantom1[j]>0) numerosCT.Add((double)padre.actual.datacuboHigh.dataCube[i].segPhantom1[j]);
+                    }
+                }
+                meanP1high = MathNet.Numerics.Statistics.Statistics.Mean(numerosCT);
+                desvP1high = MathNet.Numerics.Statistics.Statistics.StandardDeviation(numerosCT);
+
+                // para el phantom1 Low
+                numerosCT = new List<double>();
+                for (int i = 0; i < padre.actual.datacuboLow.dataCube.Count; i++)
+                {
+                    for (int j = 0; j < padre.actual.datacuboLow.dataCube[i].segPhantom1.Count; j++)
+                    {
+                        if (padre.actual.datacuboLow.dataCube[i].segPhantom1[j] > 0) numerosCT.Add((double)padre.actual.datacuboLow.dataCube[i].segPhantom1[j]);
+                    }
+                }
+                meanP1low = MathNet.Numerics.Statistics.Statistics.Mean(numerosCT);
+                desvP1low = MathNet.Numerics.Statistics.Statistics.StandardDeviation(numerosCT);
+
+
+                // para el phantom2 High
+                numerosCT = new List<double>();
+                for (int i = 0; i < padre.actual.datacuboHigh.dataCube.Count; i++)
+                {
+                    for (int j = 0; j < padre.actual.datacuboHigh.dataCube[i].segPhantom2.Count; j++)
+                    {
+                        if (padre.actual.datacuboHigh.dataCube[i].segPhantom2[j] > 0) numerosCT.Add((double)padre.actual.datacuboHigh.dataCube[i].segPhantom2[j]);
+                    }
+                }
+                meanP2high = MathNet.Numerics.Statistics.Statistics.Mean(numerosCT);
+                desvP2high = MathNet.Numerics.Statistics.Statistics.StandardDeviation(numerosCT);
+
+                // para el phantom2 Low
+                numerosCT = new List<double>();
+                for (int i = 0; i < padre.actual.datacuboLow.dataCube.Count; i++)
+                {
+                    for (int j = 0; j < padre.actual.datacuboLow.dataCube[i].segPhantom2.Count; j++)
+                    {
+                        if (padre.actual.datacuboLow.dataCube[i].segPhantom2[j] > 0) numerosCT.Add((double)padre.actual.datacuboLow.dataCube[i].segPhantom2[j]);
+                    }
+                }
+                meanP2low = MathNet.Numerics.Statistics.Statistics.Mean(numerosCT);
+                desvP2low = MathNet.Numerics.Statistics.Statistics.StandardDeviation(numerosCT);
+
+
+                // para el phantom3 High
+                numerosCT = new List<double>();
+                for (int i = 0; i < padre.actual.datacuboHigh.dataCube.Count; i++)
+                {
+                    for (int j = 0; j < padre.actual.datacuboHigh.dataCube[i].segPhantom3.Count; j++)
+                    {
+                        if (padre.actual.datacuboHigh.dataCube[i].segPhantom3[j] > 0) numerosCT.Add((double)padre.actual.datacuboHigh.dataCube[i].segPhantom3[j]);
+                    }
+                }
+                meanP3high = MathNet.Numerics.Statistics.Statistics.Mean(numerosCT);
+                desvP3high = MathNet.Numerics.Statistics.Statistics.StandardDeviation(numerosCT);
+
+                // para el phantom1 Low
+                numerosCT = new List<double>();
+                for (int i = 0; i < padre.actual.datacuboLow.dataCube.Count; i++)
+                {
+                    for (int j = 0; j < padre.actual.datacuboLow.dataCube[i].segPhantom3.Count; j++)
+                    {
+                        if (padre.actual.datacuboLow.dataCube[i].segPhantom3[j] > 0) numerosCT.Add((double)padre.actual.datacuboLow.dataCube[i].segPhantom3[j]);
+                    }
+                }
+                meanP3low = MathNet.Numerics.Statistics.Statistics.Mean(numerosCT);
+                desvP3low = MathNet.Numerics.Statistics.Statistics.StandardDeviation(numerosCT);
+            }
+            else
+            {
+                // se preparan los generadores de CT aleatorios para cada phantom
+                meanP1high = padre.actual.phantom1.mediaHigh;
+                desvP1high = padre.actual.phantom1.desvHigh;
+                meanP2high = padre.actual.phantom2.mediaHigh;
+                desvP2high = padre.actual.phantom2.desvHigh;
+                meanP3high = padre.actual.phantom3.mediaHigh;
+                desvP3high = padre.actual.phantom3.desvHigh;
+
+                meanP1low = padre.actual.phantom1.mediaLow;
+                desvP1low = padre.actual.phantom1.desvLow;
+                meanP2low = padre.actual.phantom2.mediaLow;
+                desvP2low = padre.actual.phantom2.desvLow;
+                meanP3low = padre.actual.phantom3.mediaLow;
+                desvP3low = padre.actual.phantom3.desvLow;                
+            }
+
+            var phantom1High = new MathNet.Numerics.Distributions.Normal(meanP1high, desvP1high);
+            var phantom1Low = new MathNet.Numerics.Distributions.Normal(meanP1low, desvP1low);
+
+            var phantom2High = new MathNet.Numerics.Distributions.Normal(meanP2high, desvP2high);
+            var phantom2Low = new MathNet.Numerics.Distributions.Normal(meanP2low, desvP2low);
+
+            var phantom3High = new MathNet.Numerics.Distributions.Normal(meanP3high, desvP3high);
+            var phantom3Low = new MathNet.Numerics.Distributions.Normal(meanP3low, desvP3low);
 
             // se prepara un vector de valores CT high y low para cada phantom
             // este vector representa un slide y solo se guarda un valor promedio del slide
@@ -200,9 +309,9 @@ namespace RockStatic
                     double tDf, tZf, tZeff, tPef;
 
                     // dado que se recorre fila a fila, entonces el indice j corresponde al eje Y y el indice k al eje X
-                    for (int j = 0; j < padre.actual.datacuboHigh.widthSeg; j++)
+                    for (int j = 0; j < padre.actual.datacuboHigh.widthSegCore; j++)
                     {
-                        for (int k = 0; k < padre.actual.datacuboHigh.widthSeg; k++)
+                        for (int k = 0; k < padre.actual.datacuboHigh.widthSegCore; k++)
                         {
                             // se calcula la distancia de la posicion (j,k) al centro del area de interes
                             // si la distancia es menor que el radio entonces se agrega al calculo, sino no
@@ -211,7 +320,7 @@ namespace RockStatic
                             dx = dx * dx;
                             dy = j - padre.actual.areasCore[iarea].y;
                             dy = dy * dy;
-                            if (Math.Sqrt(dx + dy) <= padre.actual.datacuboHigh.widthSeg)
+                            if (Math.Sqrt(dx + dy) <= padre.actual.datacuboHigh.widthSegCore)
                             {
                                 // la coordenada (j,k) esta dentro del area de interes
                                 // se calculan las propiedades estaticas

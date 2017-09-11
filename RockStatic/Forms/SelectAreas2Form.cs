@@ -86,7 +86,7 @@ namespace RockStatic
             //slideActual = 0;
 
             //int nelemento=Convert.ToInt32(padre.actual.datacuboHigh.widthSeg/2);
-            int nelemento = Convert.ToInt32(padre.actual.datacuboHigh.widthSeg/2 );
+            int nelemento = Convert.ToInt32(padre.actual.datacuboHigh.widthSegCore/2 );
             minimo = padre.actual.datacuboHigh.GetMinimo();
             maximo = padre.actual.datacuboHigh.GetMaximo();
             double resZ = Convert.ToDouble(padre.actual.datacuboHigh.dataCube[0].selector.SliceThickness.Data);
@@ -94,7 +94,7 @@ namespace RockStatic
             factor = Convert.ToInt32(resZ / resXY);
 
             Bitmap corte;
-            corte = padre.actual.datacuboHigh.CreateBitmapCorte(padre.actual.datacuboHigh.coresHorizontal[nelemento], padre.actual.datacuboHigh.dataCube.Count * factor, padre.actual.datacuboHigh.widthSeg, minimo, maximo);
+            corte = padre.actual.datacuboHigh.CreateBitmapCorte(padre.actual.datacuboHigh.coresHorizontal[nelemento], padre.actual.datacuboHigh.dataCube.Count * factor, padre.actual.datacuboHigh.widthSegCore, minimo, maximo);
             
             int width = corte.Width;
             int height = corte.Height;
@@ -103,8 +103,13 @@ namespace RockStatic
             // pictCore.Width = pictPhantom1.Width = pictPhantom2.Width = pictPhantom3.Width = rangeBar.Width = width;
             // if(height<pictCore.Height) pictCore.Height = height;
 
-            pictCore.Image = corte;
+            // incluir un if/else si NO HAY PHANTOMS
 
+            // se dibujan los cortes horizontales de los phantom
+            pictCore.Image = corte;
+            nelemento = Convert.ToInt32(padre.actual.datacuboHigh.widthSegP1 / 2);
+            pictPhantom1.Image = padre.actual.datacuboHigh.CreateBitmapCorte(padre.actual.datacuboHigh.phantoms1Horizontal[nelemento], padre.actual.datacuboHigh.dataCube.Count * factor, padre.actual.datacuboHigh.widthSegP1, minimo, maximo);
+            
             // se prepara el color de la brocha y lapiz
             brocha = new SolidBrush(Color.Red);
             lapiz = new Pen(brocha, 3F);
@@ -237,7 +242,7 @@ namespace RockStatic
 
         private void trackCortes_Scroll(object sender, EventArgs e)
         {
-            pictCore.Image = padre.actual.datacuboHigh.CreateBitmapCorte(padre.actual.datacuboHigh.coresHorizontal[trackCortes.Value - 1], padre.actual.datacuboHigh.dataCube.Count * factor, padre.actual.datacuboHigh.widthSeg, minimo, maximo);
+            pictCore.Image = padre.actual.datacuboHigh.CreateBitmapCorte(padre.actual.datacuboHigh.coresHorizontal[trackCortes.Value - 1], padre.actual.datacuboHigh.dataCube.Count * factor, padre.actual.datacuboHigh.widthSegCore, minimo, maximo);
             numActual.Value = trackCortes.Value;
         }
 

@@ -182,7 +182,7 @@ namespace RockVision
             for (int i = 0; i < this.datacubo.dataCube.Count; i++) this.datacubo.dataCube[i].segCore = this.datacubo.dataCube[i].pixelData;
 
             // hay tantos cortes horizontales como
-            this.datacubo.widthSeg = Convert.ToInt32(this.datacubo.dataCube[0].selector.Rows.Data);
+            this.datacubo.widthSegCore = Convert.ToInt32(this.datacubo.dataCube[0].selector.Rows.Data);
 
             this.datacubo.GenerarCortesHorizontalesRV();
             this.datacubo.GenerarCortesVerticalesRV();
@@ -234,7 +234,7 @@ namespace RockVision
             for (int i = 0; i < this.datacubo.dataCube.Count; i++) this.datacubo.dataCube[i].segCore = this.datacubo.dataCube[i].pixelData;
 
             // hay tantos cortes horizontales como
-            this.datacubo.widthSeg = Convert.ToInt32(this.datacubo.dataCube[0].selector.Rows.Data);
+            this.datacubo.widthSegCore = Convert.ToInt32(this.datacubo.dataCube[0].selector.Rows.Data);
 
             // se crean las segmentaciones horizontales
             //System.DateTime ini = System.DateTime.Now;

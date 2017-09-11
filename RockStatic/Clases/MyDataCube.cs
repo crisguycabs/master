@@ -49,7 +49,7 @@ namespace RockStatic
         /// <summary>
         /// List que contiene los List de ushort que contienen los pixeles CT para cada corte horizontal del phanton1
         /// </summary>
-        public List<ushort>[] phantons1Horizontal = null;
+        public List<ushort>[] phantoms1Horizontal = null;
 
         /// <summary>
         /// List que contiene los List de ushort que contienen los pixeles CT para cada corte horizontal del phanton1
@@ -68,9 +68,24 @@ namespace RockStatic
         public List<ushort>[] coresVertical = null;
 
         /// <summary>
-        /// Indica el ancho de la imagen segmentada resultante
+        /// Indica el ancho de la imagen segmentada del core resultante
         /// </summary>
-        public int widthSeg = 0;
+        public int widthSegCore = 0;
+
+        /// <summary>
+        /// Indica el ancho de la imagen segmentada del phantom 1 resultante
+        /// </summary>
+        public int widthSegP1 = 0;
+
+        /// <summary>
+        /// Indica el ancho de la imagen segmentada del phantom 2 resultante
+        /// </summary>
+        public int widthSegP2 = 0;
+
+        /// <summary>
+        /// Indica el ancho de la imagen segmentada del phantom 3 resultante
+        /// </summary>
+        public int widthSegP3 = 0;
 
         /// <summary>
         /// factor de escalado para el largo de los cortes horizontales y verticales
@@ -369,14 +384,14 @@ namespace RockStatic
             // una vez extraida la matriz se mapea a una imagen Bitmap
 
             // se crea la matriz temporal y se inicializa
-            int alto = Convert.ToInt16(this.widthSeg);
+            int alto = Convert.ToInt16(this.widthSegCore);
             int ancho = dataCube.Count;
             ushort[][] temp = new ushort[alto][];
             for (int i = 0; i < alto; i++)
                 temp[i] = new ushort[ancho];
 
             int a = 0;
-            int ini = indice * Convert.ToInt16(this.widthSeg);
+            int ini = indice * Convert.ToInt16(this.widthSegCore);
 
             // se empieza a llenar cada columna de la imagen nueva con la fila de cada DICOM
             for (int j = 0; j < ancho; j++)
@@ -415,14 +430,14 @@ namespace RockStatic
             // una vez extraida la matriz se mapea a una imagen Bitmap
 
             // se crea la matriz temporal y se inicializa
-            int alto = Convert.ToInt16(this.widthSeg);
+            int alto = Convert.ToInt16(this.widthSegP1);
             int ancho = dataCube.Count;
             ushort[][] temp = new ushort[alto][];
             for (int i = 0; i < alto; i++)
                 temp[i] = new ushort[ancho];
 
             int a = 0;
-            int ini = indice * Convert.ToInt16(this.widthSeg);
+            int ini = indice * Convert.ToInt16(this.widthSegP1);
 
             // se empieza a llenar cada columna de la imagen nueva con la fila de cada DICOM
             for (int j = 0; j < ancho; j++)
@@ -546,13 +561,13 @@ namespace RockStatic
             // una vez extraida la matriz se mapea a una imagen Bitmap
 
             // se crea la matriz temporal y se inicializa
-            int alto = Convert.ToInt16(this.widthSeg);
+            int alto = Convert.ToInt16(this.widthSegCore);
             int ancho = dataCube.Count;
             ushort[][] temp = new ushort[alto][];
             for (int i = 0; i < alto; i++)
                 temp[i] = new ushort[ancho];
 
-            int columnas = Convert.ToInt16(this.widthSeg);
+            int columnas = Convert.ToInt16(this.widthSegCore);
             int offset = 0;
 
             // se empieza a llenar cada columna de la imagen nueva con la fila de cada DICOM
@@ -586,7 +601,7 @@ namespace RockStatic
         public void GenerarCoresHorizontales()
         {
             // se genera un List<ushort> por cada pixel de altura de un DICOM
-            coresHorizontal = new List<ushort>[widthSeg];
+            coresHorizontal = new List<ushort>[widthSegCore];
 
             // se calcula el factor de escalado debido al espaciado entre Slides
             double resZ = Convert.ToDouble(dataCube[0].selector.SliceThickness.Data);
@@ -607,17 +622,17 @@ namespace RockStatic
         public void GeneraPhanton1Horizonales()
         {
             // se genera un List<ushort> por cada pixel de altura de un DICOM
-            phantons1Horizontal = new List<ushort>[widthSeg];
+            phantoms1Horizontal = new List<ushort>[widthSegP1];
 
             // se calcula el factor de escalado debido al espaciado entre Slides
             double resZ = Convert.ToDouble(dataCube[0].selector.SliceThickness.Data);
             double resXY = Convert.ToDouble(dataCube[0].selector.PixelSpacing.Data_[0]);
             int factor = Convert.ToInt32(resZ / resXY);
 
-            for (int i = 0; i < phantons1Horizontal.Length; i++)
+            for (int i = 0; i < phantoms1Horizontal.Length; i++)
             {
-                phantons1Horizontal[i] = new List<ushort>();
-                phantons1Horizontal[i] = Generarphanton1Horizontal(i);
+                phantoms1Horizontal[i] = new List<ushort>();
+                phantoms1Horizontal[i] = Generarphanton1Horizontal(i);
             }
 
         }
@@ -659,7 +674,7 @@ namespace RockStatic
         public void GenerarCoresVerticales()
         {
             // se genera un List<ushort> por cada pixel de ancho de un DICOM
-            coresVertical = new List<ushort>[widthSeg];
+            coresVertical = new List<ushort>[widthSegCore];
 
             // se calcula el factor de escalado debido al espaciado entre Slides
             double resZ = Convert.ToDouble(dataCube[0].selector.SliceThickness.Data);

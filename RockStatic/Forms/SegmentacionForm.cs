@@ -697,8 +697,8 @@ namespace RockStatic
                     // existe 1 elemento, se puede proceder a guardarlo, segun se hayan cargado los elementos HIGH o LOW
 
                     this.padre.actual.SetCore(MainForm.CorregirPictBox2Original(elementosScreen[0], pictElemento.Image.Height, pictElemento.Height));
-                    this.padre.actual.datacuboHigh.widthSeg = this.padre.actual.areaCore.width * 2;
-                    this.padre.actual.datacuboLow.widthSeg = this.padre.actual.areaCore.width * 2;
+                    this.padre.actual.datacuboHigh.widthSegCore = this.padre.actual.areaCore.width * 2;
+                    this.padre.actual.datacuboLow.widthSegCore = this.padre.actual.areaCore.width * 2;
 
                     // se borra el core de los elementos en pantalla
                     elementosScreen.RemoveAt(0);

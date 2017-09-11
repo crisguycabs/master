@@ -116,8 +116,8 @@ namespace RockStatic
             //changes = true;
             changes = false;
 
-            padre.actual.datacuboHigh.widthSeg = padre.actual.areaCore.width;
-            padre.actual.datacuboLow.widthSeg = padre.actual.areaCore.width;
+            padre.actual.datacuboHigh.widthSegCore = padre.actual.areaCore.width;
+            padre.actual.datacuboLow.widthSegCore = padre.actual.areaCore.width;
 
      
 
@@ -145,7 +145,7 @@ namespace RockStatic
                 this.padre.actual.datacuboLow.GenerarCoresVerticales();
 
                 ////-----------------------esto es modificado --------------------------------
-                padre.actual.datacuboHigh.widthSeg = padre.actual.areaPhantom1.width;
+                padre.actual.datacuboHigh.widthSegP1 = padre.actual.areaPhantom1.width;
                 this.padre.actual.datacuboHigh.GeneraPhanton1Horizonales();
                 //this.padre.actual.datacuboHigh.GeneraPhanton2Horizonales();
                 //this.padre.actual.datacuboHigh.GeneraPhanton3Horizonales();
@@ -167,12 +167,6 @@ namespace RockStatic
                 this.padre.actual.datacuboHigh.GenerarCoresVerticales();
                 this.padre.actual.datacuboLow.GenerarCoresHorizontales();
                 this.padre.actual.datacuboLow.GenerarCoresVerticales();
-
-                ////-----------------------esto es modificado --------------------------------
-                //this.padre.actual.datacuboHigh.GeneraPhanton1Horizonales();
-                //this.padre.actual.datacuboHigh.GeneraPhanton2Horizonales();
-                //this.padre.actual.datacuboHigh.GeneraPhanton3Horizonales();
-                ////-----------------------esto es modificado --------------------------------
 
                 this.padre.CloseWaiting();
             }
@@ -381,7 +375,7 @@ namespace RockStatic
                 {
                     // se cambia el punto obtenido a las coordenadas originales, considerando que el tamaño del pictCore y de la imagen son diferentes
                     CCuadrado corregido = new CCuadrado(punto);
-                    corregido = MainForm.CorregirPictBox2Original(corregido, padre.actual.datacuboHigh.widthSeg, pictCore.Height);
+                    corregido = MainForm.CorregirPictBox2Original(corregido, padre.actual.datacuboHigh.widthSegCore, pictCore.Height);
 
                     padre.actual.areasCore[lstAreas.SelectedIndex].x = corregido.x;
                     padre.actual.areasCore[lstAreas.SelectedIndex].y = corregido.y;
@@ -409,7 +403,7 @@ namespace RockStatic
 
             // se cambia el punto obtenido a las coordenadas originales, considerando que el tamaño del pictCore y de la imagen son diferentes
             CCuadrado corregido = new CCuadrado(punto);
-            corregido = MainForm.CorregirPictBox2Original(corregido, padre.actual.datacuboHigh.widthSeg, pictCore.Height);
+            corregido = MainForm.CorregirPictBox2Original(corregido, padre.actual.datacuboHigh.widthSegCore, pictCore.Height);
             CAreaInteres area = new CAreaInteres(corregido.x, corregido.y, corregido.width, "Area" + countAreas.ToString(), Convert.ToInt32(numActual.Value), padre.actual.datacuboHigh.dataCube.Count);
 
             switch (elemento)
@@ -534,7 +528,7 @@ namespace RockStatic
                     e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
                     CCuadrado corregido = new CCuadrado(padre.actual.areasCore[i].x, padre.actual.areasCore[i].y, padre.actual.areasCore[i].width);
-                    corregido = MainForm.CorregirOriginal2PictBox(corregido, padre.actual.datacuboHigh.widthSeg, pictCore.Height);
+                    corregido = MainForm.CorregirOriginal2PictBox(corregido, padre.actual.datacuboHigh.widthSegCore, pictCore.Height);
 
                     e.Graphics.DrawEllipse(pen2, corregido.x - corregido.width, corregido.y - corregido.width, 2 * corregido.width, 2 * corregido.width);
                     //e.Graphics.DrawEllipse(pen2, this.padre.actual.areasCore[i].x - this.padre.actual.areasCore[i].width, this.padre.actual.areasCore[i].y - this.padre.actual.areasCore[i].width, 2 * this.padre.actual.areasCore[i].width, 2 * this.padre.actual.areasCore[i].width);
@@ -770,7 +764,7 @@ namespace RockStatic
             }
 
             // se crea una area que englobe todo
-            padre.actual.areasCore.Add(new CAreaInteres(Convert.ToInt32(padre.actual.datacuboHigh.widthSeg/2),Convert.ToInt32(padre.actual.datacuboHigh.widthSeg/2),Convert.ToInt32(padre.actual.datacuboHigh.widthSeg/2),"area"+(countAreas++).ToString(),1,padre.actual.datacuboHigh.dataCube.Count));
+            padre.actual.areasCore.Add(new CAreaInteres(Convert.ToInt32(padre.actual.datacuboHigh.widthSegCore/2),Convert.ToInt32(padre.actual.datacuboHigh.widthSegCore/2),Convert.ToInt32(padre.actual.datacuboHigh.widthSegCore/2),"area"+(countAreas++).ToString(),1,padre.actual.datacuboHigh.dataCube.Count));
 
             // se ajusta el radio a el ancho menos 1
             padre.actual.areasCore[0].width--;

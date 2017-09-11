@@ -206,7 +206,7 @@ namespace RockVision
             for (int i = 0; i < this.datacubos[this.datacubos.Count - 1].dataCube.Count; i++) this.datacubos[this.datacubos.Count - 1].dataCube[i].segCore = this.datacubos[this.datacubos.Count - 1].dataCube[i].pixelData;
 
             // hay tantos cortes horizontales como
-            this.datacubos[this.datacubos.Count - 1].widthSeg = Convert.ToInt32(this.datacubos[this.datacubos.Count-1].dataCube[0].selector.Rows.Data);
+            this.datacubos[this.datacubos.Count - 1].widthSegCore = Convert.ToInt32(this.datacubos[this.datacubos.Count-1].dataCube[0].selector.Rows.Data);
 
 
             // se leen todos y cada uno de los archivos dicom que estan en la carpeta CTRw
@@ -223,7 +223,7 @@ namespace RockVision
             for (int i = 0; i < this.datacubos[this.datacubos.Count - 1].dataCube.Count; i++) this.datacubos[this.datacubos.Count - 1].dataCube[i].segCore = this.datacubos[this.datacubos.Count - 1].dataCube[i].pixelData;
 
             // hay tantos cortes horizontales como
-            this.datacubos[this.datacubos.Count - 1].widthSeg = Convert.ToInt32(this.datacubos[this.datacubos.Count - 1].dataCube[0].selector.Rows.Data);
+            this.datacubos[this.datacubos.Count - 1].widthSegCore = Convert.ToInt32(this.datacubos[this.datacubos.Count - 1].dataCube[0].selector.Rows.Data);
 
 
             // se leen todos y cada uno de los archivos dicom que estan en las carpetas temporales
@@ -242,7 +242,7 @@ namespace RockVision
                 for (int i = 0; i < this.datacubos[this.datacubos.Count - 1].dataCube.Count; i++) this.datacubos[this.datacubos.Count - 1].dataCube[i].segCore = this.datacubos[this.datacubos.Count - 1].dataCube[i].pixelData;
 
                 // hay tantos cortes horizontales como
-                this.datacubos[this.datacubos.Count - 1].widthSeg = Convert.ToInt32(this.datacubos[this.datacubos.Count - 1].dataCube[0].selector.Rows.Data);
+                this.datacubos[this.datacubos.Count - 1].widthSegCore = Convert.ToInt32(this.datacubos[this.datacubos.Count - 1].dataCube[0].selector.Rows.Data);
             }
         }
 
@@ -424,7 +424,7 @@ namespace RockVision
                 for (int i = 0; i < this.datacubos[idc].dataCube.Count; i++) this.datacubos[idc].dataCube[i].segCore = this.datacubos[idc].dataCube[i].pixelData;
 
                 // hay tantos cortes horizontales como
-                this.datacubos[idc].widthSeg = Convert.ToInt32(this.datacubos[idc].dataCube[0].selector.Rows.Data);                
+                this.datacubos[idc].widthSegCore = Convert.ToInt32(this.datacubos[idc].dataCube[0].selector.Rows.Data);                
 
                 return true;
             }

@@ -685,8 +685,8 @@ namespace RockStatic
                 actual.areaPhantom2 = new CCuadrado(areaP2);
                 actual.areaPhantom3 = new CCuadrado(areaP3);
 
-                actual.datacuboHigh.widthSeg = actual.areaCore.width;
-                actual.datacuboLow.widthSeg = actual.areaCore.width;
+                actual.datacuboHigh.widthSegCore = actual.areaCore.width;
+                actual.datacuboLow.widthSegCore = actual.areaCore.width;
 
                 // se genera la segmentacion
                 //actual.datacuboHigh.SegCircThread(actual.areaCore);

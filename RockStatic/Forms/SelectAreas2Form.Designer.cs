@@ -59,7 +59,7 @@
             this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(843, 32);
+            this.label4.Size = new System.Drawing.Size(887, 32);
             this.label4.TabIndex = 8;
             this.label4.Text = "SELECCION DE AREAS";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -85,14 +85,14 @@
             this.groupBox1.Controls.Add(this.pictCore);
             this.groupBox1.Location = new System.Drawing.Point(12, 39);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(822, 445);
+            this.groupBox1.Size = new System.Drawing.Size(866, 414);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "CORE";
             // 
             // numActual
             // 
-            this.numActual.Location = new System.Drawing.Point(769, 411);
+            this.numActual.Location = new System.Drawing.Point(810, 380);
             this.numActual.Maximum = new decimal(new int[] {
             999,
             0,
@@ -112,7 +112,7 @@
             // lblActual
             // 
             this.lblActual.AutoSize = true;
-            this.lblActual.Location = new System.Drawing.Point(689, 415);
+            this.lblActual.Location = new System.Drawing.Point(730, 384);
             this.lblActual.Name = "lblActual";
             this.lblActual.Size = new System.Drawing.Size(78, 14);
             this.lblActual.TabIndex = 29;
@@ -120,7 +120,7 @@
             // 
             // trackCortes
             // 
-            this.trackCortes.Location = new System.Drawing.Point(771, 21);
+            this.trackCortes.Location = new System.Drawing.Point(816, 21);
             this.trackCortes.Name = "trackCortes";
             this.trackCortes.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trackCortes.Size = new System.Drawing.Size(45, 351);
@@ -132,7 +132,7 @@
             this.grpPhantoms.Controls.Add(this.pictPhantom3);
             this.grpPhantoms.Controls.Add(this.pictPhantom2);
             this.grpPhantoms.Controls.Add(this.pictPhantom1);
-            this.grpPhantoms.Location = new System.Drawing.Point(12, 487);
+            this.grpPhantoms.Location = new System.Drawing.Point(12, 456);
             this.grpPhantoms.Name = "grpPhantoms";
             this.grpPhantoms.Size = new System.Drawing.Size(822, 176);
             this.grpPhantoms.TabIndex = 11;
@@ -176,7 +176,7 @@
             this.btnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Location = new System.Drawing.Point(765, 669);
+            this.btnCancelar.Location = new System.Drawing.Point(765, 638);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(70, 23);
             this.btnCancelar.TabIndex = 12;
@@ -191,7 +191,7 @@
             this.btnSelTrans.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnSelTrans.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnSelTrans.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSelTrans.Location = new System.Drawing.Point(628, 669);
+            this.btnSelTrans.Location = new System.Drawing.Point(628, 638);
             this.btnSelTrans.Name = "btnSelTrans";
             this.btnSelTrans.Size = new System.Drawing.Size(129, 23);
             this.btnSelTrans.TabIndex = 13;
@@ -204,7 +204,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(843, 701);
+            this.ClientSize = new System.Drawing.Size(887, 673);
             this.Controls.Add(this.btnSelTrans);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.grpPhantoms);

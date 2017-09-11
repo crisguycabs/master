@@ -499,7 +499,7 @@
             List que contiene los List de ushort que contienen los pixeles CT para cada corte horizontal del core
             </summary>
         </member>
-        <member name="F:RockStatic.MyDataCube.phantons1Horizontal">
+        <member name="F:RockStatic.MyDataCube.phantoms1Horizontal">
             <summary>
             List que contiene los List de ushort que contienen los pixeles CT para cada corte horizontal del phanton1
             </summary>
@@ -519,9 +519,24 @@
             List que contiene los List de ushort que contienen los pixeles CT para cada corte vertical del core
             </summary>
         </member>
-        <member name="F:RockStatic.MyDataCube.widthSeg">
+        <member name="F:RockStatic.MyDataCube.widthSegCore">
             <summary>
-            Indica el ancho de la imagen segmentada resultante
+            Indica el ancho de la imagen segmentada del core resultante
+            </summary>
+        </member>
+        <member name="F:RockStatic.MyDataCube.widthSegP1">
+            <summary>
+            Indica el ancho de la imagen segmentada del phantom 1 resultante
+            </summary>
+        </member>
+        <member name="F:RockStatic.MyDataCube.widthSegP2">
+            <summary>
+            Indica el ancho de la imagen segmentada del phantom 2 resultante
+            </summary>
+        </member>
+        <member name="F:RockStatic.MyDataCube.widthSegP3">
+            <summary>
+            Indica el ancho de la imagen segmentada del phantom 3 resultante
             </summary>
         </member>
         <member name="F:RockStatic.MyDataCube.factorZ">
