@@ -281,6 +281,7 @@ namespace RockStatic
 
                     // se resuelve el sistema lineal para obtener las constantes A,B,C,D,E,F
                     var matriz = MathNet.Numerics.LinearAlgebra.Matrix<double>.Build.DenseOfArray(new double[,] { { ctP1Low, ctP1High, 1 }, { ctP2Low, ctP2High, 1 }, { ctP3Low, ctP3High, 1 } });
+                    //var matriz2 = MathNet.Numerics.LinearAlgebra.Matrix<double>.Build.DenseOfArray(new double[,] { { ctP1Low, -ctP1High, 1 }, { ctP2Low, -ctP2High, 1 }, { ctP3Low, -ctP3High, 1 } });
                     var sol = MathNet.Numerics.LinearAlgebra.Vector<double>.Build.Dense(new double[] { padre.actual.phantom1.densidad, padre.actual.phantom2.densidad, padre.actual.phantom3.densidad });
                     var x = matriz.Solve(sol);
 
