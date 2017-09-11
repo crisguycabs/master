@@ -45,6 +45,23 @@ namespace RockStatic
         /// </summary>
         public List<ushort>[] coresHorizontal = null;
 
+        //-----------------------esto es modificado --------------------------------
+        /// <summary>
+        /// List que contiene los List de ushort que contienen los pixeles CT para cada corte horizontal del phanton1
+        /// </summary>
+        public List<ushort>[] phantons1Horizontal = null;
+
+        /// <summary>
+        /// List que contiene los List de ushort que contienen los pixeles CT para cada corte horizontal del phanton1
+        /// </summary>
+        public List<ushort>[] pahntons2Horizontal = null;
+
+        /// <summary>
+        /// List que contiene los List de ushort que contienen los pixeles CT para cada corte horizontal del phanton1
+        /// </summary>
+        public List<ushort>[] pahntons3Horizontal = null;
+
+        //-----------------------esto es modificado --------------------------------
         /// <summary>
         /// List que contiene los List de ushort que contienen los pixeles CT para cada corte vertical del core
         /// </summary>
@@ -200,7 +217,6 @@ namespace RockStatic
             {
                 doneEvents[i] = new ManualResetEvent(false);
                  AuxThread thread = new AuxThread(this.dataCube[i].pixelData, area.x, area.y , area.width, width, height, doneEvents[i]);
-                //AuxThread thread = new AuxThread(this.dataCube[i].pixelData, area.x, area.y, area.width/2, width, height, doneEvents[i]);
                 threads[i] = thread;
                 ThreadPool.QueueUserWorkItem(thread.ThreadSegmentar, i);
             }
@@ -387,6 +403,54 @@ namespace RockStatic
             return pixels16;
         }
 
+
+         /// <summary>
+        /// Se genera un plano de phanton1 horizontal que corresponde al indice que se pasa como argumento
+        /// </summary>
+        /// <param name="indice">Numero de la fila que se debe extraer de cada DICOM</param>
+        /// <returns>Core horizontal generado en la posicion indicada</returns>
+        public List<ushort> Generarphanton1Horizontal(int indice)
+        {
+            // se genera una MATRIZ para guardar, temporalmente, los numeros CT extraidos de todo el data cubo para cada imagen de corte horizontal
+            // una vez extraida la matriz se mapea a una imagen Bitmap
+
+            // se crea la matriz temporal y se inicializa
+            int alto = Convert.ToInt16(this.widthSeg);
+            int ancho = dataCube.Count;
+            ushort[][] temp = new ushort[alto][];
+            for (int i = 0; i < alto; i++)
+                temp[i] = new ushort[ancho];
+
+            int a = 0;
+            int ini = indice * Convert.ToInt16(this.widthSeg);
+
+            // se empieza a llenar cada columna de la imagen nueva con la fila de cada DICOM
+            for (int j = 0; j < ancho; j++)
+            {
+                for (int i = 0; i < alto; i++)
+                {
+                    temp[i][j] = dataCube[j].segPhantom1[ini + i];
+                }
+                a++;
+            }
+
+            // se calcula el factor de escalado debido al espaciado entre Slides
+            double resZ = Convert.ToDouble(dataCube[0].selector.SliceThickness.Data);
+            double resXY = Convert.ToDouble(dataCube[0].selector.PixelSpacing.Data_[0]);
+            int factor = Convert.ToInt32(resZ / resXY); { }
+
+            // se convierte a un List<ushort> para poder usarlo en el mapeo a Bitmap
+            List<ushort> pixels16 = new List<ushort>();
+            for (int i = 0; i < alto; i++)
+                for (int j = 0; j < ancho; j++)
+                    for (int k = 0; k < factor; k++)
+                        pixels16.Add(temp[i][j]);
+
+            return pixels16;
+        }
+
+        
+
         /// <summary>
         /// Se genera un plano de core horizontal que corresponde al indice que se pasa como argumento. Version RV
         /// </summary>
@@ -535,6 +599,29 @@ namespace RockStatic
                 coresHorizontal[i] = GenerarCoreHorizontal(i);
             }
         }
+
+        //-----------------------esto es modificado --------------------------------
+        ///<summary>
+        ///Genera todos y cda uno de los planos corte horizontal del phanton 1
+        ///</summary>
+        public void GeneraPhanton1Horizonales()
+        {
+            // se genera un List<ushort> por cada pixel de altura de un DICOM
+            phantons1Horizontal = new List<ushort>[widthSeg];
+
+            // se calcula el factor de escalado debido al espaciado entre Slides
+            double resZ = Convert.ToDouble(dataCube[0].selector.SliceThickness.Data);
+            double resXY = Convert.ToDouble(dataCube[0].selector.PixelSpacing.Data_[0]);
+            int factor = Convert.ToInt32(resZ / resXY);
+
+            for (int i = 0; i < phantons1Horizontal.Length; i++)
+            {
+                phantons1Horizontal[i] = new List<ushort>();
+                phantons1Horizontal[i] = Generarphanton1Horizontal(i);
+            }
+
+        }
+        //-----------------------esto es modificado --------------------------------
 
         /// <summary>
         /// Genera todos y cada uno de los planos de corte horizontales del core. No genera imágenes sino los List de ushort para cada plano de corte. Version para RV

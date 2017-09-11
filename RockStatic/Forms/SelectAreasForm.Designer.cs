@@ -287,6 +287,7 @@
             this.grpPhantoms.TabIndex = 16;
             this.grpPhantoms.TabStop = false;
             this.grpPhantoms.Text = "PHANTOMS";
+            this.grpPhantoms.Enter += new System.EventHandler(this.grpPhantoms_Enter);
             // 
             // lstElementos
             // 
