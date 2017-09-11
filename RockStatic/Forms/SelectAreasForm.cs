@@ -119,6 +119,7 @@ namespace RockStatic
             padre.actual.datacuboHigh.widthSeg = padre.actual.areaCore.width;
             padre.actual.datacuboLow.widthSeg = padre.actual.areaCore.width;
 
+     
 
             //// voy a modificar 
 
@@ -144,7 +145,8 @@ namespace RockStatic
                 this.padre.actual.datacuboLow.GenerarCoresVerticales();
 
                 ////-----------------------esto es modificado --------------------------------
-                //this.padre.actual.datacuboHigh.GeneraPhanton1Horizonales();
+                padre.actual.datacuboHigh.widthSeg = padre.actual.areaPhantom1.width;
+                this.padre.actual.datacuboHigh.GeneraPhanton1Horizonales();
                 //this.padre.actual.datacuboHigh.GeneraPhanton2Horizonales();
                 //this.padre.actual.datacuboHigh.GeneraPhanton3Horizonales();
                 ////-----------------------esto es modificado --------------------------------
