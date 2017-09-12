@@ -276,17 +276,17 @@
             Valor maximo CT de la normalizacion
             </summary>
         </member>
-        <member name="F:RockStatic.AuxThread.xcenter">
+        <member name="F:RockStatic.AuxThread.xesquina">
             <summary>
             Centro del circulo de la segmentacion circular
             </summary>
         </member>
-        <member name="F:RockStatic.AuxThread.ycenter">
+        <member name="F:RockStatic.AuxThread.yesquina">
             <summary>
             Centro del circulo de la segmentacion circular
             </summary>
         </member>
-        <member name="F:RockStatic.AuxThread.rad">
+        <member name="F:RockStatic.AuxThread.diametro">
             <summary>
             Radio del circulo de la segmentacion circular
             </summary>
@@ -321,9 +321,9 @@
             Constructor con asignación para realizar la segmentacion circular, con threads, del core de un datacubo
             </summary>
             <param name="_pixels16">copia de los pixeles que se van a procesar</param>
-            <param name="_xcenter">Coordenadas cartesianas del centro X, con cero en la esquina superior izquierda</param>
-            <param name="_ycenter">Coordenadas cartesianas del centro Y, con cero en la esquina superior izquierda</param>
-            <param name="_rad">Radio del circulo a extraer</param>
+            <param name="_xesquina">Coordenadas cartesianas x, la esquina superior de un cuadrado</param>
+            <param name="_yesquina">Coordenadas cartesianas y, la esquina superior de un cuadrado</param>
+            <param name="_diametro">Diametro del circulo a extraer</param>
             <param name="_width">Ancho de la imagen original</param>
             <param name="_height">Alto de la imagen original</param>
             <param name="_done">Parametro para el control del ThreadPool</param>
@@ -499,14 +499,44 @@
             List que contiene los List de ushort que contienen los pixeles CT para cada corte horizontal del core
             </summary>
         </member>
+        <member name="F:RockStatic.MyDataCube.phantoms1Horizontal">
+            <summary>
+            List que contiene los List de ushort que contienen los pixeles CT para cada corte horizontal del phanton1
+            </summary>
+        </member>
+        <member name="F:RockStatic.MyDataCube.pahntons2Horizontal">
+            <summary>
+            List que contiene los List de ushort que contienen los pixeles CT para cada corte horizontal del phanton1
+            </summary>
+        </member>
+        <member name="F:RockStatic.MyDataCube.pahntons3Horizontal">
+            <summary>
+            List que contiene los List de ushort que contienen los pixeles CT para cada corte horizontal del phanton1
+            </summary>
+        </member>
         <member name="F:RockStatic.MyDataCube.coresVertical">
             <summary>
             List que contiene los List de ushort que contienen los pixeles CT para cada corte vertical del core
             </summary>
         </member>
-        <member name="F:RockStatic.MyDataCube.widthSeg">
+        <member name="F:RockStatic.MyDataCube.widthSegCore">
             <summary>
-            Indica el ancho de la imagen segmentada resultante
+            Indica el ancho de la imagen segmentada del core resultante
+            </summary>
+        </member>
+        <member name="F:RockStatic.MyDataCube.widthSegP1">
+            <summary>
+            Indica el ancho de la imagen segmentada del phantom 1 resultante
+            </summary>
+        </member>
+        <member name="F:RockStatic.MyDataCube.widthSegP2">
+            <summary>
+            Indica el ancho de la imagen segmentada del phantom 2 resultante
+            </summary>
+        </member>
+        <member name="F:RockStatic.MyDataCube.widthSegP3">
+            <summary>
+            Indica el ancho de la imagen segmentada del phantom 3 resultante
             </summary>
         </member>
         <member name="F:RockStatic.MyDataCube.factorZ">
@@ -558,11 +588,12 @@
             Genera la totalidad de los bitmap del datacubo usando threads
             </summary>
         </member>
-        <member name="M:RockStatic.MyDataCube.SegCircThread(RockStatic.CCuadrado)">
+        <member name="M:RockStatic.MyDataCube.SegCircThread(RockStatic.CCuadrado,System.String)">
             <summary>
             Genera la totalidad de las segmentaciones circulares de cores usando threads
             </summary>
             <param name="area">Objeto CCuadrado con la información del area a segmentar</param>
+            <param name="elemento">"'core','p1','p2','p3'</param>
         </member>
         <member name="M:RockStatic.MyDataCube.CrearBitmap(System.Int32,System.Int32)">
             <summary>
@@ -579,6 +610,13 @@
         <member name="M:RockStatic.MyDataCube.GenerarCoreHorizontal(System.Int32)">
             <summary>
             Se genera un plano de core horizontal que corresponde al indice que se pasa como argumento
+            </summary>
+            <param name="indice">Numero de la fila que se debe extraer de cada DICOM</param>
+            <returns>Core horizontal generado en la posicion indicada</returns>
+        </member>
+        <member name="M:RockStatic.MyDataCube.Generarphanton1Horizontal(System.Int32)">
+            <summary>
+            Se genera un plano de phanton1 horizontal que corresponde al indice que se pasa como argumento
             </summary>
             <param name="indice">Numero de la fila que se debe extraer de cada DICOM</param>
             <returns>Core horizontal generado en la posicion indicada</returns>
@@ -607,6 +645,11 @@
         <member name="M:RockStatic.MyDataCube.GenerarCoresHorizontales">
             <summary>
             Genera todos y cada uno de los planos de corte horizontales del core. No genera imágenes sino los List de ushort para cada plano de corte
+            </summary>
+        </member>
+        <member name="M:RockStatic.MyDataCube.GeneraPhanton1Horizonales">
+            <summary>
+            Genera todos y cda uno de los planos corte horizontal del phanton 1
             </summary>
         </member>
         <member name="M:RockStatic.MyDataCube.GenerarCortesHorizontalesRV">
@@ -685,6 +728,21 @@
         <member name="F:RockStatic.MyDicom.segCore">
             <summary>
             List que contiene los pixeles CT de la segmentacion transversal del core del DICOM
+            </summary>
+        </member>
+        <member name="F:RockStatic.MyDicom.segPhantom1">
+            <summary>
+            List que contiene los pixeles CT de la segmentacion transversal del phantom1 del DICOM
+            </summary>
+        </member>
+        <member name="F:RockStatic.MyDicom.segPhantom2">
+            <summary>
+            List que contiene los pixeles CT de la segmentacion transversal del phantom2 del DICOM
+            </summary>
+        </member>
+        <member name="F:RockStatic.MyDicom.segPhantom3">
+            <summary>
+            List que contiene los pixeles CT de la segmentacion transversal del phantom3 del DICOM
             </summary>
         </member>
         <member name="F:RockStatic.MyDicom.dcm">

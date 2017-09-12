@@ -330,7 +330,7 @@
             // numHead
             // 
             this.numHead.DecimalPlaces = 2;
-            this.numHead.Location = new System.Drawing.Point(65, 303);
+            this.numHead.Location = new System.Drawing.Point(50, 303);
             this.numHead.Maximum = new decimal(new int[] {
             1410065407,
             2,
@@ -365,18 +365,18 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(14, 307);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(49, 14);
+            this.label8.Size = new System.Drawing.Size(36, 14);
             this.label8.TabIndex = 17;
-            this.label8.Text = "Cabeza:";
+            this.label8.Text = "Tope:";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(203, 307);
+            this.label9.Location = new System.Drawing.Point(200, 307);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(34, 14);
+            this.label9.Size = new System.Drawing.Size(37, 14);
             this.label9.TabIndex = 18;
-            this.label9.Text = "Cola:";
+            this.label9.Text = "Base:";
             // 
             // label10
             // 

@@ -96,7 +96,7 @@ namespace RockStatic
             tempPhantom2 = new CPhantom(868.77, 39, 916.1, 36.775, 2.16, 8.7);
             tempPhantom3 = new CPhantom(15.3275, 36.7, 23.8, 35.9, 1, 7.5);
 
-            lstUnidades.SelectedIndex = 0;
+            lstUnidades.SelectedIndex = 1;
         }
 
         /// <summary>

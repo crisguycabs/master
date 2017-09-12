@@ -154,7 +154,7 @@
             this.groupBox2.Size = new System.Drawing.Size(142, 80);
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "PHANTOM 1";
+            this.groupBox2.Text = "PHANTOM 2";
             // 
             // numDensP2
             // 
@@ -223,7 +223,7 @@
             this.groupBox3.Size = new System.Drawing.Size(142, 80);
             this.groupBox3.TabIndex = 21;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "PHANTOM 1";
+            this.groupBox3.Text = "PHANTOM 3";
             // 
             // numDensP3
             // 

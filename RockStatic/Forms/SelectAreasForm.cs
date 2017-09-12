@@ -189,9 +189,12 @@ namespace RockStatic
                 //this.pictP2.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segPhantom2, padre.actual.areaPhantom2.width * 2, padre.actual.areaPhantom2.width * 2);
                 //this.pictP3.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segPhantom3, padre.actual.areaPhantom3.width * 2, padre.actual.areaPhantom3.width * 2);
 
-                this.pictP1.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segPhantom1, padre.actual.areaPhantom1.width , padre.actual.areaPhantom1.width );
-                this.pictP2.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segPhantom2, padre.actual.areaPhantom2.width , padre.actual.areaPhantom2.width );
-                this.pictP3.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segPhantom3, padre.actual.areaPhantom3.width , padre.actual.areaPhantom3.width );
+                int minNormalizacion = Convert.ToInt32(padre.actual.datacuboHigh.dataCube[0].pixelData.Min());
+                int maxNormalizacion = Convert.ToInt32(padre.actual.datacuboHigh.dataCube[0].pixelData.Max());
+
+                this.pictP1.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segPhantom1, padre.actual.areaPhantom1.width , padre.actual.areaPhantom1.width, minNormalizacion, maxNormalizacion );
+                this.pictP2.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segPhantom2, padre.actual.areaPhantom2.width, padre.actual.areaPhantom2.width, minNormalizacion, maxNormalizacion);
+                this.pictP3.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segPhantom3, padre.actual.areaPhantom3.width , padre.actual.areaPhantom3.width, minNormalizacion, maxNormalizacion );
 
                 /*this.pictP1.Image = MainForm.Byte2image(elementosP1[0]);
                 this.pictP2.Image = MainForm.Byte2image(elementosP2[0]);
