@@ -227,6 +227,8 @@ namespace RockStatic
 
             LlenarListAreas();
             pictCore.Invalidate();
+
+            changes = true;
         }
 
         private void trackElementos_ValueChanged(object sender, EventArgs e)
@@ -723,6 +725,8 @@ namespace RockStatic
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (lstAreas.SelectedIndex < 0) return;
+
             padre.actual.areasCore.RemoveAt(lstAreas.SelectedIndex);
             LlenarListAreas();
 

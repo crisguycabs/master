@@ -57,7 +57,7 @@
             this.lblSeg.Name = "lblSeg";
             this.lblSeg.Size = new System.Drawing.Size(223, 33);
             this.lblSeg.TabIndex = 7;
-            this.lblSeg.Text = "Aun no ha realizado la segmentación de los slides";
+            this.lblSeg.Text = "Aun no ha realizado la selección de materiales de los slides";
             // 
             // pictSegHigh
             // 
@@ -79,7 +79,7 @@
             this.groupBox1.Size = new System.Drawing.Size(233, 79);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "SEGMENTACIÓN";
+            this.groupBox1.Text = "SELECCIÓN DE MATERIALES";
             // 
             // btnSegHigh
             // 

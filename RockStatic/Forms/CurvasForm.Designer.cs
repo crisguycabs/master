@@ -115,10 +115,11 @@
             this.chart1.Location = new System.Drawing.Point(0, 19);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.LabelBorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
             series1.MarkerColor = System.Drawing.Color.DodgerBlue;
             series1.MarkerSize = 3;
+            series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
             series1.Name = "Deff";
             this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(250, 674);
@@ -126,8 +127,8 @@
             this.chart1.Text = "chart1";
             title1.Font = new System.Drawing.Font("Eras Bold ITC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             title1.ForeColor = System.Drawing.Color.Green;
-            title1.Name = "Deff";
-            title1.Text = "Deff";
+            title1.Name = "RHOB";
+            title1.Text = "RHOB";
             this.chart1.Titles.Add(title1);
             this.chart1.Click += new System.EventHandler(this.chart1_Click);
             // 
@@ -158,9 +159,10 @@
             this.chart2.Location = new System.Drawing.Point(250, 19);
             this.chart2.Name = "chart2";
             series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series2.MarkerColor = System.Drawing.Color.Crimson;
             series2.MarkerSize = 3;
+            series2.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
             series2.Name = "Zeff";
             this.chart2.Series.Add(series2);
             this.chart2.Size = new System.Drawing.Size(250, 674);

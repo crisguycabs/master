@@ -398,6 +398,8 @@ namespace RockStatic
                 }
             }
 
+            chart2.Series[0].Color = Color.Red;
+
             // se modifican los intervalos del eje
             chart1.ChartAreas[0].AxisX.Minimum = chart1.ChartAreas[0].AxisX2.Minimum=D.Min()*0.99;
             chart1.ChartAreas[0].AxisX.Maximum = chart1.ChartAreas[0].AxisX2.Maximum=D.Max()*1.01;

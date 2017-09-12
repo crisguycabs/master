@@ -52,12 +52,12 @@ namespace RockStatic
             if (padre.actual.segmentacionDone)
             {
                 pictSegHigh.Image = RockStatic.Properties.Resources.greenTick;
-                lblSeg.Text = "La segmentacion de los slides se completo exitosamente";
+                lblSeg.Text = "La selección de materiales en los slides se completo exitosamente";
             }
             else
             {
                 pictSegHigh.Image = RockStatic.Properties.Resources.redX;
-                lblSeg.Text = "Aun no ha realizado la segmentacion de los slides";
+                lblSeg.Text = "Aun no ha realizado la selección de materiales en los slides";
             }
 
             // areas
