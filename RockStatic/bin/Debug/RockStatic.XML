@@ -504,12 +504,12 @@
             List que contiene los List de ushort que contienen los pixeles CT para cada corte horizontal del phanton1
             </summary>
         </member>
-        <member name="F:RockStatic.MyDataCube.pahntons2Horizontal">
+        <member name="F:RockStatic.MyDataCube.phantoms2Horizontal">
             <summary>
             List que contiene los List de ushort que contienen los pixeles CT para cada corte horizontal del phanton1
             </summary>
         </member>
-        <member name="F:RockStatic.MyDataCube.pahntons3Horizontal">
+        <member name="F:RockStatic.MyDataCube.phantoms3Horizontal">
             <summary>
             List que contiene los List de ushort que contienen los pixeles CT para cada corte horizontal del phanton1
             </summary>
@@ -621,6 +621,20 @@
             <param name="indice">Numero de la fila que se debe extraer de cada DICOM</param>
             <returns>Core horizontal generado en la posicion indicada</returns>
         </member>
+        <member name="M:RockStatic.MyDataCube.Generarphanton2Horizontal(System.Int32)">
+            <summary>
+            Se genera un plano de phanton2 horizontal que corresponde al indice que se pasa como argumento
+            </summary>
+            <param name="indice">Numero de la fila que se debe extraer de cada DICOM</param>
+            <returns>Core horizontal generado en la posicion indicada</returns>
+        </member>
+        <member name="M:RockStatic.MyDataCube.Generarphanton3Horizontal(System.Int32)">
+            <summary>
+            Se genera un plano de phanton3 horizontal que corresponde al indice que se pasa como argumento
+            </summary>
+            <param name="indice">Numero de la fila que se debe extraer de cada DICOM</param>
+            <returns>Core horizontal generado en la posicion indicada</returns>
+        </member>
         <member name="M:RockStatic.MyDataCube.GenerarCoreHorizontalRV(System.Int32)">
             <summary>
             Se genera un plano de core horizontal que corresponde al indice que se pasa como argumento. Version RV
@@ -650,6 +664,16 @@
         <member name="M:RockStatic.MyDataCube.GeneraPhanton1Horizonales">
             <summary>
             Genera todos y cda uno de los planos corte horizontal del phanton 1
+            </summary>
+        </member>
+        <member name="M:RockStatic.MyDataCube.GeneraPhanton2Horizonales">
+            <summary>
+            Genera todos y cda uno de los planos corte horizontal del phanton 2
+            </summary>
+        </member>
+        <member name="M:RockStatic.MyDataCube.GeneraPhanton3Horizonales">
+            <summary>
+            Genera todos y cda uno de los planos corte horizontal del phanton 3
             </summary>
         </member>
         <member name="M:RockStatic.MyDataCube.GenerarCortesHorizontalesRV">

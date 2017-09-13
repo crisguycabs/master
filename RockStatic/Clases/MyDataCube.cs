@@ -54,12 +54,12 @@ namespace RockStatic
         /// <summary>
         /// List que contiene los List de ushort que contienen los pixeles CT para cada corte horizontal del phanton1
         /// </summary>
-        public List<ushort>[] pahntons2Horizontal = null;
+        public List<ushort>[] phantoms2Horizontal = null;
 
         /// <summary>
         /// List que contiene los List de ushort que contienen los pixeles CT para cada corte horizontal del phanton1
         /// </summary>
-        public List<ushort>[] pahntons3Horizontal = null;
+        public List<ushort>[] phantoms3Horizontal = null;
 
         //-----------------------esto es modificado --------------------------------
         /// <summary>
@@ -464,7 +464,98 @@ namespace RockStatic
             return pixels16;
         }
 
-        
+
+        /// <summary>
+        /// Se genera un plano de phanton2 horizontal que corresponde al indice que se pasa como argumento
+        /// </summary>
+        /// <param name="indice">Numero de la fila que se debe extraer de cada DICOM</param>
+        /// <returns>Core horizontal generado en la posicion indicada</returns>
+        public List<ushort> Generarphanton2Horizontal(int indice)
+        {
+            // se genera una MATRIZ para guardar, temporalmente, los numeros CT extraidos de todo el data cubo para cada imagen de corte horizontal
+            // una vez extraida la matriz se mapea a una imagen Bitmap
+
+            // se crea la matriz temporal y se inicializa
+            int alto = Convert.ToInt16(this.widthSegP2);
+            int ancho = dataCube.Count;
+            ushort[][] temp = new ushort[alto][];
+            for (int i = 0; i < alto; i++)
+                temp[i] = new ushort[ancho];
+
+            int a = 0;
+            int ini = indice * Convert.ToInt16(this.widthSegP2);
+
+            // se empieza a llenar cada columna de la imagen nueva con la fila de cada DICOM
+            for (int j = 0; j < ancho; j++)
+            {
+                for (int i = 0; i < alto; i++)
+                {
+                    temp[i][j] = dataCube[j].segPhantom2[ini + i];
+                }
+                a++;
+            }
+
+            // se calcula el factor de escalado debido al espaciado entre Slides
+            double resZ = Convert.ToDouble(dataCube[0].selector.SliceThickness.Data);
+            double resXY = Convert.ToDouble(dataCube[0].selector.PixelSpacing.Data_[0]);
+            int factor = Convert.ToInt32(resZ / resXY); { }
+
+            // se convierte a un List<ushort> para poder usarlo en el mapeo a Bitmap
+            List<ushort> pixels16 = new List<ushort>();
+            for (int i = 0; i < alto; i++)
+                for (int j = 0; j < ancho; j++)
+                    for (int k = 0; k < factor; k++)
+                        pixels16.Add(temp[i][j]);
+
+            return pixels16;
+        }
+
+
+        /// <summary>
+        /// Se genera un plano de phanton3 horizontal que corresponde al indice que se pasa como argumento
+        /// </summary>
+        /// <param name="indice">Numero de la fila que se debe extraer de cada DICOM</param>
+        /// <returns>Core horizontal generado en la posicion indicada</returns>
+        public List<ushort> Generarphanton3Horizontal(int indice)
+        {
+            // se genera una MATRIZ para guardar, temporalmente, los numeros CT extraidos de todo el data cubo para cada imagen de corte horizontal
+            // una vez extraida la matriz se mapea a una imagen Bitmap
+
+            // se crea la matriz temporal y se inicializa
+            int alto = Convert.ToInt16(this.widthSegP3);
+            int ancho = dataCube.Count;
+            ushort[][] temp = new ushort[alto][];
+            for (int i = 0; i < alto; i++)
+                temp[i] = new ushort[ancho];
+
+            int a = 0;
+            int ini = indice * Convert.ToInt16(this.widthSegP3);
+
+            // se empieza a llenar cada columna de la imagen nueva con la fila de cada DICOM
+            for (int j = 0; j < ancho; j++)
+            {
+                for (int i = 0; i < alto; i++)
+                {
+                    temp[i][j] = dataCube[j].segPhantom3[ini + i];
+                }
+                a++;
+            }
+
+            // se calcula el factor de escalado debido al espaciado entre Slides
+            double resZ = Convert.ToDouble(dataCube[0].selector.SliceThickness.Data);
+            double resXY = Convert.ToDouble(dataCube[0].selector.PixelSpacing.Data_[0]);
+            int factor = Convert.ToInt32(resZ / resXY); { }
+
+            // se convierte a un List<ushort> para poder usarlo en el mapeo a Bitmap
+            List<ushort> pixels16 = new List<ushort>();
+            for (int i = 0; i < alto; i++)
+                for (int j = 0; j < ancho; j++)
+                    for (int k = 0; k < factor; k++)
+                        pixels16.Add(temp[i][j]);
+
+            return pixels16;
+        }
+
 
         /// <summary>
         /// Se genera un plano de core horizontal que corresponde al indice que se pasa como argumento. Version RV
@@ -636,6 +727,52 @@ namespace RockStatic
             }
 
         }
+
+
+        ///<summary>
+        ///Genera todos y cda uno de los planos corte horizontal del phanton 2
+        ///</summary>
+        public void GeneraPhanton2Horizonales()
+        {
+            // se genera un List<ushort> por cada pixel de altura de un DICOM
+            phantoms2Horizontal = new List<ushort>[widthSegP2];
+
+            // se calcula el factor de escalado debido al espaciado entre Slides
+            double resZ = Convert.ToDouble(dataCube[0].selector.SliceThickness.Data);
+            double resXY = Convert.ToDouble(dataCube[0].selector.PixelSpacing.Data_[0]);
+            int factor = Convert.ToInt32(resZ / resXY);
+
+            for (int i = 0; i < phantoms2Horizontal.Length; i++)
+            {
+                phantoms2Horizontal[i] = new List<ushort>();
+                phantoms2Horizontal[i] = Generarphanton2Horizontal(i);
+            }
+
+        }
+
+
+
+        ///<summary>
+        ///Genera todos y cda uno de los planos corte horizontal del phanton 3
+        ///</summary>
+        public void GeneraPhanton3Horizonales()
+        {
+            // se genera un List<ushort> por cada pixel de altura de un DICOM
+            phantoms3Horizontal = new List<ushort>[widthSegP3];
+
+            // se calcula el factor de escalado debido al espaciado entre Slides
+            double resZ = Convert.ToDouble(dataCube[0].selector.SliceThickness.Data);
+            double resXY = Convert.ToDouble(dataCube[0].selector.PixelSpacing.Data_[0]);
+            int factor = Convert.ToInt32(resZ / resXY);
+
+            for (int i = 0; i < phantoms3Horizontal.Length; i++)
+            {
+                phantoms3Horizontal[i] = new List<ushort>();
+                phantoms3Horizontal[i] = Generarphanton3Horizontal(i);
+            }
+
+        }
+
         //-----------------------esto es modificado --------------------------------
 
         /// <summary>

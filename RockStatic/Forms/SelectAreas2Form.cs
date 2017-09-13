@@ -109,6 +109,14 @@ namespace RockStatic
             pictCore.Image = corte;
             nelemento = Convert.ToInt32(padre.actual.datacuboHigh.widthSegP1 / 2);
             pictPhantom1.Image = padre.actual.datacuboHigh.CreateBitmapCorte(padre.actual.datacuboHigh.phantoms1Horizontal[nelemento], padre.actual.datacuboHigh.dataCube.Count * factor, padre.actual.datacuboHigh.widthSegP1, minimo, maximo);
+
+      
+            nelemento = Convert.ToInt32(padre.actual.datacuboHigh.widthSegP2 / 2);
+            pictPhantom2.Image = padre.actual.datacuboHigh.CreateBitmapCorte(padre.actual.datacuboHigh.phantoms2Horizontal[nelemento], padre.actual.datacuboHigh.dataCube.Count * factor, padre.actual.datacuboHigh.widthSegP2, minimo, maximo);
+
+ 
+            nelemento = Convert.ToInt32(padre.actual.datacuboHigh.widthSegP3 / 2);
+            pictPhantom3.Image = padre.actual.datacuboHigh.CreateBitmapCorte(padre.actual.datacuboHigh.phantoms3Horizontal[nelemento], padre.actual.datacuboHigh.dataCube.Count * factor, padre.actual.datacuboHigh.widthSegP3, minimo, maximo);
             
             // se prepara el color de la brocha y lapiz
             brocha = new SolidBrush(Color.Red);

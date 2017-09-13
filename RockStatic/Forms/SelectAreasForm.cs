@@ -146,9 +146,11 @@ namespace RockStatic
 
                 ////-----------------------esto es modificado --------------------------------
                 padre.actual.datacuboHigh.widthSegP1 = padre.actual.areaPhantom1.width;
+                padre.actual.datacuboHigh.widthSegP2 = padre.actual.areaPhantom2.width;
+                padre.actual.datacuboHigh.widthSegP3 = padre.actual.areaPhantom3.width;
                 this.padre.actual.datacuboHigh.GeneraPhanton1Horizonales();
-                //this.padre.actual.datacuboHigh.GeneraPhanton2Horizonales();
-                //this.padre.actual.datacuboHigh.GeneraPhanton3Horizonales();
+                this.padre.actual.datacuboHigh.GeneraPhanton2Horizonales();
+                this.padre.actual.datacuboHigh.GeneraPhanton3Horizonales();
                 ////-----------------------esto es modificado --------------------------------
                 this.padre.CloseWaiting();
             }
