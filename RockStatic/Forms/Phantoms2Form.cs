@@ -116,5 +116,10 @@ namespace RockStatic
         {
             e.Graphics.DrawRectangle(new Pen(Color.Green, 2), this.DisplayRectangle);       
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

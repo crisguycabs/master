@@ -936,6 +936,11 @@
             Valor del número atómico del phantom
             </summary>
         </member>
+        <member name="F:RockStatic.CPhantom.nombre">
+            <summary>
+            Nombre del elemento del phanton
+            </summary>
+        </member>
         <member name="M:RockStatic.CPhantom.#ctor(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
             <summary>
             Constructor con asignacion

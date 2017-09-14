@@ -42,6 +42,11 @@ namespace RockStatic
         public double zeff;
 
         /// <summary>
+        /// Nombre del elemento del phanton
+        /// </summary>
+        public double nombre;
+
+        /// <summary>
         /// Constructor con asignacion
         /// </summary>
         /// <param name="_mediaHigh">Valor medio de la distribución de probabilidad del phantom en HIGH</param>

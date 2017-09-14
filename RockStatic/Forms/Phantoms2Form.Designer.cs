@@ -47,6 +47,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDensP1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numZeffP1)).BeginInit();
@@ -66,7 +69,7 @@
             this.lblTitulo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(311, 30);
+            this.lblTitulo.Size = new System.Drawing.Size(305, 30);
             this.lblTitulo.TabIndex = 9;
             this.lblTitulo.Text = "MODELO DE PHANTOMS";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -76,21 +79,23 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.numDensP1);
             this.groupBox1.Controls.Add(this.label22);
             this.groupBox1.Controls.Add(this.numZeffP1);
             this.groupBox1.Controls.Add(this.label23);
-            this.groupBox1.Location = new System.Drawing.Point(8, 43);
+            this.groupBox1.Location = new System.Drawing.Point(4, 45);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(142, 80);
+            this.groupBox1.Size = new System.Drawing.Size(294, 102);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "PHANTOM 1";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // numDensP1
             // 
             this.numDensP1.DecimalPlaces = 2;
-            this.numDensP1.Location = new System.Drawing.Point(62, 22);
+            this.numDensP1.Location = new System.Drawing.Point(205, 19);
             this.numDensP1.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -118,7 +123,7 @@
             // numZeffP1
             // 
             this.numZeffP1.DecimalPlaces = 2;
-            this.numZeffP1.Location = new System.Drawing.Point(62, 49);
+            this.numZeffP1.Location = new System.Drawing.Point(205, 46);
             this.numZeffP1.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -145,13 +150,14 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.numDensP2);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.numZeffP2);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(162, 43);
+            this.groupBox2.Location = new System.Drawing.Point(4, 155);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(142, 80);
+            this.groupBox2.Size = new System.Drawing.Size(294, 102);
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "PHANTOM 2";
@@ -159,7 +165,7 @@
             // numDensP2
             // 
             this.numDensP2.DecimalPlaces = 2;
-            this.numDensP2.Location = new System.Drawing.Point(62, 22);
+            this.numDensP2.Location = new System.Drawing.Point(205, 24);
             this.numDensP2.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -187,7 +193,7 @@
             // numZeffP2
             // 
             this.numZeffP2.DecimalPlaces = 2;
-            this.numZeffP2.Location = new System.Drawing.Point(62, 49);
+            this.numZeffP2.Location = new System.Drawing.Point(205, 51);
             this.numZeffP2.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -214,13 +220,14 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.numDensP3);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.numZeffP3);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Location = new System.Drawing.Point(8, 129);
+            this.groupBox3.Location = new System.Drawing.Point(4, 263);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(142, 80);
+            this.groupBox3.Size = new System.Drawing.Size(294, 109);
             this.groupBox3.TabIndex = 21;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "PHANTOM 3";
@@ -228,7 +235,7 @@
             // numDensP3
             // 
             this.numDensP3.DecimalPlaces = 2;
-            this.numDensP3.Location = new System.Drawing.Point(62, 22);
+            this.numDensP3.Location = new System.Drawing.Point(205, 24);
             this.numDensP3.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -256,7 +263,7 @@
             // numZeffP3
             // 
             this.numZeffP3.DecimalPlaces = 2;
-            this.numZeffP3.Location = new System.Drawing.Point(62, 49);
+            this.numZeffP3.Location = new System.Drawing.Point(205, 51);
             this.numZeffP3.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -289,7 +296,7 @@
             this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(236, 182);
+            this.btnCancelar.Location = new System.Drawing.Point(170, 387);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(68, 23);
             this.btnCancelar.TabIndex = 22;
@@ -307,7 +314,7 @@
             this.btnCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrar.Location = new System.Drawing.Point(161, 182);
+            this.btnCerrar.Location = new System.Drawing.Point(52, 387);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(68, 23);
             this.btnCerrar.TabIndex = 23;
@@ -317,12 +324,39 @@
             this.btnCerrar.MouseEnter += new System.EventHandler(this.btnSubir_MouseEnter);
             this.btnCerrar.MouseLeave += new System.EventHandler(this.btnSubir_MouseLeave);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(1, 75);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(103, 13);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "Nombre del material:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 80);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(103, 13);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "Nombre del material:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(1, 81);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(103, 13);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "Nombre del material:";
+            // 
             // Phantoms2Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(311, 217);
+            this.ClientSize = new System.Drawing.Size(305, 424);
             this.ControlBox = false;
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnCerrar);
@@ -374,5 +408,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnCerrar;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
