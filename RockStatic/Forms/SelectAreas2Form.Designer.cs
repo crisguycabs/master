@@ -235,7 +235,6 @@
         #endregion
 
         public System.Windows.Forms.Label label4;
-        private System.Windows.Forms.PictureBox pictCore;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox grpPhantoms;
         private System.Windows.Forms.PictureBox pictPhantom3;
@@ -246,5 +245,6 @@
         private System.Windows.Forms.NumericUpDown numActual;
         private System.Windows.Forms.Label lblActual;
         private System.Windows.Forms.Button btnSelTrans;
+        public System.Windows.Forms.PictureBox pictCore;
     }
 }

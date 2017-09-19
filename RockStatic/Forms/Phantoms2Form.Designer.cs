@@ -76,6 +76,7 @@
             this.lblTitulo.TabIndex = 9;
             this.lblTitulo.Text = "MODELO DE PHANTOMS";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblTitulo.Click += new System.EventHandler(this.lblTitulo_Click);
             this.lblTitulo.DoubleClick += new System.EventHandler(this.lblTitulo_DoubleClick);
             this.lblTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblTitulo_MouseDown);
             this.lblTitulo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblTitulo_MouseMove);

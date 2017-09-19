@@ -355,7 +355,7 @@
             this.numTail.TabIndex = 16;
             this.numTail.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numTail.Value = new decimal(new int[] {
-            10,
+            3,
             0,
             0,
             0});

@@ -90,6 +90,8 @@ namespace RockStatic
             numZeffP1.Value = (decimal)newProjectForm.tempPhantom1.zeff;
             numZeffP2.Value = (decimal)newProjectForm.tempPhantom2.zeff;
             numZeffP3.Value = (decimal)newProjectForm.tempPhantom3.zeff;
+
+            // groupBox1.Text = "MATERIAL 1";
         }
 
         public void btnCerrar_Click(object sender, EventArgs e)
@@ -127,6 +129,11 @@ namespace RockStatic
         }
 
         private void txtP1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTitulo_Click(object sender, EventArgs e)
         {
 
         }

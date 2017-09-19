@@ -266,6 +266,8 @@
             this.trackElementos.Size = new System.Drawing.Size(320, 45);
             this.trackElementos.TabIndex = 13;
             this.trackElementos.ValueChanged += new System.EventHandler(this.trackElementos_ValueChanged);
+            this.trackElementos.MouseDown += new System.Windows.Forms.MouseEventHandler(this.trackElementos_MouseDown);
+            this.trackElementos.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackElementos_MouseUp);
             // 
             // grpPhantoms
             // 
@@ -836,7 +838,6 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.NumericUpDown numRad;
-        private System.Windows.Forms.TrackBar trackElementos;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label lblActual;
         private System.Windows.Forms.NumericUpDown numActual;
@@ -866,6 +867,7 @@
         private System.Windows.Forms.ListBox lstAreas;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnSelLong;
+        public System.Windows.Forms.TrackBar trackElementos;
 
     }
 }

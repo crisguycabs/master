@@ -169,7 +169,7 @@ namespace RockStatic
 
         public void pictCore_Paint(object sender, PaintEventArgs e)
         {
-            double ancho;
+            double ancho=0;
             double dif;
             
             // se pintan las lineas de Cabeza y Cola
@@ -218,28 +218,26 @@ namespace RockStatic
                     xcero = (boxWidth - scale * imgWidth) / 2;
                 }
 
+                // se pintan los cuadrados que corresponden a las areas de interes seleccionadas
                 float height = (float)(ancho * scale * 2);
                 float width = (float)((padre.actual.areasCore[i].fin - padre.actual.areasCore[i].ini + 1) * factor * scale);
                 float x = (float)(((padre.actual.areasCore[i].ini - 1) * scale * factor) + xcero);
                 float y = (float)(((padre.actual.areasCore[i].y - ancho) * scale) + ycero);
                 e.Graphics.FillRectangle(brocha2, x, y, width, height);
 
-                /*if (areasCore[i] != null)
-                {
-                    // float x = (areasCore[i].x - areasCore[i].width) * pictCore.Image.Height / anchoOriginal;
-                    float x = ((float)i * pictCore.Image.Width / areasCore.Count);
-                    float y = (areasCore[i].y - areasCore[i].width) * pictCore.Image.Height / anchoOriginal;
-                    float width = pictCore.Image.Width / areasCore.Count;
-                    float height = 2*areasCore[i].width*pictCore.Image.Height/anchoOriginal;
-                    e.Graphics.FillRectangle(brocha2, x, y, width, height);
-                    
-                    /*
-                    using (Graphics g = Graphics.FromImage(pictCore.Image))
-                    {
-                        g.FillRectangle(brocha2, (areasCore[i].x - areasCore[i].width) * pictCore.Image.Height / anchoOriginal, (areasCore[i].y - areasCore[i].width) * pictCore.Image.Height / anchoOriginal, Convert.ToInt32(pictCore.Image.Width/areasCore.Count), 2*areasCore[i].width*pictCore.Image.Height/anchoOriginal);                        
-                    }
-                    */
-                //}
+                // se pinta la linea de posicion
+                // se averigua el factor de escalado del corte horizontal
+                double alto = padre.actual.datacuboHigh.dataCube[0].selector.Columns.Data;
+                double total = padre.actual.datacuboHigh.coresHorizontal[0].Count;
+                ancho = Convert.ToInt32(total / alto);
+                factor = Convert.ToInt32(imgWidth / Convert.ToInt32(padre.actual.datacuboHigh.dataCube.Count));
+
+                int pos = Convert.ToInt32((padre.selecAreasForm.trackElementos.Value * scale * factor) + xcero);
+                Pen brochaLinea = new Pen(Color.DarkOrange);
+                float[] dashValues = { 10, 3, 5, 3 };
+                brochaLinea.Width = 3;
+                brochaLinea.DashPattern = dashValues;
+                e.Graphics.DrawLine(brochaLinea, pos, 0, pos, pictCore.Height);
             }
         }
 

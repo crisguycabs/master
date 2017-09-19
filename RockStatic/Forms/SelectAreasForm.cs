@@ -54,6 +54,11 @@ namespace RockStatic
         /// </summary>
         int countAreas;
 
+        /// <summary>
+        /// control de presionar el trackElementos
+        /// </summary>
+        bool buttonDown = false;
+
         #endregion
 
         public SelectAreasForm()
@@ -266,8 +271,8 @@ namespace RockStatic
                 }
             }
 
-
             pictCore.Invalidate();
+            padre.selecAreas2Form.pictCore.Invalidate();
         }
 
         private void numActual_ValueChanged(object sender, EventArgs e)
@@ -585,14 +590,17 @@ namespace RockStatic
 
         private void lstAreas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int nactual = lstAreas.SelectedIndex;
+            if (!buttonDown)
+            {
+                int nactual = lstAreas.SelectedIndex;
 
-            // se busca el INI del area de interes seleccionada y se mueve el trackbar a esa posicion
-            trackElementos.Value = padre.actual.areasCore[nactual].ini;
+                // se busca el INI del area de interes seleccionada y se mueve el trackbar a esa posicion
+                trackElementos.Value = padre.actual.areasCore[nactual].ini;
 
-            numFrom.Value = padre.actual.areasCore[nactual].ini;
-            numUntil.Value = padre.actual.areasCore[nactual].fin;
-            numRad.Value = padre.actual.areasCore[nactual].width;
+                numFrom.Value = padre.actual.areasCore[nactual].ini;
+                numUntil.Value = padre.actual.areasCore[nactual].fin;
+                numRad.Value = padre.actual.areasCore[nactual].width;
+            }
         }
 
         private void btnUp_Click(object sender, EventArgs e)
@@ -818,6 +826,16 @@ namespace RockStatic
         private void grpPhantoms_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void trackElementos_MouseDown(object sender, MouseEventArgs e)
+        {
+            buttonDown = true;
+        }
+
+        private void trackElementos_MouseUp(object sender, MouseEventArgs e)
+        {
+            buttonDown = false;
         }        
     }
 }
