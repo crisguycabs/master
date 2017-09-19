@@ -44,7 +44,7 @@ namespace RockStatic
         /// <summary>
         /// Nombre del elemento del phanton
         /// </summary>
-        public double nombre;
+        public string nombre="";
 
         /// <summary>
         /// Constructor con asignacion
@@ -66,6 +66,26 @@ namespace RockStatic
         }
 
         /// <summary>
+        /// Constructor con asignacion
+        /// </summary>
+        /// <param name="_mediaHigh">Valor medio de la distribución de probabilidad del phantom en HIGH</param>
+        /// <param name="_desvHigh">Valor de la desviación estandar de la distribución de probabilidad del phantom en HIGH</param>
+        /// <param name="_mediaLow">Valor medio de la distribución de probabilidad del phantom en LOW</param>
+        /// <param name="_desvLow">Valor de la desviación estandar de la distribución de probabilidad del phantom en LOW</param>
+        /// <param name="_densidad">Valor de la densidad</param>
+        /// <param name="_zeff">Valor del numero atomico efectivo</param>
+        public CPhantom(double _mediaHigh, double _desvHigh, double _mediaLow, double _desvLow, double _densidad, double _zeff, string _name)
+        {
+            mediaHigh = _mediaHigh;
+            desvHigh = _desvHigh;
+            mediaLow = _mediaLow;
+            desvLow = _desvLow;
+            densidad = _densidad;
+            zeff = _zeff;
+            nombre = _name;
+        }
+
+        /// <summary>
         /// Constructor con duplicacion
         /// </summary>
         /// <param name="phantom">Objeto CPhantom a duplicar</param>
@@ -77,6 +97,7 @@ namespace RockStatic
             this.desvLow = phantom.desvLow;
             this.densidad = phantom.densidad;
             this.zeff = phantom.zeff;
+            this.nombre = phantom.nombre;
         }
     }
 }

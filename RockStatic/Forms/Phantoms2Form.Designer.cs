@@ -31,25 +31,28 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Phantoms2Form));
             this.lblTitulo = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.numDensP1 = new System.Windows.Forms.NumericUpDown();
             this.label22 = new System.Windows.Forms.Label();
             this.numZeffP1 = new System.Windows.Forms.NumericUpDown();
             this.label23 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.numDensP2 = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.numZeffP2 = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.numDensP3 = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.numZeffP3 = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.txtP1 = new System.Windows.Forms.TextBox();
+            this.txtP2 = new System.Windows.Forms.TextBox();
+            this.txtP3 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDensP1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numZeffP1)).BeginInit();
@@ -79,6 +82,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtP1);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.numDensP1);
             this.groupBox1.Controls.Add(this.label22);
@@ -91,6 +95,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "PHANTOM 1";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(1, 75);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(103, 13);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "Nombre del material:";
             // 
             // numDensP1
             // 
@@ -150,6 +163,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtP2);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.numDensP2);
             this.groupBox2.Controls.Add(this.label1);
@@ -161,6 +175,15 @@
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "PHANTOM 2";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 80);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(103, 13);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "Nombre del material:";
             // 
             // numDensP2
             // 
@@ -220,6 +243,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.txtP3);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.numDensP3);
             this.groupBox3.Controls.Add(this.label3);
@@ -231,6 +255,15 @@
             this.groupBox3.TabIndex = 21;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "PHANTOM 3";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(1, 81);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(103, 13);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "Nombre del material:";
             // 
             // numDensP3
             // 
@@ -324,32 +357,29 @@
             this.btnCerrar.MouseEnter += new System.EventHandler(this.btnSubir_MouseEnter);
             this.btnCerrar.MouseLeave += new System.EventHandler(this.btnSubir_MouseLeave);
             // 
-            // label5
+            // txtP1
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1, 75);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(103, 13);
-            this.label5.TabIndex = 21;
-            this.label5.Text = "Nombre del material:";
+            this.txtP1.Location = new System.Drawing.Point(205, 72);
+            this.txtP1.Name = "txtP1";
+            this.txtP1.Size = new System.Drawing.Size(71, 20);
+            this.txtP1.TabIndex = 22;
+            this.txtP1.TextChanged += new System.EventHandler(this.txtP1_TextChanged);
             // 
-            // label6
+            // txtP2
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 80);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(103, 13);
-            this.label6.TabIndex = 22;
-            this.label6.Text = "Nombre del material:";
+            this.txtP2.Location = new System.Drawing.Point(205, 77);
+            this.txtP2.Name = "txtP2";
+            this.txtP2.Size = new System.Drawing.Size(71, 20);
+            this.txtP2.TabIndex = 22;
+            this.txtP2.TextChanged += new System.EventHandler(this.txtP1_TextChanged);
             // 
-            // label7
+            // txtP3
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1, 81);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(103, 13);
-            this.label7.TabIndex = 23;
-            this.label7.Text = "Nombre del material:";
+            this.txtP3.Location = new System.Drawing.Point(205, 78);
+            this.txtP3.Name = "txtP3";
+            this.txtP3.Size = new System.Drawing.Size(71, 20);
+            this.txtP3.TabIndex = 22;
+            this.txtP3.TextChanged += new System.EventHandler(this.txtP1_TextChanged);
             // 
             // Phantoms2Form
             // 
@@ -411,5 +441,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtP1;
+        private System.Windows.Forms.TextBox txtP2;
+        private System.Windows.Forms.TextBox txtP3;
     }
 }

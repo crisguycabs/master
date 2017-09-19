@@ -104,6 +104,10 @@ namespace RockStatic
             newProjectForm.tempPhantom2.zeff = (double)numZeffP2.Value;
             newProjectForm.tempPhantom3.zeff = (double)numZeffP3.Value;
 
+            newProjectForm.tempPhantom1.nombre = txtP1.Text;
+            newProjectForm.tempPhantom2.nombre = txtP2.Text;
+            newProjectForm.tempPhantom3.nombre = txtP3.Text;            
+
             this.Close();
         }
 
@@ -118,6 +122,11 @@ namespace RockStatic
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtP1_TextChanged(object sender, EventArgs e)
         {
 
         }
