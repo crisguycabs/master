@@ -78,6 +78,9 @@
             this.numFrom = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.P3 = new System.Windows.Forms.Label();
+            this.P2 = new System.Windows.Forms.Label();
+            this.P1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictCore)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numActual)).BeginInit();
@@ -152,9 +155,9 @@
             this.groupBox1.Controls.Add(this.lblActual);
             this.groupBox1.Controls.Add(this.trackElementos);
             this.groupBox1.Controls.Add(this.pictCore);
-            this.groupBox1.Location = new System.Drawing.Point(10, 42);
+            this.groupBox1.Location = new System.Drawing.Point(10, 50);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(323, 462);
+            this.groupBox1.Size = new System.Drawing.Size(323, 477);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "CORE";
@@ -271,6 +274,9 @@
             // 
             // grpPhantoms
             // 
+            this.grpPhantoms.Controls.Add(this.P1);
+            this.grpPhantoms.Controls.Add(this.P2);
+            this.grpPhantoms.Controls.Add(this.P3);
             this.grpPhantoms.Controls.Add(this.lstElementos);
             this.grpPhantoms.Controls.Add(this.numericUpDown2);
             this.grpPhantoms.Controls.Add(this.pictP3);
@@ -285,7 +291,7 @@
             this.grpPhantoms.Controls.Add(this.button4);
             this.grpPhantoms.Location = new System.Drawing.Point(528, 42);
             this.grpPhantoms.Name = "grpPhantoms";
-            this.grpPhantoms.Size = new System.Drawing.Size(305, 404);
+            this.grpPhantoms.Size = new System.Drawing.Size(305, 425);
             this.grpPhantoms.TabIndex = 16;
             this.grpPhantoms.TabStop = false;
             this.grpPhantoms.Text = "PHANTOMS";
@@ -321,7 +327,7 @@
             // pictP3
             // 
             this.pictP3.BackColor = System.Drawing.Color.Black;
-            this.pictP3.Location = new System.Drawing.Point(12, 259);
+            this.pictP3.Location = new System.Drawing.Point(12, 304);
             this.pictP3.Name = "pictP3";
             this.pictP3.Size = new System.Drawing.Size(110, 110);
             this.pictP3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -345,7 +351,7 @@
             // pictP2
             // 
             this.pictP2.BackColor = System.Drawing.Color.Black;
-            this.pictP2.Location = new System.Drawing.Point(12, 140);
+            this.pictP2.Location = new System.Drawing.Point(12, 172);
             this.pictP2.Name = "pictP2";
             this.pictP2.Size = new System.Drawing.Size(110, 110);
             this.pictP2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -369,7 +375,7 @@
             // pictP1
             // 
             this.pictP1.BackColor = System.Drawing.Color.Black;
-            this.pictP1.Location = new System.Drawing.Point(12, 21);
+            this.pictP1.Location = new System.Drawing.Point(12, 42);
             this.pictP1.Name = "pictP1";
             this.pictP1.Size = new System.Drawing.Size(110, 110);
             this.pictP1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -499,7 +505,7 @@
             this.groupBox3.Controls.Add(this.lblPunto2);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.lblPunto1);
-            this.groupBox3.Location = new System.Drawing.Point(339, 42);
+            this.groupBox3.Location = new System.Drawing.Point(339, 50);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(180, 102);
             this.groupBox3.TabIndex = 21;
@@ -655,7 +661,7 @@
             this.groupBox4.Controls.Add(this.btnCancelar);
             this.groupBox4.Controls.Add(this.btnSelLong);
             this.groupBox4.Controls.Add(this.btnGuardar);
-            this.groupBox4.Location = new System.Drawing.Point(529, 448);
+            this.groupBox4.Location = new System.Drawing.Point(528, 471);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(305, 56);
             this.groupBox4.TabIndex = 22;
@@ -694,9 +700,9 @@
             this.groupBox5.Controls.Add(this.label1);
             this.groupBox5.Controls.Add(this.btnDown);
             this.groupBox5.Controls.Add(this.btnRight);
-            this.groupBox5.Location = new System.Drawing.Point(339, 144);
+            this.groupBox5.Location = new System.Drawing.Point(339, 152);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(180, 360);
+            this.groupBox5.Size = new System.Drawing.Size(180, 375);
             this.groupBox5.TabIndex = 23;
             this.groupBox5.TabStop = false;
             // 
@@ -768,12 +774,39 @@
             this.label7.TabIndex = 21;
             this.label7.Text = "Desde:";
             // 
+            // P3
+            // 
+            this.P3.AutoSize = true;
+            this.P3.Location = new System.Drawing.Point(15, 287);
+            this.P3.Name = "P3";
+            this.P3.Size = new System.Drawing.Size(64, 14);
+            this.P3.TabIndex = 38;
+            this.P3.Text = "Phantom 3";
+            // 
+            // P2
+            // 
+            this.P2.AutoSize = true;
+            this.P2.Location = new System.Drawing.Point(15, 155);
+            this.P2.Name = "P2";
+            this.P2.Size = new System.Drawing.Size(67, 14);
+            this.P2.TabIndex = 39;
+            this.P2.Text = "Phantom 2 ";
+            // 
+            // P1
+            // 
+            this.P1.AutoSize = true;
+            this.P1.Location = new System.Drawing.Point(15, 25);
+            this.P1.Name = "P1";
+            this.P1.Size = new System.Drawing.Size(67, 14);
+            this.P1.TabIndex = 40;
+            this.P1.Text = "Phantom 1 ";
+            // 
             // SelectAreasForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(841, 512);
+            this.ClientSize = new System.Drawing.Size(841, 539);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -868,6 +901,9 @@
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnSelLong;
         public System.Windows.Forms.TrackBar trackElementos;
+        private System.Windows.Forms.Label P1;
+        private System.Windows.Forms.Label P2;
+        private System.Windows.Forms.Label P3;
 
     }
 }

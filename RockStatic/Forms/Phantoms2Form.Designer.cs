@@ -72,7 +72,7 @@
             this.lblTitulo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(305, 30);
+            this.lblTitulo.Size = new System.Drawing.Size(750, 30);
             this.lblTitulo.TabIndex = 9;
             this.lblTitulo.Text = "MODELO DE PHANTOMS";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -89,26 +89,26 @@
             this.groupBox1.Controls.Add(this.label22);
             this.groupBox1.Controls.Add(this.numZeffP1);
             this.groupBox1.Controls.Add(this.label23);
-            this.groupBox1.Location = new System.Drawing.Point(4, 45);
+            this.groupBox1.Location = new System.Drawing.Point(4, 52);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(294, 102);
+            this.groupBox1.Size = new System.Drawing.Size(234, 109);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "PHANTOM 1";
+            this.groupBox1.Text = "MATERIAL IZQUIERDO";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // txtP1
             // 
-            this.txtP1.Location = new System.Drawing.Point(112, 72);
+            this.txtP1.Location = new System.Drawing.Point(112, 78);
             this.txtP1.Name = "txtP1";
-            this.txtP1.Size = new System.Drawing.Size(176, 20);
+            this.txtP1.Size = new System.Drawing.Size(113, 20);
             this.txtP1.TabIndex = 22;
             this.txtP1.TextChanged += new System.EventHandler(this.txtP1_TextChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1, 75);
+            this.label5.Location = new System.Drawing.Point(-3, 78);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(103, 13);
             this.label5.TabIndex = 21;
@@ -178,18 +178,18 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.numZeffP2);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(4, 155);
+            this.groupBox2.Location = new System.Drawing.Point(255, 52);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(294, 102);
+            this.groupBox2.Size = new System.Drawing.Size(234, 109);
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "PHANTOM 2";
+            this.groupBox2.Text = "MATERIAL DEL CENTRO";
             // 
             // txtP2
             // 
             this.txtP2.Location = new System.Drawing.Point(112, 77);
             this.txtP2.Name = "txtP2";
-            this.txtP2.Size = new System.Drawing.Size(176, 20);
+            this.txtP2.Size = new System.Drawing.Size(113, 20);
             this.txtP2.TabIndex = 22;
             this.txtP2.TextChanged += new System.EventHandler(this.txtP1_TextChanged);
             // 
@@ -266,18 +266,18 @@
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.numZeffP3);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Location = new System.Drawing.Point(4, 263);
+            this.groupBox3.Location = new System.Drawing.Point(508, 52);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(294, 109);
+            this.groupBox3.Size = new System.Drawing.Size(234, 109);
             this.groupBox3.TabIndex = 21;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "PHANTOM 3";
+            this.groupBox3.Text = "MATERIAL DERECHO";
             // 
             // txtP3
             // 
             this.txtP3.Location = new System.Drawing.Point(112, 78);
             this.txtP3.Name = "txtP3";
-            this.txtP3.Size = new System.Drawing.Size(176, 20);
+            this.txtP3.Size = new System.Drawing.Size(113, 20);
             this.txtP3.TabIndex = 22;
             this.txtP3.TextChanged += new System.EventHandler(this.txtP1_TextChanged);
             // 
@@ -354,7 +354,7 @@
             this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(170, 387);
+            this.btnCancelar.Location = new System.Drawing.Point(368, 179);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(68, 23);
             this.btnCancelar.TabIndex = 22;
@@ -372,7 +372,7 @@
             this.btnCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrar.Location = new System.Drawing.Point(52, 387);
+            this.btnCerrar.Location = new System.Drawing.Point(291, 179);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(68, 23);
             this.btnCerrar.TabIndex = 23;
@@ -387,7 +387,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(305, 424);
+            this.ClientSize = new System.Drawing.Size(750, 216);
             this.ControlBox = false;
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnCerrar);

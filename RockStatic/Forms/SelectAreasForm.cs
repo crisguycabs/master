@@ -109,6 +109,11 @@ namespace RockStatic
 
         private void SelectAreasForm_Load(object sender, EventArgs e)
         {
+
+            P1.Text = padre.actual.phantom1.nombre;
+            P2.Text = padre.actual.phantom2.nombre;
+            P3.Text = padre.actual.phantom3.nombre;
+
             tempClicksCore= new CCirculo[3];
             countClickCore=0;
             
