@@ -31,18 +31,21 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Phantoms2Form));
             this.lblTitulo = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtP1 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.numDensP1 = new System.Windows.Forms.NumericUpDown();
             this.label22 = new System.Windows.Forms.Label();
             this.numZeffP1 = new System.Windows.Forms.NumericUpDown();
             this.label23 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtP2 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.numDensP2 = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.numZeffP2 = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtP3 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.numDensP3 = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
@@ -50,9 +53,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
-            this.txtP1 = new System.Windows.Forms.TextBox();
-            this.txtP2 = new System.Windows.Forms.TextBox();
-            this.txtP3 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDensP1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numZeffP1)).BeginInit();
@@ -97,6 +97,14 @@
             this.groupBox1.Text = "PHANTOM 1";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // txtP1
+            // 
+            this.txtP1.Location = new System.Drawing.Point(112, 72);
+            this.txtP1.Name = "txtP1";
+            this.txtP1.Size = new System.Drawing.Size(176, 20);
+            this.txtP1.TabIndex = 22;
+            this.txtP1.TextChanged += new System.EventHandler(this.txtP1_TextChanged);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -109,7 +117,7 @@
             // numDensP1
             // 
             this.numDensP1.DecimalPlaces = 2;
-            this.numDensP1.Location = new System.Drawing.Point(205, 19);
+            this.numDensP1.Location = new System.Drawing.Point(112, 20);
             this.numDensP1.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -137,7 +145,7 @@
             // numZeffP1
             // 
             this.numZeffP1.DecimalPlaces = 2;
-            this.numZeffP1.Location = new System.Drawing.Point(205, 46);
+            this.numZeffP1.Location = new System.Drawing.Point(112, 46);
             this.numZeffP1.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -177,6 +185,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "PHANTOM 2";
             // 
+            // txtP2
+            // 
+            this.txtP2.Location = new System.Drawing.Point(112, 77);
+            this.txtP2.Name = "txtP2";
+            this.txtP2.Size = new System.Drawing.Size(176, 20);
+            this.txtP2.TabIndex = 22;
+            this.txtP2.TextChanged += new System.EventHandler(this.txtP1_TextChanged);
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -189,7 +205,7 @@
             // numDensP2
             // 
             this.numDensP2.DecimalPlaces = 2;
-            this.numDensP2.Location = new System.Drawing.Point(205, 24);
+            this.numDensP2.Location = new System.Drawing.Point(112, 20);
             this.numDensP2.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -217,7 +233,7 @@
             // numZeffP2
             // 
             this.numZeffP2.DecimalPlaces = 2;
-            this.numZeffP2.Location = new System.Drawing.Point(205, 51);
+            this.numZeffP2.Location = new System.Drawing.Point(112, 46);
             this.numZeffP2.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -257,6 +273,14 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "PHANTOM 3";
             // 
+            // txtP3
+            // 
+            this.txtP3.Location = new System.Drawing.Point(112, 78);
+            this.txtP3.Name = "txtP3";
+            this.txtP3.Size = new System.Drawing.Size(176, 20);
+            this.txtP3.TabIndex = 22;
+            this.txtP3.TextChanged += new System.EventHandler(this.txtP1_TextChanged);
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -269,7 +293,7 @@
             // numDensP3
             // 
             this.numDensP3.DecimalPlaces = 2;
-            this.numDensP3.Location = new System.Drawing.Point(205, 24);
+            this.numDensP3.Location = new System.Drawing.Point(112, 19);
             this.numDensP3.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -297,7 +321,7 @@
             // numZeffP3
             // 
             this.numZeffP3.DecimalPlaces = 2;
-            this.numZeffP3.Location = new System.Drawing.Point(205, 51);
+            this.numZeffP3.Location = new System.Drawing.Point(112, 51);
             this.numZeffP3.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -357,30 +381,6 @@
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             this.btnCerrar.MouseEnter += new System.EventHandler(this.btnSubir_MouseEnter);
             this.btnCerrar.MouseLeave += new System.EventHandler(this.btnSubir_MouseLeave);
-            // 
-            // txtP1
-            // 
-            this.txtP1.Location = new System.Drawing.Point(205, 72);
-            this.txtP1.Name = "txtP1";
-            this.txtP1.Size = new System.Drawing.Size(71, 20);
-            this.txtP1.TabIndex = 22;
-            this.txtP1.TextChanged += new System.EventHandler(this.txtP1_TextChanged);
-            // 
-            // txtP2
-            // 
-            this.txtP2.Location = new System.Drawing.Point(205, 77);
-            this.txtP2.Name = "txtP2";
-            this.txtP2.Size = new System.Drawing.Size(71, 20);
-            this.txtP2.TabIndex = 22;
-            this.txtP2.TextChanged += new System.EventHandler(this.txtP1_TextChanged);
-            // 
-            // txtP3
-            // 
-            this.txtP3.Location = new System.Drawing.Point(205, 78);
-            this.txtP3.Name = "txtP3";
-            this.txtP3.Size = new System.Drawing.Size(71, 20);
-            this.txtP3.TabIndex = 22;
-            this.txtP3.TextChanged += new System.EventHandler(this.txtP1_TextChanged);
             // 
             // Phantoms2Form
             // 

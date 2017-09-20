@@ -41,6 +41,9 @@
             this.pictPhantom1 = new System.Windows.Forms.PictureBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSelTrans = new System.Windows.Forms.Button();
+            this.P3 = new System.Windows.Forms.Label();
+            this.P2 = new System.Windows.Forms.Label();
+            this.P1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictCore)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numActual)).BeginInit();
@@ -59,7 +62,7 @@
             this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(887, 32);
+            this.label4.Size = new System.Drawing.Size(886, 32);
             this.label4.TabIndex = 8;
             this.label4.Text = "SELECCION DE AREAS";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -85,7 +88,7 @@
             this.groupBox1.Controls.Add(this.pictCore);
             this.groupBox1.Location = new System.Drawing.Point(12, 39);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(866, 414);
+            this.groupBox1.Size = new System.Drawing.Size(866, 411);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "CORE";
@@ -129,12 +132,15 @@
             // 
             // grpPhantoms
             // 
+            this.grpPhantoms.Controls.Add(this.P1);
+            this.grpPhantoms.Controls.Add(this.P2);
+            this.grpPhantoms.Controls.Add(this.P3);
             this.grpPhantoms.Controls.Add(this.pictPhantom3);
             this.grpPhantoms.Controls.Add(this.pictPhantom2);
             this.grpPhantoms.Controls.Add(this.pictPhantom1);
-            this.grpPhantoms.Location = new System.Drawing.Point(12, 456);
+            this.grpPhantoms.Location = new System.Drawing.Point(13, 445);
             this.grpPhantoms.Name = "grpPhantoms";
-            this.grpPhantoms.Size = new System.Drawing.Size(822, 176);
+            this.grpPhantoms.Size = new System.Drawing.Size(866, 217);
             this.grpPhantoms.TabIndex = 11;
             this.grpPhantoms.TabStop = false;
             this.grpPhantoms.Text = "PHANTOMS";
@@ -142,7 +148,7 @@
             // pictPhantom3
             // 
             this.pictPhantom3.BackColor = System.Drawing.Color.Black;
-            this.pictPhantom3.Location = new System.Drawing.Point(10, 121);
+            this.pictPhantom3.Location = new System.Drawing.Point(28, 164);
             this.pictPhantom3.Name = "pictPhantom3";
             this.pictPhantom3.Size = new System.Drawing.Size(800, 45);
             this.pictPhantom3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -152,7 +158,7 @@
             // pictPhantom2
             // 
             this.pictPhantom2.BackColor = System.Drawing.Color.Black;
-            this.pictPhantom2.Location = new System.Drawing.Point(10, 70);
+            this.pictPhantom2.Location = new System.Drawing.Point(28, 99);
             this.pictPhantom2.Name = "pictPhantom2";
             this.pictPhantom2.Size = new System.Drawing.Size(800, 45);
             this.pictPhantom2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -162,7 +168,7 @@
             // pictPhantom1
             // 
             this.pictPhantom1.BackColor = System.Drawing.Color.Black;
-            this.pictPhantom1.Location = new System.Drawing.Point(10, 19);
+            this.pictPhantom1.Location = new System.Drawing.Point(28, 34);
             this.pictPhantom1.Name = "pictPhantom1";
             this.pictPhantom1.Size = new System.Drawing.Size(800, 45);
             this.pictPhantom1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -176,7 +182,7 @@
             this.btnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Location = new System.Drawing.Point(765, 638);
+            this.btnCancelar.Location = new System.Drawing.Point(804, 663);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(70, 23);
             this.btnCancelar.TabIndex = 12;
@@ -191,7 +197,7 @@
             this.btnSelTrans.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnSelTrans.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnSelTrans.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSelTrans.Location = new System.Drawing.Point(628, 638);
+            this.btnSelTrans.Location = new System.Drawing.Point(669, 663);
             this.btnSelTrans.Name = "btnSelTrans";
             this.btnSelTrans.Size = new System.Drawing.Size(129, 23);
             this.btnSelTrans.TabIndex = 13;
@@ -199,12 +205,39 @@
             this.btnSelTrans.UseVisualStyleBackColor = false;
             this.btnSelTrans.Click += new System.EventHandler(this.btnSelTrans_Click);
             // 
+            // P3
+            // 
+            this.P3.AutoSize = true;
+            this.P3.Location = new System.Drawing.Point(34, 147);
+            this.P3.Name = "P3";
+            this.P3.Size = new System.Drawing.Size(69, 14);
+            this.P3.TabIndex = 10;
+            this.P3.Text = "PHANTOM 3";
+            // 
+            // P2
+            // 
+            this.P2.AutoSize = true;
+            this.P2.Location = new System.Drawing.Point(34, 82);
+            this.P2.Name = "P2";
+            this.P2.Size = new System.Drawing.Size(69, 14);
+            this.P2.TabIndex = 11;
+            this.P2.Text = "PHANTOM 2";
+            // 
+            // P1
+            // 
+            this.P1.AutoSize = true;
+            this.P1.Location = new System.Drawing.Point(34, 17);
+            this.P1.Name = "P1";
+            this.P1.Size = new System.Drawing.Size(69, 14);
+            this.P1.TabIndex = 12;
+            this.P1.Text = "PHANTOM 1";
+            // 
             // SelectAreas2Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(887, 673);
+            this.ClientSize = new System.Drawing.Size(886, 689);
             this.Controls.Add(this.btnSelTrans);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.grpPhantoms);
@@ -225,6 +258,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numActual)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackCortes)).EndInit();
             this.grpPhantoms.ResumeLayout(false);
+            this.grpPhantoms.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictPhantom3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictPhantom2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictPhantom1)).EndInit();
@@ -246,5 +280,8 @@
         private System.Windows.Forms.Label lblActual;
         private System.Windows.Forms.Button btnSelTrans;
         public System.Windows.Forms.PictureBox pictCore;
+        private System.Windows.Forms.Label P1;
+        private System.Windows.Forms.Label P2;
+        private System.Windows.Forms.Label P3;
     }
 }

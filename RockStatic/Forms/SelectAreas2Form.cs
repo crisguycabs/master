@@ -85,6 +85,12 @@ namespace RockStatic
         {
             //slideActual = 0;
 
+
+            P1.Text = padre.actual.phantom1.nombre;
+            P2.Text = padre.actual.phantom2.nombre;
+            P3.Text = padre.actual.phantom3.nombre;
+
+
             //int nelemento=Convert.ToInt32(padre.actual.datacuboHigh.widthSeg/2);
             int nelemento = Convert.ToInt32(padre.actual.datacuboHigh.widthSegCore/2 );
             minimo = padre.actual.datacuboHigh.GetMinimo();

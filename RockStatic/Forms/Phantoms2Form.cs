@@ -91,6 +91,13 @@ namespace RockStatic
             numZeffP2.Value = (decimal)newProjectForm.tempPhantom2.zeff;
             numZeffP3.Value = (decimal)newProjectForm.tempPhantom3.zeff;
 
+
+            //if (! padre.actual.phantom1.nombre=='')
+            //{ 
+            //txtP1.Text = padre.actual.phantom1.nombre;
+            //txtP2.Text = padre.actual.phantom2.nombre;
+            //txtP3.Text = padre.actual.phantom3.nombre;
+            //}
             // groupBox1.Text = "MATERIAL 1";
         }
 

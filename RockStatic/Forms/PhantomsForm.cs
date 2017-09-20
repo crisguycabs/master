@@ -134,6 +134,13 @@ namespace RockStatic
             newProjectForm.tempPhantom2.zeff = (double)numZeffP2.Value;
             newProjectForm.tempPhantom3.zeff = (double)numZeffP3.Value;
 
+
+            newProjectForm.tempPhantom1.nombre = txtP1.Text;
+            newProjectForm.tempPhantom2.nombre = txtP2.Text;
+            newProjectForm.tempPhantom3.nombre = txtP3.Text;            
+
+
+
             this.Close();
         }
 
@@ -300,6 +307,21 @@ namespace RockStatic
         private void PhantomsForm_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawRectangle(new Pen(Color.Green, 2), this.DisplayRectangle);       
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label31_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTitulo_Click(object sender, EventArgs e)
+        {
+
         }     
     }
 }

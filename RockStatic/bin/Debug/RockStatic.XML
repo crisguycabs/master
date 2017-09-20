@@ -952,6 +952,17 @@
             <param name="_densidad">Valor de la densidad</param>
             <param name="_zeff">Valor del numero atomico efectivo</param>
         </member>
+        <member name="M:RockStatic.CPhantom.#ctor(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.String)">
+            <summary>
+            Constructor con asignacion
+            </summary>
+            <param name="_mediaHigh">Valor medio de la distribución de probabilidad del phantom en HIGH</param>
+            <param name="_desvHigh">Valor de la desviación estandar de la distribución de probabilidad del phantom en HIGH</param>
+            <param name="_mediaLow">Valor medio de la distribución de probabilidad del phantom en LOW</param>
+            <param name="_desvLow">Valor de la desviación estandar de la distribución de probabilidad del phantom en LOW</param>
+            <param name="_densidad">Valor de la densidad</param>
+            <param name="_zeff">Valor del numero atomico efectivo</param>
+        </member>
         <member name="M:RockStatic.CPhantom.#ctor(RockStatic.CPhantom)">
             <summary>
             Constructor con duplicacion
@@ -2141,6 +2152,11 @@
         <member name="F:RockStatic.SelectAreasForm.countAreas">
             <summary>
             Contador de areas de interes creadas para agregar al nombre
+            </summary>
+        </member>
+        <member name="F:RockStatic.SelectAreasForm.buttonDown">
+            <summary>
+            control de presionar el trackElementos
             </summary>
         </member>
         <member name="M:RockStatic.SelectAreasForm.AddElemento(RockStatic.CCirculo[],System.String)">
