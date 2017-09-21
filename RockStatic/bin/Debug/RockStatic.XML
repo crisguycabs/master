@@ -1989,6 +1989,11 @@
             Referencia al form NewProjectForm que invoca
             </summary>
         </member>
+        <member name="F:RockStatic.Phantoms2Form.quienLlamo">
+            <summary>
+            Cadena que indica si la ventana se llamo desde MainForm (main) o desde SegmentacionForm (seg)
+            </summary>
+        </member>
         <member name="M:RockStatic.Phantoms2Form.CentrarForm">
             <summary>
             Se centra el Form con respecto al MDI parent

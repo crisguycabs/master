@@ -43,6 +43,9 @@
             this.lblActual = new System.Windows.Forms.Label();
             this.trackElementos = new System.Windows.Forms.TrackBar();
             this.grpPhantoms = new System.Windows.Forms.GroupBox();
+            this.P1 = new System.Windows.Forms.Label();
+            this.P2 = new System.Windows.Forms.Label();
+            this.P3 = new System.Windows.Forms.Label();
             this.lstElementos = new System.Windows.Forms.ListBox();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.pictP3 = new System.Windows.Forms.PictureBox();
@@ -78,9 +81,6 @@
             this.numFrom = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.P3 = new System.Windows.Forms.Label();
-            this.P2 = new System.Windows.Forms.Label();
-            this.P1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictCore)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numActual)).BeginInit();
@@ -296,6 +296,33 @@
             this.grpPhantoms.TabStop = false;
             this.grpPhantoms.Text = "PHANTOMS";
             this.grpPhantoms.Enter += new System.EventHandler(this.grpPhantoms_Enter);
+            // 
+            // P1
+            // 
+            this.P1.AutoSize = true;
+            this.P1.Location = new System.Drawing.Point(15, 25);
+            this.P1.Name = "P1";
+            this.P1.Size = new System.Drawing.Size(67, 14);
+            this.P1.TabIndex = 40;
+            this.P1.Text = "Phantom 1 ";
+            // 
+            // P2
+            // 
+            this.P2.AutoSize = true;
+            this.P2.Location = new System.Drawing.Point(15, 155);
+            this.P2.Name = "P2";
+            this.P2.Size = new System.Drawing.Size(67, 14);
+            this.P2.TabIndex = 39;
+            this.P2.Text = "Phantom 2 ";
+            // 
+            // P3
+            // 
+            this.P3.AutoSize = true;
+            this.P3.Location = new System.Drawing.Point(15, 287);
+            this.P3.Name = "P3";
+            this.P3.Size = new System.Drawing.Size(64, 14);
+            this.P3.TabIndex = 38;
+            this.P3.Text = "Phantom 3";
             // 
             // lstElementos
             // 
@@ -774,33 +801,6 @@
             this.label7.TabIndex = 21;
             this.label7.Text = "Desde:";
             // 
-            // P3
-            // 
-            this.P3.AutoSize = true;
-            this.P3.Location = new System.Drawing.Point(15, 287);
-            this.P3.Name = "P3";
-            this.P3.Size = new System.Drawing.Size(64, 14);
-            this.P3.TabIndex = 38;
-            this.P3.Text = "Phantom 3";
-            // 
-            // P2
-            // 
-            this.P2.AutoSize = true;
-            this.P2.Location = new System.Drawing.Point(15, 155);
-            this.P2.Name = "P2";
-            this.P2.Size = new System.Drawing.Size(67, 14);
-            this.P2.TabIndex = 39;
-            this.P2.Text = "Phantom 2 ";
-            // 
-            // P1
-            // 
-            this.P1.AutoSize = true;
-            this.P1.Location = new System.Drawing.Point(15, 25);
-            this.P1.Name = "P1";
-            this.P1.Size = new System.Drawing.Size(67, 14);
-            this.P1.TabIndex = 40;
-            this.P1.Text = "Phantom 1 ";
-            // 
             // SelectAreasForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -854,7 +854,6 @@
 
         public System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.PictureBox pictCore;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox grpPhantoms;
         private System.Windows.Forms.PictureBox pictP3;
@@ -904,6 +903,7 @@
         private System.Windows.Forms.Label P1;
         private System.Windows.Forms.Label P2;
         private System.Windows.Forms.Label P3;
+        public System.Windows.Forms.PictureBox pictCore;
 
     }
 }

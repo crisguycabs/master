@@ -36,14 +36,14 @@
             this.lblActual = new System.Windows.Forms.Label();
             this.trackCortes = new System.Windows.Forms.TrackBar();
             this.grpPhantoms = new System.Windows.Forms.GroupBox();
+            this.P1 = new System.Windows.Forms.Label();
+            this.P2 = new System.Windows.Forms.Label();
+            this.P3 = new System.Windows.Forms.Label();
             this.pictPhantom3 = new System.Windows.Forms.PictureBox();
             this.pictPhantom2 = new System.Windows.Forms.PictureBox();
             this.pictPhantom1 = new System.Windows.Forms.PictureBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSelTrans = new System.Windows.Forms.Button();
-            this.P3 = new System.Windows.Forms.Label();
-            this.P2 = new System.Windows.Forms.Label();
-            this.P1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictCore)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numActual)).BeginInit();
@@ -129,6 +129,7 @@
             this.trackCortes.Size = new System.Drawing.Size(45, 351);
             this.trackCortes.TabIndex = 11;
             this.trackCortes.Scroll += new System.EventHandler(this.trackCortes_Scroll);
+            this.trackCortes.ValueChanged += new System.EventHandler(this.trackCortes_ValueChanged);
             // 
             // grpPhantoms
             // 
@@ -144,6 +145,33 @@
             this.grpPhantoms.TabIndex = 11;
             this.grpPhantoms.TabStop = false;
             this.grpPhantoms.Text = "PHANTOMS";
+            // 
+            // P1
+            // 
+            this.P1.AutoSize = true;
+            this.P1.Location = new System.Drawing.Point(34, 17);
+            this.P1.Name = "P1";
+            this.P1.Size = new System.Drawing.Size(69, 14);
+            this.P1.TabIndex = 12;
+            this.P1.Text = "PHANTOM 1";
+            // 
+            // P2
+            // 
+            this.P2.AutoSize = true;
+            this.P2.Location = new System.Drawing.Point(34, 82);
+            this.P2.Name = "P2";
+            this.P2.Size = new System.Drawing.Size(69, 14);
+            this.P2.TabIndex = 11;
+            this.P2.Text = "PHANTOM 2";
+            // 
+            // P3
+            // 
+            this.P3.AutoSize = true;
+            this.P3.Location = new System.Drawing.Point(34, 147);
+            this.P3.Name = "P3";
+            this.P3.Size = new System.Drawing.Size(69, 14);
+            this.P3.TabIndex = 10;
+            this.P3.Text = "PHANTOM 3";
             // 
             // pictPhantom3
             // 
@@ -205,33 +233,6 @@
             this.btnSelTrans.UseVisualStyleBackColor = false;
             this.btnSelTrans.Click += new System.EventHandler(this.btnSelTrans_Click);
             // 
-            // P3
-            // 
-            this.P3.AutoSize = true;
-            this.P3.Location = new System.Drawing.Point(34, 147);
-            this.P3.Name = "P3";
-            this.P3.Size = new System.Drawing.Size(69, 14);
-            this.P3.TabIndex = 10;
-            this.P3.Text = "PHANTOM 3";
-            // 
-            // P2
-            // 
-            this.P2.AutoSize = true;
-            this.P2.Location = new System.Drawing.Point(34, 82);
-            this.P2.Name = "P2";
-            this.P2.Size = new System.Drawing.Size(69, 14);
-            this.P2.TabIndex = 11;
-            this.P2.Text = "PHANTOM 2";
-            // 
-            // P1
-            // 
-            this.P1.AutoSize = true;
-            this.P1.Location = new System.Drawing.Point(34, 17);
-            this.P1.Name = "P1";
-            this.P1.Size = new System.Drawing.Size(69, 14);
-            this.P1.TabIndex = 12;
-            this.P1.Text = "PHANTOM 1";
-            // 
             // SelectAreas2Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -275,7 +276,6 @@
         private System.Windows.Forms.PictureBox pictPhantom2;
         private System.Windows.Forms.PictureBox pictPhantom1;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.TrackBar trackCortes;
         private System.Windows.Forms.NumericUpDown numActual;
         private System.Windows.Forms.Label lblActual;
         private System.Windows.Forms.Button btnSelTrans;
@@ -283,5 +283,6 @@
         private System.Windows.Forms.Label P1;
         private System.Windows.Forms.Label P2;
         private System.Windows.Forms.Label P3;
+        public System.Windows.Forms.TrackBar trackCortes;
     }
 }

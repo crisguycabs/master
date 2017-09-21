@@ -42,6 +42,7 @@
             this.radManual = new System.Windows.Forms.RadioButton();
             this.grpBox = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnPhantoms = new System.Windows.Forms.Button();
             this.btnPreview = new System.Windows.Forms.Button();
             this.btnClean = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -66,7 +67,6 @@
             this.trackContraste = new System.Windows.Forms.TrackBar();
             this.trackBrillo = new System.Windows.Forms.TrackBar();
             this.lblTest = new System.Windows.Forms.Label();
-            this.btnPhantoms = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackElementos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictElemento)).BeginInit();
             this.grpAuto.SuspendLayout();
@@ -279,6 +279,20 @@
             this.label1.Size = new System.Drawing.Size(17, 14);
             this.label1.TabIndex = 6;
             this.label1.Text = "R:";
+            // 
+            // btnPhantoms
+            // 
+            this.btnPhantoms.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnPhantoms.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnPhantoms.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.btnPhantoms.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPhantoms.Location = new System.Drawing.Point(10, 164);
+            this.btnPhantoms.Name = "btnPhantoms";
+            this.btnPhantoms.Size = new System.Drawing.Size(75, 23);
+            this.btnPhantoms.TabIndex = 8;
+            this.btnPhantoms.Text = "Phantoms";
+            this.btnPhantoms.UseVisualStyleBackColor = true;
+            this.btnPhantoms.Click += new System.EventHandler(this.btnPhantoms_Click);
             // 
             // btnPreview
             // 
@@ -587,20 +601,6 @@
             this.lblTest.Size = new System.Drawing.Size(42, 14);
             this.lblTest.TabIndex = 20;
             this.lblTest.Text = "label5";
-            // 
-            // btnPhantoms
-            // 
-            this.btnPhantoms.FlatAppearance.BorderColor = System.Drawing.Color.Green;
-            this.btnPhantoms.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
-            this.btnPhantoms.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
-            this.btnPhantoms.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPhantoms.Location = new System.Drawing.Point(20, 164);
-            this.btnPhantoms.Name = "btnPhantoms";
-            this.btnPhantoms.Size = new System.Drawing.Size(75, 23);
-            this.btnPhantoms.TabIndex = 8;
-            this.btnPhantoms.Text = "Phantoms";
-            this.btnPhantoms.UseVisualStyleBackColor = true;
-            this.btnPhantoms.Click += new System.EventHandler(this.btnPhantoms_Click);
             // 
             // SegmentacionForm
             // 

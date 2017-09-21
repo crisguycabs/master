@@ -537,6 +537,66 @@ namespace RockStatic
 
         private void pictCore_Paint(object sender, PaintEventArgs e)
         {
+
+
+            double ancho = 0;
+            double dif;
+
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+            // se calcula la relacion de aspecto
+            double imgWidth = pictCore.Image.Width;
+            double imgHeight = pictCore.Image.Height;
+            double boxWidth = pictCore.Size.Width;
+            double boxHeight = pictCore.Size.Height;
+
+            double scale;
+            double ycero = 0;
+            double xcero = 0;
+
+            if (imgWidth / imgHeight > boxWidth / boxHeight)
+            {
+                //If true, that means that the image is stretched through the width of the control.
+                //'In other words: the image is limited by the width.
+
+                //The scale of the image in the Picture Box.
+                scale = boxWidth / imgWidth;
+
+                //Since the image is in the middle, this code is used to determinate the empty space in the height
+                //'by getting the difference between the box height and the image actual displayed height and dividing it by 2.
+                ycero = (boxHeight - scale * imgHeight) / 2;
+            }
+            else
+            {
+                //If false, that means that the image is stretched through the height of the control.
+                //'In other words: the image is limited by the height.
+
+                //The scale of the image in the Picture Box.
+                scale = boxHeight / imgHeight;
+
+                //Since the image is in the middle, this code is used to determinate the empty space in the width
+                //'by getting the difference between the box width and the image actual displayed width and dividing it by 2.
+                xcero = (boxWidth - scale * imgWidth) / 2;
+            }
+
+            // se pinta la linea de posicion
+            // se averigua el factor de escalado del corte horizontal
+            double alto = padre.actual.datacuboHigh.dataCube[0].selector.Columns.Data;
+            double total = padre.actual.datacuboHigh.coresHorizontal[0].Count;
+            ancho = Convert.ToInt32(total / alto);
+            double factor = Convert.ToInt32(imgWidth / Convert.ToInt32(padre.actual.datacuboHigh.dataCube.Count));
+
+            //int pos = Convert.ToInt32((padre.selecAreas2Form.trackCortes.Value * scale * factor) + xcero);
+            int pos = Convert.ToInt32((padre.selecAreas2Form.trackCortes.Value ) + xcero);
+            Pen brochaLinea = new Pen(Color.DarkOrange);
+            float[] dashValues = { 10, 3, 5, 3 };
+            brochaLinea.Width = 3;
+            brochaLinea.DashPattern = dashValues;
+             //e.Graphics.DrawLine(brochaLinea, pos, 0, pos, pictCore.Height);
+            e.Graphics.DrawLine(brochaLinea, 0, pos, pictCore.Width, pos);
+
+
+
             // se busca si existe un elemento en la lista areasCore que se corresponda con el slide actual, y se pinta el area
             for (int i = 0; i < this.padre.actual.areasCore.Count; i++)
             {

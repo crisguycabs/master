@@ -138,6 +138,8 @@ namespace RockStatic
             if (!padre.actual.phantomEnDicom)
                 grpPhantoms.Enabled = false;
 
+            nelemento = Convert.ToInt32(padre.actual.datacuboHigh.widthSegCore / 2);
+
             trackCortes.Minimum = 1;
             trackCortes.Maximum = corte.Height;
             trackCortes.Value = nelemento;
@@ -272,6 +274,11 @@ namespace RockStatic
         private void btnSelTrans_Click(object sender, EventArgs e)
         {
             padre.selecAreasForm.Select();
+        }
+
+        private void trackCortes_ValueChanged(object sender, EventArgs e)
+        {
+            padre.selecAreasForm.pictCore.Invalidate();
         }              
     }
 }
