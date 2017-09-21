@@ -194,6 +194,8 @@ namespace RockStatic
             sw.WriteLine(phantomEnDicom.ToString());
             sw.WriteLine("---------------------------------------------------------------------");
             sw.WriteLine("PHANTOM1");
+            sw.WriteLine("NOMBRE");
+            sw.WriteLine(phantom1.nombre);
             sw.WriteLine("DENSIDAD");
             sw.WriteLine(phantom1.densidad.ToString());
             sw.WriteLine("ZEFF");
@@ -211,6 +213,8 @@ namespace RockStatic
             }
             sw.WriteLine("---------------------------------------------------------------------");
             sw.WriteLine("PHANTOM2");
+            sw.WriteLine("NOMBRE");
+            sw.WriteLine(phantom2.nombre);
             sw.WriteLine("DENSIDAD");
             sw.WriteLine(phantom2.densidad.ToString());
             sw.WriteLine("ZEFF");
@@ -228,6 +232,8 @@ namespace RockStatic
             }
             sw.WriteLine("---------------------------------------------------------------------");
             sw.WriteLine("PHANTOM3");
+            sw.WriteLine("NOMBRE");
+            sw.WriteLine(phantom3.nombre);
             sw.WriteLine("DENSIDAD");
             sw.WriteLine(phantom3.densidad.ToString());
             sw.WriteLine("ZEFF");

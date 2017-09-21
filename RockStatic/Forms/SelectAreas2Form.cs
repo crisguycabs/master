@@ -178,8 +178,56 @@ namespace RockStatic
             double ancho=0;
             double dif;
             
-            // se pintan las lineas de Cabeza y Cola
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+            // se calcula la relacion de aspecto
+            double imgWidth = pictCore.Image.Width;
+            double imgHeight = pictCore.Image.Height;
+            double boxWidth = pictCore.Size.Width;
+            double boxHeight = pictCore.Size.Height;
+
+            double scale;
+            double ycero = 0;
+            double xcero = 0;
+
+            if (imgWidth / imgHeight > boxWidth / boxHeight)
+            {
+                //If true, that means that the image is stretched through the width of the control.
+                //'In other words: the image is limited by the width.
+
+                //The scale of the image in the Picture Box.
+                scale = boxWidth / imgWidth;
+
+                //Since the image is in the middle, this code is used to determinate the empty space in the height
+                //'by getting the difference between the box height and the image actual displayed height and dividing it by 2.
+                ycero = (boxHeight - scale * imgHeight) / 2;
+            }
+            else
+            {
+                //If false, that means that the image is stretched through the height of the control.
+                //'In other words: the image is limited by the height.
+
+                //The scale of the image in the Picture Box.
+                scale = boxHeight / imgHeight;
+
+                //Since the image is in the middle, this code is used to determinate the empty space in the width
+                //'by getting the difference between the box width and the image actual displayed width and dividing it by 2.
+                xcero = (boxWidth - scale * imgWidth) / 2;
+            }
+
+            // se pinta la linea de posicion
+            // se averigua el factor de escalado del corte horizontal
+            double alto = padre.actual.datacuboHigh.dataCube[0].selector.Columns.Data;
+            double total = padre.actual.datacuboHigh.coresHorizontal[0].Count;
+            ancho = Convert.ToInt32(total / alto);
+            double factor = Convert.ToInt32(imgWidth / Convert.ToInt32(padre.actual.datacuboHigh.dataCube.Count));
+
+            int pos = Convert.ToInt32((padre.selecAreasForm.trackElementos.Value * scale * factor) + xcero);
+            Pen brochaLinea = new Pen(Color.DarkOrange);
+            float[] dashValues = { 10, 3, 5, 3 };
+            brochaLinea.Width = 3;
+            brochaLinea.DashPattern = dashValues;
+            e.Graphics.DrawLine(brochaLinea, pos, 0, pos, pictCore.Height);
 
             // se pintan los cuadrados que se hallan seleccionado en la ventana SelectAreasForm
             // se recorren las areas, y si existe una !=null se escala el ancho del area al tamaño del plano
@@ -190,60 +238,12 @@ namespace RockStatic
                 dif = Math.Abs(padre.actual.areasCore[i].y - Convert.ToDouble(numActual.Value));
                 ancho = Math.Sqrt(padre.actual.areasCore[i].width * padre.actual.areasCore[i].width - dif * dif);
 
-                double imgWidth = pictCore.Image.Width;
-                double imgHeight = pictCore.Image.Height;
-                double boxWidth = pictCore.Size.Width;
-                double boxHeight = pictCore.Size.Height;
-
-                double scale;
-                double ycero = 0;
-                double xcero = 0;
-
-                if (imgWidth / imgHeight > boxWidth / boxHeight)
-                {
-                    //If true, that means that the image is stretched through the width of the control.
-                    //'In other words: the image is limited by the width.
-
-                    //The scale of the image in the Picture Box.
-                    scale = boxWidth / imgWidth;
-
-                    //Since the image is in the middle, this code is used to determinate the empty space in the height
-                    //'by getting the difference between the box height and the image actual displayed height and dividing it by 2.
-                    ycero = (boxHeight - scale * imgHeight) / 2;
-                }
-                else
-                {
-                    //If false, that means that the image is stretched through the height of the control.
-                    //'In other words: the image is limited by the height.
-
-                    //The scale of the image in the Picture Box.
-                    scale = boxHeight / imgHeight;
-
-                    //Since the image is in the middle, this code is used to determinate the empty space in the width
-                    //'by getting the difference between the box width and the image actual displayed width and dividing it by 2.
-                    xcero = (boxWidth - scale * imgWidth) / 2;
-                }
-
                 // se pintan los cuadrados que corresponden a las areas de interes seleccionadas
                 float height = (float)(ancho * scale * 2);
                 float width = (float)((padre.actual.areasCore[i].fin - padre.actual.areasCore[i].ini + 1) * factor * scale);
                 float x = (float)(((padre.actual.areasCore[i].ini - 1) * scale * factor) + xcero);
                 float y = (float)(((padre.actual.areasCore[i].y - ancho) * scale) + ycero);
-                e.Graphics.FillRectangle(brocha2, x, y, width, height);
-
-                // se pinta la linea de posicion
-                // se averigua el factor de escalado del corte horizontal
-                double alto = padre.actual.datacuboHigh.dataCube[0].selector.Columns.Data;
-                double total = padre.actual.datacuboHigh.coresHorizontal[0].Count;
-                ancho = Convert.ToInt32(total / alto);
-                factor = Convert.ToInt32(imgWidth / Convert.ToInt32(padre.actual.datacuboHigh.dataCube.Count));
-
-                int pos = Convert.ToInt32((padre.selecAreasForm.trackElementos.Value * scale * factor) + xcero);
-                Pen brochaLinea = new Pen(Color.DarkOrange);
-                float[] dashValues = { 10, 3, 5, 3 };
-                brochaLinea.Width = 3;
-                brochaLinea.DashPattern = dashValues;
-                e.Graphics.DrawLine(brochaLinea, pos, 0, pos, pictCore.Height);
+                e.Graphics.FillRectangle(brocha2, x, y, width, height);                
             }
         }
 

@@ -462,6 +462,7 @@ namespace RockStatic
             long head=0;
             long tail=0;
             string unidades="";
+            string nombre = "";
 
             while ((line = sr.ReadLine()) != null)
             {
@@ -497,6 +498,8 @@ namespace RockStatic
                             switch (line)
                             {
                                 case "PHANTOM1":
+                                    line = sr.ReadLine(); // nombre;
+                                    nombre = sr.ReadLine();
                                     line = sr.ReadLine(); // densidad
                                     densidad = Convert.ToDouble(sr.ReadLine());
                                     line = sr.ReadLine(); // zeff
@@ -512,10 +515,12 @@ namespace RockStatic
                                         line = sr.ReadLine(); // desv low
                                         desvLow = Convert.ToDouble(sr.ReadLine());
                                     }
-                                    tempP1 = new CPhantom(meanHigh, desvHigh, meanLow, desvLow, densidad, zeff);
+                                    tempP1 = new CPhantom(meanHigh, desvHigh, meanLow, desvLow, densidad, zeff,nombre);
                                     read++;
                                     break;
                                 case "PHANTOM2":
+                                    line = sr.ReadLine(); // nombre;
+                                    nombre = sr.ReadLine();
                                     line = sr.ReadLine(); // densidad
                                     densidad = Convert.ToDouble(sr.ReadLine());
                                     line = sr.ReadLine(); // zeff
@@ -531,10 +536,12 @@ namespace RockStatic
                                         line = sr.ReadLine(); // desv low
                                         desvLow = Convert.ToDouble(sr.ReadLine());
                                     }
-                                    tempP2 = new CPhantom(meanHigh, desvHigh, meanLow, desvLow, densidad, zeff);
+                                    tempP2 = new CPhantom(meanHigh, desvHigh, meanLow, desvLow, densidad, zeff, nombre);
                                     read++;
                                     break;
                                 case "PHANTOM3":
+                                    line = sr.ReadLine(); // nombre;
+                                    nombre = sr.ReadLine();
                                     line = sr.ReadLine(); // densidad
                                     densidad = Convert.ToDouble(sr.ReadLine());
                                     line = sr.ReadLine(); // zeff
@@ -550,7 +557,7 @@ namespace RockStatic
                                         line = sr.ReadLine(); // desv low
                                         desvLow = Convert.ToDouble(sr.ReadLine());
                                     }
-                                    tempP3 = new CPhantom(meanHigh, desvHigh, meanLow, desvLow, densidad, zeff);
+                                    tempP3 = new CPhantom(meanHigh, desvHigh, meanLow, desvLow, densidad, zeff, nombre);
                                     read++;
                                     break;
                             }

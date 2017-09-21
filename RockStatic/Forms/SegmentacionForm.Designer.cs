@@ -66,6 +66,7 @@
             this.trackContraste = new System.Windows.Forms.TrackBar();
             this.trackBrillo = new System.Windows.Forms.TrackBar();
             this.lblTest = new System.Windows.Forms.Label();
+            this.btnPhantoms = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackElementos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictElemento)).BeginInit();
             this.grpAuto.SuspendLayout();
@@ -254,6 +255,7 @@
             // grpBox
             // 
             this.grpBox.Controls.Add(this.label1);
+            this.grpBox.Controls.Add(this.btnPhantoms);
             this.grpBox.Controls.Add(this.btnPreview);
             this.grpBox.Controls.Add(this.btnClean);
             this.grpBox.Controls.Add(this.btnDelete);
@@ -586,6 +588,20 @@
             this.lblTest.TabIndex = 20;
             this.lblTest.Text = "label5";
             // 
+            // btnPhantoms
+            // 
+            this.btnPhantoms.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnPhantoms.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnPhantoms.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.btnPhantoms.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPhantoms.Location = new System.Drawing.Point(20, 164);
+            this.btnPhantoms.Name = "btnPhantoms";
+            this.btnPhantoms.Size = new System.Drawing.Size(75, 23);
+            this.btnPhantoms.TabIndex = 8;
+            this.btnPhantoms.Text = "Phantoms";
+            this.btnPhantoms.UseVisualStyleBackColor = true;
+            this.btnPhantoms.Click += new System.EventHandler(this.btnPhantoms_Click);
+            // 
             // SegmentacionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -677,5 +693,6 @@
         private System.Windows.Forms.TrackBar trackBrillo;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Label lblTest;
+        private System.Windows.Forms.Button btnPhantoms;
     }
 }

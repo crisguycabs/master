@@ -1187,5 +1187,25 @@ namespace RockStatic
         {
 
         }
+
+        private void btnPhantoms_Click(object sender, EventArgs e)
+        {
+            if (padre.abiertoPhantoms2Form)
+            {
+                padre.phantoms2Form.btnCerrar_Click(sender, e);
+            }
+
+            // se abre la ventana CheckForm y se pasa el List de elementos HIGH para su revision
+            padre.phantoms2Form = new Phantoms2Form();
+            padre.phantoms2Form.Text = "MODELO DE PHANTOMS";
+            padre.phantoms2Form.lblTitulo.Text = "MODELO DE PHANTOMS";
+            padre.phantoms2Form.MdiParent = this.MdiParent;
+            padre.phantoms2Form.padre = this.padre;
+            //padre.phantoms2Form.newProjectForm = this;
+            padre.phantoms2Form.quienLlamo = "seg";
+            padre.abiertoPhantoms2Form = true;
+
+            padre.phantoms2Form.Show();          
+        }
     }
 }

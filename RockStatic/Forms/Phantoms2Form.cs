@@ -29,6 +29,11 @@ namespace RockStatic
 
         Point lastClick;
 
+        /// <summary>
+        /// Cadena que indica si la ventana se llamo desde MainForm (main) o desde SegmentacionForm (seg)
+        /// </summary>
+        public string quienLlamo = "main";
+
         #endregion
 
         public Phantoms2Form()
@@ -81,41 +86,74 @@ namespace RockStatic
 
         private void Phantoms2Form_Load(object sender, EventArgs e)
         {
-            // se carga la información a mostrar en pantalla desde NewProjectForm
+            if (quienLlamo == "main")
+            {
+                // se carga la información a mostrar en pantalla desde NewProjectForm
 
-            numDensP1.Value = (decimal)newProjectForm.tempPhantom1.densidad;
-            numDensP2.Value = (decimal)newProjectForm.tempPhantom2.densidad;
-            numDensP3.Value = (decimal)newProjectForm.tempPhantom3.densidad;
+                numDensP1.Value = (decimal)newProjectForm.tempPhantom1.densidad;
+                numDensP2.Value = (decimal)newProjectForm.tempPhantom2.densidad;
+                numDensP3.Value = (decimal)newProjectForm.tempPhantom3.densidad;
 
-            numZeffP1.Value = (decimal)newProjectForm.tempPhantom1.zeff;
-            numZeffP2.Value = (decimal)newProjectForm.tempPhantom2.zeff;
-            numZeffP3.Value = (decimal)newProjectForm.tempPhantom3.zeff;
+                numZeffP1.Value = (decimal)newProjectForm.tempPhantom1.zeff;
+                numZeffP2.Value = (decimal)newProjectForm.tempPhantom2.zeff;
+                numZeffP3.Value = (decimal)newProjectForm.tempPhantom3.zeff;
 
 
-            //if (! padre.actual.phantom1.nombre=='')
-            //{ 
-            //txtP1.Text = padre.actual.phantom1.nombre;
-            //txtP2.Text = padre.actual.phantom2.nombre;
-            //txtP3.Text = padre.actual.phantom3.nombre;
-            //}
-            // groupBox1.Text = "MATERIAL 1";
+                txtP1.Text = newProjectForm.tempPhantom1.nombre;
+                txtP2.Text = newProjectForm.tempPhantom2.nombre;
+                txtP3.Text = newProjectForm.tempPhantom3.nombre;
+            }
+            else
+            {
+                numDensP1.Value = (decimal)padre.actual.phantom1.densidad;
+                numDensP2.Value = (decimal)padre.actual.phantom2.densidad;
+                numDensP3.Value = (decimal)padre.actual.phantom3.densidad;
+
+                numZeffP1.Value = (decimal)padre.actual.phantom1.zeff;
+                numZeffP2.Value = (decimal)padre.actual.phantom2.zeff;
+                numZeffP3.Value = (decimal)padre.actual.phantom3.zeff;
+
+
+                txtP1.Text = padre.actual.phantom1.nombre;
+                txtP2.Text = padre.actual.phantom2.nombre;
+                txtP3.Text = padre.actual.phantom3.nombre;
+            }
         }
 
         public void btnCerrar_Click(object sender, EventArgs e)
         {
-            // se guarda la informacion modificada y se cierra el form
+            if (quienLlamo == "main")
+            {
+                // se guarda la informacion modificada y se cierra el form
 
-            newProjectForm.tempPhantom1.densidad = (double)numDensP1.Value;
-            newProjectForm.tempPhantom2.densidad = (double)numDensP2.Value;
-            newProjectForm.tempPhantom3.densidad = (double)numDensP3.Value;
+                newProjectForm.tempPhantom1.densidad = (double)numDensP1.Value;
+                newProjectForm.tempPhantom2.densidad = (double)numDensP2.Value;
+                newProjectForm.tempPhantom3.densidad = (double)numDensP3.Value;
 
-            newProjectForm.tempPhantom1.zeff = (double)numZeffP1.Value;
-            newProjectForm.tempPhantom2.zeff = (double)numZeffP2.Value;
-            newProjectForm.tempPhantom3.zeff = (double)numZeffP3.Value;
+                newProjectForm.tempPhantom1.zeff = (double)numZeffP1.Value;
+                newProjectForm.tempPhantom2.zeff = (double)numZeffP2.Value;
+                newProjectForm.tempPhantom3.zeff = (double)numZeffP3.Value;
 
-            newProjectForm.tempPhantom1.nombre = txtP1.Text;
-            newProjectForm.tempPhantom2.nombre = txtP2.Text;
-            newProjectForm.tempPhantom3.nombre = txtP3.Text;            
+                newProjectForm.tempPhantom1.nombre = txtP1.Text;
+                newProjectForm.tempPhantom2.nombre = txtP2.Text;
+                newProjectForm.tempPhantom3.nombre = txtP3.Text;
+            }
+            else
+            {
+                // se guarda la informacion modificada y se cierra el form
+
+                padre.actual.phantom1.densidad = (double)numDensP1.Value;
+                padre.actual.phantom2.densidad = (double)numDensP2.Value;
+                padre.actual.phantom3.densidad = (double)numDensP3.Value;
+
+                padre.actual.phantom1.zeff = (double)numZeffP1.Value;
+                padre.actual.phantom2.zeff = (double)numZeffP2.Value;
+                padre.actual.phantom3.zeff = (double)numZeffP3.Value;
+
+                padre.actual.phantom1.nombre = txtP1.Text;
+                padre.actual.phantom2.nombre = txtP2.Text;
+                padre.actual.phantom3.nombre = txtP3.Text;
+            }
 
             this.Close();
         }

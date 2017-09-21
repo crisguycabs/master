@@ -99,7 +99,7 @@
             // 
             // txtP1
             // 
-            this.txtP1.Location = new System.Drawing.Point(112, 78);
+            this.txtP1.Location = new System.Drawing.Point(112, 72);
             this.txtP1.Name = "txtP1";
             this.txtP1.Size = new System.Drawing.Size(113, 20);
             this.txtP1.TabIndex = 22;
@@ -108,7 +108,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(-3, 78);
+            this.label5.Location = new System.Drawing.Point(4, 78);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(103, 13);
             this.label5.TabIndex = 21;
@@ -187,7 +187,7 @@
             // 
             // txtP2
             // 
-            this.txtP2.Location = new System.Drawing.Point(112, 77);
+            this.txtP2.Location = new System.Drawing.Point(112, 72);
             this.txtP2.Name = "txtP2";
             this.txtP2.Size = new System.Drawing.Size(113, 20);
             this.txtP2.TabIndex = 22;
@@ -196,7 +196,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 80);
+            this.label6.Location = new System.Drawing.Point(4, 78);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(103, 13);
             this.label6.TabIndex = 22;
@@ -275,7 +275,7 @@
             // 
             // txtP3
             // 
-            this.txtP3.Location = new System.Drawing.Point(112, 78);
+            this.txtP3.Location = new System.Drawing.Point(112, 71);
             this.txtP3.Name = "txtP3";
             this.txtP3.Size = new System.Drawing.Size(113, 20);
             this.txtP3.TabIndex = 22;
@@ -284,7 +284,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1, 81);
+            this.label7.Location = new System.Drawing.Point(4, 78);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(103, 13);
             this.label7.TabIndex = 23;
@@ -293,7 +293,7 @@
             // numDensP3
             // 
             this.numDensP3.DecimalPlaces = 2;
-            this.numDensP3.Location = new System.Drawing.Point(112, 19);
+            this.numDensP3.Location = new System.Drawing.Point(112, 22);
             this.numDensP3.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -321,7 +321,7 @@
             // numZeffP3
             // 
             this.numZeffP3.DecimalPlaces = 2;
-            this.numZeffP3.Location = new System.Drawing.Point(112, 51);
+            this.numZeffP3.Location = new System.Drawing.Point(112, 45);
             this.numZeffP3.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -340,7 +340,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 53);
+            this.label4.Location = new System.Drawing.Point(5, 50);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 13);
             this.label4.TabIndex = 17;
