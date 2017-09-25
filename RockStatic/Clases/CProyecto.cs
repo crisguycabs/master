@@ -100,7 +100,7 @@ namespace RockStatic
         /// <summary>
         /// Lista para guardar las areas seleccionadas del core
         /// </summary>
-        public List<CAreaInteres> areasCore;
+        public List<CAreaInteres> areasInteresCore;
 
         /// <summary>
         /// Profundidad de la cabeza de la muestra
@@ -134,7 +134,7 @@ namespace RockStatic
             phantomEnDicom = phantom;
 
             // se prepara una lista vacia de areas para los core, cada una con elementos null
-            areasCore = new List<CAreaInteres>();
+            areasInteresCore = new List<CAreaInteres>();
         }      
         
 
@@ -298,19 +298,19 @@ namespace RockStatic
             if (this.areasDone)
             {
                 sw.WriteLine("TOTAL AREAS");
-                sw.WriteLine(this.areasCore.Count.ToString());
-                for (int i = 0; i < areasCore.Count; i++)
+                sw.WriteLine(this.areasInteresCore.Count.ToString());
+                for (int i = 0; i < areasInteresCore.Count; i++)
                 {
                     sw.WriteLine("X");
-                    sw.WriteLine(areasCore[i].x.ToString());
+                    sw.WriteLine(areasInteresCore[i].x.ToString());
                     sw.WriteLine("Y");
-                    sw.WriteLine(areasCore[i].y.ToString());
+                    sw.WriteLine(areasInteresCore[i].y.ToString());
                     sw.WriteLine("WIDTH");
-                    sw.WriteLine(areasCore[i].width.ToString());
+                    sw.WriteLine(areasInteresCore[i].width.ToString());
                     sw.WriteLine("INI");
-                    sw.WriteLine(areasCore[i].ini.ToString());
+                    sw.WriteLine(areasInteresCore[i].ini.ToString());
                     sw.WriteLine("FIN");
-                    sw.WriteLine(areasCore[i].fin.ToString());
+                    sw.WriteLine(areasInteresCore[i].fin.ToString());
                 }
             }
 

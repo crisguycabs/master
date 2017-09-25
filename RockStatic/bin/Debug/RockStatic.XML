@@ -1403,7 +1403,7 @@
             Instancia del phantom 3
             </summary>
         </member>
-        <member name="F:RockStatic.CProyecto.areasCore">
+        <member name="F:RockStatic.CProyecto.areasInteresCore">
             <summary>
             Lista para guardar las areas seleccionadas del core
             </summary>

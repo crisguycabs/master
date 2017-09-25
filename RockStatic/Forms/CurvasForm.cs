@@ -240,10 +240,10 @@ namespace RockStatic
                 slide = false;
                 iarea = -1;
 
-                for (int j = 0; j < padre.actual.areasCore.Count; j++)
+                for (int j = 0; j < padre.actual.areasInteresCore.Count; j++)
                 {
                     // se busca si este slide esta dentro de al menos un area de interes
-                    if ((i >= padre.actual.areasCore[j].ini) & (i <= padre.actual.areasCore[j].fin))
+                    if ((i >= padre.actual.areasInteresCore[j].ini) & (i <= padre.actual.areasInteresCore[j].fin))
                     {
                         slide = true;
                         iarea = j;
@@ -317,9 +317,9 @@ namespace RockStatic
                             // se calcula la distancia de la posicion (j,k) al centro del area de interes
                             // si la distancia es menor que el radio entonces se agrega al calculo, sino no
 
-                            dx = k - padre.actual.areasCore[iarea].x;
+                            dx = k - padre.actual.areasInteresCore[iarea].x;
                             dx = dx * dx;
-                            dy = j - padre.actual.areasCore[iarea].y;
+                            dy = j - padre.actual.areasInteresCore[iarea].y;
                             dy = dy * dy;
                             if (Math.Sqrt(dx + dy) <= padre.actual.datacuboHigh.widthSegCore)
                             {

@@ -722,10 +722,10 @@ namespace RockStatic
             actual.areasDone = areasDone;
             if (areasDone)
             {
-                actual.areasCore = new List<CAreaInteres>();
+                actual.areasInteresCore = new List<CAreaInteres>();
                 for (int i = 0; i < areasCore.Count; i++)
                 {
-                    actual.areasCore.Add(new CAreaInteres(areasCore[i]));
+                    actual.areasInteresCore.Add(new CAreaInteres(areasCore[i]));
                 }
             }
             this.actual.head = head;

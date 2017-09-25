@@ -128,6 +128,7 @@
             this.trackCortes.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trackCortes.Size = new System.Drawing.Size(45, 351);
             this.trackCortes.TabIndex = 11;
+            this.trackCortes.Value = 8;
             this.trackCortes.Scroll += new System.EventHandler(this.trackCortes_Scroll);
             this.trackCortes.ValueChanged += new System.EventHandler(this.trackCortes_ValueChanged);
             // 

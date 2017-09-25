@@ -231,20 +231,22 @@ namespace RockStatic
             brochaLinea.DashPattern = dashValues;
             e.Graphics.DrawLine(brochaLinea, pos, 0, pos, pictCore.Height);
 
+
+
             // se pintan los cuadrados que se hallan seleccionado en la ventana SelectAreasForm
             // se recorren las areas, y si existe una !=null se escala el ancho del area al tamaño del plano
-            if (padre.actual.areasCore.Count < 1) return;
+            if (padre.actual.areasInteresCore.Count < 1) return;
 
-            for (int i = 0; i < padre.actual.areasCore.Count; i++)
+            for (int i = 0; i < padre.actual.areasInteresCore.Count; i++)
             {
-                dif = Math.Abs(padre.actual.areasCore[i].y - Convert.ToDouble(numActual.Value));
-                ancho = Math.Sqrt(padre.actual.areasCore[i].width * padre.actual.areasCore[i].width - dif * dif);
+                dif = Math.Abs(padre.actual.areasInteresCore[i].y - Convert.ToDouble(numActual.Value));
+                ancho = Math.Sqrt(padre.actual.areasInteresCore[i].width * padre.actual.areasInteresCore[i].width - dif * dif);
 
                 // se pintan los cuadrados que corresponden a las areas de interes seleccionadas
                 float height = (float)(ancho * scale * 2);
-                float width = (float)((padre.actual.areasCore[i].fin - padre.actual.areasCore[i].ini + 1) * factor * scale);
-                float x = (float)(((padre.actual.areasCore[i].ini - 1) * scale * factor) + xcero);
-                float y = (float)(((padre.actual.areasCore[i].y - ancho) * scale) + ycero);
+                float width = (float)((padre.actual.areasInteresCore[i].fin - padre.actual.areasInteresCore[i].ini + 1) * factor * scale);
+                float x = (float)(((padre.actual.areasInteresCore[i].ini - 1) * scale * factor) + xcero);
+                float y = (float)(((padre.actual.areasInteresCore[i].y - ancho) * scale) + ycero);
                 e.Graphics.FillRectangle(brocha2, x, y, width, height);                
             }
         }

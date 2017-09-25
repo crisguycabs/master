@@ -81,6 +81,7 @@
             this.numFrom = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.lblTest = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictCore)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numActual)).BeginInit();
@@ -147,6 +148,7 @@
             this.pictCore.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictCore_MouseClick);
             this.pictCore.MouseEnter += new System.EventHandler(this.pictCore_MouseEnter);
             this.pictCore.MouseLeave += new System.EventHandler(this.pictCore_MouseLeave);
+            this.pictCore.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictCore_MouseMove);
             // 
             // groupBox1
             // 
@@ -801,12 +803,22 @@
             this.label7.TabIndex = 21;
             this.label7.Text = "Desde:";
             // 
+            // lblTest
+            // 
+            this.lblTest.AutoSize = true;
+            this.lblTest.Location = new System.Drawing.Point(336, 35);
+            this.lblTest.Name = "lblTest";
+            this.lblTest.Size = new System.Drawing.Size(42, 14);
+            this.lblTest.TabIndex = 24;
+            this.lblTest.Text = "label5";
+            // 
             // SelectAreasForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(841, 539);
+            this.Controls.Add(this.lblTest);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -847,6 +859,7 @@
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numFrom)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -904,6 +917,7 @@
         private System.Windows.Forms.Label P2;
         private System.Windows.Forms.Label P3;
         public System.Windows.Forms.PictureBox pictCore;
+        private System.Windows.Forms.Label lblTest;
 
     }
 }
