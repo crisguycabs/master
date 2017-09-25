@@ -239,7 +239,7 @@ namespace RockStatic
 
             for (int i = 0; i < padre.actual.areasInteresCore.Count; i++)
             {
-                dif = Math.Abs(padre.actual.areasInteresCore[i].y - Convert.ToDouble(numActual.Value));
+                dif = Math.Abs(padre.actual.areasInteresCore[i].y - Convert.ToDouble(trackCortes.Maximum- numActual.Value));
                 ancho = Math.Sqrt(padre.actual.areasInteresCore[i].width * padre.actual.areasInteresCore[i].width - dif * dif);
 
                 // se pintan los cuadrados que corresponden a las areas de interes seleccionadas
@@ -258,7 +258,7 @@ namespace RockStatic
 
         private void trackCortes_Scroll(object sender, EventArgs e)
         {
-            pictCore.Image = padre.actual.datacuboHigh.CreateBitmapCorte(padre.actual.datacuboHigh.coresHorizontal[trackCortes.Value - 1], padre.actual.datacuboHigh.dataCube.Count * factor, padre.actual.datacuboHigh.widthSegCore, minimo, maximo);
+            pictCore.Image = padre.actual.datacuboHigh.CreateBitmapCorte(padre.actual.datacuboHigh.coresHorizontal[trackCortes.Maximum-trackCortes.Value], padre.actual.datacuboHigh.dataCube.Count * factor, padre.actual.datacuboHigh.widthSegCore, minimo, maximo);
             numActual.Value = trackCortes.Value;
         }
 

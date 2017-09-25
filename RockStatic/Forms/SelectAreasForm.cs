@@ -581,8 +581,8 @@ namespace RockStatic
             double alto = padre.actual.datacuboHigh.dataCube[0].selector.Columns.Data;
             double total = padre.actual.datacuboHigh.coresHorizontal[0].Count;
             ancho = Convert.ToInt32(total / alto);
-            
-            int pos = Convert.ToInt32(((padre.selecAreas2Form.trackCortes.Value)*scale) + xcero);
+
+            int pos = Convert.ToInt32(((padre.selecAreas2Form.trackCortes.Maximum-padre.selecAreas2Form.trackCortes.Value) * scale) + xcero);
             Pen brochaLinea = new Pen(Color.DarkOrange);
             float[] dashValues = { 10, 3, 5, 3 };
             brochaLinea.Width = 3;
