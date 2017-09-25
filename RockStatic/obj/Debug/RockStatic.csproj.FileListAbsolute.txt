@@ -157,3 +157,4 @@ C:\PETROLEOS\origin\RockStatic\obj\Debug\RockStatic.application
 C:\PETROLEOS\origin\RockStatic\obj\Debug\RockStatic.exe
 C:\PETROLEOS\origin\RockStatic\obj\Debug\RockStatic.pdb
 C:\PETROLEOS\origin\RockStatic\obj\Debug\RockStatic.csprojResolveAssemblyReference.cache
+C:\Users\Hdsp\Dropbox\CodigosPetroleos\InterfazVisualCris\RockStatic\RockStatic\obj\Debug\RockStatic.csprojResolveAssemblyReference.cache

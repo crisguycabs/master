@@ -247,7 +247,7 @@ namespace RockStatic
                 float width = (float)((padre.actual.areasInteresCore[i].fin - padre.actual.areasInteresCore[i].ini + 1) * factor * scale);
                 float x = (float)(((padre.actual.areasInteresCore[i].ini - 1) * scale * factor) + xcero);
                 float y = (float)(((padre.actual.areasInteresCore[i].y - ancho) * scale) + ycero);
-                e.Graphics.FillRectangle(brocha2, x, y, width, height);                
+                e.Graphics.FillRectangle(brocha2, x, y, width, height);                        
             }
         }
 
