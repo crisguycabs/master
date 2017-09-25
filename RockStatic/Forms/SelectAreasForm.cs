@@ -377,6 +377,12 @@ namespace RockStatic
             punto.y = Convert.ToInt32(((tempClicks[0].x + tempClicks[1].x) / 2 - punto.x) / grad_a + (tempClicks[0].y + tempClicks[1].y) / 2);
             punto.width = Convert.ToInt32(Math.Sqrt(Math.Pow(punto.x - tempClicks[0].x, 2) + Math.Pow(punto.y - tempClicks[0].y, 2)));
 
+            //punto.x = punto.x - punto.width;
+            //punto.y = punto.y - punto.width;
+            //punto.width = punto.width*2;
+
+
+
             // si no existen areas dibujadas entonces se agrega la primera a la lista
             // si la nueva area dibujada está al inicio de un area previamente creada entonces la nueva area modifica el area creada
 
@@ -603,6 +609,7 @@ namespace RockStatic
                     corregido = MainForm.CorregirOriginal2PictBox(corregido, padre.actual.datacuboHigh.widthSegCore, pictCore.Height);
 
                     e.Graphics.DrawEllipse(pen2, corregido.x - corregido.width, corregido.y - corregido.width, 2 * corregido.width, 2 * corregido.width);
+                    //e.Graphics.DrawEllipse(pen2, corregido.x , corregido.y ,  corregido.width, corregido.width);
                     //e.Graphics.DrawEllipse(pen2, this.padre.actual.areasCore[i].x - this.padre.actual.areasCore[i].width, this.padre.actual.areasCore[i].y - this.padre.actual.areasCore[i].width, 2 * this.padre.actual.areasCore[i].width, 2 * this.padre.actual.areasCore[i].width);
                     
                     return; // se encontro el elemento areaInteres buscado, no es necesario buscar los otros elementos en la lista
