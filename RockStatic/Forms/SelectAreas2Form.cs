@@ -237,17 +237,39 @@ namespace RockStatic
             // se recorren las areas, y si existe una !=null se escala el ancho del area al tamaño del plano
             if (padre.actual.areasInteresCore.Count < 1) return;
 
+            //for (int i = 0; i < padre.actual.areasInteresCore.Count; i++)
+            //{
+            //    dif = Math.Abs(padre.actual.areasInteresCore[i].y - Convert.ToDouble(trackCortes.Maximum- numActual.Value));
+            //    ancho = Math.Sqrt(padre.actual.areasInteresCore[i].width * padre.actual.areasInteresCore[i].width - dif * dif);
+
+            //    // se pintan los cuadrados que corresponden a las areas de interes seleccionadas
+            //    float height = (float)(ancho * scale * 2);
+            //    float width = (float)((padre.actual.areasInteresCore[i].fin - padre.actual.areasInteresCore[i].ini + 1) * factor * scale);
+            //    float x = (float)(((padre.actual.areasInteresCore[i].ini - 1) * scale * factor) + xcero);
+            //    float y = (float)(((padre.actual.areasInteresCore[i].y - ancho) * scale) + ycero);
+            //    e.Graphics.FillRectangle(brocha2, x, y, width, height);                        
+            //}
+
             for (int i = 0; i < padre.actual.areasInteresCore.Count; i++)
             {
-                dif = Math.Abs(padre.actual.areasInteresCore[i].y - Convert.ToDouble(trackCortes.Maximum- numActual.Value));
-                ancho = Math.Sqrt(padre.actual.areasInteresCore[i].width * padre.actual.areasInteresCore[i].width - dif * dif);
+                // se resuelve si el plano de corte intersecta al area de interes
+                if (((trackCortes.Maximum - numActual.Value) >= padre.actual.areasInteresCore[i].y) & ((trackCortes.Maximum - numActual.Value) <= (padre.actual.areasInteresCore[i].y + padre.actual.areasInteresCore[i].width)))
+                {
+                    float x = (float)(((padre.actual.areasInteresCore[i].ini - 1) * scale * factor) + xcero);
+                    float width = (float)((padre.actual.areasInteresCore[i].fin - padre.actual.areasInteresCore[i].ini + 1) * factor * scale);
 
-                // se pintan los cuadrados que corresponden a las areas de interes seleccionadas
-                float height = (float)(ancho * scale * 2);
-                float width = (float)((padre.actual.areasInteresCore[i].fin - padre.actual.areasInteresCore[i].ini + 1) * factor * scale);
-                float x = (float)(((padre.actual.areasInteresCore[i].ini - 1) * scale * factor) + xcero);
-                float y = (float)(((padre.actual.areasInteresCore[i].y - ancho) * scale) + ycero);
-                e.Graphics.FillRectangle(brocha2, x, y, width, height);                        
+                    double width2 = Convert.ToDouble(padre.actual.areasInteresCore[i].width) / 2;
+                    double ycentro = Convert.ToDouble(padre.actual.areasInteresCore[i].y) + width2;
+                    double xcentro = Convert.ToDouble(padre.actual.areasInteresCore[i].x) + width2;
+
+                    double c=Math.Sqrt(Math.Pow(width2,2)-Math.Pow(ycentro-(Convert.ToDouble(trackCortes.Maximum) - Convert.ToDouble(numActual.Value)),2));
+
+                    double y = (xcentro - c) * scale;
+                    double height = 2 * c * scale;
+
+                    e.Graphics.FillRectangle(brocha2, (float)x, (float)y, (float)width, (float)height);
+                }
+
             }
         }
 
