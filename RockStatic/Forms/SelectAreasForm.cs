@@ -848,7 +848,8 @@ namespace RockStatic
             }
 
             // se crea una area que englobe todo
-            padre.actual.areasInteresCore.Add(new CAreaInteres(Convert.ToInt32(padre.actual.datacuboHigh.widthSegCore/2),Convert.ToInt32(padre.actual.datacuboHigh.widthSegCore/2),Convert.ToInt32(padre.actual.datacuboHigh.widthSegCore/2),"area"+(countAreas++).ToString(),1,padre.actual.datacuboHigh.dataCube.Count));
+            padre.actual.areasInteresCore.Add(new CAreaInteres(1,1,Convert.ToInt32(padre.actual.datacuboHigh.widthSegCore-1),"area"+(countAreas++).ToString(),1,padre.actual.datacuboHigh.dataCube.Count));
+            //padre.actual.areasInteresCore.Add(new CAreaInteres(Convert.ToInt32(padre.actual.datacuboHigh.widthSegCore), Convert.ToInt32(padre.actual.datacuboHigh.widthSegCore), Convert.ToInt32(padre.actual.datacuboHigh.widthSegCore), "area" + (countAreas++).ToString(), 1, padre.actual.datacuboHigh.dataCube.Count));
 
             // se ajusta el radio a el ancho menos 1
             padre.actual.areasInteresCore[0].width--;
