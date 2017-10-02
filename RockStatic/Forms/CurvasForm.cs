@@ -377,12 +377,16 @@ namespace RockStatic
             // se preparan los nombres de los ejes
             chart1.ChartAreas[0].AxisY.Title="PROFUNDIDAD (" + padre.actual.unidadProfundidad + ")";
             chart2.ChartAreas[0].AxisY.Title="PROFUNDIDAD (" + padre.actual.unidadProfundidad + ")";
+            chart3.ChartAreas[0].AxisY.Title = "PROFUNDIDAD (" + padre.actual.unidadProfundidad + ")";
             
             chart1.ChartAreas[0].AxisX.LabelStyle.Format = "#.##";
             chart2.ChartAreas[0].AxisX.LabelStyle.Format = "#.##";
+            chart3.ChartAreas[0].AxisX.LabelStyle.Format = "#.##";
 
             List<double> D = new List<double>();
             List<double> Z = new List<double>();
+            // no se si esta bien 
+            List<double> PEF = new List<double>();
             // se cargan los puntos en el chart
             for (int i = 0; i < padre.actual.datacuboHigh.dataCube.Count;i++)
             {
@@ -395,6 +399,10 @@ namespace RockStatic
                 {
                     chart2.Series[0].Points.AddXY(Zfme[i], profundidad[i]);
                     Z.Add(Zfme[i]);
+
+
+                    chart3.Series[0].Points.AddXY((Math.Pow(Zfme[i] / Convert.ToDouble(10), 3.6)), profundidad[i]);
+                    PEF.Add((Math.Pow(Zfme[i] / Convert.ToDouble(10), 3.6)));
                 }
             }
 
@@ -406,13 +414,23 @@ namespace RockStatic
             chart2.ChartAreas[0].AxisX.Minimum = chart2.ChartAreas[0].AxisX2.Minimum = Z.Min() * 0.99;
             chart2.ChartAreas[0].AxisX.Maximum = chart2.ChartAreas[0].AxisX2.Maximum=Z.Max()*1.01;
 
+            chart3.ChartAreas[0].AxisX.Minimum = chart3.ChartAreas[0].AxisX2.Minimum = PEF.Min() * 0.99;
+            chart3.ChartAreas[0].AxisX.Maximum = chart3.ChartAreas[0].AxisX2.Maximum = PEF.Max() * 1.01;
+
+
             chart1.ChartAreas[0].AxisX.Interval = chart1.ChartAreas[0].AxisX2.Interval = (chart1.ChartAreas[0].AxisX.Maximum - chart1.ChartAreas[0].AxisX.Minimum) / 4;
             chart2.ChartAreas[0].AxisX.Interval = chart2.ChartAreas[0].AxisX2.Interval = (chart2.ChartAreas[0].AxisX.Maximum - chart2.ChartAreas[0].AxisX.Minimum) / 4;
+
+            chart3.ChartAreas[0].AxisX.Interval = chart3.ChartAreas[0].AxisX2.Interval = (chart3.ChartAreas[0].AxisX.Maximum - chart3.ChartAreas[0].AxisX.Minimum) / 4;
 
             chart1.ChartAreas[0].AxisY.Minimum = profundidad[0];
             chart1.ChartAreas[0].AxisY.Maximum = profundidad[profundidad.Length-1];
             chart2.ChartAreas[0].AxisY.Minimum = profundidad[0];
             chart2.ChartAreas[0].AxisY.Maximum = profundidad[profundidad.Length - 1];
+
+            chart3.ChartAreas[0].AxisY.Minimum = profundidad[0];
+            chart3.ChartAreas[0].AxisY.Maximum = profundidad[profundidad.Length - 1];
+
         }        
 
         private void btnExportar_Click(object sender, EventArgs e)
@@ -440,6 +458,16 @@ namespace RockStatic
         }
 
         private void chart1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chart3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chart2_Click(object sender, EventArgs e)
         {
 
         }

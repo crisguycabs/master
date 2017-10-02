@@ -34,14 +34,19 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CurvasForm));
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.btnExportar = new System.Windows.Forms.Button();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -52,7 +57,7 @@
             this.lblTitulo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(506, 32);
+            this.lblTitulo.Size = new System.Drawing.Size(784, 32);
             this.lblTitulo.TabIndex = 8;
             this.lblTitulo.Text = "BIENVENIDO!";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -156,7 +161,7 @@
             chartArea2.AxisY2.ScrollBar.Enabled = false;
             chartArea2.Name = "ChartArea1";
             this.chart2.ChartAreas.Add(chartArea2);
-            this.chart2.Location = new System.Drawing.Point(250, 19);
+            this.chart2.Location = new System.Drawing.Point(259, 19);
             this.chart2.Name = "chart2";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -173,7 +178,51 @@
             title2.Name = "Deff";
             title2.Text = "Zeff";
             this.chart2.Titles.Add(title2);
+            this.chart2.Click += new System.EventHandler(this.chart2_Click);
             this.chart2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart2_MouseClick);
+            // 
+            // chart3
+            // 
+            chartArea3.AxisX.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
+            chartArea3.AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea3.AxisX.MajorTickMark.Enabled = false;
+            chartArea3.AxisX.ScaleView.Zoomable = false;
+            chartArea3.AxisX.ScrollBar.Enabled = false;
+            chartArea3.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
+            chartArea3.AxisX2.MajorTickMark.Enabled = false;
+            chartArea3.AxisX2.ScaleView.Zoomable = false;
+            chartArea3.AxisX2.ScrollBar.Enabled = false;
+            chartArea3.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
+            chartArea3.AxisY.IsReversed = true;
+            chartArea3.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea3.AxisY.MajorTickMark.Enabled = false;
+            chartArea3.AxisY.ScaleView.Zoomable = false;
+            chartArea3.AxisY.ScrollBar.Enabled = false;
+            chartArea3.AxisY.Title = "PROFUNDIDAD";
+            chartArea3.AxisY.TitleFont = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea3.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea3.AxisY2.ScaleView.Zoomable = false;
+            chartArea3.AxisY2.ScrollBar.Enabled = false;
+            chartArea3.Name = "ChartArea1";
+            this.chart3.ChartAreas.Add(chartArea3);
+            this.chart3.Location = new System.Drawing.Point(518, 19);
+            this.chart3.Name = "chart3";
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.MarkerColor = System.Drawing.Color.Crimson;
+            series3.MarkerSize = 3;
+            series3.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series3.Name = "Zeff";
+            this.chart3.Series.Add(series3);
+            this.chart3.Size = new System.Drawing.Size(250, 674);
+            this.chart3.TabIndex = 13;
+            this.chart3.Text = "chart3";
+            title3.Font = new System.Drawing.Font("Eras Bold ITC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title3.ForeColor = System.Drawing.Color.Green;
+            title3.Name = "Deff";
+            title3.Text = "Zeff";
+            this.chart3.Titles.Add(title3);
+            this.chart3.Click += new System.EventHandler(this.chart3_Click);
             // 
             // CurvasForm
             // 
@@ -181,8 +230,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(506, 700);
+            this.ClientSize = new System.Drawing.Size(784, 700);
             this.ControlBox = false;
+            this.Controls.Add(this.chart3);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.btnCerrar);
@@ -198,6 +248,7 @@
             this.Load += new System.EventHandler(this.CurvasForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -209,5 +260,6 @@
         private System.Windows.Forms.Button btnExportar;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
     }
 }
