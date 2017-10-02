@@ -57,7 +57,7 @@
             this.lblTitulo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(784, 32);
+            this.lblTitulo.Size = new System.Drawing.Size(876, 32);
             this.lblTitulo.TabIndex = 8;
             this.lblTitulo.Text = "BIENVENIDO!";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -73,7 +73,7 @@
             this.btnCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrar.Font = new System.Drawing.Font("Calibri", 9F);
-            this.btnCerrar.Location = new System.Drawing.Point(430, 669);
+            this.btnCerrar.Location = new System.Drawing.Point(441, 671);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(70, 25);
             this.btnCerrar.TabIndex = 11;
@@ -89,7 +89,7 @@
             this.btnExportar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnExportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExportar.Font = new System.Drawing.Font("Calibri", 9F);
-            this.btnExportar.Location = new System.Drawing.Point(354, 669);
+            this.btnExportar.Location = new System.Drawing.Point(365, 671);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(70, 25);
             this.btnExportar.TabIndex = 11;
@@ -209,18 +209,18 @@
             this.chart3.Name = "chart3";
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.MarkerColor = System.Drawing.Color.Crimson;
+            series3.MarkerColor = System.Drawing.Color.DarkGreen;
             series3.MarkerSize = 3;
             series3.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
             series3.Name = "Zeff";
             this.chart3.Series.Add(series3);
-            this.chart3.Size = new System.Drawing.Size(250, 674);
+            this.chart3.Size = new System.Drawing.Size(355, 674);
             this.chart3.TabIndex = 13;
             this.chart3.Text = "chart3";
             title3.Font = new System.Drawing.Font("Eras Bold ITC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             title3.ForeColor = System.Drawing.Color.Green;
             title3.Name = "Deff";
-            title3.Text = "Zeff";
+            title3.Text = "Peff";
             this.chart3.Titles.Add(title3);
             this.chart3.Click += new System.EventHandler(this.chart3_Click);
             // 
@@ -230,10 +230,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(784, 700);
+            this.ClientSize = new System.Drawing.Size(876, 707);
             this.ControlBox = false;
-            this.Controls.Add(this.chart3);
             this.Controls.Add(this.lblTitulo);
+            this.Controls.Add(this.chart3);
             this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.chart2);

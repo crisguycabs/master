@@ -40,6 +40,11 @@ namespace RockStatic
         public double[] Pefm;
 
         /// <summary>
+        /// Variable para el almacenar los valores de Peff
+        /// </summary>
+        public List<double> PEF = new List<double>();
+
+        /// <summary>
         /// Vector con los valores de profundidad para las propiedades estaticas estimadas
         /// </summary>
         public double[] profundidad;
@@ -381,15 +386,19 @@ namespace RockStatic
             
             chart1.ChartAreas[0].AxisX.LabelStyle.Format = "#.##";
             chart2.ChartAreas[0].AxisX.LabelStyle.Format = "#.##";
-            chart3.ChartAreas[0].AxisX.LabelStyle.Format = "#.##";
+            // chart3.ChartAreas[0].AxisX.LabelStyle.Format = "#.#######";
+            chart3.ChartAreas[0].AxisX.LabelStyle.Format = "#.##E+0";
 
             List<double> D = new List<double>();
             List<double> Z = new List<double>();
-            // no se si esta bien 
-            List<double> PEF = new List<double>();
+            List<double> P = new List<double>();
+
+
+            PEF = new List<double>();            
             // se cargan los puntos en el chart
             for (int i = 0; i < padre.actual.datacuboHigh.dataCube.Count;i++)
             {
+                PEF.Add((Math.Pow(Zfme[i] / Convert.ToDouble(10), 3.6)));
                 if (Dfm[i] > -1)
                 {
                     chart1.Series[0].Points.AddXY(Dfm[i], profundidad[i]);
@@ -402,20 +411,22 @@ namespace RockStatic
 
 
                     chart3.Series[0].Points.AddXY((Math.Pow(Zfme[i] / Convert.ToDouble(10), 3.6)), profundidad[i]);
-                    PEF.Add((Math.Pow(Zfme[i] / Convert.ToDouble(10), 3.6)));
+                    P.Add((Math.Pow(Zfme[i] / Convert.ToDouble(10), 3.6)));
                 }
+                
             }
 
             chart2.Series[0].Color = Color.Red;
+            chart3.Series[0].Color = Color.DarkGreen;
 
             // se modifican los intervalos del eje
-            chart1.ChartAreas[0].AxisX.Minimum = chart1.ChartAreas[0].AxisX2.Minimum=D.Min()*0.99;
-            chart1.ChartAreas[0].AxisX.Maximum = chart1.ChartAreas[0].AxisX2.Maximum=D.Max()*1.01;
-            chart2.ChartAreas[0].AxisX.Minimum = chart2.ChartAreas[0].AxisX2.Minimum = Z.Min() * 0.99;
-            chart2.ChartAreas[0].AxisX.Maximum = chart2.ChartAreas[0].AxisX2.Maximum=Z.Max()*1.01;
+            chart1.ChartAreas[0].AxisX.Minimum = chart1.ChartAreas[0].AxisX2.Minimum=D.Min()*0.95;
+            chart1.ChartAreas[0].AxisX.Maximum = chart1.ChartAreas[0].AxisX2.Maximum=D.Max()*1.05;
+            chart2.ChartAreas[0].AxisX.Minimum = chart2.ChartAreas[0].AxisX2.Minimum = Z.Min() * 0.95;
+            chart2.ChartAreas[0].AxisX.Maximum = chart2.ChartAreas[0].AxisX2.Maximum=Z.Max()*1.05;
 
-            chart3.ChartAreas[0].AxisX.Minimum = chart3.ChartAreas[0].AxisX2.Minimum = PEF.Min() * 0.99;
-            chart3.ChartAreas[0].AxisX.Maximum = chart3.ChartAreas[0].AxisX2.Maximum = PEF.Max() * 1.01;
+            chart3.ChartAreas[0].AxisX.Minimum = chart3.ChartAreas[0].AxisX2.Minimum = P.Min() * 0.95;
+            chart3.ChartAreas[0].AxisX.Maximum = chart3.ChartAreas[0].AxisX2.Maximum = P.Max() * 1.05;
 
 
             chart1.ChartAreas[0].AxisX.Interval = chart1.ChartAreas[0].AxisX2.Interval = (chart1.ChartAreas[0].AxisX.Maximum - chart1.ChartAreas[0].AxisX.Minimum) / 4;
@@ -444,10 +455,11 @@ namespace RockStatic
             {
                 chart1.SaveImage(saveFile.FileName + "-densidad.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
                 chart2.SaveImage(saveFile.FileName + "-zeff.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                chart3.SaveImage(saveFile.FileName + "-peff.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
 
                 System.IO.StreamWriter sw = new System.IO.StreamWriter(saveFile.FileName + ".txt");
-                sw.WriteLine("PROFUNDIDAD\tDENSIDA\tZEFF");
-                for (int i = 0; i < profundidad.Length; i++) sw.WriteLine(profundidad[i] + "\t" + Dfm[i] + "\t" + Zfme[i]);
+                sw.WriteLine("PROFUNDIDAD\tDENSIDA\tZEFF\tPEFF");
+                for (int i = 0; i < profundidad.Length; i++) sw.WriteLine(profundidad[i] + "\t" + Dfm[i] + "\t" + Zfme[i] + "\t" + PEF[i]);
                 sw.Close();
             }
         }

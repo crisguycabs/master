@@ -1024,6 +1024,11 @@
             Variable intermedia para el calculo de propiedades estaticas
             </summary>
         </member>
+        <member name="F:RockStatic.CurvasForm.PEF">
+            <summary>
+            Variable para el almacenar los valores de Peff
+            </summary>
+        </member>
         <member name="F:RockStatic.CurvasForm.profundidad">
             <summary>
             Vector con los valores de profundidad para las propiedades estaticas estimadas
