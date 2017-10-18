@@ -1,0 +1,12 @@
+C:\PETROLEOS\origin\RockVision\obj\Release\RockVision.csprojResolveAssemblyReference.cache
+C:\PETROLEOS\origin\RockVision\obj\Release\RockVision.CheckForm.resources
+C:\PETROLEOS\origin\RockVision\obj\Release\RockVision.HomeForm.resources
+C:\PETROLEOS\origin\RockVision\obj\Release\RockVision.NewProjectDForm.resources
+C:\PETROLEOS\origin\RockVision\obj\Release\RockVision.NewProjectVForm.resources
+C:\PETROLEOS\origin\RockVision\obj\Release\RockVision.ProjectDForm.resources
+C:\PETROLEOS\origin\RockVision\obj\Release\RockVision.SplashScreenForm.resources
+C:\PETROLEOS\origin\RockVision\obj\Release\RockVision.MainForm.resources
+C:\PETROLEOS\origin\RockVision\obj\Release\RockVision.Properties.Resources.resources
+C:\PETROLEOS\origin\RockVision\obj\Release\RockVision.WaitingForm.resources
+C:\PETROLEOS\origin\RockVision\obj\Release\RockVision.VisualForm.resources
+C:\PETROLEOS\origin\RockVision\obj\Release\RockVision.csproj.GenerateResource.Cache

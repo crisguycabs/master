@@ -267,7 +267,7 @@ namespace RockStatic
                     double y = (xcentro - c) * scale;
                     double height = 2 * c * scale;
 
-                    e.Graphics.FillRectangle(brocha2, (float)x, (float)y, (float)width, (float)height);
+                    e.Graphics.FillRectangle(brocha2, (float)(x), (float)(y+ycero), (float)width, (float)height);
                 }
 
             }
