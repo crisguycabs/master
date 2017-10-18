@@ -419,6 +419,10 @@ namespace RockStatic
             chart2.Series[0].Color = Color.Red;
             chart3.Series[0].Color = Color.DarkGreen;
 
+            if (D.Count < 1) D.Add(0);
+            if (Z.Count < 1) Z.Add(0);
+            if (P.Count < 1) P.Add(0);
+
             // se modifican los intervalos del eje
             chart1.ChartAreas[0].AxisX.Minimum = chart1.ChartAreas[0].AxisX2.Minimum=D.Min()*0.95;
             chart1.ChartAreas[0].AxisX.Maximum = chart1.ChartAreas[0].AxisX2.Maximum=D.Max()*1.05;
@@ -461,6 +465,8 @@ namespace RockStatic
                 sw.WriteLine("PROFUNDIDAD\tDENSIDA\tZEFF\tPEFF");
                 for (int i = 0; i < profundidad.Length; i++) sw.WriteLine(profundidad[i] + "\t" + Dfm[i] + "\t" + Zfme[i] + "\t" + PEF[i]);
                 sw.Close();
+
+                MessageBox.Show("Exportación de resultados exitosa", "Fin de Exportación", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

@@ -103,6 +103,7 @@
             this.txtP1.Name = "txtP1";
             this.txtP1.Size = new System.Drawing.Size(113, 20);
             this.txtP1.TabIndex = 22;
+            this.txtP1.Text = "Cuarzo";
             this.txtP1.TextChanged += new System.EventHandler(this.txtP1_TextChanged);
             // 
             // label5
@@ -156,10 +157,10 @@
             this.numZeffP1.TabIndex = 18;
             this.numZeffP1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numZeffP1.Value = new decimal(new int[] {
-            118,
+            117842,
             0,
             0,
-            65536});
+            262144});
             // 
             // label23
             // 
@@ -191,6 +192,7 @@
             this.txtP2.Name = "txtP2";
             this.txtP2.Size = new System.Drawing.Size(113, 20);
             this.txtP2.TabIndex = 22;
+            this.txtP2.Text = "Agua";
             this.txtP2.TextChanged += new System.EventHandler(this.txtP1_TextChanged);
             // 
             // label6
@@ -216,10 +218,10 @@
             this.numDensP2.TabIndex = 20;
             this.numDensP2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numDensP2.Value = new decimal(new int[] {
-            22,
+            1,
             0,
             0,
-            65536});
+            0});
             // 
             // label1
             // 
@@ -244,10 +246,10 @@
             this.numZeffP2.TabIndex = 18;
             this.numZeffP2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numZeffP2.Value = new decimal(new int[] {
-            118,
+            75195,
             0,
             0,
-            65536});
+            262144});
             // 
             // label2
             // 
@@ -279,6 +281,7 @@
             this.txtP3.Name = "txtP3";
             this.txtP3.Size = new System.Drawing.Size(113, 20);
             this.txtP3.TabIndex = 22;
+            this.txtP3.Text = "Teflon";
             this.txtP3.TextChanged += new System.EventHandler(this.txtP1_TextChanged);
             // 
             // label7
@@ -304,10 +307,10 @@
             this.numDensP3.TabIndex = 20;
             this.numDensP3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numDensP3.Value = new decimal(new int[] {
-            22,
+            216,
             0,
             0,
-            65536});
+            131072});
             // 
             // label3
             // 
@@ -332,10 +335,10 @@
             this.numZeffP3.TabIndex = 18;
             this.numZeffP3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numZeffP3.Value = new decimal(new int[] {
-            118,
+            870,
             0,
             0,
-            65536});
+            131072});
             // 
             // label4
             // 

@@ -92,9 +92,9 @@ namespace RockStatic
             tempLow = new List<string>();
             
             // se crean los valores de los phantoms por defecto
-            tempPhantom1 = new CPhantom(1237.865, 46.125, 1434.195, 50.985, 2.2, 11.8);
-            tempPhantom2 = new CPhantom(868.77, 39, 916.1, 36.775, 2.16, 8.7);
-            tempPhantom3 = new CPhantom(15.3275, 36.7, 23.8, 35.9, 1, 7.5);
+            tempPhantom1 = new CPhantom(1237.865, 46.125, 1434.195, 50.985, 2.2, 11.78, "Cuarzo");
+            tempPhantom2 = new CPhantom(15.3275, 36.7, 23.8, 35.9, 1, 7.52,  "Agua");
+            tempPhantom3 = new CPhantom(868.77, 39, 916.1, 36.775, 2.16, 8.7, "Teflon");
 
             lstUnidades.SelectedIndex = 1;
         }

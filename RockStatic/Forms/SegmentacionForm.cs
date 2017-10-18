@@ -35,6 +35,14 @@ namespace RockStatic
         /// </summary>
         public MainForm padre;
 
+
+        /// usado para arrancar el letrero
+
+        public Boolean primero;
+
+        int conuntAreas;
+
+
         /// <summary>
         /// Contador para clicks
         /// </summary>
@@ -81,7 +89,15 @@ namespace RockStatic
 
         public SegmentacionForm()
         {
+            primero = true;
             InitializeComponent();
+        }
+
+        public SegmentacionForm(Boolean _primero)
+        {
+            primero = _primero;
+            InitializeComponent();
+           
         }
 
         private void CheckForm_Load(object sender, EventArgs e)
@@ -102,11 +118,12 @@ namespace RockStatic
 
             controlPaint = false;
 
-            countAreas = 0;
-
+            conuntAreas = 0;
+            
             // se cargan los elementos HIGH si existen
             if (padre.actual.segmentacionDone)
             {
+                conuntAreas = 4;
                 CCuadrado temp;
 
                 temp = new CCuadrado(padre.actual.GetCore());
@@ -133,6 +150,7 @@ namespace RockStatic
             }
 
             this.Invalidate();
+           
         }
 
         public void btnCancelar_Click(object sender, EventArgs e)
@@ -323,10 +341,25 @@ namespace RockStatic
                         lblPunto2.Visible = true;
                         break;
                     case 3:
+                        conuntAreas++;
                         // con tres clicks se dibuja el circulo
                         AddElemento();
                         ResetCountClick();
+                        switch (conuntAreas)
+                        {
+                            case 1:
+                                MessageBox.Show("Selecciones el material '" + padre.actual.phantom1.nombre + "', marque tres puntos en el elemento", "Marcar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                break;
+                            case 2:
+                                MessageBox.Show("Selecciones el material '" + padre.actual.phantom2.nombre + "', marque tres puntos en el elemento", "Marcar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                break;
+                            case 3:
+                                MessageBox.Show("Selecciones el material '" + padre.actual.phantom3.nombre + "', marque tres puntos en el elemento", "Marcar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                break;
+                        }
+                        
                         break;
+                        
                 }
             }
         }
@@ -491,7 +524,7 @@ namespace RockStatic
             pictElemento.Invalidate();
 
             numRadio.Value = 0;
-
+            conuntAreas =0;
             btnDelete.Enabled = false;
             btnClean.Enabled = false;
         }
@@ -504,6 +537,8 @@ namespace RockStatic
                 int ielemento = lstElementos.SelectedIndex;
                 lstElementos.Items.RemoveAt(ielemento);
                 elementosScreen.RemoveAt(ielemento);
+
+                if (conuntAreas > 1) conuntAreas--;
 
                 numRadio.Value = 0;
 
@@ -791,7 +826,12 @@ namespace RockStatic
 
         private void SegmentacionForm_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.DrawRectangle(new Pen(Color.Green, 2), this.DisplayRectangle);       
+            e.Graphics.DrawRectangle(new Pen(Color.Green, 2), this.DisplayRectangle);
+            if(primero)
+            { 
+            MessageBox.Show("Selecciones el Core, marque tres puntos en el elemento", "Marcar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            primero = false;
+            }
         }
 
         private void btnPreview_Click(object sender, EventArgs e)

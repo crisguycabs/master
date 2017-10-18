@@ -1123,6 +1123,9 @@
             Referencia al MainForm padre
             </summary>
         </member>
+        <member name="F:RockStatic.SegmentacionForm.primero">
+            usado para arrancar el letrero
+        </member>
         <member name="F:RockStatic.SegmentacionForm.countClick">
             <summary>
             Contador para clicks
