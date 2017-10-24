@@ -101,12 +101,14 @@ namespace RockStatic
         {
             // se toma la informacion de segmentacion vs areas de interes y se estiman las propiedades petrofisicas estaticas
 
-            double meanP1high = 0;
-            double desvP1high = 0;
+    
             double meanP2high = 0;
             double desvP2high = 0;
             double meanP3high = 0;
             double desvP3high = 0;
+
+            List<double> meanP1high = new List<double>();
+            List<double> desvP1high = new List<double>();
 
             double meanP1low = 0;
             double desvP1low = 0;
@@ -120,29 +122,30 @@ namespace RockStatic
                 // existe informacion de phantoms en los dicom, se toma la info de la segmentacion transversal
 
                 // para el phantom1 High
-                List<double> numerosCT = new List<double>();
                 for(int i=0;i<padre.actual.datacuboHigh.dataCube.Count;i++)
                 {
+                    List<double> numerosCT = new List<double>();
                     for (int j = 0; j < padre.actual.datacuboHigh.dataCube[i].segPhantom1.Count; j++)
                     {
                         if(padre.actual.datacuboHigh.dataCube[i].segPhantom1[j]>0) numerosCT.Add((double)padre.actual.datacuboHigh.dataCube[i].segPhantom1[j]);
                     }
+                
+                    meanP1high.Add(MathNet.Numerics.Statistics.Statistics.Mean(numerosCT));
+                    desvP1high.Add(MathNet.Numerics.Statistics.Statistics.StandardDeviation(numerosCT));
                 }
-                meanP1high = MathNet.Numerics.Statistics.Statistics.Mean(numerosCT);
-                desvP1high = MathNet.Numerics.Statistics.Statistics.StandardDeviation(numerosCT);
 
-                // para el phantom1 Low
-                numerosCT = new List<double>();
+                // para el phantom1 Low                
                 for (int i = 0; i < padre.actual.datacuboLow.dataCube.Count; i++)
                 {
+                    List<double> numerosCT = new List<double>();
                     for (int j = 0; j < padre.actual.datacuboLow.dataCube[i].segPhantom1.Count; j++)
                     {
                         if (padre.actual.datacuboLow.dataCube[i].segPhantom1[j] > 0) numerosCT.Add((double)padre.actual.datacuboLow.dataCube[i].segPhantom1[j]);
                     }
-                }
-                meanP1low = MathNet.Numerics.Statistics.Statistics.Mean(numerosCT);
-                desvP1low = MathNet.Numerics.Statistics.Statistics.StandardDeviation(numerosCT);
 
+                    meanP1low.Add(MathNet.Numerics.Statistics.Statistics.Mean(numerosCT));
+                    desvP1low.Add(MathNet.Numerics.Statistics.Statistics.StandardDeviation(numerosCT));
+                }
 
                 // para el phantom2 High
                 numerosCT = new List<double>();
@@ -196,34 +199,24 @@ namespace RockStatic
             else
             {
                 // se preparan los generadores de CT aleatorios para cada phantom
-                meanP1high = padre.actual.phantom1.mediaHigh;
-                desvP1high = padre.actual.phantom1.desvHigh;
-                meanP2high = padre.actual.phantom2.mediaHigh;
-                desvP2high = padre.actual.phantom2.desvHigh;
-                meanP3high = padre.actual.phantom3.mediaHigh;
-                desvP3high = padre.actual.phantom3.desvHigh;
+                for (int i = 0; i < padre.actual.datacuboLow.dataCube.Count; i++)
+                {
+                    meanP1high.Add(padre.actual.phantom1.mediaHigh);
+                    desvP1high = padre.actual.phantom1.desvHigh;
+                    meanP2high = padre.actual.phantom2.mediaHigh;
+                    desvP2high = padre.actual.phantom2.desvHigh;
+                    meanP3high = padre.actual.phantom3.mediaHigh;
+                    desvP3high = padre.actual.phantom3.desvHigh;
 
-                meanP1low = padre.actual.phantom1.mediaLow;
-                desvP1low = padre.actual.phantom1.desvLow;
-                meanP2low = padre.actual.phantom2.mediaLow;
-                desvP2low = padre.actual.phantom2.desvLow;
-                meanP3low = padre.actual.phantom3.mediaLow;
-                desvP3low = padre.actual.phantom3.desvLow;                
+                    meanP1low = padre.actual.phantom1.mediaLow;
+                    desvP1low = padre.actual.phantom1.desvLow;
+                    meanP2low = padre.actual.phantom2.mediaLow;
+                    desvP2low = padre.actual.phantom2.desvLow;
+                    meanP3low = padre.actual.phantom3.mediaLow;
+                    desvP3low = padre.actual.phantom3.desvLow;
+                }
+                                
             }
-
-            var phantom1High = new MathNet.Numerics.Distributions.Normal(meanP1high, desvP1high);
-            var phantom1Low = new MathNet.Numerics.Distributions.Normal(meanP1low, desvP1low);
-
-            var phantom2High = new MathNet.Numerics.Distributions.Normal(meanP2high, desvP2high);
-            var phantom2Low = new MathNet.Numerics.Distributions.Normal(meanP2low, desvP2low);
-
-            var phantom3High = new MathNet.Numerics.Distributions.Normal(meanP3high, desvP3high);
-            var phantom3Low = new MathNet.Numerics.Distributions.Normal(meanP3low, desvP3low);
-
-            // se prepara un vector de valores CT high y low para cada phantom
-            // este vector representa un slide y solo se guarda un valor promedio del slide
-            double[] temp = new double[padre.actual.datacuboHigh.dataCube[0].segCore.Count];
-            MathNet.Numerics.Statistics.DescriptiveStatistics stats;
 
             // se preparan los vectores para densidad y zeff
             this.Dfm = new double[padre.actual.datacuboHigh.dataCube.Count];
@@ -259,34 +252,18 @@ namespace RockStatic
                 {
                     // el slide pertenece al menos a un area de interes, por tanto se procede a calcular la densidad y zeff para este slide
 
-                    // se generan los valores CT para cada phantom y se toma su media
-                    phantom1High.Samples(temp);
-                    stats = new MathNet.Numerics.Statistics.DescriptiveStatistics(temp);
-                    ctP1High = stats.Mean;
+                    ctP1High = meanP1high[i];
+                    ctP1Low = meanP1low[i];
+                    ctP2High = meanP2high[i];
+                    ctP2Low = meanP2low[i];
+                    ctP3High = meanP3high[i];
+                    ctP3Low = meanP3low[i];
+                    
 
-                    phantom2High.Samples(temp);
-                    stats = new MathNet.Numerics.Statistics.DescriptiveStatistics(temp);
-                    ctP2High = stats.Mean;
-
-                    phantom3High.Samples(temp);
-                    stats = new MathNet.Numerics.Statistics.DescriptiveStatistics(temp);
-                    ctP3High = stats.Mean;
-
-                    phantom1Low.Samples(temp);
-                    stats = new MathNet.Numerics.Statistics.DescriptiveStatistics(temp);
-                    ctP1Low = stats.Mean;
-
-                    phantom2Low.Samples(temp);
-                    stats = new MathNet.Numerics.Statistics.DescriptiveStatistics(temp);
-                    ctP2Low = stats.Mean;
-
-                    phantom3Low.Samples(temp);
-                    stats = new MathNet.Numerics.Statistics.DescriptiveStatistics(temp);
-                    ctP3Low = stats.Mean;
 
                     // se resuelve el sistema lineal para obtener las constantes A,B,C,D,E,F
-                    var matriz = MathNet.Numerics.LinearAlgebra.Matrix<double>.Build.DenseOfArray(new double[,] { { ctP1Low, ctP1High, 1 }, { ctP2Low, ctP2High, 1 }, { ctP3Low, ctP3High, 1 } });
-                    //var matriz2 = MathNet.Numerics.LinearAlgebra.Matrix<double>.Build.DenseOfArray(new double[,] { { ctP1Low, -ctP1High, 1 }, { ctP2Low, -ctP2High, 1 }, { ctP3Low, -ctP3High, 1 } });
+                    var matriz = MathNet.Numerics.LinearAlgebra.Matrix<double>.Build.DenseOfArray(new double[,] { { ctP1Low, -ctP1High, 1 }, { ctP2Low, -ctP2High, 1 }, { ctP3Low, -ctP3High, 1 } });
+                    //var matriz = MathNet.Numerics.LinearAlgebra.Matrix<double>.Build.DenseOfArray(new double[,] { { ctP1Low, -ctP1High, 1 }, { ctP2Low, -ctP2High, 1 }, { ctP3Low, -ctP3High, 1 } });
                     var sol = MathNet.Numerics.LinearAlgebra.Vector<double>.Build.Dense(new double[] { padre.actual.phantom1.densidad, padre.actual.phantom2.densidad, padre.actual.phantom3.densidad });
                     var x = matriz.Solve(sol);
 
@@ -312,7 +289,7 @@ namespace RockStatic
                     double dx;
                     double dy;
 
-                    double tDf, tZf, tZeff, tPef;
+                    double tDf, tZf, tZeff, tPef, pb;
 
                     // dado que se recorre fila a fila, entonces el indice j corresponde al eje Y y el indice k al eje X
                     for (int j = 0; j < padre.actual.datacuboHigh.widthSegCore; j++)
@@ -331,14 +308,16 @@ namespace RockStatic
                                 // la coordenada (j,k) esta dentro del area de interes
                                 // se calculan las propiedades estaticas
 
-                                tDf = A * padre.actual.datacuboLow.dataCube[i].segCore[jkindex] + B * padre.actual.datacuboHigh.dataCube[i].segCore[jkindex] + C;
+                                tDf = A * padre.actual.datacuboLow.dataCube[i].segCore[jkindex] - B * padre.actual.datacuboHigh.dataCube[i].segCore[jkindex] + C;
                                 Df.Add(tDf);
+
+                                pb=(1.0704 * tDf - 0.1883);
 
                                 tZf = D * padre.actual.datacuboLow.dataCube[i].segCore[jkindex] + E * padre.actual.datacuboHigh.dataCube[i].segCore[jkindex] + F;
                                 Zf.Add(tZf);
 
                                 //tZeff = Math.Pow(Math.Pow((tZf / (0.9342 * tDf + 0.1759)), 10), 1 / 36);
-                                tZeff = Math.Pow((tZf / (0.9342 * tDf + 0.1759)), 1/3.6);
+                                tZeff = Math.Pow((tZf / (0.9342 * pb + 0.1759)), 1/3.6);
                                 Zeff.Add(tZeff);
 
                                 tPef = Math.Pow(Math.Pow((tZeff / 10), 36), 0.1);

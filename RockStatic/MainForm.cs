@@ -672,7 +672,7 @@ namespace RockStatic
             for (int i = 0; i < count; i++)
             {
                 high.Add(path + "\\high\\" + i);
-                low.Add(path + "\\high\\" + i);
+                low.Add(path + "\\low\\" + i);
             }
 
             // se crea el proyecto actual

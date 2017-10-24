@@ -538,7 +538,8 @@ namespace RockStatic
                 lstElementos.Items.RemoveAt(ielemento);
                 elementosScreen.RemoveAt(ielemento);
 
-                if (conuntAreas > 1) conuntAreas--;
+                if (conuntAreas >= 1) conuntAreas--;
+                if (countAreas == 0) primero = true;
 
                 numRadio.Value = 0;
 
