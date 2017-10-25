@@ -233,10 +233,10 @@ namespace RockStatic
             this.Pefm = new double[padre.actual.datacuboHigh.dataCube.Count];
 
             double ctP1High, ctP2High, ctP3High, ctP1Low, ctP2Low, ctP3Low;
-            double A, B, C, D, E, F;
+            double A, B, C, DE, D, DF;
 
             List<double> Df, Zf, Zeff, Pef;
-
+            int jkindex = 0;
             int iarea;
 
             // se empieza a recorrer cada slide que se encuentre dentro de las areas de interes
@@ -280,13 +280,15 @@ namespace RockStatic
                     B = x[1];
                     C = x[2];
 
-                    sol = MathNet.Numerics.LinearAlgebra.Vector<double>.Build.Dense(new double[] { padre.actual.phantom1.zeff, padre.actual.phantom2.zeff, padre.actual.phantom3.zeff });
-                    x = matriz.Solve(sol);
+                    var matriz2 = MathNet.Numerics.LinearAlgebra.Matrix<double>.Build.DenseOfArray(new double[,] { { ctP1Low, -ctP1High, -1 }, { ctP2Low, -ctP2High, -1 }, { ctP3Low, -ctP3High, -1 } });
+                    //var matriz = MathNet.Numerics.LinearAlgebra.Matrix<double>.Build.DenseOfArray(new double[,] { { ctP1Low, -ctP1High, 1 }, { ctP2Low, -ctP2High, 1 }, { ctP3Low, -ctP3High, 1 } });
+                    var sol2 = MathNet.Numerics.LinearAlgebra.Vector<double>.Build.Dense(new double[] { Math.Pow(padre.actual.phantom1.zeff,3.6)* padre.actual.phantom1.densidad, Math.Pow(padre.actual.phantom2.zeff, 3.6) * padre.actual.phantom2.densidad, Math.Pow(padre.actual.phantom3.zeff, 3.6) * padre.actual.phantom3.densidad });
+                    var x2 = matriz.Solve(sol);
 
-                    D = x[0];
-                    E = x[1];
-                    F = x[2];
-
+                    DE = x2[0];
+                    D = x2[1];
+                    DF = x2[2];
+                    
                     // se empieza a recorrer cada voxel, en la segmentacion del actual i-slide, se revisa que este dentro del area de interes
 
                     Df = new List<double>();
@@ -295,8 +297,8 @@ namespace RockStatic
                     Pef = new List<double>();
 
 
-                    int jkindex = 0;
-                    double tDf, tZf, tZeff, tPef, pb;
+                    
+                    double tDf, tZf, tZeff, tPef, pb,dens;
 
                     // dado que se recorre fila a fila, entonces el indice j corresponde al eje Y y el indice k al eje X
                         List<double> numerosCTlow = new List<double>();
@@ -319,15 +321,18 @@ namespace RockStatic
                                 //Df.Add(tDf);
 
                                 pb=(1.0704 * tDf - 0.1883);
+                                      dens = 0.9342 * pb + 0.1759;
 
-                                tZf = D * meanCorelow[jkindex] + E * meanCorehigh[jkindex] + F;
+
+
+                                tZf = DE * meanCorelow[jkindex] - D * meanCorehigh[jkindex] - DF;
                                 //Zf.Add(tZf);
 
                                 //tZeff = Math.Pow(Math.Pow((tZf / (0.9342 * tDf + 0.1759)), 10), 1 / 36);
-                                tZeff = Math.Pow((tZf / (0.9342 * pb + 0.1759)), 1/3.6);
+                                tZeff = Math.Pow((tZf / dens), 1/3.6)*10;
                                 //Zeff.Add(tZeff);
 
-                                tPef = Math.Pow(Math.Pow((tZeff / 10), 36), 0.1);
+                                tPef = Math.Pow((tZeff / 10), 3.6);
                                 //Pef.Add(tPef);
                               
                         
@@ -373,7 +378,8 @@ namespace RockStatic
             chart1.ChartAreas[0].AxisX.LabelStyle.Format = "#.##";
             chart2.ChartAreas[0].AxisX.LabelStyle.Format = "#.##";
             // chart3.ChartAreas[0].AxisX.LabelStyle.Format = "#.#######";
-            chart3.ChartAreas[0].AxisX.LabelStyle.Format = "#.##E+0";
+            //chart3.ChartAreas[0].AxisX.LabelStyle.Format = "#.##D+0";
+            chart3.ChartAreas[0].AxisX.LabelStyle.Format = "#.##";
 
             List<double> D = new List<double>();
             List<double> Z = new List<double>();

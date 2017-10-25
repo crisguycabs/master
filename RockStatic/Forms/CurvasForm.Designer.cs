@@ -57,7 +57,7 @@
             this.lblTitulo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(876, 32);
+            this.lblTitulo.Size = new System.Drawing.Size(835, 32);
             this.lblTitulo.TabIndex = 8;
             this.lblTitulo.Text = "BIENVENIDO!";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -127,7 +127,7 @@
             series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
             series1.Name = "Deff";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(250, 674);
+            this.chart1.Size = new System.Drawing.Size(259, 674);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             title1.Font = new System.Drawing.Font("Eras Bold ITC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -161,7 +161,7 @@
             chartArea2.AxisY2.ScrollBar.Enabled = false;
             chartArea2.Name = "ChartArea1";
             this.chart2.ChartAreas.Add(chartArea2);
-            this.chart2.Location = new System.Drawing.Point(259, 19);
+            this.chart2.Location = new System.Drawing.Point(283, 19);
             this.chart2.Name = "chart2";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -205,7 +205,7 @@
             chartArea3.AxisY2.ScrollBar.Enabled = false;
             chartArea3.Name = "ChartArea1";
             this.chart3.ChartAreas.Add(chartArea3);
-            this.chart3.Location = new System.Drawing.Point(518, 19);
+            this.chart3.Location = new System.Drawing.Point(564, 19);
             this.chart3.Name = "chart3";
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -214,7 +214,7 @@
             series3.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
             series3.Name = "Zeff";
             this.chart3.Series.Add(series3);
-            this.chart3.Size = new System.Drawing.Size(355, 674);
+            this.chart3.Size = new System.Drawing.Size(259, 674);
             this.chart3.TabIndex = 13;
             this.chart3.Text = "chart3";
             title3.Font = new System.Drawing.Font("Eras Bold ITC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -230,7 +230,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(876, 707);
+            this.ClientSize = new System.Drawing.Size(835, 707);
             this.ControlBox = false;
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.chart3);
