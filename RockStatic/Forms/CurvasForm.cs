@@ -320,24 +320,20 @@ namespace RockStatic
                         tDf = A * meanCorelow[jkindex]  - B * meanCorehigh[jkindex] + C;
                                 //Df.Add(tDf);
 
-                                pb=(1.0704 * tDf - 0.1883);
-                                      dens = 0.9342 * pb + 0.1759;
-
-
-
-                                tZf = DE * meanCorelow[jkindex] - D * meanCorehigh[jkindex] - DF;
+                                //pb=(1.0704 * tDf - 0.1883);
+                                      //dens = 0.9342 * pb + 0.1759;
+                                tZf = Math.Pow(((DE * meanCorelow[jkindex] - D * meanCorehigh[jkindex] - DF)/ tDf),1/3.6);
                                 //Zf.Add(tZf);
-
                                 //tZeff = Math.Pow(Math.Pow((tZf / (0.9342 * tDf + 0.1759)), 10), 1 / 36);
-                                tZeff = Math.Pow((tZf / dens), 1/3.6)*10;
+                               // tZeff = Math.Pow((tZf / dens), 1/3.6)*10;
                                 //Zeff.Add(tZeff);
 
-                                tPef = Math.Pow((tZeff / 10), 3.6);
+                                tPef = Math.Pow((tZf / 10), 3.6);
                                 //Pef.Add(tPef);
                               
                         
-                    Dfm[jkindex] = pb;
-                    Zfme[jkindex] = tZeff;
+                    Dfm[jkindex] = tDf;
+                    Zfme[jkindex] = tZf;
                     Pefm[jkindex] = tPef;
                     jkindex++;
                     }
