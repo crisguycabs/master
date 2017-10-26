@@ -342,7 +342,6 @@ namespace RockStatic
 
                     // stats = new MathNet.Numerics.Statistics.DescriptiveStatistics(Zeff);
                     // Zfme[i] = stats.Mean;
-
                     //stats = new MathNet.Numerics.Statistics.DescriptiveStatistics(Pef);
                     // Pefm[i] = stats.Mean;
                 
