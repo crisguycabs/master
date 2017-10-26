@@ -283,7 +283,7 @@ namespace RockStatic
                     var matriz2 = MathNet.Numerics.LinearAlgebra.Matrix<double>.Build.DenseOfArray(new double[,] { { ctP1Low, -ctP1High, -1 }, { ctP2Low, -ctP2High, -1 }, { ctP3Low, -ctP3High, -1 } });
                     //var matriz = MathNet.Numerics.LinearAlgebra.Matrix<double>.Build.DenseOfArray(new double[,] { { ctP1Low, -ctP1High, 1 }, { ctP2Low, -ctP2High, 1 }, { ctP3Low, -ctP3High, 1 } });
                     var sol2 = MathNet.Numerics.LinearAlgebra.Vector<double>.Build.Dense(new double[] { Math.Pow(padre.actual.phantom1.zeff,3.6)* padre.actual.phantom1.densidad, Math.Pow(padre.actual.phantom2.zeff, 3.6) * padre.actual.phantom2.densidad, Math.Pow(padre.actual.phantom3.zeff, 3.6) * padre.actual.phantom3.densidad });
-                    var x2 = matriz.Solve(sol);
+                    var x2 = matriz2.Solve(sol2);
 
                     DE = x2[0];
                     D = x2[1];
