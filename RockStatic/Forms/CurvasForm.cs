@@ -273,7 +273,7 @@ namespace RockStatic
                     // se resuelve el sistema lineal para obtener las constantes A,B,C,D,E,F
                     var matriz = MathNet.Numerics.LinearAlgebra.Matrix<double>.Build.DenseOfArray(new double[,] { { ctP1Low, -ctP1High, 1 }, { ctP2Low, -ctP2High, 1 }, { ctP3Low, -ctP3High, 1 } });
                     //var matriz = MathNet.Numerics.LinearAlgebra.Matrix<double>.Build.DenseOfArray(new double[,] { { ctP1Low, -ctP1High, 1 }, { ctP2Low, -ctP2High, 1 }, { ctP3Low, -ctP3High, 1 } });
-                    var sol = MathNet.Numerics.LinearAlgebra.Vector<double>.Build.Dense(new double[] { padre.actual.phantom1.densidad, padre.actual.phantom2.densidad, padre.actual.phantom3.densidad });
+                    var sol = MathNet.Numerics.LinearAlgebra.Vector<double>.Build.Dense(new double[] { (0.9342 * padre.actual.phantom1.densidad + 0.1759), (0.9342 * padre.actual.phantom2.densidad + 0.1759), (0.9342 * padre.actual.phantom3.densidad + 0.1759) });
                     var x = matriz.Solve(sol);
 
                     A = x[0];
@@ -282,7 +282,7 @@ namespace RockStatic
 
                     var matriz2 = MathNet.Numerics.LinearAlgebra.Matrix<double>.Build.DenseOfArray(new double[,] { { ctP1Low, -ctP1High, -1 }, { ctP2Low, -ctP2High, -1 }, { ctP3Low, -ctP3High, -1 } });
                     //var matriz = MathNet.Numerics.LinearAlgebra.Matrix<double>.Build.DenseOfArray(new double[,] { { ctP1Low, -ctP1High, 1 }, { ctP2Low, -ctP2High, 1 }, { ctP3Low, -ctP3High, 1 } });
-                    var sol2 = MathNet.Numerics.LinearAlgebra.Vector<double>.Build.Dense(new double[] { Math.Pow(padre.actual.phantom1.zeff,3.6)* padre.actual.phantom1.densidad, Math.Pow(padre.actual.phantom2.zeff, 3.6) * padre.actual.phantom2.densidad, Math.Pow(padre.actual.phantom3.zeff, 3.6) * padre.actual.phantom3.densidad });
+                    var sol2 = MathNet.Numerics.LinearAlgebra.Vector<double>.Build.Dense(new double[] { Math.Pow(padre.actual.phantom1.zeff, 3.6) * (0.9342 * padre.actual.phantom1.densidad + 0.1759), Math.Pow(padre.actual.phantom2.zeff, 3.6) * (0.9342 * padre.actual.phantom2.densidad + 0.1759), Math.Pow(padre.actual.phantom3.zeff, 3.6) * (0.9342 * padre.actual.phantom3.densidad + 0.1759) });
                     var x2 = matriz2.Solve(sol2);
 
                     DE = x2[0];
@@ -320,7 +320,7 @@ namespace RockStatic
                         tDf = A * meanCorelow[jkindex]  - B * meanCorehigh[jkindex] + C;
                                 //Df.Add(tDf);
 
-                                //pb=(1.0704 * tDf - 0.1883);
+                                pb=(1.0704 * tDf - 0.1883);
                                       //dens = 0.9342 * pb + 0.1759;
                                 tZf = Math.Pow(((DE * meanCorelow[jkindex] - D * meanCorehigh[jkindex] - DF)/ tDf),1/3.6);
                                 //Zf.Add(tZf);
@@ -332,7 +332,7 @@ namespace RockStatic
                                 //Pef.Add(tPef);
                               
                         
-                    Dfm[jkindex] = tDf;
+                    Dfm[jkindex] = pb;
                     Zfme[jkindex] = tZf;
                     Pefm[jkindex] = tPef;
                     jkindex++;
@@ -411,12 +411,12 @@ namespace RockStatic
             if (P.Count < 1) P.Add(0);
 
             // se modifican los intervalos del eje
-            chart1.ChartAreas[0].AxisX.Minimum = chart1.ChartAreas[0].AxisX2.Minimum=D.Min()*0.95;
+            chart1.ChartAreas[0].AxisX.Minimum = chart1.ChartAreas[0].AxisX2.Minimum=D.Min()*0.85;
             chart1.ChartAreas[0].AxisX.Maximum = chart1.ChartAreas[0].AxisX2.Maximum=D.Max()*1.05;
-            chart2.ChartAreas[0].AxisX.Minimum = chart2.ChartAreas[0].AxisX2.Minimum = Z.Min() * 0.95;
+            chart2.ChartAreas[0].AxisX.Minimum = chart2.ChartAreas[0].AxisX2.Minimum = Z.Min() * 0.85;
             chart2.ChartAreas[0].AxisX.Maximum = chart2.ChartAreas[0].AxisX2.Maximum=Z.Max()*1.05;
 
-            chart3.ChartAreas[0].AxisX.Minimum = chart3.ChartAreas[0].AxisX2.Minimum = P.Min() * 0.95;
+            chart3.ChartAreas[0].AxisX.Minimum = chart3.ChartAreas[0].AxisX2.Minimum = P.Min() * 0.85;
             chart3.ChartAreas[0].AxisX.Maximum = chart3.ChartAreas[0].AxisX2.Maximum = P.Max() * 1.05;
 
 
