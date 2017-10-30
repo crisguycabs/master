@@ -84,11 +84,11 @@
             this.tab3D = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tab2D = new System.Windows.Forms.TabPage();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.button1 = new System.Windows.Forms.Button();
             this.pictVer = new System.Windows.Forms.PictureBox();
             this.lblVer = new System.Windows.Forms.Label();
             this.trackVer = new System.Windows.Forms.TrackBar();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictHor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackHor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar)).BeginInit();
@@ -112,9 +112,9 @@
             this.tab3D.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tab2D.SuspendLayout();
-            this.tabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictVer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackVer)).BeginInit();
+            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -504,8 +504,8 @@
             this.rangeHist.Location = new System.Drawing.Point(7, 174);
             this.rangeHist.Name = "rangeHist";
             this.rangeHist.Orientation = Zzzz.ZzzzRangeBar.RangeBarOrientation.horizontal;
-            this.rangeHist.RangeMaximum = 10;
-            this.rangeHist.RangeMinimum = 10;
+            this.rangeHist.RangeMaximum = 50;
+            this.rangeHist.RangeMinimum = 30;
             this.rangeHist.ScaleOrientation = Zzzz.ZzzzRangeBar.TopBottomOrientation.bottom;
             this.rangeHist.Size = new System.Drawing.Size(350, 40);
             this.rangeHist.TabIndex = 21;
@@ -767,28 +767,6 @@
             this.tab2D.Text = "Visualizacion 2D";
             this.tab2D.Click += new System.EventHandler(this.tab2D_Click);
             // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tab2D);
-            this.tabControl1.Controls.Add(this.tab3D);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tabControl1.Location = new System.Drawing.Point(0, 30);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(595, 870);
-            this.tabControl1.TabIndex = 20;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(600, 612);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // pictVer
             // 
             this.pictVer.BackColor = System.Drawing.Color.Black;
@@ -817,6 +795,28 @@
             this.trackVer.Size = new System.Drawing.Size(573, 45);
             this.trackVer.TabIndex = 25;
             this.trackVer.Scroll += new System.EventHandler(this.trackVer_Scroll);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tab2D);
+            this.tabControl1.Controls.Add(this.tab3D);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tabControl1.Location = new System.Drawing.Point(0, 30);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(595, 870);
+            this.tabControl1.TabIndex = 20;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(600, 612);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 27;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // VisualForm
             // 
@@ -870,9 +870,9 @@
             this.groupBox1.PerformLayout();
             this.tab2D.ResumeLayout(false);
             this.tab2D.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictVer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackVer)).EndInit();
+            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

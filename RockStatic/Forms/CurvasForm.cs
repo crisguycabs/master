@@ -27,17 +27,17 @@ namespace RockStatic
         /// <summary>
         /// Variable intermedia para el calculo de propiedades estaticas
         /// </summary>
-        public double[] Dfm;
+        public List<double> Dfm;
 
         /// <summary>
         /// Variable intermedia para el calculo de propiedades estaticas
         /// </summary>
-        public double[] Zfme;
+        public List<double> Zfme;
 
         /// <summary>
         /// Variable intermedia para el calculo de propiedades estaticas
         /// </summary>
-        public double[] Pefm;
+        public List<double> Pefm;
 
         /// <summary>
         /// Variable para el almacenar los valores de Peff
@@ -228,9 +228,9 @@ namespace RockStatic
             }
 
             // se preparan los vectores para densidad y zeff
-            this.Dfm = new double[padre.actual.datacuboHigh.dataCube.Count];
-            this.Zfme = new double[padre.actual.datacuboHigh.dataCube.Count];
-            this.Pefm = new double[padre.actual.datacuboHigh.dataCube.Count];
+            this.Dfm = new List<double>();
+            this.Zfme = new List<double>();
+            this.Pefm = new List<double>();
 
             double ctP1High, ctP2High, ctP3High, ctP1Low, ctP2Low, ctP3Low;
             double A, B, C, DE, D, DF;
@@ -332,9 +332,9 @@ namespace RockStatic
                                 //Pef.Add(tPef);
                               
                         
-                    Dfm[jkindex] = pb;
-                    Zfme[jkindex] = tZf;
-                    Pefm[jkindex] = tPef;
+                    Dfm.Add(pb);
+                    Zfme.Add(tZf);
+                    Pefm.Add(tPef);
                     jkindex++;
                     }
                     // stats = new MathNet.Numerics.Statistics.DescriptiveStatistics(Df);
@@ -348,9 +348,9 @@ namespace RockStatic
                 else
                 {
                     // se llenan los vectores de densidad y zeff con valores -1... si el valor es -1 entonces no se grafica
-                    this.Dfm[i] = -1;
-                    this.Zfme[i] = -1;
-                    this.Pefm[i] = -1;
+                    this.Dfm.Add(-1);
+                    this.Zfme.Add(-1);
+                    this.Pefm.Add(-1);
                 }
             }
 
@@ -383,14 +383,17 @@ namespace RockStatic
 
             PEF = new List<double>();            
             // se cargan los puntos en el chart
-            for (int i = 0; i < padre.actual.datacuboHigh.dataCube.Count;i++)
+            for (int i = 0; i < Dfm.Count; i++)
             {
-                PEF.Add((Math.Pow(Zfme[i] / Convert.ToDouble(10), 3.6)));
+                
                 if (Dfm[i] > -1)
                 {
                     chart1.Series[0].Points.AddXY(Dfm[i], profundidad[i]);
                     D.Add(Dfm[i]);
                 }
+            }
+            for(int i=0;i<Zfme.Count;i++)
+            {
                 if (Zfme[i] > -1)
                 {
                     chart2.Series[0].Points.AddXY(Zfme[i], profundidad[i]);
