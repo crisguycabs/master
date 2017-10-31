@@ -228,12 +228,12 @@ namespace RockVision
 
             // se realiza la segmentacion transversal
             for (int i = 0; i < this.datacubo.dataCube.Count;i++)
-                this.datacubo.dataCube[i].pixelData = this.datacubo.dataCube[i].CropCTCircle(segmentacionX, segmentacionY, radio, this.datacubo.dataCube[i].selector.Columns.Data, this.datacubo.dataCube[i].selector.Rows.Data);
+                this.datacubo.dataCube[i].pixelData = this.datacubo.dataCube[i].CropCTCircleRV(segmentacionX, segmentacionY, radio, this.datacubo.dataCube[i].selector.Columns.Data, this.datacubo.dataCube[i].selector.Rows.Data);
             
             // la segmentacion transversal es TODO el DICOM
             for (int i = 0; i < this.datacubo.dataCube.Count; i++) this.datacubo.dataCube[i].segCore = this.datacubo.dataCube[i].pixelData;
 
-            // hay tantos cortes horizontales como
+            // hay tantos cortes horizontales como filas en la imagen transversal
             this.datacubo.widthSegCore = Convert.ToInt32(this.datacubo.dataCube[0].selector.Rows.Data);
 
             // se crean las segmentaciones horizontales
@@ -247,6 +247,8 @@ namespace RockVision
             segX = segmentacionX;
             segY = segmentacionY;
             segR = radio;
+
+            this.datacubo.diametroSegRV = radio * 2;
 
             // se genera el histograma
             this.datacubo.GenerarHistograma();

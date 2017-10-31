@@ -93,6 +93,11 @@ namespace RockStatic
         public double factorZ = 0;
 
         /// <summary>
+        /// Diametro de la segmentacion en RV
+        /// </summary>
+        public double diametroSegRV = 0;
+
+        /// <summary>
         /// Constructor por defecto
         /// </summary>
         public MyDataCube()
@@ -568,7 +573,7 @@ namespace RockStatic
             // una vez extraida la matriz se mapea a una imagen Bitmap
 
             // se crea la matriz temporal y se inicializa
-            int alto = Convert.ToInt16(dataCube[0].selector.Columns.Data);
+            int alto = Convert.ToInt16(this.diametroSegRV);
             int ancho = dataCube.Count;
             ushort[][] temp = new ushort[alto][];
             for (int i = 0; i < alto; i++)
@@ -611,7 +616,7 @@ namespace RockStatic
             // una vez extraida la matriz se mapea a una imagen Bitmap
 
             // se crea la matriz temporal y se inicializa
-            int alto = Convert.ToInt16(dataCube[0].selector.Rows.Data);
+            int alto = Convert.ToInt16(this.diametroSegRV);
             int ancho = dataCube.Count;
             ushort[][] temp = new ushort[alto][];
             for (int i = 0; i < alto; i++)

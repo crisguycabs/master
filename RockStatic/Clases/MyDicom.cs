@@ -358,6 +358,52 @@ namespace RockStatic
 
             return pixelsCrop;
         }
+
+        /// <summary>
+        /// Toma el List de ushort, que se mapea a una imagen BMP, y recorta los elementos que se mapean un area circular de centro (xcenter,ycenter) de radio rad. Version RV
+        /// </summary>
+        /// <param name="pixels16">List con la información CT en cada pixel</param>
+        /// <param name="xcenter">Coordenadas cartesianas del centro X, con cero en la esquina superior izquierda</param>
+        /// <param name="ycenter">Coordenadas cartesianas del centro Y, con cero en la esquina superior izquierda</param>
+        /// <param name="rad">Radio del circulo a extraer</param>
+        /// <param name="width">Ancho de la imagen original</param>
+        /// <param name="height">Alto de la imagen original</param>
+        public List<ushort> CropCTCircleRV(int xcenter, int ycenter, int rad, int width, int height)
+        {
+            List<ushort> pixelsCrop = new List<ushort>();
+            double dist;
+            double xesquina = xcenter - rad;
+            double yesquina = ycenter - rad;
+            double diametro = 2 * rad;
+
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    if ((i >= xesquina) && (i < (xesquina + diametro)) && (j >= yesquina) && (j < (yesquina + diametro)))
+                    {
+                        // si esta dentro del area cuadrada
+                        double dx = (double)i - xcenter;
+                        double dy = (double)j - ycenter;
+                        dist = Math.Sqrt(dx * dx + dy * dy);
+
+                        if (dist <= Convert.ToDouble(diametro) / 2)
+                        {
+                            // si esta dentro del circulo
+                            int pos = ((j - 1) * width) + i;
+                            pixelsCrop.Add(this.pixelData[pos]);
+                        }
+                        else
+                        {
+                            // si esta dentro del area cuadrado pero fuera del circulo
+                            pixelsCrop.Add(0);
+                        }
+                    }
+                }
+            }
+
+            return pixelsCrop;
+        }
  
         /// <summary>
         /// Crea un Bitmap a partir de la informacion de pixeles, en CT

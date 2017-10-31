@@ -540,6 +540,52 @@ namespace RockVision
         }
 
         /// <summary>
+        /// Para un dicom en especifico (indice) normaliza a escala de grises los valores CT que se encuentran dentro de minimoValor y maximoValor
+        /// </summary>
+        /// <param name="indice"></param>
+        /// <param name="minimoValor"></param>
+        /// <param name="maximoValor"></param>
+        /// <returns></returns>
+        private Bitmap Normalizar(int indice, int widht, int height, int minimoValor, int maximoValor)
+        {
+            Bitmap imagen = new Bitmap(widht, height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+
+            BitmapData bmd = imagen.LockBits(new Rectangle(0, 0, imagen.Width, imagen.Height), System.Drawing.Imaging.ImageLockMode.ReadOnly, imagen.PixelFormat);
+
+            // se normaliza de 0 a 255
+            double range = maximoValor - minimoValor;
+            double color;
+
+            unsafe
+            {
+                int pixelSize = 3;
+                int i, j, j1, i1;
+                byte b;
+
+                for (i = 0; i < bmd.Height; ++i)
+                {
+                    byte* row = (byte*)bmd.Scan0 + (i * bmd.Stride);
+                    i1 = i * bmd.Width;
+
+                    for (j = 0; j < bmd.Width; ++j)
+                    {
+                        color = Convert.ToInt32(Convert.ToDouble(padre.actualV.datacubo.dataCube[indice].pixelData[i * bmd.Width + j] - minimoValor) * ((double)255) / range);
+                        if (color < 0) color = 0;
+                        if (color > 255) color = 255;
+                        b = Convert.ToByte(color);
+                        j1 = j * pixelSize;
+                        row[j1] = b;            // Red
+                        row[j1 + 1] = b;        // Green
+                        row[j1 + 2] = b;        // Blue
+                    }
+                }
+            }
+            imagen.UnlockBits(bmd);
+
+            return imagen;
+        }
+
+        /// <summary>
         /// Normaliza una imagen de un corte horizontal
         /// </summary>
         /// <param name="indice"></param>
@@ -548,7 +594,7 @@ namespace RockVision
         /// <returns></returns>
         private Bitmap NormalizarH(int indice, int minimoValor, int maximoValor)
         {
-            int alto = padre.actualV.datacubo.dataCube[0].selector.Columns.Data;
+            int alto = Convert.ToInt16(this.padre.actualV.datacubo.diametroSegRV);
             int total = padre.actualV.datacubo.coresHorizontal[0].Count;
 
             int ancho = Convert.ToInt32(Convert.ToDouble(total) / Convert.ToDouble(alto));
@@ -593,7 +639,7 @@ namespace RockVision
             return imagen;
              */
 
-        }
+        }        
 
         /// <summary>
         /// Normaliza una imagen de un corte vertical
@@ -604,7 +650,7 @@ namespace RockVision
         /// <returns></returns>
         private Bitmap NormalizarV(int indice, int minimoValor, int maximoValor)
         {
-            int alto = padre.actualV.datacubo.dataCube[0].selector.Rows.Data;
+            int alto = Convert.ToInt16(this.padre.actualV.datacubo.diametroSegRV);
             int total = padre.actualV.datacubo.coresVertical[0].Count;
 
             int ancho = Convert.ToInt32(Convert.ToDouble(total) / Convert.ToDouble(alto));
@@ -798,7 +844,7 @@ namespace RockVision
             trackBar.TickFrequency = Convert.ToInt32(padre.actualV.datacubo.dataCube.Count / 100);
             labelSlide.Text = "Slide " + (trackBar.Value + 1).ToString() + " de " + padre.actualV.datacubo.dataCube.Count;
 
-            pictTrans.Image = Normalizar(0, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+            pictTrans.Image = Normalizar(0, padre.actualV.segR*2,padre.actualV.segR*2,rangeBar.RangeMinimum, rangeBar.RangeMaximum);
 
             trackHor.Minimum = 0;
             trackHor.Maximum = padre.actualV.datacubo.coresHorizontal.Length - 1;
