@@ -30,6 +30,12 @@ namespace RockStatic
         public List<double> Dfm;
 
         /// <summary>
+        /// contador de pertenencia de slide
+        /// </summary>
+        public double[] SlidePertenece;
+        
+
+        /// <summary>
         /// Variable intermedia para el calculo de propiedades estaticas
         /// </summary>
         public List<double> Zfme;
@@ -231,6 +237,7 @@ namespace RockStatic
             this.Dfm = new List<double>();
             this.Zfme = new List<double>();
             this.Pefm = new List<double>();
+            this.SlidePertenece = new double[padre.actual.datacuboHigh.dataCube.Count];
 
             double ctP1High, ctP2High, ctP3High, ctP1Low, ctP2Low, ctP3Low;
             double A, B, C, DE, D, DF;
@@ -336,6 +343,8 @@ namespace RockStatic
                     Zfme.Add(tZf);
                     Pefm.Add(tPef);
                     jkindex++;
+                    SlidePertenece[i] = 1;
+
                     }
                     // stats = new MathNet.Numerics.Statistics.DescriptiveStatistics(Df);
                     // Dfm[i] = stats.Mean;
@@ -453,7 +462,11 @@ namespace RockStatic
 
                 System.IO.StreamWriter sw = new System.IO.StreamWriter(saveFile.FileName + ".txt");
                 sw.WriteLine("PROFUNDIDAD\tDENSIDA\tZEFF\tPEFF");
-                for (int i = 0; i < profundidad.Length; i++) sw.WriteLine(profundidad[i] + "\t" + Dfm[i] + "\t" + Zfme[i] + "\t" + PEF[i]);
+                for (int i = 0; i < profundidad.Length; i++)
+                {
+                    if (SlidePertenece[i] == 1) sw.WriteLine(profundidad[i] + "\t" + Dfm[i] + "\t" + Zfme[i] + "\t" + Pefm[i]);
+                    else sw.WriteLine(profundidad[i] + "\t" + -1 + "\t" + -1 + "\t" + -1);
+                }
                 sw.Close();
 
                 MessageBox.Show("Exportación de resultados exitosa", "Fin de Exportación", MessageBoxButtons.OK, MessageBoxIcon.Information);

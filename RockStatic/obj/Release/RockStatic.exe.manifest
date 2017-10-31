@@ -91,6 +91,30 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Kitware.mummy.Runtime.dll" size="19968">
+      <assemblyIdentity name="Kitware.mummy.Runtime" version="1.0.2.599" publicKeyToken="995C7FB9DB2C1B44" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>wjEF8a/Qz+lFPfFxtPTwGGPPMtNwUAHzP/zx1lL6ZrI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Kitware.VTK.dll" size="7176192">
+      <assemblyIdentity name="Kitware.VTK" version="5.8.0.607" publicKeyToken="995C7FB9DB2C1B44" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>2CszjnbOlxYkm6L7ZOHHpOpnEn8ocQlK70dloj83ceA=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MathNet.Numerics.dll" size="1284096">
       <assemblyIdentity name="MathNet.Numerics" version="3.12.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -103,14 +127,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="RockStatic.exe" size="2278400">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="RockStatic.exe" size="2279424">
       <assemblyIdentity name="RockStatic" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>DJpi7WUit0XdE357cdukg3thJH6tTGiMnY0iL/rmY+g=</dsig:DigestValue>
+        <dsig:DigestValue>26xTdPV1Jlk4HXNhthcAlNvdzicXA4KbTlqOsEBdaPI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

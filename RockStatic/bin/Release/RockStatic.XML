@@ -1014,6 +1014,11 @@
             Variable intermedia para el calculo de propiedades estaticas
             </summary>
         </member>
+        <member name="F:RockStatic.CurvasForm.SlidePertenece">
+            <summary>
+            contador de pertenencia de slide
+            </summary>
+        </member>
         <member name="F:RockStatic.CurvasForm.Zfme">
             <summary>
             Variable intermedia para el calculo de propiedades estaticas
@@ -1122,6 +1127,9 @@
             <summary>
             Referencia al MainForm padre
             </summary>
+        </member>
+        <member name="F:RockStatic.SegmentacionForm.primero">
+            usado para arrancar el letrero
         </member>
         <member name="F:RockStatic.SegmentacionForm.countClick">
             <summary>
