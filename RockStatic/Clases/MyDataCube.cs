@@ -579,7 +579,7 @@ namespace RockStatic
             for (int i = 0; i < alto; i++)
                 temp[i] = new ushort[ancho];
 
-            int ini = indice * Convert.ToInt16(dataCube[0].selector.Columns.Data);
+            int ini = indice * Convert.ToInt16(this.diametroSegRV);
             for (int i = 0; i < alto; i++)
             {
                 for (int j = 0; j < ancho; j++)
@@ -622,12 +622,13 @@ namespace RockStatic
             for (int i = 0; i < alto; i++)
                 temp[i] = new ushort[ancho];
 
-            int ini = indice * Convert.ToInt16(dataCube[0].selector.Rows.Data);
+            int ini = indice;
+            int salto = Convert.ToInt16(this.diametroSegRV);
             for (int i = 0; i < alto; i++)
             {
                 for (int j = 0; j < ancho; j++)
                 {
-                    temp[i][j] = dataCube[j].pixelData[ini + i];
+                    temp[i][j] = dataCube[j].pixelData[ini + i*salto];
                 }
             }
 
@@ -786,7 +787,7 @@ namespace RockStatic
         public void GenerarCortesHorizontalesRV()
         {
             // se genera un List<ushort> por cada pixel de altura de un DICOM
-            coresHorizontal = new List<ushort>[dataCube[0].selector.Rows.Data];
+            coresHorizontal = new List<ushort>[Convert.ToInt16(diametroSegRV)];
 
             for (int i = 0; i < coresHorizontal.Length; i++)
             {
@@ -801,7 +802,7 @@ namespace RockStatic
         public void GenerarCortesVerticalesRV()
         {
             // se genera un List<ushort> por cada pixel de altura de un DICOM
-            coresVertical = new List<ushort>[dataCube[0].selector.Columns.Data];
+            coresVertical = new List<ushort>[Convert.ToInt16(diametroSegRV)];
 
             for (int i = 0; i < coresVertical.Length; i++)
             {

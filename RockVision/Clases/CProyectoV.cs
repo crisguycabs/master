@@ -178,11 +178,18 @@ namespace RockVision
             string[] nfiles = System.IO.Directory.GetFiles(folder);
             this.datacubo = new RockStatic.MyDataCube(nfiles);
 
+            // informacion de la segmentacino
+            this.datacubo.diametroSegRV = segR * 2;
+
+            // se realiza la segmentacion transversal
+            for (int i = 0; i < this.datacubo.dataCube.Count; i++)
+                this.datacubo.dataCube[i].pixelData = this.datacubo.dataCube[i].CropCTCircleRV(segX, segY, segR, this.datacubo.dataCube[i].selector.Columns.Data, this.datacubo.dataCube[i].selector.Rows.Data);
+
             // la segmentacion transversal es TODO el DICOM
             for (int i = 0; i < this.datacubo.dataCube.Count; i++) this.datacubo.dataCube[i].segCore = this.datacubo.dataCube[i].pixelData;
 
-            // hay tantos cortes horizontales como
-            this.datacubo.widthSegCore = Convert.ToInt32(this.datacubo.dataCube[0].selector.Rows.Data);
+            // hay tantos cortes horizontales como filas en la imagen transversal
+            this.datacubo.widthSegCore = Convert.ToInt32(this.datacubo.diametroSegRV);
 
             this.datacubo.GenerarCortesHorizontalesRV();
             this.datacubo.GenerarCortesVerticalesRV();
@@ -233,8 +240,15 @@ namespace RockVision
             // la segmentacion transversal es TODO el DICOM
             for (int i = 0; i < this.datacubo.dataCube.Count; i++) this.datacubo.dataCube[i].segCore = this.datacubo.dataCube[i].pixelData;
 
+            // informacion de la segmentacino
+            segX = segmentacionX;
+            segY = segmentacionY;
+            segR = radio;
+
+            this.datacubo.diametroSegRV = radio * 2;
+
             // hay tantos cortes horizontales como filas en la imagen transversal
-            this.datacubo.widthSegCore = Convert.ToInt32(this.datacubo.dataCube[0].selector.Rows.Data);
+            this.datacubo.widthSegCore = Convert.ToInt32(this.datacubo.diametroSegRV);
 
             // se crean las segmentaciones horizontales
             //System.DateTime ini = System.DateTime.Now;
@@ -242,13 +256,6 @@ namespace RockVision
             this.datacubo.GenerarCortesVerticalesRV();
             //System.DateTime fin = System.DateTime.Now;
             //System.Windows.Forms.MessageBox.Show(((fin - ini).Milliseconds + 1000 * (fin - ini).Seconds).ToString());
-
-            // informacion de la segmentacino
-            segX = segmentacionX;
-            segY = segmentacionY;
-            segR = radio;
-
-            this.datacubo.diametroSegRV = radio * 2;
 
             // se genera el histograma
             this.datacubo.GenerarHistograma();
