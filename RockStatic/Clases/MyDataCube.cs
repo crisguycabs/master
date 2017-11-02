@@ -347,27 +347,57 @@ namespace RockStatic
                 // se empiezan a contar cuantos elementos caben en cada bin
                 bincount = 0;
                 ibin = 1;
+
+
                 for (int j = 0; j < pixelsOrdenados.Count; j++)
                 {
-                    if (pixelsOrdenados[j] <= limites[ibin])
-                        bincount++;
+                    if(ibin==1)
+                    {
+                        if (pixelsOrdenados[j] <= limites[ibin]) bincount++;
+                        else
+                        {
+                            bincount = 1;
+                            ibin++;
+                        }
+
+                    }
                     else
                     {
-                        // se agrega la cuenta al histograma general
-                        histograma[ibin - 1] = histograma[ibin - 1] + bincount;
-
-                        // se agrega la cuenta al histograma del slide
-                        // dataCube[i].histograma[ibin - 1] = bincount;
-
-                        // se reseta el contador
-                        bincount = 0;
-
-                        // se continua con el siguiente bin
-                        ibin++;
-                        if (ibin > nbins)
-                            ibin = nbins;
+                        if (pixelsOrdenados[j] == pixelsOrdenados[j - 1])
+                        {
+                            if (pixelsOrdenados[j] <= limites[ibin - 1] && pixelsOrdenados[j] <= limites[ibin]) bincount++;
+                        }
+                        else
+                        {
+                            ibin++;
+                            bincount = 1;
+                        }
                     }
+                    histograma[ibin - 1] = histograma[ibin - 1] + bincount;
                 }
+
+
+                //for (int j = 0; j < pixelsOrdenados.Count; j++)
+                //{
+                //    if (pixelsOrdenados[j] <= limites[ibin])
+                //        bincount++;
+                //    else
+                //    {
+                //        // se agrega la cuenta al histograma general
+                //        histograma[ibin - 1] = histograma[ibin - 1] + bincount;
+
+                //        // se agrega la cuenta al histograma del slide
+                //        // dataCube[i].histograma[ibin - 1] = bincount;
+
+                //        // se reseta el contador
+                //        bincount = 0;
+
+                //        // se continua con el siguiente bin
+                //        ibin++;
+                //        if (ibin > nbins)
+                //            ibin = nbins;
+                //    }
+                //}
             }
 
             // se calculan las marcas de clase
