@@ -314,13 +314,16 @@ namespace RockStatic
 
             // se instancia el histograma general 
             this.histograma = new uint[nbins];
-            
+
+            //temporal hisograma
+
+
             // se calculan los limites de cada marca de clase
             double step = (double)(((double)(maximo - minimo)) / Convert.ToDouble(nbins));
-            limites = new ushort[nbins+1];
-            double[] tempLimites = new double[nbins+1];
+            limites = new ushort[nbins + 1];
+            double[] tempLimites = new double[nbins + 1];
             limites[0] = minimo;
-            for (int i = 1; i < (nbins+1); i++)
+            for (int i = 1; i < (nbins + 1); i++)
             {
                 tempLimites[i] = tempLimites[i - 1] + step;
                 limites[i] = (ushort)(tempLimites[i]);
@@ -333,6 +336,12 @@ namespace RockStatic
             List<ushort> pixelsOrdenados = new List<ushort>();
             for (int i = 0; i < dataCube.Count; i++)
             {
+
+                // se instancia el histograma general 
+                this.histograma = new uint[nbins];
+
+                //temporal hisograma
+
                 // se instancia el histograma de cada slide
                 dataCube[i].histograma = new uint[nbins];
 
@@ -348,56 +357,55 @@ namespace RockStatic
                 bincount = 0;
                 ibin = 1;
 
-
-                for (int j = 0; j < pixelsOrdenados.Count; j++)
+                // se instancia el histograma general 
+                for (int j = 0; j < pixelsOrdenados.Count - 1; j++)
                 {
-                    if(ibin==1)
+
+
+                    //temporal hisograma
+
+                    while (pixelsOrdenados[j] > limites[ibin])
                     {
-                        if (pixelsOrdenados[j] <= limites[ibin]) bincount++;
+                        ibin++;
+                        bincount = 0;
+                    }
+                    if (ibin == 1)
+                    {
+                        if (pixelsOrdenados[j] <= limites[ibin])
+                        {
+                            bincount++;
+                            histograma[ibin - 1] = histograma[ibin - 1] + bincount;
+                        }
                         else
                         {
                             bincount = 1;
+                            histograma[ibin - 1] = histograma[ibin - 1] + bincount;
                             ibin++;
                         }
 
                     }
                     else
                     {
-                        if (pixelsOrdenados[j] == pixelsOrdenados[j - 1])
+                        if (pixelsOrdenados[j] == pixelsOrdenados[j + 1])
                         {
-                            if (pixelsOrdenados[j] <= limites[ibin - 1] && pixelsOrdenados[j] <= limites[ibin]) bincount++;
+                            if (limites[ibin - 1] <= pixelsOrdenados[j] && pixelsOrdenados[j] <= limites[ibin])
+                            {
+                                bincount++;
+                                histograma[ibin - 1] = histograma[ibin - 1] + bincount;
+                            }
                         }
                         else
                         {
+                            bincount++;
+                            histograma[ibin - 1] = histograma[ibin - 1] + bincount;
                             ibin++;
                             bincount = 1;
                         }
                     }
-                    histograma[ibin - 1] = histograma[ibin - 1] + bincount;
                 }
 
+                dataCube[i].histograma = histograma;
 
-                //for (int j = 0; j < pixelsOrdenados.Count; j++)
-                //{
-                //    if (pixelsOrdenados[j] <= limites[ibin])
-                //        bincount++;
-                //    else
-                //    {
-                //        // se agrega la cuenta al histograma general
-                //        histograma[ibin - 1] = histograma[ibin - 1] + bincount;
-
-                //        // se agrega la cuenta al histograma del slide
-                //        // dataCube[i].histograma[ibin - 1] = bincount;
-
-                //        // se reseta el contador
-                //        bincount = 0;
-
-                //        // se continua con el siguiente bin
-                //        ibin++;
-                //        if (ibin > nbins)
-                //            ibin = nbins;
-                //    }
-                //}
             }
 
             // se calculan las marcas de clase
@@ -407,7 +415,6 @@ namespace RockStatic
                 bins[i] = (ushort)((limites[i] + limites[i + 1]) / 2);
             }
         }
-
         /// <summary>
         /// Se genera un plano de core horizontal que corresponde al indice que se pasa como argumento
         /// </summary>
