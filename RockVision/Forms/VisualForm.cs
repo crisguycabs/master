@@ -1372,8 +1372,20 @@ namespace RockVision
 
             pictTrans.Image = Umbralizar(trackBar.Value);
             pictHor.Image = UmbralizarH(trackHor.Value);
+            pictVer.Image = UmbralizarV(trackVer.Value);
 
-            SetSegmentacion2D();
+            if (dataGrid.Rows.Count < 1)
+            {
+                btnLimpiar.Enabled = btnBorrar.Enabled = false;
+                btnLimpiar_Click(sender, e);
+            }
+            else
+            {
+                SetSegmentacion2D();
+                UmbralizarHistograma();
+            }
+
+            
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -1381,12 +1393,17 @@ namespace RockVision
             // se limpia el datagridview
             dataGrid.Rows.Clear();
 
+            umbral = new List<CUmbralCT>();
+            padre.actualV.colorSeg2D = new List<Color>();
+            padre.actualV.segmentacion2D = new List<int>();
+
             ResetChart();
 
-            pictTrans.Image = Normalizar(trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+            pictTrans.Image = Normalizar(trackBar.Value, Convert.ToInt16(padre.actualV.datacubo.diametroSegRV), Convert.ToInt16(padre.actualV.datacubo.diametroSegRV), rangeBar.RangeMinimum, rangeBar.RangeMaximum);
             pictHor.Image = NormalizarH(trackHor.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+            pictVer.Image = NormalizarV(trackVer.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
 
-            SetSegmentacion2D();
+            this.btnLimpiar.Enabled = false;
         }
 
         private void numHmin_ValueChanged(object sender, EventArgs e)
@@ -1628,6 +1645,8 @@ namespace RockVision
                 pictHor.Image = UmbralizarH(trackHor.Value);
             }
 
+            btnBorrar.Enabled = btnLimpiar.Enabled = true;
+
             SetSegmentacion2D();
         }
 
@@ -1668,6 +1687,12 @@ namespace RockVision
                 pictTrans.Image = Umbralizar(trackBar.Value);
                 pictHor.Image = UmbralizarH(trackHor.Value);
                 pictVer.Image = UmbralizarH(trackVer.Value);
+
+                if (dataGrid.Rows.Count < 1)
+                {
+                    btnLimpiar.Enabled = false;
+                    btnBorrar.Enabled = false;
+                }
             }
 
             if ((tabControl1.SelectedIndex == 1) && (renderCargado))
@@ -1702,6 +1727,12 @@ namespace RockVision
                 pictTrans.Image = Umbralizar(trackBar.Value);
                 pictHor.Image = UmbralizarH(trackHor.Value);
                 pictVer.Image = UmbralizarH(trackVer.Value);
+
+                if (dataGrid.Rows.Count < 1)
+                {
+                    btnLimpiar.Enabled = false;
+                    btnBorrar.Enabled = false;
+                }
             }
 
             if ((tabControl1.SelectedIndex == 1) && (renderCargado))

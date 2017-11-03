@@ -334,11 +334,12 @@ namespace RockStatic
             int ibin = 0;
 
             List<ushort> pixelsOrdenados = new List<ushort>();
+            this.histograma = new uint[nbins];
             for (int i = 0; i < dataCube.Count; i++)
             {
 
                 // se instancia el histograma general 
-                this.histograma = new uint[nbins];
+              
 
                 //temporal hisograma
 
@@ -403,8 +404,6 @@ namespace RockStatic
                         }
                     }
                 }
-
-                dataCube[i].histograma = histograma;
 
             }
 

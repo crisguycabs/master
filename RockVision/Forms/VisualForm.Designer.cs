@@ -88,7 +88,6 @@
             this.lblVer = new System.Windows.Forms.Label();
             this.trackVer = new System.Windows.Forms.TrackBar();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictHor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackHor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar)).BeginInit();
@@ -151,7 +150,7 @@
             this.lblHor.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblHor.Size = new System.Drawing.Size(150, 13);
             this.lblHor.TabIndex = 21;
-            this.lblHor.Text = "Corte 0 de 0";
+            this.lblHor.Text = "Corte Horizontal 0 de 0";
             this.lblHor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // trackHor
@@ -169,7 +168,7 @@
             this.labelSlide.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.labelSlide.Size = new System.Drawing.Size(150, 13);
             this.labelSlide.TabIndex = 21;
-            this.labelSlide.Text = "Slide 0 de 0";
+            this.labelSlide.Text = "Corte Transversal 0 de 0";
             this.labelSlide.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // trackBar
@@ -504,8 +503,8 @@
             this.rangeHist.Location = new System.Drawing.Point(7, 174);
             this.rangeHist.Name = "rangeHist";
             this.rangeHist.Orientation = Zzzz.ZzzzRangeBar.RangeBarOrientation.horizontal;
-            this.rangeHist.RangeMaximum = 50;
-            this.rangeHist.RangeMinimum = 30;
+            this.rangeHist.RangeMaximum = 10;
+            this.rangeHist.RangeMinimum = 10;
             this.rangeHist.ScaleOrientation = Zzzz.ZzzzRangeBar.TopBottomOrientation.bottom;
             this.rangeHist.Size = new System.Drawing.Size(350, 40);
             this.rangeHist.TabIndex = 21;
@@ -785,7 +784,7 @@
             this.lblVer.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblVer.Size = new System.Drawing.Size(150, 13);
             this.lblVer.TabIndex = 26;
-            this.lblVer.Text = "Corte 0 de 0";
+            this.lblVer.Text = "Corte Vertical 0 de 0";
             this.lblVer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // trackVer
@@ -808,16 +807,6 @@
             this.tabControl1.TabIndex = 20;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(600, 612);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // VisualForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -825,7 +814,6 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(972, 900);
             this.ControlBox = false;
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.chkUmbral);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.chkNorm);
@@ -929,7 +917,6 @@
         private System.Windows.Forms.TabPage tab3D;
         private System.Windows.Forms.TabPage tab2D;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictVer;
         private System.Windows.Forms.Label lblVer;
