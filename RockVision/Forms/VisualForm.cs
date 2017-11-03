@@ -236,10 +236,10 @@ namespace RockVision
             // failsafe: no hay valores de umbralizacion
             if (umbral.Count <= 0)
             {
-                return Normalizar(trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                return Normalizar(trackBar.Value, padre.actualV.segR * 2, padre.actualV.segR * 2, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
             }
 
-            Bitmap imagen = new Bitmap(padre.actualV.datacubo.dataCube[indice].selector.Columns.Data, padre.actualV.datacubo.dataCube[indice].selector.Rows.Data, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+            Bitmap imagen = new Bitmap(Convert.ToInt16(padre.actualV.datacubo.diametroSegRV), Convert.ToInt16(padre.actualV.datacubo.diametroSegRV), System.Drawing.Imaging.PixelFormat.Format24bppRgb);
 
             BitmapData bmd = imagen.LockBits(new Rectangle(0, 0, imagen.Width, imagen.Height), System.Drawing.Imaging.ImageLockMode.ReadOnly, imagen.PixelFormat);
 
@@ -326,7 +326,7 @@ namespace RockVision
                 return NormalizarH(trackHor.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
             }
 
-            int alto = padre.actualV.datacubo.dataCube[0].selector.Columns.Data;
+            int alto = Convert.ToInt16(padre.actualV.datacubo.diametroSegRV);
             int total = padre.actualV.datacubo.coresHorizontal[0].Count;
             int ancho = Convert.ToInt32(Convert.ToDouble(total) / Convert.ToDouble(alto));
 
@@ -417,7 +417,7 @@ namespace RockVision
                 return NormalizarV(trackHor.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
             }
 
-            int alto = padre.actualV.datacubo.dataCube[0].selector.Rows.Data;
+            int alto = Convert.ToInt16(padre.actualV.datacubo.diametroSegRV);
             int total = padre.actualV.datacubo.coresHorizontal[0].Count;
             int ancho = Convert.ToInt32(Convert.ToDouble(total) / Convert.ToDouble(alto));
 
@@ -1659,7 +1659,7 @@ namespace RockVision
 
             if (chkNorm.Checked)
             {
-                pictTrans.Image = Normalizar(trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                pictTrans.Image = Normalizar(trackBar.Value, padre.actualV.segR * 2, padre.actualV.segR * 2, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
                 pictHor.Image = NormalizarH(trackHor.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
                 pictVer.Image = NormalizarH(trackVer.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
             }
@@ -1693,7 +1693,7 @@ namespace RockVision
 
             if (chkNorm.Checked)
             {
-                pictTrans.Image = Normalizar(trackBar.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
+                pictTrans.Image = Normalizar(trackBar.Value, padre.actualV.segR * 2, padre.actualV.segR * 2, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
                 pictHor.Image = NormalizarH(trackHor.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
                 pictVer.Image = NormalizarH(trackVer.Value, rangeBar.RangeMinimum, rangeBar.RangeMaximum);
             }
@@ -1835,7 +1835,7 @@ namespace RockVision
             }
             catch
             {
-                MessageBox.Show("error");
+                MessageBox.Show("Error al cargar el control VTK");
             }
             //padre.CloseWaiting();
         }
@@ -2183,10 +2183,10 @@ namespace RockVision
             // se prepara algo de informacion necesaria
 
             factor = 100;
-            double lx = Convert.ToDouble(padre.actualV.datacubo.dataCube[0].selector.Columns.Data) / factor;
-            double ly = Convert.ToDouble(padre.actualV.datacubo.dataCube[0].selector.Rows.Data) / factor;
+            double lx = Convert.ToDouble(padre.actualV.datacubo.diametroSegRV) / factor;
+            double ly = Convert.ToDouble(padre.actualV.datacubo.diametroSegRV) / factor;
 
-            int alto = padre.actualV.datacubo.dataCube[0].selector.Rows.Data;
+            int alto = Convert.ToInt16(padre.actualV.datacubo.diametroSegRV);
             int total = padre.actualV.datacubo.coresVertical[0].Count;
             int ancho = Convert.ToInt32(Convert.ToDouble(total) / Convert.ToDouble(alto));
             double lz = Convert.ToDouble(ancho) / factor;
@@ -2242,15 +2242,15 @@ namespace RockVision
                 // se recorren todos los puntos, o punto de por medio
                 for (int k = 0; k < padre.actualV.datacubo.dataCube.Count; k = k + 4)
                 {
-                    for (int i = 0; i < padre.actualV.datacubo.dataCube[k].selector.Rows.Data; i = i + 3)
+                    for (int i = 0; i < Convert.ToInt16(padre.actualV.datacubo.diametroSegRV); i = i + 3)
                     {
-                        for (int j = 0; j < padre.actualV.datacubo.dataCube[k].selector.Columns.Data; j = j + 3)
+                        for (int j = 0; j < Convert.ToInt16(padre.actualV.datacubo.diametroSegRV); j = j + 3)
                         {
                             // cada pixel se verifica si se grafica o no según la cantidad de puntos seleccionado en el trackbar trckTransparencia
                             probabilidad = rnd.Next(0, 100);
                             if (probabilidad < trckTransparencia.Value)
                             {
-                                color = Convert.ToInt32(Convert.ToDouble(padre.actualV.datacubo.dataCube[k].pixelData[i * padre.actualV.datacubo.dataCube[k].selector.Columns.Data + j] - rangeBar.RangeMinimum) * ((double)255) / range);
+                                color = Convert.ToInt32(Convert.ToDouble(padre.actualV.datacubo.dataCube[k].pixelData[i * Convert.ToInt16(padre.actualV.datacubo.diametroSegRV) + j] - rangeBar.RangeMinimum) * ((double)255) / range);
 
                                 // solo entran los pixeles con un color mayor o igual a 5
                                 if (color >= 5)
@@ -2285,15 +2285,15 @@ namespace RockVision
                 // se recorren todos los puntos, o punto de por medio
                 for (int k = 0; k < padre.actualV.datacubo.dataCube.Count; k = k + 4)
                 {
-                    for (int i = 0; i < padre.actualV.datacubo.dataCube[k].selector.Rows.Data; i = i + 3)
+                    for (int i = 0; i < Convert.ToInt16(padre.actualV.datacubo.diametroSegRV); i = i + 3)
                     {
-                        for (int j = 0; j < padre.actualV.datacubo.dataCube[k].selector.Columns.Data; j = j + 3)
+                        for (int j = 0; j < Convert.ToInt16(padre.actualV.datacubo.diametroSegRV); j = j + 3)
                         {
                             // cada pixel se verifica si se grafica o no según la cantidad de puntos seleccionado en el trackbar trckTransparencia
                             probabilidad = rnd.Next(0, 100);
                             if (probabilidad < trckTransparencia.Value)
                             {
-                                color = Convert.ToInt32(Convert.ToDouble(padre.actualV.datacubo.dataCube[k].pixelData[i * padre.actualV.datacubo.dataCube[k].selector.Columns.Data + j] - rangeBar.RangeMinimum) * ((double)255) / range);
+                                color = Convert.ToInt32(Convert.ToDouble(padre.actualV.datacubo.dataCube[k].pixelData[i * Convert.ToInt16(padre.actualV.datacubo.diametroSegRV) + j] - rangeBar.RangeMinimum) * ((double)255) / range);
 
                                 // solo entran los pixeles con un color mayor o igual a 5
                                 if (color >= 5)
@@ -2309,7 +2309,7 @@ namespace RockVision
                                     int maximo = 0;
                                     for (iseg = 0; iseg < dataGrid.Rows.Count; iseg++)
                                     {
-                                        pixel = padre.actualV.datacubo.dataCube[k].pixelData[i * padre.actualV.datacubo.dataCube[k].selector.Columns.Data + j];
+                                        pixel = padre.actualV.datacubo.dataCube[k].pixelData[i * Convert.ToInt16(padre.actualV.datacubo.diametroSegRV) + j];
                                         minimo = Convert.ToInt32(dataGrid.Rows[iseg].Cells[1].Value);
                                         maximo = Convert.ToInt32(dataGrid.Rows[iseg].Cells[2].Value);
                                         if ((pixel >= minimo) & (pixel <= maximo))
@@ -2319,19 +2319,22 @@ namespace RockVision
                                         }
                                     }
 
-                                    if ((perteneceSegmentacion) & (((bool)(dataGrid.Rows[iseg].Cells[0].Value))==true))
+                                    if (perteneceSegmentacion)
                                     {
-                                        rojo = Convert.ToInt32(dataGrid.Rows[iseg].Cells[3].Style.BackColor.R);
-                                        verde = Convert.ToInt32(dataGrid.Rows[iseg].Cells[3].Style.BackColor.G);
-                                        azul = Convert.ToInt32(dataGrid.Rows[iseg].Cells[3].Style.BackColor.B);
+                                        if (((bool)(dataGrid.Rows[iseg].Cells[0].Value)) == true)
+                                        {
+                                            rojo = Convert.ToInt32(dataGrid.Rows[iseg].Cells[3].Style.BackColor.R);
+                                            verde = Convert.ToInt32(dataGrid.Rows[iseg].Cells[3].Style.BackColor.G);
+                                            azul = Convert.ToInt32(dataGrid.Rows[iseg].Cells[3].Style.BackColor.B);
 
-                                        // coordenadas del pixel
-                                        centerz = (lz / 2) - (Convert.ToDouble(k) * padre.actualV.datacubo.factorZ / factor);
-                                        centerx = (lx / 2) - (Convert.ToDouble(i) / factor);
-                                        centery = (ly / 2) - (Convert.ToDouble(j) / factor);
+                                            // coordenadas del pixel
+                                            centerz = (lz / 2) - (Convert.ToDouble(k) * padre.actualV.datacubo.factorZ / factor);
+                                            centerx = (lx / 2) - (Convert.ToDouble(i) / factor);
+                                            centery = (ly / 2) - (Convert.ToDouble(j) / factor);
 
-                                        points.InsertNextPoint(centerx, centery, centerz);
-                                        colors.InsertNextTuple3(rojo, verde, azul);
+                                            points.InsertNextPoint(centerx, centery, centerz);
+                                            colors.InsertNextTuple3(rojo, verde, azul);
+                                        }
                                     }
                                 }
                             }
