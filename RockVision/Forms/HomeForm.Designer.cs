@@ -42,6 +42,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnNewe = new System.Windows.Forms.Button();
+            this.btnRMN = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -202,12 +203,27 @@
             this.btnNewe.MouseEnter += new System.EventHandler(this.btnNew_MouseEnter);
             this.btnNewe.MouseLeave += new System.EventHandler(this.btnNew_MouseLeave);
             // 
+            // btnRMN
+            // 
+            this.btnRMN.Location = new System.Drawing.Point(439, 93);
+            this.btnRMN.Name = "btnRMN";
+            this.btnRMN.Size = new System.Drawing.Size(75, 23);
+            this.btnRMN.TabIndex = 22;
+            this.btnRMN.Text = "Test RMN";
+            this.btnRMN.UseVisualStyleBackColor = true;
+            this.btnRMN.Click += new System.EventHandler(this.btnRMN_Click);
+            this.btnRMN.Enter += new System.EventHandler(this.btnRMN_Enter);
+            this.btnRMN.Leave += new System.EventHandler(this.btnRMN_Leave);
+            this.btnRMN.MouseEnter += new System.EventHandler(this.btnRMN_MouseEnter);
+            this.btnRMN.MouseLeave += new System.EventHandler(this.btnRMN_MouseLeave);
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(526, 307);
+            this.Controls.Add(this.btnRMN);
             this.Controls.Add(this.btnNewe);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox5);
@@ -254,5 +270,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnNewe;
+        private System.Windows.Forms.Button btnRMN;
     }
 }

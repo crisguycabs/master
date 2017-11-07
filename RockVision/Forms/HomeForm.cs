@@ -107,5 +107,30 @@ namespace RockVision
             // se escogen los dicom que se quieren visualizar
             padre.NuevoProyectoD();
         }
+
+        private void btnRMN_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRMN_Enter(object sender, EventArgs e)
+        {
+            btnRMN.Text = "Haz click!";
+        }
+
+        private void btnRMN_Leave(object sender, EventArgs e)
+        {
+            btnRMN.Text = "Test RMN";
+        }
+
+        private void btnRMN_MouseEnter(object sender, EventArgs e)
+        {
+            btnRMN.Text = "Haz click!";
+        }
+
+        private void btnRMN_MouseLeave(object sender, EventArgs e)
+        {
+            btnRMN.Text = "Test RMN";
+        }
     }
 }
