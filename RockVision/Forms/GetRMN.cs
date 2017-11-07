@@ -42,7 +42,7 @@ namespace RockVision
             OpenFileDialog openFID = new OpenFileDialog();
 
             openFID.Title = "Seleccione el archivo FID a cargar";
-            openFID.Filter="Archivo FID (.dps)|*.dps";
+            openFID.Filter = "Archivo FID (.dps)|*.dps";
 
             if (openFID.ShowDialog() == DialogResult.OK)
             {
@@ -51,12 +51,20 @@ namespace RockVision
             }
         }
 
+        public string CorregirDecimal(string cadena)
+        {
+            string caracter = Convert.ToString(3 / 2);
+            cadena.Replace('.', caracter[1]);
+            cadena.Replace(',', caracter[1]);
+
+        }
+
         private void btnOk_Click(object sender, EventArgs e)
         {
             // primero se leen los archivos de texto plano, y se prepara para recibir un error
 
-            string line="";
-            string[] line2=null;
+            string line = "";
+            string[] line2 = null;
 
             // FID
             try
@@ -65,7 +73,7 @@ namespace RockVision
 
                 line = sr.ReadLine();
                 line2 = line.Split('\t');
-                padre.fid = Convert.ToDouble(line2[2]);
+                padre.fid = Convert.ToDouble(CorregirDecimal(line2[2]));
             }
             catch
             {
@@ -73,7 +81,7 @@ namespace RockVision
                 this.Close();
             }
 
-            
+
             // FIDstd
             try
             {
@@ -81,7 +89,7 @@ namespace RockVision
 
                 line = sr.ReadLine();
                 line2 = line.Split('\t');
-                padre.fidstd = Convert.ToDouble(line2[2]);
+                padre.fidstd = Convert.ToDouble(CorregirDecimal(line2[2]));
             }
             catch
             {
@@ -106,6 +114,11 @@ namespace RockVision
                 rutaFIDstd = openFID.FileName;
                 txtFidstd.Text = rutaFIDstd;
             }
-        }        
+        }
+
+        private void txtFidstd_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
