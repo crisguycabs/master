@@ -90,6 +90,31 @@ namespace RockVision
 
         public ProjectDForm proyectoDForm = null;
 
+        /// <summary>
+        /// vector FID para el calculo de la porosidad usando RMN
+        /// </summary>
+        public double fid = 0;
+
+        /// <summary>
+        /// vector FID estándar para el calculo de la porosidad usando RMN
+        /// </summary>
+        public double fidstd = 0;
+
+        /// <summary>
+        /// Volumen estándar para el calculo de la porosidad usando RMN
+        /// </summary>
+        public double vstd = 0;
+
+        /// <summary>
+        /// Volumen de la roca para el calculo de la porosidad usando RMN
+        /// </summary>
+        public double vroca = 0;
+
+        /// <summary>
+        /// Porosidad estimada usando RMN
+        /// </summary>
+        public double porRMN = 0;
+
         #endregion
 
         public MainForm()
