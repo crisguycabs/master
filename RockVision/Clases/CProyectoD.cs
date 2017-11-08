@@ -416,18 +416,22 @@ namespace RockVision
                 // se realiza la segmentacion transversal y se guardan los dicom en disco en su nueva carpeta
                 for (int i = 0; i < this.datacubos[idc].dataCube.Count; i++)
                 {
-                    this.datacubos[idc].dataCube[i].pixelData = this.datacubos[idc].dataCube[i].CropCTCircleRV(segmentacionX, segmentacionY, radio, this.datacubos[idc].dataCube[i].selector.Columns.Data, this.datacubos[idc].dataCube[i].selector.Rows.Data);
+                    // this.datacubos[idc].dataCube[i].pixelData = this.datacubos[idc].dataCube[i].CropCTCircleRV(segmentacionX, segmentacionY, radio, this.datacubos[idc].dataCube[i].selector.Columns.Data, this.datacubos[idc].dataCube[i].selector.Rows.Data);
                     this.datacubos[idc].dataCube[i].dcm.Write(pathDestino +  "\\" + i.ToString("000000") + ".dcm");
                 }
 
                 // la segmentacion transversal es TODO el DICOM
-                for (int i = 0; i < this.datacubos[idc].dataCube.Count; i++) this.datacubos[idc].dataCube[i].segCore = this.datacubos[idc].dataCube[i].pixelData;
+                // for (int i = 0; i < this.datacubos[idc].dataCube.Count; i++) this.datacubos[idc].dataCube[i].segCore = this.datacubos[idc].dataCube[i].pixelData;
 
                 this.datacubos[idc].diametroSegRV = radio * 2;
 
                 // hay tantos cortes horizontales como
-                this.datacubos[idc].widthSegCore = Convert.ToInt32(this.datacubos[idc].diametroSegRV);           
+                this.datacubos[idc].widthSegCore = Convert.ToInt32(this.datacubos[idc].diametroSegRV);    
 
+                // liberacion de memoria
+                this.datacubos[idc].dataCube = null;
+                GC.Collect();
+       
                 return true;
             }
             catch
