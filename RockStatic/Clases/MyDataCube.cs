@@ -98,6 +98,11 @@ namespace RockStatic
         public double diametroSegRV = 0;
 
         /// <summary>
+        /// Vector de valores medios CT por corte transversal
+        /// </summary>
+        public List<double> meanCT = null;
+
+        /// <summary>
         /// Constructor por defecto
         /// </summary>
         public MyDataCube()

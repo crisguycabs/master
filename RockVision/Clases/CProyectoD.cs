@@ -85,6 +85,16 @@ namespace RockVision
         public bool porosidadEstimada = false;
 
         /// <summary>
+        /// Primer slide a usar
+        /// </summary>
+        public int dcmInicio = 0;
+
+        /// <summary>
+        /// Ultimo slide a usar
+        /// </summary>
+        public int dcmFin = 0;
+
+        /// <summary>
         /// porosidad estimada
         /// </summary>
         public double[] porosidad = null;
@@ -186,6 +196,14 @@ namespace RockVision
                     case "DATACUBOSTEMPORALES":
                         while ((line = sr.ReadLine()) != "") datacubostemporales.Add(line);
                         break;
+
+                    case "INICIO":
+                        this.dcmInicio = Convert.ToInt32(sr.ReadLine());
+                        break;
+
+                    case "FIN":
+                        this.dcmFin = Convert.ToInt32(sr.ReadLine());
+                        break;
                 }
             }
 
@@ -196,53 +214,73 @@ namespace RockVision
             string[] nfiles = System.IO.Directory.GetFiles(folder);
 
             this.datacubos = new List<RockStatic.MyDataCube>();
+            // se cargan TODOS los dicom
             this.datacubos.Add(new RockStatic.MyDataCube(nfiles));
+            // se obtiene el valor medio por dicom
+            this.datacubos[this.datacubos.Count - 1].meanCT = new List<double>();
+            for (int i = dcmInicio; i < dcmFin; i++) this.datacubos[this.datacubos.Count - 1].meanCT.Add(this.datacubos[this.datacubos.Count - 1].dataCube[i].CropMeanCTRVD(segX, segY, segR, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Columns.Data, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Rows.Data));
+            // se borran los dicom
+            this.datacubos[this.datacubos.Count - 1].dataCube = null;
+            GC.Collect();
 
             // se segmentan los DICOM segun la informacion que se cargo desde el archivo
-            for (int i = 0; i < this.datacubos[this.datacubos.Count - 1].dataCube.Count; i++)
-                this.datacubos[this.datacubos.Count - 1].dataCube[i].pixelData = this.datacubos[this.datacubos.Count - 1].dataCube[i].CropCTCircle(segX, segY, segR, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Columns.Data, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Rows.Data);
+            // for (int i = 0; i < this.datacubos[this.datacubos.Count - 1].dataCube.Count; i++)
+            //    this.datacubos[this.datacubos.Count - 1].dataCube[i].pixelData = this.datacubos[this.datacubos.Count - 1].dataCube[i].CropCTCircle(segX, segY, segR, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Columns.Data, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Rows.Data);
 
             // la segmentacion transversal es TODO el DICOM
-            for (int i = 0; i < this.datacubos[this.datacubos.Count - 1].dataCube.Count; i++) this.datacubos[this.datacubos.Count - 1].dataCube[i].segCore = this.datacubos[this.datacubos.Count - 1].dataCube[i].pixelData;
+            // for (int i = 0; i < this.datacubos[this.datacubos.Count - 1].dataCube.Count; i++) this.datacubos[this.datacubos.Count - 1].dataCube[i].segCore = this.datacubos[this.datacubos.Count - 1].dataCube[i].pixelData;
 
             // hay tantos cortes horizontales como
-            this.datacubos[this.datacubos.Count - 1].widthSegCore = Convert.ToInt32(this.datacubos[this.datacubos.Count-1].dataCube[0].selector.Rows.Data);
+            this.datacubos[this.datacubos.Count - 1].widthSegCore = this.segR * 2;
 
 
             // se leen todos y cada uno de los archivos dicom que estan en la carpeta CTRw
             folder = System.IO.Path.GetDirectoryName(path) + "\\CTRw";
             nfiles = System.IO.Directory.GetFiles(folder);
 
+            // se cargan TODOS los dicom
             this.datacubos.Add(new RockStatic.MyDataCube(nfiles));
+            // se obtiene el valor medio por dicom
+            this.datacubos[this.datacubos.Count - 1].meanCT = new List<double>();
+            for (int i = dcmInicio; i < dcmFin; i++) this.datacubos[this.datacubos.Count - 1].meanCT.Add(this.datacubos[this.datacubos.Count - 1].dataCube[i].CropMeanCTRVD(segX, segY, segR, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Columns.Data, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Rows.Data));
+            // se borran los dicom
+            this.datacubos[this.datacubos.Count - 1].dataCube = null;
+            GC.Collect();
 
             // se segmentan los DICOM segun la informacion que se cargo desde el archivo
-            for (int i = 0; i < this.datacubos[this.datacubos.Count - 1].dataCube.Count; i++)
-                this.datacubos[this.datacubos.Count - 1].dataCube[i].pixelData = this.datacubos[this.datacubos.Count - 1].dataCube[i].CropCTCircle(segX, segY, segR, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Columns.Data, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Rows.Data);
+            // for (int i = 0; i < this.datacubos[this.datacubos.Count - 1].dataCube.Count; i++)
+            //    this.datacubos[this.datacubos.Count - 1].dataCube[i].pixelData = this.datacubos[this.datacubos.Count - 1].dataCube[i].CropCTCircle(segX, segY, segR, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Columns.Data, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Rows.Data);
 
             // la segmentacion transversal es TODO el DICOM
-            for (int i = 0; i < this.datacubos[this.datacubos.Count - 1].dataCube.Count; i++) this.datacubos[this.datacubos.Count - 1].dataCube[i].segCore = this.datacubos[this.datacubos.Count - 1].dataCube[i].pixelData;
+            // for (int i = 0; i < this.datacubos[this.datacubos.Count - 1].dataCube.Count; i++) this.datacubos[this.datacubos.Count - 1].dataCube[i].segCore = this.datacubos[this.datacubos.Count - 1].dataCube[i].pixelData;
 
             // hay tantos cortes horizontales como
-            this.datacubos[this.datacubos.Count - 1].widthSegCore = Convert.ToInt32(this.datacubos[this.datacubos.Count - 1].dataCube[0].selector.Rows.Data);
-
-
+            this.datacubos[this.datacubos.Count - 1].widthSegCore = this.segR * 2;
+            
             // se leen todos y cada uno de los archivos dicom que estan en las carpetas temporales
             for(int j=0;j<datacubostemporales.Count;j++)
             {
                 folder = System.IO.Path.GetDirectoryName(path) + "\\" + datacubostemporales[j];
                 nfiles = System.IO.Directory.GetFiles(folder);
 
+                // se cargan TODOS los dicom
                 this.datacubos.Add(new RockStatic.MyDataCube(nfiles));
+                // se obtiene el valor medio por dicom
+                this.datacubos[this.datacubos.Count - 1].meanCT = new List<double>();
+                for (int i = dcmInicio; i < dcmFin; i++) this.datacubos[this.datacubos.Count - 1].meanCT.Add(this.datacubos[this.datacubos.Count - 1].dataCube[i].CropMeanCTRVD(segX, segY, segR, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Columns.Data, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Rows.Data));
+                // se borran los dicom
+                this.datacubos[this.datacubos.Count - 1].dataCube = null;
+                GC.Collect();
 
                 // se segmentan los DICOM segun la informacion que se cargo desde el archivo
-                for (int i = 0; i < this.datacubos[this.datacubos.Count - 1].dataCube.Count; i++)
-                    this.datacubos[this.datacubos.Count - 1].dataCube[i].pixelData = this.datacubos[this.datacubos.Count - 1].dataCube[i].CropCTCircle(segX, segY, segR, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Columns.Data, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Rows.Data);
+                // for (int i = 0; i < this.datacubos[this.datacubos.Count - 1].dataCube.Count; i++)
+                //    this.datacubos[this.datacubos.Count - 1].dataCube[i].pixelData = this.datacubos[this.datacubos.Count - 1].dataCube[i].CropCTCircle(segX, segY, segR, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Columns.Data, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Rows.Data);
                 
                 // la segmentacion transversal es TODO el DICOM
-                for (int i = 0; i < this.datacubos[this.datacubos.Count - 1].dataCube.Count; i++) this.datacubos[this.datacubos.Count - 1].dataCube[i].segCore = this.datacubos[this.datacubos.Count - 1].dataCube[i].pixelData;
+                // for (int i = 0; i < this.datacubos[this.datacubos.Count - 1].dataCube.Count; i++) this.datacubos[this.datacubos.Count - 1].dataCube[i].segCore = this.datacubos[this.datacubos.Count - 1].dataCube[i].pixelData;
 
                 // hay tantos cortes horizontales como
-                this.datacubos[this.datacubos.Count - 1].widthSegCore = Convert.ToInt32(this.datacubos[this.datacubos.Count - 1].dataCube[0].selector.Rows.Data);
+                this.datacubos[this.datacubos.Count - 1].widthSegCore = this.segR * 2;
             }
         }
 
@@ -318,7 +356,10 @@ namespace RockVision
 
             this.valorCTo = valorCTo;
             this.valorCTw = valorCTw;
-            
+
+            this.dcmInicio = iniDicom;
+            this.dcmFin = finDicom;
+
             // se crea el archivo del proyecto, .RVD
             System.IO.StreamWriter sw = new System.IO.StreamWriter(ruta, false);
             sw.Close();
@@ -358,6 +399,12 @@ namespace RockVision
             sw.WriteLine("");
             sw.WriteLine("SEGMENTACIONR");
             sw.WriteLine(segR.ToString());
+            sw.WriteLine("");
+            sw.WriteLine("INICIO");
+            sw.WriteLine(dcmInicio.ToString());
+            sw.WriteLine("");
+            sw.WriteLine("FIN");
+            sw.WriteLine(dcmFin.ToString());
             sw.WriteLine("");
             sw.WriteLine("SEGMENTACION2D");
             for (int i = 0; i < segmentacion2D.Count; i++)
@@ -416,7 +463,7 @@ namespace RockVision
                 // se realiza la segmentacion transversal y se guardan los dicom en disco en su nueva carpeta
                 for (int i = 0; i < this.datacubos[idc].dataCube.Count; i++)
                 {
-                    // this.datacubos[idc].dataCube[i].pixelData = this.datacubos[idc].dataCube[i].CropCTCircleRV(segmentacionX, segmentacionY, radio, this.datacubos[idc].dataCube[i].selector.Columns.Data, this.datacubos[idc].dataCube[i].selector.Rows.Data);
+                    this.datacubos[idc].meanCT.Add(this.datacubos[idc].dataCube[i].CropMeanCTRVD(segmentacionX, segmentacionY, radio, this.datacubos[idc].dataCube[i].selector.Columns.Data, this.datacubos[idc].dataCube[i].selector.Rows.Data));
                     this.datacubos[idc].dataCube[i].dcm.Write(pathDestino +  "\\" + i.ToString("000000") + ".dcm");
                 }
 
