@@ -53,9 +53,9 @@ namespace RockVision
 
         public string CorregirDecimal(string cadena)
         {
-            string caracter = Convert.ToString(3 / 2);
-            cadena.Replace('.', caracter[1]);
-            cadena.Replace(',', caracter[1]);
+            string caracter = Convert.ToString((double)3 / (double)2);
+            cadena = cadena.Replace('.', caracter[1]);
+            cadena = cadena.Replace(',', caracter[1]);
 
             return cadena;
 
