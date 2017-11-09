@@ -417,7 +417,7 @@ namespace RockVision
 
         public double PorosidadRMN(double fid, double vstd, double fidstd, double vroca)
         {
-            double porosidad = (fid * vstd) / (fidstd * vroca);
+            return (fid * vstd) / (fidstd * vroca);
         }
     }
 }

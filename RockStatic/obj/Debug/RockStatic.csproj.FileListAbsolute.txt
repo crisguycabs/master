@@ -309,3 +309,4 @@ C:\Petroleos\origin\RockStatic\obj\Debug\RockStatic.exe.manifest
 C:\Petroleos\origin\RockStatic\obj\Debug\RockStatic.application
 C:\Petroleos\origin\RockStatic\obj\Debug\RockStatic.exe
 C:\Petroleos\origin\RockStatic\obj\Debug\RockStatic.pdb
+C:\Petroleos\origin\RockStatic\obj\Debug\RockStatic.csprojResolveAssemblyReference.cache

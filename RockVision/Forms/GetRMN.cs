@@ -57,6 +57,8 @@ namespace RockVision
             cadena.Replace('.', caracter[1]);
             cadena.Replace(',', caracter[1]);
 
+            return cadena;
+
         }
 
         private void btnOk_Click(object sender, EventArgs e)
