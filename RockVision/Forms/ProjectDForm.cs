@@ -79,13 +79,14 @@ namespace RockVision
             padre.ShowWaiting("Por favor espere mientras RockVision realiza las estimaciones...");
             if(this.padre.actualD.EstimarPorosidad())
             {
+                chartPorosidad.Series[0].Points.Clear();
                 for (int i = 0; i < padre.actualD.porosidad.Length; i++) chartPorosidad.Series[0].Points.AddXY(i + 1, padre.actualD.porosidad[i]);
 
-                chartPorosidad.ChartAreas[0].AxisY.Minimum = padre.actualD.porosidad.Min() - 0.1;
-                chartPorosidad.ChartAreas[0].AxisY.Maximum = padre.actualD.porosidad.Max() + 0.1;
+                chartPorosidad.ChartAreas[0].AxisY.Minimum = padre.actualD.porosidad.Min() - 1;
+                chartPorosidad.ChartAreas[0].AxisY.Maximum = padre.actualD.porosidad.Max() + 1;
 
                 if (chartPorosidad.ChartAreas[0].AxisY.Minimum < 0) chartPorosidad.ChartAreas[0].AxisY.Minimum = 0;
-                if (chartPorosidad.ChartAreas[0].AxisY.Maximum > 1) chartPorosidad.ChartAreas[0].AxisY.Maximum = 1;
+                if (chartPorosidad.ChartAreas[0].AxisY.Maximum > 100) chartPorosidad.ChartAreas[0].AxisY.Maximum = 100;
 
                 chartPorosidad.ChartAreas[0].AxisX.LabelStyle.Format = "#.##";
                 chartPorosidad.ChartAreas[0].AxisY.LabelStyle.Format = "#.##";
@@ -104,36 +105,9 @@ namespace RockVision
 
         private void btnSo_Click(object sender, EventArgs e)
         {
-            padre.ShowWaiting("Por favor espere mientras RockVision realiza las estimaciones...");
-            if (!padre.actualD.porosidadEstimada)
-            {
-                if (this.padre.actualD.EstimarPorosidad())
-                {               
-                }
-                else
-                {
-                    padre.CloseWaiting();
-                    MessageBox.Show("No fue posible estimar la porosidad usando los cubos de datos seleccionados", "Error al estimar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
-            
             if (padre.actualD.EstimarSo())
             {
-                for (int i = 0; i < padre.actualD.mSato.Count; i++)
-                {
-                    chartSo.Series.Add("t" + (i + 1).ToString());
-                    chartSo.Series[chartSo.Series.Count - 1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-
-                    for (int j = 0; j < padre.actualD.mSato[i].Length; j++)
-                    {
-                        chartSo.Series[chartSo.Series.Count - 1].Points.AddXY(j + 1, padre.actualD.mSato[i][j]);
-                    }
-
-                    tabControl.SelectedIndex = 1;
-
-                    padre.CloseWaiting();
-                }
+                
             }
             else
             {
@@ -146,36 +120,9 @@ namespace RockVision
 
         private void btnSw_Click(object sender, EventArgs e)
         {
-            padre.ShowWaiting("Por favor espere mientras RockVision realiza las estimaciones...");
-            if (!padre.actualD.porosidadEstimada)
-            {
-                if (this.padre.actualD.EstimarPorosidad())
-                {
-                }
-                else
-                {
-                    padre.CloseWaiting();
-                    MessageBox.Show("No fue posible estimar la porosidad usando los cubos de datos seleccionados", "Error al estimar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
-
             if (padre.actualD.EstimarSw())
             {
-                for (int i = 0; i < padre.actualD.mSatw.Count; i++)
-                {
-                    chartSw.Series.Add("t" + (i + 1).ToString());
-                    chartSw.Series[chartSw.Series.Count - 1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-
-                    for (int j = 0; j < padre.actualD.mSatw[i].Length; j++)
-                    {
-                        chartSw.Series[chartSw.Series.Count - 1].Points.AddXY(j + 1, padre.actualD.mSatw[i][j]);
-                    }
-
-                    tabControl.SelectedIndex = 2;
-
-                    padre.CloseWaiting();
-                }
+                
             }
             else
             {
@@ -216,20 +163,7 @@ namespace RockVision
 
             if (padre.actualD.EstimarSo())
             {
-                for (int i = 0; i < padre.actualD.mSato.Count; i++)
-                {
-                    chartSo.Series.Add("t" + (i + 1).ToString());
-                    chartSo.Series[chartSo.Series.Count - 1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-
-                    for (int j = 0; j < padre.actualD.mSato[i].Length; j++)
-                    {
-                        chartSo.Series[chartSo.Series.Count - 1].Points.AddXY(j + 1, padre.actualD.mSato[i][j]);
-                    }
-
-                    tabControl.SelectedIndex = 1;
-
-                    padre.CloseWaiting();
-                }
+                
             }
             else
             {
