@@ -40,6 +40,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnOk = new System.Windows.Forms.Button();
+            this.txtPorosidad = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numVstd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numVroca)).BeginInit();
             this.SuspendLayout();
@@ -98,7 +100,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(343, 124);
+            this.btnCancel.Location = new System.Drawing.Point(380, 158);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 3;
@@ -139,22 +141,22 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 76);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(116, 13);
+            this.label3.Size = new System.Drawing.Size(114, 13);
             this.label3.TabIndex = 1;
-            this.label3.Text = "Volumen estándar (??):";
+            this.label3.Text = "Volumen estándar (ml):";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(12, 97);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(122, 13);
+            this.label4.Size = new System.Drawing.Size(120, 13);
             this.label4.TabIndex = 1;
-            this.label4.Text = "Volumen de la roca (??):";
+            this.label4.Text = "Volumen de la roca (ml):";
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(262, 124);
+            this.btnOk.Location = new System.Drawing.Point(299, 158);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 3;
@@ -162,11 +164,30 @@
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
+            // txtPorosidad
+            // 
+            this.txtPorosidad.Location = new System.Drawing.Point(120, 132);
+            this.txtPorosidad.Name = "txtPorosidad";
+            this.txtPorosidad.Size = new System.Drawing.Size(120, 20);
+            this.txtPorosidad.TabIndex = 6;
+            this.txtPorosidad.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 135);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(65, 13);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Porosidad %";
+            // 
             // GetRMN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(428, 157);
+            this.ClientSize = new System.Drawing.Size(465, 196);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txtPorosidad);
             this.Controls.Add(this.numVroca);
             this.Controls.Add(this.numVstd);
             this.Controls.Add(this.btnFIDstd);
@@ -202,5 +223,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnOk;
+        private System.Windows.Forms.TextBox txtPorosidad;
+        private System.Windows.Forms.Label label6;
     }
 }

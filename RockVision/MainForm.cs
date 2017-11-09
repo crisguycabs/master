@@ -414,5 +414,10 @@ namespace RockVision
             this.abiertoVisualForm = false;
             visualForm = null;
         }
+
+        public double PorosidadRMN(double fid, double vstd, double fidstd, double vroca)
+        {
+            double porosidad = (fid * vstd) / (fidstd * vroca);
+        }
     }
 }

@@ -100,6 +100,11 @@ namespace RockVision
             padre.vstd = Convert.ToDouble(numVstd.Value);
 
             padre.vroca = Convert.ToDouble(numVroca.Value);
+
+            padre.porRMN = padre.PorosidadRMN(padre.fid, padre.vstd, padre.fidstd, padre.vroca);
+
+            txtPorosidad.Text = Convert.ToString(padre.porRMN);
+
         }
 
         private void btnFIDstd_Click(object sender, EventArgs e)
@@ -117,6 +122,11 @@ namespace RockVision
         }
 
         private void txtFidstd_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
