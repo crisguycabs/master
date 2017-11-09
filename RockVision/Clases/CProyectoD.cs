@@ -459,6 +459,7 @@ namespace RockVision
                 datacubos.Add(new RockStatic.MyDataCube(elementos2));
 
                 int idc = datacubos.Count-1;
+                this.datacubos[idc].meanCT = new List<double>();
 
                 // se realiza la segmentacion transversal y se guardan los dicom en disco en su nueva carpeta
                 for (int i = 0; i < this.datacubos[idc].dataCube.Count; i++)
