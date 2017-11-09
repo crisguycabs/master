@@ -95,6 +95,11 @@ namespace RockVision
         public bool satWestimada = false;
 
         /// <summary>
+        /// indica si ya es estimo, o no, el frente de avance
+        /// </summary>
+        public bool frenteEstimado = false;
+
+        /// <summary>
         /// Primer slide a usar
         /// </summary>
         public int dcmInicio = 0;
@@ -118,6 +123,8 @@ namespace RockVision
         /// saturacion estimada de agua al interior de la roca
         /// </summary>
         public double[,] satW = null;
+
+        public double[,] frente = null;
 
         public bool Soestimada = false;
 
@@ -581,6 +588,33 @@ namespace RockVision
                 }
 
                 this.porosidadEstimada = true;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Calcula la derivada ESPACIAL de la saturacion de crudo
+        /// </summary>
+        /// <returns></returns>
+        public bool EstimarFrenteAvance()
+        {
+            try
+            {
+                this.frente = new double[datacubos.Count - 2, datacubos[0].meanCT.Count-1];
+
+                for (int j = 0; j < datacubos.Count - 2; j++)
+                {
+                    for (int i = 0; i < (datacubos[0].meanCT.Count-1); i++)
+                    {
+                        frente[j, i] = Math.Abs(satO[j, i + 1] - satO[j, i]);
+                    }
+                }
+
+                this.frenteEstimado = true;
                 return true;
             }
             catch

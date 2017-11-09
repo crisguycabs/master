@@ -172,5 +172,31 @@ namespace RockVision
                 return;
             }
         }
+
+        private void btnFrente_Click(object sender, EventArgs e)
+        {
+            padre.ShowWaiting("Por favor espere mientras RockVision realiza las estimaciones...");
+            if (!padre.actualD.satOestimada)
+            {
+                if (!this.padre.actualD.EstimarSo())
+                {
+                    padre.CloseWaiting();
+                    MessageBox.Show("No fue posible estimar la saturacion de crudo usando los cubos de datos seleccionados", "Error al estimar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            if (padre.actualD.EstimarFrenteAvance())
+            {
+                MessageBox.Show("Frente estimado");
+            }
+            else
+            {
+                padre.CloseWaiting();
+                MessageBox.Show("No fue posible estimar la saturacion de crudo usando los cubos de datos seleccionados", "Error al estimar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            padre.CloseWaiting();
+        }
     }
 }

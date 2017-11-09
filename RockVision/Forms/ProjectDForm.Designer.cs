@@ -203,6 +203,7 @@
             this.btnFrente.TabIndex = 30;
             this.btnFrente.Text = "Estimar";
             this.btnFrente.UseVisualStyleBackColor = false;
+            this.btnFrente.Click += new System.EventHandler(this.btnFrente_Click);
             // 
             // btnVo
             // 
