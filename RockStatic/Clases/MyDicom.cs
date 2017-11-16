@@ -414,7 +414,7 @@ namespace RockStatic
         /// <param name="rad">Radio del circulo a extraer</param>
         /// <param name="width">Ancho de la imagen original</param>
         /// <param name="height">Alto de la imagen original</param>
-        public double CropMeanCTRVD(int xcenter, int ycenter, int rad, int width, int height)
+        public double[] CropMeanCTRVD(int xcenter, int ycenter, int rad, int width, int height)
         {
             double dist;
             double xesquina = xcenter - rad;
@@ -446,7 +446,11 @@ namespace RockStatic
                 }
             }
 
-            return acumulador/count;
+            double[] resultado=new double[2];
+            resultado[0]=acumulador/count;  // CT promedio
+            resultado[1]=count;             // numero de pixeles en la segmentacion
+
+            return resultado;
         }
  
         /// <summary>

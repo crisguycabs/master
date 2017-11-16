@@ -148,7 +148,7 @@ namespace RockVision
                 }
             }
 
-            if (!padre.actualD.Soestimada)
+            if (!padre.actualD.satOestimada)
             {
                 if (this.padre.actualD.EstimarSo())
                 {
@@ -161,16 +161,30 @@ namespace RockVision
                 }
             }
 
-            if (padre.actualD.EstimarSo())
+            if (this.padre.actualD.EstimarVo())
             {
-                
+                chartVo.Series[0].Points.Clear();
+                for (int i = 0; i < padre.actualD.vo.Count; i++) chartVo.Series[0].Points.AddXY(i + 1, padre.actualD.vo[i]);
+
+                chartVo.ChartAreas[0].AxisY.Minimum = padre.actualD.vo.Min() - 1;
+                chartVo.ChartAreas[0].AxisY.Maximum = padre.actualD.vo.Max() + 1;
+
+                if (chartVo.ChartAreas[0].AxisY.Minimum < 0) chartVo.ChartAreas[0].AxisY.Minimum = 0;
+                if (chartVo.ChartAreas[0].AxisY.Maximum > 100) chartVo.ChartAreas[0].AxisY.Maximum = 100;
+
+                chartVo.ChartAreas[0].AxisX.LabelStyle.Format = "#.##";
+                chartVo.ChartAreas[0].AxisY.LabelStyle.Format = "#.##";
+
+                tabControl.SelectedIndex = 4;
+
+                padre.CloseWaiting();
             }
             else
             {
                 padre.CloseWaiting();
-                MessageBox.Show("No fue posible estimar la saturacion de crudo usando los cubos de datos seleccionados", "Error al estimar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show("No fue posible estimar el volumen de crudo atrapado usando los cubos de datos seleccionados", "Error al estimar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
         }
 
         private void btnFrente_Click(object sender, EventArgs e)

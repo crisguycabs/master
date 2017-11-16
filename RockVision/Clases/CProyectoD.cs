@@ -110,6 +110,16 @@ namespace RockVision
         public int dcmFin = 0;
 
         /// <summary>
+        /// indica si ya se estimo, o no, el volumen de crudo en cada instante de tiempo
+        /// </summary>
+        public bool voestimado = false;
+
+        /// <summary>
+        /// indica si ya se estimo, o no, el volumen de crudo en cada instante de tiempo
+        /// </summary>
+        public bool vwestimado = false;
+
+        /// <summary>
         /// porosidad estimada
         /// </summary>
         public double[] porosidad = null;
@@ -118,6 +128,26 @@ namespace RockVision
         /// saturacion estimada de crudo al interior de la roca
         /// </summary>
         public double[,] satO = null;
+
+        /// <summary>
+        /// Espaciado en X del voxel
+        /// </summary>
+        public double voxelX = 0;
+
+        /// <summary>
+        /// Espaciado en Y del voxel
+        /// </summary>
+        public double voxelY = 0;
+
+        /// <summary>
+        /// Espaciado en Z del voxel
+        /// </summary>
+        public double voxelZ = 0;
+
+        /// <summary>
+        /// Numero de pixeles en el área segmentada
+        /// </summary>
+        public double nVoxel = 0;
 
         /// <summary>
         /// saturacion estimada de agua al interior de la roca
@@ -133,6 +163,10 @@ namespace RockVision
         public bool Voestimada = false;
 
         public bool Vwestimada = false;
+
+        public List<double> vo = null;
+
+        public List<double> vw = null;
 
         #endregion
 
@@ -204,6 +238,22 @@ namespace RockVision
                         this.valorCTw = Convert.ToDouble(sr.ReadLine());
                         break;
 
+                    case "VoxelX":
+                        this.voxelX = Convert.ToDouble(sr.ReadLine());
+                        break;
+
+                    case "VoxelY":
+                        this.voxelY = Convert.ToDouble(sr.ReadLine());
+                        break;
+
+                    case "VoxelZ":
+                        this.voxelZ = Convert.ToDouble(sr.ReadLine());
+                        break;
+
+                    case "Nvoxel":
+                        this.nVoxel = Convert.ToDouble(sr.ReadLine());
+                        break;
+
                     case "DATACUBOSTEMPORALES":
                         while ((line = sr.ReadLine()) != "") datacubostemporales.Add(line);
                         break;
@@ -229,7 +279,15 @@ namespace RockVision
             this.datacubos.Add(new RockStatic.MyDataCube(nfiles));
             // se obtiene el valor medio por dicom
             this.datacubos[this.datacubos.Count - 1].meanCT = new List<double>();
-            for (int i = dcmInicio; i <= dcmFin; i++) this.datacubos[this.datacubos.Count - 1].meanCT.Add(this.datacubos[this.datacubos.Count - 1].dataCube[i].CropMeanCTRVD(segX, segY, segR, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Columns.Data, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Rows.Data));
+
+            double[] resultados = new double[2];
+            for (int i = dcmInicio; i <= dcmFin; i++)
+            {
+                resultados = this.datacubos[this.datacubos.Count - 1].dataCube[i].CropMeanCTRVD(segX, segY, segR, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Columns.Data, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Rows.Data);
+                this.datacubos[this.datacubos.Count - 1].meanCT.Add(resultados[0]);
+            }
+            this.nVoxel = resultados[1];
+
             // se borran los dicom
             this.datacubos[this.datacubos.Count - 1].dataCube = null;
             GC.Collect();
@@ -253,7 +311,11 @@ namespace RockVision
             this.datacubos.Add(new RockStatic.MyDataCube(nfiles));
             // se obtiene el valor medio por dicom
             this.datacubos[this.datacubos.Count - 1].meanCT = new List<double>();
-            for (int i = dcmInicio; i <= dcmFin; i++) this.datacubos[this.datacubos.Count - 1].meanCT.Add(this.datacubos[this.datacubos.Count - 1].dataCube[i].CropMeanCTRVD(segX, segY, segR, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Columns.Data, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Rows.Data));
+            for (int i = dcmInicio; i <= dcmFin; i++)
+            {
+                resultados = this.datacubos[this.datacubos.Count - 1].dataCube[i].CropMeanCTRVD(segX, segY, segR, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Columns.Data, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Rows.Data);
+                this.datacubos[this.datacubos.Count - 1].meanCT.Add(resultados[0]);
+            }
             // se borran los dicom
             this.datacubos[this.datacubos.Count - 1].dataCube = null;
             GC.Collect();
@@ -278,7 +340,11 @@ namespace RockVision
                 this.datacubos.Add(new RockStatic.MyDataCube(nfiles));
                 // se obtiene el valor medio por dicom
                 this.datacubos[this.datacubos.Count - 1].meanCT = new List<double>();
-                for (int i = dcmInicio; i <= dcmFin; i++) this.datacubos[this.datacubos.Count - 1].meanCT.Add(this.datacubos[this.datacubos.Count - 1].dataCube[i].CropMeanCTRVD(segX, segY, segR, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Columns.Data, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Rows.Data));
+                for (int i = dcmInicio; i <= dcmFin; i++) 
+                {
+                    resultados = this.datacubos[this.datacubos.Count - 1].dataCube[i].CropMeanCTRVD(segX, segY, segR, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Columns.Data, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Rows.Data);
+                    this.datacubos[this.datacubos.Count - 1].meanCT.Add(resultados[0]);
+                }
                 // se borran los dicom
                 this.datacubos[this.datacubos.Count - 1].dataCube = null;
                 GC.Collect();
@@ -324,7 +390,7 @@ namespace RockVision
             System.IO.Directory.CreateDirectory(folder);
 
             // se instancia la lista de datacubos
-            this.datacubos = new List<RockStatic.MyDataCube>();
+            this.datacubos = new List<RockStatic.MyDataCube>();            
 
             // se crea la carpeta de los dicom saturados de crudo
             string rutaDicoms = folder + "\\CTRo";
@@ -335,6 +401,8 @@ namespace RockVision
                 System.Windows.Forms.MessageBox.Show("No se pudo crear la carpeta con los DICOMS CTRo", "Error de escritura en disco", System.Windows.Forms.MessageBoxButtons.OK, MessageBoxIcon.Error);
                 System.Windows.Forms.Application.Exit();
             }
+
+            
 
             // se crea la carpeta de los dicom saturados de agua
             rutaDicoms = folder + "\\CTRw";
@@ -439,6 +507,18 @@ namespace RockVision
             sw.WriteLine("CTw");
             sw.WriteLine(this.valorCTw.ToString("#.000"));
             sw.WriteLine("");
+            sw.WriteLine("VoxelX");
+            sw.WriteLine(this.voxelX.ToString("#.000"));
+            sw.WriteLine("");
+            sw.WriteLine("VoxelY");
+            sw.WriteLine(this.voxelY.ToString("#.000"));
+            sw.WriteLine("");
+            sw.WriteLine("VoxelZ");
+            sw.WriteLine(this.voxelZ.ToString("#.000"));
+            sw.WriteLine("");
+            sw.WriteLine("Nvoxel");
+            sw.WriteLine(this.nVoxel.ToString("#.000"));
+            sw.WriteLine("");
             sw.WriteLine("DATACUBOSTEMPORALES");
             for (int i = 2; i < datacubos.Count; i++)
                 sw.WriteLine("T" + (i - 1).ToString());
@@ -472,17 +552,25 @@ namespace RockVision
                 int idc = datacubos.Count-1;
                 this.datacubos[idc].meanCT = new List<double>();
 
+                this.voxelX = datacubos[idc].dataCube[0].selector.PixelSpacing.Data_[0];
+                this.voxelY = datacubos[idc].dataCube[0].selector.PixelSpacing.Data_[1];
+                this.voxelZ = datacubos[idc].dataCube[0].selector.SliceThickness.Data;
+
                 // se envian todos los dicom a disco duro
                 for (int i = 0; i < this.datacubos[idc].dataCube.Count; i++)
                 {
                     this.datacubos[idc].dataCube[i].dcm.Write(pathDestino +  "\\" + i.ToString("000000") + ".dcm");
                 }
 
+                double[] resultado = new double[2];
+
                 // se segmentan solo los dicom que se marcaron como requeridos
                 for (int i = iniDicom; i <= finDicom; i++)
                 {
-                    this.datacubos[idc].meanCT.Add(this.datacubos[idc].dataCube[i].CropMeanCTRVD(segmentacionX, segmentacionY, radio, this.datacubos[idc].dataCube[i].selector.Columns.Data, this.datacubos[idc].dataCube[i].selector.Rows.Data));                    
+                    resultado=this.datacubos[idc].dataCube[i].CropMeanCTRVD(segmentacionX, segmentacionY, radio, this.datacubos[idc].dataCube[i].selector.Columns.Data, this.datacubos[idc].dataCube[i].selector.Rows.Data);
+                    this.datacubos[idc].meanCT.Add(resultado[0]);                    
                 }
+                this.nVoxel = resultado[1];
 
                 // la segmentacion transversal es TODO el DICOM
                 // for (int i = 0; i < this.datacubos[idc].dataCube.Count; i++) this.datacubos[idc].dataCube[i].segCore = this.datacubos[idc].dataCube[i].pixelData;
@@ -558,20 +646,6 @@ namespace RockVision
             }
         }
 
-        public bool EstimarVo()
-        {
-            try
-            {
-                
-
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
         /// <summary>
         /// Estima la porosidad efectiva usando los datacubos saturados de crudo y de agua
         /// </summary>
@@ -615,6 +689,64 @@ namespace RockVision
                 }
 
                 this.frenteEstimado = true;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool EstimarVo()
+        {
+            try
+            {
+                double volSlide = this.voxelX * this.voxelY * this.voxelZ * this.nVoxel;
+                double vporSlide = 0;
+                this.vo = new List<double>();
+                
+                for (int j = 0; j < (datacubos.Count-2); j++)
+                {
+                    double temp = 0;
+                    for (int i = 0; i < datacubos[0].meanCT.Count; i++)
+                    {
+                        vporSlide = volSlide * porosidad[i];
+
+                        temp += vporSlide * satO[j, i];
+                    }
+                    this.vo.Add(temp);
+                }
+
+                this.voestimado = true;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool EstimarVw()
+        {
+            try
+            {
+                double volSlide = this.voxelX * this.voxelY * this.voxelZ * this.nVoxel;
+                double vporSlide = 0;
+                this.vw = new List<double>();
+
+                for (int j = 2; j < datacubos.Count; j++)
+                {
+                    double temp = 0;
+                    for (int i = 0; i < datacubos[0].meanCT.Count; i++)
+                    {
+                        vporSlide = volSlide * porosidad[i];
+
+                        temp += vporSlide * satW[j, i];
+                    }
+                    this.vo.Add(temp);
+                }
+
+                this.vwestimado = true;
                 return true;
             }
             catch
