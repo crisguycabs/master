@@ -734,7 +734,7 @@ namespace RockVision
                 double vporSlide = 0;
                 this.vw = new List<double>();
 
-                for (int j = 2; j < datacubos.Count; j++)
+                for (int j = 0; j < (datacubos.Count - 2); j++)
                 {
                     double temp = 0;
                     for (int i = 0; i < datacubos[0].meanCT.Count; i++)
@@ -743,7 +743,7 @@ namespace RockVision
 
                         temp += vporSlide * satW[j, i];
                     }
-                    this.vo.Add(temp);
+                    this.vw.Add(temp);
                 }
 
                 this.vwestimado = true;

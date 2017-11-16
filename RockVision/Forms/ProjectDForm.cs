@@ -169,8 +169,8 @@ namespace RockVision
                 chartVo.ChartAreas[0].AxisY.Minimum = padre.actualD.vo.Min() - 1;
                 chartVo.ChartAreas[0].AxisY.Maximum = padre.actualD.vo.Max() + 1;
 
-                if (chartVo.ChartAreas[0].AxisY.Minimum < 0) chartVo.ChartAreas[0].AxisY.Minimum = 0;
-                if (chartVo.ChartAreas[0].AxisY.Maximum > 100) chartVo.ChartAreas[0].AxisY.Maximum = 100;
+                //if (chartVo.ChartAreas[0].AxisY.Minimum < 0) chartVo.ChartAreas[0].AxisY.Minimum = padre.actualD.vo.Min() - 1;
+                //if (chartVo.ChartAreas[0].AxisY.Maximum > 100) chartVo.ChartAreas[0].AxisY.Maximum = padre.actualD.vo.Max() + 1;
 
                 chartVo.ChartAreas[0].AxisX.LabelStyle.Format = "#.##";
                 chartVo.ChartAreas[0].AxisY.LabelStyle.Format = "#.##";
@@ -211,6 +211,72 @@ namespace RockVision
                 return;
             }
             padre.CloseWaiting();
+        }
+
+        private void btnVw_Click(object sender, EventArgs e)
+        {
+
+            padre.ShowWaiting("Por favor espere mientras RockVision realiza las estimaciones...");
+            if (!padre.actualD.porosidadEstimada)
+            {
+                if (this.padre.actualD.EstimarPorosidad())
+                {
+                }
+                else
+                {
+                    padre.CloseWaiting();
+                    MessageBox.Show("No fue posible estimar la porosidad usando los cubos de datos seleccionados", "Error al estimar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            if (!padre.actualD.satWestimada)
+            {
+                if (this.padre.actualD.EstimarSw())
+                {
+                }
+                else 
+                {
+                    padre.CloseWaiting();
+                    MessageBox.Show("No fue posible estimar la saturacion de crudo usando los cubos de datos seleccionados", "Error al estimar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            if (this.padre.actualD.EstimarVw())
+            {
+                chartVw.Series[0].Points.Clear();
+                for (int i = 0; i < padre.actualD.vw.Count; i++) chartVw.Series[0].Points.AddXY(i + 1, padre.actualD.vw[i]);
+
+                chartVw.ChartAreas[0].AxisY.Minimum = padre.actualD.vw.Min() - 1;
+                chartVw.ChartAreas[0].AxisY.Maximum = padre.actualD.vw.Max() + 1;
+
+                //if (chartVo.ChartAreas[0].AxisY.Minimum < 0) chartVo.ChartAreas[0].AxisY.Minimum = padre.actualD.vo.Min() - 1;
+                //if (chartVo.ChartAreas[0].AxisY.Maximum > 100) chartVo.ChartAreas[0].AxisY.Maximum = padre.actualD.vo.Max() + 1;
+
+                chartVw.ChartAreas[0].AxisX.LabelStyle.Format = "#.##";
+                chartVw.ChartAreas[0].AxisY.LabelStyle.Format = "#.##";
+
+                tabControl.SelectedIndex = 5;
+
+                padre.CloseWaiting();
+            }
+            else
+            {
+                padre.CloseWaiting();
+                MessageBox.Show("No fue posible estimar el volumen de crudo atrapado usando los cubos de datos seleccionados", "Error al estimar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void chartVo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
