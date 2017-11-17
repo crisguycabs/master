@@ -164,10 +164,12 @@ namespace RockVision
             if (this.padre.actualD.EstimarVo())
             {
                 chartVo.Series[0].Points.Clear();
-                for (int i = 0; i < padre.actualD.vo.Count; i++) chartVo.Series[0].Points.AddXY(i + 1, padre.actualD.vo[i]);
+                for (int i = 0; i < padre.actualD.vo.Count; i++) chartVo.Series[0].Points.AddXY(this.padre.actualD.diferenciasT[i], padre.actualD.vo[i]);
 
                 chartVo.ChartAreas[0].AxisY.Minimum = padre.actualD.vo.Min() - 1;
                 chartVo.ChartAreas[0].AxisY.Maximum = padre.actualD.vo.Max() + 1;
+
+                chartVo.ChartAreas[0].AxisX.Minimum = 0;
 
                 //if (chartVo.ChartAreas[0].AxisY.Minimum < 0) chartVo.ChartAreas[0].AxisY.Minimum = padre.actualD.vo.Min() - 1;
                 //if (chartVo.ChartAreas[0].AxisY.Maximum > 100) chartVo.ChartAreas[0].AxisY.Maximum = padre.actualD.vo.Max() + 1;
@@ -177,7 +179,7 @@ namespace RockVision
 
                 tabControl.SelectedIndex = 4;
 
-                padre.CloseWaiting();
+                padre.CloseWaiting();                
             }
             else
             {
@@ -246,10 +248,12 @@ namespace RockVision
             if (this.padre.actualD.EstimarVw())
             {
                 chartVw.Series[0].Points.Clear();
-                for (int i = 0; i < padre.actualD.vw.Count; i++) chartVw.Series[0].Points.AddXY(i + 1, padre.actualD.vw[i]);
+                for (int i = 0; i < padre.actualD.vw.Count; i++) chartVw.Series[0].Points.AddXY(this.padre.actualD.diferenciasT[i], padre.actualD.vw[i]);
 
                 chartVw.ChartAreas[0].AxisY.Minimum = padre.actualD.vw.Min() - 1;
                 chartVw.ChartAreas[0].AxisY.Maximum = padre.actualD.vw.Max() + 1;
+
+                chartVw.ChartAreas[0].AxisX.Minimum = 0;
 
                 //if (chartVo.ChartAreas[0].AxisY.Minimum < 0) chartVo.ChartAreas[0].AxisY.Minimum = padre.actualD.vo.Min() - 1;
                 //if (chartVo.ChartAreas[0].AxisY.Maximum > 100) chartVo.ChartAreas[0].AxisY.Maximum = padre.actualD.vo.Max() + 1;
@@ -314,10 +318,12 @@ namespace RockVision
             if (this.padre.actualD.EstimarFr())
             {
                 chartFr.Series[0].Points.Clear();
-                for (int i = 0; i < padre.actualD.fr.Count; i++) chartFr.Series[0].Points.AddXY(i + 1, padre.actualD.fr[i]);
+                for (int i = 0; i < padre.actualD.fr.Count; i++) chartFr.Series[0].Points.AddXY(this.padre.actualD.diferenciasT[i], padre.actualD.fr[i]);
 
-                chartFr.ChartAreas[0].AxisY.Minimum = padre.actualD.fr.Min() - 1;
-                chartFr.ChartAreas[0].AxisY.Maximum = padre.actualD.fr.Max() + 1;
+                chartFr.ChartAreas[0].AxisY.Minimum = padre.actualD.fr.Min();
+                chartFr.ChartAreas[0].AxisY.Maximum = padre.actualD.fr.Max();
+
+                chartFr.ChartAreas[0].AxisX.Minimum = 0;
 
                 //if (chartVo.ChartAreas[0].AxisY.Minimum < 0) chartVo.ChartAreas[0].AxisY.Minimum = padre.actualD.vo.Min() - 1;
                 //if (chartVo.ChartAreas[0].AxisY.Maximum > 100) chartVo.ChartAreas[0].AxisY.Maximum = padre.actualD.vo.Max() + 1;

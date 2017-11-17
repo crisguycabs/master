@@ -168,6 +168,10 @@ namespace RockVision
 
         public bool factorEstimado = false;
 
+        public List<DateTime> marcasTiempo = null;
+
+        public List<double> diferenciasT = null;
+
         #endregion
 
         /// <summary>
@@ -329,6 +333,8 @@ namespace RockVision
 
             // hay tantos cortes horizontales como
             this.datacubos[this.datacubos.Count - 1].widthSegCore = this.segR * 2;
+
+            this.marcasTiempo = new List<DateTime>();
             
             // se leen todos y cada uno de los archivos dicom que estan en las carpetas temporales
             for(int j=0;j<datacubostemporales.Count;j++)
@@ -345,6 +351,9 @@ namespace RockVision
                     resultados = this.datacubos[this.datacubos.Count - 1].dataCube[i].CropMeanCTRVD(segX, segY, segR, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Columns.Data, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Rows.Data);
                     this.datacubos[this.datacubos.Count - 1].meanCT.Add(resultados[0]);
                 }
+
+                this.marcasTiempo.Add(new DateTime(this.datacubos[this.datacubos.Count - 1].dataCube[0].selector.StudyDate.Data.Value.Year, this.datacubos[this.datacubos.Count - 1].dataCube[0].selector.StudyDate.Data.Value.Month, this.datacubos[this.datacubos.Count - 1].dataCube[0].selector.StudyDate.Data.Value.Day, this.datacubos[this.datacubos.Count - 1].dataCube[0].selector.StudyTime.Data.Value.Hour, this.datacubos[this.datacubos.Count - 1].dataCube[0].selector.StudyTime.Data.Value.Minute, this.datacubos[this.datacubos.Count - 1].dataCube[0].selector.StudyTime.Data.Value.Second));
+                
                 // se borran los dicom
                 this.datacubos[this.datacubos.Count - 1].dataCube = null;
                 GC.Collect();
@@ -359,6 +368,9 @@ namespace RockVision
                 // hay tantos cortes horizontales como
                 this.datacubos[this.datacubos.Count - 1].widthSegCore = this.segR * 2;
             }
+
+            this.diferenciasT=new List<double>();
+            for (int i = 0; i < marcasTiempo.Count; i++) diferenciasT.Add(Math.Round(marcasTiempo[i].Subtract(marcasTiempo[0]).TotalMinutes));
         }
 
         /// <summary>
@@ -396,19 +408,19 @@ namespace RockVision
             string rutaDicoms = folder + "\\CTRo";
             System.IO.Directory.CreateDirectory(rutaDicoms);
 
-            if(!CropSave(rutaDicoms,rutaSo,segmentacionX,segmentacionY,radio,iniDicom,finDicom))
+            this.marcasTiempo = new List<DateTime>();
+
+            if(!CropSave(rutaDicoms,rutaSo,segmentacionX,segmentacionY,radio,iniDicom,finDicom, true))
             {
                 System.Windows.Forms.MessageBox.Show("No se pudo crear la carpeta con los DICOMS CTRo", "Error de escritura en disco", System.Windows.Forms.MessageBoxButtons.OK, MessageBoxIcon.Error);
                 System.Windows.Forms.Application.Exit();
-            }
-
-            
+            }            
 
             // se crea la carpeta de los dicom saturados de agua
             rutaDicoms = folder + "\\CTRw";
             System.IO.Directory.CreateDirectory(rutaDicoms);
 
-            if (!CropSave(rutaDicoms, rutaSw, segmentacionX, segmentacionY, radio, iniDicom, finDicom))
+            if (!CropSave(rutaDicoms, rutaSw, segmentacionX, segmentacionY, radio, iniDicom, finDicom, true))
             {
                 System.Windows.Forms.MessageBox.Show("No se pudo crear la carpeta con los DICOMS CTRw", "Error de escritura en disco", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 System.Windows.Forms.Application.Exit();
@@ -421,12 +433,15 @@ namespace RockVision
                 rutaDicoms = folder + "\\T" + (i+1).ToString();
                 System.IO.Directory.CreateDirectory(rutaDicoms);
 
-                if (!CropSave(rutaDicoms, rutaTemp[i], segmentacionX, segmentacionY, radio, iniDicom, finDicom))
+                if (!CropSave(rutaDicoms, rutaTemp[i], segmentacionX, segmentacionY, radio, iniDicom, finDicom, false))
                 {
                     System.Windows.Forms.MessageBox.Show("No se pudo crear la carpeta con los DICOMS del instante " + (i + 1).ToString(), "Error de escritura en disco", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                     System.Windows.Forms.Application.Exit();
                 }
             }
+
+            this.diferenciasT = new List<double>();
+            for (int i = 0; i < marcasTiempo.Count; i++) diferenciasT.Add(Math.Round(marcasTiempo[i].Subtract(marcasTiempo[0]).TotalMinutes));
 
             // informacion de la segmentacino
             segX = segmentacionX;
@@ -537,7 +552,7 @@ namespace RockVision
         /// <param name="iniDicom"></param>
         /// <param name="finDicom"></param>
         /// <returns></returns>
-        public bool CropSave(string pathDestino, string pathOrigen, int segmentacionX, int segmentacionY, int radio, int iniDicom, int finDicom)
+        public bool CropSave(string pathDestino, string pathOrigen, int segmentacionX, int segmentacionY, int radio, int iniDicom, int finDicom, bool datacuboReferencia)
         {
             try 
             {
@@ -560,6 +575,12 @@ namespace RockVision
                 for (int i = 0; i < this.datacubos[idc].dataCube.Count; i++)
                 {
                     this.datacubos[idc].dataCube[i].dcm.Write(pathDestino +  "\\" + i.ToString("000000") + ".dcm");
+                }
+
+                if (!datacuboReferencia)
+                {
+                    this.marcasTiempo.Add(new DateTime(this.datacubos[idc].dataCube[0].selector.StudyDate.Data.Value.Year, this.datacubos[idc].dataCube[0].selector.StudyDate.Data.Value.Month, this.datacubos[idc].dataCube[0].selector.StudyDate.Data.Value.Day, this.datacubos[idc].dataCube[0].selector.StudyTime.Data.Value.Hour, this.datacubos[idc].dataCube[0].selector.StudyTime.Data.Value.Minute, this.datacubos[idc].dataCube[0].selector.StudyTime.Data.Value.Second));
+                    // string date = "temp";                    
                 }
 
                 double[] resultado = new double[2];
@@ -763,7 +784,7 @@ namespace RockVision
 
                 for (int j = 0; j < (datacubos.Count - 2); j++)
                 {
-                    fr.Add((vo[0]-vo[j])/vo[0]);
+                    fr.Add(100*(vo[0]-vo[j])/vo[0]);
                 }
 
                 this.factorEstimado = true;
