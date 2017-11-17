@@ -269,13 +269,71 @@ namespace RockVision
 
         }
 
-        private void chartVo_Click(object sender, EventArgs e)
+        private void btnFactor_Click(object sender, EventArgs e)
         {
+            padre.ShowWaiting("Por favor espere mientras RockVision realiza las estimaciones...");
+            if (!padre.actualD.porosidadEstimada)
+            {
+                if (this.padre.actualD.EstimarPorosidad())
+                {
+                }
+                else
+                {
+                    padre.CloseWaiting();
+                    MessageBox.Show("No fue posible estimar la porosidad usando los cubos de datos seleccionados", "Error al estimar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
 
-        }
+            if (!padre.actualD.satOestimada)
+            {
+                if (this.padre.actualD.EstimarSo())
+                {
+                }
+                else
+                {
+                    padre.CloseWaiting();
+                    MessageBox.Show("No fue posible estimar la saturacion de crudo usando los cubos de datos seleccionados", "Error al estimar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
 
-        private void chart1_Click(object sender, EventArgs e)
-        {
+            if (!padre.actualD.voestimado)
+            {
+                if (this.padre.actualD.EstimarVo())
+                {
+                }
+                else
+                {
+                    padre.CloseWaiting();
+                    MessageBox.Show("No fue posible estimar el volumen de crudo usando los cubos de datos seleccionados", "Error al estimar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            if (this.padre.actualD.EstimarFr())
+            {
+                chartFr.Series[0].Points.Clear();
+                for (int i = 0; i < padre.actualD.fr.Count; i++) chartFr.Series[0].Points.AddXY(i + 1, padre.actualD.fr[i]);
+
+                chartFr.ChartAreas[0].AxisY.Minimum = padre.actualD.fr.Min() - 1;
+                chartFr.ChartAreas[0].AxisY.Maximum = padre.actualD.fr.Max() + 1;
+
+                //if (chartVo.ChartAreas[0].AxisY.Minimum < 0) chartVo.ChartAreas[0].AxisY.Minimum = padre.actualD.vo.Min() - 1;
+                //if (chartVo.ChartAreas[0].AxisY.Maximum > 100) chartVo.ChartAreas[0].AxisY.Maximum = padre.actualD.vo.Max() + 1;
+
+                chartFr.ChartAreas[0].AxisX.LabelStyle.Format = "#.##";
+                chartFr.ChartAreas[0].AxisY.LabelStyle.Format = "#.##";
+
+                tabControl.SelectedIndex = 6;
+
+                padre.CloseWaiting();
+            }
+            else
+            {
+                padre.CloseWaiting();
+                MessageBox.Show("No fue posible estimar el factor de recobro usando los cubos de datos seleccionados", "Error al estimar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
     }

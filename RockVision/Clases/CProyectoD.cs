@@ -160,13 +160,13 @@ namespace RockVision
 
         public bool Swestimada = false;
 
-        public bool Voestimada = false;
-
-        public bool Vwestimada = false;
-
         public List<double> vo = null;
 
         public List<double> vw = null;
+
+        public List<double> fr = null;
+
+        public bool factorEstimado = false;
 
         #endregion
 
@@ -710,9 +710,9 @@ namespace RockVision
                     double temp = 0;
                     for (int i = 0; i < datacubos[0].meanCT.Count; i++)
                     {
-                        vporSlide = volSlide * porosidad[i];
+                        vporSlide = volSlide * porosidad[i]/100;
 
-                        temp += vporSlide * satO[j, i];
+                        temp += vporSlide * satO[j, i]/100;
                     }
                     this.vo.Add(temp);
                 }
@@ -741,12 +741,32 @@ namespace RockVision
                     {
                         vporSlide = volSlide * porosidad[i];
 
-                        temp += vporSlide * satW[j, i];
+                        temp += vporSlide * satW[j, i]/100;
                     }
                     this.vw.Add(temp);
                 }
 
                 this.vwestimado = true;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool EstimarFr()
+        {
+            try
+            {
+                this.fr = new List<double>();
+
+                for (int j = 0; j < (datacubos.Count - 2); j++)
+                {
+                    fr.Add((vo[0]-vo[j])/vo[0]);
+                }
+
+                this.factorEstimado = true;
                 return true;
             }
             catch

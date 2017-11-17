@@ -41,6 +41,9 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectDForm));
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -70,8 +73,9 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.chartVo = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
             this.chartVw = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.chartFr = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -84,6 +88,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartVo)).BeginInit();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartVw)).BeginInit();
+            this.tabPage7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartFr)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -254,6 +260,7 @@
             this.btnFactor.TabIndex = 33;
             this.btnFactor.Text = "Estimar";
             this.btnFactor.UseVisualStyleBackColor = false;
+            this.btnFactor.Click += new System.EventHandler(this.btnFactor_Click);
             // 
             // btnClose
             // 
@@ -466,7 +473,7 @@
             chartArea4.AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
             chartArea4.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
             chartArea4.AxisX.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
-            chartArea4.AxisX.Title = "Corte Transversal";
+            chartArea4.AxisX.Title = "Tiempo (min)";
             chartArea4.AxisX.TitleFont = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea4.AxisY.IsLabelAutoFit = false;
             chartArea4.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -474,7 +481,7 @@
             chartArea4.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
             chartArea4.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
             chartArea4.AxisY.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
-            chartArea4.AxisY.Title = "Porosidad (%)";
+            chartArea4.AxisY.Title = "Volumen Atrapado (mm3)";
             chartArea4.AxisY.TitleFont = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea4.Name = "ChartArea1";
             this.chartVo.ChartAreas.Add(chartArea4);
@@ -493,7 +500,6 @@
             this.chartVo.Size = new System.Drawing.Size(732, 586);
             this.chartVo.TabIndex = 1;
             this.chartVo.Text = "chart1";
-            this.chartVo.Click += new System.EventHandler(this.chartVo_Click);
             // 
             // tabPage6
             // 
@@ -505,15 +511,6 @@
             this.tabPage6.Text = "Vw";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // tabPage7
-            // 
-            this.tabPage7.Location = new System.Drawing.Point(4, 23);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(732, 586);
-            this.tabPage7.TabIndex = 6;
-            this.tabPage7.Text = "F.R.";
-            this.tabPage7.UseVisualStyleBackColor = true;
-            // 
             // chartVw
             // 
             chartArea5.AxisX.IsLabelAutoFit = false;
@@ -522,7 +519,7 @@
             chartArea5.AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
             chartArea5.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
             chartArea5.AxisX.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
-            chartArea5.AxisX.Title = "Corte Transversal";
+            chartArea5.AxisX.Title = "Tiempo (min)";
             chartArea5.AxisX.TitleFont = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea5.AxisY.IsLabelAutoFit = false;
             chartArea5.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -530,7 +527,7 @@
             chartArea5.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
             chartArea5.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
             chartArea5.AxisY.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
-            chartArea5.AxisY.Title = "Porosidad (%)";
+            chartArea5.AxisY.Title = "Volumen de Agua (mm3)";
             chartArea5.AxisY.TitleFont = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea5.Name = "ChartArea1";
             this.chartVw.ChartAreas.Add(chartArea5);
@@ -549,7 +546,52 @@
             this.chartVw.Size = new System.Drawing.Size(732, 586);
             this.chartVw.TabIndex = 2;
             this.chartVw.Text = "chartVw";
-            this.chartVw.Click += new System.EventHandler(this.chart1_Click);
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.chartFr);
+            this.tabPage7.Location = new System.Drawing.Point(4, 23);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(732, 586);
+            this.tabPage7.TabIndex = 6;
+            this.tabPage7.Text = "F.R.";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // chartFr
+            // 
+            chartArea6.AxisX.IsLabelAutoFit = false;
+            chartArea6.AxisX.LabelStyle.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea6.AxisX.LabelStyle.TruncatedLabels = true;
+            chartArea6.AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea6.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea6.AxisX.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
+            chartArea6.AxisX.Title = "Tiempo (min)";
+            chartArea6.AxisX.TitleFont = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea6.AxisY.IsLabelAutoFit = false;
+            chartArea6.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea6.AxisY.LabelStyle.TruncatedLabels = true;
+            chartArea6.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea6.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea6.AxisY.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
+            chartArea6.AxisY.Title = "Factor de Recobro (%)";
+            chartArea6.AxisY.TitleFont = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea6.Name = "ChartArea1";
+            this.chartFr.ChartAreas.Add(chartArea6);
+            this.chartFr.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend6.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend6.Enabled = false;
+            legend6.Name = "Legend1";
+            this.chartFr.Legends.Add(legend6);
+            this.chartFr.Location = new System.Drawing.Point(0, 0);
+            this.chartFr.Name = "chartFr";
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chartFr.Series.Add(series4);
+            this.chartFr.Size = new System.Drawing.Size(732, 586);
+            this.chartFr.TabIndex = 3;
+            this.chartFr.Text = "chart1";
             // 
             // ProjectDForm
             // 
@@ -583,6 +625,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartVo)).EndInit();
             this.tabPage6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartVw)).EndInit();
+            this.tabPage7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chartFr)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -619,5 +663,6 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chartSw;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartVo;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartVw;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartFr;
     }
 }
