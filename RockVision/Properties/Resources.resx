@@ -151,4 +151,55 @@
   <data name="hour-glass-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\hour-glass-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ColorRgb_CheckFloatException" xml:space="preserve">
+    <value>Name = {0}, value = {1}, min = {2}, max = {3}</value>
+  </data>
+  <data name="FunctionCompiler_EvalClass" xml:space="preserve">
+    <value>using System;
+using {1};
+public class Eval
+{{
+	public static double acot(double x)
+	{{
+		return System.Math.PI/2 - System.Math.Atan(x);
+	}}
+	public static double abs(double x)
+	{{
+		return System.Math.Abs(x);
+	}}
+	public static double __eval(params double[] __X)
+	{{
+		{0}
+		return y;
+	}}
+	public static CompiledFunction __get()
+	{{
+		return __eval;
+	}}
+using System;
+using {1};
+public class Eval
+{{
+	public static double acot(double x)
+	{{
+		return System.Math.PI/2 - System.Math.Atan(x);
+	}}
+	public static double abs(double x)
+	{{
+		return System.Math.Abs(x);
+	}}
+	public static double __eval(params double[] __X)
+	{{
+		{0}
+		return y;
+	}}
+	public static CompiledFunction __get()
+	{{
+		return __eval;
+	}}
+}}</value>
+  </data>
+  <data name="FunctionCompiler_SemicolonException" xml:space="preserve">
+    <value>Function string cannot contain semicolon</value>
+  </data>
 </root>

@@ -79,6 +79,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\ColorHsl.cs" />
+    <Compile Include="Clases\ColorHsv.cs" />
+    <Compile Include="Clases\ColorRgb.cs" />
+    <Compile Include="Clases\ColorSchema.cs" />
     <Compile Include="Forms\ProjectDForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +110,7 @@
     <Compile Include="Forms\GetRMN.Designer.cs">
       <DependentUpon>GetRMN.cs</DependentUpon>
     </Compile>
+    <Compile Include="Clases\FunctionCompiler.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +149,7 @@
     <Compile Include="Forms\VisualForm.Designer.cs">
       <DependentUpon>VisualForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Clases\Surface3DRenderer.cs" />
     <EmbeddedResource Include="Forms\CheckForm.resx">
       <DependentUpon>CheckForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -170,7 +176,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">

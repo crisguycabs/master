@@ -81,6 +81,15 @@ namespace RockVision.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name = {0}, value = {1}, min = {2}, max = {3}.
+        /// </summary>
+        internal static string ColorRgb_CheckFloatException {
+            get {
+                return ResourceManager.GetString("ColorRgb_CheckFloatException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap demaximize {
@@ -97,6 +106,51 @@ namespace RockVision.Properties {
             get {
                 object obj = ResourceManager.GetObject("ecopetrol", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to using System;
+        ///using {1};
+        ///public class Eval
+        ///{{
+        ///	public static double acot(double x)
+        ///	{{
+        ///		return System.Math.PI/2 - System.Math.Atan(x);
+        ///	}}
+        ///	public static double abs(double x)
+        ///	{{
+        ///		return System.Math.Abs(x);
+        ///	}}
+        ///	public static double __eval(params double[] __X)
+        ///	{{
+        ///		{0}
+        ///		return y;
+        ///	}}
+        ///	public static CompiledFunction __get()
+        ///	{{
+        ///		return __eval;
+        ///	}}
+        ///using System;
+        ///using {1};
+        ///public class Eval
+        ///{{
+        ///	public static double acot(double x)
+        ///	{{
+        ///		return System.Math.PI/2 - System.Math.Atan [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string FunctionCompiler_EvalClass {
+            get {
+                return ResourceManager.GetString("FunctionCompiler_EvalClass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Function string cannot contain semicolon.
+        /// </summary>
+        internal static string FunctionCompiler_SemicolonException {
+            get {
+                return ResourceManager.GetString("FunctionCompiler_SemicolonException", resourceCulture);
             }
         }
         
