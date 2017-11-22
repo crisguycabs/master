@@ -110,7 +110,10 @@ namespace RockVision
 
         private void btnRMN_Click(object sender, EventArgs e)
         {
+            GetRMN getRmnForm = new GetRMN();
+            getRmnForm.padre = this.padre;
 
+            getRmnForm.Show();
         }
 
         private void btnRMN_Enter(object sender, EventArgs e)
