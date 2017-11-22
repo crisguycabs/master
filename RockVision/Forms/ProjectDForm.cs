@@ -342,5 +342,40 @@ namespace RockVision
             }
 
         }
+
+        private void btnGetRMN_Click(object sender, EventArgs e)
+        {
+            if (padre.abiertoGetRMNform)
+            {
+                // esta abierto
+
+                padre.getRMNform.Select();
+            }
+            else
+            {
+                // esta cerrado, se crea nuevo
+                padre.getRMNform = new GetRMN();
+                padre.getRMNform.padre = this.padre;
+                padre.getRMNform.MdiParent = this.padre;
+
+                padre.abiertoGetRMNform = true;
+
+                padre.getRMNform.Show();
+            }
+        }
+
+        public void DibujarPorosidadRMN()
+        {
+            chartPorosidad.Series[1].Points.Clear();
+            
+            chartPorosidad.Series[1].Points.AddXY(1,padre.porRMN);
+            chartPorosidad.Series[1].Points.AddXY(padre.actualD.datacubos[0].meanCT.Count, padre.porRMN);
+
+            chartPorosidad.ChartAreas[0].AxisX.Minimum = 0;
+            chartPorosidad.ChartAreas[0].AxisX.Maximum = padre.actualD.datacubos[0].meanCT.Count+1;
+
+            chartPorosidad.ChartAreas[0].AxisX.LabelStyle.Format = "#.##";
+            chartPorosidad.ChartAreas[0].AxisY.LabelStyle.Format = "#.##";
+        }
     }
 }

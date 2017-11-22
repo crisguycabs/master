@@ -115,6 +115,16 @@ namespace RockVision
         /// </summary>
         public double porRMN = 0;
 
+        /// <summary>
+        /// indica si esta abierta o no la ventana
+        /// </summary>
+        public bool abiertoGetRMNform = false;
+
+        /// <summary>
+        /// instancia de la ventana
+        /// </summary>
+        public GetRMN getRMNform = null;
+
         #endregion
 
         public MainForm()
@@ -157,6 +167,12 @@ namespace RockVision
         {
             this.abiertoHomeForm = false;
             this.homeForm = null;
+        }
+
+        public void CerrarGetRMNForm()
+        {
+            this.abiertoGetRMNform = false;
+            this.getRMNform = null;
         }
 
         private void tableLayoutPanel1_CellPaint(object sender, TableLayoutCellPaintEventArgs e)

@@ -20,6 +20,8 @@ namespace RockVision
 
         public MainForm padre;
 
+        Point lastClick;
+
         #endregion
 
         public GetRMN()
@@ -80,6 +82,7 @@ namespace RockVision
             catch
             {
                 MessageBox.Show("Error al leer el archivo FID", "Error de lectura", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.DialogResult = DialogResult.Cancel;
                 this.Close();
             }
 
@@ -96,6 +99,7 @@ namespace RockVision
             catch
             {
                 MessageBox.Show("Error al leer el archivo FID estándar", "Error de lectura", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.DialogResult = DialogResult.Cancel;
                 this.Close();
             }
 
@@ -103,10 +107,20 @@ namespace RockVision
 
             padre.vroca = Convert.ToDouble(numVroca.Value);
 
-            padre.porRMN = padre.PorosidadRMN(padre.fid, padre.vstd, padre.fidstd, padre.vroca);
+            try
+            {
+                padre.porRMN = padre.PorosidadRMN(padre.fid, padre.vstd, padre.fidstd, padre.vroca);
+                this.padre.proyectoDForm.DibujarPorosidadRMN();
+                this.DialogResult = DialogResult.OK;
+                this.Close();                
+            }
+            catch
+            {
+                MessageBox.Show("No fue posible calcular la porosidad de la muestra usando las mediciones RMN", "Error al estimar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.DialogResult = DialogResult.Cancel;
+            }            
 
-            txtPorosidad.Text = Convert.ToString(padre.porRMN);
-
+            // txtPorosidad.Text = Convert.ToString(padre.porRMN);
         }
 
         private void btnFIDstd_Click(object sender, EventArgs e)
@@ -132,5 +146,40 @@ namespace RockVision
         {
 
         }
+
+        private void label5_DoubleClick(object sender, EventArgs e)
+        {
+            CentrarForm();
+        }
+
+        public void CentrarForm()
+        {
+            //this.Location = new System.Drawing.Point((Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2, (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2);
+            this.Location = new System.Drawing.Point((MdiParent.Width - this.Width) / 2, (int)((MdiParent.Height - this.Height) * 0.8 / 2));
+        }
+
+        private void lblTitulo_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastClick = e.Location;
+        }
+
+        private void lblTitulo_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastClick.X;
+                this.Top += e.Y - lastClick.Y;
+            }
+        }
+
+        private void GetRMN_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawRectangle(new Pen(Color.RoyalBlue, 2), this.DisplayRectangle); 
+        }
+
+        private void GetRMN_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            padre.CerrarGetRMNForm();
+        }        
     }
 }
