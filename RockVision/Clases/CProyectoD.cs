@@ -627,7 +627,9 @@ namespace RockVision
                 {
                     for (int i = 0; i < datacubos[0].meanCT.Count; i++)
                     {
-                        satO[j, i] = 100 * (datacubos[j+2].meanCT[i] - datacubos[1].meanCT[i]) / (valorCTo - valorCTw);
+                        satO[j, i] = 100 * (datacubos[j + 2].meanCT[i] - datacubos[1].meanCT[i]) / (datacubos[0].meanCT[i] - datacubos[1].meanCT[i]);
+                        if (satO[j, i] < 0) satO[j, i] = 0;
+                        if (satO[j, i] > 100) satO[j, i] = 100;
                     }
                 }
 
@@ -654,7 +656,9 @@ namespace RockVision
                 {
                     for (int i = 0; i < datacubos[0].meanCT.Count; i++)
                     {
-                        satW[j, i] = 100 * (datacubos[j + 2].meanCT[i] - datacubos[0].meanCT[i]) / (valorCTw - valorCTo);
+                        satW[j, i] = 100 * (datacubos[j + 2].meanCT[i] - datacubos[0].meanCT[i]) / (datacubos[1].meanCT[i] - datacubos[0].meanCT[i]);
+                        if (satW[j, i] < 0) satW[j, i] = 0;
+                        if (satW[j, i] >100) satW[j, i] = 100;
                     }
                 }
 

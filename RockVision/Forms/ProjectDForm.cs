@@ -111,97 +111,54 @@ namespace RockVision
         {
             if (padre.actualD.EstimarSo())
             {
-                var r = new Random();
+                tabControl.SelectedIndex = 1;
 
-                chartSo.Series.Add(new HeatSeries
+                chartSo.Series.Clear();
+                chartSo.AxisX.Clear();
+                chartSo.AxisY.Clear();
+
+                HeatSeries saturacionO = new HeatSeries();
+                ChartValues<HeatPoint> values = new ChartValues<HeatPoint>();
+
+                // se llena la serie con la información de la matriz
+                for (int j = 0; j < padre.actualD.datacubos.Count - 2; j++)
                 {
-                    Values = new ChartValues<HeatPoint>
+                    for (int i = 0; i < padre.actualD.datacubos[0].meanCT.Count; i++)
                     {
-                        //X means sales man
-                        //Y is the day
-                        //"Jeremy Swanson"
-                        new HeatPoint(0, 0, r.Next(0, 10)),
-                        new HeatPoint(0, 1, r.Next(0, 10)),
-                        new HeatPoint(0, 2, r.Next(0, 10)),
-                        new HeatPoint(0, 3, r.Next(0, 10)),
-                        new HeatPoint(0, 4, r.Next(0, 10)),
-                        new HeatPoint(0, 5, r.Next(0, 10)),
-                        new HeatPoint(0, 6, r.Next(0, 10)),
-                        //"Lorena Hoffman"
-                        new HeatPoint(1, 0, r.Next(0, 10)),
-                        new HeatPoint(1, 1, r.Next(0, 10)),
-                        new HeatPoint(1, 2, r.Next(0, 10)),
-                        new HeatPoint(1, 3, r.Next(0, 10)),
-                        new HeatPoint(1, 4, r.Next(0, 10)),
-                        new HeatPoint(1, 5, r.Next(0, 10)),
-                        new HeatPoint(1, 6, r.Next(0, 10)),
-                        //"Robyn Williamson"
-                        new HeatPoint(2, 0, r.Next(0, 10)),
-                        new HeatPoint(2, 1, r.Next(0, 10)),
-                        new HeatPoint(2, 2, r.Next(0, 10)),
-                        new HeatPoint(2, 3, r.Next(0, 10)),
-                        new HeatPoint(2, 4, r.Next(0, 10)),
-                        new HeatPoint(2, 5, r.Next(0, 10)),
-                        new HeatPoint(2, 6, r.Next(0, 10)),
-                        //"Carole Haynes"
-                        new HeatPoint(3, 0, r.Next(0, 10)),
-                        new HeatPoint(3, 1, r.Next(0, 10)),
-                        new HeatPoint(3, 2, r.Next(0, 10)),
-                        new HeatPoint(3, 3, r.Next(0, 10)),
-                        new HeatPoint(3, 4, r.Next(0, 10)),
-                        new HeatPoint(3, 5, r.Next(0, 10)),
-                        new HeatPoint(3, 6, r.Next(0, 10)),
-                        //"Essie Nelson"
-                        new HeatPoint(4, 0, r.Next(0, 10)),
-                        new HeatPoint(4, 1, r.Next(0, 10)),
-                        new HeatPoint(4, 2, r.Next(0, 10)),
-                        new HeatPoint(4, 3, r.Next(0, 10)),
-                        new HeatPoint(4, 4, r.Next(0, 10)),
-                        new HeatPoint(4, 5, r.Next(0, 10)),
-                        new HeatPoint(4, 6, r.Next(0, 10))
-                    },
-                    DataLabels = true,
- 
-                    //The GradientStopCollection is optional
-                    //If you do not set this property, LiveCharts will set a gradient
-                    GradientStopCollection = new GradientStopCollection
-                    {
-                        new GradientStop(System.Windows.Media.Color.FromRgb(0, 0, 255), 0),
-                        new GradientStop(System.Windows.Media.Color.FromRgb(0, 63, 192), .25),
-                        new GradientStop(System.Windows.Media.Color.FromRgb(0, 127, 128), .5),
-                        new GradientStop(System.Windows.Media.Color.FromRgb(0, 191, 64), .75),
-                        new GradientStop(System.Windows.Media.Color.FromRgb(0, 255, 0), 1)
+                        values.Add(new HeatPoint(i+1, j, padre.actualD.satO[j, i]));                        
                     }
-                });
+                }
+                saturacionO.Values = values;
 
-                chartSo.AxisX.Add(new Axis
-                {
-                    LabelsRotation = -15,
-                    Labels = new[]
-                    {
-                        "Jeremy Wanson",
-                        "Lorena Hoffman",
-                        "Robyn Williamson",
-                        "Carole Haynes",
-                        "Essie Nelson"
-                    },
-                    Separator = new Separator { Step = 1 }
-                });
+                saturacionO.DataLabels = false;
 
-                chartSo.AxisY.Add(new Axis
+                GradientStopCollection gradientes = new GradientStopCollection
                 {
-                    Labels = new[]
-                    {
-                        "Monday",
-                        "Tuesday",
-                        "Wednesday",
-                        "Thursday",
-                        "Friday",
-                        "Saturday",
-                        "Sunday"
-                    }
-                });
-            
+                    new GradientStop(System.Windows.Media.Color.FromRgb(0, 0, 255), 0),
+                    new GradientStop(System.Windows.Media.Color.FromRgb(0, 63, 192), .25),
+                    new GradientStop(System.Windows.Media.Color.FromRgb(0, 127, 128), .5),  
+                    new GradientStop(System.Windows.Media.Color.FromRgb(0, 191, 64), .75),
+                    new GradientStop(System.Windows.Media.Color.FromRgb(0, 255, 0), 1),                        
+                };
+                saturacionO.GradientStopCollection = gradientes;
+
+                chartSo.Series.Add(saturacionO);
+
+                Axis ejeY = new Axis();
+                List<string> labels = new List<string>();
+                for (int j = 0; j < padre.actualD.datacubos.Count - 2; j++)
+                {
+                    labels.Add(padre.actualD.diferenciasT[j].ToString());
+                }
+                ejeY.Labels = labels;
+                ejeY.Title = "Tiempo (min)";
+                chartSo.AxisY.Add(ejeY);
+
+                Axis ejeX = new Axis();
+                ejeX.MinValue = 1;
+                ejeX.MaxValue = padre.actualD.datacubos[0].meanCT.Count;
+                ejeX.Title = "Corte Transversal";
+                chartSo.AxisX.Add(ejeX);
             }
             else
             {
@@ -216,7 +173,55 @@ namespace RockVision
         {
             if (padre.actualD.EstimarSw())
             {
+                tabControl.SelectedIndex = 2;
+
+                chartSw.Series.Clear();
+                chartSw.AxisX.Clear();
+                chartSw.AxisY.Clear();
                 
+                HeatSeries saturacionW = new HeatSeries();
+                ChartValues<HeatPoint> values = new ChartValues<HeatPoint>();
+
+                // se llena la serie con la información de la matriz
+                for (int j = 0; j < padre.actualD.datacubos.Count - 2; j++)
+                {
+                    for (int i = 0; i < padre.actualD.datacubos[0].meanCT.Count; i++)
+                    {
+                        values.Add(new HeatPoint(i + 1, j, padre.actualD.satW[j, i]));
+                    }
+                }
+                saturacionW.Values = values;
+
+                saturacionW.DataLabels = false;
+
+                GradientStopCollection gradientes = new GradientStopCollection
+                {
+                    new GradientStop(System.Windows.Media.Color.FromRgb(0, 0, 255), 0),
+                    new GradientStop(System.Windows.Media.Color.FromRgb(0, 63, 192), .25),
+                    new GradientStop(System.Windows.Media.Color.FromRgb(0, 127, 128), .5),  
+                    new GradientStop(System.Windows.Media.Color.FromRgb(0, 191, 64), .75),
+                    new GradientStop(System.Windows.Media.Color.FromRgb(0, 255, 0), 1),                        
+                };
+                saturacionW.GradientStopCollection = gradientes;
+
+                chartSw.Series.Add(saturacionW);
+
+                Axis ejeY = new Axis();
+                List<string> labels = new List<string>();
+                for (int j = 0; j < padre.actualD.datacubos.Count - 2; j++)
+                {
+                    labels.Add(padre.actualD.diferenciasT[j].ToString());
+                }
+                ejeY.Labels = labels;
+                ejeY.Title = "Tiempo (min)";
+                chartSw.AxisY.Add(ejeY);
+
+                Axis ejeX = new Axis();
+                ejeX.MinValue = 1;
+                ejeX.MaxValue = padre.actualD.datacubos[0].meanCT.Count;
+                ejeX.Title = "Corte Transversal";
+                chartSw.AxisX.Add(ejeX);
+
             }
             else
             {
