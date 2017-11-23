@@ -303,7 +303,54 @@ namespace RockVision
 
             if (padre.actualD.EstimarFrenteAvance())
             {
-                MessageBox.Show("Frente estimado");
+                tabControl.SelectedIndex = 3;
+
+                chartFa.Series.Clear();
+                chartFa.AxisX.Clear();
+                chartFa.AxisY.Clear();
+
+                HeatSeries frente = new HeatSeries();
+                ChartValues<HeatPoint> values = new ChartValues<HeatPoint>();
+
+                // se llena la serie con la información de la matriz
+                for (int j = 0; j < padre.actualD.datacubos.Count - 2; j++)
+                {
+                    for (int i = 0; i < (padre.actualD.datacubos[0].meanCT.Count-1); i++)
+                    {
+                        values.Add(new HeatPoint(i + 1, j, padre.actualD.frente[j, i]));
+                    }
+                }
+                frente.Values = values;
+
+                frente.DataLabels = false;
+
+                GradientStopCollection gradientes = new GradientStopCollection
+                {
+                    new GradientStop(System.Windows.Media.Color.FromRgb(0, 0, 255), 0),
+                    new GradientStop(System.Windows.Media.Color.FromRgb(63, 0, 191), .25),
+                    new GradientStop(System.Windows.Media.Color.FromRgb(127, 0, 127), .5),  
+                    new GradientStop(System.Windows.Media.Color.FromRgb(191, 0, 63), .75),
+                    new GradientStop(System.Windows.Media.Color.FromRgb(255, 0, 0), 1),                        
+                };
+                frente.GradientStopCollection = gradientes;
+
+                chartFa.Series.Add(frente);
+
+                Axis ejeY = new Axis();
+                List<string> labels = new List<string>();
+                for (int j = 0; j < padre.actualD.datacubos.Count - 2; j++)
+                {
+                    labels.Add(padre.actualD.diferenciasT[j].ToString());
+                }
+                ejeY.Labels = labels;
+                ejeY.Title = "Tiempo (min)";
+                chartFa.AxisY.Add(ejeY);
+
+                Axis ejeX = new Axis();
+                ejeX.MinValue = 1;
+                ejeX.MaxValue = padre.actualD.datacubos[0].meanCT.Count-1;
+                ejeX.Title = "Corte Transversal";
+                chartFa.AxisX.Add(ejeX);
             }
             else
             {
@@ -475,6 +522,11 @@ namespace RockVision
 
             chartPorosidad.ChartAreas[0].AxisX.LabelStyle.Format = "#.##";
             chartPorosidad.ChartAreas[0].AxisY.LabelStyle.Format = "#.##";
+        }
+
+        private void tabPage4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

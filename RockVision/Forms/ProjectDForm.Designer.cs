@@ -74,12 +74,14 @@
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.chartFr = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartSw = new LiveCharts.WinForms.CartesianChart();
+            this.chartFa = new LiveCharts.WinForms.CartesianChart();
             this.groupBox1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartPorosidad)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartVo)).BeginInit();
             this.tabPage6.SuspendLayout();
@@ -406,12 +408,14 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.chartFa);
             this.tabPage4.Location = new System.Drawing.Point(4, 23);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(732, 586);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Frente de Avance";
             this.tabPage4.UseVisualStyleBackColor = true;
+            this.tabPage4.Click += new System.EventHandler(this.tabPage4_Click);
             // 
             // tabPage5
             // 
@@ -560,6 +564,15 @@
             this.chartSw.TabIndex = 3;
             this.chartSw.Text = "cartesianChart1";
             // 
+            // chartFa
+            // 
+            this.chartFa.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chartFa.Location = new System.Drawing.Point(0, 0);
+            this.chartFa.Name = "chartFa";
+            this.chartFa.Size = new System.Drawing.Size(732, 586);
+            this.chartFa.TabIndex = 3;
+            this.chartFa.Text = "cartesianChart1";
+            // 
             // ProjectDForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -586,6 +599,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartPorosidad)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartVo)).EndInit();
             this.tabPage6.ResumeLayout(false);
@@ -630,5 +644,6 @@
         private System.Windows.Forms.Button btnGetRMN;
         private LiveCharts.WinForms.CartesianChart chartSo;
         private LiveCharts.WinForms.CartesianChart chartSw;
+        private LiveCharts.WinForms.CartesianChart chartFa;
     }
 }
