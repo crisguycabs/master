@@ -36,14 +36,12 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectDForm));
             this.label4 = new System.Windows.Forms.Label();
@@ -65,9 +63,9 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnGetRMN = new System.Windows.Forms.Button();
             this.chartPorosidad = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.chartSo = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.chartSw = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -77,13 +75,12 @@
             this.chartVw = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.chartFr = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.btnGetRMN = new System.Windows.Forms.Button();
+            this.chartSo = new LiveCharts.WinForms.CartesianChart();
             this.groupBox1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartPorosidad)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartSo)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartSw)).BeginInit();
             this.tabPage5.SuspendLayout();
@@ -326,6 +323,19 @@
             this.tabPage1.Text = "Porosidad";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // btnGetRMN
+            // 
+            this.btnGetRMN.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnGetRMN.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnGetRMN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGetRMN.Location = new System.Drawing.Point(590, 555);
+            this.btnGetRMN.Name = "btnGetRMN";
+            this.btnGetRMN.Size = new System.Drawing.Size(136, 25);
+            this.btnGetRMN.TabIndex = 21;
+            this.btnGetRMN.Text = "Cargar Datos de RMN";
+            this.btnGetRMN.UseVisualStyleBackColor = false;
+            this.btnGetRMN.Click += new System.EventHandler(this.btnGetRMN_Click);
+            // 
             // chartPorosidad
             // 
             chartArea1.AxisX.IsLabelAutoFit = false;
@@ -378,7 +388,17 @@
             this.tabPage2.Text = "So";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // chartSo
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.chartSw);
+            this.tabPage3.Location = new System.Drawing.Point(4, 23);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(732, 586);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Sw";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // chartSw
             // 
             chartArea2.Area3DStyle.WallWidth = 0;
             chartArea2.AxisX.IsLabelAutoFit = false;
@@ -400,54 +420,11 @@
             chartArea2.AxisY.Title = "Porosidad (%)";
             chartArea2.AxisY.TitleFont = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea2.Name = "ChartArea1";
-            this.chartSo.ChartAreas.Add(chartArea2);
-            this.chartSo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chartSw.ChartAreas.Add(chartArea2);
+            this.chartSw.Dock = System.Windows.Forms.DockStyle.Fill;
             legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
             legend2.Name = "Legend1";
-            this.chartSo.Legends.Add(legend2);
-            this.chartSo.Location = new System.Drawing.Point(3, 3);
-            this.chartSo.Name = "chartSo";
-            this.chartSo.Size = new System.Drawing.Size(726, 580);
-            this.chartSo.TabIndex = 1;
-            this.chartSo.Text = "chart1";
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.chartSw);
-            this.tabPage3.Location = new System.Drawing.Point(4, 23);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(732, 586);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Sw";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // chartSw
-            // 
-            chartArea3.Area3DStyle.WallWidth = 0;
-            chartArea3.AxisX.IsLabelAutoFit = false;
-            chartArea3.AxisX.LabelStyle.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea3.AxisX.LabelStyle.Format = "#.##";
-            chartArea3.AxisX.LabelStyle.TruncatedLabels = true;
-            chartArea3.AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
-            chartArea3.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea3.AxisX.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
-            chartArea3.AxisX.Title = "Corte Transversal";
-            chartArea3.AxisX.TitleFont = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea3.AxisY.IsLabelAutoFit = false;
-            chartArea3.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea3.AxisY.LabelStyle.Format = "#.##";
-            chartArea3.AxisY.LabelStyle.TruncatedLabels = true;
-            chartArea3.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
-            chartArea3.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea3.AxisY.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
-            chartArea3.AxisY.Title = "Porosidad (%)";
-            chartArea3.AxisY.TitleFont = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea3.Name = "ChartArea1";
-            this.chartSw.ChartAreas.Add(chartArea3);
-            this.chartSw.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend3.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend3.Name = "Legend1";
-            this.chartSw.Legends.Add(legend3);
+            this.chartSw.Legends.Add(legend2);
             this.chartSw.Location = new System.Drawing.Point(0, 0);
             this.chartSw.Name = "chartSw";
             this.chartSw.Size = new System.Drawing.Size(732, 586);
@@ -475,29 +452,29 @@
             // 
             // chartVo
             // 
-            chartArea4.AxisX.IsLabelAutoFit = false;
-            chartArea4.AxisX.LabelStyle.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea4.AxisX.LabelStyle.TruncatedLabels = true;
-            chartArea4.AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
-            chartArea4.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea4.AxisX.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
-            chartArea4.AxisX.Title = "Tiempo (min)";
-            chartArea4.AxisX.TitleFont = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea4.AxisY.IsLabelAutoFit = false;
-            chartArea4.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea4.AxisY.LabelStyle.TruncatedLabels = true;
-            chartArea4.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
-            chartArea4.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea4.AxisY.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
-            chartArea4.AxisY.Title = "Volumen Atrapado (mm3)";
-            chartArea4.AxisY.TitleFont = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea4.Name = "ChartArea1";
-            this.chartVo.ChartAreas.Add(chartArea4);
+            chartArea3.AxisX.IsLabelAutoFit = false;
+            chartArea3.AxisX.LabelStyle.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea3.AxisX.LabelStyle.TruncatedLabels = true;
+            chartArea3.AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea3.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea3.AxisX.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
+            chartArea3.AxisX.Title = "Tiempo (min)";
+            chartArea3.AxisX.TitleFont = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea3.AxisY.IsLabelAutoFit = false;
+            chartArea3.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea3.AxisY.LabelStyle.TruncatedLabels = true;
+            chartArea3.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea3.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea3.AxisY.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
+            chartArea3.AxisY.Title = "Volumen Atrapado (mm3)";
+            chartArea3.AxisY.TitleFont = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea3.Name = "ChartArea1";
+            this.chartVo.ChartAreas.Add(chartArea3);
             this.chartVo.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend4.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend4.Enabled = false;
-            legend4.Name = "Legend1";
-            this.chartVo.Legends.Add(legend4);
+            legend3.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend3.Enabled = false;
+            legend3.Name = "Legend1";
+            this.chartVo.Legends.Add(legend3);
             this.chartVo.Location = new System.Drawing.Point(0, 0);
             this.chartVo.Name = "chartVo";
             series3.ChartArea = "ChartArea1";
@@ -521,29 +498,29 @@
             // 
             // chartVw
             // 
-            chartArea5.AxisX.IsLabelAutoFit = false;
-            chartArea5.AxisX.LabelStyle.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea5.AxisX.LabelStyle.TruncatedLabels = true;
-            chartArea5.AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
-            chartArea5.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea5.AxisX.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
-            chartArea5.AxisX.Title = "Tiempo (min)";
-            chartArea5.AxisX.TitleFont = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea5.AxisY.IsLabelAutoFit = false;
-            chartArea5.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea5.AxisY.LabelStyle.TruncatedLabels = true;
-            chartArea5.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
-            chartArea5.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea5.AxisY.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
-            chartArea5.AxisY.Title = "Volumen de Agua (mm3)";
-            chartArea5.AxisY.TitleFont = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea5.Name = "ChartArea1";
-            this.chartVw.ChartAreas.Add(chartArea5);
+            chartArea4.AxisX.IsLabelAutoFit = false;
+            chartArea4.AxisX.LabelStyle.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea4.AxisX.LabelStyle.TruncatedLabels = true;
+            chartArea4.AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea4.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea4.AxisX.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
+            chartArea4.AxisX.Title = "Tiempo (min)";
+            chartArea4.AxisX.TitleFont = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea4.AxisY.IsLabelAutoFit = false;
+            chartArea4.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea4.AxisY.LabelStyle.TruncatedLabels = true;
+            chartArea4.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea4.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea4.AxisY.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
+            chartArea4.AxisY.Title = "Volumen de Agua (mm3)";
+            chartArea4.AxisY.TitleFont = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea4.Name = "ChartArea1";
+            this.chartVw.ChartAreas.Add(chartArea4);
             this.chartVw.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend5.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend5.Enabled = false;
-            legend5.Name = "Legend1";
-            this.chartVw.Legends.Add(legend5);
+            legend4.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend4.Enabled = false;
+            legend4.Name = "Legend1";
+            this.chartVw.Legends.Add(legend4);
             this.chartVw.Location = new System.Drawing.Point(0, 0);
             this.chartVw.Name = "chartVw";
             series4.ChartArea = "ChartArea1";
@@ -567,29 +544,29 @@
             // 
             // chartFr
             // 
-            chartArea6.AxisX.IsLabelAutoFit = false;
-            chartArea6.AxisX.LabelStyle.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea6.AxisX.LabelStyle.TruncatedLabels = true;
-            chartArea6.AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
-            chartArea6.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea6.AxisX.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
-            chartArea6.AxisX.Title = "Tiempo (min)";
-            chartArea6.AxisX.TitleFont = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea6.AxisY.IsLabelAutoFit = false;
-            chartArea6.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea6.AxisY.LabelStyle.TruncatedLabels = true;
-            chartArea6.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
-            chartArea6.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea6.AxisY.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
-            chartArea6.AxisY.Title = "Factor de Recobro (%)";
-            chartArea6.AxisY.TitleFont = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea6.Name = "ChartArea1";
-            this.chartFr.ChartAreas.Add(chartArea6);
+            chartArea5.AxisX.IsLabelAutoFit = false;
+            chartArea5.AxisX.LabelStyle.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea5.AxisX.LabelStyle.TruncatedLabels = true;
+            chartArea5.AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea5.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea5.AxisX.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
+            chartArea5.AxisX.Title = "Tiempo (min)";
+            chartArea5.AxisX.TitleFont = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea5.AxisY.IsLabelAutoFit = false;
+            chartArea5.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea5.AxisY.LabelStyle.TruncatedLabels = true;
+            chartArea5.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea5.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea5.AxisY.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
+            chartArea5.AxisY.Title = "Factor de Recobro (%)";
+            chartArea5.AxisY.TitleFont = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea5.Name = "ChartArea1";
+            this.chartFr.ChartAreas.Add(chartArea5);
             this.chartFr.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend6.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend6.Enabled = false;
-            legend6.Name = "Legend1";
-            this.chartFr.Legends.Add(legend6);
+            legend5.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend5.Enabled = false;
+            legend5.Name = "Legend1";
+            this.chartFr.Legends.Add(legend5);
             this.chartFr.Location = new System.Drawing.Point(0, 0);
             this.chartFr.Name = "chartFr";
             series5.ChartArea = "ChartArea1";
@@ -601,18 +578,14 @@
             this.chartFr.TabIndex = 3;
             this.chartFr.Text = "chart1";
             // 
-            // btnGetRMN
+            // chartSo
             // 
-            this.btnGetRMN.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnGetRMN.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnGetRMN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGetRMN.Location = new System.Drawing.Point(590, 555);
-            this.btnGetRMN.Name = "btnGetRMN";
-            this.btnGetRMN.Size = new System.Drawing.Size(136, 25);
-            this.btnGetRMN.TabIndex = 21;
-            this.btnGetRMN.Text = "Cargar Datos de RMN";
-            this.btnGetRMN.UseVisualStyleBackColor = false;
-            this.btnGetRMN.Click += new System.EventHandler(this.btnGetRMN_Click);
+            this.chartSo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chartSo.Location = new System.Drawing.Point(3, 3);
+            this.chartSo.Name = "chartSo";
+            this.chartSo.Size = new System.Drawing.Size(726, 580);
+            this.chartSo.TabIndex = 2;
+            this.chartSo.Text = "cartesianChart1";
             // 
             // ProjectDForm
             // 
@@ -639,7 +612,6 @@
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartPorosidad)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chartSo)).EndInit();
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartSw)).EndInit();
             this.tabPage5.ResumeLayout(false);
@@ -680,11 +652,11 @@
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.TabPage tabPage7;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartSo;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartSw;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartVo;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartVw;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartFr;
         private System.Windows.Forms.Button btnGetRMN;
+        private LiveCharts.WinForms.CartesianChart chartSo;
     }
 }

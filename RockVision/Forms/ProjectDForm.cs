@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media;
+using LiveCharts;
+using LiveCharts.Defaults;
+using LiveCharts.Wpf;
 
 namespace RockVision
 {
@@ -107,7 +111,97 @@ namespace RockVision
         {
             if (padre.actualD.EstimarSo())
             {
-                
+                var r = new Random();
+
+                chartSo.Series.Add(new HeatSeries
+                {
+                    Values = new ChartValues<HeatPoint>
+                    {
+                        //X means sales man
+                        //Y is the day
+                        //"Jeremy Swanson"
+                        new HeatPoint(0, 0, r.Next(0, 10)),
+                        new HeatPoint(0, 1, r.Next(0, 10)),
+                        new HeatPoint(0, 2, r.Next(0, 10)),
+                        new HeatPoint(0, 3, r.Next(0, 10)),
+                        new HeatPoint(0, 4, r.Next(0, 10)),
+                        new HeatPoint(0, 5, r.Next(0, 10)),
+                        new HeatPoint(0, 6, r.Next(0, 10)),
+                        //"Lorena Hoffman"
+                        new HeatPoint(1, 0, r.Next(0, 10)),
+                        new HeatPoint(1, 1, r.Next(0, 10)),
+                        new HeatPoint(1, 2, r.Next(0, 10)),
+                        new HeatPoint(1, 3, r.Next(0, 10)),
+                        new HeatPoint(1, 4, r.Next(0, 10)),
+                        new HeatPoint(1, 5, r.Next(0, 10)),
+                        new HeatPoint(1, 6, r.Next(0, 10)),
+                        //"Robyn Williamson"
+                        new HeatPoint(2, 0, r.Next(0, 10)),
+                        new HeatPoint(2, 1, r.Next(0, 10)),
+                        new HeatPoint(2, 2, r.Next(0, 10)),
+                        new HeatPoint(2, 3, r.Next(0, 10)),
+                        new HeatPoint(2, 4, r.Next(0, 10)),
+                        new HeatPoint(2, 5, r.Next(0, 10)),
+                        new HeatPoint(2, 6, r.Next(0, 10)),
+                        //"Carole Haynes"
+                        new HeatPoint(3, 0, r.Next(0, 10)),
+                        new HeatPoint(3, 1, r.Next(0, 10)),
+                        new HeatPoint(3, 2, r.Next(0, 10)),
+                        new HeatPoint(3, 3, r.Next(0, 10)),
+                        new HeatPoint(3, 4, r.Next(0, 10)),
+                        new HeatPoint(3, 5, r.Next(0, 10)),
+                        new HeatPoint(3, 6, r.Next(0, 10)),
+                        //"Essie Nelson"
+                        new HeatPoint(4, 0, r.Next(0, 10)),
+                        new HeatPoint(4, 1, r.Next(0, 10)),
+                        new HeatPoint(4, 2, r.Next(0, 10)),
+                        new HeatPoint(4, 3, r.Next(0, 10)),
+                        new HeatPoint(4, 4, r.Next(0, 10)),
+                        new HeatPoint(4, 5, r.Next(0, 10)),
+                        new HeatPoint(4, 6, r.Next(0, 10))
+                    },
+                    DataLabels = true,
+ 
+                    //The GradientStopCollection is optional
+                    //If you do not set this property, LiveCharts will set a gradient
+                    GradientStopCollection = new GradientStopCollection
+                    {
+                        new GradientStop(System.Windows.Media.Color.FromRgb(0, 0, 255), 0),
+                        new GradientStop(System.Windows.Media.Color.FromRgb(0, 63, 192), .25),
+                        new GradientStop(System.Windows.Media.Color.FromRgb(0, 127, 128), .5),
+                        new GradientStop(System.Windows.Media.Color.FromRgb(0, 191, 64), .75),
+                        new GradientStop(System.Windows.Media.Color.FromRgb(0, 255, 0), 1)
+                    }
+                });
+
+                chartSo.AxisX.Add(new Axis
+                {
+                    LabelsRotation = -15,
+                    Labels = new[]
+                    {
+                        "Jeremy Wanson",
+                        "Lorena Hoffman",
+                        "Robyn Williamson",
+                        "Carole Haynes",
+                        "Essie Nelson"
+                    },
+                    Separator = new Separator { Step = 1 }
+                });
+
+                chartSo.AxisY.Add(new Axis
+                {
+                    Labels = new[]
+                    {
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday",
+                        "Saturday",
+                        "Sunday"
+                    }
+                });
+            
             }
             else
             {
