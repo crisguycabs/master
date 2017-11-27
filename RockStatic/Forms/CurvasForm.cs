@@ -341,7 +341,16 @@ namespace RockStatic
                         
                     Dfm.Add(pb);
                     Zfme.Add(tZf);
-                    Pefm.Add(tPef);
+
+                    if (tPef > 20)
+                    {
+                        Pefm.Add(-1);
+                    }
+                    else
+                    {
+                        Pefm.Add(tPef);
+                    }
+                    
                     jkindex++;
                     SlidePertenece[i] = 1;
 
@@ -408,9 +417,14 @@ namespace RockStatic
                     chart2.Series[0].Points.AddXY(Zfme[i], profundidad[i]);
                     Z.Add(Zfme[i]);
 
-
-                    chart3.Series[0].Points.AddXY((Math.Pow(Zfme[i] / Convert.ToDouble(10), 3.6)), profundidad[i]);
-                    P.Add((Math.Pow(Zfme[i] / Convert.ToDouble(10), 3.6)));
+                    if((Math.Pow(Zfme[i] / Convert.ToDouble(10), 3.6)>20))
+                    {
+                        chart3.Series[0].Points.AddXY(-1, profundidad[i]);
+                        P.Add(-1);
+                    }else{
+                        chart3.Series[0].Points.AddXY((Math.Pow(Zfme[i] / Convert.ToDouble(10), 3.6)), profundidad[i]);
+                        P.Add((Math.Pow(Zfme[i] / Convert.ToDouble(10), 3.6)));
+                    } 
                 }
                 
             }

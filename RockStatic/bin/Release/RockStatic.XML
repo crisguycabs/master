@@ -549,6 +549,11 @@
             Diametro de la segmentacion en RV
             </summary>
         </member>
+        <member name="F:RockStatic.MyDataCube.meanCT">
+            <summary>
+            Vector de valores medios CT por corte transversal
+            </summary>
+        </member>
         <member name="M:RockStatic.MyDataCube.#ctor">
             <summary>
             Constructor por defecto
@@ -862,6 +867,17 @@
         <member name="M:RockStatic.MyDicom.CropCTCircleRV(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Toma el List de ushort, que se mapea a una imagen BMP, y recorta los elementos que se mapean un area circular de centro (xcenter,ycenter) de radio rad. Version RV
+            </summary>
+            <param name="pixels16">List con la información CT en cada pixel</param>
+            <param name="xcenter">Coordenadas cartesianas del centro X, con cero en la esquina superior izquierda</param>
+            <param name="ycenter">Coordenadas cartesianas del centro Y, con cero en la esquina superior izquierda</param>
+            <param name="rad">Radio del circulo a extraer</param>
+            <param name="width">Ancho de la imagen original</param>
+            <param name="height">Alto de la imagen original</param>
+        </member>
+        <member name="M:RockStatic.MyDicom.CropMeanCTRVD(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Toma el List de ushort, que se mapea a una imagen BMP, y recorta los elementos que se mapean un area circular de centro (xcenter,ycenter) de radio rad, y devuelve el valor medio de la segmentacion. Uso en RV-D
             </summary>
             <param name="pixels16">List con la información CT en cada pixel</param>
             <param name="xcenter">Coordenadas cartesianas del centro X, con cero en la esquina superior izquierda</param>
