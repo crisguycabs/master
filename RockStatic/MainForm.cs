@@ -693,29 +693,26 @@ namespace RockStatic
                 actual.areaPhantom3 = new CCuadrado(areaP3);
 
                 actual.datacuboHigh.widthSegCore = actual.areaCore.width;
-                actual.datacuboLow.widthSegCore = actual.areaCore.width;
+                // actual.datacuboLow.widthSegCore = actual.areaCore.width;     // reduccion de RAM sin Low
 
                 // se genera la segmentacion
                 //actual.datacuboHigh.SegCircThread(actual.areaCore);
                 //actual.datacuboLow.SegCircThread(actual.areaCore);
                 actual.datacuboHigh.SegCircThread(new CCuadrado(actual.areaCore.x, actual.areaCore.y, actual.areaCore.width),"core");
-                actual.datacuboLow.SegCircThread(new CCuadrado(actual.areaCore.x, actual.areaCore.y, actual.areaCore.width), "core");
                 actual.datacuboHigh.SegCircThread(new CCuadrado(actual.areaPhantom1.x, actual.areaPhantom1.y, actual.areaPhantom1.width), "p1");
-                actual.datacuboLow.SegCircThread(new CCuadrado(actual.areaPhantom1.x, actual.areaPhantom1.y, actual.areaPhantom1.width), "p1");
                 actual.datacuboHigh.SegCircThread(new CCuadrado(actual.areaPhantom2.x, actual.areaPhantom2.y, actual.areaPhantom2.width), "p2");
-                actual.datacuboLow.SegCircThread(new CCuadrado(actual.areaPhantom2.x, actual.areaPhantom2.y, actual.areaPhantom2.width), "p2");
                 actual.datacuboHigh.SegCircThread(new CCuadrado(actual.areaPhantom3.x, actual.areaPhantom3.y, actual.areaPhantom3.width), "p3");
-                actual.datacuboLow.SegCircThread(new CCuadrado(actual.areaPhantom3.x, actual.areaPhantom3.y, actual.areaPhantom3.width), "p3");
-
-                // se crean los cortes longitudinales
-                //actual.datacuboHigh.GenerarCoresHorizontales();                
-                //actual.datacuboLow.GenerarCoresHorizontales();
+                
+                /*actual.datacuboLow.SegCircThread(new CCuadrado(actual.areaCore.x, actual.areaCore.y, actual.areaCore.width), "core");    // reduccion de RAM sin Low
+                actual.datacuboLow.SegCircThread(new CCuadrado(actual.areaPhantom1.x, actual.areaPhantom1.y, actual.areaPhantom1.width), "p1");
+                actual.datacuboLow.SegCircThread(new CCuadrado(actual.areaPhantom2.x, actual.areaPhantom2.y, actual.areaPhantom2.width), "p2");
+                actual.datacuboLow.SegCircThread(new CCuadrado(actual.areaPhantom3.x, actual.areaPhantom3.y, actual.areaPhantom3.width), "p3");*/
 
                 // se generan los cortes longitudinales
                 actual.datacuboHigh.GenerarCoresHorizontales();
                 actual.datacuboHigh.GenerarCoresVerticales();
-                actual.datacuboLow.GenerarCoresHorizontales();
-                actual.datacuboLow.GenerarCoresVerticales();
+                /*actual.datacuboLow.GenerarCoresHorizontales();   // reduccion de RAM sin Low
+                actual.datacuboLow.GenerarCoresVerticales();*/
 
             }
 
@@ -740,7 +737,7 @@ namespace RockStatic
 
             // se crean las imagenes de los cortes transversales
             actual.datacuboHigh.CrearBitmapThread();
-            actual.datacuboLow.CrearBitmapThread();
+            // actual.datacuboLow.CrearBitmapThread();   // reduccion de RAM sin Low
 
             sr.Close();
 
@@ -819,6 +816,14 @@ namespace RockStatic
                 this.abiertoSelectAreas2Form = false;
                 this.selecAreas2Form = null;
             }
+
+            actual.datacuboHigh.coresHorizontal = null;
+            actual.datacuboHigh.coresVertical = null;
+            actual.datacuboHigh.phantoms1Horizontal = null;
+            actual.datacuboHigh.phantoms2Horizontal = null;
+            actual.datacuboHigh.phantoms3Horizontal = null;
+
+            GC.Collect();
         }
 
         private void tableLayoutPanel1_CellPaint(object sender, TableLayoutCellPaintEventArgs e)

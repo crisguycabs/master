@@ -270,6 +270,7 @@
             this.trackElementos.Name = "trackElementos";
             this.trackElementos.Size = new System.Drawing.Size(320, 45);
             this.trackElementos.TabIndex = 13;
+            this.trackElementos.Scroll += new System.EventHandler(this.trackElementos_Scroll);
             this.trackElementos.ValueChanged += new System.EventHandler(this.trackElementos_ValueChanged);
             this.trackElementos.MouseDown += new System.Windows.Forms.MouseEventHandler(this.trackElementos_MouseDown);
             this.trackElementos.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackElementos_MouseUp);

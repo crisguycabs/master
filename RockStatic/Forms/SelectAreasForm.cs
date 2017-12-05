@@ -899,6 +899,11 @@ namespace RockStatic
         private void pictCore_MouseMove(object sender, MouseEventArgs e)
         {
             lblTest.Text = "x: " + e.X.ToString() + " y: " + e.Y.ToString();
+        }
+
+        private void trackElementos_Scroll(object sender, EventArgs e)
+        {
+
         }        
     }
 }
