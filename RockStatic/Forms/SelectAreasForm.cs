@@ -127,11 +127,7 @@ namespace RockStatic
             changes = false;
 
             padre.actual.datacuboHigh.widthSegCore = padre.actual.areaCore.width;
-            padre.actual.datacuboLow.widthSegCore = padre.actual.areaCore.width;
-
-     
-
-            //// voy a modificar 
+            //padre.actual.datacuboLow.widthSegCore = padre.actual.areaCore.width; // eliminacion de RAM por Low
 
             if (padre.actual.phantomEnDicom)
             {
@@ -140,19 +136,21 @@ namespace RockStatic
 
  
                 this.padre.actual.datacuboHigh.SegCircThread(new CCuadrado(padre.actual.areaCore.x , padre.actual.areaCore.y , padre.actual.areaCore.width), "core");
-                this.padre.actual.datacuboLow.SegCircThread(new CCuadrado(padre.actual.areaCore.x, padre.actual.areaCore.y, padre.actual.areaCore.width), "core");
                 padre.actual.datacuboHigh.SegCircThread(padre.actual.areaPhantom1, "p1");
-                padre.actual.datacuboLow.SegCircThread(padre.actual.areaPhantom1, "p1");
                 padre.actual.datacuboHigh.SegCircThread(padre.actual.areaPhantom2, "p2");
-                padre.actual.datacuboLow.SegCircThread(padre.actual.areaPhantom2, "p2");
                 padre.actual.datacuboHigh.SegCircThread(padre.actual.areaPhantom3, "p3");
-                padre.actual.datacuboLow.SegCircThread(padre.actual.areaPhantom3, "p3");
+
+                /*this.padre.actual.datacuboLow.SegCircThread(new CCuadrado(padre.actual.areaCore.x, padre.actual.areaCore.y, padre.actual.areaCore.width), "core");   // eliminacion de RAM por Low
+                padre.actual.datacuboLow.SegCircThread(padre.actual.areaPhantom1, "p1");
+                padre.actual.datacuboLow.SegCircThread(padre.actual.areaPhantom2, "p2");
+                padre.actual.datacuboLow.SegCircThread(padre.actual.areaPhantom3, "p3");*/
 
                 // se generan los cortes longitudinales
                 this.padre.actual.datacuboHigh.GenerarCoresHorizontales();
                 this.padre.actual.datacuboHigh.GenerarCoresVerticales();
-                this.padre.actual.datacuboLow.GenerarCoresHorizontales();
-                this.padre.actual.datacuboLow.GenerarCoresVerticales();
+
+                /*this.padre.actual.datacuboLow.GenerarCoresHorizontales();   // eliminacion de RAM por Low
+                this.padre.actual.datacuboLow.GenerarCoresVerticales();*/
 
                 ////-----------------------esto es modificado --------------------------------
                 padre.actual.datacuboHigh.widthSegP1 = padre.actual.areaPhantom1.width;
@@ -172,13 +170,13 @@ namespace RockStatic
                 // se genera la segmentacion transversal
 
                 this.padre.actual.datacuboHigh.SegCircThread(padre.actual.areaCore, "core");
-                this.padre.actual.datacuboLow.SegCircThread(padre.actual.areaCore, "core");
+                //this.padre.actual.datacuboLow.SegCircThread(padre.actual.areaCore, "core");   // eliminacion de RAM por Low
 
                 // se generan los cortes longitudinales
                 this.padre.actual.datacuboHigh.GenerarCoresHorizontales();
                 this.padre.actual.datacuboHigh.GenerarCoresVerticales();
-                this.padre.actual.datacuboLow.GenerarCoresHorizontales();
-                this.padre.actual.datacuboLow.GenerarCoresVerticales();
+                /*this.padre.actual.datacuboLow.GenerarCoresHorizontales();   // eliminacion de RAM por Low
+                this.padre.actual.datacuboLow.GenerarCoresVerticales();*/
 
                 this.padre.CloseWaiting();
             }
@@ -197,20 +195,12 @@ namespace RockStatic
             
             if (padre.actual.phantomEnDicom)
             {
-                //this.pictP1.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segPhantom1, padre.actual.areaPhantom1.width * 2, padre.actual.areaPhantom1.width * 2);
-                //this.pictP2.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segPhantom2, padre.actual.areaPhantom2.width * 2, padre.actual.areaPhantom2.width * 2);
-                //this.pictP3.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segPhantom3, padre.actual.areaPhantom3.width * 2, padre.actual.areaPhantom3.width * 2);
-
                 int minNormalizacion = Convert.ToInt32(padre.actual.datacuboHigh.dataCube[0].pixelData.Min());
                 int maxNormalizacion = Convert.ToInt32(padre.actual.datacuboHigh.dataCube[0].pixelData.Max());
 
                 this.pictP1.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segPhantom1, padre.actual.areaPhantom1.width , padre.actual.areaPhantom1.width, minNormalizacion, maxNormalizacion );
                 this.pictP2.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segPhantom2, padre.actual.areaPhantom2.width, padre.actual.areaPhantom2.width, minNormalizacion, maxNormalizacion);
-                this.pictP3.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segPhantom3, padre.actual.areaPhantom3.width , padre.actual.areaPhantom3.width, minNormalizacion, maxNormalizacion );
-
-                /*this.pictP1.Image = MainForm.Byte2image(elementosP1[0]);
-                this.pictP2.Image = MainForm.Byte2image(elementosP2[0]);
-                this.pictP3.Image = MainForm.Byte2image(elementosP3[0]);*/
+                this.pictP3.Image = MyDicom.CrearBitmap(padre.actual.datacuboHigh.dataCube[0].segPhantom3, padre.actual.areaPhantom3.width , padre.actual.areaPhantom3.width, minNormalizacion, maxNormalizacion );                
             }
             else
             {

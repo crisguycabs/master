@@ -286,7 +286,7 @@ namespace RockStatic
 
                 // se crean las imagenes de los cortes transversales
                 padre.actual.datacuboHigh.CrearBitmapThread();
-                padre.actual.datacuboLow.CrearBitmapThread();
+                // padre.actual.datacuboLow.CrearBitmapThread();
 
                 // se guardan la profundidad de cabeza y cola
                 padre.actual.head = Convert.ToDouble(numHead.Value);

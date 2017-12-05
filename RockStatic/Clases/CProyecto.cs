@@ -130,7 +130,7 @@ namespace RockStatic
         {
             name = name_;
             datacuboHigh = new MyDataCube(rutasHigh);
-            datacuboLow = new MyDataCube(rutasLow);
+            //datacuboLow = new MyDataCube(rutasLow);
             phantomEnDicom = phantom;
 
             // se prepara una lista vacia de areas para los core, cada una con elementos null
