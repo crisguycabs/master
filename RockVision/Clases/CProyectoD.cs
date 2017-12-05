@@ -295,14 +295,7 @@ namespace RockVision
             // se borran los dicom
             this.datacubos[this.datacubos.Count - 1].dataCube = null;
             GC.Collect();
-
-            // se segmentan los DICOM segun la informacion que se cargo desde el archivo
-            // for (int i = 0; i < this.datacubos[this.datacubos.Count - 1].dataCube.Count; i++)
-            //    this.datacubos[this.datacubos.Count - 1].dataCube[i].pixelData = this.datacubos[this.datacubos.Count - 1].dataCube[i].CropCTCircle(segX, segY, segR, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Columns.Data, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Rows.Data);
-
-            // la segmentacion transversal es TODO el DICOM
-            // for (int i = 0; i < this.datacubos[this.datacubos.Count - 1].dataCube.Count; i++) this.datacubos[this.datacubos.Count - 1].dataCube[i].segCore = this.datacubos[this.datacubos.Count - 1].dataCube[i].pixelData;
-
+            
             // hay tantos cortes horizontales como
             this.datacubos[this.datacubos.Count - 1].widthSegCore = this.segR * 2;
 
@@ -323,13 +316,6 @@ namespace RockVision
             // se borran los dicom
             this.datacubos[this.datacubos.Count - 1].dataCube = null;
             GC.Collect();
-
-            // se segmentan los DICOM segun la informacion que se cargo desde el archivo
-            // for (int i = 0; i < this.datacubos[this.datacubos.Count - 1].dataCube.Count; i++)
-            //    this.datacubos[this.datacubos.Count - 1].dataCube[i].pixelData = this.datacubos[this.datacubos.Count - 1].dataCube[i].CropCTCircle(segX, segY, segR, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Columns.Data, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Rows.Data);
-
-            // la segmentacion transversal es TODO el DICOM
-            // for (int i = 0; i < this.datacubos[this.datacubos.Count - 1].dataCube.Count; i++) this.datacubos[this.datacubos.Count - 1].dataCube[i].segCore = this.datacubos[this.datacubos.Count - 1].dataCube[i].pixelData;
 
             // hay tantos cortes horizontales como
             this.datacubos[this.datacubos.Count - 1].widthSegCore = this.segR * 2;
@@ -357,13 +343,6 @@ namespace RockVision
                 // se borran los dicom
                 this.datacubos[this.datacubos.Count - 1].dataCube = null;
                 GC.Collect();
-
-                // se segmentan los DICOM segun la informacion que se cargo desde el archivo
-                // for (int i = 0; i < this.datacubos[this.datacubos.Count - 1].dataCube.Count; i++)
-                //    this.datacubos[this.datacubos.Count - 1].dataCube[i].pixelData = this.datacubos[this.datacubos.Count - 1].dataCube[i].CropCTCircle(segX, segY, segR, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Columns.Data, this.datacubos[this.datacubos.Count - 1].dataCube[i].selector.Rows.Data);
-                
-                // la segmentacion transversal es TODO el DICOM
-                // for (int i = 0; i < this.datacubos[this.datacubos.Count - 1].dataCube.Count; i++) this.datacubos[this.datacubos.Count - 1].dataCube[i].segCore = this.datacubos[this.datacubos.Count - 1].dataCube[i].pixelData;
 
                 // hay tantos cortes horizontales como
                 this.datacubos[this.datacubos.Count - 1].widthSegCore = this.segR * 2;
@@ -683,7 +662,7 @@ namespace RockVision
 
                 for (int i = 0; i < porosidad.Length; i++)
                 {
-                    porosidad[i] = 100 * (datacubos[0].meanCT[i] - datacubos[1].meanCT[i]) / (valorCTo - valorCTw);
+                    porosidad[i] = (datacubos[0].meanCT[i] - datacubos[1].meanCT[i]) / (valorCTo - valorCTw);
                 }
 
                 this.porosidadEstimada = true;

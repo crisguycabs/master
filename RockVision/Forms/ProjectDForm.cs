@@ -86,8 +86,8 @@ namespace RockVision
                 chartPorosidad.Series[0].Points.Clear();
                 for (int i = 0; i < padre.actualD.porosidad.Length; i++) chartPorosidad.Series[0].Points.AddXY(i + 1, padre.actualD.porosidad[i]);
 
-                chartPorosidad.ChartAreas[0].AxisY.Minimum = padre.actualD.porosidad.Min() - 1;
-                chartPorosidad.ChartAreas[0].AxisY.Maximum = padre.actualD.porosidad.Max() + 1;
+                chartPorosidad.ChartAreas[0].AxisY.Minimum = padre.actualD.porosidad.Min();
+                chartPorosidad.ChartAreas[0].AxisY.Maximum = padre.actualD.porosidad.Max();
 
                 if (chartPorosidad.ChartAreas[0].AxisY.Minimum < 0) chartPorosidad.ChartAreas[0].AxisY.Minimum = 0;
                 if (chartPorosidad.ChartAreas[0].AxisY.Maximum > 100) chartPorosidad.ChartAreas[0].AxisY.Maximum = 100;
