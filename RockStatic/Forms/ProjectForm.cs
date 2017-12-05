@@ -89,6 +89,8 @@ namespace RockStatic
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             // se cierra esta ventana, y todas las demas, y se abre el HomeForm
+            padre.actual = null;
+            GC.Collect();
             padre.CloseAll();                        
         }
 
