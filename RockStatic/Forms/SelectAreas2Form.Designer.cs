@@ -72,9 +72,9 @@
             // pictCore
             // 
             this.pictCore.BackColor = System.Drawing.Color.Black;
-            this.pictCore.Location = new System.Drawing.Point(10, 22);
+            this.pictCore.Location = new System.Drawing.Point(38, 22);
             this.pictCore.Name = "pictCore";
-            this.pictCore.Size = new System.Drawing.Size(800, 350);
+            this.pictCore.Size = new System.Drawing.Size(750, 350);
             this.pictCore.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictCore.TabIndex = 9;
             this.pictCore.TabStop = false;
@@ -123,7 +123,7 @@
             // 
             // trackCortes
             // 
-            this.trackCortes.Location = new System.Drawing.Point(816, 21);
+            this.trackCortes.Location = new System.Drawing.Point(808, 21);
             this.trackCortes.Name = "trackCortes";
             this.trackCortes.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trackCortes.Size = new System.Drawing.Size(45, 351);
