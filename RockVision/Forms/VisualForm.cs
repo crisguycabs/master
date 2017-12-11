@@ -742,7 +742,7 @@ namespace RockVision
                 //short b;
                 //short valint;
                 //double rangogray = 65535;
-                ////ushort* row = (ushort*)bmdgrad.Scan0;
+                ////short* row = (short*)bmdgrad.Scan0;
                 //valint = Convert.ToInt16(Math.Round(rangogray / (p2 - p1)));
                 //for (i = 0; i < bmdgrad.Width; ++i)
                 //{

@@ -19,7 +19,7 @@ namespace RockStatic
         /// <summary>
         /// Guarda la copia de los pixeles que se van a procesar como imagen 
         /// </summary>
-        private List<ushort> pixels16;
+        private List<short> pixels16;
 
         /// <summary>
         /// Imagen resultante
@@ -29,12 +29,12 @@ namespace RockStatic
         /// <summary>
         /// Segmentacion resultante
         /// </summary>
-        private List<ushort> segmentacion;
+        private List<short> segmentacion;
 
         /// <summary>
         /// Devuelve la segmentacion resultante
         /// </summary>
-        public List<ushort> Segmentacion { get { return segmentacion; } }
+        public List<short> Segmentacion { get { return segmentacion; } }
 
         /// <summary>
         /// Ancho deseado de la imagen resultante
@@ -92,9 +92,9 @@ namespace RockStatic
         /// <param name="_minNormalizacion">Valor minimo CT de la normalizacion</param>
         /// <param name="_maxNormalizacion">Valor maximo CT de la normalizacion</param>
         /// <param name="_done">Parametro para el control del ThreadPool</param>
-        public AuxThread(List<ushort> _pixels16, int _width, int _height, int _minNormalizacion, int _maxNormalizacion, ManualResetEvent _done)
+        public AuxThread(List<short> _pixels16, int _width, int _height, int _minNormalizacion, int _maxNormalizacion, ManualResetEvent _done)
         {
-            pixels16 = new List<ushort>();
+            pixels16 = new List<short>();
             for (int i = 0; i < _pixels16.Count; i++)
                 pixels16.Add(_pixels16[i]);
 
@@ -112,9 +112,9 @@ namespace RockStatic
         /// <param name="_width">Ancho deseado de la imagen resultante</param>
         /// <param name="_height">Alto deseado de la imagen resultante</param>
         /// <param name="_done">Parametro para el control del ThreadPool</param>
-        public AuxThread(List<ushort> _pixels16, int _width, int _height, ManualResetEvent _done)
+        public AuxThread(List<short> _pixels16, int _width, int _height, ManualResetEvent _done)
         {
-            pixels16 = new List<ushort>();
+            pixels16 = new List<short>();
             for (int i = 0; i < _pixels16.Count; i++)
                 pixels16.Add(_pixels16[i]);
 
@@ -133,9 +133,9 @@ namespace RockStatic
         /// <param name="_width">Ancho de la imagen original</param>
         /// <param name="_height">Alto de la imagen original</param>
         /// <param name="_done">Parametro para el control del ThreadPool</param>
-        public AuxThread(List<ushort> _pixels16, int _xesquina, int _yesquina, int _diametro, int _width, int _height, ManualResetEvent _done)
+        public AuxThread(List<short> _pixels16, int _xesquina, int _yesquina, int _diametro, int _width, int _height, ManualResetEvent _done)
         {
-            pixels16 = new List<ushort>();
+            pixels16 = new List<short>();
             for (int i = 0; i < _pixels16.Count; i++)
                 pixels16.Add(_pixels16[i]);
 
@@ -271,9 +271,9 @@ namespace RockStatic
         /// Se segmenta la imagen (pixelDatata) que se pasa en el constructor de acuerdo con la informacion de centro y radio que se pasa en el constructor
         /// </summary>
         /// <returns>Imagen que contiene la segmentacion circular</returns>
-        public List<ushort> SegmentarCircular()
+        public List<short> SegmentarCircular()
         {
-            List<ushort> pixelsCrop = new List<ushort>();
+            List<short> pixelsCrop = new List<short>();
             int k = 0;
             double dist;
 

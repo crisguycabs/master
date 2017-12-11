@@ -36,29 +36,29 @@ namespace RockStatic
         public Bitmap bmp = null;
  
         /// <summary>
-        /// List que contiene la informacion de pixeles CT (ushort) para el DICOM cargado        
+        /// List que contiene la informacion de pixeles CT (short) para el DICOM cargado        
         /// </summary>
-        public List<ushort> pixelData = null;
+        public List<short> pixelData = null;
  
         /// <summary>
         /// List que contiene los pixeles CT de la segmentacion transversal del core del DICOM
         /// </summary>
-        public List<ushort> segCore = null;
+        public List<short> segCore = null;
 
         /// <summary>
         /// List que contiene los pixeles CT de la segmentacion transversal del phantom1 del DICOM
         /// </summary>
-        public List<ushort> segPhantom1 = null;
+        public List<short> segPhantom1 = null;
 
         /// <summary>
         /// List que contiene los pixeles CT de la segmentacion transversal del phantom2 del DICOM
         /// </summary>
-        public List<ushort> segPhantom2 = null;
+        public List<short> segPhantom2 = null;
 
         /// <summary>
         /// List que contiene los pixeles CT de la segmentacion transversal del phantom3 del DICOM
         /// </summary>
-        public List<ushort> segPhantom3 = null;
+        public List<short> segPhantom3 = null;
  
         /// <summary>
         /// Objeto DICOM cargado
@@ -85,7 +85,7 @@ namespace RockStatic
             minPixVal = 0;
             signedImage = false;
             bmp = null;
-            pixelData = new List<ushort>();
+            pixelData = new List<short>();
             dcm = null;
             selector = null;
         }
@@ -114,15 +114,15 @@ namespace RockStatic
         /// <param name="rescaleIntercept">Valor RESCALE_INTERCEPT obtenido de EvilDICOM</param>
         /// <param name="photoInterpretation">Valor PHOTO_INTERPRETATION obtenido de EvilDICOM</param>
         /// <returns></returns>
-        private List<ushort> Byte2Pixels16(List<byte> pixelValues, int width, int height, int pixelRepresentation, double rescaleSlope, double rescaleIntercept, string photoInterpretation)
+        private List<short> Byte2Pixels16(List<byte> pixelValues, int width, int height, int pixelRepresentation, double rescaleSlope, double rescaleIntercept, string photoInterpretation)
         {
             int i1 = 0;
-            ushort unsignedS;
+            short unsignedS;
             int numPixels = width * height;
-            int max16 = ushort.MaxValue;
+            int max16 = short.MaxValue;
             int pixVal = 0;
             List<int> pixels16Int = new List<int>();
-            List<ushort> pixels16 = new List<ushort>();
+            List<short> pixels16 = new List<short>();
             byte[] signedData = new byte[2];
  
             for (int i = 0; i < numPixels; ++i)
@@ -131,7 +131,7 @@ namespace RockStatic
  
                 if (pixelRepresentation == 0) // Unsigned
                 {
-                    unsignedS = Convert.ToUInt16((pixelValues[i1 + 1] << 8) + pixelValues[i1]);
+                    unsignedS = Convert.ToInt16((pixelValues[i1 + 1] << 8) + pixelValues[i1]);
                     pixVal = (int)(unsignedS * rescaleSlope + rescaleIntercept);
                     if (photoInterpretation == "MONOCHROME1")
                         pixVal = max16 - pixVal;
@@ -157,11 +157,12 @@ namespace RockStatic
             // Use the above pixel data to populate the list pixels16 
             foreach (int pixel in pixels16Int)
             {
-                // We internally convert all 16-bit images to the range 0 - 65535
-                if (signedImage)
-                    pixels16.Add((ushort)(pixel - minPixVal)); //pixels16.Add((ushort)(pixel - min16));
-                else
-                    pixels16.Add((ushort)(pixel));
+                //// We internally convert all 16-bit images to the range 0 - 65535
+                //if (signedImage)
+                //    pixels16.Add((short)(pixel - minPixVal)); //pixels16.Add((short)(pixel - min16));
+                //else
+                //    pixels16.Add((short)(pixel));
+                pixels16.Add((short)(pixel));
             }
  
             pixels16Int.Clear();
@@ -178,10 +179,10 @@ namespace RockStatic
         /// <param name="rescaleIntercept">Valor RESCALE_INTERCEPT obtenido de EvilDICOM</param>
         /// <param name="photoInterpretation">Valor PHOTO_INTERPRETATION obtenido de EvilDICOM</param>
         /// <returns>List de bytes codificado</returns>
-        public List<byte> Pixels162Byte(List<ushort> pixels16, int pixelRepresentation, double rescaleSlope, double rescaleIntercept, string photoInterpretation)
+        public List<byte> Pixels162Byte(List<short> pixels16, int pixelRepresentation, double rescaleSlope, double rescaleIntercept, string photoInterpretation)
         {
             List<byte> pixelValues = new List<byte>();
-            int max16 = ushort.MaxValue;
+            int max16 = short.MaxValue;
             int pixVal;
             int sval;
             List<int> pixels16Int = new List<int>();
@@ -209,7 +210,7 @@ namespace RockStatic
         }
  
         /// <summary>
-        /// Toma el List de ushort, que se mapea a una imagen BMP, y se recorta los elementos que se mapean en un area cuadrada de centro (xcenter,ycenter) de ancho 2*anchoRect y de largo 2*largoRect
+        /// Toma el List de short, que se mapea a una imagen BMP, y se recorta los elementos que se mapean en un area cuadrada de centro (xcenter,ycenter) de ancho 2*anchoRect y de largo 2*largoRect
         /// </summary>
         /// <param name="pixels16">List con la información CT en cada pixel</param>
         /// <param name="xcenter">Coordenadas cartesianas del centro X, con cero en la esquina superior izquierda</param>
@@ -219,9 +220,9 @@ namespace RockStatic
         /// <param name="width">Ancho de la imagen original</param>
         /// <param name="height">Alto de la imagen original</param>
         /// <returns></returns>
-        public void CropCTRectangle(List<ushort> pixels16, int xcenter, int ycenter, int altoRect, int anchoRect, int width, int height)
+        public void CropCTRectangle(List<short> pixels16, int xcenter, int ycenter, int altoRect, int anchoRect, int width, int height)
         {
-            List<ushort> pixelsCrop = new List<ushort>();
+            List<short> pixelsCrop = new List<short>();
             int k = 0;
  
             for (int i = 0; i < height; i++)
@@ -234,7 +235,7 @@ namespace RockStatic
                 }
             }
  
-            this.segCore = new List<ushort>();
+            this.segCore = new List<short>();
             segCore.Clear();
             for (int i = 0; i < pixelsCrop.Count; i++)
             {
@@ -244,7 +245,7 @@ namespace RockStatic
         }
  
         /// <summary>
-        /// Toma el List de ushort, que se mapea a una imagen BMP, y recorta los elementos que se mapean un area circular de centro (xcenter,ycenter) de radio rad
+        /// Toma el List de short, que se mapea a una imagen BMP, y recorta los elementos que se mapean un area circular de centro (xcenter,ycenter) de radio rad
         /// </summary>
         /// <param name="pixels16">List con la información CT en cada pixel</param>
         /// <param name="xcenter">Coordenadas cartesianas del centro X, con cero en la esquina superior izquierda</param>
@@ -252,9 +253,9 @@ namespace RockStatic
         /// <param name="rad">Radio del circulo a extraer</param>
         /// <param name="width">Ancho de la imagen original</param>
         /// <param name="height">Alto de la imagen original</param>
-        public void CropCTCircle(List<ushort> pixels16, int xcenter, int ycenter, int rad, int width, int height)
+        public void CropCTCircle(List<short> pixels16, int xcenter, int ycenter, int rad, int width, int height)
         {
-            List<ushort> pixelsCrop = new List<ushort>();
+            List<short> pixelsCrop = new List<short>();
             int k = 0;
             double dist;
  
@@ -285,7 +286,7 @@ namespace RockStatic
                 }
             }
  
-            this.segCore = new List<ushort>();
+            this.segCore = new List<short>();
             segCore.Clear();
             for (int i = 0; i < pixelsCrop.Count; i++)
             {
@@ -294,7 +295,7 @@ namespace RockStatic
         }
 
         /// <summary>
-        /// Toma el List de ushort, que se mapea a una imagen BMP, y recorta los elementos que se mapean un area circular de centro (xcenter,ycenter) de radio rad
+        /// Toma el List de short, que se mapea a una imagen BMP, y recorta los elementos que se mapean un area circular de centro (xcenter,ycenter) de radio rad
         /// </summary>
         /// <param name="pixels16">List con la información CT en cada pixel</param>
         /// <param name="xcenter">Coordenadas cartesianas del centro X, con cero en la esquina superior izquierda</param>
@@ -302,9 +303,9 @@ namespace RockStatic
         /// <param name="rad">Radio del circulo a extraer</param>
         /// <param name="width">Ancho de la imagen original</param>
         /// <param name="height">Alto de la imagen original</param>
-        public List<ushort> CropCTCircle(int xcenter, int ycenter, int rad, int width, int height)
+        public List<short> CropCTCircle(int xcenter, int ycenter, int rad, int width, int height)
         {
-            List<ushort> pixelsCrop = new List<ushort>();
+            List<short> pixelsCrop = new List<short>();
             int k = 0;
             double dist;
 
@@ -360,7 +361,7 @@ namespace RockStatic
         }
 
         /// <summary>
-        /// Toma el List de ushort, que se mapea a una imagen BMP, y recorta los elementos que se mapean un area circular de centro (xcenter,ycenter) de radio rad. Version RV
+        /// Toma el List de short, que se mapea a una imagen BMP, y recorta los elementos que se mapean un area circular de centro (xcenter,ycenter) de radio rad. Version RV
         /// </summary>
         /// <param name="pixels16">List con la información CT en cada pixel</param>
         /// <param name="xcenter">Coordenadas cartesianas del centro X, con cero en la esquina superior izquierda</param>
@@ -368,9 +369,9 @@ namespace RockStatic
         /// <param name="rad">Radio del circulo a extraer</param>
         /// <param name="width">Ancho de la imagen original</param>
         /// <param name="height">Alto de la imagen original</param>
-        public List<ushort> CropCTCircleRV(int xcenter, int ycenter, int rad, int width, int height)
+        public List<short> CropCTCircleRV(int xcenter, int ycenter, int rad, int width, int height)
         {
-            List<ushort> pixelsCrop = new List<ushort>();
+            List<short> pixelsCrop = new List<short>();
             double dist;
             double xesquina = xcenter - rad;
             double yesquina = ycenter - rad;
@@ -396,7 +397,7 @@ namespace RockStatic
                         else
                         {
                             // si esta dentro del area cuadrado pero fuera del circulo
-                            pixelsCrop.Add(0);
+                            pixelsCrop.Add(pixelData.Min());
                         }
                     }
                 }
@@ -406,7 +407,7 @@ namespace RockStatic
         }
 
         /// <summary>
-        /// Toma el List de ushort, que se mapea a una imagen BMP, y recorta los elementos que se mapean un area circular de centro (xcenter,ycenter) de radio rad, y devuelve el valor medio de la segmentacion. Uso en RV-D
+        /// Toma el List de short, que se mapea a una imagen BMP, y recorta los elementos que se mapean un area circular de centro (xcenter,ycenter) de radio rad, y devuelve el valor medio de la segmentacion. Uso en RV-D
         /// </summary>
         /// <param name="pixels16">List con la información CT en cada pixel</param>
         /// <param name="xcenter">Coordenadas cartesianas del centro X, con cero en la esquina superior izquierda</param>
@@ -460,7 +461,7 @@ namespace RockStatic
         /// <param name="width">Ancho deseado de la imagen</param>
         /// <param name="height">Alto deseado de la imagen</param>
         /// <returns>Imagen resultante</returns>
-        public static Bitmap CrearBitmap(List<ushort> pixels16, int width, int height)
+        public static Bitmap CrearBitmap(List<short> pixels16, int width, int height)
         {
             Bitmap bmp = new Bitmap(width, height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
  
@@ -511,7 +512,7 @@ namespace RockStatic
         /// <param name="pixels16">List de shorts con la informacion CT de cada pixel</param>
         /// <param name="width">Ancho deseado de la imagen</param>
         /// <param name="height">Alto deseado de la imagen</param>
-        public void CreateBitmap(List<ushort> pixels16, int width, int height)
+        public void CreateBitmap(List<short> pixels16, int width, int height)
         {
             bmp = new Bitmap(width, height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
  
@@ -562,7 +563,7 @@ namespace RockStatic
         /// <param name="height">Alto deseado de la imagen</param>
         /// <param name="minNormalizacion">Valor minimo CT de la normalizacion</param>
         /// <param name="maxNormalizacion">Valor maximo CT de la normalizacion</param>
-        public void CreateBitmap(List<ushort> pixels16, int width, int height, int minNormalizacion, int maxNormalizacion)
+        public void CreateBitmap(List<short> pixels16, int width, int height, int minNormalizacion, int maxNormalizacion)
         {
             bmp = new Bitmap(width, height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
  
@@ -613,7 +614,7 @@ namespace RockStatic
         /// <param name="height">Alto deseado de la imagen</param>
         /// <param name="minNormalizacion">Valor minimo CT de la normalizacion</param>
         /// <param name="maxNormalizacion">Valor maximo CT de la normalizacion</param>
-        public static Bitmap CrearBitmap(List<ushort> pixels16, int width, int height, int minNormalizacion, int maxNormalizacion)
+        public static Bitmap CrearBitmap(List<short> pixels16, int width, int height, int minNormalizacion, int maxNormalizacion)
         {
             Bitmap bmp = new Bitmap(width, height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
  

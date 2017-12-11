@@ -33,39 +33,39 @@ namespace RockStatic
         /// <summary>
         /// Marcas de clase del histograma 
         /// </summary>
-        public ushort[] bins = null;
+        public short[] bins = null;
 
         /// <summary>
         /// Limites de cada bin
         /// </summary>
-        ushort[] limites = null;
+        short[] limites = null;
 
         /// <summary>
-        /// List que contiene los List de ushort que contienen los pixeles CT para cada corte horizontal del core
+        /// List que contiene los List de short que contienen los pixeles CT para cada corte horizontal del core
         /// </summary>
-        public List<ushort>[] coresHorizontal = null;
-
-        //-----------------------esto es modificado --------------------------------
-        /// <summary>
-        /// List que contiene los List de ushort que contienen los pixeles CT para cada corte horizontal del phanton1
-        /// </summary>
-        public List<ushort>[] phantoms1Horizontal = null;
-
-        /// <summary>
-        /// List que contiene los List de ushort que contienen los pixeles CT para cada corte horizontal del phanton1
-        /// </summary>
-        public List<ushort>[] phantoms2Horizontal = null;
-
-        /// <summary>
-        /// List que contiene los List de ushort que contienen los pixeles CT para cada corte horizontal del phanton1
-        /// </summary>
-        public List<ushort>[] phantoms3Horizontal = null;
+        public List<short>[] coresHorizontal = null;
 
         //-----------------------esto es modificado --------------------------------
         /// <summary>
-        /// List que contiene los List de ushort que contienen los pixeles CT para cada corte vertical del core
+        /// List que contiene los List de short que contienen los pixeles CT para cada corte horizontal del phanton1
         /// </summary>
-        public List<ushort>[] coresVertical = null;
+        public List<short>[] phantoms1Horizontal = null;
+
+        /// <summary>
+        /// List que contiene los List de short que contienen los pixeles CT para cada corte horizontal del phanton1
+        /// </summary>
+        public List<short>[] phantoms2Horizontal = null;
+
+        /// <summary>
+        /// List que contiene los List de short que contienen los pixeles CT para cada corte horizontal del phanton1
+        /// </summary>
+        public List<short>[] phantoms3Horizontal = null;
+
+        //-----------------------esto es modificado --------------------------------
+        /// <summary>
+        /// List que contiene los List de short que contienen los pixeles CT para cada corte vertical del core
+        /// </summary>
+        public List<short>[] coresVertical = null;
 
         /// <summary>
         /// Indica el ancho de la imagen segmentada del core resultante
@@ -129,9 +129,9 @@ namespace RockStatic
             }
 
             histograma = new uint[100];
-            bins = new ushort[100];
-            coresHorizontal = new List<ushort>[Convert.ToInt16(dataCube[0].selector.Rows.Data)];
-            coresVertical = new List<ushort>[Convert.ToInt16(dataCube[0].selector.Columns.Data)];
+            bins = new short[100];
+            coresHorizontal = new List<short>[Convert.ToInt16(dataCube[0].selector.Rows.Data)];
+            coresVertical = new List<short>[Convert.ToInt16(dataCube[0].selector.Columns.Data)];
             
         }
 
@@ -149,9 +149,9 @@ namespace RockStatic
             }
 
             histograma = new uint[100];
-            bins = new ushort[100];
-            coresHorizontal = new List<ushort>[Convert.ToInt16(dataCube[0].selector.Rows.Data)];
-            coresVertical = new List<ushort>[Convert.ToInt16(dataCube[0].selector.Columns.Data)];
+            bins = new short[100];
+            coresHorizontal = new List<short>[Convert.ToInt16(dataCube[0].selector.Rows.Data)];
+            coresVertical = new List<short>[Convert.ToInt16(dataCube[0].selector.Columns.Data)];
             
         }
 
@@ -298,8 +298,8 @@ namespace RockStatic
         public void GenerarHistograma()
         {
             // se busca el menor y el mayor valor del datacubo
-            ushort minimo = dataCube[0].pixelData.Min();
-            ushort maximo = dataCube[0].pixelData.Max();
+            short minimo = dataCube[0].pixelData.Min();
+            short maximo = dataCube[0].pixelData.Max();
 
             for (int i = 0; i < dataCube.Count; i++)
             {
@@ -325,20 +325,20 @@ namespace RockStatic
 
             // se calculan los limites de cada marca de clase
             double step = (double)(((double)(maximo - minimo)) / Convert.ToDouble(nbins));
-            limites = new ushort[nbins + 1];
+            limites = new short[nbins + 1];
             double[] tempLimites = new double[nbins + 1];
             limites[0] = minimo;
             for (int i = 1; i < (nbins + 1); i++)
             {
                 tempLimites[i] = tempLimites[i - 1] + step;
-                limites[i] = (ushort)(tempLimites[i]);
+                limites[i] = (short)(tempLimites[i]);
             }
             limites[nbins] = maximo;
 
             uint bincount = 0;
             int ibin = 0;
 
-            List<ushort> pixelsOrdenados = new List<ushort>();
+            List<short> pixelsOrdenados = new List<short>();
             this.histograma = new uint[nbins];
             for (int i = 0; i < dataCube.Count; i++)
             {
@@ -413,10 +413,10 @@ namespace RockStatic
             }
 
             // se calculan las marcas de clase
-            bins = new ushort[nbins];
+            bins = new short[nbins];
             for (int i = 0; i < bins.Length; i++)
             {
-                bins[i] = (ushort)((limites[i] + limites[i + 1]) / 2);
+                bins[i] = (short)((limites[i] + limites[i + 1]) / 2);
             }
         }
         /// <summary>
@@ -424,7 +424,7 @@ namespace RockStatic
         /// </summary>
         /// <param name="indice">Numero de la fila que se debe extraer de cada DICOM</param>
         /// <returns>Core horizontal generado en la posicion indicada</returns>
-        public List<ushort> GenerarCoreHorizontal(int indice)
+        public List<short> GenerarCoreHorizontal(int indice)
         {
             // se genera una MATRIZ para guardar, temporalmente, los numeros CT extraidos de todo el data cubo para cada imagen de corte horizontal
             // una vez extraida la matriz se mapea a una imagen Bitmap
@@ -432,9 +432,9 @@ namespace RockStatic
             // se crea la matriz temporal y se inicializa
             int alto = Convert.ToInt16(this.widthSegCore);
             int ancho = dataCube.Count;
-            ushort[][] temp = new ushort[alto][];
+            short[][] temp = new short[alto][];
             for (int i = 0; i < alto; i++)
-                temp[i] = new ushort[ancho];
+                temp[i] = new short[ancho];
 
             int a = 0;
             int ini = indice * Convert.ToInt16(this.widthSegCore);
@@ -454,8 +454,8 @@ namespace RockStatic
             double resXY = Convert.ToDouble(dataCube[0].selector.PixelSpacing.Data_[0]);
             int factor = Convert.ToInt32(resZ / resXY); { }
 
-            // se convierte a un List<ushort> para poder usarlo en el mapeo a Bitmap
-            List<ushort> pixels16 = new List<ushort>();
+            // se convierte a un List<short> para poder usarlo en el mapeo a Bitmap
+            List<short> pixels16 = new List<short>();
             for (int i = 0; i < alto; i++)
                 for (int j = 0; j < ancho; j++)
                     for (int k = 0; k < factor; k++)
@@ -470,7 +470,7 @@ namespace RockStatic
         /// </summary>
         /// <param name="indice">Numero de la fila que se debe extraer de cada DICOM</param>
         /// <returns>Core horizontal generado en la posicion indicada</returns>
-        public List<ushort> Generarphanton1Horizontal(int indice)
+        public List<short> Generarphanton1Horizontal(int indice)
         {
             // se genera una MATRIZ para guardar, temporalmente, los numeros CT extraidos de todo el data cubo para cada imagen de corte horizontal
             // una vez extraida la matriz se mapea a una imagen Bitmap
@@ -478,9 +478,9 @@ namespace RockStatic
             // se crea la matriz temporal y se inicializa
             int alto = Convert.ToInt16(this.widthSegP1);
             int ancho = dataCube.Count;
-            ushort[][] temp = new ushort[alto][];
+            short[][] temp = new short[alto][];
             for (int i = 0; i < alto; i++)
-                temp[i] = new ushort[ancho];
+                temp[i] = new short[ancho];
 
             int a = 0;
             int ini = indice * Convert.ToInt16(this.widthSegP1);
@@ -500,8 +500,8 @@ namespace RockStatic
             double resXY = Convert.ToDouble(dataCube[0].selector.PixelSpacing.Data_[0]);
             int factor = Convert.ToInt32(resZ / resXY); { }
 
-            // se convierte a un List<ushort> para poder usarlo en el mapeo a Bitmap
-            List<ushort> pixels16 = new List<ushort>();
+            // se convierte a un List<short> para poder usarlo en el mapeo a Bitmap
+            List<short> pixels16 = new List<short>();
             for (int i = 0; i < alto; i++)
                 for (int j = 0; j < ancho; j++)
                     for (int k = 0; k < factor; k++)
@@ -516,7 +516,7 @@ namespace RockStatic
         /// </summary>
         /// <param name="indice">Numero de la fila que se debe extraer de cada DICOM</param>
         /// <returns>Core horizontal generado en la posicion indicada</returns>
-        public List<ushort> Generarphanton2Horizontal(int indice)
+        public List<short> Generarphanton2Horizontal(int indice)
         {
             // se genera una MATRIZ para guardar, temporalmente, los numeros CT extraidos de todo el data cubo para cada imagen de corte horizontal
             // una vez extraida la matriz se mapea a una imagen Bitmap
@@ -524,9 +524,9 @@ namespace RockStatic
             // se crea la matriz temporal y se inicializa
             int alto = Convert.ToInt16(this.widthSegP2);
             int ancho = dataCube.Count;
-            ushort[][] temp = new ushort[alto][];
+            short[][] temp = new short[alto][];
             for (int i = 0; i < alto; i++)
-                temp[i] = new ushort[ancho];
+                temp[i] = new short[ancho];
 
             int a = 0;
             int ini = indice * Convert.ToInt16(this.widthSegP2);
@@ -546,8 +546,8 @@ namespace RockStatic
             double resXY = Convert.ToDouble(dataCube[0].selector.PixelSpacing.Data_[0]);
             int factor = Convert.ToInt32(resZ / resXY); { }
 
-            // se convierte a un List<ushort> para poder usarlo en el mapeo a Bitmap
-            List<ushort> pixels16 = new List<ushort>();
+            // se convierte a un List<short> para poder usarlo en el mapeo a Bitmap
+            List<short> pixels16 = new List<short>();
             for (int i = 0; i < alto; i++)
                 for (int j = 0; j < ancho; j++)
                     for (int k = 0; k < factor; k++)
@@ -562,7 +562,7 @@ namespace RockStatic
         /// </summary>
         /// <param name="indice">Numero de la fila que se debe extraer de cada DICOM</param>
         /// <returns>Core horizontal generado en la posicion indicada</returns>
-        public List<ushort> Generarphanton3Horizontal(int indice)
+        public List<short> Generarphanton3Horizontal(int indice)
         {
             // se genera una MATRIZ para guardar, temporalmente, los numeros CT extraidos de todo el data cubo para cada imagen de corte horizontal
             // una vez extraida la matriz se mapea a una imagen Bitmap
@@ -570,9 +570,9 @@ namespace RockStatic
             // se crea la matriz temporal y se inicializa
             int alto = Convert.ToInt16(this.widthSegP3);
             int ancho = dataCube.Count;
-            ushort[][] temp = new ushort[alto][];
+            short[][] temp = new short[alto][];
             for (int i = 0; i < alto; i++)
-                temp[i] = new ushort[ancho];
+                temp[i] = new short[ancho];
 
             int a = 0;
             int ini = indice * Convert.ToInt16(this.widthSegP3);
@@ -592,8 +592,8 @@ namespace RockStatic
             double resXY = Convert.ToDouble(dataCube[0].selector.PixelSpacing.Data_[0]);
             int factor = Convert.ToInt32(resZ / resXY); { }
 
-            // se convierte a un List<ushort> para poder usarlo en el mapeo a Bitmap
-            List<ushort> pixels16 = new List<ushort>();
+            // se convierte a un List<short> para poder usarlo en el mapeo a Bitmap
+            List<short> pixels16 = new List<short>();
             for (int i = 0; i < alto; i++)
                 for (int j = 0; j < ancho; j++)
                     for (int k = 0; k < factor; k++)
@@ -608,7 +608,7 @@ namespace RockStatic
         /// </summary>
         /// <param name="indice">Numero de la fila que se debe extraer de cada DICOM</param>
         /// <returns>Core horizontal generado en la posicion indicada</returns>
-        public List<ushort> GenerarCoreHorizontalRV(int indice)
+        public List<short> GenerarCoreHorizontalRV(int indice)
         {
             // se genera una MATRIZ para guardar, temporalmente, los numeros CT extraidos de todo el data cubo para cada imagen de corte horizontal
             // una vez extraida la matriz se mapea a una imagen Bitmap
@@ -616,9 +616,9 @@ namespace RockStatic
             // se crea la matriz temporal y se inicializa
             int alto = Convert.ToInt16(this.diametroSegRV);
             int ancho = dataCube.Count;
-            ushort[][] temp = new ushort[alto][];
+            short[][] temp = new short[alto][];
             for (int i = 0; i < alto; i++)
-                temp[i] = new ushort[ancho];
+                temp[i] = new short[ancho];
 
             int ini = indice * Convert.ToInt16(this.diametroSegRV);
             for (int i = 0; i < alto; i++)
@@ -636,8 +636,8 @@ namespace RockStatic
 
             this.factorZ = factor;
 
-            // se convierte a un List<ushort> para poder usarlo en el mapeo a Bitmap
-            List<ushort> pixels16 = new List<ushort>();
+            // se convierte a un List<short> para poder usarlo en el mapeo a Bitmap
+            List<short> pixels16 = new List<short>();
             for (int i = 0; i < alto; i++)
                 for (int j = 0; j < ancho; j++)
                     for (int k = 0; k < factor; k++)
@@ -651,7 +651,7 @@ namespace RockStatic
         /// </summary>
         /// <param name="indice">Numero de la columna que se debe extraer de cada DICOM</param>
         /// <returns>Core vertical generado en la posicion indicada</returns>
-        public List<ushort> GenerarCoreVerticalRV(int indice)
+        public List<short> GenerarCoreVerticalRV(int indice)
         {
             // se genera una MATRIZ para guardar, temporalmente, los numeros CT extraidos de todo el data cubo para cada imagen de corte vertical
             // una vez extraida la matriz se mapea a una imagen Bitmap
@@ -659,9 +659,9 @@ namespace RockStatic
             // se crea la matriz temporal y se inicializa
             int alto = Convert.ToInt16(this.diametroSegRV);
             int ancho = dataCube.Count;
-            ushort[][] temp = new ushort[alto][];
+            short[][] temp = new short[alto][];
             for (int i = 0; i < alto; i++)
-                temp[i] = new ushort[ancho];
+                temp[i] = new short[ancho];
 
             int ini = indice;
             int salto = Convert.ToInt16(this.diametroSegRV);
@@ -678,8 +678,8 @@ namespace RockStatic
             double resXY = Convert.ToDouble(dataCube[0].selector.PixelSpacing.Data_[0]);
             int factor = Convert.ToInt32(resZ / resXY); { }
 
-            // se convierte a un List<ushort> para poder usarlo en el mapeo a Bitmap
-            List<ushort> pixels16 = new List<ushort>();
+            // se convierte a un List<short> para poder usarlo en el mapeo a Bitmap
+            List<short> pixels16 = new List<short>();
             for (int i = 0; i < alto; i++)
                 for (int j = 0; j < ancho; j++)
                     for (int k = 0; k < factor; k++)
@@ -693,7 +693,7 @@ namespace RockStatic
         /// </summary>
         /// <param name="indice">Numero de la fila que se debe extraer de cada DICOM</param>
         /// <returns>Core vertical generado en la posicion indicada</returns>
-        public List<ushort> GenerarCoreVertical(int indice)
+        public List<short> GenerarCoreVertical(int indice)
         {
             // se genera una MATRIZ para guardar, temporalmente, los numeros CT extraidos de todo el data cubo para cada imagen de corte horizontal
             // una vez extraida la matriz se mapea a una imagen Bitmap
@@ -701,9 +701,9 @@ namespace RockStatic
             // se crea la matriz temporal y se inicializa
             int alto = Convert.ToInt16(this.widthSegCore);
             int ancho = dataCube.Count;
-            ushort[][] temp = new ushort[alto][];
+            short[][] temp = new short[alto][];
             for (int i = 0; i < alto; i++)
-                temp[i] = new ushort[ancho];
+                temp[i] = new short[ancho];
 
             int columnas = Convert.ToInt16(this.widthSegCore);
             int offset = 0;
@@ -723,8 +723,8 @@ namespace RockStatic
             double resXY = Convert.ToDouble(dataCube[0].selector.PixelSpacing.Data_[0]);
             int factor = Convert.ToInt32(resZ / resXY);
 
-            // se convierte a un List<ushort> para poder usarlo en el mapeo a Bitmap
-            List<ushort> pixels16 = new List<ushort>();
+            // se convierte a un List<short> para poder usarlo en el mapeo a Bitmap
+            List<short> pixels16 = new List<short>();
             for (int i = 0; i < alto; i++)
                 for (int j = 0; j < ancho; j++)
                     for (int k = 0; k < factor; k++)
@@ -734,12 +734,12 @@ namespace RockStatic
         }
 
         /// <summary>
-        /// Genera todos y cada uno de los planos de corte horizontales del core. No genera imágenes sino los List de ushort para cada plano de corte
+        /// Genera todos y cada uno de los planos de corte horizontales del core. No genera imágenes sino los List de short para cada plano de corte
         /// </summary>
         public void GenerarCoresHorizontales()
         {
-            // se genera un List<ushort> por cada pixel de altura de un DICOM
-            coresHorizontal = new List<ushort>[widthSegCore];
+            // se genera un List<short> por cada pixel de altura de un DICOM
+            coresHorizontal = new List<short>[widthSegCore];
 
             // se calcula el factor de escalado debido al espaciado entre Slides
             double resZ = Convert.ToDouble(dataCube[0].selector.SliceThickness.Data);
@@ -748,7 +748,7 @@ namespace RockStatic
 
             for (int i = 0; i < coresHorizontal.Length; i++)
             {
-                coresHorizontal[i] = new List<ushort>();
+                coresHorizontal[i] = new List<short>();
                 coresHorizontal[i] = GenerarCoreHorizontal(i);
             }
         }
@@ -759,8 +759,8 @@ namespace RockStatic
         ///</summary>
         public void GeneraPhanton1Horizonales()
         {
-            // se genera un List<ushort> por cada pixel de altura de un DICOM
-            phantoms1Horizontal = new List<ushort>[widthSegP1];
+            // se genera un List<short> por cada pixel de altura de un DICOM
+            phantoms1Horizontal = new List<short>[widthSegP1];
 
             // se calcula el factor de escalado debido al espaciado entre Slides
             double resZ = Convert.ToDouble(dataCube[0].selector.SliceThickness.Data);
@@ -769,7 +769,7 @@ namespace RockStatic
 
             for (int i = 0; i < phantoms1Horizontal.Length; i++)
             {
-                phantoms1Horizontal[i] = new List<ushort>();
+                phantoms1Horizontal[i] = new List<short>();
                 phantoms1Horizontal[i] = Generarphanton1Horizontal(i);
             }
 
@@ -781,8 +781,8 @@ namespace RockStatic
         ///</summary>
         public void GeneraPhanton2Horizonales()
         {
-            // se genera un List<ushort> por cada pixel de altura de un DICOM
-            phantoms2Horizontal = new List<ushort>[widthSegP2];
+            // se genera un List<short> por cada pixel de altura de un DICOM
+            phantoms2Horizontal = new List<short>[widthSegP2];
 
             // se calcula el factor de escalado debido al espaciado entre Slides
             double resZ = Convert.ToDouble(dataCube[0].selector.SliceThickness.Data);
@@ -791,7 +791,7 @@ namespace RockStatic
 
             for (int i = 0; i < phantoms2Horizontal.Length; i++)
             {
-                phantoms2Horizontal[i] = new List<ushort>();
+                phantoms2Horizontal[i] = new List<short>();
                 phantoms2Horizontal[i] = Generarphanton2Horizontal(i);
             }
 
@@ -804,8 +804,8 @@ namespace RockStatic
         ///</summary>
         public void GeneraPhanton3Horizonales()
         {
-            // se genera un List<ushort> por cada pixel de altura de un DICOM
-            phantoms3Horizontal = new List<ushort>[widthSegP3];
+            // se genera un List<short> por cada pixel de altura de un DICOM
+            phantoms3Horizontal = new List<short>[widthSegP3];
 
             // se calcula el factor de escalado debido al espaciado entre Slides
             double resZ = Convert.ToDouble(dataCube[0].selector.SliceThickness.Data);
@@ -814,7 +814,7 @@ namespace RockStatic
 
             for (int i = 0; i < phantoms3Horizontal.Length; i++)
             {
-                phantoms3Horizontal[i] = new List<ushort>();
+                phantoms3Horizontal[i] = new List<short>();
                 phantoms3Horizontal[i] = Generarphanton3Horizontal(i);
             }
 
@@ -823,42 +823,42 @@ namespace RockStatic
         //-----------------------esto es modificado --------------------------------
 
         /// <summary>
-        /// Genera todos y cada uno de los planos de corte horizontales del core. No genera imágenes sino los List de ushort para cada plano de corte. Version para RV
+        /// Genera todos y cada uno de los planos de corte horizontales del core. No genera imágenes sino los List de short para cada plano de corte. Version para RV
         /// </summary>
         public void GenerarCortesHorizontalesRV()
         {
-            // se genera un List<ushort> por cada pixel de altura de un DICOM
-            coresHorizontal = new List<ushort>[Convert.ToInt16(diametroSegRV)];
+            // se genera un List<short> por cada pixel de altura de un DICOM
+            coresHorizontal = new List<short>[Convert.ToInt16(diametroSegRV)];
 
             for (int i = 0; i < coresHorizontal.Length; i++)
             {
-                coresHorizontal[i] = new List<ushort>();
+                coresHorizontal[i] = new List<short>();
                 coresHorizontal[i] = GenerarCoreHorizontalRV(i);
             }
         }
 
         /// <summary>
-        /// Genera todos y cada uno de los planos de corte verticales del core. No genera imágenes sino los List de ushort para cada plano de corte. Version para RV
+        /// Genera todos y cada uno de los planos de corte verticales del core. No genera imágenes sino los List de short para cada plano de corte. Version para RV
         /// </summary>
         public void GenerarCortesVerticalesRV()
         {
-            // se genera un List<ushort> por cada pixel de altura de un DICOM
-            coresVertical = new List<ushort>[Convert.ToInt16(diametroSegRV)];
+            // se genera un List<short> por cada pixel de altura de un DICOM
+            coresVertical = new List<short>[Convert.ToInt16(diametroSegRV)];
 
             for (int i = 0; i < coresVertical.Length; i++)
             {
-                coresVertical[i] = new List<ushort>();
+                coresVertical[i] = new List<short>();
                 coresVertical[i] = GenerarCoreVerticalRV(i);
             }
         }
 
         /// <summary>
-        /// Genera todos y cada uno de los planos de corte verticales del datacubo. No genera imágenes sino los List de ushort para cada plano de corte
+        /// Genera todos y cada uno de los planos de corte verticales del datacubo. No genera imágenes sino los List de short para cada plano de corte
         /// </summary>
         public void GenerarCoresVerticales()
         {
-            // se genera un List<ushort> por cada pixel de ancho de un DICOM
-            coresVertical = new List<ushort>[widthSegCore];
+            // se genera un List<short> por cada pixel de ancho de un DICOM
+            coresVertical = new List<short>[widthSegCore];
 
             // se calcula el factor de escalado debido al espaciado entre Slides
             double resZ = Convert.ToDouble(dataCube[0].selector.SliceThickness.Data);
@@ -867,19 +867,19 @@ namespace RockStatic
 
             for (int i = 0; i < coresVertical.Length; i++)
             {
-                coresVertical[i] = new List<ushort>();
+                coresVertical[i] = new List<short>();
                 coresVertical[i] = GenerarCoreVertical(i);
             }
         }
 
         /// <summary>
-        /// Se mapea un List de ushort, obtenido de un corte horizontal/vertical a una imagen Bitmap
+        /// Se mapea un List de short, obtenido de un corte horizontal/vertical a una imagen Bitmap
         /// </summary>
-        /// <param name="pixels16">List de ushort que contiene la informacion CT de cada pixel</param>
+        /// <param name="pixels16">List de short que contiene la informacion CT de cada pixel</param>
         /// <param name="width">Ancho deseado de la imagen resultante</param>
         /// <param name="height">Alto deseado de la imagen resultante</param>
-        /// <returns>Imagen reconstruida a partir del List de ushort</returns>
-        public Bitmap CreateBitmapCorte(List<ushort> pixels16, int width, int height)
+        /// <returns>Imagen reconstruida a partir del List de short</returns>
+        public Bitmap CreateBitmapCorte(List<short> pixels16, int width, int height)
         {
             Bitmap bmp = new Bitmap(width, height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
 
@@ -927,9 +927,9 @@ namespace RockStatic
         /// Obtiene el valor mínimo de TODO el datacubo
         /// </summary>
         /// <returns>Valor minimo de todo el datacubo</returns>
-        public ushort GetMinimo()
+        public short GetMinimo()
         {
-            ushort minimo = dataCube[0].pixelData.Min();
+            short minimo = dataCube[0].pixelData.Min();
 
             for (int i = 0; i < dataCube.Count; i++)
             {
@@ -944,9 +944,9 @@ namespace RockStatic
         /// Obtiene el valor maximo de TODO el datacubo
         /// </summary>
         /// <returns>Valor maximo de todo el datacubo</returns>
-        public ushort GetMaximo()
+        public short GetMaximo()
         {
-            ushort maximo = dataCube[0].pixelData.Max();
+            short maximo = dataCube[0].pixelData.Max();
 
             for (int i = 0; i < dataCube.Count; i++)
             {
@@ -958,15 +958,15 @@ namespace RockStatic
         }
 
         /// <summary>
-        /// Se mapea un List de ushort, obtenido de un corte horizontal/vertical a una imagen Bitmap normalizada según los parámetros de entrada
+        /// Se mapea un List de short, obtenido de un corte horizontal/vertical a una imagen Bitmap normalizada según los parámetros de entrada
         /// </summary>
-        /// <param name="pixels16">List de ushort que contiene la informacion CT de cada pixel</param>
+        /// <param name="pixels16">List de short que contiene la informacion CT de cada pixel</param>
         /// <param name="width">Ancho deseado de la imagen resultante</param>
         /// <param name="height">Alto deseado de la imagen resultante</param>
         /// <param name="minNormalizacion">Valor minimo CT de la normalizacion</param>
         /// <param name="maxNormalizacion">Valor maximo CT de la normalizacion</param>
-        /// <returns>Imagen reconstruida a partir del List de ushort</returns>
-        public Bitmap CreateBitmapCorte(List<ushort> pixels16, int width, int height, int minNormalizacion, int maxNormalizacion)
+        /// <returns>Imagen reconstruida a partir del List de short</returns>
+        public Bitmap CreateBitmapCorte(List<short> pixels16, int width, int height, int minNormalizacion, int maxNormalizacion)
         {
             Bitmap bmp = new Bitmap(width, height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
 

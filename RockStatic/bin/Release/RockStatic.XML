@@ -296,7 +296,7 @@
             Manejador de finalizacion del thread
             </summary>
         </member>
-        <member name="M:RockStatic.AuxThread.#ctor(System.Collections.Generic.List{System.UInt16},System.Int32,System.Int32,System.Int32,System.Int32,System.Threading.ManualResetEvent)">
+        <member name="M:RockStatic.AuxThread.#ctor(System.Collections.Generic.List{System.Int16},System.Int32,System.Int32,System.Int32,System.Int32,System.Threading.ManualResetEvent)">
             <summary>
             Constructor con asignación para crear una imagen de un corte longitudinal
             </summary>
@@ -307,7 +307,7 @@
             <param name="_maxNormalizacion">Valor maximo CT de la normalizacion</param>
             <param name="_done">Parametro para el control del ThreadPool</param>
         </member>
-        <member name="M:RockStatic.AuxThread.#ctor(System.Collections.Generic.List{System.UInt16},System.Int32,System.Int32,System.Threading.ManualResetEvent)">
+        <member name="M:RockStatic.AuxThread.#ctor(System.Collections.Generic.List{System.Int16},System.Int32,System.Int32,System.Threading.ManualResetEvent)">
             <summary>
             Constructor con asignación para crear la imagen de un DICOM
             </summary>
@@ -316,7 +316,7 @@
             <param name="_height">Alto deseado de la imagen resultante</param>
             <param name="_done">Parametro para el control del ThreadPool</param>
         </member>
-        <member name="M:RockStatic.AuxThread.#ctor(System.Collections.Generic.List{System.UInt16},System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Threading.ManualResetEvent)">
+        <member name="M:RockStatic.AuxThread.#ctor(System.Collections.Generic.List{System.Int16},System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Threading.ManualResetEvent)">
             <summary>
             Constructor con asignación para realizar la segmentacion circular, con threads, del core de un datacubo
             </summary>
@@ -496,27 +496,27 @@
         </member>
         <member name="F:RockStatic.MyDataCube.coresHorizontal">
             <summary>
-            List que contiene los List de ushort que contienen los pixeles CT para cada corte horizontal del core
+            List que contiene los List de short que contienen los pixeles CT para cada corte horizontal del core
             </summary>
         </member>
         <member name="F:RockStatic.MyDataCube.phantoms1Horizontal">
             <summary>
-            List que contiene los List de ushort que contienen los pixeles CT para cada corte horizontal del phanton1
+            List que contiene los List de short que contienen los pixeles CT para cada corte horizontal del phanton1
             </summary>
         </member>
         <member name="F:RockStatic.MyDataCube.phantoms2Horizontal">
             <summary>
-            List que contiene los List de ushort que contienen los pixeles CT para cada corte horizontal del phanton1
+            List que contiene los List de short que contienen los pixeles CT para cada corte horizontal del phanton1
             </summary>
         </member>
         <member name="F:RockStatic.MyDataCube.phantoms3Horizontal">
             <summary>
-            List que contiene los List de ushort que contienen los pixeles CT para cada corte horizontal del phanton1
+            List que contiene los List de short que contienen los pixeles CT para cada corte horizontal del phanton1
             </summary>
         </member>
         <member name="F:RockStatic.MyDataCube.coresVertical">
             <summary>
-            List que contiene los List de ushort que contienen los pixeles CT para cada corte vertical del core
+            List que contiene los List de short que contienen los pixeles CT para cada corte vertical del core
             </summary>
         </member>
         <member name="F:RockStatic.MyDataCube.widthSegCore">
@@ -668,7 +668,7 @@
         </member>
         <member name="M:RockStatic.MyDataCube.GenerarCoresHorizontales">
             <summary>
-            Genera todos y cada uno de los planos de corte horizontales del core. No genera imágenes sino los List de ushort para cada plano de corte
+            Genera todos y cada uno de los planos de corte horizontales del core. No genera imágenes sino los List de short para cada plano de corte
             </summary>
         </member>
         <member name="M:RockStatic.MyDataCube.GeneraPhanton1Horizonales">
@@ -688,27 +688,27 @@
         </member>
         <member name="M:RockStatic.MyDataCube.GenerarCortesHorizontalesRV">
             <summary>
-            Genera todos y cada uno de los planos de corte horizontales del core. No genera imágenes sino los List de ushort para cada plano de corte. Version para RV
+            Genera todos y cada uno de los planos de corte horizontales del core. No genera imágenes sino los List de short para cada plano de corte. Version para RV
             </summary>
         </member>
         <member name="M:RockStatic.MyDataCube.GenerarCortesVerticalesRV">
             <summary>
-            Genera todos y cada uno de los planos de corte verticales del core. No genera imágenes sino los List de ushort para cada plano de corte. Version para RV
+            Genera todos y cada uno de los planos de corte verticales del core. No genera imágenes sino los List de short para cada plano de corte. Version para RV
             </summary>
         </member>
         <member name="M:RockStatic.MyDataCube.GenerarCoresVerticales">
             <summary>
-            Genera todos y cada uno de los planos de corte verticales del datacubo. No genera imágenes sino los List de ushort para cada plano de corte
+            Genera todos y cada uno de los planos de corte verticales del datacubo. No genera imágenes sino los List de short para cada plano de corte
             </summary>
         </member>
-        <member name="M:RockStatic.MyDataCube.CreateBitmapCorte(System.Collections.Generic.List{System.UInt16},System.Int32,System.Int32)">
+        <member name="M:RockStatic.MyDataCube.CreateBitmapCorte(System.Collections.Generic.List{System.Int16},System.Int32,System.Int32)">
             <summary>
-            Se mapea un List de ushort, obtenido de un corte horizontal/vertical a una imagen Bitmap
+            Se mapea un List de short, obtenido de un corte horizontal/vertical a una imagen Bitmap
             </summary>
-            <param name="pixels16">List de ushort que contiene la informacion CT de cada pixel</param>
+            <param name="pixels16">List de short que contiene la informacion CT de cada pixel</param>
             <param name="width">Ancho deseado de la imagen resultante</param>
             <param name="height">Alto deseado de la imagen resultante</param>
-            <returns>Imagen reconstruida a partir del List de ushort</returns>
+            <returns>Imagen reconstruida a partir del List de short</returns>
         </member>
         <member name="M:RockStatic.MyDataCube.GetMinimo">
             <summary>
@@ -722,16 +722,16 @@
             </summary>
             <returns>Valor maximo de todo el datacubo</returns>
         </member>
-        <member name="M:RockStatic.MyDataCube.CreateBitmapCorte(System.Collections.Generic.List{System.UInt16},System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:RockStatic.MyDataCube.CreateBitmapCorte(System.Collections.Generic.List{System.Int16},System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
-            Se mapea un List de ushort, obtenido de un corte horizontal/vertical a una imagen Bitmap normalizada según los parámetros de entrada
+            Se mapea un List de short, obtenido de un corte horizontal/vertical a una imagen Bitmap normalizada según los parámetros de entrada
             </summary>
-            <param name="pixels16">List de ushort que contiene la informacion CT de cada pixel</param>
+            <param name="pixels16">List de short que contiene la informacion CT de cada pixel</param>
             <param name="width">Ancho deseado de la imagen resultante</param>
             <param name="height">Alto deseado de la imagen resultante</param>
             <param name="minNormalizacion">Valor minimo CT de la normalizacion</param>
             <param name="maxNormalizacion">Valor maximo CT de la normalizacion</param>
-            <returns>Imagen reconstruida a partir del List de ushort</returns>
+            <returns>Imagen reconstruida a partir del List de short</returns>
         </member>
         <member name="T:RockStatic.MyDicom">
             <summary>
@@ -756,7 +756,7 @@
         </member>
         <member name="F:RockStatic.MyDicom.pixelData">
             <summary>
-            List que contiene la informacion de pixeles CT (ushort) para el DICOM cargado        
+            List que contiene la informacion de pixeles CT (short) para el DICOM cargado        
             </summary>
         </member>
         <member name="F:RockStatic.MyDicom.segCore">
@@ -818,7 +818,7 @@
             <param name="photoInterpretation">Valor PHOTO_INTERPRETATION obtenido de EvilDICOM</param>
             <returns></returns>
         </member>
-        <member name="M:RockStatic.MyDicom.Pixels162Byte(System.Collections.Generic.List{System.UInt16},System.Int32,System.Double,System.Double,System.String)">
+        <member name="M:RockStatic.MyDicom.Pixels162Byte(System.Collections.Generic.List{System.Int16},System.Int32,System.Double,System.Double,System.String)">
             <summary>
             Convierte la información de pixeles (cropped o no) en CT a bytes
             </summary>
@@ -829,9 +829,9 @@
             <param name="photoInterpretation">Valor PHOTO_INTERPRETATION obtenido de EvilDICOM</param>
             <returns>List de bytes codificado</returns>
         </member>
-        <member name="M:RockStatic.MyDicom.CropCTRectangle(System.Collections.Generic.List{System.UInt16},System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:RockStatic.MyDicom.CropCTRectangle(System.Collections.Generic.List{System.Int16},System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
-            Toma el List de ushort, que se mapea a una imagen BMP, y se recorta los elementos que se mapean en un area cuadrada de centro (xcenter,ycenter) de ancho 2*anchoRect y de largo 2*largoRect
+            Toma el List de short, que se mapea a una imagen BMP, y se recorta los elementos que se mapean en un area cuadrada de centro (xcenter,ycenter) de ancho 2*anchoRect y de largo 2*largoRect
             </summary>
             <param name="pixels16">List con la información CT en cada pixel</param>
             <param name="xcenter">Coordenadas cartesianas del centro X, con cero en la esquina superior izquierda</param>
@@ -842,9 +842,9 @@
             <param name="height">Alto de la imagen original</param>
             <returns></returns>
         </member>
-        <member name="M:RockStatic.MyDicom.CropCTCircle(System.Collections.Generic.List{System.UInt16},System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:RockStatic.MyDicom.CropCTCircle(System.Collections.Generic.List{System.Int16},System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
-            Toma el List de ushort, que se mapea a una imagen BMP, y recorta los elementos que se mapean un area circular de centro (xcenter,ycenter) de radio rad
+            Toma el List de short, que se mapea a una imagen BMP, y recorta los elementos que se mapean un area circular de centro (xcenter,ycenter) de radio rad
             </summary>
             <param name="pixels16">List con la información CT en cada pixel</param>
             <param name="xcenter">Coordenadas cartesianas del centro X, con cero en la esquina superior izquierda</param>
@@ -855,7 +855,7 @@
         </member>
         <member name="M:RockStatic.MyDicom.CropCTCircle(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
-            Toma el List de ushort, que se mapea a una imagen BMP, y recorta los elementos que se mapean un area circular de centro (xcenter,ycenter) de radio rad
+            Toma el List de short, que se mapea a una imagen BMP, y recorta los elementos que se mapean un area circular de centro (xcenter,ycenter) de radio rad
             </summary>
             <param name="pixels16">List con la información CT en cada pixel</param>
             <param name="xcenter">Coordenadas cartesianas del centro X, con cero en la esquina superior izquierda</param>
@@ -866,7 +866,7 @@
         </member>
         <member name="M:RockStatic.MyDicom.CropCTCircleRV(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
-            Toma el List de ushort, que se mapea a una imagen BMP, y recorta los elementos que se mapean un area circular de centro (xcenter,ycenter) de radio rad. Version RV
+            Toma el List de short, que se mapea a una imagen BMP, y recorta los elementos que se mapean un area circular de centro (xcenter,ycenter) de radio rad. Version RV
             </summary>
             <param name="pixels16">List con la información CT en cada pixel</param>
             <param name="xcenter">Coordenadas cartesianas del centro X, con cero en la esquina superior izquierda</param>
@@ -877,7 +877,7 @@
         </member>
         <member name="M:RockStatic.MyDicom.CropMeanCTRVD(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
-            Toma el List de ushort, que se mapea a una imagen BMP, y recorta los elementos que se mapean un area circular de centro (xcenter,ycenter) de radio rad, y devuelve el valor medio de la segmentacion. Uso en RV-D
+            Toma el List de short, que se mapea a una imagen BMP, y recorta los elementos que se mapean un area circular de centro (xcenter,ycenter) de radio rad, y devuelve el valor medio de la segmentacion. Uso en RV-D
             </summary>
             <param name="pixels16">List con la información CT en cada pixel</param>
             <param name="xcenter">Coordenadas cartesianas del centro X, con cero en la esquina superior izquierda</param>
@@ -886,7 +886,7 @@
             <param name="width">Ancho de la imagen original</param>
             <param name="height">Alto de la imagen original</param>
         </member>
-        <member name="M:RockStatic.MyDicom.CrearBitmap(System.Collections.Generic.List{System.UInt16},System.Int32,System.Int32)">
+        <member name="M:RockStatic.MyDicom.CrearBitmap(System.Collections.Generic.List{System.Int16},System.Int32,System.Int32)">
             <summary>
             Crea un Bitmap a partir de la informacion de pixeles, en CT
             </summary>
@@ -895,7 +895,7 @@
             <param name="height">Alto deseado de la imagen</param>
             <returns>Imagen resultante</returns>
         </member>
-        <member name="M:RockStatic.MyDicom.CreateBitmap(System.Collections.Generic.List{System.UInt16},System.Int32,System.Int32)">
+        <member name="M:RockStatic.MyDicom.CreateBitmap(System.Collections.Generic.List{System.Int16},System.Int32,System.Int32)">
             <summary>
             Crea un Bitmap a partir de la informacion de pixeles, en CT, y guarda la imagen en la instancia bmp de la clase
             </summary>
@@ -903,7 +903,7 @@
             <param name="width">Ancho deseado de la imagen</param>
             <param name="height">Alto deseado de la imagen</param>
         </member>
-        <member name="M:RockStatic.MyDicom.CreateBitmap(System.Collections.Generic.List{System.UInt16},System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:RockStatic.MyDicom.CreateBitmap(System.Collections.Generic.List{System.Int16},System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Crea un Bitmap a partir de la informacion de pixeles, en CT, normalizando segun los límites que se le pasan, y guarda la imagen en la instancia bmp de la clase
             </summary>
@@ -913,7 +913,7 @@
             <param name="minNormalizacion">Valor minimo CT de la normalizacion</param>
             <param name="maxNormalizacion">Valor maximo CT de la normalizacion</param>
         </member>
-        <member name="M:RockStatic.MyDicom.CrearBitmap(System.Collections.Generic.List{System.UInt16},System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:RockStatic.MyDicom.CrearBitmap(System.Collections.Generic.List{System.Int16},System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Crea un Bitmap a partir de la informacion de pixeles, en CT, normalizando segun los límites que se le pasan, y guarda la imagen en la instancia bmp de la clase
             </summary>
